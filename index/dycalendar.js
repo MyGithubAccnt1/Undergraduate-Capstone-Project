@@ -2,6 +2,10 @@ const market = document.querySelector(".market");
 market.addEventListener("click", () => {
   window.location.href = "market.html";
 });
+const login = document.querySelector(".login");
+login.addEventListener("click", () => {
+  window.location.href = "login.html";
+});
 
 let text = document.getElementById('text');
 let leaf = document.getElementById('leaf');
