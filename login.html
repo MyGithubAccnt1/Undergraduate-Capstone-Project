@@ -9,65 +9,38 @@
   <title>Saint Benedict Medallion</title>
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
   <link rel="stylesheet" href="login/style.css">
-  
+  <style>
+  	.sec{
+        background-image: url('images/bg.gif');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+     }
+  </style>
 </head>
 
 <body>
-	<div id="fb-root"></div>
-	<script>
-	window.fbAsyncInit = function () {
-	  FB.init({
-	    appId: '1539981083195876',
-	    status: true,
-	    cookie: true,
-	    xfbml: true
-	  });
-	};
 
-	(function (doc) {
-	  var js;
-	  var id = 'facebook-jssdk';
-	  var ref = doc.getElementsByTagName('script')[0];
-	  if (doc.getElementById(id)) {
-	    return;
-	  }
-	  js = doc.createElement('script');
-	  js.id = id;
-	  js.async = true;
-	  js.src = "//connect.facebook.net/en_US/all.js";
-	  ref.parentNode.insertBefore(js, ref);
-	}(document));
+	<header>
+		<h2 class="logo">SBM</h2>
+		<nav class="navigation">
+			<a href="#" class="active">Home</a>
+			<a href="#" class="newsfeed">Newsfeed</a>
+			<a href="#" class="market">Market</a>
+			<a href="#" class="login">Login</a>
+		</nav>
+	</header>
 
-	function Login() {
-	  FB.login(function (response) {
-	    if (response.authResponse) {
-	      FB.api('/me', function (response) {
-          document.getElementById("displayName").innerHTML = response.name;
-          document.getElementById("userName").innerHTML = response.username;
-          document.getElementById("userID").innerHTML = response.id;
-          document.getElementById("userEmail").innerHTML = response.email;
-          FB.api('/me/picture?type=normal', function (response) {
-            document.getElementById("profileImage").setAttribute("src", response.data.url);
-          });
-        });
-	    } else {
-	      alert("Login attempt failed!");
-	    }
-	  }, {scope: 'email,user_photos,publish_actions'});
-	}
+	<div class="sec">
+		<div class="box">
+			<div class="container">
+				<div></div>
+			</div>
+		</div>
+	</div>
 
-	FB.Event.subscribe('auth.authResponseChange', function (response) {
-	  if (response.status === 'connected') {
-	    alert("Successfully connected to Facebook!");
-	  }
-	  else if (response.status === 'not_authorized') {
-	    alert("Login failed!");
-	  } else {
-	    alert("Unknown error!");
-	  }
-	});
-	</script>
-	<input type="button" value="Login" onclick="Login();" />
+	<script src="login/script.js"></script>
+
 </body>
 
 </html>

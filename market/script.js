@@ -2,6 +2,10 @@ const index = document.querySelector(".index");
 index.addEventListener("click", () => {
   window.location.href = "index.html";
 });
+const login = document.querySelector(".login");
+login.addEventListener("click", () => {
+  window.location.href = "login.html";
+});
 const circle = document.querySelector(".circle");
 circle.addEventListener("click", () => {
   window.location.href = "customize-circle.html";
