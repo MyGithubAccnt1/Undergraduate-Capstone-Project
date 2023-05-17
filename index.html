@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saint Benedict Medallion</title>
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="index/dycalendar.css">
+  <link rel="stylesheet" href="index/style.css">
+
+</head>
+
+<body>
+
+	<header>
+		<h2 class="logo">SBM</h2>
+		<nav class="navigation">
+			<a href="#" class="active">Home</a>
+			<a href="#" class="newsfeed">Newsfeed</a>
+			<a href="#" class="market">Market</a>
+			<a href="#" class="login">Login</a>
+		</nav>
+	</header>
+
+	<section class="parallax">
+		<img src="index/hill1.png" id="hill1">
+		<img src="index/hill2.png" id="hill2">
+		<img src="index/hill3.png" id="hill3">
+		<img src="index/hill4.png" id="hill4">
+		<img src="index/hill5.png" id="hill5">
+		<img src="index/tree.png" id="tree">
+		<h2 id="text">Saint Benedict Medallion</h2>
+		<img src="index/leaf.png" id="leaf">
+		<img src="index/plant.png" id="plant">
+	</section>
+
+	<section class="sec">
+		<h2>Orders Overview</h2>
+		<div class="box">
+			<div class="container">
+				<div id="dycalendar"></div>
+			</div>
+		</div>
+		<h2>Saint Benedict Medallion</h2>
+		<p>
+			A place for people who loves religious necklace and fashion necklace<br><br><br>
+			Now, we leveled up<br><br><br>
+			By upgrading the playing field<br><br><br>
+			We can bring our works closer to you than ever before.<br><br><br>
+			In our website<br><br><br>
+			You can use your creative minds to digitalize your bright ideas.<br><br><br>
+			Make us think if we can recreate your brilliant ideas.<br><br><br>
+			You also have a chance to get your works be featured in our website.
+		</p>
+	</section>
+
+	<script src="index/dycalendar.js"></script>
+	<script>
+		dycalendar.draw({
+			target: '#dycalendar',
+			type: 'month',
+			dayformat: 'full',
+			monthformat: 'full',
+			highlighttargetdate: true,
+			prevnextbutton: 'show'
+		})
+	</script>
+</body>
+
+</html>

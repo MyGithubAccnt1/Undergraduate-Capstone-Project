@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:width@200;300;400;500;600;700;800;900&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	background: #f9f9f9;
+	min-height: 100vh;
+	overflow-x: hidden;
+}
+
+header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 30px 100px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	z-index: 100;
+}
+
+.logo {
+	font-size: 2em;
+	color: #359381;
+	pointer-events: none;
+	margin-right: 25%;
+}
+
+.navigation a {
+	text-decoration: none;
+	color: #359381;
+	padding: 6px 15px;
+	border-radius: 20px;
+	margin: 0 10px;
+	font-weight: 600;
+}
+
+.navigation a:hover,
+.navigation a.active {
+	background: #359381;
+	color: #fff;
+}
+
+.parallax {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+#text {
+	position: absolute;
+	font-size: 5em;
+	color: #fff;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+}
+
+.parallax img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	pointer-events: none;
+}
+
+.sec {
+	position: relative;
+	margin-top: 130px;
+	background: #003329;
+	padding: 100px;
+}
+
+.sec h2 {
+	font-size: 3em;
+	color: #fff;
+	margin-bottom: 50px;
+}
+
+.sec p {
+	font-size: 1.5em;
+	color: #fff;
+	text-align: center;
+	font-weight: 400;
+	scroll-snap-stop: always;
+}
+
+.box {
+	position: relative;
+	left: calc(50% - 200px);
+	margin-bottom: 50px;
+}
+
+.container {
+	position: relative;
+	width: 400px;
+	min-height: 400px;
+	background-color: rgba(255, 255, 255, 0.1);
+	box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	border-right: 1px solid rgba(255, 255, 255, 0.2);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(25px);
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#dycalendar {
+	width: 100%;
+	padding: 20px;
+}
+
+#dycalendar table {
+	width: 100%;
+	margin-top: 40px;
+	border-spacing: 5px;
+}
+
+#dycalendar table tr:nth-child(1) td {
+	background: #fff;
+	color: #111;
+	border-radius: 4px;
+	font-weight: 600;
+}
+
+#dycalendar table td {
+	color: #fff;
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+#dycalendar table td:hover {
+	background: #fff;
+	color: #111 !important;
+}
+
+.dycalendar-month-container .dycalendar-today-date,
+ .dycalendar-month-container .dycalendar-target-date {
+	background: #fff;
+	color: #111 !important;
+}
+
+.dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn.prev-btn {
+	background: #fff;
+	color: #111;
+	width: 44px;
+	height: 38px;
+	left: 4px;
+	border-radius: 4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+}
+
+.dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn.next-btn {
+	background: #fff;
+	color: #111;
+	width: 44px;
+	height: 38px;
+	right: 4px;
+	border-radius: 4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+}
+
+.dycalendar-month-container .dycalendar-span-month-year {
+	color: #fff;
+	font-size: 1.5em;
+	font-weight: 600;
+}
