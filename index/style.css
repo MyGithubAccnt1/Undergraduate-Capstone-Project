@@ -26,7 +26,7 @@ header {
 }
 
 .logo {
-	font-size: 2em;
+	font-size: 2.5vw;
 	color: #359381;
 	pointer-events: none;
 	margin-right: 25%;
@@ -57,7 +57,7 @@ header {
 
 #text {
 	position: absolute;
-	font-size: 5em;
+	font-size: 6vw;
 	color: #fff;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
 	text-align: center;
@@ -79,17 +79,16 @@ header {
 }
 
 .sec h2 {
-	font-size: 3em;
+	font-size: 4vw;
 	color: #fff;
 	margin-bottom: 50px;
 }
 
 .sec p {
-	font-size: 1.5em;
+	font-size: 2vw;
 	color: #fff;
 	text-align: center;
 	font-weight: 400;
-	scroll-snap-stop: always;
 }
 
 .box {
@@ -112,6 +111,16 @@ header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.footer {
+	position: relative;
+	background: black;
+	padding: 25px;
+	color: white;
+	text-align: center;
+	font-style: italic;
+	font-size: 0.75vw;
 }
 
 #dycalendar {
