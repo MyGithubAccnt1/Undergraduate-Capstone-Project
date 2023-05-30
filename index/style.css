@@ -60,19 +60,20 @@ header {
 	font-size: 5em;
 	color: #fff;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+	text-align: center;
 }
 
 .parallax img {
 	position: absolute;
 	top: 0;
 	left: 0;
+	height: 100%;
 	width: 100%;
 	pointer-events: none;
 }
 
 .sec {
 	position: relative;
-	margin-top: 130px;
 	background: #003329;
 	padding: 100px;
 }
