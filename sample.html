@@ -56,7 +56,7 @@
 		          <a class="nav-link" id="market" href="#">Market</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasDark" role="button" aria-controls="offcanvasDark">Cart</a>
+		          <a class="nav-link" id="cart" href="#">Cart</a>
 		        </li>
 		        <li class="nav-item">
 		          <a class="nav-link" id="login" style="color: hsl(350, 90%, 49%);" aria-current="page"href="#">Login</a>
@@ -66,22 +66,9 @@
 		  </div>
 		</nav>
 
-		<div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel">
-		  <div class="offcanvas-header">
-		    <h5 class="offcanvas-title" id="offcanvasDarkLabel">Cart</h5>
-		    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-		  </div>
-		  <div class="offcanvas-body">
-		    <p>Your cart is empty.</p>
-		    <hr>
-		    <p>Total: 0</p>
-		    <button type="submit" class="btn btn-primary my-3 w-100 rounded-pill">CHECKOUT</button>
-		  </div>
-		</div>
-
 		<div class="sec">
-			<div class="d-flex justify-content-center p-3">
-				<div class="container rounded p-2">
+			<div class="d-flex justify-content-center p-5">
+				<div class="container rounded p-3">
 					<div class="container-fluid my-4">
 					    <div class="container-fluid d-flex justify-content-center align-items-center">
 					      	<ul class="nav nav-underline pb-2" id="myTab" role="tablist">
@@ -100,7 +87,7 @@
 					    	  			<form>
 						    	  			<!-- Email input -->
 						    	  			<div class="form-outline my-4">
-						    	  			    <input type="email" placeholder="Enter your email" class="form-control rounded-0" required><i class="uil uil-envelope icon"></i>
+						    	  			    <input type="text" placeholder="Enter your email" class="form-control rounded-0" required><i class="uil uil-envelope icon"></i>
 						    	  			</div>
 
 						    	  			<!-- Password input -->
@@ -124,7 +111,7 @@
 
 						    	  			<!-- Submit button -->
 						    	  			<div class="d-flex justify-content-center">
-						    	  			  	<button type="submit" class="btn btn-primary my-3 w-100 rounded-pill">Sign in</button>
+						    	  			  	<button type="submit" class="btn btn-primary mb-3 w-100 rounded-pill">Sign in</button>
 						    	  			</div>
 
 						    	  			<!-- Register buttons -->
@@ -138,7 +125,7 @@
 				    	  			<div class="container-fluid">
 			    	  				    <form>
 			    	  					    <!-- Email input -->
-			    	  					    <div class="form-outline my-4">
+			    	  					    <div class="form-outline mb-4">
 			    	  					    	<input type="email" placeholder="Enter your email" class="form-control rounded-0" required><i class="uil uil-envelope icon"></i>
 			    	  					    </div>
 
@@ -158,14 +145,14 @@
 							    	  			    <!-- Checkbox -->
 							    	  			    <div class="form-check mb-3">
 							    	  			        <input class="form-check-input" type="checkbox" id="loginCheck" checked />
-							    	  			        <label class="form-check-label" for="loginCheck"> Accept terms and conditions </label>
+							    	  			        <label class="form-check-label" for="loginCheck"> I have read and agree to the terms </label>
 							    	  			    </div>
 						    	  			    </div>
 						    	  			</div>
 
 						    	  			<!-- Submit button -->
 						    	  			<div class="d-flex justify-content-center">
-						    	  			  	<button type="submit" class="btn btn-primary my-3 w-100 rounded-pill">Sign up</button>
+						    	  			  	<button type="submit" class="btn btn-primary mb-3 w-100 rounded-pill">Sign up</button>
 						    	  			</div>
 
 						    	  			<!-- Register buttons -->

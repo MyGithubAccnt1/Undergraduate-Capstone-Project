@@ -1,225 +1,692 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+	<head>
 
-<head>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>Saint Benedict Medallion</title>
+	  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+	  <!-- bootstrap css -->
+	  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+	  <!-- bootstrap popper -->
+	  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+	  <!-- bootstrap js -->
+	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+	  <!-- fontawesome -->
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	  <!-- custom css -->
+	  <link rel = "stylesheet" href = "market-style.css">
+	  <style>
+	  	* {
+	  		margin: 0;
+	  		padding: 0;
+	  		box-sizing: border-box;
+	  	}
+	  </style>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE-edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saint Benedict Medallion</title>
-  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-  <link rel="stylesheet" href="market/style.css">
-  
-</head>
+	</head>
+	<body class="font-monospace">
 
-<body>
-
-	<div class="header">
-		<h2 class="logo">SBM</h2>
-		<nav class="navigation">
-			<a href="#" class="index">Home</a>
-			<a href="#" class="newsfeed">Newsfeed</a>
-			<a href="#" class="active">Market</a>
-			<a href="#" class="login">Login</a>
+		<nav class="navbar navbar-expand-sm bg-body-tertiary" data-bs-theme="dark">
+		  <div class="container-fluid">
+		    <span class="navbar-brand mb-0 h1 fw-bold" style="color: hsl(350, 90%, 49%);"><strong>SBM</strong></span>
+		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+		        <li class="nav-item">
+		          <a class="nav-link" id="index" href="#">Home</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" id="market" style="color: hsl(350, 90%, 49%);" aria-current="page" href="#">Market</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasDark" role="button" aria-controls="offcanvasDark">Cart</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" id="login" href="#">Login</a>
+		        </li>
+		      </ul>
+		    </div>
+		  </div>
 		</nav>
-	</div>
 
-	<main>
-    <header>
-      <ul class="indicator">
-        <li data-filter="all" class="active"><a href="#">All</a></li>
-        <li data-filter="Buy 1 Take 1"><a href="#">Buy 1 Take 1</a></li>
-        <li data-filter="Customize"><a href="#">Customize</a></li>
-      </ul>
-      <div class="filter-condition">
-        <span>Sort By</span>
-        <select name="" id="select">
-          <option value="Default">Default</option>
-          <option value="LowToHigh">Low to high</option>
-          <option value="HighToLow">High to low</option>
-        </select>
-      </div>
-    </header>
-    <div class="product-field">
-      <ul class="items">
-        <li data-category="" data-price="">
-          <picture>
-            <img src="images/set1.png" alt="">
-          </picture>
-          <div class="detail">
-            <strong>Buy 1 Take 1</strong>
-            <span>[SET 1] Free Shipping<br>Cash on Delivery</span>
-            <small>Buy now</small>
-          </div>
-          <h4><span>&#8369;</span>498.00</h4>
-        </li>
-        <li data-category="" data-price="">
-          <picture>
-            <img src="images/set2.png" alt="">
-          </picture>
-          <div class="detail">
-            <strong>Buy 1 Take 1</strong>
-            <span>[SET 2] Free Shipping<br>Cash on Delivery</span>
-            <small>Buy now</small>
-          </div>
-          <h4><span>&#8369;</span>498.00</h4>
-        </li>
-        <li data-category="" data-price="">
-          <picture>
-            <img src="images/set3.png" alt="">
-          </picture>
-          <div class="detail">
-            <strong>Buy 1 Take 1</strong>
-            <span>[SET 3] Free Shipping<br>Cash on Delivery</span>
-            <small>Buy now</small>
-          </div>
-          <h4><span>&#8369;</span>498.00</h4>
-        </li>
-        <li data-category="" data-price="">
-          <picture>
-            <img src="images/set4.png" alt="">
-          </picture>
-          <div class="detail">
-            <strong>Buy 1 Take 1</strong>
-            <span>[SET 4] Free Shipping<br>Cash on Delivery</span>
-            <small>Buy now</small>
-          </div>
-          <h4><span>&#8369;</span>499.00</h4>
-        </li>
-        <li data-category="" data-price="">
-          <picture>
-            <img src="images/set5.png" alt="">
-          </picture>
-          <div class="detail">
-            <strong>Buy 1 Take 1</strong>
-            <span>[SET 5] Free Shipping<br>Cash on Delivery</span>
-            <small>Buy now</small>
-          </div>
-          <h4><span>&#8369;</span>499.00</h4>
-        </li>
-        <li data-category="" data-price="">
-          <picture>
-            <img src="images/set6.png" alt="">
-          </picture>
-          <div class="detail">
-            <strong>Buy 1 Take 1</strong>
-            <span>[SET 6] Free Shipping<br>Cash on Delivery</span>
-            <small>Buy now</small>
-          </div>
-          <h4><span>&#8369;</span>499.00</h4>
-        </li>
-        <li data-category="" data-price="">
-          <picture>
-            <img src="images/set7.png" alt="">
-          </picture>
-          <div class="detail">
-            <strong>Buy 1 Take 1</strong>
-            <span>[SET 7] Free Shipping<br>Cash on Delivery</span>
-            <small>Buy now</small>
-          </div>
-          <h4><span>&#8369;</span>499.00</h4>
-        </li>
-        <li data-category="" data-price="">
-          <picture>
-            <img src="images/set8.png" alt="">
-          </picture>
-          <div class="detail">
-            <strong>Buy 1 Take 1</strong>
-            <span>[SET 8] Free Shipping<br>Cash on Delivery</span>
-            <small>Buy now</small>
-          </div>
-          <h4><span>&#8369;</span>499.00</h4>
-        </li>
-        <li data-category="" data-price="">
-          <picture>
-            <img src="images/set9.png" alt="">
-          </picture>
-          <div class="detail">
-            <strong>Buy 1 Take 1</strong>
-            <span>[SET 9] Free Shipping<br>Cash on Delivery</span>
-            <small>Buy now</small>
-          </div>
-          <h4><span>&#8369;</span>499.00</h4>
-        </li>
-        <li data-category="" data-price="">
-          <picture>
-            <img src="images/set10.png" alt="">
-          </picture>
-          <div class="detail">
-            <strong>Buy 1 Take 1</strong>
-            <span>[SET 10] Free Shipping<br>Cash on Delivery</span>
-            <small>Buy now</small>
-          </div>
-          <h4><span>&#8369;</span>499.00</h4>
-        </li>
-        <li data-category="" data-price="">
-          <picture>
-            <img src="images/set11.png" alt="">
-          </picture>
-          <div class="detail">
-            <strong>Buy 1 Take 1</strong>
-            <span>[SET 11] Free Shipping<br>Cash on Delivery</span>
-            <small>Buy now</small>
-          </div>
-          <h4><span>&#8369;</span>499.00</h4>
-        </li>
-        <li data-category="" data-price="">
-          <picture>
-            <img src="images/circle.png" alt="">
-          </picture>
-          <div class="detail">
-            <strong>Customize</strong>
-            <span>Customize a<br>Circle Necklace</span>
-            <a class="text-dark circle" href="#">
-              <small>Proceed</small>
-            </a>
-          </div>
-          <h4>Verifying...</h4>
-        </li>
-        <li data-category="" data-price="">
-          <picture>
-            <img src="images/heart.png" alt="">
-          </picture>
-          <div class="detail">
-            <strong>Customize</strong>
-            <span>Customize a<br>Heart Necklace</span>
-            <a class="text-dark heart" href="#">
-              <small>Proceed</small>
-            </a>
-          </div>
-          <h4>Verifying...</h4>
-        </li>
-        <li data-category="" data-price="">
-          <picture>
-            <img src="images/cross.png" alt="">
-          </picture>
-          <div class="detail">
-            <strong>Customize</strong>
-            <span>Customize a<br>Cross Necklace</span>
-            <a class="text-dark cross" href="#">
-              <small>Proceed</small>
-            </a>
-          </div>
-          <h4>Verifying...</h4>
-        </li>
-        <li data-category="" data-price="">
-          <picture>
-            <img src="images/unique.png" alt="">
-          </picture>
-          <div class="detail">
-            <strong>Customize</strong>
-            <span>Customize a<br>Unique Necklace</span>
-            <a class="text-dark unique" href="#">
-              <small>Proceed</small>
-            </a>
-          </div>
-          <h4>Verifying...</h4>
-        </li>
-      </ul>
-    </div>
-	</main>
+		<div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel">
+		  <div class="offcanvas-header">
+		    <h5 class="offcanvas-title" id="offcanvasDarkLabel">Cart</h5>
+		    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		  </div>
+		  <div class="offcanvas-body">
+		    <p>Your cart is empty.</p>
+		    <hr>
+		    <p>Total: 0</p>
+		    <button type="submit" class="btn btn-primary my-3 w-100 rounded-pill">CHECKOUT</button>
+		  </div>
+		</div>
 
-	<script src="market/script.js"></script>
-</body>
+		<div class="container-fluid pb-4">
+		    <div class="container-fluid d-flex justify-content-center align-items-center">
+		      	<ul class="nav nav-underline pb-2" id="myTab" role="tablist">
+			    	<li class="nav-item" role="presentation">
+			      	    <a class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-tab-pane" role="tab" aria-controls="all-tab-pane" aria-selected="true" aria-current="page" href="#">All</a>
+			      	</li>
+			      	<li class="nav-item">
+			      	    <a class="nav-link" id="customize-tab" data-bs-toggle="tab" data-bs-target="#customize-tab-pane" role="tab" aria-controls="customize-tab-pane" aria-selected="false"href="#">Customize</a>
+			      	</li>
+		      	</ul>
+		    </div>
+		    <div class="container-fluid">
+		    	<div class="tab-content" id="myTabContent">
+		    	  	<div class="tab-pane fade show active" id="all-tab-pane" role="tabpanel" aria-labelledby="all-tab" tabindex="0">
+		    	  		<div class="container-fluid">
+		    	  			<div class="row">
+		    	  				<ul class="nav justify-content-end">
+		    	  					<li class="nav-item dropdown">
+		    	  					    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Sort By</a>
+		    	  					    <ul class="dropdown-menu">
+		    	  					      <li><a class="dropdown-item" href="#">Default</a></li>
+		    	  					      <li><a class="dropdown-item" href="#">Low to high</a></li>
+		    	  					      <li><a class="dropdown-item" href="#">High to low</a></li>
+		    	  					    </ul>
+		    	  					</li>
+		    	  				</ul>
+		    	  			</div>
+		    	  			<div class="row row-cols-auto">
+		    	  				<div class = "col product-item mx-auto my-1">
+		    	  				    <div class = "product-img">
+		    	  				        <img src = "images/set1.png" alt = "" class = "img-fluid d-block mx-auto">
+		    	  				        <span class = "heart-icon">
+		    	  				            <i class = "far fa-heart"></i>
+		    	  				        </span>
+		    	  				        <div class = "row btns w-100 mx-auto text-center">
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-cart-plus"></i> Add to Cart
+		    	  				            </button>
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-binoculars"></i> View
+		    	  				            </button>
+		    	  				        </div>
+		    	  				    </div>
 
+		    	  				    <div class = "product-info p-3">
+		    	  				        <span class = "product-type">Necklace</span>
+		    	  				        <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">[SET 1] - Details</a>
+		    	  				        <span class = "product-price"><span>&#8369;</span>498.00</span>
+		    	  				        <div class = "rating d-flex mt-1">
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				        </div>
+		    	  				    </div>
+		    	  				</div>
+
+		    	  				<div class = "col product-item mx-auto my-1">
+		    	  				    <div class = "product-img">
+		    	  				        <img src = "images/set2.png" alt = "" class = "img-fluid d-block mx-auto">
+		    	  				        <span class = "heart-icon">
+		    	  				            <i class = "far fa-heart"></i>
+		    	  				        </span>
+		    	  				        <div class = "row btns w-100 mx-auto text-center">
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-cart-plus"></i> Add to Cart
+		    	  				            </button>
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-binoculars"></i> View
+		    	  				            </button>
+		    	  				        </div>
+		    	  				    </div>
+
+		    	  				    <div class = "product-info p-3">
+		    	  				        <span class = "product-type">Necklace</span>
+		    	  				        <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">[SET 2] - Details</a>
+		    	  				        <span class = "product-price"><span>&#8369;</span>498.00</span>
+		    	  				        <div class = "rating d-flex mt-1">
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				        </div>
+		    	  				    </div>
+		    	  				</div>
+
+		    	  				<div class = "col product-item mx-auto my-1">
+		    	  				    <div class = "product-img">
+		    	  				        <img src = "images/set3.png" alt = "" class = "img-fluid d-block mx-auto">
+		    	  				        <span class = "heart-icon">
+		    	  				            <i class = "far fa-heart"></i>
+		    	  				        </span>
+		    	  				        <div class = "row btns w-100 mx-auto text-center">
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-cart-plus"></i> Add to Cart
+		    	  				            </button>
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-binoculars"></i> View
+		    	  				            </button>
+		    	  				        </div>
+		    	  				    </div>
+
+		    	  				    <div class = "product-info p-3">
+		    	  				        <span class = "product-type">Necklace</span>
+		    	  				        <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">[SET 3] - Details</a>
+		    	  				        <span class = "product-price"><span>&#8369;</span>498.00</span>
+		    	  				        <div class = "rating d-flex mt-1">
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				        </div>
+		    	  				    </div>
+		    	  				</div>
+
+		    	  				<div class = "col product-item mx-auto my-1">
+		    	  				    <div class = "product-img">
+		    	  				        <img src = "images/set4.png" alt = "" class = "img-fluid d-block mx-auto">
+		    	  				        <span class = "heart-icon">
+		    	  				            <i class = "far fa-heart"></i>
+		    	  				        </span>
+		    	  				        <div class = "row btns w-100 mx-auto text-center">
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-cart-plus"></i> Add to Cart
+		    	  				            </button>
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-binoculars"></i> View
+		    	  				            </button>
+		    	  				        </div>
+		    	  				    </div>
+
+		    	  				    <div class = "product-info p-3">
+		    	  				        <span class = "product-type">Necklace</span>
+		    	  				        <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">[SET 4] - Details</a>
+		    	  				        <span class = "product-price"><span>&#8369;</span>498.00</span>
+		    	  				        <div class = "rating d-flex mt-1">
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				        </div>
+		    	  				    </div>
+		    	  				</div>
+
+		    	  				<div class = "col product-item mx-auto my-1">
+		    	  				    <div class = "product-img">
+		    	  				        <img src = "images/set5.png" alt = "" class = "img-fluid d-block mx-auto">
+		    	  				        <span class = "heart-icon">
+		    	  				            <i class = "far fa-heart"></i>
+		    	  				        </span>
+		    	  				        <div class = "row btns w-100 mx-auto text-center">
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-cart-plus"></i> Add to Cart
+		    	  				            </button>
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-binoculars"></i> View
+		    	  				            </button>
+		    	  				        </div>
+		    	  				    </div>
+
+		    	  				    <div class = "product-info p-3">
+		    	  				        <span class = "product-type">Necklace</span>
+		    	  				        <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">[SET 5] - Details</a>
+		    	  				        <span class = "product-price"><span>&#8369;</span>499.00</span>
+		    	  				        <div class = "rating d-flex mt-1">
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				        </div>
+		    	  				    </div>
+		    	  				</div>
+
+		    	  				<div class = "col product-item mx-auto my-1">
+		    	  				    <div class = "product-img">
+		    	  				        <img src = "images/set6.png" alt = "" class = "img-fluid d-block mx-auto">
+		    	  				        <span class = "heart-icon">
+		    	  				            <i class = "far fa-heart"></i>
+		    	  				        </span>
+		    	  				        <div class = "row btns w-100 mx-auto text-center">
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-cart-plus"></i> Add to Cart
+		    	  				            </button>
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-binoculars"></i> View
+		    	  				            </button>
+		    	  				        </div>
+		    	  				    </div>
+
+		    	  				    <div class = "product-info p-3">
+		    	  				        <span class = "product-type">Necklace</span>
+		    	  				        <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">[SET 6] - Details</a>
+		    	  				        <span class = "product-price"><span>&#8369;</span>499.00</span>
+		    	  				        <div class = "rating d-flex mt-1">
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				        </div>
+		    	  				    </div>
+		    	  				</div>
+
+		    	  				<div class = "col product-item mx-auto my-1">
+		    	  				    <div class = "product-img">
+		    	  				        <img src = "images/set7.png" alt = "" class = "img-fluid d-block mx-auto">
+		    	  				        <span class = "heart-icon">
+		    	  				            <i class = "far fa-heart"></i>
+		    	  				        </span>
+		    	  				        <div class = "row btns w-100 mx-auto text-center">
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-cart-plus"></i> Add to Cart
+		    	  				            </button>
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-binoculars"></i> View
+		    	  				            </button>
+		    	  				        </div>
+		    	  				    </div>
+
+		    	  				    <div class = "product-info p-3">
+		    	  				        <span class = "product-type">Necklace</span>
+		    	  				        <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">[SET 7] - Details</a>
+		    	  				        <span class = "product-price"><span>&#8369;</span>499.00</span>
+		    	  				        <div class = "rating d-flex mt-1">
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				        </div>
+		    	  				    </div>
+		    	  				</div>
+
+		    	  				<div class = "col product-item mx-auto my-1">
+		    	  				    <div class = "product-img">
+		    	  				        <img src = "images/set8.png" alt = "" class = "img-fluid d-block mx-auto">
+		    	  				        <span class = "heart-icon">
+		    	  				            <i class = "far fa-heart"></i>
+		    	  				        </span>
+		    	  				        <div class = "row btns w-100 mx-auto text-center">
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-cart-plus"></i> Add to Cart
+		    	  				            </button>
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-binoculars"></i> View
+		    	  				            </button>
+		    	  				        </div>
+		    	  				    </div>
+
+		    	  				    <div class = "product-info p-3">
+		    	  				        <span class = "product-type">Necklace</span>
+		    	  				        <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">[SET 8] - Details</a>
+		    	  				        <span class = "product-price"><span>&#8369;</span>499.00</span>
+		    	  				        <div class = "rating d-flex mt-1">
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				        </div>
+		    	  				    </div>
+		    	  				</div>
+
+		    	  				<div class = "col product-item mx-auto my-1">
+		    	  				    <div class = "product-img">
+		    	  				        <img src = "images/set9.png" alt = "" class = "img-fluid d-block mx-auto">
+		    	  				        <span class = "heart-icon">
+		    	  				            <i class = "far fa-heart"></i>
+		    	  				        </span>
+		    	  				        <div class = "row btns w-100 mx-auto text-center">
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-cart-plus"></i> Add to Cart
+		    	  				            </button>
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-binoculars"></i> View
+		    	  				            </button>
+		    	  				        </div>
+		    	  				    </div>
+
+		    	  				    <div class = "product-info p-3">
+		    	  				        <span class = "product-type">Necklace</span>
+		    	  				        <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">[SET 9] - Details</a>
+		    	  				        <span class = "product-price"><span>&#8369;</span>499.00</span>
+		    	  				        <div class = "rating d-flex mt-1">
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				        </div>
+		    	  				    </div>
+		    	  				</div>
+
+		    	  				<div class = "col product-item mx-auto my-1">
+		    	  				    <div class = "product-img">
+		    	  				        <img src = "images/set10.png" alt = "" class = "img-fluid d-block mx-auto">
+		    	  				        <span class = "heart-icon">
+		    	  				            <i class = "far fa-heart"></i>
+		    	  				        </span>
+		    	  				        <div class = "row btns w-100 mx-auto text-center">
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-cart-plus"></i> Add to Cart
+		    	  				            </button>
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-binoculars"></i> View
+		    	  				            </button>
+		    	  				        </div>
+		    	  				    </div>
+
+		    	  				    <div class = "product-info p-3">
+		    	  				        <span class = "product-type">Necklace</span>
+		    	  				        <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">[SET 10] - Details</a>
+		    	  				        <span class = "product-price"><span>&#8369;</span>499.00</span>
+		    	  				        <div class = "rating d-flex mt-1">
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				        </div>
+		    	  				    </div>
+		    	  				</div>
+
+		    	  				<div class = "col product-item mx-auto my-1">
+		    	  				    <div class = "product-img">
+		    	  				        <img src = "images/set11.png" alt = "" class = "img-fluid d-block mx-auto">
+		    	  				        <span class = "heart-icon">
+		    	  				            <i class = "far fa-heart"></i>
+		    	  				        </span>
+		    	  				        <div class = "row btns w-100 mx-auto text-center">
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-cart-plus"></i> Add to Cart
+		    	  				            </button>
+		    	  				            <button type = "button" class = "col-6 py-2">
+		    	  				                <i class = "fa fa-binoculars"></i> View
+		    	  				            </button>
+		    	  				        </div>
+		    	  				    </div>
+
+		    	  				    <div class = "product-info p-3">
+		    	  				        <span class = "product-type">Necklace</span>
+		    	  				        <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">[SET 11] - Details</a>
+		    	  				        <span class = "product-price"><span>&#8369;</span>499.00</span>
+		    	  				        <div class = "rating d-flex mt-1">
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				            <span>
+		    	  				                <i class = "fa fa-star"></i>
+		    	  				            </span>
+		    	  				        </div>
+		    	  				    </div>
+		    	  				</div>
+		    	  			</div>
+		    	  		</div>
+		    	  	</div>
+		    	  	<div class="tab-pane fade" id="customize-tab-pane" role="tabpanel" aria-labelledby="customize-tab" tabindex="0">
+	    	  			<div class="container-fluid">
+	    	  				<div class="row row-cols-auto">
+	    	  					<div class = "col product-item mx-auto my-1">
+	    	  					    <div class = "product-img">
+	    	  					        <img src = "images/unique.png" alt = "" class = "img-fluid d-block mx-auto">
+	    	  					        <span class = "heart-icon">
+	    	  					            <i class = "far fa-heart"></i>
+	    	  					        </span>
+	    	  					    </div>
+
+	    	  					    <div class = "product-info p-3">
+	    	  					        <span class = "product-type">Customize</span>
+	    	  					        <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Customize an Unique Necklace</a>
+	    	  					        <span class = "product-price">TBA</span>
+	    	  					        <div class = "rating d-flex mt-1">
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					        </div>
+	    	  					    </div>
+	    	  					</div>
+
+	    	  					<div class = "col product-item mx-auto my-1">
+	    	  					    <div class = "product-img">
+	    	  					        <img src = "images/cross.png" alt = "" class = "img-fluid d-block mx-auto">
+	    	  					        <span class = "heart-icon">
+	    	  					            <i class = "far fa-heart"></i>
+	    	  					        </span>
+	    	  					    </div>
+
+	    	  					    <div class = "product-info p-3">
+	    	  					        <span class = "product-type">Customize</span>
+	    	  					        <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Customize a Cross Necklace</a>
+	    	  					        <span class = "product-price">TBA</span>
+	    	  					        <div class = "rating d-flex mt-1">
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					        </div>
+	    	  					    </div>
+	    	  					</div>
+
+	    	  					<div class = "col product-item mx-auto my-1">
+	    	  					    <div class = "product-img">
+	    	  					        <img src = "images/heart.png" alt = "" class = "img-fluid d-block mx-auto">
+	    	  					        <span class = "heart-icon">
+	    	  					            <i class = "far fa-heart"></i>
+	    	  					        </span>
+	    	  					    </div>
+
+	    	  					    <div class = "product-info p-3">
+	    	  					        <span class = "product-type">Customize</span>
+	    	  					        <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Customize a Heart Necklace</a>
+	    	  					        <span class = "product-price">TBA</span>
+	    	  					        <div class = "rating d-flex mt-1">
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					        </div>
+	    	  					    </div>
+	    	  					</div>
+
+	    	  					<div class = "col product-item mx-auto my-1">
+	    	  					    <div class = "product-img">
+	    	  					        <img src = "images/circle.png" alt = "" class = "img-fluid d-block mx-auto">
+	    	  					        <span class = "heart-icon">
+	    	  					            <i class = "far fa-heart"></i>
+	    	  					        </span>
+	    	  					    </div>
+
+	    	  					    <div class = "product-info p-3">
+	    	  					        <span class = "product-type">Customize</span>
+	    	  					        <a href = "#" class = "d-block text-dark text-decoration-none py-2 product-name">Customize a Circle Necklace</a>
+	    	  					        <span class = "product-price">TBA</span>
+	    	  					        <div class = "rating d-flex mt-1">
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					            <span>
+	    	  					                <i class = "fa fa-star"></i>
+	    	  					            </span>
+	    	  					        </div>
+	    	  					    </div>
+	    	  					</div>
+	    	  				</div>
+	    	  			</div>
+		    	  	</div>
+		    	</div>
+		    </div>
+		</div>
+
+		<div class="container-fluid bg-dark text-light text-center py-3" style="font-size: 0.75rem;">
+			<div class="row p-2">
+				<p>All rights reserved © 2023 <a href="#" class="text-reset text-decoration-none">SBM</a></p>
+				<p>Designed by <a href="#" class="text-reset text-decoration-none">MVB</a></p>
+			</div>
+			<div class="row p-2">
+				<div class="col">Our Social Media: <a href="#"><i class="fab fa-facebook fa-lg"></i></a></i></div>
+			</div>
+			<div class="row p-2">
+				<a href="#" class="text-reset text-decoration-none">Privacy Policy</a>
+				<a href="#" class="text-reset text-decoration-none">Terms of Service</a>
+			</div>
+		</div>
+
+		<!-- custome js -->
+		<script src="script.js"></script>
+	</body>
 </html>
