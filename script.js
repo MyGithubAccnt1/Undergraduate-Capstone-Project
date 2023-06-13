@@ -10,7 +10,6 @@ const login = document.querySelector("#login");
 login.addEventListener("click", () => {
   window.location.href = "login.html";
 });
-
 $('.owl-carousel').owlCarousel({
     loop: true,
     margin: 0,
