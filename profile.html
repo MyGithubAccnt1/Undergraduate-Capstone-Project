@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+	<head>
+
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>Saint Benedict Medallion</title>
+	  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+	  <!-- bootstrap css -->
+	  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+	  <!-- bootstrap popper -->
+	  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+	  <!-- bootstrap js -->
+	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+	  <!-- fontawesome -->
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	  <!-- owl carousel -->
+	  <link rel = "stylesheet" href = "owl_carousel/owl.carousel.css">
+	  <link rel = "stylesheet" href = "owl_carousel/owl.theme.default.css">
+	  <!-- custom css -->
+	  <link rel = "stylesheet" href = "index-style.css">
+	  <style>
+	  	* {
+	  		margin: 0;
+	  		padding: 0;
+	  		box-sizing: border-box;
+	  	}
+	  </style>
+
+	</head>
+	<body class="font-monospace">
+
+		<nav class="navbar navbar-expand-sm bg-body-tertiary" data-bs-theme="dark">
+            <div class="container-fluid">
+              <span class="navbar-brand mb-0 h1 fw-bold" style="color: hsl(350, 90%, 49%);"><strong>SBM</strong></span>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" id="index"  aria-current="page" href="#l">Back &gt;</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+
+		<div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel">
+		  <div class="offcanvas-header">
+		    <h5 class="offcanvas-title" id="offcanvasDarkLabel">Cart</h5>
+		    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		  </div>
+		  <div class="offcanvas-body">
+		    <p>Your cart is empty.</p>
+		    <hr>
+		    <p>Total: 0</p>
+			<a href="#" >
+				<button type="submit" class="btn btn-primary my-3 w-100 rounded-pill">CHECKOUT</button>
+			</a>
+		    </div>
+		</div>
+
+		<div class="container">
+            <div class="row p-5">
+                <div class="col-12">
+                    <!-- Page title -->
+                    <div class="my-5">
+                        <h3>My Profile</h3>
+                        <hr>
+                    </div>
+                    <!-- Form START -->
+                    <form class="file-upload">
+                        <div class="row mb-5 gx-5">
+                            <!-- Contact detail -->
+                            <div class="col-xxl-8 mb-5 mb-xxl-0">
+                                <div class="bg-secondary-soft px-4 py-5 rounded">
+                                    <div class="row g-3">
+                                        <h4 class="mb-4 mt-0">Contact detail</h4>
+                                        <!-- First Name -->
+                                        <div class="col-md-6">
+                                            <label class="form-label">First Name *</label>
+                                            <input type="text" class="form-control" placeholder="" aria-label="First name" value="">
+                                        </div>
+                                        <!-- Last name -->
+                                        <div class="col-md-6">
+                                            <label class="form-label">Last Name *</label>
+                                            <input type="text" class="form-control" placeholder="" aria-label="Last name" value="">
+                                        </div>
+                                        <!-- Mobile number -->
+                                        <div class="col-md-6">
+                                            <label class="form-label">Mobile Number *</label>
+                                            <input type="text" class="form-control" placeholder="" aria-label="Phone number" value="">
+                                        </div>
+                                        <!-- Email -->
+                                        <div class="col-md-6">
+                                            <label for="inputEmail4" class="form-label">Email *</label>
+                                            <input type="email" class="form-control" id="inputEmail4" value="">
+                                        </div>
+                                    </div> <!-- Row END -->
+                                </div>
+                            </div>
+                        </div> <!-- Row END -->
+                        <!-- Social media detail -->
+                        <div class="row mb-0 gx-5">
+                            <!-- change password -->
+                            <div class="col-xxl-6">
+                                <div class="bg-secondary-soft px-4 py-5 rounded">
+                                    <div class="row g-3">
+                                        <h4 class="my-4">Change Password</h4>
+                                        <!-- Old password -->
+                                        <div class="col-md-6">
+                                            <label for="exampleInputPassword1" class="form-label">Old password *</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1">
+                                        </div>
+                                        <!-- New password -->
+                                        <div class="col-md-6">
+                                            <label for="exampleInputPassword2" class="form-label">New password *</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword2">
+                                        </div>
+                                        <!-- Confirm password -->
+                                        <div class="col-md-12">
+                                            <label for="exampleInputPassword3" class="form-label">Confirm Password *</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- Row END -->
+                        <!-- button -->
+                        <div class="gap-3 d-md-flex justify-content-md-end text-center">
+                            <button type="button" class="btn btn-primary btn-lg">Update profile</button>
+                        </div>
+                    </form> <!-- Form END -->
+                </div>
+            </div>
+        </div>
+
+		<div class="container-fluid bg-dark text-light text-center py-3" style="font-size: 0.75rem;">
+			<div class="row p-2">
+				<p>All rights reserved © 2023 <a href="#" class="text-reset text-decoration-none">SBM</a></p>
+				<p>Designed by <a href="#" class="text-reset text-decoration-none">MVB</a></p>
+			</div>
+			<div class="row p-2">
+				<div class="col">Our Social Media: <a href="#"><i class="fab fa-facebook fa-lg"></i></a></i></div>
+			</div>
+			<div class="row p-2">
+				<a href="#" class="text-reset text-decoration-none">Privacy Policy</a>
+				<a href="#" class="text-reset text-decoration-none">Terms of Service</a>
+			</div>
+		</div>
+
+		<!-- jquery -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<!-- owl carousel -->
+		<script src = "owl_carousel/owl.carousel.js"></script>
+		<!-- custome js -->
+		<script src="script.js"></script>
+	</body>
+</html>
