@@ -55,7 +55,7 @@
 				  	<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
 				</div>
 				<hr class="w-75 mx-auto">
-				<div class="card p-3 mx-4 my-3">
+				<div class="card p-3 mx-4">
                     <div class="d-flex justify-content-between align-items-center">
                       	<div class="d-flex flex-row align-items-center">
                         	<span><small class="font-weight-bold text-primary">james_olesenn</small> <small class="font-weight-bold">Thanks</small></span>
