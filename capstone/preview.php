@@ -4,11 +4,11 @@
 	  	<meta charset="utf-8">
 	  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	  	<title>Saint Benedict Medallion</title>
-	  	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ICO">
-	  	<?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/capstone/"; include($IPATH."include.html"); ?>
+	  	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+	  	<?php include('include.php') ?>
 	</head>
 	<body class="font-monospace">
-		<?php include($IPATH."header.html"); ?>
+		<?php include('header.php') ?>
 		<main class="container-fluid">
 			<div class="container-fluid my-width m-0 p-0 mx-auto my-4">
 				<div id="content-wrapper" class="m-0 p-0">
@@ -43,7 +43,7 @@
 						<p>1 SBM Necklace</p>
 						<div class="product-buttons d-flex flex-direction-row justify-content-center gap-2 text-center">
 							<a class="btn btn-success btn-md rounded-0" href="#offcanvasDark" data-bs-toggle="offcanvas">Add to Cart</a>
-							<a class="btn btn-danger btn-md rounded-0" href="#">Proceed to Checkout</a>
+							<a class="btn btn-danger btn-md rounded-0" href="checkout.php">Proceed to Checkout</a>
 						</div>
 					</div>
 				</div>
@@ -104,7 +104,7 @@
 				</div>
 			</div>
 		</main>
-		<?php include($IPATH."footer.html"); ?>
+		<?php include('footer.php') ?>
 		<script type="text/javascript">
 			var navigation = document.querySelector("header");
 			window.onload = navigation.classList.toggle('bg-dark');

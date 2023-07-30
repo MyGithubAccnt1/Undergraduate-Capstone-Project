@@ -1,14 +1,18 @@
+<?php 
+session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+?>
 <!doctype html>
 <html lang="en">
 	<head>
 	  	<meta charset="utf-8">
 	  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	  	<title>Saint Benedict Medallion</title>
-	  	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ICO">
-	  	<?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/capstone/"; include($IPATH."include.html"); ?>
+	  	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+	  	<?php include('include.php') ?>
 	</head>
 	<body class="font-monospace">
-		<?php include($IPATH."header.html"); ?>
+		<?php include('header.php') ?>
 		<main class="container-fluid my-4 my-width">
 			<div class="row text-center">
                 <h2>VIEW ORDERS</h2>
@@ -247,7 +251,7 @@
                 </div>
             </div>
 		</main>
-		<?php include($IPATH."footer.html"); ?>
+		<?php include('footer.php') ?>
 		<script type="text/javascript">
 			var navigation = document.querySelector("header");
 			window.onload = navigation.classList.toggle('bg-dark');
@@ -265,3 +269,10 @@
 		</script>
 	</body>
 </html>
+<?php 
+}else{
+    echo"<script>alert('Notice: Please login to proceed.')</script>";
+    $script = "<script>window.location = 'signin.php';</script>";
+    echo $script;
+}
+?>

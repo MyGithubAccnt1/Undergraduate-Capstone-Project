@@ -4,8 +4,8 @@
 	  	<meta charset="utf-8">
 	  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	  	<title>Saint Benedict Medallion</title>
-	  	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ICO">
-	  	<?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/capstone/"; include($IPATH."include.html"); ?>
+	  	<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+	  	<?php include('include.php') ?>
 		<style>
 			.bg{
 		  		position: absolute;
@@ -42,7 +42,7 @@
 		</style>
 	</head>
 	<body class="font-monospace">
-		<?php include($IPATH."header.html"); ?>
+		<?php include('header.php') ?>
 		<main class="container-fluid">
 			<section class="bg"></section>
 			<section class="row d-flex justify-content-center align-items-center text-center text-white whole">
@@ -66,18 +66,18 @@
 							    	<div class="tab-content" id="myTabContent">
 							    	  	<div class="tab-pane fade show active" id="all-tab-pane" role="tabpanel" aria-labelledby="all-tab" tabindex="0">
 							    	  		<div class="container-fluid">
-							    	  			<form>
+							    	  			<form action="login.php" method="POST">
 								    	  			<div class="form-outline my-4">
-								    	  			    <input type="email" placeholder="Enter your email" class="form-control rounded-0" required>
+								    	  			    <input type="email" placeholder="Enter your email" class="form-control rounded-0" name="email" required>
 								    	  			</div>
 								    	  			<div class="form-outline mb-4">
-								    	  			    <input type="password" class="form-control rounded-0" placeholder="Enter your password" class="form-control" required>
+								    	  			    <input type="password" class="form-control rounded-0" placeholder="Enter your password" name="password" class="form-control" required>
 								    	  			    <i class="uil uil-eye-slash showHidePw"></i>
 								    	  			</div>
 								    	  			<div class="row p-0 m-0">
 								    	  			    <div class="col-6 p-0 m-0 d-flex justify-content-center align-items-center">
 								    	  			        <input class="form-check-input" style="margin-right: 5px;" type="checkbox" checked/>
-								    	  			        <label class="form-check-label" style="margin-top: 13px;">
+								    	  			        <label class="form-check-label" style="margin-top: 18px;">
 								    	  			        	<p>Remember Me</p>
 								    	  			     	</label>
 								    	  			    </div>
@@ -95,22 +95,22 @@
 							    	  	</div>
 							    	  	<div class="tab-pane fade" id="customize-tab-pane" role="tabpanel" aria-labelledby="customize-tab" tabindex="0">
 						    	  			<div class="container-fluid">
-					    	  				    <form>
+					    	  				    <form action="register.php" method="POST">
 					    	  					    <div class="form-outline my-4">
-					    	  					    	<input type="email" placeholder="Enter your email" class="form-control rounded-0" required>
+					    	  					    	<input type="email" placeholder="Enter your email" class="form-control rounded-0" name="email" required>
 					    	  					    </div>
 					    	  					    <div class="form-outline mb-4">
-					    	  					    	<input type="password" class="form-control rounded-0" placeholder="Enter your password" class="form-control" required>
+					    	  					    	<input type="password" class="form-control rounded-0" placeholder="Enter your password" id="password" required>
 					    	  					    	<i class="uil uil-eye-slash showHidePw"></i>
 					    	  					    </div>
 					    	  					    <div class="form-outline mb-4">
-					    	  					        <input type="password" class="form-control rounded-0" placeholder="Repeat your password" class="form-control" required>
+					    	  					        <input type="password" class="form-control rounded-0"placeholder="Repeat your password" id="confirm_password" name="password" required>
 					    	  					        <i class="uil uil-eye-slash showHidePw"></i>
 					    	  					    </div>
 					    	  					    <div class="row m-0 p-0">
 								    	  			    <div class="col d-flex justify-content-center align-items-center">
 								    	  			        <input class="form-check-input" style="margin-right: 5px;" type="checkbox" checked/>
-								    	  			        <label class="form-check-label" style="margin-top: 13px;">
+								    	  			        <label class="form-check-label" style="margin-top: 18px;">
 								    	  			        	<p>Accept Terms and Conditions</p>
 								    	  			        </label>
 								    	  			    </div>
@@ -129,7 +129,7 @@
 				</div>
 			</section>
 		</main>
-		<?php include($IPATH."footer.html"); ?>
+		<?php include('footer.php') ?>
 		<script>
 			var navbar = document.querySelector('header')
 			window.onscroll = function() {
@@ -152,5 +152,20 @@
 		    })
 		</script>
 		<script type="text/javascript">signin.js</script>
+		<script>
+			var password = document.getElementById("password")
+			  , confirm_password = document.getElementById("confirm_password");
+
+			function validatePassword(){
+			  if(password.value != confirm_password.value) {
+			    confirm_password.setCustomValidity("Passwords Don't Match");
+			  } else {
+			    confirm_password.setCustomValidity('');
+			  }
+			}
+
+			password.onchange = validatePassword;
+			confirm_password.onkeyup = validatePassword;
+		</script>
 	</body>
 </html>

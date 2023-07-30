@@ -4,8 +4,8 @@
 	  	<meta charset="utf-8">
 	  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	  	<title>Saint Benedict Medallion</title>
-	  	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ICO">
-	  	<?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/capstone/"; include($IPATH."include.html"); ?>
+	  	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+	  	<?php include('include.php') ?>
 		<style>
 		  	.bg{
 		  		position: absolute;
@@ -22,7 +22,7 @@
 		</style>
 	</head>
 	<body class="font-monospace bg-light">
-		<?php include($IPATH."header.html"); ?>
+		<?php include('header.php') ?>
 		<main class="container-fluid">
 			<section class="bg"></section>
 			<section class="row d-flex justify-content-center align-items-center text-left text-white" style="height: calc(100vh - 50px);">
@@ -35,585 +35,36 @@
 				</div>
 			</section><br>
 			<div class="row">
-				<div class="container-xl my-width d-none d-lg-block">
-					<div class="row">
-						<div class="col-md-12">
-							<h2>Featured <b>Products</b></h2>
-							<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
-								<!-- Carousel indicators -->
-								<ol class="carousel-indicators">
-									<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-									<li data-target="#myCarousel" data-slide-to="1"></li>
-									<li data-target="#myCarousel" data-slide-to="2"></li>
-								</ol>   
-								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner">
-									<div class="item carousel-item active">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set1.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 1</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set2.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 2</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>		
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set3.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 3</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>							
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set4.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 4</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set5.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 5</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set6.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 6</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set7.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 7</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set8.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 8</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>							
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set9.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 9</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set10.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 10</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set11.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 11</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>		
-										</div>
-									</div>
-								</div>
-								<!-- Carousel controls -->
-								<a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control-next" href="#myCarousel" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="container-xl my-width d-none d-sm-block d-lg-none">
-					<div class="row">
-						<div class="col-md-12">
-							<h2>Featured <b>Products</b></h2>
-							<div id="myCarouselmd" class="carousel slide" data-ride="carousel" data-interval="0">
-								<!-- Carousel indicators -->
-								<ol class="carousel-indicators">
-									<li data-target="#myCarouselmd" data-slide-to="0" class="active"></li>
-									<li data-target="#myCarouselmd" data-slide-to="1"></li>
-									<li data-target="#myCarouselmd" data-slide-to="2"></li>
-									<li data-target="#myCarouselmd" data-slide-to="3"></li>
-								</ol>   
-								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner">
-									<div class="item carousel-item active">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set1.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 1</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set2.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 2</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>		
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set3.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 3</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set4.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 4</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set5.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 5</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set6.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 6</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set7.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 7</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set8.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 8</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set9.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 9</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set10.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 10</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set11.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 11</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-								</div>
-								<!-- Carousel controls -->
-								<a class="carousel-control-prev" href="#myCarouselmd" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control-next" href="#myCarouselmd" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
 				<div class="container-xl my-width d-block d-md-none">
 					<div class="row">
 						<div class="col-md-12">
 							<h2>Featured <b>Products</b></h2>
-							<div id="myCarouselsm" class="carousel slide p-0" data-ride="carousel" data-interval="0">
-								<!-- Carousel indicators -->
-								<ol class="carousel-indicators">
-									<li data-target="#myCarouselsm" data-slide-to="0" class="active"></li>
-									<li data-target="#myCarouselsm" data-slide-to="1"></li>
-									<li data-target="#myCarouselsm" data-slide-to="2"></li>
-									<li data-target="#myCarouselsm" data-slide-to="3"></li>
-									<li data-target="#myCarouselsm" data-slide-to="4"></li>
-									<li data-target="#myCarouselsm" data-slide-to="5"></li>
-									<li data-target="#myCarouselsm" data-slide-to="6"></li>
-									<li data-target="#myCarouselsm" data-slide-to="7"></li>
-									<li data-target="#myCarouselsm" data-slide-to="8"></li>
-									<li data-target="#myCarouselsm" data-slide-to="9"></li>
-									<li data-target="#myCarouselsm" data-slide-to="10"></li>
-								</ol>   
+							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">  
 								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner" style="width: 100%;">
-									<div class="item carousel-item active">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set1.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 1</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set2.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 2</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set3.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 3</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set4.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 4</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set5.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 5</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set6.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 6</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set7.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 7</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set8.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 8</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set9.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 9</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set10.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 10</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div><div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set11.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 11</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
+								<div class="carousel-inner" style="width: 100%">
+									<div class="item carousel-item active" style="overflow-x: auto;">
+										<div class="d-flex flex-direction-row gap-4" id="one_sm_slideshow" style="height: auto;">
+											
 										</div>
 									</div>
 								</div>
-								<a class="carousel-control-prev" href="#myCarouselsm" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control-next" href="#myCarouselsm" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container-xl my-width d-none d-sm-block">
+					<div class="row">
+						<div class="col-md-12">
+							<h2>Featured <b>Products</b></h2>
+							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">  
+								<!-- Wrapper for carousel items -->
+								<div class="carousel-inner" style="width: 100%">
+									<div class="item carousel-item active" style="overflow-x: auto;">
+										<div class="d-flex flex-direction-row gap-4" id="one_md_slideshow" style="height: auto;">
+											
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -674,375 +125,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="container-xl my-width d-none d-lg-block" id="go-here">
-					<div class="row">
-						<div class="col-md-12">
-							<h2>Necklaces</h2>
-							<div id="myCarouselNecklace" class="carousel slide" data-ride="carousel" data-interval="0">
-								<!-- Carousel indicators -->
-								<ol class="carousel-indicators">
-									<a href="product.php">
-										<button class="btn btn-outline-success">View All</button>
-									</a>
-								</ol>   
-								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner">
-									<div class="item carousel-item active">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set1.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 1</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set2.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 2</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>		
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set3.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 3</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>							
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set4.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 4</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set5.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 5</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set6.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 6</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set7.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 7</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set8.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 8</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>							
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set9.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 9</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set10.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 10</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set11.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 11</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>		
-										</div>
-									</div>
-								</div>
-								<!-- Carousel controls -->
-								<a class="carousel-control-prev" href="#myCarouselNecklace" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control-next" href="#myCarouselNecklace" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="container-xl my-width d-none d-sm-block d-lg-none">
-					<div class="row">
-						<div class="col-md-12">
-							<h2>Necklaces</h2>
-							<div id="myCarouselmdNecklace" class="carousel slide" data-ride="carousel" data-interval="0">
-								<!-- Carousel indicators -->
-								<ol class="carousel-indicators">
-									<a href="product.php">
-										<button class="btn btn-outline-success">View All</button>
-									</a>
-								</ol>   
-								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner">
-									<div class="item carousel-item active">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set1.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 1</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set2.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 2</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>		
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set3.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 3</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set4.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 4</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set5.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 5</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set6.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 6</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set7.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 7</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set8.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 8</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set9.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 9</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set10.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 10</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set11.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 11</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-								</div>
-								<!-- Carousel controls -->
-								<a class="carousel-control-prev" href="#myCarouselmdNecklace" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control-next" href="#myCarouselmdNecklace" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
 				<div class="container-xl my-width d-block d-md-none">
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-md-12" id="go-here">
 							<h2>Necklaces</h2>
-							<div id="myCarouselsmNecklace" class="carousel slide p-0" data-ride="carousel" data-interval="0">
+							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">
 								<!-- Carousel indicators -->
 								<ol class="carousel-indicators">
 									<a href="product.php">
@@ -1050,210 +137,22 @@
 									</a>
 								</ol>   
 								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner" style="width: 100%;">
-									<div class="item carousel-item active">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set1.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 1</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set2.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 2</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set3.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 3</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set4.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 4</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set5.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 5</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set6.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 6</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set7.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 7</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set8.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 8</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set9.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 9</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set10.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 10</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div><div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set11.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 11</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
+								<div class="carousel-inner" style="width: 100%">
+									<div class="item carousel-item active" style="overflow-x: auto;">
+										<div class="d-flex flex-direction-row gap-4" id="two_sm_slideshow" style="height: auto;">
+											
 										</div>
 									</div>
 								</div>
-								<!-- Carousel controls -->
-								<a class="carousel-control-prev" href="#myCarouselsmNecklace" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control-next" href="#myCarouselsmNecklace" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="container-xl my-width d-none d-lg-block">
+				<div class="container-xl my-width d-block d-sm-block">
 					<div class="row">
-						<div class="col-md-12">
-							<h2>Pins</h2>
-							<div id="myCarouselPins" class="carousel slide" data-ride="carousel" data-interval="0">
+						<div class="col-md-12" id="go-here">
+							<h2>Necklaces</h2>
+							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">
 								<!-- Carousel indicators -->
 								<ol class="carousel-indicators">
 									<a href="product.php">
@@ -1261,354 +160,13 @@
 									</a>
 								</ol>   
 								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner">
-									<div class="item carousel-item active">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set1.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 1</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set2.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 2</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>		
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set3.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 3</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>							
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set4.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 4</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set5.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 5</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set6.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 6</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set7.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 7</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set8.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 8</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>							
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set9.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 9</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set10.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 10</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set11.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 11</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>		
+								<div class="carousel-inner" style="width: 100%">
+									<div class="item carousel-item active" style="overflow-x: auto;">
+										<div class="d-flex flex-direction-row gap-4" id="two_md_slideshow" style="height: auto;">
+											
 										</div>
 									</div>
 								</div>
-								<!-- Carousel controls -->
-								<a class="carousel-control-prev" href="#myCarouselPins" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control-next" href="#myCarouselPins" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="container-xl my-width d-none d-sm-block d-lg-none">
-					<div class="row">
-						<div class="col-md-12">
-							<h2>Pins</h2>
-							<div id="myCarouselmdPins" class="carousel slide" data-ride="carousel" data-interval="0">
-								<!-- Carousel indicators -->
-								<ol class="carousel-indicators">
-									<a href="product.php">
-										<button class="btn btn-outline-success">View All</button>
-									</a>
-								</ol>   
-								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner">
-									<div class="item carousel-item active">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set1.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 1</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set2.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 2</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>		
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set3.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 3</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set4.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 4</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set5.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 5</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set6.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 6</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set7.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 7</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set8.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 8</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set9.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 9</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set10.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 10</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set11.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 11</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-								</div>
-								<!-- Carousel controls -->
-								<a class="carousel-control-prev" href="#myCarouselmdPins" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control-next" href="#myCarouselmdPins" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
 							</div>
 						</div>
 					</div>
@@ -1617,7 +175,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<h2>Pins</h2>
-							<div id="myCarouselsmPins" class="carousel slide p-0" data-ride="carousel" data-interval="0">
+							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">
 								<!-- Carousel indicators -->
 								<ol class="carousel-indicators">
 									<a href="product.php">
@@ -1625,210 +183,22 @@
 									</a>
 								</ol>   
 								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner" style="width: 100%;">
-									<div class="item carousel-item active">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set1.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 1</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set2.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 2</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set3.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 3</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set4.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 4</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set5.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 5</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set6.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 6</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set7.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 7</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set8.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 8</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set9.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 9</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set10.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 10</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div><div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set11.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 11</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
+								<div class="carousel-inner" style="width: 100%">
+									<div class="item carousel-item active" style="overflow-x: auto;">
+										<div class="d-flex flex-direction-row gap-4" id="three_sm_slideshow" style="height: auto;">
+											
 										</div>
 									</div>
 								</div>
-								<!-- Carousel controls -->
-								<a class="carousel-control-prev" href="#myCarouselsmPins" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control-next" href="#myCarouselsmPins" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="container-xl my-width d-none d-lg-block">
+				<div class="container-xl my-width d-block d-sm-block">
 					<div class="row">
 						<div class="col-md-12">
-							<h2>Table Nameplates</h2>
-							<div id="myCarouselTable" class="carousel slide" data-ride="carousel" data-interval="0">
+							<h2>Pins</h2>
+							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">
 								<!-- Carousel indicators -->
 								<ol class="carousel-indicators">
 									<a href="product.php">
@@ -1836,354 +206,13 @@
 									</a>
 								</ol>   
 								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner">
-									<div class="item carousel-item active">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set1.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 1</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set2.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 2</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>		
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set3.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 3</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>							
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set4.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 4</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set5.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 5</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set6.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 6</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set7.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 7</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set8.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 8</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>							
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set9.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 9</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set10.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 10</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set11.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 11</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>		
+								<div class="carousel-inner" style="width: 100%">
+									<div class="item carousel-item active" style="overflow-x: auto;">
+										<div class="d-flex flex-direction-row gap-4" id="three_md_slideshow" style="height: auto;">
+											
 										</div>
 									</div>
 								</div>
-								<!-- Carousel controls -->
-								<a class="carousel-control-prev" href="#myCarouselTable" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control-next" href="#myCarouselTable" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="container-xl my-width d-none d-sm-block d-lg-none">
-					<div class="row">
-						<div class="col-md-12">
-							<h2>Table Nameplates</h2>
-							<div id="myCarouselmdTable" class="carousel slide" data-ride="carousel" data-interval="0">
-								<!-- Carousel indicators -->
-								<ol class="carousel-indicators">
-									<a href="product.php">
-										<button class="btn btn-outline-success">View All</button>
-									</a>
-								</ol>   
-								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner">
-									<div class="item carousel-item active">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set1.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 1</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set2.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 2</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>		
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set3.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 3</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set4.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 4</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set5.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 5</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set6.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 6</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set7.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 7</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set8.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 8</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set9.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 9</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set10.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 10</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set11.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 11</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-								</div>
-								<!-- Carousel controls -->
-								<a class="carousel-control-prev" href="#myCarouselmdTable" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control-next" href="#myCarouselmdTable" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
 							</div>
 						</div>
 					</div>
@@ -2192,7 +221,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<h2>Table Nameplates</h2>
-							<div id="myCarouselsmTable" class="carousel slide p-0" data-ride="carousel" data-interval="0">
+							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">
 								<!-- Carousel indicators -->
 								<ol class="carousel-indicators">
 									<a href="product.php">
@@ -2200,210 +229,22 @@
 									</a>
 								</ol>   
 								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner" style="width: 100%;">
-									<div class="item carousel-item active">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set1.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 1</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set2.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 2</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set3.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 3</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set4.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 4</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set5.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 5</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set6.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 6</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set7.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 7</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set8.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 8</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set9.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 9</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set10.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 10</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div><div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set11.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 11</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
+								<div class="carousel-inner" style="width: 100%">
+									<div class="item carousel-item active" style="overflow-x: auto;">
+										<div class="d-flex flex-direction-row gap-4" id="four_sm_slideshow" style="height: auto;">
+											
 										</div>
 									</div>
 								</div>
-								<!-- Carousel controls -->
-								<a class="carousel-control-prev" href="#myCarouselsmTable" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control-next" href="#myCarouselsmTable" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="container-xl my-width d-none d-lg-block">
+				<div class="container-xl my-width d-block d-sm-block">
 					<div class="row">
 						<div class="col-md-12">
-							<h2>Logo Seal</h2>
-							<div id="myCarouselLogo" class="carousel slide" data-ride="carousel" data-interval="0">
+							<h2>Table Nameplates</h2>
+							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">
 								<!-- Carousel indicators -->
 								<ol class="carousel-indicators">
 									<a href="product.php">
@@ -2411,354 +252,13 @@
 									</a>
 								</ol>   
 								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner">
-									<div class="item carousel-item active">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set1.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 1</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set2.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 2</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>		
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set3.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 3</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>							
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set4.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 4</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set5.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 5</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set6.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 6</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set7.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 7</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set8.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 8</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>							
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set9.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 9</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set10.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 10</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-3">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set11.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 11</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>		
+								<div class="carousel-inner" style="width: 100%">
+									<div class="item carousel-item active" style="overflow-x: auto;">
+										<div class="d-flex flex-direction-row gap-4" id="four_md_slideshow" style="height: auto;">
+											
 										</div>
 									</div>
 								</div>
-								<!-- Carousel controls -->
-								<a class="carousel-control-prev" href="#myCarouselLogo" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control-next" href="#myCarouselLogo" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="container-xl my-width d-none d-sm-block d-lg-none">
-					<div class="row">
-						<div class="col-md-12">
-							<h2>Logo Seal</h2>
-							<div id="myCarouselmdLogo" class="carousel slide" data-ride="carousel" data-interval="0">
-								<!-- Carousel indicators -->
-								<ol class="carousel-indicators">
-									<a href="product.php">
-										<button class="btn btn-outline-success">View All</button>
-									</a>
-								</ol>   
-								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner">
-									<div class="item carousel-item active">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set1.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 1</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set2.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 2</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>		
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set3.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 3</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set4.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 4</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set5.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 5</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set6.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 6</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set7.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 7</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set8.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 8</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set9.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 9</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set10.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 10</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set11.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 11</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-								</div>
-								<!-- Carousel controls -->
-								<a class="carousel-control-prev" href="#myCarouselmdLogo" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control-next" href="#myCarouselmdLogo" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
 							</div>
 						</div>
 					</div>
@@ -2767,7 +267,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<h2>Logo Seal</h2>
-							<div id="myCarouselsmLogo" class="carousel slide p-0" data-ride="carousel" data-interval="0">
+							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">
 								<!-- Carousel indicators -->
 								<ol class="carousel-indicators">
 									<a href="product.php">
@@ -2775,201 +275,36 @@
 									</a>
 								</ol>   
 								<!-- Wrapper for carousel items -->
-								<div class="carousel-inner" style="width: 100%;">
-									<div class="item carousel-item active">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set1.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 1</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set2.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 2</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set3.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 3</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set4.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 4</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set5.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 5</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set6.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 6</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set7.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 7</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set8.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 8</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set9.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 9</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div>
-									<div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set10.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 10</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
-										</div>
-									</div><div class="item carousel-item">
-										<div class="row">
-											<div class="col-sm-4">
-												<div class="thumb-wrapper border border-dark">
-													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-													<div class="img-box">
-														<img src="images/set11.png" class="img-fluid" alt="">
-													</div>
-													<div class="thumb-content">
-														<h4>SET 11</h4>
-														<p class="item-price"><b>₱499.00</b></p>
-														<a href="preview.php" class="btn btn-primary">View</a>
-													</div>						
-												</div>
-											</div>	
+								<div class="carousel-inner" style="width: 100%">
+									<div class="item carousel-item active" style="overflow-x: auto;">
+										<div class="d-flex flex-direction-row gap-4" id="five_sm_slideshow" style="height: auto;">
+											
 										</div>
 									</div>
 								</div>
-								<!-- Carousel controls -->
-								<a class="carousel-control-prev" href="#myCarouselsmLogo" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="carousel-control-next" href="#myCarouselsmLogo" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container-xl my-width d-block d-sm-block">
+					<div class="row">
+						<div class="col-md-12">
+							<h2>Logo Seal</h2>
+							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">
+								<!-- Carousel indicators -->
+								<ol class="carousel-indicators">
+									<a href="product.php">
+										<button class="btn btn-outline-success">View All</button>
+									</a>
+								</ol>   
+								<!-- Wrapper for carousel items -->
+								<div class="carousel-inner" style="width: 100%">
+									<div class="item carousel-item active" style="overflow-x: auto;">
+										<div class="d-flex flex-direction-row gap-4" id="five_md_slideshow" style="height: auto;">
+											
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -3166,7 +501,7 @@
 				</div>
 			</div>
 		</main>
-		<?php include($IPATH."footer.html"); ?>
+		<?php include('footer.php') ?>
 		<script>
 			var navbar = document.querySelector('header')
 			window.onscroll = function() {
@@ -3188,21 +523,177 @@
 		        navigation.classList.remove('active-nav');
 		    })
 		</script>
-		<script type="text/javascript">
-			$(document).on('click', 'a[href^="#"]', function (event) {
-			    event.preventDefault();
-
-			    $('html, body').animate({
-			        scrollTop: $($.attr(this, 'href')).offset().top
-			    }, 1000);
-			});
-		</script>
+		<script type="text/javascript" src="products.js"></script>
 		<script>
-			$(document).ready(function(){
-				$(".wish-icon i").click(function(){
-					$(this).toggleClass("fa-heart fa-heart-o");
-				});
-			});	
+			$(document).ready(function () {
+			  showAllItems(); //Display all items with no filter applied
+			  $(".wish-icon i").click(function(){
+			  	$(this).toggleClass("fa-heart fa-heart-o");
+			  });
+			});
+			function showAllItems() {
+				//Default grid to show all items on page load in
+				$("#one_sm_slideshow").empty();
+				for (let i = 0; i < category_items.length; i++) {
+				    let item_content =
+				    '<div class="col-sm-6 p-0" data-available-sizes="' + 
+				    category_items[i]["sizes"] + 
+				    '"><div class="thumb-wrapper border border-dark" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
+				    category_items[i]["thumbnail"] +
+				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
+				    category_items[i]["title"] +
+				    '</h4><p class="item-price"><b>₱' +
+				    category_items[i]["price"] +
+				    '</b></p><a href="' +
+				    category_items[i]["link"] +
+				    '" class="btn btn-primary">View</a></div></div></div>';
+				    $("#one_sm_slideshow").append(item_content);
+				}
+				$("#one_md_slideshow").empty();
+				for (let i = 0; i < category_items.length; i++) {
+				    let item_content =
+				    '<div class="container p-0 m-0" data-available-sizes="' + 
+				    category_items[i]["sizes"] + 
+				    '"><div class="thumb-wrapper border border-dark m-0" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
+				    category_items[i]["thumbnail"] +
+				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
+				    category_items[i]["title"] +
+				    '</h4><p class="item-price"><b>₱' +
+				    category_items[i]["price"] +
+				    '</b></p><a href="' +
+				    category_items[i]["link"] +
+				    '" class="btn btn-primary">View</a></div></div></div>';
+				    $("#one_md_slideshow").append(item_content);
+				}
+				$("#two_sm_slideshow").empty();
+				for (let i = 0; i < category_items.length; i++) {
+				    let item_content =
+				    '<div class="col-sm-6 p-0" data-available-sizes="' + 
+				    category_items[i]["sizes"] + 
+				    '"><div class="thumb-wrapper border border-dark" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
+				    category_items[i]["thumbnail"] +
+				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
+				    category_items[i]["title"] +
+				    '</h4><p class="item-price"><b>₱' +
+				    category_items[i]["price"] +
+				    '</b></p><a href="' +
+				    category_items[i]["link"] +
+				    '" class="btn btn-primary">View</a></div></div></div>';
+				    $("#two_sm_slideshow").append(item_content);
+				}
+				$("#two_md_slideshow").empty();
+				for (let i = 0; i < category_items.length; i++) {
+				    let item_content =
+				    '<div class="container p-0 m-0" data-available-sizes="' + 
+				    category_items[i]["sizes"] + 
+				    '"><div class="thumb-wrapper border border-dark m-0" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
+				    category_items[i]["thumbnail"] +
+				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
+				    category_items[i]["title"] +
+				    '</h4><p class="item-price"><b>₱' +
+				    category_items[i]["price"] +
+				    '</b></p><a href="' +
+				    category_items[i]["link"] +
+				    '" class="btn btn-primary">View</a></div></div></div>';
+				    $("#two_md_slideshow").append(item_content);
+				}
+				$("#three_sm_slideshow").empty();
+				for (let i = 0; i < category_items.length; i++) {
+				    let item_content =
+				    '<div class="col-sm-6 p-0" data-available-sizes="' + 
+				    category_items[i]["sizes"] + 
+				    '"><div class="thumb-wrapper border border-dark" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
+				    category_items[i]["thumbnail"] +
+				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
+				    category_items[i]["title"] +
+				    '</h4><p class="item-price"><b>₱' +
+				    category_items[i]["price"] +
+				    '</b></p><a href="' +
+				    category_items[i]["link"] +
+				    '" class="btn btn-primary">View</a></div></div></div>';
+				    $("#three_sm_slideshow").append(item_content);
+				}
+				$("#three_md_slideshow").empty();
+				for (let i = 0; i < category_items.length; i++) {
+				    let item_content =
+				    '<div class="container p-0 m-0" data-available-sizes="' + 
+				    category_items[i]["sizes"] + 
+				    '"><div class="thumb-wrapper border border-dark m-0" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
+				    category_items[i]["thumbnail"] +
+				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
+				    category_items[i]["title"] +
+				    '</h4><p class="item-price"><b>₱' +
+				    category_items[i]["price"] +
+				    '</b></p><a href="' +
+				    category_items[i]["link"] +
+				    '" class="btn btn-primary">View</a></div></div></div>';
+				    $("#three_md_slideshow").append(item_content);
+				}
+				$("#four_sm_slideshow").empty();
+				for (let i = 0; i < category_items.length; i++) {
+				    let item_content =
+				    '<div class="col-sm-6 p-0" data-available-sizes="' + 
+				    category_items[i]["sizes"] + 
+				    '"><div class="thumb-wrapper border border-dark" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
+				    category_items[i]["thumbnail"] +
+				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
+				    category_items[i]["title"] +
+				    '</h4><p class="item-price"><b>₱' +
+				    category_items[i]["price"] +
+				    '</b></p><a href="' +
+				    category_items[i]["link"] +
+				    '" class="btn btn-primary">View</a></div></div></div>';
+				    $("#four_sm_slideshow").append(item_content);
+				}
+				$("#four_md_slideshow").empty();
+				for (let i = 0; i < category_items.length; i++) {
+				    let item_content =
+				    '<div class="container p-0 m-0" data-available-sizes="' + 
+				    category_items[i]["sizes"] + 
+				    '"><div class="thumb-wrapper border border-dark m-0" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
+				    category_items[i]["thumbnail"] +
+				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
+				    category_items[i]["title"] +
+				    '</h4><p class="item-price"><b>₱' +
+				    category_items[i]["price"] +
+				    '</b></p><a href="' +
+				    category_items[i]["link"] +
+				    '" class="btn btn-primary">View</a></div></div></div>';
+				    $("#four_md_slideshow").append(item_content);
+				}
+				$("#five_sm_slideshow").empty();
+				for (let i = 0; i < category_items.length; i++) {
+				    let item_content =
+				    '<div class="col-sm-6 p-0" data-available-sizes="' + 
+				    category_items[i]["sizes"] + 
+				    '"><div class="thumb-wrapper border border-dark" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
+				    category_items[i]["thumbnail"] +
+				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
+				    category_items[i]["title"] +
+				    '</h4><p class="item-price"><b>₱' +
+				    category_items[i]["price"] +
+				    '</b></p><a href="' +
+				    category_items[i]["link"] +
+				    '" class="btn btn-primary">View</a></div></div></div>';
+				    $("#five_sm_slideshow").append(item_content);
+				}
+				$("#five_md_slideshow").empty();
+				for (let i = 0; i < category_items.length; i++) {
+				    let item_content =
+				    '<div class="container p-0 m-0" data-available-sizes="' + 
+				    category_items[i]["sizes"] + 
+				    '"><div class="thumb-wrapper border border-dark m-0" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
+				    category_items[i]["thumbnail"] +
+				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
+				    category_items[i]["title"] +
+				    '</h4><p class="item-price"><b>₱' +
+				    category_items[i]["price"] +
+				    '</b></p><a href="' +
+				    category_items[i]["link"] +
+				    '" class="btn btn-primary">View</a></div></div></div>';
+				    $("#five_md_slideshow").append(item_content);
+				}
+			}
 		</script>
 	</body>
 </html>
