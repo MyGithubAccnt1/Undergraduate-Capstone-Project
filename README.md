@@ -17,4 +17,5 @@ Steps on how to use
 13. After editing any file, save it (ctrl+s) then refresh the tab http://localhost/capstone/ in your browser to view changes.
 
 website is now live at: https://capstone-sbm.free.nf/
+
 status: work on progress
