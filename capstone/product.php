@@ -78,7 +78,7 @@
 		        navigation.classList.remove('active-nav');
 		    })
 		</script>
-		<?php 
+<!-- 		<?php 
 		include("connect.php");
 		$sql = "SELECT * FROM product";
 		$result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
@@ -94,9 +94,7 @@
 			$category_items['sizes'] = $row['sizes'];
 		}
 		echo json_encode($category_items);
-		var test = $category_items;
-		var_dump($test);
-		?>
+		?> -->
 		<script src="products.js"></script>
 		<script>
 			let min_price = 0;
