@@ -78,11 +78,23 @@
 		        navigation.classList.remove('active-nav');
 		    })
 		</script>
-		<script type="text/javascript" src="products.js"></script>
 		<?php
+		include("connect.php");
+		$sql = "SELECT * FROM product;
+  		$result = mysqli_query($conn, $sql);
+		$row = mysqli_fetch_assoc($result);
+		if(mysqli_num_rows($result) === 0) {
+			echo"<script>alert('Notice: Something went wrong.')</script>";
+			$script = "<script>window.location = 'product.php';</script>";
+			echo $script;
+		}else {
 			
+		}
+		$conn->close();
 		?>
 		<script>
+  			var category_items = 
+    			<?php echo '["' . implode('", "', $row) . '"]' ?>;
 			let min_price = 0;
 			let max_price = 1000;
 
