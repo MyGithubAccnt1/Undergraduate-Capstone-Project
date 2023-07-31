@@ -61,8 +61,9 @@
 									$category_items['sizes'] = $row['sizes'];
 								}
 								echo json_encode($category_items);
-								echo"<p> $category_items </p>"
+								var_dump($category_items);
 								?>
+								<p>" <?php echo $category_items ?>"</p>
 					        	</div>
 					          	<div class="carousel slide p-0" data-ride="carousel" data-interval="0">  
 					          		<!-- Wrapper for carousel items -->
