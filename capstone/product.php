@@ -45,25 +45,6 @@
 					        		<a href="customize.php">
 					        			<button class="btn btn-outline-success rounded-0 btn-sm">CUSTOMIZE</button>
 					        		</a>
-								<?php 
-								include("connect.php");
-								$sql = "SELECT * FROM product";
-								$result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
-						
-								$category_items = array();
-								while($row =mysqli_fetch_assoc($result)){
-									$category_items['id'] = $row['id'];
-									$category_items['category_id'] = $row['category_id'];
-									$category_items['price'] = $row['price'];
-									$category_items['title'] = $row['title'];
-									$category_items['thumbnail'] = $row['thumbnail'];
-									$category_items['link'] = $row['link'];
-									$category_items['sizes'] = $row['sizes'];
-								}
-								echo json_encode($category_items);
-								var_dump($category_items);
-								?>
-								<p>" <?php echo $category_items ?>"</p>
 					        	</div>
 					          	<div class="carousel slide p-0" data-ride="carousel" data-interval="0">  
 					          		<!-- Wrapper for carousel items -->
@@ -97,6 +78,24 @@
 		        navigation.classList.remove('active-nav');
 		    })
 		</script>
+		<?php 
+		include("connect.php");
+		$sql = "SELECT * FROM product";
+		$result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
+
+		$category_items = array();
+		while($row =mysqli_fetch_assoc($result)){
+			$category_items['id'] = $row['id'];
+			$category_items['category_id'] = $row['category_id'];
+			$category_items['price'] = $row['price'];
+			$category_items['title'] = $row['title'];
+			$category_items['thumbnail'] = $row['thumbnail'];
+			$category_items['link'] = $row['link'];
+			$category_items['sizes'] = $row['sizes'];
+		}
+		echo json_encode($category_items);
+		var_dump(category_items);
+		?>
 		<script src="products.js"></script>
 		<script>
 			let min_price = 0;
