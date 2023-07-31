@@ -114,7 +114,7 @@
 				    category_items[i]["price"] +
 				    '</b></p><a href="' +
 				    category_items[i]["link"] +
-				    '"><button class="rounded-0 btn btn-primary">View</button></a></div></div></div>';
+				    '"><button class="rounded-0 btn btn-outline-success">View</button></a></div></div></div>';
 			    $("#display-items-div").append(item_content);
 			  }
 			}
@@ -137,7 +137,7 @@
 				        category_items[i]["price"] +
 				        '</b></p><a href="' +
 				        category_items[i]["link"] +
-				        '"><button class="rounded-0 btn btn-primary">View</button></a></div></div></div>';
+				        '"><button class="rounded-0 btn btn-outline-success">View</button></a></div></div></div>';
 				        $("#display-items-div").append(item_content); //Display in grid
 				    } else {
 				    	counter = counter + 1;
