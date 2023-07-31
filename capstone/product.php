@@ -78,7 +78,18 @@
 		        navigation.classList.remove('active-nav');
 		    })
 		</script>
-		<script src="products.js"></script>
+		// <script src="products.js"></script>
+		<?php 
+		include("connect.php");
+		$sql = "SELECT * FROM product";
+		$result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
+
+		$category_items = array();
+		while($row =mysqli_fetch_assoc($result)){
+		    $category_items[] = $row;
+		}
+		echo json_encode($category_items);
+		?>
 		<script>
 			let min_price = 0;
 			let max_price = 1000;
