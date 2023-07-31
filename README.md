@@ -18,4 +18,4 @@ Steps on how to use
 
 website is now live at: https://capstone-sbm.free.nf/
 
-status: work on progress
+status: work on progress.
