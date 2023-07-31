@@ -51,7 +51,7 @@
     border-radius: 20px;
 }
 .carousel .thumb-content .btn:hover, .carousel .thumb-content .btn:focus {
-    color: #fff;
+/*     color: #fff; */
 /*     background: #7ac400; */
     box-shadow: none;
 }
