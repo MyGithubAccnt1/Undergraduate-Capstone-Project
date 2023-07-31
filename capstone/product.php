@@ -94,7 +94,7 @@
 			$category_items['sizes'] = $row['sizes'];
 		}
 		echo json_encode($category_items);
-		console.log($category_items);
+		echo"<p> $category_items </p>"
 		?>
 		<script>
 			let min_price = 0;
