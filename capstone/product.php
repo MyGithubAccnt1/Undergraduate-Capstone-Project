@@ -86,7 +86,13 @@
 
 		$category_items = array();
 		while($row =mysqli_fetch_assoc($result)){
-		    $category_items[] = $row;
+			$category_items['id'] = $row['id'];
+			$category_items['category_id'] = $row['category_id'];
+			$category_items['price'] = $row['price'];
+			$category_items['title'] = $row['title'];
+			$category_items['thumbnail'] = $row['thumbnail'];
+			$category_items['link'] = $row['link'];
+			$category_items['sizes'] = $row['sizes'];
 		}
 		echo json_encode($category_items);
 		?>
