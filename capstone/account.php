@@ -8,7 +8,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	  	<meta charset="utf-8">
 	  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	  	<title>Saint Benedict Medallion</title>
-	  	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+	  	<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
 	  	<?php include('include.php') ?>
 	</head>
 	<body class="font-monospace bg-light">
