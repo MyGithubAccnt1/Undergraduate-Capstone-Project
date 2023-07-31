@@ -94,7 +94,8 @@
 			$category_items['sizes'] = $row['sizes'];
 		}
 		echo json_encode($category_items);
-		var_dump($category_items);
+		var test = $category_items;
+		var_dump($test);
 		?>
 		<script src="products.js"></script>
 		<script>
