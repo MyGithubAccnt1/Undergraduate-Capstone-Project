@@ -1,0 +1,53 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  VM_HOST: ${{ secrets.VM_HOST }}
+  VM_USERNAME: ${{ secrets.VM_USERNAME }}
+  VM_PASSWORD: ${{ secrets.VM_PASSWORD }}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+
+  deploy:
+    name: Deploy to Azure VM
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Transfer Files to VM
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ env.VM_HOST }}
+          username: ${{ env.VM_USERNAME }}
+          password: ${{ env.VM_PASSWORD }}
+          source: ./
+          target: /opt/bitnami/capstone/htdocs
+
+      - name: SSH into VM and Restart Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ env.VM_HOST }}
+          username: ${{ env.VM_USERNAME }}
+          password: ${{ env.VM_PASSWORD }}
+          script: |
+            sudo /opt/bitnami/ctlscript.sh restart apache
