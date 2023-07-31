@@ -41,8 +41,20 @@
 				    <div class="col-sm-12 col-md-12 col-lg-8">
 					    <div class="card">
 					        <div class="card-body">
-					          	<div class="row" id="display-items-div">
-					          		
+					        	<div class="d-flex justify-content-center">
+					        		<a href="customize.php">
+					        			<button class="btn btn-outline-success rounded-0 btn-sm">CUSTOMIZE</button>
+					        		</a>
+					        	</div>
+					          	<div class="carousel slide p-0" data-ride="carousel" data-interval="0">  
+					          		<!-- Wrapper for carousel items -->
+					          		<div class="carousel-inner" style="width: 100%">
+					          			<div class="item carousel-item active" style="overflow-x: auto;">
+					          				<div class="d-flex flex-direction-row gap-4" id="display-items-div" style="height: auto;">
+					          					
+					          				</div>
+					          			</div>
+					          		</div>
 					          	</div>
 					        </div>
 					    </div>
@@ -92,17 +104,17 @@
 			  $("#display-items-div").empty();
 			  for (let i = 0; i < category_items.length; i++) {
 			    let item_content =
-			      '<div class="col-sm-12 col-md-6 col-lg-6 text-center product-card" data-available-sizes="' +
-			      category_items[i]["sizes"] +
-			      '"><b>' +
-			      category_items[i]["title"] +
-			      '</b><br><img src="' +
-			      category_items[i]["thumbnail"] +
-			      '" height="150" width="150" alt="Missing Image"><p>$' +
-			      category_items[i]["price"] +
-			      '</p><a href="' +
-			      category_items[i]["link"] +
-			      '"><button class="btn btn-danger rounded-pill product-button">View</button></a></div>';
+			      '<div class="container p-0 m-0" data-available-sizes="' + 
+				    category_items[i]["sizes"] + 
+				    '"><div class="thumb-wrapper border border-dark m-0" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
+				    category_items[i]["thumbnail"] +
+				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
+				    category_items[i]["title"] +
+				    '</h4><p class="item-price"><b>₱' +
+				    category_items[i]["price"] +
+				    '</b></p><a href="' +
+				    category_items[i]["link"] +
+				    '"><button class="rounded-0 btn btn-primary">View</button></a></div></div></div>';
 			    $("#display-items-div").append(item_content);
 			  }
 			}
@@ -115,17 +127,17 @@
 			    //Go through the items but only show items that have size from show_sizes_array
 				    if ( category_items[i]["price"] <= max_price && category_items[i]["price"] >= min_price ) {
 				      	let item_content =
-				        '<div class="col-sm-12 col-md-6 col-lg-6 text-center product-card" data-available-sizes="' +
-				        category_items[i]["sizes"] +
-				        '"><b>' +
-				      	category_items[i]["title"] +
-				      	'</b><br><img src="' +
-				      	category_items[i]["thumbnail"] +
-				      	'" height="150" width="150" alt="Missing Image"><p>$' +
-				      	category_items[i]["price"] +
-				      	'</p><a href="' +
-				      	category_items[i]["link"] +
-				      	'"><button class="btn btn-danger rounded-pill product-button">View</button></a></div>';
+				        '<div class="container p-0 m-0" data-available-sizes="' + 
+				        category_items[i]["sizes"] + 
+				        '"><div class="thumb-wrapper border border-dark m-0" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
+				        category_items[i]["thumbnail"] +
+				        '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
+				        category_items[i]["title"] +
+				        '</h4><p class="item-price"><b>₱' +
+				        category_items[i]["price"] +
+				        '</b></p><a href="' +
+				        category_items[i]["link"] +
+				        '"><button class="rounded-0 btn btn-primary">View</button></a></div></div></div>';
 				        $("#display-items-div").append(item_content); //Display in grid
 				    } else {
 				    	counter = counter + 1;

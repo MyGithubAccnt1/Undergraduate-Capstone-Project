@@ -5,9 +5,6 @@
     perspective: 1000px;
     border: 1px solid #1c2331;
 }
-.slide-edit {
-    
-}
 
 @media (max-width: 320px) {
     .slide-edit {

@@ -64,18 +64,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                                         <h4 class="my-4">Change Password</h4>
                                         <div class="col-md-6">
                                             <label class="form-label">Old password</label>
-                                            <input type="password" class="form-control">
+                                            <input type="password" class="form-control" id="old_password" name="password" required>
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label">New password</label>
-                                            <input type="password" class="form-control">
+                                            <input type="password" class="form-control" id="password" required>
                                         </div>
                                         <div class="col-md-12">
                                             <label class="form-label">Confirm Password</label>
-                                            <input type="password" class="form-control">
+                                            <input type="password" class="form-control" name="new_password" id="confirm_password" required>
                                         </div>
                                         <div class="gap-3 d-md-flex justify-content-md-end text-center">
-                                            <button type="button" class="btn btn-success btn-md">Update Password</button>
+                                            <button type="submit" class="btn btn-success btn-md">Update Password</button>
                                         </div>
                                     </div>
                                 </div>
@@ -101,6 +101,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		        navigation.classList.remove('active-nav');
 		    })
 		</script>
+        <script>
+            var password = document.getElementById("password"),
+            confirm_password = document.getElementById("confirm_password");
+
+            function validatePassword(){
+                if(password.value != confirm_password.value) {
+                    confirm_password.setCustomValidity("Passwords don't match.");
+                } else {
+                    confirm_password.setCustomValidity('');
+                }
+            }
+            
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;
+        </script>
 	</body>
 </html>
 <?php 

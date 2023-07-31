@@ -29,7 +29,7 @@
 				<div class="my-width p-3">
 					<h1 style="font-size: 3rem;">SAINT BENEDICT MEDALLION</h1><br><br><br>
 					<p class="d-none d-md-block">A place for people who loves religious jewelry and fashion items.<br>Saint Benedict Medallion is specialized in handcrafted necklaces.<br>Our timeless designs are inspired by faith and nature, crafted with quality materials and love.</p><hr>
-					<a href="#go-here">
+					<a href="#!">
 						<button class="btn btn-danger rounded-0 btn-md">SHOP NOW</button>
 					</a>
 				</div>
@@ -127,13 +127,13 @@
 				</div>
 				<div class="container-xl my-width d-block d-md-none">
 					<div class="row">
-						<div class="col-md-12" id="go-here">
+						<div class="col-md-12">
 							<h2>Necklaces</h2>
 							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">
 								<!-- Carousel indicators -->
 								<ol class="carousel-indicators">
 									<a href="product.php">
-										<button class="btn btn-outline-success">View All</button>
+										<button class="btn btn-outline-success btn-sm rounded-0">View All</button>
 									</a>
 								</ol>   
 								<!-- Wrapper for carousel items -->
@@ -148,18 +148,16 @@
 						</div>
 					</div>
 				</div>
-				<div class="container-xl my-width d-block d-sm-block">
+				<div class="container-xl my-width d-none d-sm-block">
 					<div class="row">
 						<div class="col-md-12" id="go-here">
 							<h2>Necklaces</h2>
 							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">
-								<!-- Carousel indicators -->
 								<ol class="carousel-indicators">
 									<a href="product.php">
-										<button class="btn btn-outline-success">View All</button>
+										<button class="btn btn-outline-success btn-sm rounded-0">View All</button>
 									</a>
-								</ol>   
-								<!-- Wrapper for carousel items -->
+								</ol>
 								<div class="carousel-inner" style="width: 100%">
 									<div class="item carousel-item active" style="overflow-x: auto;">
 										<div class="d-flex flex-direction-row gap-4" id="two_md_slideshow" style="height: auto;">
@@ -179,7 +177,7 @@
 								<!-- Carousel indicators -->
 								<ol class="carousel-indicators">
 									<a href="product.php">
-										<button class="btn btn-outline-success">View All</button>
+										<button class="btn btn-outline-success btn-sm rounded-0">View All</button>
 									</a>
 								</ol>   
 								<!-- Wrapper for carousel items -->
@@ -194,7 +192,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="container-xl my-width d-block d-sm-block">
+				<div class="container-xl my-width d-none d-sm-block">
 					<div class="row">
 						<div class="col-md-12">
 							<h2>Pins</h2>
@@ -202,7 +200,7 @@
 								<!-- Carousel indicators -->
 								<ol class="carousel-indicators">
 									<a href="product.php">
-										<button class="btn btn-outline-success">View All</button>
+										<button class="btn btn-outline-success btn-sm rounded-0">View All</button>
 									</a>
 								</ol>   
 								<!-- Wrapper for carousel items -->
@@ -225,7 +223,7 @@
 								<!-- Carousel indicators -->
 								<ol class="carousel-indicators">
 									<a href="product.php">
-										<button class="btn btn-outline-success">View All</button>
+										<button class="btn btn-outline-success btn-sm rounded-0">View All</button>
 									</a>
 								</ol>   
 								<!-- Wrapper for carousel items -->
@@ -240,7 +238,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="container-xl my-width d-block d-sm-block">
+				<div class="container-xl my-width d-none d-sm-block">
 					<div class="row">
 						<div class="col-md-12">
 							<h2>Table Nameplates</h2>
@@ -248,7 +246,7 @@
 								<!-- Carousel indicators -->
 								<ol class="carousel-indicators">
 									<a href="product.php">
-										<button class="btn btn-outline-success">View All</button>
+										<button class="btn btn-outline-success btn-sm rounded-0">View All</button>
 									</a>
 								</ol>   
 								<!-- Wrapper for carousel items -->
@@ -271,7 +269,7 @@
 								<!-- Carousel indicators -->
 								<ol class="carousel-indicators">
 									<a href="product.php">
-										<button class="btn btn-outline-success">View All</button>
+										<button class="btn btn-outline-success btn-sm rounded-0">View All</button>
 									</a>
 								</ol>   
 								<!-- Wrapper for carousel items -->
@@ -286,7 +284,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="container-xl my-width d-block d-sm-block">
+				<div class="container-xl my-width d-none d-sm-block">
 					<div class="row">
 						<div class="col-md-12">
 							<h2>Logo Seal</h2>
@@ -294,7 +292,7 @@
 								<!-- Carousel indicators -->
 								<ol class="carousel-indicators">
 									<a href="product.php">
-										<button class="btn btn-outline-success">View All</button>
+										<button class="btn btn-outline-success btn-sm rounded-0">View All</button>
 									</a>
 								</ol>   
 								<!-- Wrapper for carousel items -->
