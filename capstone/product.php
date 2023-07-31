@@ -79,6 +79,9 @@
 		    })
 		</script>
 		<script type="text/javascript" src="products.js"></script>
+		<?php
+			
+		?>
 		<script>
 			let min_price = 0;
 			let max_price = 1000;
