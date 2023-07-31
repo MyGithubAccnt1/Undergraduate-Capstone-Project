@@ -38,7 +38,7 @@
 .carousel .item h4, .carousel .item p, .carousel .item ul {
     margin-bottom: 5px;
 }
-.carousel .thumb-content .btn {
+.carousel .thumb-content  {
 /*     color: #7ac400; */
     font-size: 11px;
     text-transform: uppercase;
@@ -50,12 +50,12 @@
     line-height: 16px;
     border-radius: 20px;
 }
-.carousel .thumb-content .btn:hover, .carousel .thumb-content .btn:focus {
+.carousel .thumb-content , .carousel .thumb-content {
 /*     color: #fff; */
 /*     background: #7ac400; */
     box-shadow: none;
 }
-.carousel .thumb-content .btn i {
+.carousel .thumb-content i {
     font-size: 14px;
     font-weight: bold;
     margin-left: 5px;
