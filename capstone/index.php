@@ -38,7 +38,7 @@
 				<div class="container-xl my-width d-block d-md-none">
 					<div class="row">
 						<div class="col-md-12">
-							<h2>Featured <b>Products</b></h2>
+							<h2>Featured Products</h2>
 							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">  
 								<!-- Wrapper for carousel items -->
 								<div class="carousel-inner" style="width: 100%">
@@ -46,7 +46,7 @@
 										<div class="d-flex flex-direction-row gap-4" id="one_sm_slideshow" style="height: auto;">
 										<?php
 										include("connect.php");
-										$sql = "SELECT price, title, thumbnail, link FROM product";
+										$sql = "SELECT price, title, thumbnail FROM product";
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
 											// output data of each row
@@ -61,9 +61,9 @@
 														<div class="thumb-content">
 															<h4><?php echo $row['title']?></h4>
 															<p class="item-price"><b>₱ <?php echo $row['price']?></b></p>
-															<a href="<?php echo $row['link']?>">
-																<button class="rounded-0 btn btn-outline-success btn-sm">View</button>
-															</a>
+															<form action="preview.php" method="$_POST"></form>
+																<button type="submit" class="rounded-0 btn btn-outline-success btn-sm">View</button>
+															</form>
 														</div>
 													</div>
 												</div>
@@ -84,7 +84,7 @@
 				<div class="container-xl my-width d-none d-sm-block">
 					<div class="row">
 						<div class="col-md-12">
-							<h2>Featured <b>Products</b></h2>
+							<h2>Featured Products</h2>
 							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">  
 								<!-- Wrapper for carousel items -->
 								<div class="carousel-inner" style="width: 100%">
@@ -92,7 +92,7 @@
 										<div class="d-flex flex-direction-row gap-4" id="one_md_slideshow" style="height: auto;">
 										<?php
 										include("connect.php");
-										$sql = "SELECT price, title, thumbnail, link FROM product";
+										$sql = "SELECT price, title, thumbnail FROM product";
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
 											// output data of each row
@@ -107,9 +107,9 @@
 														<div class="thumb-content">
 															<h4><?php echo $row['title']?></h4>
 															<p class="item-price"><b>₱ <?php echo $row['price']?></b></p>
-															<a href="<?php echo $row['link']?>">
-																<button class="rounded-0 btn btn-outline-success btn-sm">View</button>
-															</a>
+															<form action="preview.php" method="$_POST"></form>
+																<button type="submit" class="rounded-0 btn btn-outline-success btn-sm">View</button>
+															</form>
 														</div>
 													</div>
 												</div>
