@@ -15,7 +15,7 @@ $_SESSION["description"] = $row['description'];
 if(mysqli_num_rows($result) === 1) {
     $script = "<script>window.location = 'preview.php';</script>";
 }else {
- 	  echo"<script>alert('Notice: Something went wrong, please try again.')</script>";
+ 	echo"<script>alert('Notice: Something went wrong, please try again.')</script>";
   	$script = "<script>window.location = 'index.php';</script>";
   	echo $script;
 }
