@@ -79,40 +79,68 @@
 		    })
 		</script>
 		<script>
-			let category_items = '';
 			<?php
 			include("connect.php");
 			$sql = "SELECT * FROM product";
 			$result = mysqli_query($conn, $sql);
 			$row = mysqli_fetch_assoc($result);
 			?>
-			var id = <?php $row['id'] ?>;
-			category_items.forEach(function(item) {
-				item.id = id;
+			const initData = [''];
+			const category_items = initData.map(data => {
+				return {
+					...data, id: {
+						<?php $row['id'] ?>
+					}
+		
+				}
 			});
-			var category_id = <?php $row['category_id'] ?>;
-			category_items.forEach(function(item) {
-				item.category_id = category_id;
+			const category_items = initData.map(data => {
+				return {
+					...data, id: {
+						<?php $row['category_id'] ?>
+					}
+		
+				}
 			});
-			var price = <?php $row['price'] ?>;
-			category_items.forEach(function(item) {
-				item.price = price;
+			const category_items = initData.map(data => {
+				return {
+					...data, id: {
+						<?php $row['price'] ?>
+					}
+		
+				}
 			});
-			var title = <?php $row['title'] ?>;
-			category_items.forEach(function(item) {
-				item.title = title;
+			const category_items = initData.map(data => {
+				return {
+					...data, id: {
+						<?php $row['title'] ?>
+					}
+		
+				}
 			});
-			var thumbnail = <?php $row['thumbnail'] ?>;
-			category_items.forEach(function(item) {
-				item.thumbnail = thumbnail;
+			const category_items = initData.map(data => {
+				return {
+					...data, id: {
+						<?php $row['thumbnail'] ?>
+					}
+		
+				}
 			});
-			var link = <?php $row['link'] ?>;
-			category_items.forEach(function(item) {
-				item.link = link;
+			const category_items = initData.map(data => {
+				return {
+					...data, id: {
+						<?php $row['link'] ?>
+					}
+		
+				}
 			});
-			var sizes = <?php $row['sizes'] ?>;
-			category_items.forEach(function(item) {
-				item.sizes = sizes;
+			const category_items = initData.map(data => {
+				return {
+					...data, id: {
+						<?php $row['sizes'] ?>
+					}
+		
+				}
 			});
 			
 			let min_price = 0;
