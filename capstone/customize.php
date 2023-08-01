@@ -55,7 +55,7 @@
 			});
 			function showAllItems() {
 				//Default grid to show all items on page load in
-				$("#one_sm_slideshow").empty();
+				$("#customize").empty();
 				for (let i = 0; i < category_items.length; i++) {
 				    let item_content =
 				    '<div class="col-sm-6 p-0" data-available-sizes="' + 
@@ -67,7 +67,7 @@
 				    '</h4><a href="' +
 				    category_items[i]["link"] +
 				    '" class="btn btn-outline-success">Create</a></div></div></div>';
-				    $("#one_sm_slideshow").append(item_content);
+				    $("#customize").append(item_content);
 				}
 			}
 		</script>
