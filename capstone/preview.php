@@ -41,7 +41,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						<hr>
 						<h3><span>&#8369;</span> <?php echo $_SESSION['price']; ?></h3><br>
 						<h5>DESCRIPTION</h5>
-						<p><?php echo $_SESSION['descriptions']; ?></p>
+						<p><?php echo $_SESSION['description']; ?></p>
 						<h5>CONTENTS</h5>
 						<p>18' Golden Neck Chain</p>
 						<p>1 SBM Necklace</p>
