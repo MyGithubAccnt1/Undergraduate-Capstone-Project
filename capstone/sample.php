@@ -85,7 +85,7 @@
 			$result = mysqli_query($conn, $sql);
 			$row = mysqli_fetch_assoc($result);
 			?>
-			const initData = [''];
+			const initData = [];
 			const category_items = initData.map(data => {
 				return {
 					...data, id: {
