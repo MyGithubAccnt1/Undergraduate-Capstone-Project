@@ -544,7 +544,7 @@
 				    category_items[i]["price"] +
 				    '</b></p><a href="' +
 				    category_items[i]["link"] +
-				    '" class="btn btn-primary">View</a></div></div></div>';
+				    '" class="btn btn-outline-success">View</a></div></div></div>';
 				    $("#one_sm_slideshow").append(item_content);
 				}
 				$("#one_md_slideshow").empty();
@@ -560,7 +560,7 @@
 				    category_items[i]["price"] +
 				    '</b></p><a href="' +
 				    category_items[i]["link"] +
-				    '" class="btn btn-primary">View</a></div></div></div>';
+				    '" class="btn btn-outline-success">View</a></div></div></div>';
 				    $("#one_md_slideshow").append(item_content);
 				}
 				$("#two_sm_slideshow").empty();
@@ -576,7 +576,7 @@
 				    category_items[i]["price"] +
 				    '</b></p><a href="' +
 				    category_items[i]["link"] +
-				    '" class="btn btn-primary">View</a></div></div></div>';
+				    '" class="btn btn-outline-success">View</a></div></div></div>';
 				    $("#two_sm_slideshow").append(item_content);
 				}
 				$("#two_md_slideshow").empty();
@@ -592,7 +592,7 @@
 				    category_items[i]["price"] +
 				    '</b></p><a href="' +
 				    category_items[i]["link"] +
-				    '" class="btn btn-primary">View</a></div></div></div>';
+				    '" class="btn btn-outline-success">View</a></div></div></div>';
 				    $("#two_md_slideshow").append(item_content);
 				}
 				$("#three_sm_slideshow").empty();
@@ -608,7 +608,7 @@
 				    category_items[i]["price"] +
 				    '</b></p><a href="' +
 				    category_items[i]["link"] +
-				    '" class="btn btn-primary">View</a></div></div></div>';
+				    '" class="btn btn-outline-success">View</a></div></div></div>';
 				    $("#three_sm_slideshow").append(item_content);
 				}
 				$("#three_md_slideshow").empty();
@@ -624,7 +624,7 @@
 				    category_items[i]["price"] +
 				    '</b></p><a href="' +
 				    category_items[i]["link"] +
-				    '" class="btn btn-primary">View</a></div></div></div>';
+				    '" class="btn btn-outline-success">View</a></div></div></div>';
 				    $("#three_md_slideshow").append(item_content);
 				}
 				$("#four_sm_slideshow").empty();
@@ -640,7 +640,7 @@
 				    category_items[i]["price"] +
 				    '</b></p><a href="' +
 				    category_items[i]["link"] +
-				    '" class="btn btn-primary">View</a></div></div></div>';
+				    '" class="btn btn-outline-success">View</a></div></div></div>';
 				    $("#four_sm_slideshow").append(item_content);
 				}
 				$("#four_md_slideshow").empty();
@@ -656,7 +656,7 @@
 				    category_items[i]["price"] +
 				    '</b></p><a href="' +
 				    category_items[i]["link"] +
-				    '" class="btn btn-primary">View</a></div></div></div>';
+				    '" class="btn btn-outline-success">View</a></div></div></div>';
 				    $("#four_md_slideshow").append(item_content);
 				}
 				$("#five_sm_slideshow").empty();
@@ -672,7 +672,7 @@
 				    category_items[i]["price"] +
 				    '</b></p><a href="' +
 				    category_items[i]["link"] +
-				    '" class="btn btn-primary">View</a></div></div></div>';
+				    '" class="btn btn-outline-success">View</a></div></div></div>';
 				    $("#five_sm_slideshow").append(item_content);
 				}
 				$("#five_md_slideshow").empty();
@@ -688,7 +688,7 @@
 				    category_items[i]["price"] +
 				    '</b></p><a href="' +
 				    category_items[i]["link"] +
-				    '" class="btn btn-primary">View</a></div></div></div>';
+				    '" class="btn btn-outline-success">View</a></div></div></div>';
 				    $("#five_md_slideshow").append(item_content);
 				}
 			}
