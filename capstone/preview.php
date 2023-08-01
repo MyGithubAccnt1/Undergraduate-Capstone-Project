@@ -154,7 +154,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			})
 		</script>
 		<script>
-			let category_items = '';
+			let category_items = [
+				{
+					id: 1,
+					user_id: <?php echo $_SESSION['id']; ?>,
+					message: "HAHAHAHAHA",
+					sizes: ["US-MEN-10"]
+				}
+			];
 			$(document).ready(function () {
 			  showAllItems(); //Display all items with no filter applied
 			});
@@ -164,7 +171,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					{
 						id: 1,
 						user_id: <?php echo $_SESSION['id']; ?>,
-						message: $message.value,
+						message: "$message.value",
 					    	sizes: ["US-MEN-10"]
 					}
 				];
