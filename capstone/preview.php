@@ -104,12 +104,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		                                    </div>
 		                                </div>
 		                                <div class="stick-bot">
-		                                    <div class="comment-area">
-		                                        <textarea class="form-control rounded-0" placeholder="Type your message here." rows="1"></textarea>
-		                                    </div>
-		                                    <div class="d-flex justify-content-center mt-3">
-		                                        <button class="btn btn-primary rounded-pill btn-md w-75">Send</button>
-		                                    </div>
+						    <div class="comment-area">
+							<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" id="message"></textarea>
+						    </div>
+						    <div class="d-flex justify-content-center mt-3">
+							<button type="buttont" class="btn btn-primary rounded-pill btn-md w-75" onclick="comment()">Send</button>
+						    </div>
 		                                </div>
 		                        </div>
 	                        </div>
@@ -158,15 +158,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			$(document).ready(function () {
 			  showAllItems(); //Display all items with no filter applied
 			});
-			let category_items = [
-				{
-					id: 1,
-					user_id: <?php echo $_SESSION['id']; ?>,
-					message: $message.value,
-				    	sizes: ["US-MEN-10"]
-				}
-			];
-			if (category_items > 0) {
+			function comment() {
+				let category_items = [
+					{
+						id: 1,
+						user_id: <?php echo $_SESSION['id']; ?>,
+						message: $message.value,
+					    	sizes: ["US-MEN-10"]
+					}
+				];
+				showAllItems();
+			}
+			if (category_items.lenght > 0) {
 				function showAllItems() {
 					//Default grid to show all items on page load in
 					$("#product_id-comment").empty();
