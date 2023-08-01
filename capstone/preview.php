@@ -154,10 +154,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			})
 		</script>
 		<script>
+			let category_items = '';
 			$(document).ready(function () {
 			  showAllItems(); //Display all items with no filter applied
 			});
-			let item_content = [];
 			function comment() {
 				var message = document.getElementById("message");
 				let category_items = [
@@ -168,44 +168,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					    	sizes: ["US-MEN-10"]
 					}
 				];
-				function showAllItems() {
-					//Default grid to show all items on page load in
-					$("#product_id-comment").empty();
-					for (let i = 0; i < category_items.length; i++) {
-						let item_content =
-							'<div class="card p-3 mx-4" data-available-sizes="' + 
-							category_items[i]["sizes"] + 
-							'"><div class="d-flex justify-content-between align-items-center"><div class="d-flex flex-row align-items-center"><span><small class="font-weight-bold text-primary">User: ' +
-							category_items[i]["user_id"] +
-							'</small><small class="font-weight-bold">' +
-							category_items[i]["message"] +
-							'</small></span></div></div></div>';
-						$("#product_id-comment").append(item_content);
-					}
-				}
+				showAllItems();
 			}
-			if (category_items.lenght > 0) {
-				function showAllItems() {
-					//Default grid to show all items on page load in
-					$("#product_id-comment").empty();
-					for (let i = 0; i < category_items.length; i++) {
-						let item_content =
-							'<div class="card p-3 mx-4" data-available-sizes="' + 
-							category_items[i]["sizes"] + 
-							'"><div class="d-flex justify-content-between align-items-center"><div class="d-flex flex-row align-items-center"><span><small class="font-weight-bold text-primary">User: ' +
-							category_items[i]["user_id"] +
-							'</small><small class="font-weight-bold">' +
-							category_items[i]["message"] +
-							'</small></span></div></div></div>';
-						$("#product_id-comment").append(item_content);
-					}
+			function showAllItems() {
+				//Default grid to show all items on page load in
+				$("#product_id-comment").empty();
+				for (let i = 0; i < category_items.length; i++) {
+					let item_content =
+						'<div class="card p-3 mx-4" data-available-sizes="' + 
+						category_items[i]["sizes"] + 
+						'"><div class="d-flex justify-content-between align-items-center"><div class="d-flex flex-row align-items-center"><span><small class="font-weight-bold text-primary">User: ' +
+						category_items[i]["user_id"] +
+						'</small><small class="font-weight-bold">' +
+						category_items[i]["message"] +
+						'</small></span></div></div></div>';
+					$("#product_id-comment").append(item_content);
 				}
-			} else {
-
-				let item_content =
-				'<div class="col-sm-12 col-md-6 col-lg-6 text-center product-card mx-auto"><b>Be the first one to leave a comment.</b></div>';
-				$("#product_id-comment").append(item_content); //Display in grid
-				
 			}
 		</script>
 	</body>
