@@ -147,7 +147,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					{
 						id: 1,
 						user_id: <?php echo $_SESSION['id']; ?>,
-						message: $message.value,
+						message: '$message.value',
 					    	sizes: ["US-MEN-10"]
 					}
 				];
