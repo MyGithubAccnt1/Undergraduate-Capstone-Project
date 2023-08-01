@@ -107,5 +107,27 @@
 		        navigation.classList.remove('active-nav');
 		    })
 		</script>
+		<script>
+			$(document).ready(function () {
+			  showAllItems(); //Display all items with no filter applied
+			  $(".wish-icon i").click(function(){
+			  	$(this).toggleClass("fa-heart fa-heart-o");
+			  });
+			});
+		</script>
+		<script>
+			let min_price = 0;
+			let max_price = 1000;
+
+			$("#min-price").on("change mousemove", function () {
+			  min_price = parseInt($("#min-price").val());
+			  $("#min-price-txt").text("₱" + min_price);
+			});
+
+			$("#max-price").on("change mousemove", function () {
+			  max_price = parseInt($("#max-price").val());
+			  $("#max-price-txt").text("₱" + max_price);
+			});
+		</script>
 	</body>
 </html>
