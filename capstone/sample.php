@@ -50,8 +50,37 @@
 					          		<!-- Wrapper for carousel items -->
 					          		<div class="carousel-inner" style="width: 100%">
 					          			<div class="item carousel-item active" style="overflow-x: auto;">
-					          				<div class="d-flex flex-direction-row gap-4" id="display-items-div" style="height: auto;">
-					          					
+					          				<div class="d-flex flex-direction-row gap-4" style="height: auto;">
+					          					<?php
+											include("connect.php");
+											$sql = "SELECT * FROM product";
+											$result = $conn->query($sql);
+											if ($result->num_rows > 0) {
+										      		// output data of each row
+										      		while($row = $result->fetch_assoc()) {
+										    	?>
+													<div class="container p-0 m-0">
+														<div class="thumb-wrapper border border-dark m-0" style="width: 200px;">
+															<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+															<div class="img-box">
+																<img src="<?php $row["thumbnail"] ?>" class="img-fluid" alt="Missing Image">
+															</div>
+															<div class="thumb-content">
+																<h4><?php $row["title"] ?></h4>
+																<p class="item-price"><b>₱ <?php $row["price"] ?></b></p>
+																<a href="<?php $row["link"] ?>">
+																	<button class="rounded-0 btn btn-outline-success btn-sm">View</button>
+																</a>
+															</div>
+														</div>
+													</div>
+											<?php
+										      		}
+										    	} else {
+										      		echo "0 results";
+										   	}
+										    	$conn->close();
+										    	?>
 					          				</div>
 					          			</div>
 					          		</div>
@@ -77,141 +106,6 @@
 		    removeClick.addEventListener('click', ()=>{
 		        navigation.classList.remove('active-nav');
 		    })
-		</script>
-		<script>
-			<?php
-			include("connect.php");
-			$sql = "SELECT * FROM product";
-			$result = mysqli_query($conn, $sql);
-			$row = mysqli_fetch_assoc($result);
-			?>
-			const initData = [];
-			const category_items = initData.map(data => {
-				return {
-					...data, id: {
-						<?php $row['id'] ?>
-					}
-		
-				}
-			});
-			const category_items = initData.map(data => {
-				return {
-					...data, id: {
-						<?php $row['category_id'] ?>
-					}
-		
-				}
-			});
-			const category_items = initData.map(data => {
-				return {
-					...data, id: {
-						<?php $row['price'] ?>
-					}
-		
-				}
-			});
-			const category_items = initData.map(data => {
-				return {
-					...data, id: {
-						<?php $row['title'] ?>
-					}
-		
-				}
-			});
-			const category_items = initData.map(data => {
-				return {
-					...data, id: {
-						<?php $row['thumbnail'] ?>
-					}
-		
-				}
-			});
-			const category_items = initData.map(data => {
-				return {
-					...data, id: {
-						<?php $row['link'] ?>
-					}
-		
-				}
-			});
-			const category_items = initData.map(data => {
-				return {
-					...data, id: {
-						<?php $row['sizes'] ?>
-					}
-		
-				}
-			});
-			
-			let min_price = 0;
-			let max_price = 1000;
-
-			$(document).ready(function () {
-			  showAllItems(); //Display all items with no filter applied
-			});
-
-			$("#min-price").on("change mousemove", function () {
-			  min_price = parseInt($("#min-price").val());
-			  $("#min-price-txt").text("₱" + min_price);
-			  showItemsFiltered();
-			});
-
-			$("#max-price").on("change mousemove", function () {
-			  max_price = parseInt($("#max-price").val());
-			  $("#max-price-txt").text("₱" + max_price);
-			  showItemsFiltered();
-			});
-
-			function showAllItems() {
-			  //Default grid to show all items on page load in
-			  $("#display-items-div").empty();
-			  for (let i = 0; i < category_items.length; i++) {
-			    let item_content =
-			      '<div class="container p-0 m-0" data-available-sizes="' + 
-				    category_items[i]["sizes"] + 
-				    '"><div class="thumb-wrapper border border-dark m-0" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
-				    category_items[i]["thumbnail"] +
-				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
-				    category_items[i]["title"] +
-				    '</h4><p class="item-price"><b>₱' +
-				    category_items[i]["price"] +
-				    '</b></p><a href="' +
-				    category_items[i]["link"] +
-				    '"><button class="rounded-0 btn btn-outline-success btn-sm">View</button></a></div></div></div>';
-			    $("#display-items-div").append(item_content);
-			  }
-			}
-
-			function showItemsFiltered() {
-				let counter = 0;
-			  	//Default grid to show all items on page load in
-			  	$("#display-items-div").empty();
-			  	for (let i = 0; i < category_items.length; i++) {
-			    //Go through the items but only show items that have size from show_sizes_array
-				    if ( category_items[i]["price"] <= max_price && category_items[i]["price"] >= min_price ) {
-				      	let item_content =
-				        '<div class="container p-0 m-0" data-available-sizes="' + 
-				        category_items[i]["sizes"] + 
-				        '"><div class="thumb-wrapper border border-dark m-0" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
-				        category_items[i]["thumbnail"] +
-				        '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
-				        category_items[i]["title"] +
-				        '</h4><p class="item-price"><b>₱' +
-				        category_items[i]["price"] +
-				        '</b></p><a href="' +
-				        category_items[i]["link"] +
-				        '"><button class="rounded-0 btn btn-outline-success btn-sm">View</button></a></div></div></div>';
-				        $("#display-items-div").append(item_content); //Display in grid
-				    } else {
-				    	counter = counter + 1;
-				    }
-				}
-				if ( counter == 11 ) {
-				    let item_content =
-				    '<div class="col-sm-12 col-md-6 col-lg-6 text-center product-card mx-auto"><b>No Item Found.</b></div>';
-				    $("#display-items-div").append(item_content); //Display in grid
-				}
-			}
 		</script>
 	</body>
 </html>
