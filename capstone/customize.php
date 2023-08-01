@@ -58,7 +58,6 @@
 		        navigation.classList.remove('active-nav');
 		    })
 		</script>
-		<script type="text/javascript" src="products.js"></script>
 		<script>
 			$(document).ready(function () {
 			  showAllItems(); //Display all items with no filter applied
@@ -66,6 +65,48 @@
 			  	$(this).toggleClass("fa-heart fa-heart-o");
 			  });
 			});
+			let category_items = [
+			  {
+			    id: 1,
+			    category_id: 8,
+			    price: 39.42,
+			    title: "CROSS",
+			    thumbnail:
+			      "images/cross.png",
+			    link: "customize-cross.php",
+			    sizes: ["US-MEN-10", "US-MEN-11"]
+			  },
+			  {
+			    id: 2,
+			    category_id: 8,
+			    price: 31.93,
+			    title: "HEART",
+			    thumbnail:
+			      "images/heart.png",
+			    link: "customize-heart.php",
+			    sizes: ["US-MEN-13"]
+			  },
+			  {
+			    id: 3,
+			    category_id: 8,
+			    price: 49.44,
+			    title: "CIRCLE",
+			    thumbnail:
+			      "images/set3.png",
+			    link: "customize-circle.php",
+			    sizes: ["US-MEN-14"]
+			  },
+			  {
+			    id: 4,
+			    category_id: 58,
+			    price: 65.38,
+			    title: "UNIQUE",
+			    thumbnail:
+			      "images/unique.png",
+			    link: "customize-unique.php",
+			    sizes: ["US-MEN-13"]
+			  }
+			];
 			function showAllItems() {
 				//Default grid to show all items on page load in
 				$("#customize-sm").empty();
