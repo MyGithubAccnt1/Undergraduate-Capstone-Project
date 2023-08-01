@@ -59,7 +59,7 @@
 															<img src="<?php echo $row['thumbnail']?>" class="img-fluid" alt="Missing Image">
 														</div>
 														<div class="thumb-content">
-															<form action="preview.php" method="$_POST"></form>
+															<form action="get_product.php" method="$_POST"></form>
 																<h4 name="title"><?php echo $row['title']?></h4>
 																<p class="item-price"><b>₱ <?php echo $row['price']?></b></p>
 																<button type="submit" class="rounded-0 btn btn-outline-success btn-sm">View</button>
@@ -105,7 +105,7 @@
 															<img src="<?php echo $row['thumbnail']?>" class="img-fluid" alt="Missing Image">
 														</div>
 														<div class="thumb-content">
-															<form action="preview.php" method="$_POST"></form>
+															<form action="get_product.php" method="$_POST"></form>
 																<h4 name="title"><?php echo $row['title']?></h4>
 																<p class="item-price"><b>₱ <?php echo $row['price']?></b></p>
 																<button type="submit" class="rounded-0 btn btn-outline-success btn-sm">View</button>
