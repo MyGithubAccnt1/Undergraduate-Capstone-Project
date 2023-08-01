@@ -71,17 +71,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		                                <div class="stick-top bg-dark text-center text-white py-2">Comment Section</div>
 		                                <div class="border card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="product_id-comment">
 						<?php
-						if(array_key_exists('Send', $_POST)) {
-							Send();
+						if(array_key_exists('button1', $_POST)) {
+							button1();
 						}
 						function comment() {
-						echo	"<div class="card p-3 mx-4">
-			                                	<div class="d-flex justify-content-between align-items-center">
-			                                        	<div class="d-flex flex-row align-items-center">
-			                                                	<span><small class="font-weight-bold text-primary"><?php echo $_SESSION['id']; ?></small> <small class="font-weight-bold"><?php echo $_POST['comment']; ?></small></span>
-		                                           	 	</div>
-			                                	</div>
-			                                </div>";
+							echo '<div class="card p-3 mx-4">';
+			                                echo '<div class="d-flex justify-content-between align-items-center">';
+			                                echo '<div class="d-flex flex-row align-items-center">';
+			                                echo '<span><small class="font-weight-bold text-primary"> $_SESSION['id']; ?></small> <small class="font-weight-bold"><?php echo $_POST['comment']; ?></small></span>';
+		                                        echo '</div>';
+			                                echo '</div>';
+			                                echo '</div>';
 						}
 						?>
 		                                </div>
@@ -91,7 +91,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 									<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" name="comment"></textarea>
 							    	</div>
 							    	<div class="d-flex justify-content-center mt-3">
-									<button type="submit" class="btn btn-primary rounded-pill btn-md w-75" name="Send" value="Send"></button>
+									<button type="submit" class="btn btn-primary rounded-pill btn-md w-75" name="button1">Send</button>
 							    	</div>
 							</form>
 		                                </div>
