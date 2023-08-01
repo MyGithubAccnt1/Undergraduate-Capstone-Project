@@ -14,6 +14,7 @@ $_SESSION["description"] = $row['description'];
 // If result matched $myusername and $mypassword, table row must be 1 row
 if(mysqli_num_rows($result) === 1) {
     $script = "<script>window.location = 'preview.php';</script>";
+    echo $script;
 }else {
  	echo"<script>alert('Notice: Something went wrong, please try again.')</script>";
   	$script = "<script>window.location = 'index.php';</script>";
