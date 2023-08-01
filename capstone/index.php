@@ -60,7 +60,8 @@
 														</div>
 														<div class="thumb-content">
 															<form action="get_product.php" method="POST">
-																<h4 name="title"><?php echo $row['title']?></h4>
+																<input type="hidden" name="title" value="<?php echo $row['title']?>">
+																<h4><?php echo $row['title']?></h4>
 																<p class="item-price"><b>₱ <?php echo $row['price']?></b></p>
 																<button type="submit" class="rounded-0 btn btn-outline-success btn-sm">View</button>
 															</form>
@@ -106,7 +107,8 @@
 														</div>
 														<div class="thumb-content">
 															<form action="get_product.php" method="POST">
-																<h4 name="title"><?php echo $row['title']?></h4>
+																<input type="hidden" name="title" value="<?php echo $row['title']?>">
+																<h4><?php echo $row['title']?></h4>
 																<p class="item-price"><b>₱ <?php echo $row['price']?></b></p>
 																<button type="submit" class="rounded-0 btn btn-outline-success btn-sm">View</button>
 															</form>
