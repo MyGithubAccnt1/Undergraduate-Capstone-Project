@@ -53,7 +53,7 @@
 					          				<div class="d-flex flex-direction-row gap-4" style="height: auto;">
 										<?php
 										include("connect.php");
-										$sql = 'SELECT price, title, thumbnail, link FROM product';
+										$sql = "SELECT price, title, thumbnail, link FROM product";
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
 											// output data of each row
