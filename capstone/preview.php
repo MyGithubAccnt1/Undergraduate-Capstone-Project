@@ -142,12 +142,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			  showAllItems(); //Display all items with no filter applied
 			});
 			function comment() {
-				var message = document.getElementById("message");
+				var message = document.getElementById("message").value;
 				let category_items = [
 					{
-						id: 2,
+						id: 1,
 						user_id: <?php echo $_SESSION['id']; ?>,
-						message: $message.value,
+						message: "message",
 					    	sizes: ["US-MEN-10"]
 					}
 				];
