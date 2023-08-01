@@ -37,11 +37,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						</div>
 					</div>
 					<div class="product-details">
-						<h1 class="text-center">Product Name</h1>
+						<h1 class="text-center"><?php echo $_SESSION['title']; ?></h1>
 						<hr>
-						<h3><span>&#8369;</span> 00.00</h3><br>
+						<h3><span>&#8369;</span> <?php echo $_SESSION['price']; ?></h3><br>
 						<h5>DESCRIPTION</h5>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+						<p><?php echo $_SESSION['descriptions']; ?></p>
 						<h5>CONTENTS</h5>
 						<p>18' Golden Neck Chain</p>
 						<p>1 SBM Necklace</p>
