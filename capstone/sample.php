@@ -63,12 +63,12 @@
 														<div class="thumb-wrapper border border-dark m-0" style="width: 200px;">
 															<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
 															<div class="img-box">
-																<img src="<?php $row["thumbnail"] ?>" class="img-fluid" alt="Missing Image">
+																<img src="<?php $row["thumbnail"]?>" class="img-fluid" alt="Missing Image">
 															</div>
 															<div class="thumb-content">
-																<h4><?php $row["title"] ?></h4>
-																<p class="item-price"><b>₱ <?php $row["price"] ?></b></p>
-																<a href="<?php $row["link"] ?>">
+																<h4><?php $row["title"]?></h4>
+																<p class="item-price"><b>₱ <?php $row["price"]?></b></p>
+																<a href="<?php $row["link"]?>">
 																	<button class="rounded-0 btn btn-outline-success btn-sm">View</button>
 																</a>
 															</div>
