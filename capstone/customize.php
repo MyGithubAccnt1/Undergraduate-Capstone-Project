@@ -92,7 +92,7 @@
 			    price: 49.44,
 			    title: "CIRCLE",
 			    thumbnail:
-			      "images/set3.png",
+			      "images/circle.png",
 			    link: "customize-circle.php",
 			    sizes: ["US-MEN-14"]
 			  },
