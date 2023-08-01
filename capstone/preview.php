@@ -160,7 +160,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				var message = document.getElementById("message").value;
 				let category_items = [
 					{
-						id: 1,
+						id: 2,
 						user_id: <?php echo $_SESSION['id']; ?>,
 						message: "message",
 					    	sizes: ["US-MEN-10"]
