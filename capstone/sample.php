@@ -51,36 +51,36 @@
 					          		<div class="carousel-inner" style="width: 100%">
 					          			<div class="item carousel-item active" style="overflow-x: auto;">
 					          				<div class="d-flex flex-direction-row gap-4" style="height: auto;">
-					          					<?php
-											include("connect.php");
-											$sql = "SELECT price, title, thumbnail, link FROM product";
-											$result = $conn->query($sql);
-											if ($result->num_rows > 0) {
-										      		// output data of each row
-										      		while($row = $result->fetch_assoc()) {
-										    	?>
-													<div class="container p-0 m-0">
-														<div class="thumb-wrapper border border-dark m-0" style="width: 200px;">
-															<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-															<div class="img-box">
-																<img src="<?php $row["thumbnail"]?>" class="img-fluid" alt="Missing Image">
-															</div>
-															<div class="thumb-content">
-																<h4><?php $row["title"]?></h4>
-																<p class="item-price"><b>₱ <?php $row["price"]?></b></p>
-																<a href="<?php $row["link"]?>">
-																	<button class="rounded-0 btn btn-outline-success btn-sm">View</button>
-																</a>
-															</div>
-														</div>
+										<?php
+										include("connect.php");
+										$sql = "SELECT price, title, thumbnail, link FROM product";
+										$result = $conn->query($sql);
+										if ($result->num_rows > 0) {
+											// output data of each row
+											while($row = $result->fetch_assoc()) {
+										?>
+											<div class="container p-0 m-0">
+												<div class="thumb-wrapper border border-dark m-0" style="width: 200px;">
+													<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+													<div class="img-box">
+														<img src="<?php $row["thumbnail"]?>" class="img-fluid" alt="Missing Image">
 													</div>
-											<?php
-										      		}
-										    	} else {
-										      		echo "0 results";
-										   	}
-										    	$conn->close();
-										    	?>
+													<div class="thumb-content">
+														<h4><?php $row["title"]?></h4>
+														<p class="item-price"><b>₱ <?php $row["price"]?></b></p>
+														<a href="<?php $row["link"]?>">
+															<button class="rounded-0 btn btn-outline-success btn-sm">View</button>
+														</a>
+													</div>
+												</div>
+											</div>
+										<?php
+											}
+										} else {
+											echo "0 results";
+										}
+										$conn->close();
+										?>
 					          				</div>
 					          			</div>
 					          		</div>
