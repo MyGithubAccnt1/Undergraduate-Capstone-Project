@@ -75,13 +75,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							button1();
 						}
 						function comment() {
-							echo '<div class="card p-3 mx-4">';
-			                                echo '<div class="d-flex justify-content-between align-items-center">';
-			                                echo '<div class="d-flex flex-row align-items-center">';
-			                                echo '<span><small class="font-weight-bold text-primary">.$_SESSION['id'];.</small> <small class="font-weight-bold">.$_POST['comment'];.</small></span>';
-		                                        echo '</div>';
-			                                echo '</div>';
-			                                echo '</div>';
+							echo '<div class="card p-3 mx-4"><div class="d-flex justify-content-between align-items-center"><div class="d-flex flex-row align-items-center"><span><small class="font-weight-bold text-primary">'.$_SESSION['id'];.'</small> <small class="font-weight-bold">'.$_POST['comment'];.'</small></span></div></div></div>';
 						}
 						?>
 		                                </div>
