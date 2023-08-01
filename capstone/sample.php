@@ -54,10 +54,10 @@
 					          					<?php
 											include("connect.php");
 											$sql = "SELECT price, title, thumbnail, link FROM product";
-											$result = $conn->query($sql);
-											if ($result->num_rows > 0) {
+											$result = mysqli_query($conn, $sql);
+											if (mysqli_num_rows($result) > 0) {
 										      		// output data of each row
-										      		while($row = $result->fetch_assoc()) {
+										      		while($row = mysqli_fetch_assoc($result);) {
 										    	?>
 													<div class="container p-0 m-0">
 														<div class="thumb-wrapper border border-dark m-0" style="width: 200px;">
