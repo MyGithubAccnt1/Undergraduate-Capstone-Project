@@ -70,22 +70,30 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		                        <div class="collapse" id="collapseExample">
 		                                <div class="stick-top bg-dark text-center text-white py-2">Comment Section</div>
 		                                <div class="border card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="product_id-comment">
-		                                    <div class="card p-3 mx-4">
-		                                        <div class="d-flex justify-content-between align-items-center">
-		                                            <div class="d-flex flex-row align-items-center">
-		                                                <span><small class="font-weight-bold text-primary">james_olesenn</small> <small class="font-weight-bold">Thanks</small></span>
-		                                            </div>
-		                                            <small>2 days ago</small>
-		                                        </div>
-		                                    </div>
+						<?php
+						if(array_key_exists('comment', $_POST)) {
+							comment();
+						}
+						function comment() {
+						echo	"<div class="card p-3 mx-4">
+			                                	<div class="d-flex justify-content-between align-items-center">
+			                                        	<div class="d-flex flex-row align-items-center">
+			                                                	<span><small class="font-weight-bold text-primary"><?php echo $_SESSION['id']; ?></small> <small class="font-weight-bold"><?php echo $_POST['comment']; ?></small></span>
+		                                           	 	</div>
+			                                	</div>
+			                                </div>";
+						}
+						?>
 		                                </div>
 		                                <div class="stick-bot">
-						    <div class="comment-area">
-							<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" id="message"></textarea>
-						    </div>
-						    <div class="d-flex justify-content-center mt-3">
-							<button type="buttont" class="btn btn-primary rounded-pill btn-md w-75" onclick="comment()">Send</button>
-						    </div>
+							<form method="POST">
+								<div class="comment-area">
+									<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" name="comment"></textarea>
+							    	</div>
+							    	<div class="d-flex justify-content-center mt-3">
+									<button type="submit" class="btn btn-primary rounded-pill btn-md w-75">Send</button>
+							    	</div>
+							</form>
 		                                </div>
 		                        </div>
 	                        </div>
@@ -155,33 +163,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						'</small></span></div></div></div>';
 					$("#product_id-comment").append(item_content);
 				}
-			}
-			function comment() {
-				var message = document.getElementById("message").value;
-				let category_items = [
-					{
-						id: 1,
-						user_id: <?php echo $_SESSION['id']; ?>,
-						message: $message,
-					    	sizes: ["US-MEN-10"]
-					}
-				];
-				function showAllItems() {
-					//Default grid to show all items on page load in
-					$("#product_id-comment").empty();
-					for (let i = 0; i < category_items.length; i++) {
-						let item_content =
-							'<div class="card p-3 mx-4" data-available-sizes="' + 
-							category_items[i]["sizes"] + 
-							'"><div class="d-flex justify-content-between align-items-center"><div class="d-flex flex-row align-items-center"><span><small class="font-weight-bold text-primary">User: ' +
-							category_items[i]["user_id"] +
-							'</small> <small class="font-weight-bold">' +
-							category_items[i]["message"] +
-							'</small></span></div></div></div>';
-						$("#product_id-comment").append(item_content);
-					}
-				}
-				showAllItems(); 
 			}
 		</script>
 	</body>
