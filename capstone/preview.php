@@ -78,30 +78,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		                                            <small>2 days ago</small>
 		                                        </div>
 		                                    </div>
-		                                    <div class="card p-3 mx-4 my-3">
-		                                        <div class="d-flex justify-content-between align-items-center">
-		                                            <div class="d-flex flex-row align-items-center">
-		                                                <span><small class="font-weight-bold text-primary">olan_sams</small> <small class="font-weight-bold">Loving your work and profile!</small></span>
-		                                            </div>
-		                                            <small>3 days ago</small>
-		                                        </div>
-		                                    </div>
-		                                    <div class="card p-3 mx-4 my-3">
-		                                        <div class="d-flex justify-content-between align-items-center">
-		                                            <div class="d-flex flex-row align-items-center">
-		                                                <span><small class="font-weight-bold text-primary">rashida_jones</small> <small class="font-weight-bold">Really cool Which filter are you using?</small></span>
-		                                            </div>
-		                                            <small>3 days ago</small>
-		                                        </div>
-		                                    </div>
-		                                    <div class="card p-3 mx-4 my-3">
-		                                        <div class="d-flex justify-content-between align-items-center">
-		                                            <div class="d-flex flex-row align-items-center">
-		                                                <span><small class="font-weight-bold text-primary">simona_rnasi</small> <small class="font-weight-bold">Hmm, This poster looks cool</small></span>
-		                                            </div>
-		                                            <small>3 days ago</small>
-		                                        </div>
-		                                    </div>
 		                                </div>
 		                                <div class="stick-bot">
 						    <div class="comment-area">
@@ -171,7 +147,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					{
 						id: 1,
 						user_id: <?php echo $_SESSION['id']; ?>,
-						message: "$message.value",
+						message: $message.value,
 					    	sizes: ["US-MEN-10"]
 					}
 				];
@@ -186,7 +162,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						category_items[i]["sizes"] + 
 						'"><div class="d-flex justify-content-between align-items-center"><div class="d-flex flex-row align-items-center"><span><small class="font-weight-bold text-primary">User: ' +
 						category_items[i]["user_id"] +
-						'</small><small class="font-weight-bold">' +
+						'</small> <small class="font-weight-bold">' +
 						category_items[i]["message"] +
 						'</small></span></div></div></div>';
 					$("#product_id-comment").append(item_content);
