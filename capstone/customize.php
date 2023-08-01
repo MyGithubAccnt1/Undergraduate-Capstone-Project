@@ -120,7 +120,7 @@
 				    category_items[i]["title"] +
 				    '</h4><a href="' +
 				    category_items[i]["link"] +
-				    '" class="btn btn-outline-success">Create</a></div></div></div>';
+				    '" class="btn btn-outline-success rounded-0 btn-sm">Create</a></div></div></div>';
 				    $("#customize-sm").append(item_content);
 				}
 				$("#customize-md").empty();
