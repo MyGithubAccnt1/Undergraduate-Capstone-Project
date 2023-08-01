@@ -14,13 +14,26 @@
 		<?php include('header.php') ?>
 		<main class="container-fluid my-4 my-width">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12 d-block d-md-none">
 					<h2>Templates</h2>
 					<div class="carousel slide p-0" data-ride="carousel" data-interval="0">  
 						<!-- Wrapper for carousel items -->
 						<div class="carousel-inner" style="width: 100%">
 							<div class="item carousel-item active" style="overflow-x: auto;">
-								<div class="d-flex flex-direction-row gap-4" id="customize" style="height: auto;">
+								<div class="d-flex flex-direction-row gap-4" id="customize-sm" style="height: auto;">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 d-none d-sm-block">
+					<h2>Templates</h2>
+					<div class="carousel slide p-0" data-ride="carousel" data-interval="0">  
+						<!-- Wrapper for carousel items -->
+						<div class="carousel-inner" style="width: 100%">
+							<div class="item carousel-item active" style="overflow-x: auto;">
+								<div class="d-flex flex-direction-row gap-4" id="customize-md" style="height: auto;">
 									
 								</div>
 							</div>
@@ -55,7 +68,7 @@
 			});
 			function showAllItems() {
 				//Default grid to show all items on page load in
-				$("#customize").empty();
+				$("#customize-sm").empty();
 				for (let i = 0; i < category_items.length; i++) {
 				    let item_content =
 				    '<div class="col-sm-6 p-0" data-available-sizes="' + 
@@ -67,7 +80,23 @@
 				    '</h4><a href="' +
 				    category_items[i]["link"] +
 				    '" class="btn btn-outline-success">Create</a></div></div></div>';
-				    $("#customize").append(item_content);
+				    $("#customize-sm").append(item_content);
+				}
+				$("#customize-md").empty();
+				for (let i = 0; i < category_items.length; i++) {
+				    let item_content =
+				    '<div class="container p-0 m-0" data-available-sizes="' + 
+				    category_items[i]["sizes"] + 
+				    '"><div class="thumb-wrapper border border-dark m-0" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
+				    category_items[i]["thumbnail"] +
+				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
+				    category_items[i]["title"] +
+				    '</h4><p class="item-price"><b>₱' +
+				    category_items[i]["price"] +
+				    '</b></p><a href="' +
+				    category_items[i]["link"] +
+				    '" class="btn btn-outline-success rounded-0 btn-sm">View</a></div></div></div>';
+				    $("#customize-md").append(item_content);
 				}
 			}
 		</script>
