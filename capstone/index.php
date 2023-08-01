@@ -132,7 +132,7 @@
 						<h2 class = "text-center text-white">New Arrivals</h2>
 						<div class="container-fluid m-0 p-0">
 							<div class="slider">
-							    <div class="rotator">
+							    	<div class="rotator">
 									<div class="items">
 										<a href="preview.php">
 											<img src="images/set1.png" style="background-color: white;"/>
@@ -163,22 +163,22 @@
 											<img src="images/set6.png" style="background-color: white;"/>
 										</a>
 									</div>
-								    <div class="items">
-								    	<a href="preview.php">
+									<div class="items">
+									    	<a href="preview.php">
 											<img src="images/set7.png" style="background-color: white;"/>
 										</a>
-								    </div>
-								    <div class="items">
-								    	<a href="preview.php">
+								   	</div>
+								    	<div class="items">
+								    		<a href="preview.php">
 											<img src="images/set8.png" style="background-color: white;"/>
 										</a>
-								    </div>
-								    <div class="items">
-								    	<a href="preview.php">
+								    	</div>
+								    	<div class="items">
+								    		<a href="preview.php">
 											<img src="images/set9.png" style="background-color: white;"/>
 										</a>
-								    </div>
-							    </div>
+								    	</div>
+							    	</div>
 							</div>
 						</div>
 					</div>
