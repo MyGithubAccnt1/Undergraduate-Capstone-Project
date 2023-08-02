@@ -56,7 +56,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				
 				<div class="form-check form-switch d-flex flex-row justify-content-center mt-3">
 					<h5 class="text-center">COMMENTS "ON"</h5>
-				  	<input class="form-check-input" type="checkbox" data-toggle="collapse" href="#collapseExample" onclick="submitcomment();>
+				  	<input class="form-check-input" type="checkbox" data-toggle="collapse" href="#collapseExample" onclick="submitcomment();">
 				</div>
 				<div class="row mt-2">
 					<div class="rating"> 
