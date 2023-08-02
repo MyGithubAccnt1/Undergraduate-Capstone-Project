@@ -34,38 +34,9 @@ if($val !== FALSE)
 }
 else
 {
-  $createtable = "CREATE TABLE $table (
-  id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(50) NOT NULL,
-  date VARCHAR(50) NOT NULL,
-  comments TEXT NOT NULL,
-  PRIMARY KEY (id)
-  )";
-  $create= mysql_query($createtable, $connection);
-  
-  if ($create)
-  {
-    if ((!empty($name_entered)) && (!empty($comment_entered)))
-    {
-      mysql_query("INSERT INTO $table (name, date, comments)
-      VALUES ('$name_entered', '$date', '$comment_entered')");
-    }
-    $result= mysql_query( "SELECT * FROM $table ORDER BY ID DESC" ) 
-    or die("SELECT Error: ".mysql_error()); 
-  
-    while ($row = mysql_fetch_array($result)){ 
-      $name_field= $row['name'];
-      $date_field= $row['date'];
-      $comment_field= $row['comments'];
-    
-      echo '<div class="card p-3 mx-4">';
-      echo '<div class="d-flex justify-content-between align-items-center">';
-      echo '<div class="d-flex flex-row align-items-center">';
-      echo "($date_field) <br>";
-      echo '<span><small class="font-weight-bold text-primary">$name_field</small> <small class="font-weight-bold">$comment_field</small></span>';
-      echo "</div></div></div>";
-    }
-  }//if createtable
-}//else
+    echo"<script>alert('Notice: Comment is not yet configured by the admin.')</script>";
+   	$script = "<script>window.location = 'preview.php';</script>";
+   	echo $script;
+}
 $conn->close();
 ?> 
