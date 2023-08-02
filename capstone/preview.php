@@ -11,7 +11,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	  	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	  	<?php include('include.php') ?>
 	</head>
-	<body class="font-monospace">
+	<body class="font-monospace" onload="submitcomment();>
 		<?php include('header.php') ?>
 		<main class="container-fluid">
 			<div class="container-fluid my-width m-0 p-0 mx-auto my-4">
