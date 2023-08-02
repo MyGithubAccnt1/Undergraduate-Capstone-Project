@@ -1,8 +1,10 @@
 <?php
+session_start();
 include("connect.php");
+$title = $_SESSION['title'];
 
 // Fetch comments from the database
-$sql = "SELECT * FROM comments ORDER BY id DESC";
+$sql = "SELECT * FROM comments WHERE title = '$title' ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
 
 // Display comments as HTML
