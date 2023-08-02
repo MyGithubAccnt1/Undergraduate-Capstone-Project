@@ -39,14 +39,14 @@
                             </div>
                             <div class="row m-0 p-0">
                                 <div class="row m-0 p-0">
-                                    <div class="col-6"><p class="text-start my-auto">SAMPLE</p></div>
-                                    <div class="col-3"><p class="my-auto">SAMPLE</p></div>
-                                    <div class="col-3"><p class="text-end my-auto">SAMPLE</p></div>
+                                    <div class="col-6"><p class="text-start my-auto"><?php echo $_SESSION['title']; ?></p></div>
+                                    <div class="col-3"><p class="my-auto"><?php echo $_SESSION['qty']; ?></p></div>
+                                    <div class="col-3"><p class="text-end my-auto">₱<?php echo $_SESSION['price']; ?></p></div>
                                 </div>
                             </div>
                             <div class="row m-0 p-0">
                                 <hr class="border border-dark border-1 my-1 opacity-100">
-                                <p class="text-start my-auto">TOTAL: SAMPLE</p>
+                                <p class="text-start my-auto">TOTAL: ₱<?php echo $_SESSION['price']; ?></p>
                             </div>
                         </div>
                     </div>
