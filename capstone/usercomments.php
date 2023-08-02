@@ -1,22 +1,11 @@
 <?php
 session_start(); 
+include("connect.php");
 $name_entered= $_POST['name'];
 $comment_entered= $_POST['comment'];
-$table= "$_SESSION['title'];";
+$table= $_POST['webpage'];
 
 $date= date("m-d-Y");
-
-$user = "root"; 
-$password = "t@yOn2x/Gnk,"; 
-$host = "localhost"; 
-$dbase = "sbm"; 
-
-$connection= mysql_connect ($host, $user, $password);
-if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
-mysql_select_db($dbase, $connection);
 
 $val = mysql_query("select 1 from $table");
 
@@ -45,16 +34,13 @@ if($val !== FALSE)
 }
 else
 {
-  $createtable= "CREATE TABLE $table
-  ( ".
-  "id INT NOT NULL AUTO_INCREMENT, ".
-  "name VARCHAR(50) NOT NULL, ".
-  "date VARCHAR(50) NOT NULL, ".
-  "comments TEXT NOT NULL, ".
-  "PRIMARY KEY (id)
-  );
-  ";
-  
+  $createtable = "CREATE TABLE ".$table." (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  date VARCHAR(50) NOT NULL,
+  comments TEXT NOT NULL,
+  PRIMARY KEY (id)
+  )";
   $create= mysql_query($createtable, $connection);
   
   if ($create)
