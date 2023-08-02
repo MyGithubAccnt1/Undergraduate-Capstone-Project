@@ -1,3 +1,7 @@
+<?php 
+session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+?>
 <!doctype html>
 <html lang="en">
 	<head>
@@ -76,3 +80,9 @@
 		</script>
 	</body>
 </html>
+}else{
+    echo"<script>alert('Notice: Please login to proceed.')</script>";
+    $script = "<script>window.location = 'signin.php';</script>";
+    echo $script;
+}
+?>
