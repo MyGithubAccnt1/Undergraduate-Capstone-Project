@@ -27,9 +27,12 @@ if($val !== FALSE)
     $date_field= $row['date'];
     $comment_field= $row['comments'];
   
-    echo "$name_field wrote: ($date_field) <br>";
-    echo "$comment_field";
-    echo "<br><hr><br>";
+    echo '<div class="card p-3 mx-4">';
+    echo '<div class="d-flex justify-content-between align-items-center">';
+    echo '<div class="d-flex flex-row align-items-center">';
+    echo "($date_field) <br>";
+    echo '<span><small class="font-weight-bold text-primary">$name_field</small> <small class="font-weight-bold">$comment_field</small></span>';
+    echo "</div></div></div>";
   }
 }
 else
