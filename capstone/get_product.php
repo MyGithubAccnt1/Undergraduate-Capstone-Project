@@ -11,6 +11,8 @@ $row = mysqli_fetch_assoc($result);
 $_SESSION["title"] = $row['title'];
 $_SESSION["price"] = $row['price'];
 $_SESSION["description"] = $row['description'];
+$_SESSION["thumbnail"] = $row['thumbnail'];
+$_SESSION["qty"] = "1";
 // If result matched $myusername and $mypassword, table row must be 1 row
 if(mysqli_num_rows($result) === 1) {
     $script = "<script>window.location = 'preview.php';</script>";
