@@ -136,47 +136,47 @@
 							<div class="slider">
 							    	<div class="rotator">
 									<div class="items">
-										<a href="preview.php">
+										<a href="#!">
 											<img src="images/set1.png" style="background-color: white;"/>
 										</a>
 									</div>
 									<div class="items">
-										<a href="preview.php">
+										<a href="#!">
 											<img src="images/set2.png" style="background-color: white;"/>
 										</a>
 									</div>
 									<div class="items">
-										<a href="preview.php">
+										<a href="#!">
 											<img src="images/set3.png" style="background-color: white;"/>
 										</a>
 									</div>
 									<div class="items">
-										<a href="preview.php">
+										<a href="#!">
 											<img src="images/set4.png" style="background-color: white;"/>
 										</a>
 									</div>
 									<div class="items">
-										<a href="preview.php">
+										<a href="#!">
 											<img src="images/set5.png" style="background-color: white;"/>
 										</a>
 									</div>
 									<div class="items">
-										<a href="preview.php">
+										<a href="#!">
 											<img src="images/set6.png" style="background-color: white;"/>
 										</a>
 									</div>
 									<div class="items">
-									    	<a href="preview.php">
+									    	<a href="#!">
 											<img src="images/set7.png" style="background-color: white;"/>
 										</a>
 								   	</div>
 								    	<div class="items">
-								    		<a href="preview.php">
+								    		<a href="#!">
 											<img src="images/set8.png" style="background-color: white;"/>
 										</a>
 								    	</div>
 								    	<div class="items">
-								    		<a href="preview.php">
+								    		<a href="#!">
 											<img src="images/set9.png" style="background-color: white;"/>
 										</a>
 								    	</div>
