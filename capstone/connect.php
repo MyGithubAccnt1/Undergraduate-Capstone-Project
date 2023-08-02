@@ -4,9 +4,13 @@
 // $password = "OXAEzejQNYFM7Rj";
 // $dbname = "epiz_32646408_gcp";
 
+// ssh -L 8000:localhost:80 Myadmin@20.205.112.210
+// t@yOn2x/Gnk,
+// 12345678910admin! 
+
 $servername = "localhost";
 $username = "root";
-$password = "t@yOn2x/Gnk,";
+$password = "t@yOn2x/Gnk,"; //let password be blank for xampp $password = "";
 $dbname = "sbm";
 
 // Create connection
