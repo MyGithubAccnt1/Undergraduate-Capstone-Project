@@ -69,8 +69,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		              		</div>
 		                        <div class="collapse" id="collapseExample">
 		                                <div class="stick-top bg-dark text-center text-white py-2">Comment Section</div>
-		                                <div class="border card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="showcomments">
-							<input type="hidden" id="name_entered" value="<?php echo $_SESSION['id'];?>"/>
+		                                <div class="border card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="comments-container">
        							<div class="card p-3 mx-4">
 	      							<div class="d-flex justify-content-between align-items-center">
 	      								<div class="d-flex flex-row align-items-center">
@@ -80,12 +79,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	  						</div>
 		                                </div>
 		                                <div class="stick-bot">
-							<div class="comment-area">
-								<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" id="comment_entered"></textarea>
-							</div>
-							<div class="d-flex justify-content-center mt-3">
-								<button type="submit" class="btn btn-primary rounded-pill btn-md w-75" onclick="submitcomment();">Send</button>
-							</div>
+							<form id="comment-form">
+								<div class="comment-area">
+									<input type="hidden" name="name" value="<?php echo $_SESSION['id'];?>"/>
+									<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" name="comment"></textarea>
+								</div>
+								<div class="d-flex justify-content-center mt-3">
+									<button type="submit" class="btn btn-primary rounded-pill btn-md w-75" onclick="submitcomment();">Send</button>
+								</div>
+							</form>
 		                                </div>
 		                        </div>
 	                        </div>
@@ -130,40 +132,36 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			})
 		</script>
 		<script>
-		function submitcomment() {
-			var request;
-			try {
-				request= new XMLHttpRequest();
-			}
-			catch (tryMicrosoft) {
-				try {
-					request= new ActiveXObject("Msxml2.XMLHTTP");
-				}
-				catch (otherMicrosoft) 
-				{
-					try {
-						request= new ActiveXObject("Microsoft.XMLHTTP");
-					}
-					catch (failed) {
-						request= null;
-					}
-				}
-			}
-			var url= "usercomments.php";
-			var username= document.getElementById("name_entered").value;
-			var usercomment= document.getElementById("comment_entered").value;
-			var title = "<?php echo isset($_SESSION['title']) ? $_SESSION['title'] : ''; ?>";
-			var vars = "name=" + username + "&comment=" + usercomment + "&webpage=" + title;
-			request.open("POST", url, true);
-			request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			request.onreadystatechange= function() {
-				if (request.readyState == 4 && request.status == 200) {
-					var return_data=  request.responseText;
-					document.getElementById("showcomments").innerHTML= return_data;
-				}
-			}
-			request.send(vars);
-		}
+			function showComments() {
+		            $.ajax({
+		                url: "get_comments.php", // PHP script to fetch comments from the database
+		                method: "GET",
+		                success: function (data) {
+		                    $("#comments-container").html(data); // Display the comments in the container
+		                }
+		            });
+		        }
+			// Function to handle form submission and add a new comment
+		        $("#comment-form").submit(function (e) {
+		            e.preventDefault(); // Prevent the form from submitting traditionally
+		
+		            // Serialize the form data
+		            var formData = $(this).serialize();
+		
+		            // Send the data to the PHP script to handle comment insertion
+		            $.ajax({
+		                url: "add_comment.php", // PHP script to insert comments into the database
+		                method: "POST",
+		                data: formData,
+		                success: function (data) {
+		                    // If successful, show the updated comments
+		                    showComments();
+		                }
+		            });
+		        });
+		
+		        // Show comments on page load
+		        showComments();
 		</script>
 	</body>
 </html>
