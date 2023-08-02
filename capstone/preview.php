@@ -76,10 +76,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							<form id="comment-form">
 								<div class="comment-area">
 									<input type="hidden" name="name" value="<?php echo $_SESSION['id'];?>"/>
+									<input type="hidden" name="title" value="<?php echo $_SESSION['title'];?>"/>
 									<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" name="comment"></textarea>
 								</div>
 								<div class="d-flex justify-content-center mt-3">
-									<button type="submit" class="btn btn-primary rounded-pill btn-md w-75" onclick="submitcomment();">Send</button>
+									<button type="submit" class="btn btn-primary rounded-pill btn-md w-75">Send</button>
 								</div>
 							</form>
 		                                </div>
