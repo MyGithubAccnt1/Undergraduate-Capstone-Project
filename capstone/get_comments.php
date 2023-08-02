@@ -28,6 +28,9 @@ if ($result) {
     mysqli_free_result($result);
 } else {
     // Handle the case when the query fails
+    // Fetch data from the result object (e.g., using mysqli_fetch_assoc())
+    // Further processing of the data can be done here
+    while ($row = mysqli_fetch_assoc($result)) {
         echo '<div class="comment card p-3 mx-4">';
         echo '<div class="d-flex justify-content-between align-items-center">';
         echo '<div class="d-flex flex-row align-items-center">';
@@ -40,12 +43,11 @@ if ($result) {
         echo '</div>';
         echo '</div>';
     }
+    // Don't forget to free the result object after processing the data
+    mysqli_free_result($result);
+    }
 }
 
 // Don't forget to close the database connection when you're done with it
-mysqli_close($conn);
-
-// Display comments as HTML
-
 mysqli_close($conn);
 ?>
