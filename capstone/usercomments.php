@@ -2,7 +2,7 @@
 
 $name_entered= $_POST['name'];
 $comment_entered= $_POST['comment'];
-$table= $_POST['webpage'];
+$table= echo $_SESSION['title'];
 
 $date= date("m-d-Y");
 
