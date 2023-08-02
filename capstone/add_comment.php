@@ -4,6 +4,7 @@ include("connect.php");
 
 // Get the form data
 $name = $_POST["name"];
+$title = $_POST["title"];
 $comment = $_POST["comment"];
 $date = date('Y-m-d H:i');
 
@@ -12,7 +13,7 @@ $name = mysqli_real_escape_string($conn, $name);
 $comment = mysqli_real_escape_string($conn, $comment);
 
 // Insert the comment into the database
-$sql = "INSERT INTO comments (name, comment, date) VALUES ('$name', '$comment', '$date')";
+$sql = "INSERT INTO comments (name, comment, date, title) VALUES ('$name', '$comment', '$date', '$title')";
 
 if (mysqli_query($conn, $sql)) {
     // Comment added successfully
