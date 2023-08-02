@@ -2,7 +2,7 @@
 session_start(); 
 $name_entered= $_POST['name'];
 $comment_entered= $_POST['comment'];
-$table= $_SESSION['title'];
+$table= "$_SESSION['title']";
 
 $date= date("m-d-Y");
 
@@ -39,7 +39,7 @@ if($val !== FALSE)
     echo '<div class="d-flex justify-content-between align-items-center">';
     echo '<div class="d-flex flex-row align-items-center">';
     echo "($date_field) <br>";
-    echo '<span><small class="font-weight-bold text-primary">$name_field</small> <small class="font-weight-bold">$comment_field</small></span>';
+    echo '<span><small class="font-weight-bold text-primary">User: '.$name_field.'</small> <small class="font-weight-bold">'.$comment_field.'</small></span>';
     echo "</div></div></div>";
   }
 }
