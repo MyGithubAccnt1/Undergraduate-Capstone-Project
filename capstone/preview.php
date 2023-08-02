@@ -80,7 +80,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		                                </div>
 		                                <div class="stick-bot">
 							<div class="comment-area">
-								<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" id="comment_entered" style="overflow-x:hidden; overflow-y:auto;"></textarea>
+								<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" id="comment_entered"></textarea>
 							</div>
 							<div class="d-flex justify-content-center mt-3">
 								<button type="submit" class="btn btn-primary rounded-pill btn-md w-75" onclick="submitcomment();">Send</button>
