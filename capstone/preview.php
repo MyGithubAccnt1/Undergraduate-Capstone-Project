@@ -148,7 +148,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						}
 					}
 				}
-				var title= <?php echo $_SESSION['title'];?>;
+				var title= "<?php echo $_SESSION['title'];?>";
 				var lower = strtolower($title);
 				var complete= trim($lower)
 				var url= "usercomments.php";
