@@ -70,13 +70,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		                        <div class="collapse" id="collapseExample">
 		                                <div class="stick-top bg-dark text-center text-white py-2">Comment Section</div>
 		                                <div class="border card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="comments-container">
-       							<div class="card p-3 mx-4">
-	      							<div class="d-flex justify-content-between align-items-center">
-	      								<div class="d-flex flex-row align-items-center">
-	       									<span><small class="font-weight-bold text-primary"><?php echo $_SESSION['id'];?></small> <small class="font-weight-bold">HAHAHA</small></span>
-		 							</div>
-	  							</div>
-	  						</div>
+       						
 		                                </div>
 		                                <div class="stick-bot">
 							<form id="comment-form">
