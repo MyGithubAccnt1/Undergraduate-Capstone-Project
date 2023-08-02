@@ -14,7 +14,7 @@ $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // Checking if the query was successful
 if ($stmt->rowCount() > 0) {
     // Database has data, so proceed with displaying the comments
-    while ($row = mysqli_fetch_assoc($result)) {
+    foreach ($comments as $row) {
         echo '<div class="comment card p-3 mx-4">';
         echo '<div class="d-flex justify-content-between align-items-center">';
         echo '<div class="d-flex flex-row align-items-center">';
@@ -28,7 +28,7 @@ if ($stmt->rowCount() > 0) {
         echo '</div>';
     }
     // Don't forget to close the database connection when you're done with it
-    mysqli_free_result($result);
+    mysqli_free_result($comments);
 } else {
     // Database is empty, so display a message or perform other actions
     echo '<div class="comment card p-3 mx-4">';
