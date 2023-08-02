@@ -34,7 +34,7 @@ if($val !== FALSE)
 }
 else
 {
-  $createtable = "CREATE TABLE ".$table." (
+  $createtable = "CREATE TABLE $table (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(50) NOT NULL,
   date VARCHAR(50) NOT NULL,
