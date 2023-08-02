@@ -1,5 +1,5 @@
 <?php
-
+session_start(); 
 $name_entered= $_POST['name'];
 $comment_entered= $_POST['comment'];
 $table= echo $_SESSION['title'];
