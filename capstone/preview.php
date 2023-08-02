@@ -152,7 +152,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			var url= "usercomments.php";
 			var username= document.getElementById("name_entered").value;
 			var usercomment= document.getElementById("comment_entered").value;
-			var vars= "name="+username+"&comment="+usercomment+"&webpage="+<?php echo $_SESSION['title'];?>;
+			var title = "<?php echo isset($_SESSION['title']) ? $_SESSION['title'] : ''; ?>";
+			var vars = "name=" + username + "&comment=" + usercomment + "&webpage=" + title;
 			request.open("POST", url, true);
 			request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			request.onreadystatechange= function() {
