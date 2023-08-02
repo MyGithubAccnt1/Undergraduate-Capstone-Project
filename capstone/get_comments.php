@@ -2,19 +2,15 @@
 session_start();
 include("connect.php");
 $title = $_SESSION['title'];
-$pdo = new PDO('mysql:host=localhost;dbname=sbm;charset=utf8', 'username', 'password');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 // Fetch comments from the database
 $sql = "SELECT * FROM comments WHERE title = '$title' ORDER BY id DESC";
-
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$result = mysqli_query($conn, $sql);
 
 // Checking if the query was successful
-if ($stmt->rowCount() > 0) {
+if (mysqli_num_rows($result) > 0) {
     // Database has data, so proceed with displaying the comments
-    foreach ($comments as $row) {
+    while ($row = mysqli_fetch_assoc($result)) {
         echo '<div class="comment card p-3 mx-4">';
         echo '<div class="d-flex justify-content-between align-items-center">';
         echo '<div class="d-flex flex-row align-items-center">';
