@@ -70,6 +70,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		                        <div class="collapse" id="collapseExample">
 		                                <div class="stick-top bg-dark text-center text-white py-2">Comment Section</div>
 		                                <div class="border card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="showcomments">
+							<input type="hidden" id="name_entered" value="<?php echo $_SESSION['id'];?>"/>
        							<div class="card p-3 mx-4">
 	      							<div class="d-flex justify-content-between align-items-center">
 	      								<div class="d-flex flex-row align-items-center">
@@ -149,9 +150,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					}
 				}
 				var url= "usercomments.php";
-				var username= <?php echo $_SESSION['id'];?>;
+				var username= document.getElementById("name_entered").value;
 				var usercomment= document.getElementById("comment_entered").value;
-				var vars= "name="+username+"&comment="+usercomment;
+				var vars= "name="+username+"&comment="+usercomment+"&webpage="+<?php echo $_SESSION['title'];?>;
 				request.open("POST", url, true);
 				request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				request.onreadystatechange= function() {
