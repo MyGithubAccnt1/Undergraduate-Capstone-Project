@@ -67,4 +67,5 @@ else
     }
   }//if createtable
 }//else
+$conn->close();
 ?> 
