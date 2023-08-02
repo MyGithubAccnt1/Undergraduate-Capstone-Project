@@ -6,7 +6,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "t@yOn2x/Gnk,";
+$password = "";
 $dbname = "sbm";
 
 // Create connection
