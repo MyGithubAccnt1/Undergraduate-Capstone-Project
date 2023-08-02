@@ -80,6 +80,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		</script>
 	</body>
 </html>
+<?php
 }else{
     echo"<script>alert('Notice: Please login to proceed.')</script>";
     $script = "<script>window.location = 'signin.php';</script>";
