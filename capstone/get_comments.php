@@ -12,11 +12,12 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '<div class="comment card p-3 mx-4">';
     echo '<div class="d-flex justify-content-between align-items-center">';
     echo '<div class="d-flex flex-row align-items-center">';
-    echo '<span><small class="font-weight-bold text-primary">User: ';
-    echo "{$row['name']}</small> ";
-    echo '<small class="font-weight-bold">';
-    echo "{$row['comment']}</small> <small>{$row['date']}</small></span>";
+    echo '<span><small class="font-weight-bold text-primary">[User: ';
+    echo "{$row['name']}]</small> ";
+    echo '<small class="font-weight-bold">says: ';
+    echo "{$row['comment']}</small></span>";
     echo '</div>';
+    echo "<small>{$row['date']}</small>";
     echo '</div>';
     echo '</div>';
 }
