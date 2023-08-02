@@ -158,6 +158,26 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		        // Show comments on page load
 		        showComments();
 		</script>
+		<script>
+			function updateComments() {
+			// Make an AJAX request to the server-side script to fetch comments
+				$.ajax({
+					type: "GET",
+			      		url: "get_comments.php", // Replace with your server-side script URL
+			      		dataType: "html",
+			      		success: function(response) {
+			        		// Update the comment container with the new comments
+			        		$("#comment-container").html(response);
+			      		},
+			      		error: function(xhr, status, error) {
+			        		console.error("Error fetching comments:", error);
+			      		}
+			   	});
+			}
+			// Call the updateComments function initially and then at regular intervals to keep comments updated
+			updateComments();
+			setInterval(updateComments, 5000); // Update comments every 5 seconds (adjust the interval as needed)
+		</script>
 	</body>
 </html>
 <?php 
