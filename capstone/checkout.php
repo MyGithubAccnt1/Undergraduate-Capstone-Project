@@ -27,23 +27,23 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                             <h4 class="my-2">Billing Address</h4>
                             <div class="col-md-6">
                                 <label class="form-label">First Name</label>
-                                <input type="text" class="form-control" value="">
+                                <input type="text" class="form-control" value="<?php echo $_SESSION['fname']; ?>">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Last Name</label>
-                                <input type="text" class="form-control" value="">
+                                <input type="text" class="form-control" value="<?php echo $_SESSION['lname']; ?>">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Mobile Number</label>
-                                <input type="text" class="form-control" value="">
+                                <input type="text" class="form-control" value="<?php echo $_SESSION['mnumber']; ?>">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Email</label>
-                                <input type="email" class="form-control" value="">
+                                <input type="email" class="form-control" value="<?php echo $_SESSION['email']; ?>">
                             </div>
                             <div class="col-md-12">
                                 <label class="form-label">Complete Address</label>
-                                <input type="email" class="form-control" value="">
+                                <input type="email" class="form-control" value="<?php echo $_SESSION['caddress']; ?>">
                             </div>
                         </div>
                     </div>
