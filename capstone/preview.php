@@ -37,7 +37,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						</div>
 					</div>
 					<div class="product-details">
-						<h1 class="text-center"><?php echo $_SESSION['title']; ?></h1>
+						<h1 class="text-center"><?php echo $_SESSION['id'];?></h1>
 						<hr>
 						<h3><span>&#8369;</span> <?php echo $_SESSION['price']; ?></h3><br>
 						<h5>DESCRIPTION</h5>
@@ -69,7 +69,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		              		</div>
 		                        <div class="collapse" id="collapseExample">
 		                                <div class="stick-top bg-dark text-center text-white py-2">Comment Section</div>
-		                                <div class="border card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="product_id-comment">
+		                                <div class="border card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="showcomments">
        							<div class="card p-3 mx-4">
 	      							<div class="d-flex justify-content-between align-items-center">
 	      								<div class="d-flex flex-row align-items-center">
@@ -79,14 +79,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	  						</div>
 		                                </div>
 		                                <div class="stick-bot">
-							<form method="POST">
-								<div class="comment-area">
-									<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" name="comment"></textarea>
-							    	</div>
-							    	<div class="d-flex justify-content-center mt-3">
-									<button type="submit" class="btn btn-primary rounded-pill btn-md w-75" name="button1">Send</button>
-							    	</div>
-							</form>
+							<div class="comment-area">
+								<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" id="comment_entered" style="overflow-x:hidden; overflow-y:auto;"></textarea>
+							</div>
+							<div class="d-flex justify-content-center mt-3">
+								<button type="submit" class="btn btn-primary rounded-pill btn-md w-75" onclick="submitcomment();">Send</button>
+							</div>
 		                                </div>
 		                        </div>
 	                        </div>
@@ -130,6 +128,42 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				document.getElementById('slider').scrollLeft += 180
 			})
 		</script>
+		<script>
+			function submitcomment() {
+				var request;
+				try {
+					request= new XMLHttpRequest();
+				}
+				catch (tryMicrosoft) {
+					try {
+						request= new ActiveXObject("Msxml2.XMLHTTP");
+					}
+					catch (otherMicrosoft) 
+					{
+						try {
+							request= new ActiveXObject("Microsoft.XMLHTTP");
+						}
+						catch (failed) {
+							request= null;
+						}
+					}
+				}
+				var complete= <?php echo $_SESSION['title'];?>;
+				var url= "usercomments.php";
+				var username= <?php echo $_SESSION['id'];?>;
+				var usercomment= document.getElementById("comment_entered").value;
+				var vars= "name="+username+"&comment="+usercomment+"&webpage="+complete;
+				request.open("POST", url, true);
+				request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				request.onreadystatechange= function() {
+					if (request.readyState == 4 && request.status == 200) {
+						var return_data=  request.responseText;
+						document.getElementById("showcomments").innerHTML= return_data;
+					}
+				}
+				request.send(vars);
+			}
+			</script>
 	</body>
 </html>
 <?php 
