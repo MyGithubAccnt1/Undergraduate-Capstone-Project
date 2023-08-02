@@ -8,8 +8,6 @@ $table= $_POST['webpage'];
 
 $date= date("m-d-Y");
 
-mysql_select_db($dbase, $connection);
-
 $val = mysql_query("select 1 from $table");
 
 if($val !== FALSE)
