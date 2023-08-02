@@ -13,7 +13,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '<span><small class="font-weight-bold text-primary">User: ';
     echo "{$row['name']}</small> ";
     echo '<small class="font-weight-bold">';
-    echo "{$row['comment']}</small> <small>{$row['comment']}</small></span>";
+    echo "{$row['comment']}</small> <small>{$row['date']}</small></span>";
     echo '</div>';
     echo '</div>';
     echo '</div>';
