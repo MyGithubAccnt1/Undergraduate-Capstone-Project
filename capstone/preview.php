@@ -11,7 +11,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	  	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	  	<?php include('include.php') ?>
 	</head>
-	<body class="font-monospace" onload="submitcomment();>
+	<body class="font-monospace">
 		<?php include('header.php') ?>
 		<main class="container-fluid">
 			<div class="container-fluid my-width m-0 p-0 mx-auto my-4">
@@ -37,7 +37,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						</div>
 					</div>
 					<div class="product-details">
-						<h1 class="text-center"><?php echo $_SESSION['id'];?></h1>
+						<h1 class="text-center"><?php echo $_SESSION['title'];?></h1>
 						<hr>
 						<h3><span>&#8369;</span> <?php echo $_SESSION['price']; ?></h3><br>
 						<h5>DESCRIPTION</h5>
@@ -56,7 +56,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				
 				<div class="form-check form-switch d-flex flex-row justify-content-center mt-3">
 					<h5 class="text-center">COMMENTS "ON"</h5>
-				  	<input class="form-check-input" type="checkbox" data-toggle="collapse" href="#collapseExample">
+				  	<input class="form-check-input" type="checkbox" data-toggle="collapse" href="#collapseExample" onclick="submitcomment();>
 				</div>
 				<div class="row mt-2">
 					<div class="rating"> 
