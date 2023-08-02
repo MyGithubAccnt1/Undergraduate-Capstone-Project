@@ -47,11 +47,11 @@ else
 {
   $createtable= "CREATE TABLE $table
   ( ".
-  "ID INT NOT NULL AUTO_INCREMENT, ".
-  "name VARCHAR(50) NOT NULL, ".
-  "date VARCHAR(50) NOT NULL, ".
-  "comments VARCHAR(60000) NOT NULL, ".
-  "PRIMARY KEY (ID)
+  "id INT AUTO_INCREMENT, ".
+  "name VARCHAR(50), ".
+  "date VARCHAR(50), ".
+  "comments TEXT(60000), ".
+  "PRIMARY KEY (id)
   );
   ";
   
