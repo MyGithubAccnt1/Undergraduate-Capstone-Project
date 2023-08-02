@@ -2,7 +2,7 @@
 session_start(); 
 $name_entered= $_POST['name'];
 $comment_entered= $_POST['comment'];
-$table= "$_SESSION['title']";
+$table= "$_SESSION['title'];";
 
 $date= date("m-d-Y");
 
