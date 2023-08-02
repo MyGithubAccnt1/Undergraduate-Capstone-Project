@@ -148,13 +148,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						}
 					}
 				}
-				var title= "<?php echo $_SESSION['title'];?>";
-				var lower = strtolower($title);
-				var complete= trim($lower)
 				var url= "usercomments.php";
 				var username= <?php echo $_SESSION['id'];?>;
 				var usercomment= document.getElementById("comment_entered").value;
-				var vars= "name="+username+"&comment="+usercomment+"&webpage="+complete;
+				var vars= "name="+username+"&comment="+usercomment;
 				request.open("POST", url, true);
 				request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				request.onreadystatechange= function() {
