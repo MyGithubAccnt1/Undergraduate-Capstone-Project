@@ -24,7 +24,7 @@ if (mysqli_num_rows($result) > 0) {
         echo '</div>';
     }
     // Don't forget to close the database connection when you're done with it
-    mysqli_free_result($comments);
+    mysqli_free_result($result);
 } else {
     // Database is empty, so display a message or perform other actions
     echo '<div class="comment card p-3 mx-4">';
