@@ -7,7 +7,7 @@ $table= $_POST['webpage'];
 $date = date('Y-m-d H:i');
 $sql = ("INSERT INTO $table (name, date, comments) VALUES ('$name_entered', '$date', '$comment_entered')");
 if ($conn->query($sql) === TRUE) {
-  $sql = ( "SELECT * FROM $table ORDER BY ID DESC" ) or die("SELECT Error: ".mysql_error()); 
+  $sql = ( "SELECT * FROM $table ORDER BY id DESC" ) or die("SELECT Error: ".mysql_error()); 
   $result = mysqli_query($conn, $sql);
   while ($row = mysql_fetch_array($result)){ 
     $name_field= $row['name'];
