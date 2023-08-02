@@ -20,11 +20,11 @@ $_SESSION["caddress"] = $row['caddress'];
 if(mysqli_num_rows($result) === 1) {
 	if($row['role'] === "Admin") {
 		echo"<script>alert('Notice: Login Successful!')</script>";
-   		$script = "<script>window.location = 'account.php';</script>";
+   		$script = "<script>window.location = 'index.php';</script>";
    		echo $script;
 	}else{
 		echo"<script>alert('Notice: Login Successful!')</script>";
-   		$script = "<script>window.location = 'index.php';</script>";
+   		$script = "<script>window.location = 'account.php';</script>";
    		echo $script;
 	}
 }else {
