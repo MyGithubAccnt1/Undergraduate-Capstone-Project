@@ -7,19 +7,45 @@ $title = $_SESSION['title'];
 $sql = "SELECT * FROM comments WHERE title = '$title' ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
 
-// Display comments as HTML
-while ($row = mysqli_fetch_assoc($result)) {
-    echo '<div class="comment card p-3 mx-4">';
-    echo '<div class="d-flex justify-content-between align-items-center">';
-    echo '<div class="d-flex flex-row align-items-center">';
-    echo '<span><small class="font-weight-bold text-primary">[User: ';
-    echo "{$row['name']}]</small> ";
-    echo '<small class="font-weight-bold">says: ';
-    echo "{$row['comment']}</small></span>";
-    echo '</div>';
-    echo "<small>{$row['date']}</small>";
-    echo '</div>';
-    echo '</div>';
+// Checking if the query was successful
+if ($result) {
+    // Fetch data from the result object (e.g., using mysqli_fetch_assoc())
+    // Further processing of the data can be done here
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo '<div class="comment card p-3 mx-4">';
+        echo '<div class="d-flex justify-content-between align-items-center">';
+        echo '<div class="d-flex flex-row align-items-center">';
+        echo '<span><small class="font-weight-bold text-primary">[User: ';
+        echo "{$row['name']}]</small> ";
+        echo '<small class="font-weight-bold">says: ';
+        echo "{$row['comment']}</small></span>";
+        echo '</div>';
+        echo "<small>{$row['date']}</small>";
+        echo '</div>';
+        echo '</div>';
+    }
+    // Don't forget to free the result object after processing the data
+    mysqli_free_result($result);
+} else {
+    // Handle the case when the query fails
+        echo '<div class="comment card p-3 mx-4">';
+        echo '<div class="d-flex justify-content-between align-items-center">';
+        echo '<div class="d-flex flex-row align-items-center">';
+        echo '<span><small class="font-weight-bold text-warning">[';
+        echo 'Administrator]</small> ';
+        echo '<small class="font-weight-bold">says: ';
+        echo 'Be the first one to leave your comment.</small></span>';
+        echo '</div>';
+        echo '<small class="text-danger">Verified</small>';
+        echo '</div>';
+        echo '</div>';
+    }
 }
+
+// Don't forget to close the database connection when you're done with it
+mysqli_close($conn);
+
+// Display comments as HTML
+
 mysqli_close($conn);
 ?>
