@@ -21,11 +21,26 @@ if(mysqli_num_rows($result) === 1) {
 		$row = mysqli_fetch_assoc($result);
 		$_SESSION["id"] = $row['id'];
 		$_SESSION["email"] = $row['email'];
-		$_SESSION["fname"] = $row['fname'];
-		$_SESSION["lname"] = $row['lname'];
-		$_SESSION["fname"] = $row['fname'];
-		$_SESSION["mnumber"] = $row['mnumber'];
-		$_SESSION["caddress"] = $row['caddress'];
+		if($row['fname'] > 0) {
+			$_SESSION["fname"] = $row['fname'];
+		}else{
+			$_SESSION["fname"] = '';
+		}
+		if($row['lname'] > 0) {
+			$_SESSION["lname"] = $row['lname'];
+		}else{
+			$_SESSION["lname"] = '';
+		}
+		if($row['mnumber'] > 0) {
+			$_SESSION["mnumber"] = $row['mnumber'];
+		}else{
+			$_SESSION["mnumber"] = '';
+		}
+		if($row['caddress'] > 0) {
+			$_SESSION["caddress"] = $row['caddress'];
+		}else{
+			$_SESSION["caddress"] = '';
+		}
 	  	echo"<script>alert('Notice: An account is successfully created.')</script>";
 	  	$script = "<script>window.location = 'index.php';</script>";
 	  	echo $script;
