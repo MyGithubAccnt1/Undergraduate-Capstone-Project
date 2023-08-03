@@ -19,31 +19,25 @@ if(mysqli_num_rows($result) === 1) {
 		$sql = "SELECT * FROM account WHERE email = '$email' and password = '$password'";
 		$result = mysqli_query($conn, $sql);
 		$row = mysqli_fetch_assoc($result);
-		$_SESSION["fname"] = '';
-		$_SESSION["lname"] = '';
-		$_SESSION["mnumber"] = '';
-		$_SESSION["caddress"] = '';
-		$_SESSION["id"] = $row['id'];
-		$_SESSION["email"] = $row['email'];
-		if (empty($row['fname'])) {
-		    $_SESSION["fname"] = '';
+		if (!$row) {
+		    	$sql = "SELECT id, email FROM account WHERE email = '$email' and password = '$password'";
+			$result = mysqli_query($conn, $sql);
+			$row = mysqli_fetch_assoc($result);
+			$_SESSION["id"] = $row['id'];
+		    	$_SESSION["email"] = $row['email'];
+			$_SESSION["fname"] = '';
+			$_SESSION["lname"] = '';
+			$_SESSION["mnumber"] = '';
+			$_SESSION["caddress"] = '';
 		} else {
-		    $_SESSION["fname"] = $row['fname'];
-		}
-		if (empty($row['lname'])) {
-		    $_SESSION["lname"] = '';
-		} else {
-		    $_SESSION["lname"] = $row['lname'];
-		}
-		if (empty($row['mnumber'])) {
-		    $_SESSION["mnumber"] = '';
-		} else {
-		    $_SESSION["mnumber"] = $row['mnumber'];
-		}
-		if (empty($row['caddress'])) {
-		    $_SESSION["caddress"] = '';
-		} else {
-		    $_SESSION["caddress"] = $row['caddress'];
+		    	// Process the data from $row
+		    	$_SESSION["id"] = $row['id'];
+		    	$_SESSION["email"] = $row['email'];
+		   	$_SESSION["fname"] = $row['fname'];
+			$_SESSION["lname"] = $row['lname'];
+			$_SESSION["mnumber"] = $row['mnumber'];
+			$_SESSION["caddress"] = $row['caddress'];
+		    // Do further processing here, considering possible NULL values
 		}
 	  	echo"<script>alert('Notice: An account is successfully created.')</script>";
 	  	$script = "<script>window.location = 'index.php';</script>";
