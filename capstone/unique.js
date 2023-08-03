@@ -16,7 +16,7 @@ toolBtns.forEach(btn => {
 });
 
 canvas.setHeight(800);
-canvas.setWidth(900);
+canvas.setWidth(800);
 canvas.setBackgroundImage('images/unique.png', canvas.renderAll.bind(canvas));
 canvas.freeDrawingBrush.color = 'black';
 canvas.freeDrawingBrush.width = 7;

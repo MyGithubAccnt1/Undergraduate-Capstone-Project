@@ -7,18 +7,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
-body {
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
-
 .container {
   display: flex;
-  width: 100%;
-  gap: 10px;
-  padding: 10px;
-  max-width: 1050px;
+  flex-direction: row;
+  gap: 20px;
+  width: 1030px;
   margin: auto;
 }
 
@@ -28,6 +21,9 @@ section {
 }
 
 .tools-board {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   width: 210px;
   padding: 20px 30px 0px;
   border: 1px solid;
@@ -101,7 +97,7 @@ section {
 
 .back:hover {
   color: #fff;
-  background: #FFCCCB;
+  background: lightcoral;
 }
 
 .buttons .done-img {
@@ -127,12 +123,13 @@ section {
 }
 
 .drawing-board {
-  flex: 1;
-  overflow: hidden;
+  width: auto;
+  height: 100%;
   border: 1px solid;
 }
 
-.drawing-board canvas {
-  width: 100%;
-  height: 100%;
+.outer {
+  overflow-x:auto;
+  overflow-y:auto;
+  padding: 100px 100px 100px 100px;
 }
