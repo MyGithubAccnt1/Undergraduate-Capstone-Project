@@ -18,30 +18,26 @@ if(mysqli_num_rows($result) === 1) {
 	if ($conn->query($sql) === TRUE) {
 		$sql = "SELECT * FROM account WHERE email = '$email' and password = '$password'";
 		$result = mysqli_query($conn, $sql);
+		if (!$result) {
+		    // Error handling
+		    die('Error in SQL query: ' . mysqli_error($conn));
+		}
 		$row = mysqli_fetch_assoc($result);
 		if (!$row) {
-		    	$sql = "SELECT id, email FROM account WHERE email = '$email' and password = '$password'";
-			$result = mysqli_query($conn, $sql);
-			$row = mysqli_fetch_assoc($result);
-			$_SESSION["id"] = $row['id'];
-		    	$_SESSION["email"] = $row['email'];
-			$_SESSION["fname"] = '';
-			$_SESSION["lname"] = '';
-			$_SESSION["mnumber"] = '';
-			$_SESSION["caddress"] = '';
+		    // Handle the case when no matching row was found
+		    echo 'Something went wrong.';
 		} else {
 		    	// Process the data from $row
 		    	$_SESSION["id"] = $row['id'];
-		    	$_SESSION["email"] = $row['email'];
-		   	$_SESSION["fname"] = $row['fname'];
+			$_SESSION["email"] = $row['email'];
+			$_SESSION["fname"] = $row['fname'];
 			$_SESSION["lname"] = $row['lname'];
 			$_SESSION["mnumber"] = $row['mnumber'];
 			$_SESSION["caddress"] = $row['caddress'];
-		    // Do further processing here, considering possible NULL values
+			echo"<script>alert('Notice: An account is successfully created.')</script>";
+		  	$script = "<script>window.location = 'index.php';</script>";
+		  	echo $script;
 		}
-	  	echo"<script>alert('Notice: An account is successfully created.')</script>";
-	  	$script = "<script>window.location = 'index.php';</script>";
-	  	echo $script;
 	} else {
 	  	echo "Error: " . $sql . "<br>" . $conn->error;
 	  	sleep(2); 
