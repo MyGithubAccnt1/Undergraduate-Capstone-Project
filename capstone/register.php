@@ -1,7 +1,10 @@
 <?php
 session_start(); 
 include("connect.php");
-
+$_SESSION["fname"] = '';
+$_SESSION["lname"] = '';
+$_SESSION["mnumber"] = '';
+$_SESSION["caddress"] = '';
 // Escape user inputs for security
 $email = mysqli_real_escape_string($conn, $_REQUEST['email']);
 $password = mysqli_real_escape_string($conn, $_REQUEST['password']);
