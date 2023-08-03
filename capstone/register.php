@@ -21,25 +21,25 @@ if(mysqli_num_rows($result) === 1) {
 		$row = mysqli_fetch_assoc($result);
 		$_SESSION["id"] = $row['id'];
 		$_SESSION["email"] = $row['email'];
-		if($row['fname'] === 0) {
-			$_SESSION["fname"] = $row['fname'];
-		}else{
-			$_SESSION["fname"] = '';
+		if (empty($row['fname'])) {
+		    $_SESSION["fname"] = '';
+		} else {
+		    $_SESSION["fname"] = $row['fname'];
 		}
-		if($row['lname'] === 0) {
-			$_SESSION["lname"] = $row['lname'];
-		}else{
-			$_SESSION["lname"] = '';
+		if (empty($row['lname'])) {
+		    $_SESSION["lname"] = '';
+		} else {
+		    $_SESSION["lname"] = $row['lname'];
 		}
-		if($row['mnumber'] === 0) {
-			$_SESSION["mnumber"] = $row['mnumber'];
-		}else{
-			$_SESSION["mnumber"] = '';
+		if (empty($row['mnumber'])) {
+		    $_SESSION["mnumber"] = '';
+		} else {
+		    $_SESSION["mnumber"] = $row['mnumber'];
 		}
-		if($row['caddress'] === 0) {
-			$_SESSION["caddress"] = $row['caddress'];
-		}else{
-			$_SESSION["caddress"] = '';
+		if (empty($row['caddress'])) {
+		    $_SESSION["caddress"] = '';
+		} else {
+		    $_SESSION["caddress"] = $row['caddress'];
 		}
 	  	echo"<script>alert('Notice: An account is successfully created.')</script>";
 	  	$script = "<script>window.location = 'index.php';</script>";
