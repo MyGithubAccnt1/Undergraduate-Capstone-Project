@@ -16,17 +16,22 @@ if($row['fname'] > 0) {
 }else{
 	$_SESSION["fname"] = '';
 }
-if($row['lname'] > 0) {
+if($row['fname'] === 0) {
+	$_SESSION["fname"] = $row['fname'];
+}else{
+	$_SESSION["fname"] = '';
+}
+if($row['lname'] === 0) {
 	$_SESSION["lname"] = $row['lname'];
 }else{
 	$_SESSION["lname"] = '';
 }
-if($row['mnumber'] > 0) {
+if($row['mnumber'] === 0) {
 	$_SESSION["mnumber"] = $row['mnumber'];
 }else{
 	$_SESSION["mnumber"] = '';
 }
-if($row['caddress'] > 0) {
+if($row['caddress'] === 0) {
 	$_SESSION["caddress"] = $row['caddress'];
 }else{
 	$_SESSION["caddress"] = '';
