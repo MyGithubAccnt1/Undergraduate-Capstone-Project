@@ -7,41 +7,58 @@
 			<ul>
 			    <li>
 			    	<a href="#" class="close">
-		            	<button class="btn btn-dark border border-white rounded-pill text-navigation"
-		            style="width: 75%; height: 40px; margin: 0 0 10px 12.25%;">Close Menu</button>
+		            	<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
+		            		<i class="fas fa-door-open" style="margin: 0 20px 0 10px;"></i><small>Close Menu</small>
+		            	</button>
 		    		</a>
 			    </li>
 			    <li>
-			    	<a href="index.php" class="">
-			    		<button class="btn btn-dark btn-sm border border-white rounded-0 text-navigation">Home</button>
+			    	<a href="index.php">
+			    		<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
+			    			<i class="fas fa-home" style="margin: 0 20px 0 10px;"></i><small>Home</small>
+			    		</button>
 			    	</a>
 			    <li>
-			    	<a href="product.php" class="text-navigation">
-			    		<button class="btn btn-dark btn-sm border border-white rounded-0 text-navigation">Necklaces</button>
+			    	<a href="product.php">
+			    		<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
+			    			<i class="fab fa-hotjar" style="margin: 0 20px 0 10px;"></i><small>Necklace</small>
+			    		</button>
 			    	</a>
 			    <li>
-			    	<a href="product.php" class="text-navigation">
-			    		<button class="btn btn-dark btn-sm border border-white rounded-0 text-navigation">Pins</button>
+			    	<a href="product.php">
+			    		<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
+			    			<i class="fas fa-tag" style="margin: 0 20px 0 10px;"></i><small>Pins</small>
+			    		</button>
 			    	</a>
 			    <li>
-			    	<a href="product.php" class="text-navigation">
-			    		<button class="btn btn-dark btn-sm border border-white rounded-0 text-navigation">Table Nameplates</button>
+			    	<a href="product.php">
+			    		<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
+			    			<i class="fas fa-ruler-combined" style="margin: 0 20px 0 10px;"></i><small>Table Nameplates</small>
+			    		</button>
 			    	</a>
 			    <li>
-			    	<a href="product.php" class="text-navigation">
-			    		<button class="btn btn-dark btn-sm border border-white rounded-0 text-navigation">Logo Seal</button>
+			    	<a href="product.php">
+			    		<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
+			    			<i class="fas fa-sign" style="margin: 0 20px 0 10px;"></i><small>Logo Seal</small>
+			    		</button>
 			    	</a>
 			    <li>
-			    	<a href="signin.php" class="text-navigation">
-				    	<button class="btn btn-dark btn-sm border border-white rounded-0 text-navigation">Sign In</button>
+			    	<a href="signin.php">
+				    	<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
+				    		<i class="fas fa-sign-out-alt" style="margin: 0 20px 0 10px;"></i><small>Sign In</small>
+				    	</button>
 			    	</a>
 			    <li>
-			    	<a href="#offcanvasDark" data-bs-toggle="offcanvas" class="text-navigation">
-			    		<button class="btn btn-dark btn-sm border border-white rounded-0 text-navigation">Cart</button>
+			    	<a href="#offcanvasDark" data-bs-toggle="offcanvas">
+			    		<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
+			    			<i class="fas fa-shopping-cart" style="margin: 0 20px 0 10px;"></i><small>Cart</small>
+			    		</button>
 			    	</a>
 			    <li>
-			    	<a href="account.php" class="text-navigation">
-			    		<button class="btn btn-dark btn-sm border border-white rounded-0 text-navigation">Account</button>
+			    	<a href="account.php">
+			    		<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
+			    			<i class="fas fa-user-circle" style="margin: 0 20px 0 10px;"></i><small>Account</small>
+			    		</button>
 			    	</a>
 			    </li>
 			</ul>

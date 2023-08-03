@@ -90,9 +90,7 @@ header.active-nav .darker{
 }
 
 .navigation{
-    top: 0;
-    left: 0;
-    width: 320px;
+    width: 319px;
     display: flex;
     justify-content: center;
     height: 100vh;
@@ -101,7 +99,7 @@ header.active-nav .darker{
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px);;
 }
 
 ul{
@@ -114,7 +112,7 @@ ul{
 
 li{
     list-style: none;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 li a{
@@ -123,12 +121,6 @@ li a{
     font-size: 1rem;
     margin: 0;
     padding: 0;
-}
-
-.text-navigation {
-    color: #fff;
-    -webkit-text-fill-color: #000;
-    -webkit-text-stroke: 1px #fff;
 }
 
 /*unique width*/
