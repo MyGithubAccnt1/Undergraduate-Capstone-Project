@@ -16,25 +16,25 @@ if($row['fname'] > 0) {
 }else{
 	$_SESSION["fname"] = '';
 }
-if($row['fname'] === 0) {
-	$_SESSION["fname"] = $row['fname'];
-}else{
-	$_SESSION["fname"] = '';
+if (empty($row['fname'])) {
+    $_SESSION["fname"] = '';
+} else {
+    $_SESSION["fname"] = $row['fname'];
 }
-if($row['lname'] === 0) {
-	$_SESSION["lname"] = $row['lname'];
-}else{
-	$_SESSION["lname"] = '';
+if (empty($row['lname'])) {
+    $_SESSION["lname"] = '';
+} else {
+    $_SESSION["lname"] = $row['lname'];
 }
-if($row['mnumber'] === 0) {
-	$_SESSION["mnumber"] = $row['mnumber'];
-}else{
-	$_SESSION["mnumber"] = '';
+if (empty($row['mnumber'])) {
+    $_SESSION["mnumber"] = '';
+} else {
+    $_SESSION["mnumber"] = $row['mnumber'];
 }
-if($row['caddress'] === 0) {
-	$_SESSION["caddress"] = $row['caddress'];
-}else{
-	$_SESSION["caddress"] = '';
+if (empty($row['caddress'])) {
+    $_SESSION["caddress"] = '';
+} else {
+    $_SESSION["caddress"] = $row['caddress'];
 }
 // If result matched $myusername and $mypassword, table row must be 1 row
 if(mysqli_num_rows($result) === 1) {
