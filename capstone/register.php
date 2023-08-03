@@ -1,7 +1,6 @@
 <?php
 session_start(); 
 include("connect.php");
-
 // Escape user inputs for security
 $email = mysqli_real_escape_string($conn, $_REQUEST['email']);
 $password = mysqli_real_escape_string($conn, $_REQUEST['password']);
@@ -18,26 +17,32 @@ if(mysqli_num_rows($result) === 1) {
 	if ($conn->query($sql) === TRUE) {
 		$sql = "SELECT * FROM account WHERE email = '$email' and password = '$password'";
 		$result = mysqli_query($conn, $sql);
-		if (!$result) {
-		    // Error handling
-		    die('Error in SQL query: ' . mysqli_error($conn));
-		}
 		$row = mysqli_fetch_assoc($result);
-		if (!$row) {
-		    // Handle the case when no matching row was found
-		    echo 'Something went wrong.';
+		$_SESSION["id"] = $row['id'];
+		$_SESSION["email"] = $row['email'];
+		if (empty($row['fname'])) {
+		    $_SESSION["fname"] = '';
 		} else {
-		    	// Process the data from $row
-		    	$_SESSION["id"] = $row['id'];
-			$_SESSION["email"] = $row['email'];
-			$_SESSION["fname"] = $row['fname'];
-			$_SESSION["lname"] = $row['lname'];
-			$_SESSION["mnumber"] = $row['mnumber'];
-			$_SESSION["caddress"] = $row['caddress'];
-			echo"<script>alert('Notice: An account is successfully created.')</script>";
-		  	$script = "<script>window.location = 'index.php';</script>";
-		  	echo $script;
+		    $_SESSION["fname"] = $row['fname'];
 		}
+		if (empty($row['lname'])) {
+		    $_SESSION["lname"] = '';
+		} else {
+		    $_SESSION["lname"] = $row['lname'];
+		}
+		if (empty($row['mnumber'])) {
+		    $_SESSION["mnumber"] = '';
+		} else {
+		    $_SESSION["mnumber"] = $row['mnumber'];
+		}
+		if (empty($row['caddress'])) {
+		    $_SESSION["caddress"] = '';
+		} else {
+		    $_SESSION["caddress"] = $row['caddress'];
+		}
+	  	echo"<script>alert('Notice: An account is successfully created.')</script>";
+	  	$script = "<script>window.location = 'index.php';</script>";
+	  	echo $script;
 	} else {
 	  	echo "Error: " . $sql . "<br>" . $conn->error;
 	  	sleep(2); 
