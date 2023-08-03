@@ -30,7 +30,6 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
             'price' => $data['price'],
             'title' => $data['title'],
             'thumbnail' => $data['thumbnail'],
-            'link' => $data['link'],
         ];
     }
 
@@ -100,7 +99,7 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
                                          style="height: auto;">
                                         <?php
                                         include('connect.php');
-                                        $sql = "SELECT price, title, thumbnail, link FROM product";
+                                        $sql = "SELECT price, title, thumbnail FROM product";
                                         $result = $conn->query($sql);
                                         if ($result->num_rows > 0) {
                                             // output data of each row

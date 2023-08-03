@@ -29,7 +29,7 @@
 				<div class="my-width p-3">
 					<h1 style="font-size: 3rem;">SAINT BENEDICT MEDALLION</h1><br><br><br>
 					<p class="d-none d-md-block">A place for people who loves religious jewelry and fashion items.<br>Saint Benedict Medallion is specialized in handcrafted necklaces.<br>Our timeless designs are inspired by faith and nature, crafted with quality materials and love.</p><hr>
-					<a href="#!">
+					<a href="product.php">
 						<button class="btn btn-danger rounded-0 btn-md">SHOP NOW</button>
 					</a>
 				</div>
@@ -202,7 +202,7 @@
 										<div class="d-flex flex-direction-row gap-4" id="two_sm_slideshow" style="height: auto;">
 										<?php
 										include("connect.php");
-										$sql = "SELECT price, title, thumbnail, link FROM product";
+										$sql = "SELECT price, title, thumbnail FROM product";
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
 											// output data of each row
@@ -253,7 +253,7 @@
 										<div class="d-flex flex-direction-row gap-4" id="two_md_slideshow" style="height: auto;">
 										<?php
 										include("connect.php");
-										$sql = "SELECT price, title, thumbnail, link FROM product";
+										$sql = "SELECT price, title, thumbnail FROM product";
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
 											// output data of each row
@@ -306,7 +306,7 @@
 										<div class="d-flex flex-direction-row gap-4" id="three_sm_slideshow" style="height: auto;">
 										<?php
 										include("connect.php");
-										$sql = "SELECT price, title, thumbnail, link FROM product";
+										$sql = "SELECT price, title, thumbnail FROM product";
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
 											// output data of each row
@@ -359,7 +359,7 @@
 										<div class="d-flex flex-direction-row gap-4" id="three_md_slideshow" style="height: auto;">
 										<?php
 										include("connect.php");
-										$sql = "SELECT price, title, thumbnail, link FROM product";
+										$sql = "SELECT price, title, thumbnail FROM product";
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
 											// output data of each row
@@ -412,7 +412,7 @@
 										<div class="d-flex flex-direction-row gap-4" id="four_sm_slideshow" style="height: auto;">
 										<?php
 										include("connect.php");
-										$sql = "SELECT price, title, thumbnail, link FROM product";
+										$sql = "SELECT price, title, thumbnail FROM product";
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
 											// output data of each row
@@ -465,7 +465,7 @@
 										<div class="d-flex flex-direction-row gap-4" id="four_md_slideshow" style="height: auto;">
 										<?php
 										include("connect.php");
-										$sql = "SELECT price, title, thumbnail, link FROM product";
+										$sql = "SELECT price, title, thumbnail FROM product";
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
 											// output data of each row
@@ -518,7 +518,7 @@
 										<div class="d-flex flex-direction-row gap-4" id="five_sm_slideshow" style="height: auto;">
 										<?php
 										include("connect.php");
-										$sql = "SELECT price, title, thumbnail, link FROM product";
+										$sql = "SELECT price, title, thumbnail FROM product";
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
 											// output data of each row
@@ -571,7 +571,7 @@
 										<div class="d-flex flex-direction-row gap-4" id="five_md_slideshow" style="height: auto;">
 										<?php
 										include("connect.php");
-										$sql = "SELECT price, title, thumbnail, link FROM product";
+										$sql = "SELECT price, title, thumbnail FROM product";
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
 											// output data of each row
