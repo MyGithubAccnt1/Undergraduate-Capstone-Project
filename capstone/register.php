@@ -1,10 +1,7 @@
 <?php
 session_start(); 
 include("connect.php");
-$_SESSION["fname"] = '';
-$_SESSION["lname"] = '';
-$_SESSION["mnumber"] = '';
-$_SESSION["caddress"] = '';
+
 // Escape user inputs for security
 $email = mysqli_real_escape_string($conn, $_REQUEST['email']);
 $password = mysqli_real_escape_string($conn, $_REQUEST['password']);
@@ -22,6 +19,10 @@ if(mysqli_num_rows($result) === 1) {
 		$sql = "SELECT * FROM account WHERE email = '$email' and password = '$password'";
 		$result = mysqli_query($conn, $sql);
 		$row = mysqli_fetch_assoc($result);
+		$_SESSION["fname"] = '';
+		$_SESSION["lname"] = '';
+		$_SESSION["mnumber"] = '';
+		$_SESSION["caddress"] = '';
 		$_SESSION["id"] = $row['id'];
 		$_SESSION["email"] = $row['email'];
 		if (empty($row['fname'])) {
