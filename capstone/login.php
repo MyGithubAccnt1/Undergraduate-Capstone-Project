@@ -11,11 +11,18 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 $_SESSION["id"] = $row['id'];
 $_SESSION["email"] = $row['email'];
-$_SESSION["fname"] = $row['fname'];
-$_SESSION["lname"] = $row['lname'];
-$_SESSION["fname"] = $row['fname'];
-$_SESSION["mnumber"] = $row['mnumber'];
-$_SESSION["caddress"] = $row['caddress'];
+if($row['fname'] > 0) {
+	$_SESSION["fname"] = $row['fname'];
+}
+if($row['lname'] > 0) {
+	$_SESSION["lname"] = $row['lname'];
+}
+if($row['mnumber'] > 0) {
+	$_SESSION["mnumber"] = $row['mnumber'];
+}
+if($row['caddress'] > 0) {
+	$_SESSION["caddress"] = $row['caddress'];
+}
 // If result matched $myusername and $mypassword, table row must be 1 row
 if(mysqli_num_rows($result) === 1) {
 	if($row['role'] === "Admin") {
