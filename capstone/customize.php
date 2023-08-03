@@ -73,7 +73,7 @@
 			    title: "CROSS",
 			    thumbnail:
 			      "images/cross.png",
-			    link: "customize-cross.php",
+			    link: "customize-cross.html",
 			    sizes: ["US-MEN-10", "US-MEN-11"]
 			  },
 			  {
@@ -83,7 +83,7 @@
 			    title: "HEART",
 			    thumbnail:
 			      "images/heart.png",
-			    link: "customize-heart.php",
+			    link: "customize-heart.html",
 			    sizes: ["US-MEN-13"]
 			  },
 			  {
@@ -93,7 +93,7 @@
 			    title: "CIRCLE",
 			    thumbnail:
 			      "images/circle.png",
-			    link: "customize-circle.php",
+			    link: "customize-circle.html",
 			    sizes: ["US-MEN-14"]
 			  },
 			  {
@@ -103,7 +103,7 @@
 			    title: "UNIQUE",
 			    thumbnail:
 			      "images/unique.png",
-			    link: "customize-unique.php",
+			    link: "customize-unique.html",
 			    sizes: ["US-MEN-13"]
 			  }
 			];

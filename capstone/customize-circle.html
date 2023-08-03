@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saint Benedict Medallion</title>
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="customize.css">
+  <style>
+    body {
+      background-image: url('images/bg.gif');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <section class="tools-board">
+      <div class="row buttons">
+         <button class="back">Back</button>
+      </div>
+      <div class="row">
+        <label class="title">Shapes</label>
+        <ul class="options">
+          <li class="option tool" id="rectangle">
+            <img src="icons/rectangle.svg" alt="">
+            <span>Rectangle</span>
+          </li>
+          <li class="option tool" id="circle">
+            <img src="icons/circle.svg" alt="">
+            <span>Circle</span>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <label class="title">Options</label>
+        <ul class="options">
+          <li class="option active tool" id="draw">
+            <img src="icons/brush.svg" alt="">
+            <span>Free Draw</span>
+          </li>
+          <li class="option tool" id="text">
+            <img src="icons/text.png" width="21px" class="m-0 p-0" alt="">
+            <span>Text</span>
+          </li>
+          <li class="option tool" id="remove" disabled="disabled">
+            <img src="icons/eraser.svg" alt="">
+            <span>Erase</span>
+          </li>
+        </ul>
+      </div>
+      <div class="row buttons">
+      	<button class="done-img">Done</button>
+        <button class="upload-img">Upload Image</button>
+      </div>
+    </section>
+    <section class="drawing-board">
+      <canvas id="canvas"></canvas>
+    </section>
+  </div>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/fabric@5.2.4/dist/fabric.min.js"></script>
+	<script src="circle.js"></script>
+
+</body>
+
+</html>
