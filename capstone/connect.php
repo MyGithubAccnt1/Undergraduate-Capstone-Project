@@ -6,6 +6,7 @@
 
 // ssh -L 8000:localhost:80 Myadmin@20.205.112.210
 // t@yOn2x/Gnk,
+// sudo cat /opt/bitnami/apache/logs/error_log
 
 $servername = "localhost";
 $username = "root";
