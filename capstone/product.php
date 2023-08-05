@@ -158,7 +158,6 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 </script>
 <script>
     $(document).ready(function () {
-        showAllItems(); //Display all items with no filter applied
         $(".wish-icon i").click(function () {
             $(this).toggleClass("fa-heart fa-heart-o");
         });
