@@ -1,3 +1,7 @@
+<?php 
+session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+?>
 <!doctype html>
 <html lang="en">
 	<head>
@@ -71,9 +75,9 @@
 			    category_id: 8,
 			    price: 39.42,
 			    title: "CROSS",
+			    make: "cross",
 			    thumbnail:
 			      "images/cross.png",
-			    link: "customize-cross.html",
 			    sizes: ["US-MEN-10", "US-MEN-11"]
 			  },
 			  {
@@ -81,9 +85,9 @@
 			    category_id: 8,
 			    price: 31.93,
 			    title: "HEART",
+			    make: "heart",
 			    thumbnail:
 			      "images/heart.png",
-			    link: "customize-heart.html",
 			    sizes: ["US-MEN-13"]
 			  },
 			  {
@@ -91,9 +95,9 @@
 			    category_id: 8,
 			    price: 49.44,
 			    title: "CIRCLE",
+			    make: "circle",
 			    thumbnail:
 			      "images/circle.png",
-			    link: "customize-circle.html",
 			    sizes: ["US-MEN-14"]
 			  },
 			  {
@@ -101,9 +105,9 @@
 			    category_id: 58,
 			    price: 65.38,
 			    title: "UNIQUE",
+			    make: "unique",
 			    thumbnail:
 			      "images/unique.png",
-			    link: "customize-unique.html",
 			    sizes: ["US-MEN-13"]
 			  }
 			];
@@ -112,34 +116,44 @@
 				$("#customize-sm").empty();
 				for (let i = 0; i < category_items.length; i++) {
 				    let item_content =
-				    '<div class="col-sm-6 p-0" data-available-sizes="' + 
+
+				    '<form action="get_customize.php" method="POST"><div class="col-sm-6 p-0" data-available-sizes="' + 
 				    category_items[i]["sizes"] + 
+				    '"><input type="hidden" name="customize" value="' + 
+				    category_items[i]["title"] + 
 				    '"><div class="thumb-wrapper border border-dark" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
-				    category_items[i]["thumbnail"] +
-				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
-				    category_items[i]["title"] +
-				    '</h4><a href="' +
-				    category_items[i]["link"] +
-				    '" class="btn btn-outline-success rounded-0 btn-sm">Create</a></div></div></div>';
-				    $("#customize-sm").append(item_content);
-				}
-				$("#customize-md").empty();
-				for (let i = 0; i < category_items.length; i++) {
-				    let item_content =
-				    '<div class="container p-0 m-0" data-available-sizes="' + 
-				    category_items[i]["sizes"] + 
-				    '"><div class="thumb-wrapper border border-dark m-0" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
 				    category_items[i]["thumbnail"] +
 				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
 				    category_items[i]["title"] +
 				    '</h4><p class="item-price"><b>₱' +
 				    category_items[i]["price"] +
-				    '</b></p><a href="' +
-				    category_items[i]["link"] +
-				    '" class="btn btn-outline-success rounded-0 btn-sm">View</a></div></div></div>';
+				    '</b></p><button type="submit" class="btn btn-outline-success rounded-0 btn-sm">Create</button></div></div></div></form>';
+				    $("#customize-sm").append(item_content);
+				}
+				$("#customize-md").empty();
+				for (let i = 0; i < category_items.length; i++) {
+				    let item_content =
+				    '<form action="get_customize.php" method="POST"><div class="col-sm-6 p-0" data-available-sizes="' + 
+				    category_items[i]["sizes"] + 
+				    '"><input type="hidden" name="customize" value="' + 
+				    category_items[i]["title"] + 
+				    '"><div class="thumb-wrapper border border-dark" style="width: 200px;"><span class="wish-icon"><i class="fa fa-heart-o"></i></span><div class="img-box"><img src="' + 
+				    category_items[i]["thumbnail"] +
+				    '" class="img-fluid" alt="Missing Image"></div><div class="thumb-content"><h4>' +
+				    category_items[i]["title"] +
+				    '</h4><p class="item-price"><b>₱' +
+				    category_items[i]["price"] +
+				    '</b></p><button type="submit" class="btn btn-outline-success rounded-0 btn-sm">Create</button></div></div></div></form>';
 				    $("#customize-md").append(item_content);
 				}
 			}
 		</script>
-  <body>
-<Html>
+  </body>
+</html>
+<?php 
+}else{
+    echo"<script>alert('Notice: Please login to proceed.')</script>";
+    $script = "<script>window.location = 'signin.php';</script>";
+    echo $script;
+}
+?>
