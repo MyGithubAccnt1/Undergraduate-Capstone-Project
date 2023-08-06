@@ -144,26 +144,3 @@
 	    </a>
 	</div>
 </div>
-<script type="text/javascript">
-	var x = 0;
-
-	document.getElementById('output-area').innerHTML = x;
-
-	function button1() {
-	  	document.getElementById('output-area').innerHTML = ++x;
-	  	var total = (x * '<?php echo $_SESSION['price'];?>');
-	  	document.getElementById("totalPrice").innerHTML = total;
-	  	document.getElementById("subtotalPrice").innerHTML = total;
-	}
-
-	function button2() {
-		if (x == 0) {
-
-		}else{
-			document.getElementById('output-area').innerHTML = --x;
-			var total = (x * '<?php echo $_SESSION['price'];?>');
-			document.getElementById("totalPrice").innerHTML = total;
-			document.getElementById("subtotalPrice").innerHTML = total;
-		}
-	}
-</script>

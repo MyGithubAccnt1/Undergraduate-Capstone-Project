@@ -162,6 +162,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			// Initialize the cart and total
 			let cartItems = [];
 
+			// Initialize the x variable and set the initial output-area value to 0
+			var x = 0;
+
 			// Get the 'Add to Cart' button
 			const addToCartBtn = document.getElementById('add-to-cart-btn');
 			addToCartBtn.addEventListener('click', addToCart);
@@ -169,8 +172,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			function addToCart() {
 			  // Dummy product data for demonstration
 			  const product = {
-			    name: '<?php echo $_SESSION['title'];?>'
-			    // price: '<?php echo $_SESSION['price'];?>',
+			    name: '<?php echo $_SESSION['title'];?>',
+			    price: <?php echo $_SESSION['price'];?>,
 			  };
 
 			  // Add the product to the cart
@@ -180,13 +183,30 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			  updateCartDisplay();
 			}
 
+			// Function to remove items from the cart
 			function removeItemFromCart(index) {
-			  if (index >= 0 && index < cartItems.length) {
-			    cartTotal -= cartItems[index].price;
 			    cartItems.splice(index, 1);
+			    x = 0;
 			    updateCartDisplay();
-			  }
 			}
+
+			// Function to increase the quantity (button1)
+		  	function button1() {
+			    document.getElementById('output-area').innerHTML = ++x;
+			    var total = x * <?php echo $_SESSION['price'];?>;
+			    document.getElementById("totalPrice").innerHTML = "₱" + total.toFixed(2);
+			    document.getElementById("subtotalPrice").innerHTML = "₱" + total.toFixed(2);
+		  	}
+
+		  	// Function to decrease the quantity (button2)
+		  	function button2() {
+			    if (x > 0) {
+			      document.getElementById('output-area').innerHTML = --x;
+			      var total = x * <?php echo $_SESSION['price'];?>;
+			      document.getElementById("totalPrice").innerHTML = "₱" + total.toFixed(2);
+			      document.getElementById("subtotalPrice").innerHTML = "₱" + total.toFixed(2);
+			    }
+		  	}
 
 			function updateCartDisplay() {
 			  // Get the cart items list and cart total elements
@@ -227,7 +247,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			    const outputArea = document.createElement('span');
 			    outputArea.id = 'output-area';
 			    outputArea.style.margin = '0 10px';
-			    outputArea.textContent = '0';
+			    outputArea.textContent = `0`;
 
 			    const subtractButton = document.createElement('input');
 			    subtractButton.type = 'button';
@@ -263,13 +283,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			    const col4Div = document.createElement('div');
 			    col4Div.className = 'col-3 text-center';
 
-			    const aElement = document.createElement('button');
-			    aElement.className = 'btn btn-outline-danger btn-sm rounded-0';
-		        aElement.textContent = 'X';
-		        aElement.addEventListener('click', () => removeItemFromCart(index));
+			    // Create the 'Remove' button
+		        const removeButton = document.createElement('button');
+		        removeButton.className = 'btn btn-outline-danger btn-sm rounded-0';
+		        removeButton.textContent = 'Remove';
 
-			    // Append the 'a' element to the fourth column div
-			    col4Div.appendChild(aElement);
+		        // Use a closure to capture the correct index value
+	            removeButton.addEventListener('click', (function(index) {
+	              return function() {
+	                removeItemFromCart(index);
+	              };
+	            })(cartItems.length - 1));
+
+		        // Append the 'Remove' button to the fourth column div
+		        col4Div.appendChild(removeButton);
 
 			    // Append all the columns to the main row div
 			    rowDiv.appendChild(col1Div);
@@ -280,8 +307,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			    // Append the main row div to the container div
 			    cartItemsList.appendChild(rowDiv);
 
-			    // Function definitions for button1 and button2 are omitted as they are assumed to be defined elsewhere.
-
+			    // Update the total price
+		       	const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+		       	document.getElementById('subtotalPrice').textContent = `₱${totalPrice.toFixed(2)}`;
 			  });
 
 			}
