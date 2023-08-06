@@ -110,28 +110,21 @@
 	</div>
 	<div class="offcanvas-body">
 		<div class="row">
-			<div class="col-3">
-				<p class="text-center">ITEM</p>
-				<p>SET 1</p>
+			<div class="col-3 text-center">
+				<p>ITEM</p>
 			</div>
 			<div class="col-3 text-center">
 				<p>QTY</p>
-				<div class="d-flex justify-content-center">
-					<input type=button value=" + " onclick="button1()"/>
-					<span id="output-area" style="margin: 0 10px;"></span>
-					<input type=button value=" - " onclick="button2()"/>
-				</div>
 			</div>
-			<div class="col-3 text-end">
-				<p class="text-center">PRICE</p>
-				<div id="totalPrice"></div>
+			<div class="col-3 text-center">
+				<p>PRICE</p>
 			</div>
 			<div class="col-3 text-center">
 				<p>OPTION</p>
-			    <a data-toggle="collapse" href="#collapseExample1">
-			       <i class="fas fa-times" style="color: #ffffff;"></i>
-			    </a>
 			</div>
+		</div>
+		<div class="row" id="cart-items">
+			<!-- test display -->
 		</div>
 	    <div class="row">
 	    	<hr>
@@ -158,9 +151,9 @@
 
 	function button1() {
 	  	document.getElementById('output-area').innerHTML = ++x;
-	  	var total = (x * 499);
-	  	document.getElementById("totalPrice").innerHTML = total + ".00";
-	  	document.getElementById("subtotalPrice").innerHTML = total + ".00";
+	  	var total = (x * '<?php echo $_SESSION['price'];?>');
+	  	document.getElementById("totalPrice").innerHTML = total;
+	  	document.getElementById("subtotalPrice").innerHTML = total;
 	}
 
 	function button2() {
@@ -168,9 +161,9 @@
 
 		}else{
 			document.getElementById('output-area').innerHTML = --x;
-			var total = (x * 499);
-			document.getElementById("totalPrice").innerHTML = total + ".00";
-			document.getElementById("subtotalPrice").innerHTML = total + ".00";
+			var total = (x * '<?php echo $_SESSION['price'];?>');
+			document.getElementById("totalPrice").innerHTML = total;
+			document.getElementById("subtotalPrice").innerHTML = total;
 		}
 	}
 </script>
