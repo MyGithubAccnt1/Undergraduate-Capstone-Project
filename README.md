@@ -16,6 +16,6 @@ Steps on how to use
 12. Use any code editor (Visual Studio Code, Notepad++, Sublime) to edit the files.
 13. After editing any file, save it (ctrl+s) then refresh the tab http://localhost/capstone/ in your browser to view changes.
 
-website is now live at: https://capstone-sbm.free.nf/
+website is now live at: http://20.205.112.210/
 
 status: work on progress.
