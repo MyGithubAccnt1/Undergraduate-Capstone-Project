@@ -9,90 +9,95 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	  	<title>Saint Benedict Medallion</title>
 	  	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-	  	<?php include('include.php') ?>
+	  	<?php include('./include/style.php') ?>
+		<style>
+			.cart-item {
+	  		    width: 33.33%;
+	  		}
+		</style>
 	</head>
 	<body class="font-monospace">
-		<?php include('header.php') ?>
-		<main class="container-fluid">
-			<div class="container-fluid my-width m-0 p-0 mx-auto my-4">
-				<div id="content-wrapper" class="m-0 p-0">
-					<div class="m-o p-o">
-						<div class="d-flex justify-content-center m-0 p-0">
-							<img id=featured src="images/set1.png">
-						</div>
-						<div class="d-flex justify-content-center m-0 p-0">
-							<div id="slide-wrapper" class="m-0 p-0">
-								<img id="slideLeft" class="arrow" src="icons/arrow-left.png">
-								<div id="slider">
-									<img class="thumbnail active-img" src="images/set2.png">
-									<img class="thumbnail" src="images/set3.png">
-									<img class="thumbnail" src="images/set4.png">
-									<img class="thumbnail" src="images/set5.png">
-									<img class="thumbnail" src="images/set6.png">
-									<img class="thumbnail" src="images/set7.png">
-									<img class="thumbnail" src="images/set8.png">
+		<?php include('./include/header.php') ?>
+		<main class="container-fluid m-0 p-0">
+			<section>
+				<div class="container-fluid my-width m-0 p-0 mx-auto my-4">
+					<div id="content-wrapper" class="m-0 p-0">
+						<div class="m-o p-o">
+							<div class="d-flex justify-content-center m-0 p-0">
+								<img id=featured src="images/set1.png">
+							</div>
+							<div class="d-flex justify-content-center m-0 p-0">
+								<div id="slide-wrapper" class="m-0 p-0">
+									<img id="slideLeft" class="arrow" src="icons/arrow-left.png">
+									<div id="slider">
+										<img class="thumbnail active-img" src="images/set2.png">
+										<img class="thumbnail" src="images/set3.png">
+										<img class="thumbnail" src="images/set4.png">
+										<img class="thumbnail" src="images/set5.png">
+										<img class="thumbnail" src="images/set6.png">
+										<img class="thumbnail" src="images/set7.png">
+										<img class="thumbnail" src="images/set8.png">
+									</div>
+									<img id="slideRight" class="arrow" src="icons/arrow-right.png">
 								</div>
-								<img id="slideRight" class="arrow" src="icons/arrow-right.png">
+							</div>
+						</div>
+						<div class="product-details">
+							<div class="shop-item">
+							    <h1 class="shop-item-title text-center"><?php echo $_SESSION['title'];?></h1>
+							    <hr>
+							    <div class="shop-item-details">
+							        <h3 class="shop-item-price"><span>&#8369;</span> <?php echo $_SESSION['price']; ?></h3><br>
+							        <h5>DESCRIPTION</h5>
+							        <p><?php echo $_SESSION['description']; ?></p>
+							        <h5>CONTENTS</h5>
+							        <p>18' Golden Neck Chain</p>
+							        <p>1 SBM Necklace</p>
+							        <button class="btn btn-success btn-md rounded-0 m-2 shop-item-button" type="button">Add to Cart</button>
+							        <button class="btn btn-danger btn-md rounded-0 m-2" type="button">Proceed to Checkout</button>
+							    </div>
 							</div>
 						</div>
 					</div>
-					<div class="product-details">
-						<h1 class="text-center"><?php echo $_SESSION['title'];?></h1>
-						<hr>
-						<h3><span>&#8369;</span> <?php echo $_SESSION['price']; ?></h3><br>
-						<h5>DESCRIPTION</h5>
-						<p><?php echo $_SESSION['description']; ?></p>
-						<h5>CONTENTS</h5>
-						<p>18' Golden Neck Chain</p>
-						<p>1 SBM Necklace</p>
-						<div class="product-buttons d-flex flex-direction-row justify-content-center gap-2 text-center">
-							<a class="btn btn-success btn-md rounded-0" href="#offcanvasDark" data-bs-toggle="offcanvas" id="add-to-cart-btn">Add to Cart</a>
-							<a class="btn btn-danger btn-md rounded-0" href="checkout.php">Proceed to Checkout</a>
-						</div>
+				</div>
+				<div class="container-fluid my-width m-0 p-0 mx-auto border border-dark">
+					
+					<div class="form-check form-switch d-flex flex-row justify-content-center mt-3">
+						<h5 class="text-center">COMMENTS "ON"</h5>
+					  	<input class="form-check-input" type="checkbox" data-toggle="collapse" href="#collapseExample" onclick="submitcomment();">
 					</div>
+					<div class="row mt-2">
+						<div class="rating"> 
+		                  	<input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+		                  	<input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> 
+		                  	<input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+		                  	<input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+		                  	<input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+		                  	<h5 style="margin-left: 30px; margin-top: 5px;">Rate: </h5>
+	              		</div>
+	                    <div class="collapse" id="collapseExample">
+	                        <div class="stick-top bg-dark text-center text-white py-2">Comment Section</div>
+	                        <div class="border card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="comments-container">
+					
+	                        </div>
+	                        <div class="stick-bot">
+								<form id="comment-form">
+									<div class="comment-area">
+										<input type="hidden" name="name" value="<?php echo $_SESSION['id'];?>"/>
+										<input type="hidden" name="title" value="<?php echo $_SESSION['title'];?>"/>
+										<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" name="comment"></textarea>
+									</div>
+									<div class="d-flex justify-content-center mt-3">
+										<button type="submit" class="btn btn-primary rounded-pill btn-md w-75">Send</button>
+									</div>
+								</form>
+	                        </div>
+	                    </div>
+	                </div>
 				</div>
-			</div>
-			<div class="container-fluid my-width m-0 p-0 mx-auto border border-dark">
-				
-				<div class="form-check form-switch d-flex flex-row justify-content-center mt-3">
-					<h5 class="text-center">COMMENTS "ON"</h5>
-				  	<input class="form-check-input" type="checkbox" data-toggle="collapse" href="#collapseExample" onclick="submitcomment();">
-				</div>
-				<div class="row mt-2">
-					<div class="rating"> 
-	                  	<input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-	                  	<input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> 
-	                  	<input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-	                  	<input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-	                  	<input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-	                  	<h5 style="margin-left: 30px; margin-top: 5px;">Rate: </h5>
-              		</div>
-                    <div class="collapse" id="collapseExample">
-                        <div class="stick-top bg-dark text-center text-white py-2">Comment Section</div>
-                        <div class="border card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="comments-container">
-				
-                        </div>
-                        <div class="stick-bot">
-							<form id="comment-form">
-								<div class="comment-area">
-									<input type="hidden" name="name" value="<?php echo $_SESSION['id'];?>"/>
-									<input type="hidden" name="title" value="<?php echo $_SESSION['title'];?>"/>
-									<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" name="comment"></textarea>
-								</div>
-								<div class="d-flex justify-content-center mt-3">
-									<button type="submit" class="btn btn-primary rounded-pill btn-md w-75">Send</button>
-								</div>
-							</form>
-                        </div>
-                    </div>
-                </div>
-			</div>
+			</section>
 		</main>
-		<?php include('footer.php') ?>
-		<script type="text/javascript">
-			var navigation = document.querySelector("header");
-			window.onload = navigation.classList.toggle('bg-dark');
-		</script>
+		<?php include('./include/footer.php') ?>
 		<script>
 		    var toggleClick = document.querySelector(".box,.icon");
 		    var navigation = document.querySelector("header");
@@ -129,7 +134,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		<script>
 			function showComments() {
 		            $.ajax({
-		                url: "get_comments.php", // PHP script to fetch comments from the database
+		                url: "./php/get_comments.php", // PHP script to fetch comments from the database
 		                method: "GET",
 		                success: function (data) {
 		                    $("#comments-container").html(data); // Display the comments in the container
@@ -145,7 +150,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		
 		            // Send the data to the PHP script to handle comment insertion
 		            $.ajax({
-		                url: "add_comment.php", // PHP script to insert comments into the database
+		                url: "./php/add_comments.php", // PHP script to insert comments into the database
 		                method: "POST",
 		                data: formData,
 		                success: function (data) {
@@ -157,162 +162,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		
 		        // Show comments on page load
 		        showComments();
-		</script>
-		<script>
-			// Initialize the cart and total
-			let cartItems = [];
-
-			// Initialize the x variable and set the initial output-area value to 0
-			var x = 0;
-
-			// Get the 'Add to Cart' button
-			const addToCartBtn = document.getElementById('add-to-cart-btn');
-			addToCartBtn.addEventListener('click', addToCart);
-
-			function addToCart() {
-			  // Dummy product data for demonstration
-			  const product = {
-			    name: '<?php echo $_SESSION['title'];?>',
-			    price: <?php echo $_SESSION['price'];?>,
-			  };
-
-			  // Add the product to the cart
-			  cartItems.push(product);
-
-			  // Update the cart display
-			  updateCartDisplay();
-			}
-
-			// Function to remove items from the cart
-			function removeItemFromCart(index) {
-			    cartItems.splice(index, 1);
-			    x = 0;
-			    updateCartDisplay();
-			}
-
-			// Function to increase the quantity (button1)
-		  	function button1() {
-			    document.getElementById('output-area').innerHTML = ++x;
-			    var total = x * <?php echo $_SESSION['price'];?>;
-			    document.getElementById("totalPrice").innerHTML = "₱" + total.toFixed(2);
-			    document.getElementById("subtotalPrice").innerHTML = "₱" + total.toFixed(2);
-		  	}
-
-		  	// Function to decrease the quantity (button2)
-		  	function button2() {
-			    if (x > 0) {
-			      document.getElementById('output-area').innerHTML = --x;
-			      var total = x * <?php echo $_SESSION['price'];?>;
-			      document.getElementById("totalPrice").innerHTML = "₱" + total.toFixed(2);
-			      document.getElementById("subtotalPrice").innerHTML = "₱" + total.toFixed(2);
-			    }
-		  	}
-
-			function updateCartDisplay() {
-			  // Get the cart items list and cart total elements
-			  const cartItemsList = document.getElementById('cart-items');
-
-			  // Clear the cart items list before updating
-			  cartItemsList.innerHTML = '';
-
-			  // Update the cart items list
-			  cartItems.forEach((item) => {
-            	// Create the main row div with the 'row' class
-			    const rowDiv = document.createElement('div');
-			    rowDiv.className = 'row m-0 p-0';
-
-            	// Create the first column div with the 'col-3' class
-			    const col1Div = document.createElement('div');
-			    col1Div.className = 'col-3';
-
-			    // Create the paragraphs
-			    const itemParagraph = document.createElement('p');
-			    itemParagraph.className = 'text-start';
-			    itemParagraph.textContent = `${item.name}`;
-
-			    // Append the paragraphs to the first column div
-			    col1Div.appendChild(itemParagraph);
-
-			    // Create the second column div with the 'col-3 text-center' classes
-			    const col2Div = document.createElement('div');
-			    col2Div.className = 'col-3';
-
-			    // Create the 'input' elements for buttons and the 'output-area' span
-			    const addButton = document.createElement('input');
-			    addButton.type = 'button';
-			    addButton.value = '+';
-			    addButton.style.width = '25px';
-			    addButton.addEventListener('click', button1);
-
-			    const outputArea = document.createElement('span');
-			    outputArea.id = 'output-area';
-			    outputArea.style.margin = '0 10px';
-			    outputArea.textContent = `0`;
-
-			    const subtractButton = document.createElement('input');
-			    subtractButton.type = 'button';
-			    subtractButton.value = '-';
-			    subtractButton.style.width = '25px';
-			    subtractButton.addEventListener('click', button2);
-
-			    // Create a 'div' element for flexbox layout
-			    const flexDiv = document.createElement('div');
-			    flexDiv.className = 'd-flex justify-content-center';
-
-			    // Append buttons and span to the flex div
-			    flexDiv.appendChild(addButton);
-			    flexDiv.appendChild(outputArea);
-			    flexDiv.appendChild(subtractButton);
-
-            	// Append the flex div to the second column div
-			    col2Div.appendChild(flexDiv);
-
-            	// Create the third column div with the 'col-3 text-end' classes
-			    const col3Div = document.createElement('div');
-			    col3Div.className = 'col-3 text-end';
-
-			    // Create the 'totalPrice' div
-			    const totalPriceDiv = document.createElement('div');
-			    totalPriceDiv.id = 'totalPrice';
-			    totalPriceDiv.textContent = '0.00';
-
-			    // Append the 'totalPrice' div to the third column div
-			    col3Div.appendChild(totalPriceDiv);
-
-			    // Create the fourth column div with the 'col-3 text-center' classes
-			    const col4Div = document.createElement('div');
-			    col4Div.className = 'col-3 text-center';
-
-			    // Create the 'Remove' button
-		        const removeButton = document.createElement('button');
-		        removeButton.className = 'btn btn-outline-danger btn-sm rounded-0';
-		        removeButton.textContent = 'Remove';
-
-		        // Use a closure to capture the correct index value
-	            removeButton.addEventListener('click', (function(index) {
-	              return function() {
-	                removeItemFromCart(index);
-	              };
-	            })(cartItems.length - 1));
-
-		        // Append the 'Remove' button to the fourth column div
-		        col4Div.appendChild(removeButton);
-
-			    // Append all the columns to the main row div
-			    rowDiv.appendChild(col1Div);
-			    rowDiv.appendChild(col2Div);
-			    rowDiv.appendChild(col3Div);
-			    rowDiv.appendChild(col4Div);
-
-			    // Append the main row div to the container div
-			    cartItemsList.appendChild(rowDiv);
-
-			    // Update the total price
-		       	const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
-		       	document.getElementById('subtotalPrice').textContent = `₱${totalPrice.toFixed(2)}`;
-			  });
-
-			}
 		</script>
 	</body>
 </html>

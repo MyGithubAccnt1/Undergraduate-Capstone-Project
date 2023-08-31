@@ -4,15 +4,17 @@
 	  	<meta charset="utf-8">
 	  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	  	<title>Saint Benedict Medallion</title>
-	  	<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
-	  	<?php include('include.php') ?>
+	  	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+	  	<?php include('./include/style.php') ?>
 		<style>
 			.bg{
 		  		position: absolute;
 		  		z-index: -2;
-		  		top: 0;
+		  		top: 50px;
 		  		left: 0;
-		  		height: 100vh;
+		  		height: -webkit-calc(100vh - 50px);
+				height: -moz-calc(100vh - 50px);
+				height: calc(100vh - 50px);
 		  		width: 100%;
 		  		background-image: url('images/bg.gif');
 		  		background-size: cover;
@@ -26,12 +28,13 @@
 			    border: 1px solid rgba(255, 255, 255, 0.5);
 			    border-right: 1px solid rgba(255, 255, 255, 0.2);
 			    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-			    backdrop-filter: blur(25px);
+			    backdrop-filter: blur(5px);
 			}
 			.whole {
 				height: -webkit-calc(100vh - 50px);
 				height: -moz-calc(100vh - 50px);
 				height: calc(100vh - 50px);
+				width: 100%;
 			}
 			footer{
 				position: absolute;
@@ -39,11 +42,15 @@
 				left: 0;
 				margin-top: 100vh;
 			}
+			.btn-signin {
+			    background-color: #794B29;
+			    color: white;
+			}
 		</style>
 	</head>
 	<body class="font-monospace">
-		<?php include('header.php') ?>
-		<main class="container-fluid">
+		<?php include('./include/header.php') ?>
+		<main class="container-fluid m-0 p-0">
 			<section class="bg"></section>
 			<section class="row d-flex justify-content-center align-items-center text-center text-white whole">
 				<div class="border p-0" style="min-width: 320px; max-width:	420px;">
@@ -66,7 +73,7 @@
 							    	<div class="tab-content" id="myTabContent">
 							    	  	<div class="tab-pane fade show active" id="all-tab-pane" role="tabpanel" aria-labelledby="all-tab" tabindex="0">
 							    	  		<div class="container-fluid">
-							    	  			<form action="login.php" method="POST">
+							    	  			<form action="./php/login.php" method="POST">
 								    	  			<div class="form-outline my-4">
 								    	  			    <input type="email" placeholder="Enter your email" class="form-control rounded-0" name="email" required>
 								    	  			</div>
@@ -77,25 +84,25 @@
 								    	  			<div class="row p-0 m-0">
 								    	  			    <div class="col-6 p-0 m-0 d-flex justify-content-center align-items-center">
 								    	  			        <input class="form-check-input" style="margin-right: 5px;" type="checkbox" checked/>
-								    	  			        <label class="form-check-label" style="margin-top: 18px;">
-								    	  			        	<p>Remember Me</p>
+								    	  			        <label class="form-check-label">
+								    	  			        	<small>Remember Me</small>
 								    	  			     	</label>
 								    	  			    </div>
 								    	  			    <div class="col-6 d-flex justify-content-center align-items-center">
 								    	  			    	<a class="text-white" href="#">
-								    	  			    		<p class="my-auto">Forgot Password?</p>
+								    	  			    		<small class="my-auto">Forgot Password?</small>
 								    	  			    	</a>
 								    	  			    </div>
 								    	  			</div>
 								    	  			<div class="d-flex justify-content-center">
-								    	  			  	<button type="submit" class="btn btn-primary my-3 w-100 rounded-pill">Sign in</button>
+								    	  			  	<button type="submit" class="btn-main py-1 my-3 w-100 rounded-pill">Sign in</button>
 								    	  			</div>
 							    	  			</form>
 							    	  		</div>
 							    	  	</div>
 							    	  	<div class="tab-pane fade" id="customize-tab-pane" role="tabpanel" aria-labelledby="customize-tab" tabindex="0">
 						    	  			<div class="container-fluid">
-					    	  				    <form action="register.php" method="POST">
+					    	  				    <form action="./php/register.php" method="POST">
 					    	  					    <div class="form-outline my-4">
 					    	  					    	<input type="email" placeholder="Enter your email" class="form-control rounded-0" name="email" required>
 					    	  					    </div>
@@ -110,13 +117,13 @@
 					    	  					    <div class="row m-0 p-0">
 								    	  			    <div class="col d-flex justify-content-center align-items-center">
 								    	  			        <input class="form-check-input" style="margin-right: 5px;" type="checkbox" checked/>
-								    	  			        <label class="form-check-label" style="margin-top: 18px;">
-								    	  			        	<p>Accept Terms and Conditions</p>
+								    	  			        <label class="form-check-label">
+								    	  			        	<small>Accept Terms and Conditions</small>
 								    	  			        </label>
 								    	  			    </div>
 								    	  			</div>
 								    	  			<div class="d-flex justify-content-center">
-								    	  			  	<button type="submit" class="btn btn-success my-3 w-100 rounded-pill">Register</button>
+								    	  			  	<button type="submit" class="btn-main py-1 my-3 w-100 rounded-pill">Register</button>
 								    	  			</div>
 					    	  				    </form>
 						    	  			</div>
@@ -129,17 +136,7 @@
 				</div>
 			</section>
 		</main>
-		<?php include('footer.php') ?>
-		<script>
-			var navbar = document.querySelector('header')
-			window.onscroll = function() {
-			  if (window.pageYOffset > 0) {
-			    navbar.classList.add('bg-dark')
-			  } else {
-			    navbar.classList.remove('bg-dark')
-			  }
-			}
-		</script>
+		<?php include('./include/footer.php') ?>
 		<script>
 		    var toggleClick = document.querySelector(".box,.icon");
 		    var navigation = document.querySelector("header");
@@ -151,7 +148,7 @@
 		        navigation.classList.remove('active-nav');
 		    })
 		</script>
-		<script type="text/javascript">signin.js</script>
+		<script src="./js/signin.js"></script>
 		<script>
 			var password = document.getElementById("password")
 			  , confirm_password = document.getElementById("confirm_password");
