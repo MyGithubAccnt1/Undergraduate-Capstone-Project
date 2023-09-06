@@ -193,7 +193,7 @@ ini_set('display_errors', 0);
                 <hr class="border border-light border-1 opacity-75 my-2">
             </div>
             <div class="p-0" style="width: 400px; margin: 0 50px;">
-            	<a href="#" class="w-75">
+            	<a href="view_order.php" class="w-75">
             		<button class="btn-main py-1 my-2 w-75 rounded-pill" type="button">View Orders</button>
             	</a>
             </div>
