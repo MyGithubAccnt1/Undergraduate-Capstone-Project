@@ -41,7 +41,7 @@ if(mysqli_num_rows($result) === 1) {
 		    $_SESSION["caddress"] = $row['caddress'];
 		}
 	  	echo"<script>alert('Notice: An account is successfully created.')</script>";
-	  	$script = "<script>window.location = '../index.php';</script>";
+	  	$script = "<script>window.location = '../account.php';</script>";
 	  	echo $script;
 	} else {
 	  	echo "Error: " . $sql . "<br>" . $conn->error;
