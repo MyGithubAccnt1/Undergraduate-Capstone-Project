@@ -20,7 +20,7 @@ $email = $_SESSION['email'];
 	</head>
 	<body class="font-monospace">
 		<main class="container-fluid m-0 p-0">
-			<section class="my-width mx-auto my-4">
+			<section class="my-width px-2 mx-auto my-4">
                 <div class="row text-center">
 					<div class="col-6">
 						<a href="account.php">
@@ -30,11 +30,11 @@ $email = $_SESSION['email'];
                 </div>
 				<div class="row mt-4 text-center">
 	                <h2>VIEW ORDERS</h2>
-	                <div class="col-4">Item</div>
-	                <div class="col-2">Price</div>
-	                <div class="col-2">Date</div>
-	                <div class="col-2">Status</div>
-	                <div class="col-2">Options</div>
+	                <div class="col-4" style="overflow-x:auto;">Item</div>
+	                <div class="col-2" style="overflow-x:auto;">Price</div>
+	                <div class="col-2" style="overflow-x:auto;">Date</div>
+	                <div class="col-2" style="overflow-x:auto;">Status</div>
+	                <div class="col-2" style="overflow-x:auto;">More</div>
 	                <div class="bg-dark rounded" style="height: 3px;"></div>
 	            </div>
 	            <div class="row">
@@ -127,18 +127,18 @@ $email = $_SESSION['email'];
 		                            <div class="collapse" id="collapseExample<?php echo $id; ?>-<?php echo $id; ?>">
 		                                <div class="stick-top bg-dark text-center text-white py-2">Chat with SBM</div>
 				                        <div class="border card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="comments-container">
-								
-				                        </div>
-				                        <div class="stick-bot">
-											<form>
-												<div class="comment-area">
-													<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1"></textarea>
-												</div>
-												<div class="d-flex justify-content-center">
-													<button type="submit" class="btn-main rounded-pill py-1 my-1 btn btn-md w-75">Send</button>
-												</div>
-											</form>
-				                        </div>
+				                        
+            	                        </div>
+            	                        <div class="stick-bot">
+            								<form id="comment-form">
+            									<div class="comment-area">
+            										<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" name="comment" id="comment"></textarea>
+            									</div>
+            									<div class="d-flex justify-content-center">
+            										<button type="submit" class="btn-main rounded-pill py-1 my-1 btn btn-md w-75">Send</button>
+            									</div>
+            								</form>
+            	                        </div>
 		                            </div>
 		                        </div>
 		                    </div>
@@ -153,7 +153,6 @@ $email = $_SESSION['email'];
 	            </div>
 			</section>
 		</main>
-		<?php include('./include/footer.php') ?>
 		<script>
 			function confirm_cancel() {
 				return confirm('Are you sure you want to cancel this order?')

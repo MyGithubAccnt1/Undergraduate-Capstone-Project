@@ -182,7 +182,7 @@ ini_set('display_errors', 0);
                 </div>
                 <hr class="border border-light border-1 opacity-75 my-3">
             </div>
-            <div class="p-0 m-0 row" style="width: 400px;">
+            <div class="p-0 m-0 row" style="width: 400px;" id="check">
             	<?php include ('./php/get_cart.php') ?>
             </div>
             <div class="p-0 m-0 row my-2" style="width: 400px;">
@@ -198,7 +198,7 @@ ini_set('display_errors', 0);
             	</a>
             </div>
             <div class="p-0" style="width: 400px; margin: 0 50px;">
-            	<a href="./checkout.php" class="w-75">
+            	<a id="conditional-link" href="#" class="w-75">
             		<button class="btn-main py-1 my-2 w-75 rounded-pill" type="button">Checkout</button>
             	</a>
             </div>
@@ -209,6 +209,19 @@ ini_set('display_errors', 0);
 	function confirm_delete() {
 		return confirm('Are you sure you want to delete this item?')
 	}
+</script>
+<script>
+    const link = document.getElementById('conditional-link');
+    const div = document.getElementById('check');
+    const expectedHtml = '<small>Your cart is empty.</small>';
+
+    if (div.innerHTML.includes(expectedHtml)) {
+        // If the condition is met (div contains expected HTML content), set the href to '#'
+        link.href = '#';
+    } else {
+        // If the condition is not met, set the href to a different URL
+        link.href = './checkout.php';
+    }
 </script>
 <?php
 ?>
