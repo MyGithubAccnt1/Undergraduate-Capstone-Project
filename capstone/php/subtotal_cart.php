@@ -7,11 +7,17 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $subtotal_cart = $row["subtotal_cart"];
-    echo '
-    <strong>Sub-Total: ₱' . $subtotal_cart . '</strong>
-    ';
+    if ($subtotal_cart = 0){
+        echo '
+        <strong>Sub-Total: ₱0</strong>
+        ';
+    }else{
+        echo '
+        <strong>Sub-Total: ₱' . $subtotal_cart . '</strong>
+        ';
+    }
 } else {
-    echo "Sub-Total: ₱0";
+    
 }
 $conn->close();
 ?>

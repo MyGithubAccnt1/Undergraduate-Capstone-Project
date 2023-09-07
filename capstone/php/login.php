@@ -39,10 +39,12 @@ if (empty($row['caddress'])) {
 // If result matched $myusername and $mypassword, table row must be 1 row
 if(mysqli_num_rows($result) === 1) {
 	if($row['role'] === "Admin") {
+		$_SESSION["role"] = $row['role'];
 		echo"<script>alert('Notice: Login Successful!')</script>";
-   		$script = "<script>window.location = '../admin.html';</script>";
+   		$script = "<script>window.location = '../dashboard.php';</script>";
    		echo $script;
 	}else{
+		$_SESSION["role"] = $row['role'];
 		echo"<script>alert('Notice: Login Successful!')</script>";
    		$script = "<script>window.location = '../index.php';</script>";
    		echo $script;
