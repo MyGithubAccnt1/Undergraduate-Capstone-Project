@@ -42,12 +42,10 @@ if ($_SESSION['role'] === "Admin") {
 			    resize: none; 
 			    border: 1px solid #ad9f9f;
 			}
-
 			.form-control:focus {
 			    color: #495057;
 			    background-color: #fff;
-			    border-color: #ffffff;
-			    outline: 0;
+			    border-color: #0D6EFD;
 			}
 			.comment-area textarea{
 			    resize: none; 
@@ -58,8 +56,24 @@ if ($_SESSION['role'] === "Admin") {
 			    font-size: 15px;
 			}
 			.comment-area{
+				border: 1px solid;
+				border-radius: 25px;
+				padding: 5px 20px;
 				display: flex;
 				align-items: center;
+				background-color: #fff;
+			}
+			.card {
+			    display: flex; 
+			    justify-content: center; 
+			    align-items: center; 
+			    width: 75%; 
+			    margin: 10px 0;
+			    padding: 5px 0 10px;
+			    border-radius: 5px;
+			    font-size: 1.5rem;
+			    background-color: #fff;
+			    color: #000;
 			}
 		</style>
 	</head>
@@ -76,56 +90,36 @@ if ($_SESSION['role'] === "Admin") {
 
         		<!-- New Users Section -->
 	            <div class="new-users">
-	                <div class="user-list" style="padding: 25px; display: flex; align-items: center;">
-	                    <div class="user" style="width: 100%; margin: 0;">
+	                <div class="user-list" style="padding: 25px 10px; display: flex; align-items: center;">
+	                    <div style="width: 100%;">
 	                        <div style="overflow-x:hidden; overflow-y:auto; height: 350px; width: 100%;" id="comments-container">
-	                        	<div style="width: 100%;">
-	                        		<div style="display: flex; justify-content: space-evenly; width: 75%; border: 1px solid; padding: 10px; margin: 20px 0; margin-left: auto;">
-	                        			<small>User: 000</small>
-                        				<small>Sample</small>
-	                        			<small>Date: 00-00-000</small>
-	                        		</div>
-	                        		<div style="display: flex; justify-content: space-evenly; width: 75%; border: 1px solid; padding: 10px; margin: 20px 0; margin-right: auto;">
-	                        			<small>User: 000</small>
-                        				<small>Sample</small>
-	                        			<small>Date: 00-00-000</small>
-	                        		</div>
-	                        		<div style="display: flex; justify-content: space-evenly; width: 75%; border: 1px solid; padding: 10px; margin: 20px 0; margin-left: auto;">
-	                        			<small>User: 000</small>
-                        				<small>Sample</small>
-	                        			<small>Date: 00-00-000</small>
-	                        		</div>
-	                        		<div style="display: flex; justify-content: space-evenly; width: 75%; border: 1px solid; padding: 10px; margin: 20px 0; margin-right: auto;">
-	                        			<small>User: 000</small>
-                        				<small>Sample</small>
-	                        			<small>Date: 00-00-000</small>
-	                        		</div>
-	                        		<div style="display: flex; justify-content: space-evenly; width: 75%; border: 1px solid; padding: 10px; margin: 20px 0; margin-left: auto;">
-	                        			<small>User: 000</small>
-                        				<small>Sample</small>
-	                        			<small>Date: 00-00-000</small>
-	                        		</div>
-	                        		<div style="display: flex; justify-content: space-evenly; width: 75%; border: 1px solid; padding: 10px; margin: 20px 0; margin-right: auto;">
-	                        			<small>User: 000</small>
-                        				<small>Sample</small>
-	                        			<small>Date: 00-00-000</small>
-	                        		</div>
-	                        		<div style="display: flex; justify-content: space-evenly; width: 75%; border: 1px solid; padding: 10px; margin: 20px 0; margin-left: auto;">
-	                        			<small>User: 000</small>
-                        				<small>Sample</small>
-	                        			<small>Date: 00-00-000</small>
-	                        		</div>
-	                        		<div style="display: flex; justify-content: space-evenly; width: 75%; border: 1px solid; padding: 10px; margin: 20px 0; margin-right: auto;">
-	                        			<small>User: 000</small>
-                        				<small>Sample</small>
-	                        			<small>Date: 00-00-000</small>
-	                        		</div>
-	                        	</div>
+                        		<div class="card" style="margin-left: auto;">
+                        			<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; width: 100%; margin-left: 10px;">
+                        				<span>
+                        					<small style="color: #FFC107;">[Administrator]</small>
+                        					<small>says: hahahahahahahahaha</small>
+                        				</span>
+                        				<div>
+                        					<small>00-00-000</small>
+                        				</div>
+                        			</div>
+                        		</div>
+                        		<div class="card" style="margin-right: auto;">
+                        			<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; width: 100%; 100%; margin-left: 10px;">
+                        				<span>
+                        					<small style="color: #0D6EFD;">[User: 00]</small>
+                        					<small>says: hahahahahahahahaha</small>
+                        				</span>
+                        				<div>
+                        					<small>00-00-000</small>
+                        				</div>
+                        			</div>
+                        		</div>
 	                        </div>
 	                    </div>
 	                </div>
-	                <div class="user-list" style="padding: 25px; display: flex; align-items: center;">
-	                    <div class="user" style="width: 100%; height: 70px; margin: 0;">
+	                <div class="user-list" style="padding: 25px 10px; display: flex; align-items: center;">
+	                    <div style="width: 100%; height: 70px; margin: 0;">
 	                        <form id="comment-form" style="width: 100%; height: 100%; margin: 0 auto;">
 	                        	<div class="comment-area">
 	                        		<textarea class="form-control" placeholder="Type your message here." rows="1" name="comment" id="comment"></textarea>
@@ -164,26 +158,48 @@ if ($_SESSION['role'] === "Admin") {
 	        	<div class="reminders">
 	        		<?php
 	        		include('./php/connect.php');
-	        		$sql = "SELECT DISTINCT email, deyt FROM message";
+	        		$id = 0;
+	        		$sql = "SELECT DISTINCT sender, email, deyt FROM message ORDER BY id DESC";
 	        		$result = $conn->query($sql);
 	        		if ($result->num_rows > 0) {
 	        		    // output data of each row
 	        		    while ($row = $result->fetch_assoc()) {
+	        		    	$id = $id + 1;
 	        		        ?>
-	        		        <div class="notification add-reminder">
-	        		        	<form action="#" method="POST">
-	        		        		<span style="margin-right: 75px;">
-        		        		        <small><?php echo $row['email']?></small>
-        		        		    </span>
-    		        		        <small class="text_muted">
-    		        		            <?php echo $row['deyt']?>
-    		        		        </small>
-	        		        	</form>
-	        		        </div>
+	        		        <form id="comment-form<?php echo $id; ?>-<?php echo $id; ?>">
+	        		        	<div class="notification add-reminder">
+	        		        		<input type="hidden" name="id" value="<?php echo $row['sender']?>" id="idInput<?php echo $id; ?>-<?php echo $id; ?>">
+    		        		        <input type="hidden" name="email" value="<?php echo $row['email']?>">
+    		        		        <input type="hidden" name="date" value="<?php echo $row['deyt']?>" id="dateInput<?php echo $id; ?>-<?php echo $id; ?>"/>
+    		        		        <?php
+    		        		        include('./php/connect.php');
+    		        		        $rowsql = "SELECT DISTINCT email, deyt FROM message ORDER BY id DESC";
+    		        		        $rowresult = $conn->query($rowsql);
+    		        		        if ($rowresult) {
+    		        		            $row_count = $rowresult->num_rows;
+    		        		        ?>
+    		        		            <input type="hidden" name="row" value="<?php echo $row_count; ?>"/>
+    		        		        <?php
+    		        		        } else {
+
+    		        		        }
+    		        		        ?>
+	        		        		<button type="submit" style="background-color: inherit; color: inherit;">
+		        		        		<span style="margin-right: 75px;">
+	        		        		        <small><?php echo $row['email']?></small>
+	        		        		    </span>
+	    		        		        <small class="text_muted">
+	    		        		            <?php echo $row['deyt']?>
+	    		        		        </small>
+	        		        		</button>
+			        		    </div>
+	        		        </form>
 	        		        <?php
 	        		    }
 	        		} else {
-	        		    echo "0 results";
+        		    	echo '<div class="d-flex justify-content-center mt-5">';
+        		        echo '<small>No message found.</small>';
+        		        echo '</div>';
 	        		}
 	        		$conn->close();
 	        		?>
@@ -191,8 +207,68 @@ if ($_SESSION['role'] === "Admin") {
 	        </section>
 	    </div>
     </body>
-    <script src="./js/admin-orders.js"></script>
-    <script src="./js/admin.js"></script>
+	<script>
+		function showComments() {
+		    var rowCount = $("input[name='row']").val(); // Retrieve the number of rows from the hidden input
+
+		    // Ensure rowCount is a valid number (e.g., convert it to an integer)
+		    rowCount = parseInt(rowCount);
+
+		    var looop = 1;
+
+		    function makeAjaxRequest(looop, rowCount) {
+		        // Make an AJAX request
+		        $.ajax({
+		            url: "./php/get_adminmessages.php",
+		            method: "GET",
+		            data: { date: $("#dateInput5-5").val(), id: $("#idInput5-5").val() },
+		            success: function (data) {
+		                // Handle the AJAX response here
+		                $("#comments-container").html(data);
+
+		                // Increment the loop counter
+		                looop++;
+
+		                // Check if there are more iterations to perform
+		                if (looop <= rowCount) {
+		                    // Make the next AJAX request
+		                    makeAjaxRequest(looop, rowCount);
+		                }
+		            }
+		        });
+		    }
+
+
+		    // Start the first AJAX request
+		    makeAjaxRequest();
+		}
+		
+	    // Attach the form submission handler to the form with the unique ID
+	    $("#comment-form").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+
+	        // Serialize the form data
+	        var formData = $(this).serialize();
+
+	        // Send the data to the PHP script to handle comment insertion
+	        $.ajax({
+	            url: "./php/add_adminmessages.php", // PHP script to insert comments into the database
+	            method: "POST",
+	            data: formData,
+	            success: function (data) {
+	                // If successful, show the updated comments
+	                showComments();
+	            }
+	        });
+
+	        // Clear the textarea for the current form
+	        $(this).find('textarea[name="comment"]').val('');
+	    });
+
+        // Show comments on page load
+        showComments();
+        setInterval(showComments, 1000);
+	</script>
 </html>
 <?php 
 }else{

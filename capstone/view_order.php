@@ -126,17 +126,31 @@ $email = $_SESSION['email'];
 		                        <div class="row mt-2">
 		                            <div class="collapse" id="collapseExample<?php echo $id; ?>-<?php echo $id; ?>">
 		                                <div class="stick-top bg-dark text-center text-white py-2">Chat with SBM</div>
-				                        <div class="border card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="comments-container">
+				                        <div class="border card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="comments-container<?php echo $id; ?>-<?php echo $id; ?>">
 					
 				                        </div>
 				                        <div class="stick-bot">
-											<form id="comment-form">
+											<form id="comment-form<?php echo $id; ?>-<?php echo $id; ?>">
 												<div class="comment-area">
 													<input type="hidden" name="id" value="<?php echo $_SESSION['id'];?>"/>
 													<input type="hidden" name="email" value="<?php echo $_SESSION['email'];?>"/>
 													<input type="hidden" name="role" value="<?php echo $_SESSION['role'];?>"/>
-													<input type="hidden" name="date" value="<?php echo $date; ?>" id="dateInput"/>
-													<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" name="comment" id="comment"></textarea>
+													<input type="hidden" name="date" value="<?php echo $date; ?>" id="dateInput<?php echo $id; ?>-<?php echo $id; ?>"/>
+													<?php
+													include('./php/connect.php');
+													$email = $_SESSION['email'];
+													$rowsql = "SELECT * FROM history WHERE email = '$email'";
+													$rowresult = $conn->query($rowsql);
+													if ($rowresult) {
+													    $row_count = $rowresult->num_rows;
+													?>
+													    <input type="hidden" name="row" value="<?php echo $row_count; ?>"/>
+													<?php
+													} else {
+
+													}
+													?>
+													<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" name="comment" id="comment<?php echo $id; ?>-<?php echo $id; ?>"></textarea>
 												</div>
 												<div class="d-flex justify-content-center">
 													<button type="submit" class="btn-main rounded-pill py-1 my-1 btn btn-md w-75">Send</button>
@@ -151,7 +165,7 @@ $email = $_SESSION['email'];
 	                		}
 	                	} else {
 	                		echo '<div class="d-flex justify-content-center mt-5">';
-	                	    echo '<small>No History found.</small>';
+	                	    echo '<small>No history found.</small>';
 	                	    echo '</div>';
 	                	}
 	                	$conn->close();
@@ -166,37 +180,66 @@ $email = $_SESSION['email'];
 		</script>
 		<script>
 			function showComments() {
-	            $.ajax({
-	                url: "./php/get_messages.php",
-                    method: "GET",
-                    data: { date: $("#dateInput").val() }, // Include the "date" input value as a parameter
-                    success: function (data) {
-                        $("#comments-container").html(data);
-                    }
-	            });
+			    var rowCount = $("input[name='row']").val(); // Retrieve the number of rows from the hidden input
 
-	        }
-			// Function to handle form submission and add a new comment
-	        $("#comment-form").submit(function (e) {
-	            e.preventDefault(); // Prevent the form from submitting traditionally
-	
-	            // Serialize the form data
-	            var formData = $(this).serialize();
-	
-	            // Send the data to the PHP script to handle comment insertion
-	            $.ajax({
-	                url: "./php/add_messages.php", // PHP script to insert comments into the database
-	                method: "POST",
-	                data: formData,
-	                success: function (data) {
-	                    // If successful, show the updated comments
-	                    showComments();
-	                }
-	            });
+			    // Ensure rowCount is a valid number (e.g., convert it to an integer)
+			    rowCount = parseInt(rowCount);
 
-	            $('#comment').val('');
+			    var looop = 1;
 
-	        });
+			    function makeAjaxRequest() {
+			        // Make an AJAX request
+			        $.ajax({
+			            url: "./php/get_messages.php",
+			            method: "GET",
+			            data: { date: $("#dateInput" + looop + "-" + looop).val() },
+			            success: function (data) {
+			                // Handle the AJAX response here
+			                $("#comments-container" + looop + "-" + looop).html(data);
+
+			                // Increment the loop counter
+			                looop++;
+
+			                // Check if there are more iterations to perform
+			                if (looop <= rowCount) {
+			                    // Make the next AJAX request
+			                    makeAjaxRequest();
+			                }
+			            }
+			        });
+			    }
+
+			    // Start the first AJAX request
+			    makeAjaxRequest();
+			}
+			// Loop through the forms and attach the event handler to each form
+			for (var i = 1; i <= <?php echo $row_count; ?>; i++) {
+			    // Construct a unique form ID using PHP-generated $id and loop variable i
+			    var formId = "comment-form" + i + "-" + i;
+
+			    // Attach the form submission handler to the form with the unique ID
+			    $("#" + formId).submit(function (e) {
+			        e.preventDefault(); // Prevent the form from submitting traditionally
+
+			        // Serialize the form data
+			        var formData = $(this).serialize();
+
+			        // Send the data to the PHP script to handle comment insertion
+			        $.ajax({
+			            url: "./php/add_messages.php", // PHP script to insert comments into the database
+			            method: "POST",
+			            data: formData,
+			            success: function (data) {
+			                // If successful, show the updated comments
+			                showComments();
+			            }
+			        });
+
+			        // Clear the textarea for the current form
+			        $(this).find('textarea[name="comment"]').val('');
+			    });
+			}
+
 	
 	        // Show comments on page load
 	        showComments();

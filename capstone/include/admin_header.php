@@ -42,13 +42,13 @@
                 calendar_month
             </span>
             <h3>Calendar</h3>
-            <span class="message-count">27</span>
         </a>
         <a href="./mailbox.php" class="mail-act">
             <span class="material-icons-sharp">
                 mail
             </span>
             <h3>Mail Box</h3>
+            <span class="message-count">27</span>
         </a>
         <a href="#">
             <span class="material-icons-sharp">

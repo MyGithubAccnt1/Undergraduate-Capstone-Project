@@ -40,7 +40,9 @@ if ($result->num_rows > 0) {
         ';
     }
 } else {
+    echo '<div class="d-flex justify-content-center mt-5">';
     echo '<small>Your cart is empty.</small>';
+    echo '</div>';
 }
 $conn->close();
 ?>
