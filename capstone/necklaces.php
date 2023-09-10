@@ -1,5 +1,4 @@
 <?php
-
 //This only execute for POST request
 if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 

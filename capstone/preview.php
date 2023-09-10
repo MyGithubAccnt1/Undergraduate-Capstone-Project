@@ -1,4 +1,6 @@
 <?php 
+error_reporting(0);
+ini_set('display_errors', 0);
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 ?>
@@ -169,6 +171,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	
 	        // Show comments on page load
 	        showComments();
+	        setInterval(showComments, 1000);
 		</script>
 	</body>
 </html>

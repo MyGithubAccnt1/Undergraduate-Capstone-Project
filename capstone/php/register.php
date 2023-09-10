@@ -20,6 +20,7 @@ if(mysqli_num_rows($result) === 1) {
 		$row = mysqli_fetch_assoc($result);
 		$_SESSION["id"] = $row['id'];
 		$_SESSION["email"] = $row['email'];
+		$_SESSION["role"] = $row['role'];
 		if (empty($row['fname'])) {
 		    $_SESSION["fname"] = '';
 		} else {

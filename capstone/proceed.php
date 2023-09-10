@@ -74,7 +74,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	            </div>
 			</section>
 		</main>
-		<?php include('./include/footer.php') ?>
 		<script type="text/javascript">
 		    var toggleClick = document.querySelector(".box,.icon");
 		    var navigation = document.querySelector("header");

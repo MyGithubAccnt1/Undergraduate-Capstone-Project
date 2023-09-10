@@ -23,7 +23,7 @@ $email = $_SESSION['email'];
 			<section class="my-width px-2 mx-auto my-4">
                 <div class="row text-center">
 					<div class="col-6">
-						<a href="account.php">
+						<a href="index.php">
 						    <button class="btn-main py-1 mt-4 w-75 rounded-pill">BACK</button>
 						</a>
 					</div>
@@ -127,18 +127,22 @@ $email = $_SESSION['email'];
 		                            <div class="collapse" id="collapseExample<?php echo $id; ?>-<?php echo $id; ?>">
 		                                <div class="stick-top bg-dark text-center text-white py-2">Chat with SBM</div>
 				                        <div class="border card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="comments-container">
-				                        
-            	                        </div>
-            	                        <div class="stick-bot">
-            								<form id="comment-form">
-            									<div class="comment-area">
-            										<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" name="comment" id="comment"></textarea>
-            									</div>
-            									<div class="d-flex justify-content-center">
-            										<button type="submit" class="btn-main rounded-pill py-1 my-1 btn btn-md w-75">Send</button>
-            									</div>
-            								</form>
-            	                        </div>
+					
+				                        </div>
+				                        <div class="stick-bot">
+											<form id="comment-form">
+												<div class="comment-area">
+													<input type="hidden" name="id" value="<?php echo $_SESSION['id'];?>"/>
+													<input type="hidden" name="email" value="<?php echo $_SESSION['email'];?>"/>
+													<input type="hidden" name="role" value="<?php echo $_SESSION['role'];?>"/>
+													<input type="hidden" name="date" value="<?php echo $date; ?>" id="dateInput"/>
+													<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" name="comment" id="comment"></textarea>
+												</div>
+												<div class="d-flex justify-content-center">
+													<button type="submit" class="btn-main rounded-pill py-1 my-1 btn btn-md w-75">Send</button>
+												</div>
+											</form>
+				                        </div>
 		                            </div>
 		                        </div>
 		                    </div>
@@ -146,7 +150,9 @@ $email = $_SESSION['email'];
 		            <?php
 	                		}
 	                	} else {
-	                	    echo "0 results";
+	                		echo '<div class="d-flex justify-content-center mt-5">';
+	                	    echo '<small>No History found.</small>';
+	                	    echo '</div>';
 	                	}
 	                	$conn->close();
 	                ?>
@@ -157,6 +163,44 @@ $email = $_SESSION['email'];
 			function confirm_cancel() {
 				return confirm('Are you sure you want to cancel this order?')
 			}
+		</script>
+		<script>
+			function showComments() {
+	            $.ajax({
+	                url: "./php/get_messages.php",
+                    method: "GET",
+                    data: { date: $("#dateInput").val() }, // Include the "date" input value as a parameter
+                    success: function (data) {
+                        $("#comments-container").html(data);
+                    }
+	            });
+
+	        }
+			// Function to handle form submission and add a new comment
+	        $("#comment-form").submit(function (e) {
+	            e.preventDefault(); // Prevent the form from submitting traditionally
+	
+	            // Serialize the form data
+	            var formData = $(this).serialize();
+	
+	            // Send the data to the PHP script to handle comment insertion
+	            $.ajax({
+	                url: "./php/add_messages.php", // PHP script to insert comments into the database
+	                method: "POST",
+	                data: formData,
+	                success: function (data) {
+	                    // If successful, show the updated comments
+	                    showComments();
+	                }
+	            });
+
+	            $('#comment').val('');
+
+	        });
+	
+	        // Show comments on page load
+	        showComments();
+	        setInterval(showComments, 1000);
 		</script>
 	</body>
 </html>

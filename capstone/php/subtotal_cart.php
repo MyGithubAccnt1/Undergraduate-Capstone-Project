@@ -1,5 +1,7 @@
 <?php
-session_start(); 
+error_reporting(0);
+ini_set('display_errors', 0);
+session_start();
 include('connect.php');
 $email = $_SESSION['email'];
 $sql = "SELECT SUM(total) AS subtotal_cart FROM cart WHERE email = '$email'";
@@ -7,7 +9,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $subtotal_cart = $row["subtotal_cart"];
-    if ($subtotal_cart = 0){
+    if ($subtotal_cart == 0){
         echo '
         <strong>Sub-Total: ₱0</strong>
         ';

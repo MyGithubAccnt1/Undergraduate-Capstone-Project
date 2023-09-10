@@ -21,7 +21,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				<div class="container-fluid my-width my-4">
 					<div class="row text-center">
 						<div class="col-6">
-							<a href="account.php">
+							<a href="index.php">
 							    <button class="btn-main py-1 mt-4 w-75 rounded-pill">BACK</button>
 							</a>
 						</div>
@@ -87,7 +87,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	            </div>
 			</section>
 		</main>
-		<?php include('./include/footer.php') ?>
 		<script type="text/javascript">
 		    var toggleClick = document.querySelector(".box,.icon");
 		    var navigation = document.querySelector("header");

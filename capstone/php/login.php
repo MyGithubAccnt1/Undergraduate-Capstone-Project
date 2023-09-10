@@ -11,11 +11,7 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 $_SESSION["id"] = $row['id'];
 $_SESSION["email"] = $row['email'];
-if($row['fname'] > 0) {
-	$_SESSION["fname"] = $row['fname'];
-}else{
-	$_SESSION["fname"] = '';
-}
+$_SESSION["role"] = $row['role'];
 if (empty($row['fname'])) {
     $_SESSION["fname"] = '';
 } else {

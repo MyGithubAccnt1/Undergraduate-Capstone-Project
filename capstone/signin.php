@@ -1,5 +1,4 @@
 <?php 
-session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
     $script = "<script>window.location = 'account.php';</script>";
     echo $script;

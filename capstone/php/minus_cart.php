@@ -6,7 +6,7 @@ include("connect.php");
 $id = $_POST['id'];
 $qty = $_POST['qty'];
 $price = $_POST['price'];
-if ($qty = 1){
+if ($qty == 1){
 
 }else{
     $qty = $qty - 1;
@@ -17,7 +17,7 @@ $sql = "UPDATE cart SET qty='$qty', total='$total' WHERE id='$id'";
 
 if (mysqli_query($conn, $sql)) {
 	echo"<script>alert('Notice: A new quantity has been added to cart.')</script>";
-	$script = "<script>window.location = '../account.php';</script>";
+	$script = "<script>window.location = '../index.php';</script>";
     echo $script;
 } else {
     // Error inserting comment

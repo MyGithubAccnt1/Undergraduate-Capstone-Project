@@ -1,5 +1,4 @@
 <?php
-session_start(); 
 include('connect.php');
 $email = $_SESSION['email'];
 $sql = "SELECT * FROM cart WHERE email = '$email'";

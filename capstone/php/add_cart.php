@@ -14,7 +14,7 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 if(mysqli_num_rows($result) === 1) {
     echo"<script>alert('Notice: This item is already added to your cart. The same item cannot be added twice.')</script>";
-    $script = "<script>window.location = '../account.php';</script>";
+    $script = "<script>window.location = '../index.php';</script>";
     echo $script;
 } else {
     // Insert into the database
