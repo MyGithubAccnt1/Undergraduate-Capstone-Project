@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2023 at 04:52 PM
+-- Generation Time: Sep 10, 2023 at 08:17 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -47,9 +47,10 @@ INSERT INTO `account` (`id`, `email`, `password`, `fname`, `lname`, `mnumber`, `
 (1, 'test@admin', 'admin', 'first', 'last', '09123456789', 'Brgy. Test, Test City, Province of Test, Phiilippines', 'Admin', '0000-00-00 00:00:00.000000'),
 (23, 'celyn@tester', 'admin', NULL, NULL, NULL, NULL, 'Regular', '2023-08-03 10:58'),
 (24, 'men@bernabe', '20010', NULL, NULL, NULL, NULL, 'Regular', '2023-08-03 22:58'),
-(25, 'test1@reg', 'reg', 'fname', 'lname', '+63-987-654-3210', '', 'Regular', '2023-08-08 16:38'),
+(25, 'test1@reg', 'reg', 'fname', 'lname', '09876543210', '', 'Regular', '2023-08-08 16:38'),
 (26, 'test2@reg', 'reg', NULL, NULL, NULL, NULL, 'Regular', '2023-08-31 03:43'),
-(27, 'test3@reg', 'reg', 'fname', 'lname', '09123456789', 'Brgy. Test, \'Di Matagpuan City, Province of Unknown', 'Regular', '2023-09-03 21:11');
+(27, 'test3@reg', 'reg', 'fname', 'lname', '09123456789', 'Brgy. Test, \'Di Matagpuan City, Province of Unknown', 'Regular', '2023-09-03 21:11'),
+(28, 'test4@reg', 'reg', NULL, NULL, NULL, NULL, 'Regular', '2023-09-10 11:08');
 
 -- --------------------------------------------------------
 
@@ -72,7 +73,8 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`id`, `email`, `title`, `price`, `qty`, `total`) VALUES
 (18, 'test@admin', 'SET 1', 39.42, 2, 78.84),
-(19, 'test@admin', 'SET 2', 31.93, 1, 31.93);
+(19, 'test@admin', 'SET 2', 31.93, 1, 31.93),
+(49, 'test4@reg', 'SET 1', 39.42, 1, 39.42);
 
 -- --------------------------------------------------------
 
@@ -93,7 +95,15 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `name`, `date`, `comment`, `title`) VALUES
-(41, '27', '2023-09-03 21:16', '1st', 'SET 1');
+(41, '27', '2023-09-03 21:16', '1st', 'SET 1'),
+(42, '27', '2023-09-10 12:02', 'test', 'SET 2'),
+(43, '28', '2023-09-10 12:03', 'hi', 'SET 2'),
+(44, '27', '2023-09-10 12:03', 'hello', 'SET 2'),
+(45, '27', '2023-09-10 12:04', 'hehe', 'SET 2'),
+(46, '28', '2023-09-10 12:04', 'live', 'SET 2'),
+(47, '27', '2023-09-10 12:04', 'this is id 27', 'SET 2'),
+(48, '28', '2023-09-10 12:05', 'live chat: confirmed.', 'SET 2'),
+(49, '28', '2023-09-10 12:09', 'test', 'SET 2');
 
 -- --------------------------------------------------------
 
@@ -115,12 +125,32 @@ CREATE TABLE `history` (
 --
 
 INSERT INTO `history` (`id`, `email`, `title`, `total`, `deyt`, `status`) VALUES
-(11, 'test1@reg', 'SET 1, SET 2, ', 71.35, '2023-09-06 13:48', 'Canceled'),
-(12, 'test1@reg', 'SET 1, SET 2, ', 71.35, '2023-09-06 13:48', 'Canceled'),
-(13, 'test1@reg', 'SET 1, SET 2, ', 71.35, '2023-09-06 13:48', 'Canceled'),
-(14, 'test1@reg', 'SET 1, SET 2, ', 71.35, '2023-09-06 13:48', 'Canceled'),
-(15, 'test1@reg', 'SET 1, SET 2, ', 71.35, '2023-09-06 13:48', 'Canceled'),
-(16, 'test1@reg', 'SET 1, SET 2, SET 3, SET 4, SET 5, SET 6', 286.43, '2023-09-06 15:47', 'Pending');
+(20, 'test1@reg', 'SET 1', 39.42, '2023-09-10 14:54', 'Pending'),
+(21, 'test2@reg', 'SET 1', 39.42, '2023-09-10 14:54', 'Pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message`
+--
+
+CREATE TABLE `message` (
+  `id` int(11) NOT NULL,
+  `sender` text NOT NULL,
+  `email` text NOT NULL,
+  `message` text NOT NULL,
+  `deyt` text NOT NULL,
+  `role` text NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`id`, `sender`, `email`, `message`, `deyt`, `role`, `timestamp`) VALUES
+(21, '25', 'test1@reg', 'test 1', '2023-09-10 14:54', 'Regular', '2023-09-10 12:54:17'),
+(22, '26', 'test2@reg', 'test 2', '2023-09-10 14:54', 'Regular', '2023-09-10 12:54:59');
 
 -- --------------------------------------------------------
 
@@ -149,7 +179,15 @@ INSERT INTO `order` (`id`, `title`, `qty`, `price`, `email`, `deyt`) VALUES
 (5, 'SET 3', 1, 49.44, 'test1@reg', '2023-09-06 15:47'),
 (6, 'SET 4', 1, 65.38, 'test1@reg', '2023-09-06 15:47'),
 (7, 'SET 5', 1, 27.21, 'test1@reg', '2023-09-06 15:47'),
-(8, 'SET 6', 1, 73.05, 'test1@reg', '2023-09-06 15:47');
+(8, 'SET 6', 1, 73.05, 'test1@reg', '2023-09-06 15:47'),
+(9, 'SET 3', 2, 49.44, 'test1@reg', '2023-09-07 19:41'),
+(10, 'SET 1', 1, 39.42, 'test1@reg', '2023-09-07 19:41'),
+(11, 'SET 1', 2, 39.42, 'test4@reg', '2023-09-10 11:52'),
+(12, 'SET 3', 2, 49.44, 'test1@reg', '2023-09-10 14:03'),
+(13, 'SET 2', 1, 31.93, 'test1@reg', '2023-09-10 14:03'),
+(14, 'SET 1', 1, 39.42, 'test1@reg', '2023-09-10 14:03'),
+(15, 'SET 1', 1, 39.42, 'test1@reg', '2023-09-10 14:54'),
+(16, 'SET 1', 1, 39.42, 'test2@reg', '2023-09-10 14:54');
 
 -- --------------------------------------------------------
 
@@ -212,6 +250,12 @@ ALTER TABLE `history`
   ADD UNIQUE KEY `id` (`id`);
 
 --
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- Indexes for table `order`
 --
 ALTER TABLE `order`
@@ -231,31 +275,37 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `product`
