@@ -48,7 +48,6 @@
                 mail
             </span>
             <h3>Mail Box</h3>
-            <span class="message-count">27</span>
         </a>
         <a href="#">
             <span class="material-icons-sharp">

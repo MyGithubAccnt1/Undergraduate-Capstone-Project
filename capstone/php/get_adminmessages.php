@@ -15,11 +15,11 @@ if (mysqli_num_rows($result) > 0) {
         if ($row['role'] === 'Admin'){
 
             echo '<div class="card" style="margin-left: auto;">';
-            echo '<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; width: 100%; 100%; margin-left: 10px;">';
+            echo '<div style="display: flex; flex-direction: row; justify-content: start; align-items: center; width: 100%; margin-left: 50px;">';
             echo '<span><small style="color: #FFC107;">[Administrator]</small>';
             echo '<small>says: ';
             echo "{$row['message']}</small></span>";
-            echo '<div>';
+            echo '<div style="margin-left: auto; margin-right: 50px;">';
             echo "<small>{$row['timestamp']}</small>";
             echo '</div>';
             echo '</div>';
@@ -28,12 +28,12 @@ if (mysqli_num_rows($result) > 0) {
         }else{
 
             echo '<div class="card" style="margin-right: auto;">';
-            echo '<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; width: 100%; 100%; margin-left: 10px;">';
+            echo '<div style="display: flex; flex-direction: row; justify-content: start; align-items: center; width: 100%; margin-left: 50px;">';
             echo '<span><small style="color: #0D6EFD;">[User: ';
             echo "{$row['sender']}]</small> ";
             echo '<small>says: ';
             echo "{$row['message']}</small></span>";
-            echo '<div>';
+            echo '<div style="margin-left: auto; margin-right: 50px;">';
             echo "<small>{$row['timestamp']}</small>";
             echo '</div>';
             echo '</div>';
@@ -46,15 +46,15 @@ if (mysqli_num_rows($result) > 0) {
     mysqli_free_result($result);
 } else {
     // Database is empty, so display a message or perform other actions
-    echo '<div class="comment card p-3 mx-4">';
-    echo '<div class="d-flex justify-content-between align-items-center">';
-    echo '<div class="d-flex flex-row align-items-center">';
-    echo '<span><small class="font-weight-bold text-warning">[';
-    echo 'Administrator]</small> ';
-    echo '<small class="font-weight-bold">says: ';
-    echo 'Do not hesitate to ask us questions.</small></span>';
+    echo '<div class="card" style="margin: 0 auto; margin-top: 25px;">';
+    echo '<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; width: 100%; margin-left: 10px;">';
+    echo '<span>';
+    echo '<small style="color: #FFC107; font-size: .85rem;">[Administrator]</small>';
+    echo '<small style="font-size: .85rem;">says: Select a [User] to interact with.</small>';
+    echo '</span>';
+    echo '<div>';
+    echo '<small style="color: #DC3545; font-size: .85rem;">Verified</small>';
     echo '</div>';
-    echo '<small class="text-danger">Verified</small>';
     echo '</div>';
     echo '</div>';
 }

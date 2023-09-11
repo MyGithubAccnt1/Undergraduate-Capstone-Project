@@ -75,6 +75,12 @@ if ($_SESSION['role'] === "Admin") {
 			    background-color: #fff;
 			    color: #000;
 			}
+			.alert{
+				background-color: #FF0060;
+				padding: 3px 5px;
+				border-radius: 5px;
+				font-size: .80rem;
+			}
 		</style>
 	</head>
 	<body>
@@ -93,25 +99,14 @@ if ($_SESSION['role'] === "Admin") {
 	                <div class="user-list" style="padding: 25px 10px; display: flex; align-items: center;">
 	                    <div style="width: 100%;">
 	                        <div style="overflow-x:hidden; overflow-y:auto; height: 350px; width: 100%;" id="comments-container">
-                        		<div class="card" style="margin-left: auto;">
+                        		<div class="card" style="margin: 0 auto; margin-top: 25px;">
                         			<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; width: 100%; margin-left: 10px;">
                         				<span>
-                        					<small style="color: #FFC107;">[Administrator]</small>
-                        					<small>says: hahahahahahahahaha</small>
+                        					<small style="color: #FFC107; font-size: .85rem;">[Administrator]</small>
+                        					<small style="font-size: .85rem;">says: Select a [User] to interact with.</small>
                         				</span>
                         				<div>
-                        					<small>00-00-000</small>
-                        				</div>
-                        			</div>
-                        		</div>
-                        		<div class="card" style="margin-right: auto;">
-                        			<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; width: 100%; 100%; margin-left: 10px;">
-                        				<span>
-                        					<small style="color: #0D6EFD;">[User: 00]</small>
-                        					<small>says: hahahahahahahahaha</small>
-                        				</span>
-                        				<div>
-                        					<small>00-00-000</small>
+                        					<small style="color: #DC3545; font-size: .85rem;">Verified</small>
                         				</div>
                         			</div>
                         		</div>
@@ -121,6 +116,9 @@ if ($_SESSION['role'] === "Admin") {
 	                <div class="user-list" style="padding: 25px 10px; display: flex; align-items: center;">
 	                    <div style="width: 100%; height: 70px; margin: 0;">
 	                        <form id="comment-form" style="width: 100%; height: 100%; margin: 0 auto;">
+	                        	<input type="hidden" name="id" id="idInput">
+                        	   	<input type="hidden" name="date" id="dateInput">
+                        	   	<input type="hidden" name="email" id="emailInput">
 	                        	<div class="comment-area">
 	                        		<textarea class="form-control" placeholder="Type your message here." rows="1" name="comment" id="comment"></textarea>
 	                        	</div>
@@ -154,96 +152,75 @@ if ($_SESSION['role'] === "Admin") {
             	</div>
             	<!-- End of Nav -->
 
-	        	<h1 style="text-align: center; width: 100%">Users</h1>
-	        	<div class="reminders">
-	        		<?php
-	        		include('./php/connect.php');
-	        		$id = 0;
-	        		$sql = "SELECT DISTINCT sender, email, deyt FROM message ORDER BY id DESC";
-	        		$result = $conn->query($sql);
-	        		if ($result->num_rows > 0) {
-	        		    // output data of each row
-	        		    while ($row = $result->fetch_assoc()) {
-	        		    	$id = $id + 1;
-	        		        ?>
-	        		        <form id="comment-form<?php echo $id; ?>-<?php echo $id; ?>">
-	        		        	<div class="notification add-reminder">
-	        		        		<input type="hidden" name="id" value="<?php echo $row['sender']?>" id="idInput<?php echo $id; ?>-<?php echo $id; ?>">
-    		        		        <input type="hidden" name="email" value="<?php echo $row['email']?>">
-    		        		        <input type="hidden" name="date" value="<?php echo $row['deyt']?>" id="dateInput<?php echo $id; ?>-<?php echo $id; ?>"/>
-    		        		        <?php
-    		        		        include('./php/connect.php');
-    		        		        $rowsql = "SELECT DISTINCT email, deyt FROM message ORDER BY id DESC";
-    		        		        $rowresult = $conn->query($rowsql);
-    		        		        if ($rowresult) {
-    		        		            $row_count = $rowresult->num_rows;
-    		        		        ?>
-    		        		            <input type="hidden" name="row" value="<?php echo $row_count; ?>"/>
-    		        		        <?php
-    		        		        } else {
-
-    		        		        }
-    		        		        ?>
-	        		        		<button type="submit" style="background-color: inherit; color: inherit;">
-		        		        		<span style="margin-right: 75px;">
-	        		        		        <small><?php echo $row['email']?></small>
-	        		        		    </span>
-	    		        		        <small class="text_muted">
-	    		        		            <?php echo $row['deyt']?>
-	    		        		        </small>
-	        		        		</button>
-			        		    </div>
-	        		        </form>
-	        		        <?php
-	        		    }
-	        		} else {
-        		    	echo '<div class="d-flex justify-content-center mt-5">';
-        		        echo '<small>No message found.</small>';
-        		        echo '</div>';
-	        		}
-	        		$conn->close();
-	        		?>
+	        	<h1 style="text-align: center; width: 100%; margin-bottom: 13px;">Users</h1>
+	        	<div id="users-container" style="overflow-x:hidden; overflow-y:auto; height: 500px;">
+	        		
 	        	</div>
 	        </section>
+	        <?php
+        	include('./php/connect.php');
+        	$rowsql = "SELECT DISTINCT email, deyt FROM message ORDER BY id DESC";
+        	$rowresult = $conn->query($rowsql);
+        	if ($rowresult) {
+        		$row_count = $rowresult->num_rows;
+        		?>
+	            <input type="hidden" name="row" value="<?php echo $row_count; ?>"/>';
+	        <?php
+    		} else {
+
+    		}
+    		$conn->close();
+	        ?>
 	    </div>
     </body>
 	<script>
-		function showComments() {
-		    var rowCount = $("input[name='row']").val(); // Retrieve the number of rows from the hidden input
+		function showUsers() {
+		    // Make an AJAX request
+		    $.ajax({
+		        url: "./php/get_usermessages.php",
+		        method: "GET",
+		        success: function (data) {
+		            // Handle the AJAX response here
+		            $("#users-container").html(data);
+		        },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+		    });
+		}
 
-		    // Ensure rowCount is a valid number (e.g., convert it to an integer)
-		    rowCount = parseInt(rowCount);
+		$("#users-container").on("submit", "form", function (event) {
+		    event.preventDefault(); // Prevent the default form submission
 
-		    var looop = 1;
+		    // Get the values of the "id" and "deyt" fields within the submitted form
+		    var idValue = $(this).find("input[name='id']").val();
+		    var dateValue = $(this).find("input[name='date']").val();
+		    var emailValue = $(this).find("input[name='email']").val();
 
-		    function makeAjaxRequest(looop, rowCount) {
-		        // Make an AJAX request
-		        $.ajax({
-		            url: "./php/get_adminmessages.php",
-		            method: "GET",
-		            data: { date: $("#dateInput5-5").val(), id: $("#idInput5-5").val() },
-		            success: function (data) {
-		                // Handle the AJAX response here
-		                $("#comments-container").html(data);
+		    // Update the hidden input fields in the comment-form
+	        $("#idInput").val(idValue);
+	        $("#dateInput").val(dateValue);
+	        $("#emailInput").val(emailValue);
 
-		                // Increment the loop counter
-		                looop++;
+		    // Call the showComments function with the retrieved values
+		    showComments(idValue, dateValue);
+		});
 
-		                // Check if there are more iterations to perform
-		                if (looop <= rowCount) {
-		                    // Make the next AJAX request
-		                    makeAjaxRequest(looop, rowCount);
-		                }
-		            }
-		        });
-		    }
-
-
-		    // Start the first AJAX request
-		    makeAjaxRequest();
+		function showComments(idValue, dateValue) {
+	        $.ajax({
+	            url: "./php/get_adminmessages.php",
+	            method: "GET",
+	            data: { 
+	            	date: dateValue, 
+	            	id: idValue 
+	            },
+	            success: function (data) {
+	                // Handle the AJAX response here
+	                $("#comments-container").html(data);
+	            }
+	        });
 		}
 		
-	    // Attach the form submission handler to the form with the unique ID
 	    $("#comment-form").submit(function (e) {
 	        e.preventDefault(); // Prevent the form from submitting traditionally
 
@@ -257,7 +234,7 @@ if ($_SESSION['role'] === "Admin") {
 	            data: formData,
 	            success: function (data) {
 	                // If successful, show the updated comments
-	                showComments();
+	                showComments($("#idInput").val(), $("#dateInput").val());
 	            }
 	        });
 
@@ -265,9 +242,11 @@ if ($_SESSION['role'] === "Admin") {
 	        $(this).find('textarea[name="comment"]').val('');
 	    });
 
-        // Show comments on page load
-        showComments();
-        setInterval(showComments, 1000);
+        showUsers();
+        setInterval(showUsers, 1000);
+        setInterval(function () {
+            showComments($("#idInput").val(), $("#dateInput").val());
+        }, 1000);
 	</script>
 </html>
 <?php 
