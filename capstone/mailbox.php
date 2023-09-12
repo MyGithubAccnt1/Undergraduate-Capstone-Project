@@ -173,6 +173,7 @@ if ($_SESSION['role'] === "Admin") {
 	        ?>
 	    </div>
     </body>
+    <script src="./js/admin.js"></script>
 	<script>
 		function showUsers() {
 		    // Make an AJAX request

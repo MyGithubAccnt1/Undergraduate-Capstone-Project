@@ -16,8 +16,8 @@ if (mysqli_num_rows($result) > 0) {
 
             echo '<div class="card" style="margin-left: auto;">';
             echo '<div style="display: flex; flex-direction: row; justify-content: start; align-items: center; width: 100%; margin-left: 50px;">';
-            echo '<span><small style="color: #FFC107;">[Administrator]</small>';
-            echo '<small>says: ';
+            echo '<span><small style="color: #FFC107;">[Administrator] </small>';
+            echo '<small style="margin-left: 6px;">says: ';
             echo "{$row['message']}</small></span>";
             echo '<div style="margin-left: auto; margin-right: 50px;">';
             echo "<small>{$row['timestamp']}</small>";
@@ -50,7 +50,7 @@ if (mysqli_num_rows($result) > 0) {
     echo '<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; width: 100%; margin-left: 10px;">';
     echo '<span>';
     echo '<small style="color: #FFC107; font-size: .85rem;">[Administrator]</small>';
-    echo '<small style="font-size: .85rem;">says: Select a [User] to interact with.</small>';
+    echo '<small style="font-size: .85rem; margin-left: 6px;">says: Select a [User] to interact with.</small>';
     echo '</span>';
     echo '<div>';
     echo '<small style="color: #DC3545; font-size: .85rem;">Verified</small>';

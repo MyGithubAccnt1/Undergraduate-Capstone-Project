@@ -15,7 +15,7 @@ if (mysqli_num_rows($result) > 0) {
 
         if ($row['role'] === 'Admin'){
 
-            echo '<div class="comment card p-3 mx-4">';
+            echo '<div class="comment card p-3" style="width: 75%; margin: 10px; margin-right: auto;">';
             echo '<div class="d-flex justify-content-between align-items-center">';
             echo '<div class="d-flex flex-row align-items-center">';
             echo '<span><small class="font-weight-bold text-warning">[';
@@ -23,13 +23,13 @@ if (mysqli_num_rows($result) > 0) {
             echo '<small class="font-weight-bold">says: ';
             echo "{$row['message']}</small></span>";
             echo '</div>';
-            echo '<small class="text-danger">Verified</small>';
+            echo "<small>{$row['timestamp']}</small>";
             echo '</div>';
             echo '</div>';
 
         }else{
 
-            echo '<div class="comment card p-3 mx-4">';
+            echo '<div class="comment card p-3" style="width: 75%; margin: 10px; margin-left: auto;">';
             echo '<div class="d-flex justify-content-between align-items-center">';
             echo '<div class="d-flex flex-row align-items-center">';
             echo '<span><small class="font-weight-bold text-primary">[User: ';

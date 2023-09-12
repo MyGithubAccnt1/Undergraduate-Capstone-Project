@@ -212,7 +212,6 @@ if ($_SESSION['role'] === "Admin") {
         	</div>
     	</div>
     </body>
-    <script src="./js/admin-orders.js"></script>
     <script src="./js/admin.js"></script>
 </html>
 <?php 

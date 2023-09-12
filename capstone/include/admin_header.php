@@ -31,7 +31,7 @@
             </span>
             <h3>Notification</h3>
         </a>
-        <a href="#">
+        <a href="./product.php" class="prod-act">
             <span class="material-icons-sharp">
                 category
             </span>
