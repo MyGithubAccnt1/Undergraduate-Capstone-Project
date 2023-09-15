@@ -14,13 +14,17 @@ $email = mysqli_real_escape_string($conn, $email);
 $comment = mysqli_real_escape_string($conn, $comment);
 
 // Insert the comment into the database
-$sql = "INSERT INTO message (sender, email, message, deyt, role) VALUES ('$id', '$email', '$comment', '$date', '$role')";
-
-if (mysqli_query($conn, $sql)) {
-    // Comment added successfully
+if (!empty($id) && !empty($email) && !empty($comment) && !empty($date) && !empty($role)) {
+    $sql = "INSERT INTO message (sender, email, message, deyt, role) VALUES ('$id', '$email', '$comment', '$date', '$role')";
+    // Execute the SQL statement here (e.g., using a database connection)
+    if (mysqli_query($conn, $sql)) {
+        // Comment added successfully
+    } else {
+        // Error inserting comment
+        echo "Error: " . mysqli_error($conn);
+    }
 } else {
-    // Error inserting comment
-    echo "Error: " . mysqli_error($conn);
+    // Handle the case where one or more variables are empty
 }
 
 // Close the database connection

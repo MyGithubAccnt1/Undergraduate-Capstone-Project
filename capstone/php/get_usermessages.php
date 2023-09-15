@@ -8,13 +8,14 @@ $sql = "WITH LatestMessages AS (
         message,
         deyt,
         timestamp,
+        seen,
         ROW_NUMBER() OVER (PARTITION BY deyt, sender ORDER BY timestamp DESC) AS rn
     FROM message
 )
-SELECT DISTINCT deyt, sender, email, message, timestamp
+SELECT DISTINCT deyt, sender, email, message, timestamp, seen
 FROM LatestMessages
 WHERE rn = 1
-ORDER BY timestamp DESC;";
+ORDER BY seen ASC;";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 	while ($row = $result->fetch_assoc()) {
@@ -41,7 +42,11 @@ if ($result->num_rows > 0) {
 		echo '<small class="text_muted">';
 		echo $row['deyt'];
 		echo '</small>';
-		echo '<span class="alert">NEW</span>';
+		if ($row['seen'] == "No") {
+			echo '<span class="alert">NEW</span>';
+		}else{
+
+		}
 		echo '</div>';
 		echo '</div>';
 		echo '</button>';

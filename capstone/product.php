@@ -78,7 +78,7 @@ if ($_SESSION['role'] === "Admin") {
 	           
 	            <!-- New Users Section -->
 	            <div class="new-users">
-	                <div class="user-list" id="orders-container" style="gap: 5px;">
+	                <div class="user-list" style="gap: 5px;">
 	                	<div style="width: 100%; display: flex; flex-direction: row; text-align: center;">
 	                		<div style="width: 33.33%;">Item</div>
 	                		<div style="width: 16.66%;">Price</div>
@@ -87,72 +87,44 @@ if ($_SESSION['role'] === "Admin") {
 	                		<div style="width: 16.66%;">More</div>
 	                	</div>
 	                    <div class="border" style="width: 100%;"></div>
-	                    <div style="width: 100%; background-color: lightgoldenrodyellow;">
-	                        <div style="width: 100%; text-align: center; color: #000; margin: 5px 0; display: flex; flex-direction: row;">
-	                            <div style="width: 33.33%;">title</div>
-	                            <div style="width: 16.66%;">₱00.00</div>
-	                            <div style="width: 16.66%;">00-00-00</div>
-	                            <div style="width: 16.66%;">Pending</div>
-	                            <div style="width: 16.66%;">
-	                                <a data-toggle="collapse" href="#collapseExample1">
-	                                    <i class="fas fa-ellipsis-h" style="color: #000000;"></i>
-	                                </a>
-	                            </div>
-	                        </div>
-	                    </div>
-	                	<div class="collapse" id="collapseExample1" style="width: 100%; background-color: #fff; color: #000;">
-		                    <div style="padding: 20px 20px;">
-		                    	<div style="width: 100%;">
-	            					<div style="width: 100%; margin: 5px 0; text-align: center; display: flex; flex-direction: row;">
-	            		                <div style="width: 33.33%;">Item</div>
-	            		                <div style="width: 33.33%;">Quantity</div>
-	            		                <div style="width: 33.33%;">Price</div>
-	            		            </div>
-	            		            <div style="width: 100%; height: 2px; background-color: #000;"></div>
-	    		    	            <div style="width: 100%; margin: 5px 0; text-align: center; display: flex; flex-direction: row;">
-	    		    	                <div style="width: 33.33%;">test</div>
-	    		    	                <div style="width: 33.33%;">1</div>
-	    		    	                <div style="width: 33.33%;">₱11.11</div>
-	    		    	            </div>
-                    				<div style="width: 100%; height: 2px; background-color: #000;"></div>
-		                    	</div>
-		                        <div style="width: 100%; display: flex; justify-content: center; text-align: center; padding: 10px 0;">
-		                            <div style="max-width: 100%; min-width: 50%;">
-		                            	<form>
-		                            		<input type="hidden" value="date" name="date">
-		                            		<input type="submit" style="color: #fff; background-color: indianred; padding: 5px 10px;" value="Cancel Order" onclick="return confirm_cancel()">
-		                            	</form>
-		                            </div>
-		                            <div style="max-width: 100%; min-width: 50%;">
-		                            	<a data-toggle="collapse" href="#collapseExample1-1">
-		                                	<input type="submit" style="color: #fff; background-color: royalblue; padding: 5px 10px;" value="Message">
-		                                </a>
-		                            </div>
-		                        </div>
-		                        <div style="width: 100%;">
-		                            <div class="collapse" id="collapseExample1-1">
-		                                <div style="width: 100%; background-color: #000; color: #fff; text-align: center; padding: 5px 0;">Chat with SBM</div>
+	                    <div id="orders-container" style="width: 100%;">
+		                    <div style="width: 100%; text-align: center; margin-top: 10px;">
+	    						<small>There are currently no orders.</small>
+	    					</div>
+		                	<!-- <div id="optionToggle" style="width: 100%; background-color: #fff; color: #000; display: none;">
+			                    <div style="padding: 20px 20px;">
+			                        <div style="width: 100%; display: flex; justify-content: center; text-align: center; padding: 10px 0;">
+			                            <div style="max-width: 100%; min-width: 20%;">
+			                                <button type="button" id="messageButton" style="color: #fff; background-color: royalblue; padding: 5px 10px; cursor: inherit;">
+			                                	Message
+			                                </button>
+			                            </div>
+			                        </div>
+			                        <div style="width: 100%;">
+			                            <div id="messageToggle" style="display: none;">
+			                                <div style="width: 100%; background-color: #000; color: #fff; text-align: center; padding: 5px 0;">Chat with SBM</div>
 
-				                        <div class="border" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="comments-container1-1"></div>
+					                        <div class="border" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="comments-container1-1"></div>
 
-				                        <div style="width: 100%;">
-											<form id="comment-form1-1" style="width: 100%; height: 100%; margin: 0 auto;">
-												<input type="hidden" name="id" value="id"/>
-												<input type="hidden" name="email" value="email"/>
-												<input type="hidden" name="role" value="role"/>
-												<input type="hidden" name="date" value="date" id="dateInput1-1"/>
-												<div class="comment-area">
-													<textarea class="form-control" placeholder="Type your message here." rows="1" name="comment" id="comment1-1"></textarea>
-												</div>
-												<div style="display: flex; justify-content: center">
-													<button type="submit" class="btn-main" style="margin: 10px 0; padding: 10px 0; width: 75%; border-radius: 25px;">Send</button>
-												</div>
-											</form>
-				                        </div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                </div>
+					                        <div style="width: 100%;">
+												<form id="comment-form1-1" style="width: 100%; height: 100%; margin: 0 auto;">
+													<input type="hidden" name="id" value="id"/>
+													<input type="hidden" name="email" value="email"/>
+													<input type="hidden" name="role" value="role"/>
+													<input type="hidden" name="date" value="date" id="dateInput1-1"/>
+													<div class="comment-area">
+														<textarea class="form-control" placeholder="Type your message here." rows="1" name="comment" id="comment1-1"></textarea>
+													</div>
+													<div style="display: flex; justify-content: center">
+														<button type="submit" class="btn-main" style="margin: 10px 0; padding: 10px 0; width: 75%; border-radius: 25px;">Send</button>
+													</div>
+												</form>
+					                        </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div> -->
+			            </div>
 	                </div>
 	            </div>
 	            <!-- End of New Users Section -->
@@ -178,25 +150,279 @@ if ($_SESSION['role'] === "Admin") {
 	                </div>
             	</div>
             	<!-- End of Nav -->
+            	<div class="reminders">
+	                <div class="header">
+	                    <h2>Options</h2>
+	                </div>
+
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="default">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>Default</h3>
+	                    </button>
+	                </div>
+
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="pending">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>Pending</h3>
+	                    </button>
+	                </div>
+
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="on-the-way">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>On-The-Way</h3>
+	                    </button>
+	                </div>
+
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="delivered">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>Delivered</h3>
+	                    </button>
+	                </div>
+
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="canceled">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>Canceled</h3>
+	                    </button>
+	                </div>
+
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="rejected">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>Rejected</h3>
+	                    </button>
+	                </div>
+	            </div>
         	</div>
     	</div>
     </body>
     <script src="./js/admin.js"></script>
     <script>
-    	// function showOrders() {
-		//     // Make an AJAX request
-		//     $.ajax({
-		//         url: "./php/get_userorders.php",
-		//         method: "GET",
-		//         success: function (data) {
-		//             // Handle the AJAX response here
-		//             $("#orders-container").html(data);
-		//         },
-		//         error: function (xhr, status, error) {
-		//             console.error("AJAX Request Error:", status, error);
-		//         }
-		//     });
-		// }
+    	$(document).ready(function () {
+    	    // Add a click event listener to the div elements with class "notification add-reminder"
+    	    $(".notification.add-reminder").on("click", function () {
+    	        // Get the data-action attribute value to determine the action
+    	        var action = $(this).data("action");
+
+    	        // Call the appropriate function based on the action
+    	        if (action === "default") {
+    	            showDefault()
+    	        } else if (action === "pending") {
+    	            showPending();
+    	        }else if (action === "on-the-way") {
+    	            showOTW();
+    	        }else if (action === "delivered") {
+    	            showDelivered();
+    	        }else if (action === "canceled") {
+    	            showCanceled();
+    	        }else{
+    	        	showRejected();
+    	        }
+    	    });
+
+        	function showDefault() {
+    		    // Make an AJAX request
+    		    $.ajax({
+    		        url: "./php/get_defaultorders.php",
+    		        method: "GET",
+    		        success: function (data) {
+    		            // Handle the AJAX response here
+    		            $("#orders-container").html(data);
+    		        },
+    		        error: function (xhr, status, error) {
+    		            console.error("AJAX Request Error:", status, error);
+    		        }
+    		    });
+    		}
+
+    		function showPending() {
+    		    // Make an AJAX request
+    		    $.ajax({
+    		        url: "./php/get_pendingorders.php",
+    		        method: "GET",
+    		        success: function (data) {
+    		            // Handle the AJAX response here
+    		            $("#orders-container").html(data);
+    		        },
+    		        error: function (xhr, status, error) {
+    		            console.error("AJAX Request Error:", status, error);
+    		        }
+    		    });
+    		}
+
+    		function showOTW() {
+    		    // Make an AJAX request
+    		    $.ajax({
+    		        url: "./php/get_otworders.php",
+    		        method: "GET",
+    		        success: function (data) {
+    		            // Handle the AJAX response here
+    		            $("#orders-container").html(data);
+    		        },
+    		        error: function (xhr, status, error) {
+    		            console.error("AJAX Request Error:", status, error);
+    		        }
+    		    });
+    		}
+
+    		function showDelivered() {
+    		    // Make an AJAX request
+    		    $.ajax({
+    		        url: "./php/get_deliveredorders.php",
+    		        method: "GET",
+    		        success: function (data) {
+    		            // Handle the AJAX response here
+    		            $("#orders-container").html(data);
+    		        },
+    		        error: function (xhr, status, error) {
+    		            console.error("AJAX Request Error:", status, error);
+    		        }
+    		    });
+    		}
+
+    		function showCanceled() {
+    		    // Make an AJAX request
+    		    $.ajax({
+    		        url: "./php/get_canceledorders.php",
+    		        method: "GET",
+    		        success: function (data) {
+    		            // Handle the AJAX response here
+    		            $("#orders-container").html(data);
+    		        },
+    		        error: function (xhr, status, error) {
+    		            console.error("AJAX Request Error:", status, error);
+    		        }
+    		    });
+    		}
+
+    		function showRejected() {
+    		    // Make an AJAX request
+    		    $.ajax({
+    		        url: "./php/get_rejectedorders.php",
+    		        method: "GET",
+    		        success: function (data) {
+    		            // Handle the AJAX response here
+    		            $("#orders-container").html(data);
+    		        },
+    		        error: function (xhr, status, error) {
+    		            console.error("AJAX Request Error:", status, error);
+    		        }
+    		    });
+    		}
+
+    		showDefault();
+    	});
+    </script>
+    <script>
+    	$(document).ready(function () {
+    	  $(document).on("submit", ".dynamic-form", function (event) {
+    	    event.preventDefault();
+    	    var idValue = $(this).find("input[name='id']").val();
+    	    var optionToggle = $("#optionToggle" + idValue);
+
+    	    // Check the current state of the element
+    	    if (optionToggle.css("display") === "none") {
+    	      optionToggle.css("display", "block"); // If hidden, make it visible
+    	    } else {
+    	      optionToggle.css("display", "none"); // If visible, hide it
+    	    }
+    	  });
+    	});
+    </script>
+    <script>
+    	// $(document).ready(function () {
+
+    		// Add a click event listener to the div elements with class "notification add-reminder"
+    	    $(document).on("click", ".status-form", function () {
+    	        // Get the data-action attribute value to determine the action
+    	        var action = $(this).data("action");
+
+    	        // Call the appropriate function based on the action
+    	        if (action === "otw") {
+    	            $.ajax({
+    	                type: "POST", // You can change the HTTP method as needed
+                        url: "./php/otw_order.php", // URL of your PHP script
+                        data: $(this).find('input').serialize(), // Serialize form data if needed
+                        success: function () {
+                            window.location.href = "product.php";
+                        },
+    	                error: function (xhr, status, error) {
+    	                    console.error("AJAX Request Error:", status, error);
+    	                }
+    	            });
+    	        }else if (action === "delivered") {
+    	            $.ajax({
+                        type: "POST", // You can change the HTTP method as needed
+                        url: "./php/delivered_order.php", // URL of your PHP script
+                        data: $(this).find('input').serialize(), // Serialize form data if needed
+                        success: function () {
+                            window.location.href = "product.php";
+                        },
+                        error: function (xhr, status, error) {
+                            console.error("AJAX Request Error:", status, error);
+                        }
+                    });
+    	        }else{
+    	        	$.ajax({
+        	            type: "POST", // You can change the HTTP method as needed
+        	            url: "./php/rejected_order.php", // URL of your PHP script
+        	            data: $(this).find('input').serialize(), // Serialize form data if needed
+        	            success: function () {
+        	                window.location.href = "product.php";
+        	            },
+        	            error: function (xhr, status, error) {
+        	                console.error("AJAX Request Error:", status, error);
+        	            }
+        	        });
+    	        }
+    	    });
+
+    	    // $('[id^="status-otw"]').on("submit", function (e) {
+    	    //     e.preventDefault(); // Prevent the form from submitting traditionally
+
+    	    //     $.ajax({
+    	    //         type: "POST", // You can change the HTTP method as needed
+    	    //         url: "./php/otw_order.php", // URL of your PHP script
+    	    //         data: $(this).serialize(), // Serialize form data if needed
+    	    //         success: function () {
+    	    //             showDefault();
+    	    //         },
+    	    //         error: function (xhr, status, error) {
+    	    //             console.error("AJAX Request Error:", status, error);
+    	    //         }
+    	    //     });
+    	    // });
+
+    	    // $('[id^="status-delivered"]').on("submit", function (e) {
+    	    //     e.preventDefault(); // Prevent the form from submitting traditionally
+
+    	    //     $.ajax({
+    	    //         type: "POST", // You can change the HTTP method as needed
+    	    //         url: "./php/delivered_order.php", // URL of your PHP script
+    	    //         data: $(this).serialize(), // Serialize form data if needed
+    	    //         success: function () {
+    	    //             showDefault();
+    	    //         },
+    	    //         error: function (xhr, status, error) {
+    	    //             console.error("AJAX Request Error:", status, error);
+    	    //         }
+    	    //     });
+    	    // });
+
+    	    // $('[id^="status-rejected"]').on("submit", function (e) {
+    	    //     e.preventDefault(); // Prevent the form from submitting traditionally
+
+    	    //     $.ajax({
+    	    //         type: "POST", // You can change the HTTP method as needed
+    	    //         url: "./php/rejected_order.php", // URL of your PHP script
+    	    //         data: $(this).serialize(), // Serialize form data if needed
+    	    //         success: function () {
+    	    //             showDefault();
+    	    //         },
+    	    //         error: function (xhr, status, error) {
+    	    //             console.error("AJAX Request Error:", status, error);
+    	    //         }
+    	    //     });
+    	    // });
+    	// });
     </script>
 </html>
 <?php 

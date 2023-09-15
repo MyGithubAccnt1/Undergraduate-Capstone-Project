@@ -3,6 +3,10 @@ include("connect.php");
 // Get the form data
 $id = $_GET["id"];
 $date = $_GET["date"];
+
+$newsql = "UPDATE message SET seen = 'Yes' WHERE sender = '$id' and deyt = '$date'";
+$result = mysqli_query($conn, $newsql);
+
 // Fetch comments from the database
 $sql = "SELECT * FROM message WHERE sender = '$id' and deyt = '$date' ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);

@@ -10,18 +10,18 @@
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto my-4">
                     <h6 class="text-uppercase fw-bold">Categories</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px"/>
-                    <p><a href="product.php" class="text-dark">Necklaces</a></p>
-                    <p><a href="product.php" class="text-dark">Pins</a></p>
-                    <p><a href="product.php" class="text-dark">Table Nameplates</a></p>
-                    <p><a href="product.php" class="text-dark">Logo Seal</a></p>
+                    <p><a href="necklaces.php" class="text-dark">Necklaces</a></p>
+                    <p><a href="necklaces.php" class="text-dark">Pins</a></p>
+                    <p><a href="necklaces.php" class="text-dark">Table Nameplates</a></p>
+                    <p><a href="necklaces.php" class="text-dark">Logo Seal</a></p>
                 </div>
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto my-4">
                     <h6 class="text-uppercase fw-bold">Navigation</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px"/>
                     <p><a href="index.php" class="text-dark">Home</a></p>
                     <p><a href="signin.php" class="text-dark">Sign In</a></p>
-                    <p><a href="#offcanvasDark" data-bs-toggle="offcanvas" class="text-dark">Cart</a></p>
                     <p><a href="account.php" class="text-dark">Account</a></p>
+                    <p><a href="necklaces.php" class="text-dark">Customize</a></p>
                 </div>
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 my-4">
                     <h6 class="text-uppercase fw-bold">Contact</h6>
