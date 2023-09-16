@@ -66,6 +66,20 @@ if ($_SESSION['role'] === "Admin") {
 				align-items: center;
 				background-color: #fff;
 			}
+			.card {
+			    display: flex; 
+			    justify-content: center; 
+			    align-items: center; 
+			    width: 75%; 
+			    margin: 10px 5px;
+			    padding: 5px 0 10px;
+			    box-shadow: 5px 6px 6px 2px #e9ecef;
+			    border-radius: 4px;
+			    font-size: 1.5rem;
+			    background-color: #fff;
+			    color: #000;
+			    border: 1px solid #D2D2D2;
+			}
 		</style>
 	</head>
 	<body>
@@ -213,8 +227,10 @@ if ($_SESSION['role'] === "Admin") {
     	            showDelivered();
     	        }else if (action === "canceled") {
     	            showCanceled();
-    	        }else{
+    	        }else if (action === "rejected") {
     	        	showRejected();
+    	        }else{
+    	        	showDefault()
     	        }
     	    });
 
@@ -360,7 +376,7 @@ if ($_SESSION['role'] === "Admin") {
                             console.error("AJAX Request Error:", status, error);
                         }
                     });
-    	        }else{
+    	        }else if (action === "Rejected") {
     	        	$.ajax({
         	            type: "POST", // You can change the HTTP method as needed
         	            url: "./php/rejected_order.php", // URL of your PHP script
@@ -372,57 +388,76 @@ if ($_SESSION['role'] === "Admin") {
         	                console.error("AJAX Request Error:", status, error);
         	            }
         	        });
+    	        }else{
+	        	    var id = $(this).find("input[name='id']").val();
+	        	    var messageToggle = $("#messageToggle" + id);
+
+	        	    if (messageToggle.css("display") === "none") {
+		        	    messageToggle.css("display", "block"); // If hidden, make it visible
+
+		        	    function showComments() {
+
+		        	    	var rowCount = $("input[name='row']").val();
+		        	    	rowCount = parseInt(rowCount);
+
+		        	        var looop = 1;
+
+		        	        function makeAjaxRequest() {
+		        	            $.ajax({
+		        	                url: "./php/get_productmessages.php",
+		        	                method: "GET",
+		        	                data: {
+		        	                	date: $("#dateInput" + looop + "-" + looop).val(),
+		        	                	email: $("#emailInput" + looop + "-" + looop).val()
+		        	                },
+		        	                success: function (data) {
+		        	                    $("#comments-container" + looop + "-" + looop).html(data);
+
+		        	                    looop++;
+
+		        	                    if (looop <= rowCount) {
+		        	                        makeAjaxRequest();
+		        	                    }
+		        	                }
+		        	            });
+		        	        }
+
+		        	        makeAjaxRequest();
+
+		        	    }
+
+		        	    showComments()
+
+		        	    var rowCount = $("input[name='row']").val();
+		        	    rowCount = parseInt(rowCount);
+
+		        	    for (var i = 1; i <= row_count; i++) {
+		        	        var formId = "comment-form" + i + "-" + i;
+
+		        	        $("#" + formId).submit(function (e) {
+		        	            e.preventDefault(); // Prevent the form from submitting traditionally
+
+		        	            // var formData = $(this).serialize();
+
+		        	            // $.ajax({
+		        	            //     url: "./php/add_messages.php", // PHP script to insert comments into the database
+		        	            //     method: "POST",
+		        	            //     data: formData,
+		        	            //     success: function (data) {
+		        	            //         // If successful, show the updated comments
+		        	            //         showComments();
+		        	            //     }
+		        	            // });
+
+		        	            $(this).find('textarea[name="comment"]').val('');
+		        	        });
+		        	    }
+
+	        	    } else {
+	        	      messageToggle.css("display", "none"); // If visible, hide it
+	        	    }
     	        }
     	    });
-
-    	    // $('[id^="status-otw"]').on("submit", function (e) {
-    	    //     e.preventDefault(); // Prevent the form from submitting traditionally
-
-    	    //     $.ajax({
-    	    //         type: "POST", // You can change the HTTP method as needed
-    	    //         url: "./php/otw_order.php", // URL of your PHP script
-    	    //         data: $(this).serialize(), // Serialize form data if needed
-    	    //         success: function () {
-    	    //             showDefault();
-    	    //         },
-    	    //         error: function (xhr, status, error) {
-    	    //             console.error("AJAX Request Error:", status, error);
-    	    //         }
-    	    //     });
-    	    // });
-
-    	    // $('[id^="status-delivered"]').on("submit", function (e) {
-    	    //     e.preventDefault(); // Prevent the form from submitting traditionally
-
-    	    //     $.ajax({
-    	    //         type: "POST", // You can change the HTTP method as needed
-    	    //         url: "./php/delivered_order.php", // URL of your PHP script
-    	    //         data: $(this).serialize(), // Serialize form data if needed
-    	    //         success: function () {
-    	    //             showDefault();
-    	    //         },
-    	    //         error: function (xhr, status, error) {
-    	    //             console.error("AJAX Request Error:", status, error);
-    	    //         }
-    	    //     });
-    	    // });
-
-    	    // $('[id^="status-rejected"]').on("submit", function (e) {
-    	    //     e.preventDefault(); // Prevent the form from submitting traditionally
-
-    	    //     $.ajax({
-    	    //         type: "POST", // You can change the HTTP method as needed
-    	    //         url: "./php/rejected_order.php", // URL of your PHP script
-    	    //         data: $(this).serialize(), // Serialize form data if needed
-    	    //         success: function () {
-    	    //             showDefault();
-    	    //         },
-    	    //         error: function (xhr, status, error) {
-    	    //             console.error("AJAX Request Error:", status, error);
-    	    //         }
-    	    //     });
-    	    // });
-    	// });
     </script>
 </html>
 <?php 
