@@ -11,19 +11,19 @@ if ($_SESSION['role'] === "Admin") {
 	  	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	  	<?php include('./include/admin_style.php') ?>
 		<style>
-			aside .sidebar a.prod-act{
+			aside .sidebar a.pay-act{
 				width: 100%;
 				color: var(--color-primary);
 				background-color: var(--color-light);
 				margin-left: 0;
 			}
-			aside .sidebar a.prod-act::before{
+			aside .sidebar a.pay-act::before{
 				width: 100%;
 				color: var(--color-primary);
 				background-color: var(--color-light);
 				margin-left: 0;
 			}
-			aside .sidebar a.prod-act span{
+			aside .sidebar a.pay-act span{
 				color: var(--color-primary);
 				margin-left: calc(1rem - 3px);
 			}

@@ -25,7 +25,7 @@
             </span>
             <h3>Template</h3>
         </a>
-        <a href="#">
+        <a href="./notification.php" class="notif-act">
             <span class="material-icons-sharp">
                 notifications
             </span>
@@ -37,11 +37,11 @@
             </span>
             <h3>Product</h3>
         </a>
-        <a href="#">
+        <a href="./order.php" class="order-act">
             <span class="material-icons-sharp">
                 calendar_month
             </span>
-            <h3>Calendar</h3>
+            <h3>Order</h3>
         </a>
         <a href="./mailbox.php" class="mail-act">
             <span class="material-icons-sharp">
@@ -49,23 +49,23 @@
             </span>
             <h3>Mail Box</h3>
         </a>
-        <a href="#">
+        <a href="./inventory.php" class="inven-act">
             <span class="material-icons-sharp">
                 inventory
             </span>
             <h3>Inventory</h3>
         </a>
-        <a href="#">
+        <a href="./payroll.php" class="pay-act">
             <span class="material-icons-sharp">
                 savings
             </span>
             <h3>Payroll</h3>
         </a>
-        <a href="./php/logout.php">
+        <a href="account.php">
             <span class="material-icons-sharp">
                 logout
             </span>
-            <h3>Logout</h3>
+            <h3>Exit Mode</h3>
         </a>
     </div>
 </aside>

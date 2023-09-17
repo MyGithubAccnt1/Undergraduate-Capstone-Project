@@ -31,6 +31,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                        	  	<button type="submit" class="btn-main py-1 my-3 w-50 rounded-pill">Logout</button>
 	                        	</div>
 	                        </a>
+	                    <?php
+	                    if ($_SESSION['role'] === "Admin") {
+	                    ?>
+	                        <a href="dashboard.php">
+	                        	<div class="d-flex justify-content-end">
+	                        	  	<button type="submit" class="btn-main py-1 my-3 w-50 rounded-pill">[Administrator Mode]</button>
+	                        	</div>
+	                        </a>
+	                    <?php
+		                }else{
+
+		                }
+	                    ?>
 	                        <h2 class="my-4">My Profile</h2>
 	                        <hr>
 	                    </div>
