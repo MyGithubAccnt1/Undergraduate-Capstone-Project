@@ -86,11 +86,8 @@ if ($_SESSION['role'] === "Admin") {
 		<div class="container">
         	<?php include('./include/admin_header.php') ?>
 
-        	<!-- Main Content -->
         	<main>
 	            <h1>Orders</h1>
-	           
-	            <!-- New Users Section -->
 	            <div class="new-users">
 	                <div class="user-list" style="gap: 5px;">
 	                	<div style="width: 100%; display: flex; flex-direction: row; text-align: center;">
@@ -108,12 +105,7 @@ if ($_SESSION['role'] === "Admin") {
 			            </div>
 	                </div>
 	            </div>
-	            <!-- End of New Users Section -->
-
         	</main>
-        	<!-- End of Main Content -->
-
-	        <!-- Right Section -->
 	        <div class="right-section">
 	            <div class="nav">
 	                <button id="menu-btn">

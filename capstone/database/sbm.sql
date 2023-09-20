@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2023 at 02:35 AM
+-- Generation Time: Sep 20, 2023 at 04:20 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -125,12 +125,34 @@ CREATE TABLE `history` (
 INSERT INTO `history` (`id`, `email`, `title`, `total`, `deyt`, `status`) VALUES
 (20, 'test1@reg', 'SET 1', 39.42, '2023-09-10 14:54', 'Rejected'),
 (21, 'test2@reg', 'SET 1', 39.42, '2023-09-10 14:54', 'On-The-Way'),
-(22, 'test1@reg', 'SET 2', 31.93, '2023-09-10 20:26', 'Rejected'),
+(22, 'test1@reg', 'SET 2', 31.93, '2023-09-10 20:26', 'Canceled'),
 (23, 'test1@reg', 'SET 3', 49.44, '2023-09-10 21:56', 'Delivered'),
 (24, 'test3@reg', 'SET 11', 158.74, '2023-09-10 23:00', 'Rejected'),
 (25, 'test@admin', 'SET 1, SET 2', 110.77, '2023-09-11 12:39', 'On-The-Way'),
-(26, 'test@admin', 'SET 3', 49.44, '2023-09-11 13:35', 'Rejected'),
+(26, 'test@admin', 'SET 3', 49.44, '2023-09-11 13:35', 'Canceled'),
 (27, 'test@admin', 'SET 1', 39.42, '2023-09-11 13:43', 'Delivered');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inventory`
+--
+
+CREATE TABLE `inventory` (
+  `id` int(11) NOT NULL,
+  `material` text NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `category` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `inventory`
+--
+
+INSERT INTO `inventory` (`id`, `material`, `quantity`, `category`) VALUES
+(2, 'Sample', 40, 'Metal'),
+(3, 'Sample', 30, 'Metal'),
+(4, 'Empty', 20, 'Empty');
 
 -- --------------------------------------------------------
 
@@ -194,7 +216,19 @@ INSERT INTO `message` (`id`, `sender`, `email`, `message`, `deyt`, `role`, `time
 (91, '26', 'test2@reg', 'yes?', '2023-09-10 14:54', 'Admin', '2023-09-11 14:20:07', 'Yes'),
 (92, '26', 'test2@reg', 'help...', '2023-09-10 14:54', 'Regular', '2023-09-12 00:44:42', 'Yes'),
 (93, '26', 'test2@reg', 'with?', '2023-09-10 14:54', 'Admin', '2023-09-14 14:36:46', 'Yes'),
-(94, '1', 'test@admin', 'heyy', '2023-09-11 13:35', 'Admin', '2023-09-14 14:43:50', 'Yes');
+(94, '1', 'test@admin', 'heyy', '2023-09-11 13:35', 'Admin', '2023-09-14 14:43:50', 'Yes'),
+(95, '25', 'test1@reg', 'another 6', '2023-09-10 14:54', 'Admin', '2023-09-15 14:07:54', 'Yes'),
+(100, '25', 'test1@reg', 'another 7', '2023-09-10 14:54', 'Admin', '2023-09-15 14:09:33', 'Yes'),
+(101, '1', 'test@admin', 'test 1', '2023-09-11 12:39', 'Admin', '2023-09-16 15:06:06', 'Yes'),
+(102, '1', 'test@admin', 'test 2', '2023-09-11 13:35', 'Admin', '2023-09-16 15:06:10', 'Yes'),
+(103, '1', 'test@admin', 'test 2 confirmed', '2023-09-11 13:35', 'Admin', '2023-09-16 15:06:36', 'Yes'),
+(104, '1', 'test@admin', 'test 1 confirmed', '2023-09-11 12:39', 'Admin', '2023-09-16 15:06:50', 'Yes'),
+(105, '27', 'test3@reg', 'hi', '2023-09-10 23:00', 'Regular', '2023-09-17 12:37:58', 'Yes'),
+(106, '27', 'test3@reg', 'hi', '2023-09-10 23:00', 'Admin', '2023-09-17 12:39:39', 'Yes'),
+(107, '1', 'test@admin', 'yep', '2023-09-11 12:39', 'Admin', '2023-09-17 12:39:49', 'Yes'),
+(108, '1', 'test@admin', 'new', '2023-09-11 13:43', 'Admin', '2023-09-17 12:45:36', 'Yes'),
+(109, '1', 'test@admin', 'ahh', '2023-09-11 13:43', 'Admin', '2023-09-17 12:48:19', 'Yes'),
+(110, '1', 'test@admin', 'ahhh', '2023-09-11 12:39', 'Admin', '2023-09-17 12:50:26', 'Yes');
 
 -- --------------------------------------------------------
 
@@ -301,6 +335,12 @@ ALTER TABLE `history`
   ADD UNIQUE KEY `id` (`id`);
 
 --
+-- Indexes for table `inventory`
+--
+ALTER TABLE `inventory`
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- Indexes for table `message`
 --
 ALTER TABLE `message`
@@ -347,10 +387,16 @@ ALTER TABLE `history`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
+-- AUTO_INCREMENT for table `inventory`
+--
+ALTER TABLE `inventory`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- AUTO_INCREMENT for table `order`

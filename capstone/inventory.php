@@ -27,115 +27,84 @@ if ($_SESSION['role'] === "Admin") {
 				color: var(--color-primary);
 				margin-left: calc(1rem - 3px);
 			}
+			.border {
+				border: 1px solid;
+			}
+			.record {
+				width: 100%;
+				border: 1px solid;
+				padding: 5px 0;
+				margin-bottom: 5px;
+				display: flex; flex-direction: row;
+				text-align: center;
+				background-color: inherit;
+				color: inherit;
+			}
+			.record:hover {
+				background-color: #fff;
+				color: #000;
+			}
+			.record-1 {
+				width: 40%;
+				text-align: left;
+				padding-left: 20px;
+			}
+			.record-2 {
+				width: 20%;
+				text-align: center;
+			}
+			.record-3 {
+				width: 40%;
+				text-align: center;
+			}
+			.input-container {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				margin-bottom: 5px;
+				justify-content: right;
+			}
+			.input {
+				border: 1px solid;
+				margin: 5px 0;
+				width: 75%;
+				padding: 5px 5px 5px 10px;
+				border-radius: 5px;
+			}
+			.input-button {
+				padding: 8px 0;
+				width: 100%;
+				border: 1px solid;
+				border-radius: 25px;
+				font-weight: bold;
+			}
+			.input-button:hover {
+				background-color: rgb(255, 255, 255, 0.8);
+			}
 		</style>
 	</head>
 	<body>
 		<div class="container">
         	<?php include('./include/admin_header.php') ?>
-
-        	<!-- Main Content -->
         	<main>
-	            <h1>Analytics</h1>
-	            <!-- Analyses -->
-	            <div class="analyse">
-	                <div class="sales">
-	                    <div class="status">
-	                        <div class="info">
-	                            <h3>Total Sales</h3>
-	                            <h1>$65,024</h1>
-	                        </div>
-	                        <div class="progresss">
-	                            <svg>
-	                                <circle cx="38" cy="38" r="36"></circle>
-	                            </svg>
-	                            <div class="percentage">
-	                                <p>+81%</p>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="visits">
-	                    <div class="status">
-	                        <div class="info">
-	                            <h3>Site Visit</h3>
-	                            <h1>24,981</h1>
-	                        </div>
-	                        <div class="progresss">
-	                            <svg>
-	                                <circle cx="38" cy="38" r="36"></circle>
-	                            </svg>
-	                            <div class="percentage">
-	                                <p>-48%</p>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="searches">
-	                    <div class="status">
-	                        <div class="info">
-	                            <h3>Searches</h3>
-	                            <h1>14,147</h1>
-	                        </div>
-	                        <div class="progresss">
-	                            <svg>
-	                                <circle cx="38" cy="38" r="36"></circle>
-	                            </svg>
-	                            <div class="percentage">
-	                                <p>+21%</p>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	            <!-- End of Analyses -->
-
-	            <!-- New Users Section -->
+        		<h1>Inventory Management</h1>
 	            <div class="new-users">
-	                <h2>New Users</h2>
-	                <div class="user-list">
-	                    <div class="user">
-	                        <h2>Jack</h2>
-	                        <p>54 Min Ago</p>
-	                    </div>
-	                    <div class="user">
-	                        <h2>Amir</h2>
-	                        <p>3 Hours Ago</p>
-	                    </div>
-	                    <div class="user">
-	                        <h2>Ember</h2>
-	                        <p>6 Hours Ago</p>
-	                    </div>
-	                    <div class="user">
-	                        <h2>More</h2>
-	                        <p>New User</p>
-	                    </div>
+	                <div class="user-list" style="gap: 5px;">
+	                	<div style="width: 100%; display: flex; flex-direction: row; text-align: center;">
+	                		<div style="width: 40%;">Material</div>
+	                        <div style="width: 20%;">Quantity</div>
+	                        <div style="width: 40%;">Category</div>
+	                	</div>
+                        <div class="border" style="width: 100%;"></div>
+                        <div id="inventory-container" style="width: 100%;">
+	    					<div style="width: 100%; text-align: center; margin-top: 10px;">
+	    						<small>There are currently no records.</small>
+	    					</div>
+			            </div>
 	                </div>
 	            </div>
-	            <!-- End of New Users Section -->
-
-	            <!-- Recent Orders Table -->
-	            <div class="recent-orders">
-	                <h2>Recent Orders</h2>
-	                <table>
-	                    <thead>
-	                        <tr>
-	                            <th>Course Name</th>
-	                            <th>Course Number</th>
-	                            <th>Payment</th>
-	                            <th>Status</th>
-	                            <th></th>
-	                        </tr>
-	                    </thead>
-	                    <tbody></tbody>
-	                </table>
-	                <a href="#">Show All</a>
-	            </div>
-	            <!-- End of Recent Orders -->
-
         	</main>
-        	<!-- End of Main Content -->
-
-	        <!-- Right Section -->
 	        <div class="right-section">
 	            <div class="nav">
 	                <button id="menu-btn">
@@ -152,60 +121,41 @@ if ($_SESSION['role'] === "Admin") {
 	                    </span>
 	                </div>
             	</div>
-            	<!-- End of Nav -->
-
 	            <div class="reminders">
 	                <div class="header">
-	                    <h2>Reminders</h2>
-	                    <span class="material-icons-sharp">
-	                        notifications_none
-	                    </span>
+	                    <h2>Options</h2>
 	                </div>
-
 	                <div class="notification">
-	                    <div class="icon">
-	                        <span class="material-icons-sharp">
-	                            volume_up
-	                        </span>
-	                    </div>
 	                    <div class="content">
-	                        <div class="info">
-	                            <h3>Workshop</h3>
-	                            <small class="text_muted">
-	                                08:00 AM - 12:00 PM
-	                            </small>
+	                        <div class="info" style="width: 100%;">
+	                        	<input type="hidden" name="id" id="id">
+	                        	<div class="input-container">
+	                        		<div style="margin-right: 5px;">Material:</div>
+	                        		<input type="text" class="input" id="material" name="material">
+	                        	</div>
+	                        	<div class="input-container">
+	                        		<div style="margin-right: 5px;">Quantity:</div>
+	                        		<input type="number" class="input" id="quantity" name="quantity">
+	                        	</div>
+	                        	<div class="input-container">
+	                        		<div style="margin-right: 5px;">Category:</div>
+	                        		<input type="text" class="input" id="category" name="category">
+	                        	</div>
+	                        	<div style="width: 100%; display: flex; flex-direction: row; justify-content: center; gap: 5px;">
+		                        	<form id="create" action="" class="input-container">
+	                        			<button type="submit" class="input-button">Create</button>
+	                        		</form>
+	                        		<form id="update" action="" class="input-container">
+	                        			<button type="submit" class="input-button">Update</button>
+	                        		</form>
+	                        		<form id="delete" action="" class="input-container">
+	                        			<button type="submit" class="input-button">Delete</button>
+	                        		</form>
+	                        		<form id="clear" action="" class="input-container">
+	                        			<button type="submit" class="input-button">Clear</button>
+	                        		</form>
+	                        	</div>
 	                        </div>
-	                        <span class="material-icons-sharp">
-	                            more_vert
-	                        </span>
-	                    </div>
-	                </div>
-
-	                <div class="notification deactive">
-	                    <div class="icon">
-	                        <span class="material-icons-sharp">
-	                            edit
-	                        </span>
-	                    </div>
-	                    <div class="content">
-	                        <div class="info">
-	                            <h3>Workshop</h3>
-	                            <small class="text_muted">
-	                                08:00 AM - 12:00 PM
-	                            </small>
-	                        </div>
-	                        <span class="material-icons-sharp">
-	                            more_vert
-	                        </span>
-	                    </div>
-	                </div>
-
-	                <div class="notification add-reminder">
-	                    <div>
-	                        <span class="material-icons-sharp">
-	                            add
-	                        </span>
-	                        <h3>Add Reminder</h3>
 	                    </div>
 	                </div>
 	            </div>
@@ -213,6 +163,140 @@ if ($_SESSION['role'] === "Admin") {
     	</div>
     </body>
     <script src="./js/admin.js"></script>
+    <script>
+    	function showInventory() {
+		    $.ajax({
+		        url: "./php/get_inventory.php",
+		        method: "GET",
+		        success: function (data) {
+		            // Handle the AJAX response here
+		            $("#inventory-container").html(data);
+		        },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+		    });
+		}
+		showInventory()
+		setInterval(showInventory, 1000);
+    </script>
+    <script>
+    	$(document).ready(function () {
+    	  	$(document).on("submit", ".dynamic-form", function (event) {
+    	    	event.preventDefault();
+    	    	var id = $(this).find("input[name='id']").val();
+    	    	var material = $(this).find("input[name='material']").val();
+    	    	var quantity = $(this).find("input[name='quantity']").val();
+    	    	var category = $(this).find("input[name='category']").val();
+    	    	$("#id").val(id);
+    	    	$("#material").val(material);
+    	    	$("#quantity").val(quantity);
+    	    	$("#category").val(category);
+    	  	});
+    	});
+    </script>
+    <script>
+    	$("#clear").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+
+	        $("#id").val('');
+	        $("#material").val('');
+	        $("#quantity").val('');
+	        $("#category").val('');
+
+	    });
+	    $("#create").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+
+	        var material = $("#material").val();
+	        var quantity = $("#quantity").val();
+	        var category = $("#category").val();
+
+	        $.ajax({
+	            url: "./php/add_inventory.php", // PHP script to insert comments into the database
+	            method: "POST",
+	            data: {
+	            	material: material,
+	            	quantity: quantity,
+	            	category: category
+	            },
+	            success: function (data) {
+	                showInventory()
+	            },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+	        });
+
+	        $("#id").val('');
+	        $("#material").val('');
+	        $("#quantity").val('');
+	        $("#category").val('');
+
+	    });
+	    $("#update").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+
+	        var id = $("#id").val();
+	        var material = $("#material").val();
+	        var quantity = $("#quantity").val();
+	        var category = $("#category").val();
+
+	        $.ajax({
+	            url: "./php/update_inventory.php", // PHP script to insert comments into the database
+	            method: "POST",
+	            data: {
+	            	id: id,
+	            	material: material,
+	            	quantity: quantity,
+	            	category: category
+	            },
+	            success: function (data) {
+	                showInventory()
+	            },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+	        });
+
+	        $("#id").val('');
+	        $("#material").val('');
+	        $("#quantity").val('');
+	        $("#category").val('');
+
+	    });
+	    $("#delete").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+
+	        var id = $("#id").val();
+	        var material = $("#material").val();
+	        var quantity = $("#quantity").val();
+	        var category = $("#category").val();
+
+	        $.ajax({
+	            url: "./php/delete_inventory.php", // PHP script to insert comments into the database
+	            method: "POST",
+	            data: {
+	            	id: id,
+	            	material: material,
+	            	quantity: quantity,
+	            	category: category
+	            },
+	            success: function (data) {
+	                showInventory()
+	            },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+	        });
+
+	        $("#id").val('');
+	        $("#material").val('');
+	        $("#quantity").val('');
+	        $("#category").val('');
+
+	    });
+    </script>
 </html>
 <?php 
 }else{
