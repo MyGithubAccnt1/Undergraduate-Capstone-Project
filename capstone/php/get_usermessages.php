@@ -53,9 +53,9 @@ if ($result->num_rows > 0) {
 		echo '</form>';
 	}
 } else {
-	echo '<div class="d-flex justify-content-center mt-5">';
-	echo '<small>No message found.</small>';
-	echo '</div>';
+	echo '<div style="width: 100%; text-align: center; margin-top: 10px;">';
+        echo '<small>There are currently no messages found.</small>';
+    echo '</div>';
 }
 $conn->close();
 ?>
