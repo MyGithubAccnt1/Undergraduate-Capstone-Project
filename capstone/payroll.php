@@ -84,9 +84,36 @@ if ($_SESSION['role'] === "Admin") {
 				border: 1px solid;
 				border-radius: 25px;
 				font-weight: bold;
+				border: 1px solid;
+			    background-color: #BB8A5B;
 			}
+
 			.input-button:hover {
-				background-color: rgb(255, 255, 255, 0.8);
+				background-color: #794B29;
+			    color: #fff;
+			}
+			.responsive-button{
+				display: flex;
+				flex-wrap: wrap;
+			}
+			.responsive-button > form{
+				margin-bottom: 5px;
+			}
+			@media (max-width: 768px) {
+			    .responsive-button > form{
+			    	flex: 50%;
+			    }
+			    .responsive-button > div{
+			    	margin-right: 30px;
+			    }
+			}
+			@media (max-width: 425px) {
+			    .responsive-button > form{
+			    	flex: 100%;
+			    }
+			    .responsive-button > div{
+			    	margin-right: 0;
+			    }
 			}
 		</style>
 	</head>
@@ -130,29 +157,40 @@ if ($_SESSION['role'] === "Admin") {
             	</div>
 	            <div class="reminders">
 	                <div class="header">
+	                    <h2>Details</h2>
+	                </div>
+	                <div class="notification">
+	                    <div class="content">
+	                        <div class="info" style="width: 100%;">
+	                        	<div class="responsive-button">
+		                        	<input type="hidden" name="id" id="id">
+		                        	<div class="input-container">
+		                        		<div style="margin-right: 5px;">Name:</div>
+		                        		<input type="text" class="input" id="material" name="material">
+		                        	</div>
+		                        	<div class="input-container">
+		                        		<div style="margin-right: 5px;">Position:</div>
+		                        		<input type="number" class="input" id="quantity" name="quantity">
+		                        	</div>
+		                        	<div class="input-container">
+		                        		<div style="margin-right: 5px;">Date of Employment:</div>
+		                        		<input type="text" class="input" id="category" name="category">
+		                        	</div>
+		                        	<div class="input-container">
+		                        		<div style="margin-right: 5px;">Salary:</div>
+		                        		<input type="text" class="input" id="category" name="category">
+		                        	</div>
+		                        </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="header">
 	                    <h2>Options</h2>
 	                </div>
 	                <div class="notification">
 	                    <div class="content">
 	                        <div class="info" style="width: 100%;">
-	                        	<input type="hidden" name="id" id="id">
-	                        	<div class="input-container">
-	                        		<div style="margin-right: 5px;">Name:</div>
-	                        		<input type="text" class="input" id="material" name="material">
-	                        	</div>
-	                        	<div class="input-container">
-	                        		<div style="margin-right: 5px;">Position:</div>
-	                        		<input type="number" class="input" id="quantity" name="quantity">
-	                        	</div>
-	                        	<div class="input-container">
-	                        		<div style="margin-right: 5px;">Date of Employment:</div>
-	                        		<input type="text" class="input" id="category" name="category">
-	                        	</div>
-	                        	<div class="input-container">
-	                        		<div style="margin-right: 5px;">Salary:</div>
-	                        		<input type="text" class="input" id="category" name="category">
-	                        	</div>
-	                        	<div style="width: 100%; display: flex; flex-direction: row; justify-content: center; gap: 5px;">
+	                        	<div class="responsive-button">
 		                        	<form id="create" action="" class="input-container">
 	                        			<button type="submit" class="input-button">Create</button>
 	                        		</form>
