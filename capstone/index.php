@@ -148,51 +148,32 @@
 						<div class="container-fluid m-0 p-0">
 							<div class="slider">
 							    <div class="rotator">
-									<div class="items">
+							    	<?php
+							    	include("./php/connect.php");
+							    	$counter = 0;
+							    	$sql = "SELECT thumbnail FROM product ORDER BY `id` DESC";
+							    	$result = $conn->query($sql);
+							    	if ($result->num_rows > 0) {
+							    		// output data of each row
+							    		while($row = $result->fetch_assoc()) {
+							    			$counter = $counter + 1;
+							    			if ($counter > 9) {
+
+							    			} else {
+							    	?>
+							    	<div class="items">
 										<a href="#!">
-											<img src="images/set1.png" style="background-color: #D0B89F;"/>
+											<img src="<?php echo $row['thumbnail']?>" style="background-color: #D0B89F;"/>
 										</a>
 									</div>
-									<div class="items">
-										<a href="#!">
-											<img src="images/set2.png" style="background-color: #D0B89F;"/>
-										</a>
-									</div>
-									<div class="items">
-										<a href="#!">
-											<img src="images/set3.png" style="background-color: #D0B89F;"/>
-										</a>
-									</div>
-									<div class="items">
-										<a href="#!">
-											<img src="images/set4.png" style="background-color: #D0B89F;"/>
-										</a>
-									</div>
-									<div class="items">
-										<a href="#!">
-											<img src="images/set5.png" style="background-color: #D0B89F;"/>
-										</a>
-									</div>
-									<div class="items">
-										<a href="#!">
-											<img src="images/set6.png" style="background-color: #D0B89F;"/>
-										</a>
-									</div>
-									<div class="items">
-									    <a href="#!">
-											<img src="images/set7.png" style="background-color: #D0B89F;"/>
-										</a>
-								   	</div>
-								    <div class="items">
-								    	<a href="#!">
-											<img src="images/set8.png" style="background-color: #D0B89F;"/>
-										</a>
-								    </div>
-								    <div class="items">
-								    	<a href="#!">
-											<img src="images/set9.png" style="background-color: #D0B89F;"/>
-										</a>
-								    </div>
+									<?php
+											}
+										}
+									} else {
+										echo "0 results";
+									}
+									$conn->close();
+									?>
 							    </div>
 							</div>
 						</div>

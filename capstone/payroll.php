@@ -33,7 +33,7 @@ if ($_SESSION['role'] === "Admin") {
 			.record {
 				width: 100%;
 				border: 1px solid;
-				padding: 1px 0;
+				padding: 5px 0;
 				margin-bottom: 5px;
 				display: flex;
 				flex-direction: row;
@@ -166,19 +166,19 @@ if ($_SESSION['role'] === "Admin") {
 		                        	<input type="hidden" name="id" id="id">
 		                        	<div class="input-container">
 		                        		<div style="margin-right: 5px;">Name:</div>
-		                        		<input type="text" class="input" id="material" name="material">
+		                        		<input type="text" class="input" id="name" name="name">
 		                        	</div>
 		                        	<div class="input-container">
 		                        		<div style="margin-right: 5px;">Position:</div>
-		                        		<input type="number" class="input" id="quantity" name="quantity">
+		                        		<input type="text" class="input" id="position" name="position">
 		                        	</div>
 		                        	<div class="input-container">
 		                        		<div style="margin-right: 5px;">Date of Employment:</div>
-		                        		<input type="text" class="input" id="category" name="category">
+		                        		<input type="text" class="input" id="deyt" name="deyt">
 		                        	</div>
 		                        	<div class="input-container">
 		                        		<div style="margin-right: 5px;">Salary:</div>
-		                        		<input type="text" class="input" id="category" name="category">
+		                        		<input type="text" class="input" id="salary" name="salary">
 		                        	</div>
 		                        </div>
 	                        </div>
@@ -212,6 +212,151 @@ if ($_SESSION['role'] === "Admin") {
     	</div>
     </body>
     <script src="./js/admin.js"></script>
+    <script>
+    	function showInventory() {
+		    $.ajax({
+		        url: "./php/get_payroll.php",
+		        method: "GET",
+		        success: function (data) {
+		            // Handle the AJAX response here
+		            $("#payroll-container").html(data);
+		        },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+		    });
+		}
+		showInventory()
+		setInterval(showInventory, 1000);
+    </script>
+    <script>
+    	$(document).ready(function () {
+    	  	$(document).on("submit", ".dynamic-form", function (event) {
+    	    	event.preventDefault();
+    	    	var id = $(this).find("input[name='id']").val();
+    	    	var name = $(this).find("input[name='name']").val();
+    	    	var position = $(this).find("input[name='position']").val();
+    	    	var deyt = $(this).find("input[name='deyt']").val();
+    	    	var salary = $(this).find("input[name='salary']").val();
+    	    	$("#id").val(id);
+    	    	$("#name").val(name);
+    	    	$("#position").val(position);
+    	    	$("#deyt").val(deyt);
+    	    	$("#salary").val(salary);
+    	  	});
+    	});
+    </script>
+    <script>
+    	$("#clear").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+
+	        $("#id").val('');
+	        $("#name").val('');
+	        $("#position").val('');
+	        $("#deyt").val('');
+	        $("#salary").val('');
+	    });
+	    $("#create").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+
+	        var name = $("#name").val();
+	        var position = $("#position").val();
+	        var deyt = $("#deyt").val();
+	        var salary = $("#salary").val();
+
+	        $.ajax({
+	            url: "./php/add_payroll.php", // PHP script to insert comments into the database
+	            method: "POST",
+	            data: {
+	            	name: name,
+	            	position: position,
+	            	deyt: deyt,
+	            	salary: salary
+	            },
+	            success: function (data) {
+	                showInventory()
+	            },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+	        });
+
+	        $("#id").val('');
+	        $("#name").val('');
+	        $("#position").val('');
+	        $("#deyt").val('');
+	        $("#salary").val('');
+
+	    });
+	    $("#update").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+
+	        var id = $("#id").val();
+	        var name = $("#name").val();
+	        var position = $("#position").val();
+	        var deyt = $("#deyt").val();
+	        var salary = $("#salary").val();
+
+	        $.ajax({
+	            url: "./php/update_payroll.php", // PHP script to insert comments into the database
+	            method: "POST",
+	            data: {
+	            	id: id,
+	            	name: name,
+	            	position: position,
+	            	deyt: deyt,
+	            	salary: salary
+	            },
+	            success: function (data) {
+	                showInventory()
+	            },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+	        });
+
+	        $("#id").val('');
+	        $("#name").val('');
+	        $("#position").val('');
+	        $("#deyt").val('');
+	        $("#salary").val('');
+
+	    });
+	    $("#delete").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+
+	        var id = $("#id").val();
+	        var name = $("#name").val();
+	        var position = $("#position").val();
+	        var deyt = $("#deyt").val();
+	        var salary = $("#salary").val();
+
+	        $.ajax({
+	            url: "./php/delete_payroll.php", // PHP script to insert comments into the database
+	            method: "POST",
+	            data: {
+	            	id: id,
+	            	name: name,
+	            	position: position,
+	            	deyt: deyt,
+	            	salary: salary
+	            },
+	            success: function (data) {
+	                showInventory()
+	            },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+	        });
+
+	        $("#id").val('');
+	        $("#name").val('');
+	        $("#position").val('');
+	        $("#deyt").val('');
+	        $("#salary").val('');
+
+	    });
+    </script>
 </html>
 <?php 
 }else{

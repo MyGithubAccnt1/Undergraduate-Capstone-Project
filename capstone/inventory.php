@@ -35,7 +35,8 @@ if ($_SESSION['role'] === "Admin") {
 				border: 1px solid;
 				padding: 5px 0;
 				margin-bottom: 5px;
-				display: flex; flex-direction: row;
+				display: flex;
+				flex-direction: row;
 				text-align: center;
 				background-color: inherit;
 				color: inherit;

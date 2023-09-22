@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2023 at 04:20 AM
+-- Generation Time: Sep 23, 2023 at 01:36 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -45,12 +45,15 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`id`, `email`, `password`, `fname`, `lname`, `mnumber`, `caddress`, `role`, `deyt`) VALUES
 (1, 'test@admin', 'admin', 'first', 'last', '09123456789', 'Brgy. Test, Test City, Province of Test, Phiilippines', 'Admin', '0000-00-00 00:00:00.000000'),
-(23, 'celyn@tester', 'admin', NULL, NULL, NULL, NULL, 'Regular', '2023-08-03 10:58'),
+(23, 'celyn@tester', 'admin', NULL, NULL, NULL, NULL, 'Admin', '2023-08-03 10:58'),
 (24, 'men@bernabe', '20010', NULL, NULL, NULL, NULL, 'Regular', '2023-08-03 22:58'),
 (25, 'test1@reg', 'reg', 'fname', 'lname', '09876543210', '', 'Regular', '2023-08-08 16:38'),
 (26, 'test2@reg', 'reg', NULL, NULL, NULL, NULL, 'Regular', '2023-08-31 03:43'),
 (27, 'test3@reg', 'reg', 'fname', 'lname', '09123456789', 'Brgy. Test, \'Di Matagpuan City, Province of Unknown', 'Regular', '2023-09-03 21:11'),
-(28, 'test4@reg', 'reg', NULL, NULL, NULL, NULL, 'Regular', '2023-09-10 11:08');
+(28, 'test4@reg', 'reg', NULL, NULL, NULL, NULL, 'Regular', '2023-09-10 11:08'),
+(29, 'test5@reg', 'reg', NULL, NULL, NULL, NULL, 'Regular', '2023-09-10 11:08'),
+(30, 'test6@reg', 'reg', NULL, NULL, NULL, NULL, 'Regular', '2023-09-10 11:08'),
+(31, 'test7@reg', 'reg', NULL, NULL, NULL, NULL, 'Regular', '2023-09-10 11:08');
 
 -- --------------------------------------------------------
 
@@ -150,9 +153,7 @@ CREATE TABLE `inventory` (
 --
 
 INSERT INTO `inventory` (`id`, `material`, `quantity`, `category`) VALUES
-(2, 'Sample', 40, 'Metal'),
-(3, 'Sample', 30, 'Metal'),
-(4, 'Empty', 20, 'Empty');
+(7, 'Empty', 0, 'Empty');
 
 -- --------------------------------------------------------
 
@@ -277,6 +278,27 @@ INSERT INTO `order` (`id`, `title`, `qty`, `price`, `email`, `deyt`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `payroll`
+--
+
+CREATE TABLE `payroll` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `position` text NOT NULL,
+  `deyt` text NOT NULL,
+  `salary` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `payroll`
+--
+
+INSERT INTO `payroll` (`id`, `name`, `position`, `deyt`, `salary`) VALUES
+(9, 'Employee #0001', 'Empty', '1-1-0001', '0.00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product`
 --
 
@@ -353,6 +375,12 @@ ALTER TABLE `order`
   ADD UNIQUE KEY `id` (`id`);
 
 --
+-- Indexes for table `payroll`
+--
+ALTER TABLE `payroll`
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -366,7 +394,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `cart`
@@ -390,7 +418,7 @@ ALTER TABLE `history`
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -403,6 +431,12 @@ ALTER TABLE `message`
 --
 ALTER TABLE `order`
   MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `payroll`
+--
+ALTER TABLE `payroll`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `product`
