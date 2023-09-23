@@ -3,9 +3,6 @@ error_reporting(0);
 ini_set('display_errors', 0);
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
-$email = $_SESSION['email'];
-// error_reporting(0);
-// ini_set('display_errors', 0);
 ?>
 <header class="bg-white text-dark sticky-top">
 	<section class="d-block d-xl-none">
@@ -194,14 +191,10 @@ $email = $_SESSION['email'];
                 </div>
                 <hr class="border border-light border-1 opacity-75 my-3">
             </div>
-            <div class="p-0 m-0 row" style="width: 400px;" id="check">
-            	<?php include ('./php/get_cart.php') ?>
-            </div>
+            <div class="p-0 m-0 row" style="width: 400px;" id="cart-container"></div>
             <div class="p-0 m-0 row my-2" style="width: 400px;">
             	<hr class="border border-light border-1 opacity-75 my-2">
-                <small>
-                	<?php include ('./php/subtotal_cart.php') ?>
-            	</small>
+                <small id="subtotal-container"></small>
                 <hr class="border border-light border-1 opacity-75 my-2">
             </div>
             <div class="p-0" style="width: 400px; margin: 0 50px;">
@@ -217,6 +210,83 @@ $email = $_SESSION['email'];
         </section>
 	</div>
 </div>
+<script>
+	function showCart() {
+	    $.ajax({
+	        url: "./php/get_cart.php",
+	        method: "GET",
+	        success: function (data) {
+	            // Handle the AJAX response here
+	            $("#cart-container").html(data);
+	        },
+	        error: function (xhr, status, error) {
+	            console.error("AJAX Request Error:", status, error);
+	        }
+	    });
+	}
+	showCart()
+	function showSubtotal() {
+	    $.ajax({
+	        url: "./php/subtotal_cart.php",
+	        method: "GET",
+	        success: function (data) {
+	            // Handle the AJAX response here
+	            $("#subtotal-container").html(data);
+	        },
+	        error: function (xhr, status, error) {
+	            console.error("AJAX Request Error:", status, error);
+	        }
+	    });
+	}
+	showSubtotal()
+</script>
+<script>
+	$(document).on("click", ".status-form", function (event) {
+		event.preventDefault();
+    	var action = $(this).data("action");
+    	if (action === "minus") {
+    		var id = $(this).find("input[name='id']").val();
+    		var price = $(this).find("input[name='price']").val();
+    		var qty = $(this).find("input[name='qty']").val();
+    		$.ajax({
+		        url: "./php/minus_cart.php",
+		        method: "POST",
+		        data: {
+	            	id: id,
+	            	price: price,
+	            	qty: qty
+	            },
+		        success: function (data) {
+		        	showCart()
+		        	showSubtotal()
+		        },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+		    });
+    	} else if (action === "plus") {
+    		var id = $(this).find("input[name='id']").val();
+    		var price = $(this).find("input[name='price']").val();
+    		var qty = $(this).find("input[name='qty']").val();
+    		$.ajax({
+		        url: "./php/plus_cart.php",
+		        method: "POST",
+		        data: {
+	            	id: id,
+	            	price: price,
+	            	qty: qty
+	            },
+		        success: function (data) {
+		        	showCart()
+		        	showSubtotal()
+		        },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+		    });
+    	}
+    });
+</script>
 <script>
 	function confirm_delete() {
 		return confirm('Are you sure you want to delete this item?')

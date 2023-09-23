@@ -1,5 +1,5 @@
 <?php
-//This only execute for POST request
+session_start();
 if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 
     include('./php/connect.php');
