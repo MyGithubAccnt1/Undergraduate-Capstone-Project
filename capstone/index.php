@@ -163,7 +163,7 @@
 							    	?>
 							    	<div class="items">
 										<a href="#!">
-											<img src="<?php echo $row['thumbnail']?>" style="background-color: #D0B89F;"/>
+											<img src="<?php echo $row['thumbnail']?>" alt="Missing Image" style="background-color: #D0B89F;"/>
 										</a>
 									</div>
 									<?php

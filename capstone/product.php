@@ -27,115 +27,74 @@ if ($_SESSION['role'] === "Admin") {
 				color: var(--color-primary);
 				margin-left: calc(1rem - 3px);
 			}
+			.border {
+				border: 1px solid;
+			}
+			.input-container {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				margin-bottom: 5px;
+				justify-content: left;
+			}
+			.input {
+				border: 1px solid;
+				margin: 5px 0;
+				width: 75%;
+				padding: 5px 5px 5px 10px;
+				border-radius: 5px;
+			}
+			.responsive-button{
+				display: flex;
+				justify-content: space-around;
+				width: 100%;
+				padding: 10px 0;
+				margin-top: 5px;
+			}
+			.responsive-button > div{
+				width: 30%;
+				padding: 0 5px;
+			}
+			.input-button {
+				padding: 8px 0;
+				width: 100%;
+				border: 1px solid;
+				border-radius: 25px;
+				font-weight: bold;
+				border: 1px solid;
+			    background-color: #BB8A5B;
+			}
+			.input-button:hover {
+				background-color: #794B29;
+			    color: #fff;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="container">
         	<?php include('./include/admin_header.php') ?>
 
-        	<!-- Main Content -->
         	<main>
-	            <h1>Analytics</h1>
-	            <!-- Analyses -->
-	            <div class="analyse">
-	                <div class="sales">
-	                    <div class="status">
-	                        <div class="info">
-	                            <h3>Total Sales</h3>
-	                            <h1>$65,024</h1>
-	                        </div>
-	                        <div class="progresss">
-	                            <svg>
-	                                <circle cx="38" cy="38" r="36"></circle>
-	                            </svg>
-	                            <div class="percentage">
-	                                <p>+81%</p>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="visits">
-	                    <div class="status">
-	                        <div class="info">
-	                            <h3>Site Visit</h3>
-	                            <h1>24,981</h1>
-	                        </div>
-	                        <div class="progresss">
-	                            <svg>
-	                                <circle cx="38" cy="38" r="36"></circle>
-	                            </svg>
-	                            <div class="percentage">
-	                                <p>-48%</p>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="searches">
-	                    <div class="status">
-	                        <div class="info">
-	                            <h3>Searches</h3>
-	                            <h1>14,147</h1>
-	                        </div>
-	                        <div class="progresss">
-	                            <svg>
-	                                <circle cx="38" cy="38" r="36"></circle>
-	                            </svg>
-	                            <div class="percentage">
-	                                <p>+21%</p>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	            <!-- End of Analyses -->
-
-	            <!-- New Users Section -->
+	            <h1>Products</h1>
 	            <div class="new-users">
-	                <h2>New Users</h2>
-	                <div class="user-list">
-	                    <div class="user">
-	                        <h2>Jack</h2>
-	                        <p>54 Min Ago</p>
-	                    </div>
-	                    <div class="user">
-	                        <h2>Amir</h2>
-	                        <p>3 Hours Ago</p>
-	                    </div>
-	                    <div class="user">
-	                        <h2>Ember</h2>
-	                        <p>6 Hours Ago</p>
-	                    </div>
-	                    <div class="user">
-	                        <h2>More</h2>
-	                        <p>New User</p>
-	                    </div>
+	                <div class="user-list" style="gap: 5px;">
+	                	<div style="width: 100%; display: flex; flex-direction: row; text-align: center;">
+	                		<div style="width: 24.99%;">Title</div>
+	                		<div style="width: 16.66%;">Price</div>
+	                		<div style="width: 16.66%;">Thumbnail</div>
+	                		<div style="width: 24.99%;">Description</div>
+	                		<div style="width: 16.66%;">More</div>
+	                	</div>
+	                    <div class="border" style="width: 100%;"></div>
+	                    <div id="products-container" style="width: 100%;">
+		                    <div style="width: 100%; text-align: center; margin-top: 10px;">
+	    						<small>There are currently no orders.</small>
+	    					</div>
+			            </div>
 	                </div>
 	            </div>
-	            <!-- End of New Users Section -->
-
-	            <!-- Recent Orders Table -->
-	            <div class="recent-orders">
-	                <h2>Recent Orders</h2>
-	                <table>
-	                    <thead>
-	                        <tr>
-	                            <th>Course Name</th>
-	                            <th>Course Number</th>
-	                            <th>Payment</th>
-	                            <th>Status</th>
-	                            <th></th>
-	                        </tr>
-	                    </thead>
-	                    <tbody></tbody>
-	                </table>
-	                <a href="#">Show All</a>
-	            </div>
-	            <!-- End of Recent Orders -->
-
         	</main>
-        	<!-- End of Main Content -->
-
-	        <!-- Right Section -->
 	        <div class="right-section">
 	            <div class="nav">
 	                <button id="menu-btn">
@@ -152,72 +111,149 @@ if ($_SESSION['role'] === "Admin") {
 	                    </span>
 	                </div>
             	</div>
-            	<!-- End of Nav -->
-
-	            <div class="reminders">
+            	<div class="reminders">
 	                <div class="header">
-	                    <h2>Reminders</h2>
-	                    <span class="material-icons-sharp">
-	                        notifications_none
-	                    </span>
+	                    <h2>Options</h2>
 	                </div>
 
-	                <div class="notification">
-	                    <div class="icon">
-	                        <span class="material-icons-sharp">
-	                            volume_up
-	                        </span>
-	                    </div>
-	                    <div class="content">
-	                        <div class="info">
-	                            <h3>Workshop</h3>
-	                            <small class="text_muted">
-	                                08:00 AM - 12:00 PM
-	                            </small>
-	                        </div>
-	                        <span class="material-icons-sharp">
-	                            more_vert
-	                        </span>
-	                    </div>
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="default">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>Default</h3>
+	                    </button>
 	                </div>
 
-	                <div class="notification deactive">
-	                    <div class="icon">
-	                        <span class="material-icons-sharp">
-	                            edit
-	                        </span>
-	                    </div>
-	                    <div class="content">
-	                        <div class="info">
-	                            <h3>Workshop</h3>
-	                            <small class="text_muted">
-	                                08:00 AM - 12:00 PM
-	                            </small>
-	                        </div>
-	                        <span class="material-icons-sharp">
-	                            more_vert
-	                        </span>
-	                    </div>
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="necklace">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>Necklace</h3>
+	                    </button>
 	                </div>
 
-	                <div class="notification add-reminder">
-	                    <div>
-	                        <span class="material-icons-sharp">
-	                            add
-	                        </span>
-	                        <h3>Add Reminder</h3>
-	                    </div>
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="pin">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>Pin</h3>
+	                    </button>
+	                </div>
+
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="table">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>Table Nameplate</h3>
+	                    </button>
+	                </div>
+
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="logo">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>Logo Seal</h3>
+	                    </button>
 	                </div>
 	            </div>
         	</div>
     	</div>
     </body>
     <script src="./js/admin.js"></script>
+    <script>
+    	$(document).ready(function () {
+    	    // Add a click event listener to the div elements with class "notification add-reminder"
+    	    $(".notification.add-reminder").on("click", function () {
+    	        // Get the data-action attribute value to determine the action
+    	        var action = $(this).data("action");
+
+    	        showDefault(action)
+    	    });
+
+        	function showDefault(action) {
+    		    // Make an AJAX request
+    		    $.ajax({
+    		        url: "./php/get_adminproducts.php",
+    		        method: "GET",
+    		        data: { action: action },
+    		        success: function (data) {
+    		            // Handle the AJAX response here
+    		            $("#products-container").html(data);
+    		        },
+    		        error: function (xhr, status, error) {
+    		            console.error("AJAX Request Error:", status, error);
+    		        }
+    		    });
+    		}
+
+    		showDefault();
+    	});
+    </script>
+    <script>
+    	$(document).ready(function () {
+    	  $(document).on("submit", ".dynamic-form", function (event) {
+    	    event.preventDefault();
+    	    var idValue = $(this).find("input[name='id']").val();
+    	    var optionToggle = $("#optionToggle" + idValue);
+
+    	    // Check the current state of the element
+    	    if (optionToggle.css("display") === "none") {
+    	      optionToggle.css("display", "block"); // If hidden, make it visible
+    	    } else {
+    	      optionToggle.css("display", "none"); // If visible, hide it
+    	    }
+    	  });
+    	});
+    </script>
+    <script>
+	    $(document).on("click", ".status-form", function () {
+	        var action = $(this).data("action");
+
+	        if (action === "update") {
+	            var id = $(this).find("input[name='id']").val();
+        	    var title = $("#title" + id).val();
+        	    var price = $("#price" + id).val();
+        	    var thumbnail = $("#thumbnail" + id).val();
+        	    var description = $("#description" + id).val();
+        	    $.ajax({
+		            url: "./php/update_product.php", // PHP script to insert comments into the database
+		            method: "POST",
+		            data: {
+		            	id: id,
+		            	title: title,
+		            	price: price,
+		            	thumbnail: thumbnail,
+		            	description: description
+		            },
+		            success: function (data) {
+		                window.location.href = "product.php";
+		            },
+			        error: function (xhr, status, error) {
+			            console.error("AJAX Request Error:", status, error);
+			        }
+		        });
+	        }else{
+	            var id = $(this).find("input[name='id']").val();
+        	    var title = $("#title" + id).val();
+        	    var price = $("#price" + id).val();
+        	    var thumbnail = $("#thumbnail" + id).val();
+        	    var description = $("#description" + id).val();
+
+	            $.ajax({
+	                url: "./php/delete_product.php", // PHP script to insert comments into the database
+	                method: "POST",
+	                data: {
+		            	id: id,
+		            	title: title,
+		            	price: price,
+		            	thumbnail: thumbnail,
+		            	description: description
+		            },
+	                success: function (data) {
+	                    window.location.href = "product.php";
+	                },
+	    	        error: function (xhr, status, error) {
+	    	            console.error("AJAX Request Error:", status, error);
+	    	        }
+	            });
+	        }
+	    });
+    </script>
 </html>
 <?php 
 }else{
     echo"<script>alert('Notice: Please login to an administrative account.')</script>";
-    $script = "<script>window.location = 'signin.php';</script>";
+    $script = "<script>window.location = 'signin';.php</script>";
     echo $script;
 }
 ?>

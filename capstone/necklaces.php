@@ -9,7 +9,7 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
     $maxPrice = $_POST['maxPrice'];
     $minPrice = $_POST['minPrice'];
 
-    $sql = "SELECT price, title, thumbnail, link FROM product WHERE price BETWEEN ? AND ?";
+    $sql = "SELECT price, title, thumbnail FROM product WHERE price BETWEEN ? AND ?";
 
     $stmt = $conn->prepare($sql);
 
@@ -253,18 +253,15 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 		            priceParagraph.classList.add('item-price');
 		            priceParagraph.innerHTML = '<b>₱ ' + productData.price + '</b>';
 
-		            const linkButton = document.createElement('a');
-		            linkButton.href = productData.link;
-
 		            const viewButton = document.createElement('button');
 		            viewButton.classList.add('rounded-0', 'btn-main', 'btn', 'btn-md');
 		            viewButton.textContent = 'View';
+		            viewButton.type = 'Submit';
 
-		            linkButton.appendChild(viewButton);
 		            form.appendChild(titleInput);
 		            form.appendChild(titleHeading);
 		            form.appendChild(priceParagraph);
-		            form.appendChild(linkButton);
+		            form.appendChild(viewButton);
 		            thumbContentDiv.appendChild(form);
 
 		            thumbWrapperDiv.appendChild(imgBoxDiv);
