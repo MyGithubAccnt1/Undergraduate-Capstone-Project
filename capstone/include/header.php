@@ -294,7 +294,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 </script>
 <script>
     const link = document.getElementById('conditional-link');
-    const div = document.getElementById('check');
+    const div = document.getElementById('cart-container');
     const expectedHtml = '<small>Your cart is empty.</small>';
 
     if (div.innerHTML.includes(expectedHtml)) {
