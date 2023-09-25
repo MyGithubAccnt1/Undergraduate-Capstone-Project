@@ -82,8 +82,8 @@ if ($_SESSION['role'] === "Admin") {
 	                	<div style="width: 100%; display: flex; flex-direction: row; text-align: center;">
 	                		<div style="width: 24.99%;">Title</div>
 	                		<div style="width: 16.66%;">Price</div>
-	                		<div style="width: 16.66%;">Thumbnail</div>
-	                		<div style="width: 24.99%;">Description</div>
+	                		<div style="width: 16.66%;">Image</div>
+	                		<div style="width: 24.99%;">Desc.</div>
 	                		<div style="width: 16.66%;">More</div>
 	                	</div>
 	                    <div class="border" style="width: 100%;"></div>
@@ -145,6 +145,43 @@ if ($_SESSION['role'] === "Admin") {
 	                        <h3>Logo Seal</h3>
 	                    </button>
 	                </div>
+
+                    <div class="header">
+                        <h2>Details</h2>
+                    </div>
+                    <div class="notification">
+                        <div class="content">
+                            <div class="info" style="width: 100%;">
+	                        	<div class="input-container">
+	                        		<div style="margin-right: 5px;">Title:</div>
+	                        		<input type="text" class="input" id="title">
+	                        	</div>
+	                        	<div class="input-container">
+	                        		<div style="margin-right: 5px;">Price:</div>
+	                        		<input type="text" class="input" id="price">
+	                        	</div>
+	                        	<div class="input-container">
+	                        		<div style="margin-right: 5px;">Description:</div>
+	                        		<textarea type="text" class="input" rows="5" style="resize: none;" id="description"></textarea>
+	                        	</div>
+	                        	<div class="input-container">
+	                        	    <div style="margin-right: 5px;">Category:</div>
+	                        	    <select class="input" id="category">
+	                        	        <option value="Necklace">Necklace</option>
+	                        	        <option value="Pin">Pin</option>
+	                        	        <option value="Table">Table</option>
+	                        	        <option value="Logo">Logo</option>
+	                        	    </select>
+	                        	</div>
+	                        	<form style="margin-bottom: 5px;" id="create" action="">
+	                        		<button type="submit" class="input-button">Create</button>
+	                        	</form>
+	                        	<form style="margin-bottom: 5px;" id="clear" action="">
+	                        		<button type="submit" class="input-button">Clear</button>
+	                        	</form>
+                            </div>
+                        </div>
+                    </div>
 	            </div>
         	</div>
     	</div>
@@ -247,6 +284,45 @@ if ($_SESSION['role'] === "Admin") {
 	    	        }
 	            });
 	        }
+	    });
+    </script>
+    <script>
+    	$("#clear").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+	        $("#title").val('');
+	        $("#price").val('');
+	        $("#description").val('');
+	        $("#category").val('Necklace');
+	    });
+	    $("#create").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+	        var title = $("#title").val();
+	        var price = $("#price").val();
+	        var description = $("#description").val();
+	        var category = $("#category").val();
+
+	        $.ajax({
+	            url: "./php/add_product.php", // PHP script to insert comments into the database
+	            method: "POST",
+	            data: {
+	            	title: title,
+	            	price: price,
+	            	description: description,
+	            	category: category
+	            },
+	            success: function (data) {
+	                window.location.href = "product.php";
+	            },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+	        });
+
+	        $("#title").val('');
+	        $("#price").val('');
+	        $("#description").val('');
+	        $("#category").val('Necklace');
+
 	    });
     </script>
 </html>

@@ -48,12 +48,22 @@
 	    // output data of each row
 	    while ($row = $result->fetch_assoc()) {
 	    	$id = $id + 1;
-	    	echo '<div style="width: 100%; height: 28px; overflow-y: hidden; background-color: lightgoldenrodyellow; padding: 1px 0; margin-bottom: 5px;">';
+	    	$description = $row['description'];
+	    	$maxDescriptionLength = 25; // Adjust this value as needed
+	    	if (strlen($description) > $maxDescriptionLength) {
+	    	    $description = substr($description, 0, $maxDescriptionLength) . '...';
+	    	}
+	    	$thumbnail = $row['thumbnail'];
+	    	$maxThumbnailLength = 15; // Adjust this value as needed
+	    	if (strlen($thumbnail) > $maxThumbnailLength) {
+	    	    $thumbnail = substr($thumbnail, 0, $maxThumbnailLength) . '...';
+	    	}
+	    	echo '<div style="width: 100%; background-color: lightgoldenrodyellow; padding: 1px 0; margin-bottom: 5px;">';
 	    		echo '<div style="width: 100%; margin: 5px 0; display: flex; flex-direction: row;">';
-		    		echo '<div style="width: 24.99%; color: #000; text-align: center;">'. $row['title'] .'</div>';
-		    		echo '<div style="width: 16.66%; color: #000; text-align: center;">₱'. $row['price'] .'</div>';
-		    		echo '<div style="width: 16.66%; color: #000; text-align: center;">'. $row['thumbnail'] .'</div>';
-		    		echo '<div style="width: 24.99%; color: #000; text-align: left; margin-left: 20px;">'. $row['description'] .'</div>';
+		    		echo '<div style="width: 24.99%; color: #000; text-align: center; word-wrap: break-word;">'. $row['title'] .'</div>';
+		    		echo '<div style="width: 16.66%; color: #000; text-align: right; margin-right: 5px; word-wrap: break-word;">₱'. $row['price'] .'</div>';
+		    		echo '<div style="width: 16.66%; color: #000; text-align: left; margin-left: 5px; word-wrap: break-word;">'. $thumbnail .'</div>';
+		    		echo '<div style="width: 24.99%; color: #000; text-align: left; margin-left: 5px;">'. $description .'</div>';
 		    		echo '<div style="width: 16.66%; text-align: center;">';
 		    			echo '<form class="dynamic-form" action="">';
 		    				echo '<input type="hidden" name="id" value="'. $id .'">';
@@ -80,9 +90,14 @@
 				        		echo '<div style="margin: 0 10px 0 20px;">Thumbnail:</div>';
 				        		echo '<input type="text" class="input" value="'. $row['thumbnail'] .'" id="thumbnail'. $row['id'] .'">';
 				        	echo '</div>';
+			        		echo '<form class="input-container" style="display:display: flex; justify-content: center;" action="./php/upload.php" method="post" enctype="multipart/form-data">';
+    							echo '<input type="file" name="imageFile" id="imageFile" accept="image/*">';
+    							echo '<input class="input-button" style="width: 50%;" type="submit" value="Upload Image">';
+    							echo '<input type="hidden" value="'. $row['id'] .'" name="id">';
+    						echo '</form>';
 				        	echo '<div class="input-container">';
 				        		echo '<div style="margin: 0 10px 0 20px;">Description:</div>';
-				        		echo '<textarea class="input" id="description'. $row['id'] .'" rows="4" style="resize: none;">'. $row['description'] .'</textarea>';
+				        		echo '<textarea class="input" id="description'. $row['id'] .'" rows="5" style="resize: none;">'. $row['description'] .'</textarea>';
 				        	echo '</div>';
         				echo '</div>';
         				echo '<div style="width: 100%; height: 2px; background-color: #000;"></div>';
