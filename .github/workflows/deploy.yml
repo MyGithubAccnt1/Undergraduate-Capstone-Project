@@ -50,4 +50,6 @@ jobs:
           username: ${{ env.VM_USERNAME }}
           password: ${{ env.VM_PASSWORD }}
           script: |
+            sudo chown -R bitnami:daemon /opt/bitnami/capstone/
+            sudo chmod -R g+w /opt/bitnami/capstone/
             sudo /opt/bitnami/ctlscript.sh restart apache
