@@ -3,6 +3,9 @@
 // t@yOn2x/Gnk,
 // 12345678910admin!
 // sudo cat /opt/bitnami/apache/logs/error_log
+// sudo chown -R bitnami:daemon /opt/bitnami/capstone/
+// sudo chmod -R g+w /opt/bitnami/capstone/
+// sudo /opt/bitnami/ctlscript.sh restart apache
 $servername = "localhost";
 $username = "root";
 $password = "t@yOn2x/Gnk,";

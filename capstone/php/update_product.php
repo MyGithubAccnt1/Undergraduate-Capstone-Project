@@ -38,6 +38,11 @@ if ($id === "") {
 
         if (mysqli_query($conn, $sql)) {
 
+            $notifmessage = "An [Admin] has updated a product with a title of [". $title ."].";
+            $notifcategory = "log";
+            $notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+            $notifresult = mysqli_query($conn, $notifsql);
+
         } else {
             echo "Error: " . mysqli_error($conn);
         }

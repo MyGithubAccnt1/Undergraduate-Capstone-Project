@@ -17,6 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $sql = "UPDATE product SET thumbnail = '$thumbnailPath' WHERE id = '$id'";
             
             if (mysqli_query($conn, $sql)) {
+
+                $notifmessage = "An [Admin] has changed a product thumbnail of [". $thumbnailPath ."].";
+                $notifcategory = "log";
+                $notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+                $notifresult = mysqli_query($conn, $notifsql);
+
                 // Redirect to the product.php page after successful update
                 header("Location: ../product.php");
                 exit(); // Ensure no more PHP code is executed after the redirect

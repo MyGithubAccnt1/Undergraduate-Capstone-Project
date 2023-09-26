@@ -31,6 +31,11 @@ $stmt = $conn->prepare("UPDATE history SET status = ? WHERE email = ? AND deyt =
 $stmt->bind_param("sss", $status, $email, $date);
 $stmt->execute();
 
+$notifmessage = "An [Admin] has changed an order status of [". $email ."] from [". $date ."] to [". $status ."].";
+$notifcategory = "log";
+$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+$notifresult = mysqli_query($conn, $notifsql);
+
 $stmt->close();
 $conn->close(); // Close the database connection
 ?>

@@ -24,6 +24,11 @@ $sql = "INSERT INTO product (price, title, thumbnail, description, category) VAL
 
 if (mysqli_query($conn, $sql)) {
 
+    $notifmessage = "An [Admin] has added a new product with a category of [". $category ."].";
+    $notifcategory = "log";
+    $notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+    $notifresult = mysqli_query($conn, $notifsql);
+
 } else {
     echo "Error: " . mysqli_error($conn);
 }

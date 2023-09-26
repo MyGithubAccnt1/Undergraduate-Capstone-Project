@@ -41,6 +41,12 @@ if(mysqli_num_rows($result) === 1) {
 		} else {
 		    $_SESSION["caddress"] = $row['caddress'];
 		}
+
+		$notifmessage = "A new account has been created with an email of [". $row['email'] ."].";
+		$notifcategory = "account";
+		$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+		$notifresult = mysqli_query($conn, $notifsql);
+
 	  	echo"<script>alert('Notice: An account is successfully created.')</script>";
 	  	$script = "<script>window.location = '../account.php';</script>";
 	  	echo $script;

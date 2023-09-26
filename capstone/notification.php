@@ -33,107 +33,21 @@ if ($_SESSION['role'] === "Admin") {
 		<div class="container">
         	<?php include('./include/admin_header.php') ?>
 
-        	<!-- Main Content -->
         	<main>
-	            <h1>Analytics</h1>
-	            <!-- Analyses -->
-	            <div class="analyse">
-	                <div class="sales">
-	                    <div class="status">
-	                        <div class="info">
-	                            <h3>Total Sales</h3>
-	                            <h1>$65,024</h1>
-	                        </div>
-	                        <div class="progresss">
-	                            <svg>
-	                                <circle cx="38" cy="38" r="36"></circle>
-	                            </svg>
-	                            <div class="percentage">
-	                                <p>+81%</p>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="visits">
-	                    <div class="status">
-	                        <div class="info">
-	                            <h3>Site Visit</h3>
-	                            <h1>24,981</h1>
-	                        </div>
-	                        <div class="progresss">
-	                            <svg>
-	                                <circle cx="38" cy="38" r="36"></circle>
-	                            </svg>
-	                            <div class="percentage">
-	                                <p>-48%</p>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="searches">
-	                    <div class="status">
-	                        <div class="info">
-	                            <h3>Searches</h3>
-	                            <h1>14,147</h1>
-	                        </div>
-	                        <div class="progresss">
-	                            <svg>
-	                                <circle cx="38" cy="38" r="36"></circle>
-	                            </svg>
-	                            <div class="percentage">
-	                                <p>+21%</p>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	            <!-- End of Analyses -->
-
-	            <!-- New Users Section -->
+        		<section>
+        			<h1>Notification</h1>
+        			<div style="border: 1px solid;"></div>
+        		</section>
 	            <div class="new-users">
-	                <h2>New Users</h2>
 	                <div class="user-list">
-	                    <div class="user">
-	                        <h2>Jack</h2>
-	                        <p>54 Min Ago</p>
-	                    </div>
-	                    <div class="user">
-	                        <h2>Amir</h2>
-	                        <p>3 Hours Ago</p>
-	                    </div>
-	                    <div class="user">
-	                        <h2>Ember</h2>
-	                        <p>6 Hours Ago</p>
-	                    </div>
-	                    <div class="user">
-	                        <h2>More</h2>
-	                        <p>New User</p>
-	                    </div>
+	                    <div id="notification-container" style="width: 100%;">
+		                    <div style="width: 100%; text-align: center; margin-top: 10px;">
+	    						<small>There are currently no notification available.</small>
+	    					</div>
+			            </div>
 	                </div>
 	            </div>
-	            <!-- End of New Users Section -->
-
-	            <!-- Recent Orders Table -->
-	            <div class="recent-orders">
-	                <h2>Recent Orders</h2>
-	                <table>
-	                    <thead>
-	                        <tr>
-	                            <th>Course Name</th>
-	                            <th>Course Number</th>
-	                            <th>Payment</th>
-	                            <th>Status</th>
-	                            <th></th>
-	                        </tr>
-	                    </thead>
-	                    <tbody></tbody>
-	                </table>
-	                <a href="#">Show All</a>
-	            </div>
-	            <!-- End of Recent Orders -->
-
         	</main>
-        	<!-- End of Main Content -->
 
 	        <!-- Right Section -->
 	        <div class="right-section">
@@ -156,63 +70,75 @@ if ($_SESSION['role'] === "Admin") {
 
 	            <div class="reminders">
 	                <div class="header">
-	                    <h2>Reminders</h2>
-	                    <span class="material-icons-sharp">
-	                        notifications_none
-	                    </span>
+	                    <h2>Options</h2>
 	                </div>
 
-	                <div class="notification">
-	                    <div class="icon">
-	                        <span class="material-icons-sharp">
-	                            volume_up
-	                        </span>
-	                    </div>
-	                    <div class="content">
-	                        <div class="info">
-	                            <h3>Workshop</h3>
-	                            <small class="text_muted">
-	                                08:00 AM - 12:00 PM
-	                            </small>
-	                        </div>
-	                        <span class="material-icons-sharp">
-	                            more_vert
-	                        </span>
-	                    </div>
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="default">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>Default</h3>
+	                    </button>
 	                </div>
 
-	                <div class="notification deactive">
-	                    <div class="icon">
-	                        <span class="material-icons-sharp">
-	                            edit
-	                        </span>
-	                    </div>
-	                    <div class="content">
-	                        <div class="info">
-	                            <h3>Workshop</h3>
-	                            <small class="text_muted">
-	                                08:00 AM - 12:00 PM
-	                            </small>
-	                        </div>
-	                        <span class="material-icons-sharp">
-	                            more_vert
-	                        </span>
-	                    </div>
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="account">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>Account</h3>
+	                    </button>
 	                </div>
 
-	                <div class="notification add-reminder">
-	                    <div>
-	                        <span class="material-icons-sharp">
-	                            add
-	                        </span>
-	                        <h3>Add Reminder</h3>
-	                    </div>
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="login">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>Login</h3>
+	                    </button>
+	                </div>
+
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="order">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>Order</h3>
+	                    </button>
+	                </div>
+
+	                <div class="notification add-reminder" style="padding: 10px;" data-action="log">
+	                    <button style="width: 100%; padding: 10px 0; background-color: inherit; color: inherit;">
+	                        <h3>Admin Logs</h3>
+	                    </button>
 	                </div>
 	            </div>
         	</div>
     	</div>
     </body>
     <script src="./js/admin.js"></script>
+    <script>
+    	$(document).ready(function () {
+    	    // Add a click event listener to the div elements with class "notification add-reminder"
+    	    $(".notification.add-reminder").on("click", function () {
+    	        // Get the data-action attribute value to determine the action
+    	        var action = $(this).data("action");
+
+    	        showDefault(action)
+    	    });
+
+        	function showDefault(action) {
+    		    // Make an AJAX request
+    		    $.ajax({
+    		        url: "./php/get_notifications.php",
+    		        method: "GET",
+    		        data: { action: action },
+    		        success: function (data) {
+    		            // Handle the AJAX response here
+    		            $("#notification-container").html(data);
+    		        },
+    		        error: function (xhr, status, error) {
+    		            console.error("AJAX Request Error:", status, error);
+    		        }
+    		    });
+    		}
+
+    		showDefault();
+    	});
+    </script>
+    <script>
+    	
+    </script>
 </html>
 <?php 
 }else{

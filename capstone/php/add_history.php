@@ -60,20 +60,6 @@ if ($checkresult->num_rows > 0) {
                 $newStmt->bind_param("ssdss", $row["title"], $row["qty"], $row["price"], $email, $date);
                 if ($newStmt->execute()) {
                     // Insertion was successful, now delete from cart
-                    $deleteSql = "DELETE FROM cart WHERE email = ?";
-                    $deleteStmt = $conn->prepare($deleteSql);
-                    $deleteStmt->bind_param("s", $email);
-                    
-                    if ($deleteStmt->execute()) {
-                        echo "<script>alert('Notice: Order has been submitted successfully.')</script>";
-                        $script = "<script>window.location = '../view_order.php';</script>";
-                        echo $script;
-                    } else {
-                        echo "Error deleting cart items: " . $deleteStmt->error;
-                        sleep(2);
-                        header("Location: ../proceed.php");
-                    }
-
                 } else {
                     // Handle the error if insertion fails
                     echo "Error inserting into `order`: " . $newStmt->error;
@@ -81,7 +67,25 @@ if ($checkresult->num_rows > 0) {
                 // Close the statement after each iteration
                 $newStmt->close();
             }
+            $deleteSql = "DELETE FROM cart WHERE email = ?";
+            $deleteStmt = $conn->prepare($deleteSql);
+            $deleteStmt->bind_param("s", $email);
+            
+            if ($deleteStmt->execute()) {
 
+                $notifmessage = "[". $email ."] successfully completed an order of [". $title ."].";
+                $notifcategory = "order";
+                $notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+                $notifresult = mysqli_query($conn, $notifsql);
+
+                echo "<script>alert('Notice: Order has been submitted successfully.')</script>";
+                $script = "<script>window.location = '../view_order.php';</script>";
+                echo $script;
+            } else {
+                echo "Error deleting cart items: " . $deleteStmt->error;
+                sleep(2);
+                header("Location: ../proceed.php");
+            }
         }
 
     } else {

@@ -36,11 +36,23 @@ if (empty($row['caddress'])) {
 if(mysqli_num_rows($result) === 1) {
 	if($row['role'] === "Admin") {
 		$_SESSION["role"] = $row['role'];
+
+		$notifmessage = "An [Admin] has logged in to the system with an email of [". $row['email'] ."].";
+		$notifcategory = "login";
+		$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+		$notifresult = mysqli_query($conn, $notifsql);
+
 		echo"<script>alert('Notice: Login Successful!')</script>";
    		$script = "<script>window.location = '../account.php';</script>";
    		echo $script;
 	}else{
 		$_SESSION["role"] = $row['role'];
+
+		$notifmessage = "An [User] has logged in to the system with an email of [". $row['email'] ."].";
+		$notifcategory = "login";
+		$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+		$notifresult = mysqli_query($conn, $notifsql);
+
 		echo"<script>alert('Notice: Login Successful!')</script>";
    		$script = "<script>window.location = '../index.php';</script>";
    		echo $script;
