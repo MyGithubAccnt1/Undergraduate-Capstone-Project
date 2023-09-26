@@ -35,21 +35,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			    	</a>
 			    </li>
 			    <li>
-			    	<a href="necklaces.php">
+			    	<a href="pins.php">
 			    		<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
 			    			<i class="fas fa-tag" style="margin: 0 20px 0 10px;"></i><small>Pins</small>
 			    		</button>
 			    	</a>
 			    </li>
 			    <li>
-			    	<a href="necklaces.php">
+			    	<a href="tables.php">
 			    		<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
 			    			<i class="fas fa-ruler-combined" style="margin: 0 20px 0 10px;"></i><small>Table Nameplates</small>
 			    		</button>
 			    	</a>
 			    </li>
 			    <li>
-			    	<a href="necklaces.php">
+			    	<a href="logos.php">
 			    		<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
 			    			<i class="fas fa-sign" style="margin: 0 20px 0 10px;"></i><small>Logo Seal</small>
 			    		</button>
@@ -99,21 +99,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				</a>
 			</div>
 			<div>
-				<a href="necklaces.php">
+				<a href="pins.php">
 					<button class="btn-nav btn-pins rounded-0 btn-sm text-start">
 						<small>PINS</small>
 					</button>
 				</a>
 			</div>
 			<div>
-				<a href="necklaces.php">
+				<a href="tables.php">
 					<button class="btn-nav btn-table rounded-0 btn-sm text-start">
 						<small>TABLE NAMEPLATES</small>
 					</button>
 				</a>
 			</div>
 			<div>
-				<a href="necklaces.php">
+				<a href="logos.php">
 					<button class="btn-nav btn-logo rounded-0 btn-sm text-start">
 						<small>LOGO SEAL</small>
 					</button>
@@ -339,21 +339,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			    	</a>
 			    </li>
 			    <li>
-			    	<a href="necklaces.php">
+			    	<a href="pins.php">
 			    		<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
 			    			<i class="fas fa-tag" style="margin: 0 20px 0 10px;"></i><small>Pins</small>
 			    		</button>
 			    	</a>
 			    </li>
 			    <li>
-			    	<a href="necklaces.php">
+			    	<a href="tables.php">
 			    		<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
 			    			<i class="fas fa-ruler-combined" style="margin: 0 20px 0 10px;"></i><small>Table Nameplates</small>
 			    		</button>
 			    	</a>
 			    </li>
 			    <li>
-			    	<a href="necklaces.php">
+			    	<a href="logos.php">
 			    		<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
 			    			<i class="fas fa-sign" style="margin: 0 20px 0 10px;"></i><small>Logo Seal</small>
 			    		</button>
@@ -396,21 +396,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				</a>
 			</div>
 			<div>
-				<a href="necklaces.php">
+				<a href="pins.php">
 					<button class="btn-nav btn-pins rounded-0 btn-sm text-start">
 						<small>PINS</small>
 					</button>
 				</a>
 			</div>
 			<div>
-				<a href="necklaces.php">
+				<a href="tables.php">
 					<button class="btn-nav btn-table rounded-0 btn-sm text-start">
 						<small>TABLE NAMEPLATES</small>
 					</button>
 				</a>
 			</div>
 			<div>
-				<a href="necklaces.php">
+				<a href="logos.php">
 					<button class="btn-nav btn-logo rounded-0 btn-sm text-start">
 						<small>LOGO SEAL</small>
 					</button>

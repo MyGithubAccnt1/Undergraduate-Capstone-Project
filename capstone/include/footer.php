@@ -11,9 +11,9 @@
                     <h6 class="text-uppercase fw-bold">Categories</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px"/>
                     <p><a href="necklaces.php" class="text-dark">Necklaces</a></p>
-                    <p><a href="necklaces.php" class="text-dark">Pins</a></p>
-                    <p><a href="necklaces.php" class="text-dark">Table Nameplates</a></p>
-                    <p><a href="necklaces.php" class="text-dark">Logo Seal</a></p>
+                    <p><a href="pins.php" class="text-dark">Pins</a></p>
+                    <p><a href="tables.php" class="text-dark">Table Nameplates</a></p>
+                    <p><a href="logos.php" class="text-dark">Logo Seal</a></p>
                 </div>
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto my-4">
                     <h6 class="text-uppercase fw-bold">Navigation</h6>
