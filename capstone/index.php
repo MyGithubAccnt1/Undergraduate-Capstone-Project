@@ -45,7 +45,7 @@ session_start();
 					<a href="signin.php">
 						<button class="btn-main py-1 rounded-0">REGISTER NOW FOR FREE</button>
 					</a><br><br>
-					<p><?php include ('./php/get_total_rows.php') ?></p>
+					<p>Join the <?php include ('./php/get_total_rows.php') ?> others who already joined.</p>
 				</div>
 			</section>
 			<section>
