@@ -35,21 +35,21 @@ if ($_SESSION['role'] === "Admin") {
 
         	<!-- Main Content -->
         	<main>
-	            <h1>Analytics</h1>
+	            <h1>Dashboard</h1>
 	            <!-- Analyses -->
 	            <div class="analyse">
 	                <div class="sales">
 	                    <div class="status">
 	                        <div class="info">
-	                            <h3>Total Sales</h3>
-	                            <h1>$65,024</h1>
+	                            <h3>Accounts</h3>
+	                            <h1 id="account"></h1>
 	                        </div>
 	                        <div class="progresss">
 	                            <svg>
-	                                <circle cx="38" cy="38" r="36"></circle>
+	                                <circle cx="40" cy="38" r="36"></circle>
 	                            </svg>
 	                            <div class="percentage">
-	                                <p>+81%</p>
+	                                <p id="account-percent"></p>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -57,15 +57,15 @@ if ($_SESSION['role'] === "Admin") {
 	                <div class="visits">
 	                    <div class="status">
 	                        <div class="info">
-	                            <h3>Site Visit</h3>
-	                            <h1>24,981</h1>
+	                            <h3>Users</h3>
+	                            <h1>1</h1>
 	                        </div>
 	                        <div class="progresss">
 	                            <svg>
-	                                <circle cx="38" cy="38" r="36"></circle>
+	                                <circle cx="40" cy="38" r="36"></circle>
 	                            </svg>
 	                            <div class="percentage">
-	                                <p>-48%</p>
+	                                <p>+1%</p>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -73,15 +73,15 @@ if ($_SESSION['role'] === "Admin") {
 	                <div class="searches">
 	                    <div class="status">
 	                        <div class="info">
-	                            <h3>Searches</h3>
-	                            <h1>14,147</h1>
+	                            <h3>Orders</h3>
+	                            <h1>1</h1>
 	                        </div>
 	                        <div class="progresss">
 	                            <svg>
-	                                <circle cx="38" cy="38" r="36"></circle>
+	                                <circle cx="40" cy="38" r="36"></circle>
 	                            </svg>
 	                            <div class="percentage">
-	                                <p>+21%</p>
+	                                <p>+1%</p>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -152,67 +152,28 @@ if ($_SESSION['role'] === "Admin") {
 	                    </span>
 	                </div>
             	</div>
-            	<!-- End of Nav -->
-
-	            <div class="reminders">
-	                <div class="header">
-	                    <h2>Reminders</h2>
-	                    <span class="material-icons-sharp">
-	                        notifications_none
-	                    </span>
-	                </div>
-
-	                <div class="notification">
-	                    <div class="icon">
-	                        <span class="material-icons-sharp">
-	                            volume_up
-	                        </span>
-	                    </div>
-	                    <div class="content">
-	                        <div class="info">
-	                            <h3>Workshop</h3>
-	                            <small class="text_muted">
-	                                08:00 AM - 12:00 PM
-	                            </small>
-	                        </div>
-	                        <span class="material-icons-sharp">
-	                            more_vert
-	                        </span>
-	                    </div>
-	                </div>
-
-	                <div class="notification deactive">
-	                    <div class="icon">
-	                        <span class="material-icons-sharp">
-	                            edit
-	                        </span>
-	                    </div>
-	                    <div class="content">
-	                        <div class="info">
-	                            <h3>Workshop</h3>
-	                            <small class="text_muted">
-	                                08:00 AM - 12:00 PM
-	                            </small>
-	                        </div>
-	                        <span class="material-icons-sharp">
-	                            more_vert
-	                        </span>
-	                    </div>
-	                </div>
-
-	                <div class="notification add-reminder">
-	                    <div>
-	                        <span class="material-icons-sharp">
-	                            add
-	                        </span>
-	                        <h3>Add Reminder</h3>
-	                    </div>
-	                </div>
-	            </div>
         	</div>
     	</div>
     </body>
     <script src="./js/admin.js"></script>
+    <script>
+    	function showAccount() {
+		    $.ajax({
+		        url: "./php/get_total_rows.php",
+		        method: "GET",
+		        success: function (data) {
+		            // Handle the AJAX response here
+		            $("#account").html(data);
+		            $("#account-percent").html("+" + data + "%");
+		        },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+		    });
+		}
+		showAccount()
+		setInterval(showAccount, 1000);
+    </script>
 </html>
 <?php 
 }else{
