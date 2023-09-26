@@ -107,14 +107,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			</div>
 			<div>
 				<a href="tables.php">
-					<button class="btn-nav btn-table rounded-0 btn-sm text-start">
+					<button class="btn-nav btn-tables rounded-0 btn-sm text-start">
 						<small>TABLE NAMEPLATES</small>
 					</button>
 				</a>
 			</div>
 			<div>
 				<a href="logos.php">
-					<button class="btn-nav btn-logo rounded-0 btn-sm text-start">
+					<button class="btn-nav btn-logos rounded-0 btn-sm text-start">
 						<small>LOGO SEAL</small>
 					</button>
 				</a>
@@ -404,14 +404,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			</div>
 			<div>
 				<a href="tables.php">
-					<button class="btn-nav btn-table rounded-0 btn-sm text-start">
+					<button class="btn-nav btn-tables rounded-0 btn-sm text-start">
 						<small>TABLE NAMEPLATES</small>
 					</button>
 				</a>
 			</div>
 			<div>
 				<a href="logos.php">
-					<button class="btn-nav btn-logo rounded-0 btn-sm text-start">
+					<button class="btn-nav btn-logos rounded-0 btn-sm text-start">
 						<small>LOGO SEAL</small>
 					</button>
 				</a>

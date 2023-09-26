@@ -46,7 +46,7 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 	  	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	  	<?php include('./include/style.php') ?>
 		<style>
-			.btn-necklaces {
+			.btn-pins {
 			    background-color: #794B29;
 			    color: white;
 			}
