@@ -10,9 +10,9 @@ if ($result === false) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $totalRows = $row["total_rows"];
-        echo "Join the " . $totalRows . " others who already joined.";
+        echo $totalRows;
     } else {
-        echo "Join the others who already joined.";
+        echo $totalRows;
     }
 }
 
