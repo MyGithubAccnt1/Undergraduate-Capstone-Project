@@ -32,30 +32,39 @@ if (empty($row['caddress'])) {
 } else {
     $_SESSION["caddress"] = $row['caddress'];
 }
+
+$newsql = "UPDATE account SET status = 'Online' WHERE email = '$email'";
+
+if (mysqli_query($conn, $newsql)) {
+
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
+
 // If result matched $myusername and $mypassword, table row must be 1 row
 if(mysqli_num_rows($result) === 1) {
 	if($row['role'] === "Admin") {
 		$_SESSION["role"] = $row['role'];
 
-		$notifmessage = "An [Admin] has logged in to the system with an email of [". $row['email'] ."].";
-		$notifcategory = "login";
-		$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
-		$notifresult = mysqli_query($conn, $notifsql);
-
 		echo"<script>alert('Notice: Login Successful!')</script>";
    		$script = "<script>window.location = '../account.php';</script>";
    		echo $script;
-	}else{
-		$_SESSION["role"] = $row['role'];
 
-		$notifmessage = "An [User] has logged in to the system with an email of [". $row['email'] ."].";
+   		$notifmessage = "An [Admin] has logged in to the system with an email of [". $row['email'] ."].";
 		$notifcategory = "login";
 		$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
 		$notifresult = mysqli_query($conn, $notifsql);
+	}else{
+		$_SESSION["role"] = $row['role'];
 
 		echo"<script>alert('Notice: Login Successful!')</script>";
    		$script = "<script>window.location = '../index.php';</script>";
    		echo $script;
+
+   		$notifmessage = "An [User] has logged in to the system with an email of [". $row['email'] ."].";
+		$notifcategory = "login";
+		$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+		$notifresult = mysqli_query($conn, $notifsql);
 	}
 }else {
  	echo"<script>alert('Notice: Invalid Email or Password.')</script>";

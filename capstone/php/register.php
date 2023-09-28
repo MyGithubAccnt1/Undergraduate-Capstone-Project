@@ -13,7 +13,7 @@ if(mysqli_num_rows($result) === 1) {
 	echo $script;
 } else {
 	$date = date('Y-m-d H:i');
-	$sql = "INSERT INTO account (email, password, role, deyt) VALUES ('$email','$password','Regular','$date')";
+	$sql = "INSERT INTO account (email, password, role, status, deyt) VALUES ('$email','$password','Regular', 'Online','$date')";
 	if ($conn->query($sql) === TRUE) {
 		$sql = "SELECT * FROM account WHERE email = '$email' and password = '$password'";
 		$result = mysqli_query($conn, $sql);
@@ -42,14 +42,14 @@ if(mysqli_num_rows($result) === 1) {
 		    $_SESSION["caddress"] = $row['caddress'];
 		}
 
-		$notifmessage = "A new account has been created with an email of [". $row['email'] ."].";
-		$notifcategory = "account";
-		$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
-		$notifresult = mysqli_query($conn, $notifsql);
-
 	  	echo"<script>alert('Notice: An account is successfully created.')</script>";
 	  	$script = "<script>window.location = '../account.php';</script>";
 	  	echo $script;
+
+	  	$notifmessage = "A new account has been created with an email of [". $row['email'] ."].";
+		$notifcategory = "account";
+		$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+		$notifresult = mysqli_query($conn, $notifsql);
 	} else {
 	  	echo "Error: " . $sql . "<br>" . $conn->error;
 	  	sleep(2); 
