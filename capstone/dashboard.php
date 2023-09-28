@@ -57,15 +57,15 @@ if ($_SESSION['role'] === "Admin") {
 	                <div class="visits">
 	                    <div class="status">
 	                        <div class="info">
-	                            <h3>Users</h3>
-	                            <h1>1</h1>
+	                            <h3>Online</h3>
+	                            <h1 id="online"></h1>
 	                        </div>
 	                        <div class="progresss">
 	                            <svg>
 	                                <circle cx="40" cy="38" r="36"></circle>
 	                            </svg>
 	                            <div class="percentage">
-	                                <p>+1%</p>
+	                                <p id="online-percent"></p>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -74,14 +74,14 @@ if ($_SESSION['role'] === "Admin") {
 	                    <div class="status">
 	                        <div class="info">
 	                            <h3>Orders</h3>
-	                            <h1>1</h1>
+	                            <h1 id="order"></h1>
 	                        </div>
 	                        <div class="progresss">
 	                            <svg>
 	                                <circle cx="40" cy="38" r="36"></circle>
 	                            </svg>
 	                            <div class="percentage">
-	                                <p>+1%</p>
+	                                <p id="order-percent"></p>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -173,6 +173,40 @@ if ($_SESSION['role'] === "Admin") {
 		}
 		showAccount()
 		setInterval(showAccount, 1000);
+
+		function showOnline() {
+		    $.ajax({
+		        url: "./php/get_total_online.php",
+		        method: "GET",
+		        success: function (data) {
+		            // Handle the AJAX response here
+		            $("#online").html(data);
+		            $("#online-percent").html("+" + data + "%");
+		        },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+		    });
+		}
+		showOnline()
+		setInterval(showOnline, 1000);
+
+		function showOrder() {
+		    $.ajax({
+		        url: "./php/get_total_history.php",
+		        method: "GET",
+		        success: function (data) {
+		            // Handle the AJAX response here
+		            $("#order").html(data);
+		            $("#order-percent").html("+" + data + "%");
+		        },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+		    });
+		}
+		showOrder()
+		setInterval(showOrder, 1000);
     </script>
 </html>
 <?php 
