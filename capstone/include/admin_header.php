@@ -39,7 +39,7 @@
         </a>
         <a href="./order.php" class="order-act">
             <span class="material-icons-sharp">
-                lists
+                list_alt
             </span>
             <h3>Order</h3>
         </a>
