@@ -88,6 +88,42 @@ if ($_SESSION['role'] === "Admin") {
 	                </div>
 	            </div>
 	            <!-- End of Analyses -->
+	            <!-- Analyses -->
+	            <div class="analyse">
+	                <div class="sales">
+	                    <div class="status">
+	                        <div class="info">
+	                            <h3>Estimate</h3>
+	                            <h1 id="estimate">₱</h1>
+	                        </div>
+	                        <div class="progresss">
+	                            <svg>
+	                                <circle cx="40" cy="38" r="36"></circle>
+	                            </svg>
+	                            <div class="percentage">
+	                                <p id="estimate-percent">₱</p>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="visits">
+	                    <div class="status">
+	                        <div class="info">
+	                            <h3>Income</h3>
+	                            <h1 id="income"></h1>
+	                        </div>
+	                        <div class="progresss">
+	                            <svg>
+	                                <circle cx="40" cy="38" r="36"></circle>
+	                            </svg>
+	                            <div class="percentage">
+	                                <p id="income-percent"></p>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <!-- End of Analyses -->
         	</main>
         	<!-- End of Main Content -->
 
@@ -137,7 +173,6 @@ if ($_SESSION['role'] === "Admin") {
 		        success: function (data) {
 		            // Handle the AJAX response here
 		            $("#online").html(data);
-		            $("#online-percent").html("+" + data + "%");
 		        },
 		        error: function (xhr, status, error) {
 		            console.error("AJAX Request Error:", status, error);
@@ -147,6 +182,22 @@ if ($_SESSION['role'] === "Admin") {
 		showOnline()
 		setInterval(showOnline, 1000);
 
+		function showOnlinePercent() {
+		    $.ajax({
+		        url: "./php/get_total_online_percent.php",
+		        method: "GET",
+		        success: function (data) {
+		            // Handle the AJAX response here=
+		            $("#online-percent").html("+" + data + "%");
+		        },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+		    });
+		}
+		showOnlinePercent()
+		setInterval(showOnlinePercent, 1000);
+
 		function showOrder() {
 		    $.ajax({
 		        url: "./php/get_total_history.php",
@@ -154,7 +205,6 @@ if ($_SESSION['role'] === "Admin") {
 		        success: function (data) {
 		            // Handle the AJAX response here
 		            $("#order").html(data);
-		            $("#order-percent").html("+" + data + "%");
 		        },
 		        error: function (xhr, status, error) {
 		            console.error("AJAX Request Error:", status, error);
@@ -163,6 +213,86 @@ if ($_SESSION['role'] === "Admin") {
 		}
 		showOrder()
 		setInterval(showOrder, 1000);
+
+		function showOrderPercent() {
+		    $.ajax({
+		        url: "./php/get_total_history_percent.php",
+		        method: "GET",
+		        success: function (data) {
+		            // Handle the AJAX response here
+		            $("#order-percent").html("+" + data + "%");
+		        },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+		    });
+		}
+		showOrderPercent()
+		setInterval(showOrderPercent, 1000);
+
+		function showEstimate() {
+		    $.ajax({
+		        url: "./php/get_total_estimate.php",
+		        method: "GET",
+		        success: function (data) {
+		            // Handle the AJAX response here
+		            $("#estimate").html("₱" + data);
+		        },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+		    });
+		}
+		showEstimate()
+		setInterval(showEstimate, 1000);
+
+		function showEstimatePercent() {
+		    $.ajax({
+		        url: "./php/get_total_estimate_percent.php",
+		        method: "GET",
+		        success: function (data) {
+		            // Handle the AJAX response here
+		            $("#estimate-percent").html("+" + data + "%");
+		        },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+		    });
+		}
+		showEstimatePercent()
+		setInterval(showEstimatePercent, 1000);
+
+		function showIncome() {
+		    $.ajax({
+		        url: "./php/get_total_income.php",
+		        method: "GET",
+		        success: function (data) {
+		            // Handle the AJAX response here
+		            $("#income").html("₱" + data);
+		        },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+		    });
+		}
+		showIncome()
+		setInterval(showIncome, 1000);
+
+		function showIncomePercent() {
+		    $.ajax({
+		        url: "./php/get_total_income_percent.php",
+		        method: "GET",
+		        success: function (data) {
+		            // Handle the AJAX response here
+		            $("#income-percent").html("+" + data + "%");
+		        },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+		    });
+		}
+		showIncomePercent()
+		setInterval(showIncomePercent, 1000);
     </script>
 </html>
 <?php 
