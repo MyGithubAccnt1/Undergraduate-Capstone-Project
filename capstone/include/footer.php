@@ -21,7 +21,7 @@
                     <p><a href="index.php" class="text-dark">Home</a></p>
                     <p><a href="signin.php" class="text-dark">Sign In</a></p>
                     <p><a href="account.php" class="text-dark">Account</a></p>
-                    <p><a href="necklaces.php" class="text-dark">Customize</a></p>
+                    <p><a href="customize.php" class="text-dark">Customize</a></p>
                 </div>
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 my-4">
                     <h6 class="text-uppercase fw-bold">Contact</h6>
