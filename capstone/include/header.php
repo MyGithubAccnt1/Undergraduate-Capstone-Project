@@ -119,7 +119,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					</button>
 				</a>
 			</div>
-			<div>
+			<div class="d-none d-xl-block">
 				<a href="customize.php">
 					<button class="btn-nav btn-customize rounded-0 btn-sm text-start">
 						<small>CUSTOMIZE</small>
@@ -416,7 +416,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					</button>
 				</a>
 			</div>
-			<div>
+			<div class="d-none d-xl-block">
 				<a href="customize.php">
 					<button class="btn-nav btn-customize rounded-0 btn-sm text-start">
 						<small>CUSTOMIZE</small>
