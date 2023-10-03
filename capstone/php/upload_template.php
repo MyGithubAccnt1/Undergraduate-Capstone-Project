@@ -12,17 +12,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Decode base64 to binary image data
     $imageBinary = base64_decode($imageData);
 
-    var_dump($imageBinary);
-
     if ($imageBinary !== false) {
         // Define the directory where you want to save the image
         $uploadDir = "../images/templates/";
         $uniqueFilename = uniqid() . ".png";
         $uploadFile = $uploadDir . $uniqueFilename;
 
-        // Save the image to the server
         if (file_put_contents($uploadFile, $imageBinary)) {
-            // Update the product's thumbnail path in the database
+
+            $gettemplatesql = "SELECT thumbnail FROM template WHERE email = '$email' and deyt = '$date'";
+            $result = mysqli_query($conn, $gettemplatesql);
+            if (mysqli_num_rows($result) > 0) {
+                 $row = $result->fetch_assoc();
+                 $Thumbnail = $row['thumbnail'];
+
+                 var_dump($Thumbnail);
+
+                 if (file_exists("../" . $Thumbnail)) {
+                    unlink("../" . $Thumbnail);
+                 }
+            }
+
             $thumbnailPath = "images/templates/" . $uniqueFilename;
             $sql = "UPDATE template SET thumbnail = '$thumbnailPath' WHERE email = '$email' and deyt = '$date'";
 

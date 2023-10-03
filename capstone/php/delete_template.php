@@ -8,6 +8,16 @@ $deyt = mysqli_real_escape_string($conn, $deyt);
 $objectsql = "DELETE FROM object WHERE email = '$email' and deyt = '$deyt'";
 if (mysqli_query($conn, $objectsql)) {
 
+    $gettemplatesql = "SELECT thumbnail FROM template WHERE email = '$email' and deyt = '$deyt'";
+    $result = mysqli_query($conn, $gettemplatesql);
+    if (mysqli_num_rows($result) > 0) {
+         $row = $result->fetch_assoc();
+         $imageFile = $row['thumbnail'];
+         if (file_exists("../" . $imageFile)) {
+            unlink("../" . $imageFile);
+         }
+    }
+
     $templatesql = "DELETE FROM template WHERE email = '$email' and deyt = '$deyt'";
     if (mysqli_query($conn, $templatesql)) {
 
