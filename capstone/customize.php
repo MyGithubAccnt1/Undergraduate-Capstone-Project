@@ -69,6 +69,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 																</p><br>
 																<button type="submit" class="rounded-0 btn-main btn btn-md">Select</button>
 															</form>
+															<form  action="" class="delete_template">
+																<input type="hidden" name="email" value="<?php echo $row['email']?>">
+																<input type="hidden" name="deyt" value="<?php echo $row['deyt']?>">
+																<button type="submit" class="rounded-0 btn-main btn btn-md mb-2">Delete</button>
+															</form>
 														</div>
 													</div>
 												</div>
@@ -119,7 +124,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 																	<b>Created On: <br><br></b>
 																	<b style="margin-left: 20px;"><?php echo $row['deyt']?></b>
 																</p><br>
-																<button type="submit" class="rounded-0 btn-main btn btn-md">Select</button>
+																<button type="submit" class="rounded-0 btn-main btn btn-md mb-2">Select</button>
+															</form>
+															<form  action="" class="delete_template">
+																<input type="hidden" name="email" value="<?php echo $row['email']?>">
+																<input type="hidden" name="deyt" value="<?php echo $row['deyt']?>">
+																<button type="submit" class="rounded-0 btn-main btn btn-md">Delete</button>
 															</form>
 														</div>
 													</div>
@@ -266,6 +276,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	            window.localStorage.setItem('email', email);
 	            window.localStorage.setItem('deyt', deyt);
 	            window.location.href = "make_customize.php";
+	        });
+		</script>
+		<script type="text/javascript">
+			$(document).on("submit", ".delete_template", function (event) {
+	            event.preventDefault();
+	            var email = $(this).find("input[name='email']").val();
+	            var deyt = $(this).find("input[name='deyt']").val();
+                $.ajax({
+                    url: "./php/delete_template.php",
+                    method: "POST",
+                    data: {
+                    	email: email,
+                    	deyt: deyt
+                    },
+                    success: function (data) {
+                        window.location.href = "customize.php";
+                    },
+        	        error: function (xhr, status, error) {
+        	            console.error("AJAX Request Error:", status, error);
+        	        }
+                });
 	        });
 		</script>
 	</body>
