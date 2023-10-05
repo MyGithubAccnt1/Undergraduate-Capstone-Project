@@ -5,7 +5,7 @@ $email = $_SESSION['email'];
 $sql = "SELECT * FROM cart WHERE email = '$email'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
-    // output data of each row
+    echo '<input type="hidden" id="proceed" value="go">';
     while ($row = $result->fetch_assoc()) {
         echo '
         <div class="col-6 text-center">
@@ -20,7 +20,9 @@ if ($result->num_rows > 0) {
         ';
     }
 } else {
-    echo '<small>Your cart is empty.</small>';
+    echo "<small>Your cart is empty.</small>";
+    echo '<input type="hidden" name="proceed" value="no">';
 }
+
 $conn->close();
 ?>

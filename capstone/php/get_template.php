@@ -5,6 +5,8 @@ include("connect.php");
 $email = mysqli_real_escape_string($conn, $_GET['email']);
 $deyt = mysqli_real_escape_string($conn, $_GET['deyt']);
 
+$_SESSION['date'] = $deyt;
+
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     // Retrieve objects from the database
     $sql = "SELECT objectType, properties FROM object WHERE email = '$email' AND deyt = '$deyt'";

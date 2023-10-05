@@ -22,7 +22,7 @@ if ($row) {
 
     $status = $row['status'];
 
-    if ($status === "Pending") {
+    if ($status === "Pending" || $status === "For Review") {
 
         $status = "Canceled";
 

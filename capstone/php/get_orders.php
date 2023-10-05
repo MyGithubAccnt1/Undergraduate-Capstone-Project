@@ -6,8 +6,7 @@
 	$action = isset($_GET['action']) ? $_GET['action'] : '';
 
 	if ($action === "default") {
-	    
-	    $sql = "SELECT * FROM `history` ORDER BY `id` DESC";
+	    $sql = "SELECT * FROM `history` WHERE `status` = 'Pending' or `status` = 'On-The-Way' or `status` = 'Delivered' or `status` = 'Canceled' or `status` = 'Rejected' ORDER BY `id` DESC";
 	    $result = $conn->query($sql);
 
 	} elseif ($action === "pending") {
@@ -37,8 +36,8 @@
 
 	} else {
 	    
-		$sql = "SELECT * FROM `history` ORDER BY `id` DESC";
-		$result = $conn->query($sql);
+		$sql = "SELECT * FROM `history` WHERE `status` = 'Pending' or `status` = 'On-The-Way' or `status` = 'Delivered' or `status` = 'Canceled' or `status` = 'Rejected' ORDER BY `id` DESC";
+	    $result = $conn->query($sql);
 
 	}
 	
@@ -69,7 +68,11 @@
 	    	echo '<div style="width: 100%; background-color:' . $color . '; padding: 1px 0; margin-bottom: 5px;">';
 	    		echo '<div style="width: 100%; margin: 5px 0; display: flex; flex-direction: row;">';
 		    		echo '<div style="width: 33.33%; color: #000; text-align: center;">'. $row['title'] .'</div>';
-		    		echo '<div style="width: 16.66%; color: #000; text-align: center;">₱'. $row['total'] .'</div>';
+		    		if ($row['title'] === "Customize Item") {
+		    			echo '<div style="width: 16.66%; color: #000; text-align: center;">Estimating...</div>';
+		    		} else {
+		    			echo '<div style="width: 16.66%; color: #000; text-align: center;">₱'. $row['total'] .'</div>';
+		    		}
 		    		echo '<div style="width: 16.66%; color: #000; text-align: center;">'. $row['deyt'] .'</div>';
 		    		echo '<div style="width: 16.66%; color: #000; text-align: center;">'. $row['status'] .'</div>';
 		    		echo '<div style="width: 16.66%; text-align: center;">';
@@ -88,16 +91,15 @@
             echo '<div id="optionToggle'. $id .'" style="width: 100%; background-color: #fff; color: #000; display: none; margin: 0 0 5px 0;">';
             	echo '<div style="padding: 20px 20px;">';
             		echo '<div style="width: 100%;">';
-        				echo '<div style="width: 100%; margin: 5px 0; text-align: center; display: flex; flex-direction: row;">';
+        	$newsql = "SELECT * FROM `order` WHERE email = '$email' and deyt = '$date'";
+        	$newresult = $conn->query($newsql);
+        	if ($newresult->num_rows > 0) {
+        	    		echo '<div style="width: 100%; margin: 5px 0; text-align: center; display: flex; flex-direction: row;">';
 				        	echo '<div style="width: 33.33%;">Item</div>';
 				        	echo '<div style="width: 33.33%;">Quantity</div>';
 				        	echo '<div style="width: 33.33%;">Price</div>';
         				echo '</div>';
         				echo '<div style="width: 100%; height: 2px; background-color: #000;"></div>';
-        	$newsql = "SELECT * FROM `order` WHERE email = '$email' and deyt = '$date'";
-        	$newresult = $conn->query($newsql);
-        	if ($newresult->num_rows > 0) {
-        	    // output data of each row
         	    while ($newrow = $newresult->fetch_assoc()) {
         	    		echo '<div style="width: 100%; margin: 5px 0; text-align: center; display: flex; flex-direction: row;">';
 		        	    	echo '<div style="width: 33.33%;">'. $newrow['title'] .'</div>';
@@ -106,9 +108,17 @@
         	    		echo '</div>';
         	    }
         	} else {
+        		$templatesql = "SELECT thumbnail FROM template WHERE email = '$email' and deyt = '$date'";
+        		$templateresult = $conn->query($templatesql);
+        		if ($templateresult->num_rows > 0) {
+        			$templaterow = $templateresult->fetch_assoc();
         	   			echo '<div style="width: 100%; margin: 5px 0; text-align: center; display: flex; flex-direction: row;">';
-        	    			echo '<div style="width: 100%; text-align: center;">Error: Can not retrieve items at the moment.</div>';
+        	    			echo '<div style="width: 100%; text-align: center;">Template</div>';
         	    		echo '</div>';
+        	    		echo '<div style="width: 100%; margin: 5px 0; display: flex; justify-content: center;">';
+		        	    	echo '<img src="'. $templaterow['thumbnail'] . '" style="width: auto; height: 300px;">';
+        	    		echo '</div>';
+        	    }
         	}
         				echo '<div style="width: 100%; height: 2px; background-color: #000;"></div>';
         			echo '</div>';

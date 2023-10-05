@@ -37,8 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $sql = "UPDATE template SET thumbnail = '$thumbnailPath' WHERE email = '$email' and deyt = '$date'";
 
             if (mysqli_query($conn, $sql)) {
-                // Image saved and database updated successfully
-                echo "Image uploaded and database updated.";
                 exit();
             } else {
                 echo "Error updating database: " . mysqli_error($conn);
