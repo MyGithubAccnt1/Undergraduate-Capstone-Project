@@ -12,6 +12,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	  	<?php include('./include/style.php') ?>
 		<style>
 			.my-button {
+				display: flex;
+				align-items: center;
+				justify-content: left;
 				border: 1px solid #000;
 				cursor: pointer;
 				background-color: #BB8A5B;
@@ -35,7 +38,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					<div style="width: 40%; border: 2px solid; text-align: center; padding: 10px 10px;">
 						<h5>Tools</h5>
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px;" class="my-button material-active" id="move">
+							<div style="width: 33.33%; padding: 5px 5px 5px 10px;" class="my-button material-active" id="move">
 								<i class="fas fa-expand-arrows-alt" style="margin-right: 5px;"></i><span>[Free Move]</span>
 							</div>
 							<div style="flex: 33.33%; display: flex; justify-content: center; align-items: center;">
@@ -43,7 +46,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							</div>
 						</div>
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="flex: 33.33%; padding: 5px 5px;" class="my-button" id="draw">
+							<div style="flex: 33.33%; padding: 5px 5px 5px 10px;" class="my-button" id="draw">
 								<i class="fas fa-pen" style="margin-right: 5px;"></i><span>[Free Draw]</span>
 							</div>
 							<div style="flex: 46.66%; display: flex; justify-content: center; align-items: center;">
@@ -68,7 +71,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							</div>
 						</div>
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px; margin-bottom: 10px;" class="my-button" id="text">
+							<div style="width: 33.33%; padding: 5px 5px 5px 10px; margin-bottom: 10px;" class="my-button" id="text">
 								<i class="fas fa-font" style="margin-right: 5px;"></i><span>[Text]</span>
 							</div>
 							<div style="flex: 40%; display: flex; justify-content: center; align-items: center;">
@@ -89,16 +92,24 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							</div>
 						</div>
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px;" class="my-button" id="remove">
+							<div style="width: 33.33%; padding: 5px 5px 5px 10px;" class="my-button" id="remove">
 								<i class="fas fa-eraser" style="margin-right: 5px;"></i><span>[Erase]</span>
 							</div>
 							<div style="flex: 33.33%; display: flex; justify-content: center; align-items: center;">
 								<span>Select an object</span>
 							</div>
 						</div>
+						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
+							<div style="width: 60%; padding: 5px 5px 5px 5px;">
+								<input type="file" id="imageFile" accept="image/*">
+							</div>
+							<div style="flex: 20%; display: flex; justify-content: center; align-items: center;">
+								<span>Upload an image</span>
+							</div>
+						</div>
 						<h5>Shapes</h5>
 						<div style="padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px; margin-bottom: 10px;" class="my-button shape-button" data-action="square" id="square">
+							<div style="width: 33.33%; padding: 5px 5px 5px 10px; margin-bottom: 10px;" class="my-button shape-button" data-action="square" id="square">
 								<i class="fas fa-vector-square" style="margin-right: 5px;"></i><span>[Square]</span>
 							</div>
 							<div style="display: flex; justify-content: left;">
@@ -132,7 +143,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							</div>
 						</div>
 						<div style="padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px; margin-bottom: 10px;" class="my-button shape-button" data-action="circle" id="circle">
+							<div style="width: 33.33%; padding: 5px 5px 5px 10px; margin-bottom: 10px;" class="my-button shape-button" data-action="circle" id="circle">
 								<i class="far fa-circle" style="margin-right: 5px;"></i><span>[Circle]</span>
 							</div>
 							<div style="display: flex; justify-content: left;">
@@ -166,7 +177,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							</div>
 						</div>
 						<div style="padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px; margin-bottom: 10px;" class="my-button shape-button" data-action="triangle" id="triangle">
+							<div style="width: 33.33%; padding: 5px 5px 5px 10px; margin-bottom: 10px;" class="my-button shape-button" data-action="triangle" id="triangle">
 								<i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i><span>[Triangle]</span>
 							</div>
 							<div style="display: flex; justify-content: left;">
@@ -201,15 +212,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						</div>
 						<h5>Options</h5>
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px;" class="my-button" id="save">
+							<div style="width: 33.33%; padding: 5px 5px 5px 10px;" class="my-button" id="save">
 								<span>[Save]</span>
 							</div>
 							<div style="flex: 33.33%; display: flex; justify-content: center; align-items: center;">
-								<span>Save template</span>
+								<span>Uploaded images can't be save</span>
 							</div>
 						</div>
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px;" class="my-button" id="update">
+							<div style="width: 33.33%; padding: 5px 5px 5px 10px;" class="my-button" id="update">
 								<span>[Update]</span>
 							</div>
 							<div style="flex: 33.33%; display: flex; justify-content: center; align-items: center;">
@@ -217,7 +228,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							</div>
 						</div>
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px;" class="my-button" id="back">
+							<div style="width: 33.33%; padding: 5px 5px 5px 10px;" class="my-button" id="order">
+								<span>[Make Order]</span>
+							</div>
+							<div style="flex: 33.33%; display: flex; justify-content: center; align-items: center;">
+								<span>Order using this template</span>
+							</div>
+						</div>
+						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
+							<div style="width: 33.33%; padding: 5px 5px 5px 10px;" class="my-button" id="back">
 								<span>[Back]</span>
 							</div>
 							<div style="flex: 33.33%; display: flex; justify-content: center; align-items: center;">
@@ -299,7 +318,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   		canvas.setHeight(resize.clientHeight);
 		   		canvas.setWidth(resize.clientWidth);
 		   		// canvas.setBackgroundColor('black', canvas.renderAll.bind(canvas));
-		   		// canvas.setBackgroundImage('images/unique.png', canvas.renderAll.bind(canvas));
 		   		
 		   		canvas.freeDrawingBrush.color = $("#color").val();
 		   		canvas.freeDrawingBrush.width = $("#size").val();
@@ -319,17 +337,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
 		   		$('#size').on('click', function () {
 		   		    canvas.isDrawingMode = false;
-	   		    	removeButton()
+	   		    	removeButton();
 		   		});
 
 		   		$('#color').on('click', function () {
 		   		    canvas.isDrawingMode = false;
-	   		    	removeButton()
+	   		    	removeButton();
 		   		});
 
 		   		$('#text').on('click', function () {
 		   		    canvas.isDrawingMode = false;
-		   		    removeButton()
+		   		    removeButton();
 		   		    const text = new fabric.IText('Text', {
 		   		        left: 0,
 		   		        top: 0,
@@ -341,15 +359,38 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
 		   		$('#fill').on('click', function () {
 		   		    canvas.isDrawingMode = false;
-	   		    	removeButton()
+	   		    	removeButton();
 		   		});
 
 		   		canvas.on('selection:created', function () {
 		   		    $('#remove').on('click', function () {
 		   		        canvas.isDrawingMode = false;
-		   		        removeButton()
+		   		        removeButton();
 		   		        canvas.remove(canvas.getActiveObject());
 		   		    });
+		   		});
+
+		   		$('#imageFile').on('change', function (e) {
+		   		  	canvas.isDrawingMode = false;
+		   		  	removeButton();
+		   		  	const file = e.target.files[0];
+		   		  	if (file) {
+		   		    	const reader = new FileReader();
+		   		    	reader.onload = function (event) {
+		   		      		const imageUrl = event.target.result;
+				   		    fabric.Image.fromURL(imageUrl, function (img) {
+				   		        img.set({
+				   		          	left: 0,
+				   		          	top: 0,
+				   		          	scaleX: 0.5,
+				   		          	scaleY: 0.5,
+				   		        });
+				   		        canvas.add(img);
+				   		        canvas.renderAll(canvas);
+				   		    });
+			   		    };
+		   		    reader.readAsDataURL(file);
+		   		  	}
 		   		});
 
 		   		$('.shape-button').on('click', function () {
@@ -403,42 +444,43 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
 		   		$('#square-size').on('click', function () {
 		   		    canvas.isDrawingMode = false;
-	   		    	removeButton()
+	   		    	removeButton();
 		   		});
 
 		   		$('#square-fill').on('click', function () {
 		   		    canvas.isDrawingMode = false;
-	   		    	removeButton()
+	   		    	removeButton();
 		   		});
 
 		   		$('#square-style').on('click', function () {
 		   		    canvas.isDrawingMode = false;
-	   		    	removeButton()
+	   		    	removeButton();
 		   		});
 
 		   		$('#circle-size').on('click', function () {
 		   		    canvas.isDrawingMode = false;
-	   		    	removeButton()
+	   		    	removeButton();
 		   		});
 
 		   		$('#circle-fill').on('click', function () {
 		   		    canvas.isDrawingMode = false;
-	   		    	removeButton()
+	   		    	removeButton();
 		   		});
 
 		   		$('#circle-style').on('click', function () {
 		   		    canvas.isDrawingMode = false;
-	   		    	removeButton()
+	   		    	removeButton();
 		   		});
 
 		   		$('#move').on('click', function () {
 		   		    canvas.isDrawingMode = false;
-	   		    	removeButton()
+	   		    	removeButton();
 		   		});
 
 		   		function serializeCanvasObjects(canvas) {
    		            const objects = canvas.getObjects();
    		            const serializedObjects = [];
+   		            const backgroundImage = canvas.backgroundImage;
 
    		            for (const obj of objects) {
    		                const serializedObj = {
@@ -447,6 +489,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                };
    		                serializedObjects.push(serializedObj);
    		            }
+   		            if (backgroundImage) {
+	                    const bgData = {
+	                        objectType: 'background',
+	                        properties: backgroundImage.toObject(),
+	                    };
+	                    serializedObjects.push(bgData);
+	                }
    		            return serializedObjects;
    		        }
 
@@ -545,6 +594,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                        	const properties = JSON.parse(object.properties);
    		                        	const triangle = new fabric.Triangle(properties);
    		                            canvas.add(triangle);
+   		                        } else if (object.objectType === 'background') {
+   		                        	canvas.setBackgroundImage('images/unique.png', canvas.renderAll.bind(canvas));
    		                        }
    		                    });
    		                },
@@ -590,10 +641,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		            updateTemplate();
    		        });
 
+   		        $('#order').on('click', function () {
+
+   		        });
+
    		        $('#back').on('click', function () {
    		        	window.location.href = "customize.php";
    		            canvas.isDrawingMode = false;
-	   		    	removeButton()
+	   		    	removeButton();
 	   		    	canvas.clear();
    		        });
 
