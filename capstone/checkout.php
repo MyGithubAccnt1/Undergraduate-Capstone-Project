@@ -27,7 +27,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						</div>
 						<div class="col-6">
 							<a href="proceed.php">
-							    <button class="btn-main py-1 mt-4 w-75 rounded-pill">NEXT</button>
+							    <button type="submit" class="btn-main py-1 mt-4 w-75 rounded-pill">NEXT</button>
 							</a>
 						</div>
 	                </div>
@@ -74,7 +74,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                            </div>
 	                            <div class="row m-0 p-0">
 	                                <div class="row m-0 p-0">
-	                                    <?php include ('./php/get_checkout.php') ?>
+	                                	<?php include ('./php/get_checkout.php') ?>
 	                                </div>
 	                            </div>
 	                            <div class="row m-0 p-0">
@@ -87,17 +87,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	            </div>
 			</section>
 		</main>
-		<script type="text/javascript">
-		    var toggleClick = document.querySelector(".box,.icon");
-		    var navigation = document.querySelector("header");
-		    var removeClick = document.querySelector(".close");
-		    toggleClick.addEventListener('click', ()=>{
-		        navigation.classList.toggle('active-nav');
-		    })
-		    removeClick.addEventListener('click', ()=>{
-		        navigation.classList.remove('active-nav');
-		    })
-		</script>
 	</body>
 </html>
 <?php 

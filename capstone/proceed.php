@@ -74,17 +74,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	            </div>
 			</section>
 		</main>
-		<script type="text/javascript">
-		    var toggleClick = document.querySelector(".box,.icon");
-		    var navigation = document.querySelector("header");
-		    var removeClick = document.querySelector(".close");
-		    toggleClick.addEventListener('click', ()=>{
-		        navigation.classList.toggle('active-nav');
-		    })
-		    removeClick.addEventListener('click', ()=>{
-		        navigation.classList.remove('active-nav');
-		    })
-		</script>
 	</body>
 </html>
 <?php

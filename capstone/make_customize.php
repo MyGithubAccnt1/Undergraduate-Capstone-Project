@@ -546,7 +546,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                success: function (data) {
    		                	canvas.clear();
     	   		            canvas.isDrawingMode = false;
-    		   		    	removeButton()
+    		   		    	removeButton();
    		                    window.location.href = "customize.php";
    		                },
    		                error: function (xhr, status, error) {
@@ -642,6 +642,61 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		        });
 
    		        $('#order').on('click', function () {
+   		            const serializedObjects = serializeCanvasObjects(canvas);
+
+   		            if (serializedObjects.length === 0) {
+	                    return;
+	                }
+
+   		            var email = window.localStorage.getItem('email');
+   		            var deyt = window.localStorage.getItem('deyt');
+
+   		            $.ajax({
+   		                url: './php/update_template.php',
+   		                type: 'POST',
+   		                contentType: 'application/json',
+   		                data: JSON.stringify({
+   		                	canvasObjects: serializedObjects,
+   		                	email: email,
+   		                	deyt: deyt
+   		                }),
+   		                success: function (data) {
+    			            const imageFile = convertCanvasToPNG(canvas);
+    			            const imageDataWithoutPrefix = imageFile.split(',')[1];
+
+    			            $.ajax({
+    			                url: "./php/upload_template.php",
+    			                method: "POST",
+    			                data: {
+    			                    imageFile: imageDataWithoutPrefix
+    			                },
+    			                success: function (data) {
+    			                	canvas.clear();
+    	 	   		            	canvas.isDrawingMode = false;
+    	 		   		    		removeButton();
+                		            $.ajax({
+                		                url: "./php/order_template.php",
+                		                method: "POST",
+                		                success: function (data) {
+                		                	canvas.clear();
+                 	   		            	canvas.isDrawingMode = false;
+                 		   		    		removeButton();
+                		                    window.location.href = "view_order.php";
+                		                },
+                		                error: function (xhr, status, error) {
+                		                    console.error("AJAX Request Error:", status, error);
+                		                },
+                		            });
+    			                },
+    			                error: function (xhr, status, error) {
+    			                    console.error("AJAX Request Error:", status, error);
+    			                },
+    			            });
+   		                },
+   		                error: function (xhr, status, error) {
+   		                    console.error("AJAX Request Error:", status, error);
+   		                },
+   		            });
 
    		        });
 

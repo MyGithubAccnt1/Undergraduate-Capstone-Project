@@ -30,6 +30,7 @@ $email = $_SESSION['email'];
                 </div>
 				<div class="row mt-4 text-center">
 	                <h2>VIEW ORDERS</h2>
+	                <div class="text-center text-danger mb-4">[Notice: Only 1 order can be made per minute]</div>
 	                <div class="col-4" style="overflow-x:auto;">Item</div>
 	                <div class="col-2" style="overflow-x:auto;">Price</div>
 	                <div class="col-2" style="overflow-x:auto;">Date</div>
@@ -65,7 +66,17 @@ $email = $_SESSION['email'];
 	                <div class="border border-white mt-3 card" style="background-color: <?php echo $color ?>;">
 	                    <div class="row text-center my-1">
 	                        <div class="col-4"><?php echo $row['title'] ?></div>
+	                        <?php
+	                        if ($row['title'] === "Customize Item") {
+	                        ?>	
+	                        <div class="col-2">Estimating...</div>
+	                        <?php
+	                        } else {
+	                        ?>	
 	                        <div class="col-2">₱<?php echo $row['total'] ?></div>
+	                        <?php
+	                        }
+	                        ?>
 	                        <div class="col-2"><?php echo $row['deyt'] ?></div>
 	                        <div class="col-2"><?php echo $row['status'] ?></div>
 	                        <div class="col-2">
@@ -81,17 +92,18 @@ $email = $_SESSION['email'];
 	                	<div class="collapse" id="collapseExample<?php echo $id; ?>">
 		                    <div class="card card-body pt-4 pb-2">
 		                    	<div class="row d-flex justify-content-center">
-	            					<div class="row my-1 text-center">
+		                    	<?php
+		                    		$newsql = "SELECT * FROM `order` WHERE email = '$email' and deyt = '$date'";
+		                    		$newresult = $conn->query($newsql);
+		                    		if ($newresult->num_rows > 0) {
+		                    	?>
+		                    		<div class="row my-1 text-center">
 	            		                <div class="col-4">Item</div>
 	            		                <div class="col-4">Quantity</div>
 	            		                <div class="col-4">Price</div>
 	            		                <div class="bg-dark rounded" style="height: 3px;"></div>
 	            		            </div>
 		                    	<?php
-		                    		$newsql = "SELECT * FROM `order` WHERE email = '$email' and deyt = '$date'";
-		                    		$newresult = $conn->query($newsql);
-		                    		if ($newresult->num_rows > 0) {
-		                    		    // output data of each row
 		                    		    while ($newrow = $newresult->fetch_assoc()) {
 		                    	?>
 	    		    	            <div class="row my-1 text-center">
@@ -102,7 +114,18 @@ $email = $_SESSION['email'];
 		                        <?php
 		        	                    }
 		        	                } else {
-		        	                    echo "0 results";
+		        	                	$templatesql = "SELECT thumbnail FROM template WHERE email = '$email' and deyt = '$date'";
+		        	                	$templateresult = $conn->query($templatesql);
+		        	                	if ($templateresult->num_rows > 0) {
+		        	                		$templaterow = $templateresult->fetch_assoc();
+		        	            ?>
+     	                    		<div class="row my-1 text-center">
+                 		                <div class="col-12">Template</div>
+                 		                <div class="bg-dark rounded" style="height: 3px;"></div>
+                 		            </div>
+		        	            	<img src="<?php echo $templaterow['thumbnail'] ?>" style="width: auto; height: 300px;">
+		        	            <?php
+		        	            		}
 		        	                }
 		                        ?>
                     			<div class="row my-1 text-center">
