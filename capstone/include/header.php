@@ -203,7 +203,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             	</a>
             </div>
             <div class="p-0" style="width: 400px; margin: 0 50px;">
-            	<a id="conditional-link" href="#" class="w-75">
+            	<a href="checkout.php" class="w-75">
             		<button class="btn-main py-1 my-2 w-75 rounded-pill" type="button">Checkout</button>
             	</a>
             </div>
@@ -291,19 +291,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	function confirm_delete() {
 		return confirm('Are you sure you want to delete this item?')
 	}
-</script>
-<script>
-    const link = document.getElementById('conditional-link');
-    const div = document.getElementById('cart-container');
-    const expectedHtml = '<small>Your cart is empty.</small>';
-
-    if (div.innerHTML.includes(expectedHtml)) {
-        // If the condition is met (div contains expected HTML content), set the href to '#'
-        link.href = '#';
-    } else {
-        // If the condition is not met, set the href to a different URL
-        link.href = './checkout.php';
-    }
 </script>
 <?php
 }else{
