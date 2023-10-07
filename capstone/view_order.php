@@ -16,6 +16,18 @@ $email = $_SESSION['email'];
 			    background-color: #794B29;
 			    color: white;
 			}
+
+			.template-img {
+				cursor: zoom-in;
+			}
+
+			.template-img:hover {
+				background-color: rgba(0, 0, 0, 0.1);
+			}
+
+			/*.template-img > input[type=submit] {
+				display: none;
+			}*/
 		</style>
 	</head>
 	<body class="font-monospace">
@@ -115,16 +127,17 @@ $email = $_SESSION['email'];
 		        	                    }
 		        	                } else {
 		        	            ?>
-		        	            	<div class="row my-1 text-center">
+		        	            	<div class="row text-center">
                  		                <div class="col-12">Template</div>
-                 		                <div class="bg-dark rounded" style="height: 3px;"></div>
+                 		                <div class="bg-dark rounded mb-1" style="height: 3px;"></div>
 		        	            <?php
 		        	                	$templatesql = "SELECT thumbnail FROM template WHERE email = '$email' and deyt = '$date'";
 		        	                	$templateresult = $conn->query($templatesql);
 		        	                	if ($templateresult->num_rows > 0) {
 		        	                		$templaterow = $templateresult->fetch_assoc();
 		        	            ?>
-                 		                <div class="col-6 border p-4">
+                 		                <div class="col-6 border p-4 template-img" id="image">
+                 		                	<input type="hidden" name="image" value="<?php echo $templaterow['thumbnail'] ?>">
                  		                	<img src="<?php echo $templaterow['thumbnail'] ?>" style="width: auto; height: 300px;">
                  		                </div>
                  		        <?php
@@ -271,7 +284,38 @@ $email = $_SESSION['email'];
 	                ?>
 	            </div>
 			</section>
+			<section id="imageToggle" style="top: 0; left: 0; height: 100vh; width: 100%; position: absolute; z-index: 2; text-align: center; display: none; cursor: zoom-out;">
+				<img src="" style="height: 100%; width: auto;" id="file" class="border bg-white" alt="Missing_Image">
+			</section>
 		</main>
+		<script>
+		    $(document).on("click", "#image", function () {
+		    	var top = window.pageYOffset || document.documentElement.scrollTop;
+		        var image = $(this).find("input[name='image']").val();
+		        var imageToggle = $("#imageToggle");
+
+		        if (imageToggle.css("display") === "none") {
+	        	    imageToggle.css("display", "block");
+	        	    imageToggle.css('top', top);
+	        	    document.body.style.overflow = "hidden";
+	        	    $('#file').attr("src", image);
+	        	} else {
+	        		imageToggle.css("display", "none");
+	        		document.body.style.overflow = "";
+	        	}
+		    });
+		    $(document).on("click", "#imageToggle", function () {
+		    	
+		        var imageToggle = $("#imageToggle");
+
+		        if (imageToggle.css("display") === "none") {
+	        	    
+	        	} else {
+	        		imageToggle.css("display", "none");
+	        		document.body.style.overflow = "";
+	        	}
+		    });
+		</script>
 		<script>
 			function confirm_cancel() {
 				return confirm('Are you sure you want to cancel this order?')
