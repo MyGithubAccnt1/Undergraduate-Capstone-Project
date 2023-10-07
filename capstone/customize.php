@@ -39,6 +39,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				<div class="container-xl my-width d-block d-md-none">
 					<div class="row">
 						<div class="col-md-12">
+							<div class="text-center text-danger mt-5">[Notice: A saved template can't be deleted if an order is made with it]</div>
 							<h2>Saved Templates</h2>
 							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">  
 								<!-- Wrapper for carousel items -->
@@ -96,6 +97,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				<div class="container-xl my-width d-none d-sm-block">
 					<div class="row">
 						<div class="col-md-12">
+							<div class="text-center text-danger mt-5">[Notice: A saved template can't be deleted if an order is made with it]</div>
 							<h2>Saved Templates</h2>
 							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">  
 								<!-- Wrapper for carousel items -->

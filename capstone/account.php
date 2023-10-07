@@ -48,7 +48,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                    <form action="./php/update_details.php" method="POST">
 	                        <div class="row mb-0 pb-0 gx-5">
 	                            <div class="col mb-0">
-	                                <div class="text-center text-danger">*Putting personal information here is just for convenience and not required by SBM.*</div>
+	                                <div class="text-center text-danger">[Notice: Putting personal information here is just for convenience and not required by SBM]</div>
 	                                <div class="bg-secondary-soft px-4 py-5 rounded">
 	                                    <div class="row g-3">
 	                                        <h4 class="mb-4 mt-0">Contact detail</h4>

@@ -114,19 +114,95 @@ $email = $_SESSION['email'];
 		                        <?php
 		        	                    }
 		        	                } else {
+		        	            ?>
+		        	            	<div class="row my-1 text-center">
+                 		                <div class="col-12">Template</div>
+                 		                <div class="bg-dark rounded" style="height: 3px;"></div>
+		        	            <?php
 		        	                	$templatesql = "SELECT thumbnail FROM template WHERE email = '$email' and deyt = '$date'";
 		        	                	$templateresult = $conn->query($templatesql);
 		        	                	if ($templateresult->num_rows > 0) {
 		        	                		$templaterow = $templateresult->fetch_assoc();
 		        	            ?>
-     	                    		<div class="row my-1 text-center">
-                 		                <div class="col-12">Template</div>
-                 		                <div class="bg-dark rounded" style="height: 3px;"></div>
-                 		            </div>
-		        	            	<img src="<?php echo $templaterow['thumbnail'] ?>" style="width: auto; height: 300px;">
-		        	            <?php
+                 		                <div class="col-6 border p-4">
+                 		                	<img src="<?php echo $templaterow['thumbnail'] ?>" style="width: auto; height: 300px;">
+                 		                </div>
+                 		        <?php
 		        	            		}
-		        	                }
+		        	            		$objectsql = "SELECT * FROM object WHERE email = '$email' and deyt = '$date'";
+		        	            		$objectresult = $conn->query($objectsql);
+		        	            		if ($objectresult->num_rows > 0) {
+		                        ?>        
+                 		                <div class="col-6 border text-start p-4" style="height: 350px; overflow-x:hidden; overflow-y:auto;">
+                 		        <?php
+                 		        			while ($objectrow = $objectresult->fetch_assoc()) {
+                 		        				$properties = $objectrow['properties'];
+                 		        				$newProperties = explode(",", $properties);
+                 		        ?>
+                 		        			<small><?php echo $objectrow['objectType'] ?>:</small><br>
+                 		        <?php
+                 		        				if ($objectrow['objectType'] === "background") {
+                 		        ?>
+                 		        			<small style="margin-left: 100px;">
+                 		        				<?php echo $newProperties[6] ?>
+                 		        			</small><br>
+                 		        			<small style="margin-left: 100px;">
+                 		        				<?php echo $newProperties[7] ?>
+                 		        			</small><br><br>
+                 		        <?php
+                 		        				}else if ($objectrow['objectType'] === "i-text") {
+                 		        ?>
+                 		        			<small style="margin-left: 100px;">
+                 		        				<?php echo $newProperties[6] ?>
+                 		        			</small><br>
+                 		        			<small style="margin-left: 100px;">
+                 		        				<?php echo $newProperties[7] ?>
+                 		        			</small><br>
+                 		        			<small style="margin-left: 100px;">
+                 		        				<?php echo $newProperties[8] ?>
+                 		        			</small><br>
+                 		        			<small style="margin-left: 100px;">
+                 		        				<?php echo $newProperties[9] ?>
+                 		        			</small><br>
+                 		        			<small style="margin-left: 100px;">
+                 		        				<?php echo $newProperties[10] ?>
+                 		        			</small><br>
+                 		        			<small style="margin-left: 100px;">
+                 		        				<?php echo $newProperties[31] ?>
+                 		        			</small><br>
+                 		        			<small style="margin-left: 100px;">
+                 		        				<?php echo $newProperties[34] ?>
+                 		        			</small><br><br>
+                 		        <?php
+                 		        				} else {
+                 		        ?>
+                 		        			<small style="margin-left: 100px;">
+                 		        				<?php echo $newProperties[6] ?>
+                 		        			</small><br>
+                 		        			<small style="margin-left: 100px;">
+                 		        				<?php echo $newProperties[7] ?>
+                 		        			</small><br>
+                 		        			<small style="margin-left: 100px;">
+                 		        				<?php echo $newProperties[8] ?>
+                 		        			</small><br>
+                 		        			<small style="margin-left: 100px;">
+                 		        				<?php echo $newProperties[9] ?>
+                 		        			</small><br>
+                 		        			<small style="margin-left: 100px;">
+                 		        				<?php echo $newProperties[10] ?>
+                 		        			</small><br><br>
+                 		        <?php
+                 		        				}
+                 		        			}
+                 		        ?>
+                 		                </div>
+                 		        <?php
+
+                 		        		}
+                 		        ?>
+                 		            </div>
+                 		        <?php
+                 		            }
 		                        ?>
                     			<div class="row my-1 text-center">
                                     <div class="bg-dark rounded" style="height: 3px;"></div>
