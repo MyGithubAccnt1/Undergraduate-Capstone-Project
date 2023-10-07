@@ -141,7 +141,7 @@ $email = $_SESSION['email'];
                  		        ?>
                  		        			<small><?php echo $objectrow['objectType'] ?>:</small><br>
                  		        <?php
-                 		        				if ($objectrow['objectType'] === "background") {
+                 		        				if ($objectrow['objectType'] === "background" || $objectrow['objectType'] === "image") {
                  		        ?>
                  		        			<small style="margin-left: 100px;">
                  		        				<?php echo $newProperties[6] ?>
