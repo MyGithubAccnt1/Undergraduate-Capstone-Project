@@ -27,7 +27,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						</div>
 						<div class="col-6">
 							<div class="row text-center">
-							    <form action="./php/add_history.php" method="POST">
+							    <form action="" class="order">
 							        <button type="submit" class="btn-main py-1 mt-4 w-75 rounded-pill">PROCEED</button>
 							    </form>
 							</div>
@@ -76,6 +76,45 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		</main>
 	</body>
 </html>
+<script type="text/javascript">
+	$(document).on("submit", ".order", function (event) {
+        event.preventDefault();
+        var fname = window.localStorage.getItem('fname');
+        var lname = window.localStorage.getItem('lname');
+        var mnumber = window.localStorage.getItem('mnumber');
+        var email = window.localStorage.getItem('email');
+   		var caddress = window.localStorage.getItem('caddress');
+   		$.ajax({
+   		    url: './php/add_history.php',
+   		    type: 'POST',
+   		    data: {
+   		    	fname: fname,
+   		    	lname: lname,
+   		    	mnumber: mnumber,
+   		    	email: email,
+   		    	caddress: caddress
+   		    },
+   		    success: function (data) {
+   		    	
+   		    	if (data === "1") {
+   		    		alert('Notice: Your cart is empty.')
+   		    		window.location.href = "index.php";
+   		    	} else if (data === "2") {
+   		    		alert('Notice: Only 1 order can be made every minute per account.')
+   		    	} else if (data === "3") {
+   		    		alert('Notice: Order has been submitted successfully.')
+   		    		window.location.href = "view_order.php";
+   		    	} else {
+   		    		alert('Notice: The system experienced some error and cannot clear your cart automatically, order has been submitted successfully.')
+   		    		window.location.href = "view_order.php";
+   		    	}
+   		    },
+   		    error: function (xhr, status, error) {
+   		        console.error("AJAX Request Error:", status, error);
+   		    },
+   		});
+    });
+</script>
 <?php
 }else{
     echo"<script>alert('Notice: Please login to proceed.')</script>";

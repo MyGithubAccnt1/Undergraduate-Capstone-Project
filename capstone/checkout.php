@@ -26,9 +26,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							</a>
 						</div>
 						<div class="col-6">
-							<a href="proceed.php">
+							<form action="" class="info">
 							    <button type="submit" class="btn-main py-1 mt-4 w-75 rounded-pill">NEXT</button>
-							</a>
+							</form>
 						</div>
 	                </div>
 	                <div class="row gx-5">
@@ -43,23 +43,23 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                            <h4 class="my-2">Billing Address</h4>
 	                            <div class="col-md-6">
 	                                <label class="form-label">First Name</label>
-	                                <input type="text" class="form-control" value="<?php echo $_SESSION['fname']; ?>">
+	                                <input type="text" id="fname" class="form-control" value="<?php echo $_SESSION['fname']; ?>">
 	                            </div>
 	                            <div class="col-md-6">
 	                                <label class="form-label">Last Name</label>
-	                                <input type="text" class="form-control" value="<?php echo $_SESSION['lname']; ?>">
+	                                <input type="text" id="lname" class="form-control" value="<?php echo $_SESSION['lname']; ?>">
 	                            </div>
 	                            <div class="col-md-6">
 	                                <label class="form-label">Mobile Number</label>
-	                                <input type="text" class="form-control" value="<?php echo $_SESSION['mnumber']; ?>">
+	                                <input type="text" id="mnumber" class="form-control" value="<?php echo $_SESSION['mnumber']; ?>">
 	                            </div>
 	                            <div class="col-md-6">
 	                                <label class="form-label">Email</label>
-	                                <input type="email" class="form-control" value="<?php echo $_SESSION['email']; ?>">
+	                                <input type="email" id="email" class="form-control" value="<?php echo $_SESSION['email']; ?>">
 	                            </div>
 	                            <div class="col-md-12">
 	                                <label class="form-label">Complete Address</label>
-	                                <input type="email" class="form-control" value="<?php echo $_SESSION['caddress']; ?>">
+	                                <input type="text" id="caddress" class="form-control" value="<?php echo $_SESSION['caddress']; ?>">
 	                            </div>
 	                        </div>
 	                    </div>
@@ -89,6 +89,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		</main>
 	</body>
 </html>
+<script type="text/javascript">
+	$(document).on("submit", ".info", function (event) {
+        event.preventDefault();
+        var fname = $("#fname").val();
+        var lname = $("#lname").val();
+        var mnumber = $("#mnumber").val();
+        var email = $("#email").val();
+        var caddress = $("#caddress").val();
+        window.localStorage.setItem('fname', fname);
+        window.localStorage.setItem('lname', lname);
+        window.localStorage.setItem('mnumber', mnumber);
+        window.localStorage.setItem('email', email);
+        window.localStorage.setItem('caddress', caddress);
+        window.location.href = "proceed.php";
+    });
+</script>
 <?php 
 }else{
     echo"<script>alert('Notice: Please login to proceed.')</script>";

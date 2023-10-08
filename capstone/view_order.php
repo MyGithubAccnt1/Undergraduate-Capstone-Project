@@ -55,7 +55,7 @@ $email = $_SESSION['email'];
 		            	include('./php/connect.php');
 		            	$date = "";
 		            	$id = 0;
-		            	$sql = "SELECT * FROM history WHERE email = '$email'";
+		            	$sql = "SELECT * FROM history WHERE email = '$email' ORDER BY id DESC";
 		            	$result = $conn->query($sql);
 		            	if ($result->num_rows > 0) {
 		            	    // output data of each row
@@ -217,9 +217,23 @@ $email = $_SESSION['email'];
                  		        <?php
                  		            }
 		                        ?>
-                    			<div class="row my-1 text-center">
-                                    <div class="bg-dark rounded" style="height: 3px;"></div>
-                                </div>
+	                    			<div class="row my-1 text-center">
+	                                    <div class="bg-dark rounded" style="height: 3px;"></div>
+	                                </div>
+	                                <div class="row w-100 text-center">
+	                                	<p>Personal Information</p>
+	                                </div>
+	                                <div class="row" style="padding-left: 100px;">
+	                                	<p>First Name: <?php echo $row['input_fname'] ?></p><br>
+	                                	<p>Last Name: <?php echo $row['input_lname'] ?></p><br>
+	                                	<p>Mobile Number: <?php echo $row['input_mnumber'] ?></p><br>
+	                                	<p>E-mail: <?php echo $row['input_email'] ?></p><br>
+	                                	<p>Complete Adress: <?php echo $row['input_caddress'] ?></p><br>
+	                                	<p>Payment Method: Cash On Delivery</p><br>
+	                                </div>
+	                                <div class="row my-1 text-center">
+	                                    <div class="bg-dark rounded" style="height: 3px;"></div>
+	                                </div>
 		                    	</div>
 		                        <div class="row text-center d-flex align-items-center">
 		                            <div class="col-12 col-md-6">

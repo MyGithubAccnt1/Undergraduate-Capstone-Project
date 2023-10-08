@@ -293,7 +293,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                     	deyt: deyt
                     },
                     success: function (data) {
-                        window.location.href = "customize.php";
+                    	if (data === "1") {
+                    		alert('Notice: The selected template can not be deleted because it is submitted as an order.');
+                    	} else {
+                    		window.location.href = "customize.php";
+                    	}
                     },
         	        error: function (xhr, status, error) {
         	            console.error("AJAX Request Error:", status, error);
