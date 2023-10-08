@@ -2,6 +2,11 @@
 session_start();
 include('connect.php');
 $email = $_SESSION['email'];
+$input_fname = $_POST['fname'];
+$input_lname = $_POST['lname'];
+$input_mnumber = $_POST['mnumber'];
+$input_email = $_POST['email'];
+$input_caddress = $_POST['caddress'];
 
 // Initialize variables
 $title = "";
@@ -34,15 +39,13 @@ if ($result->num_rows > 0) {
 
     if ($checkresult->num_rows > 0) {
         
-        echo "<script>alert('Notice: Only 1 order can be made every minute per account.')</script>";
-        $script = "<script>window.location = '../proceed.php';</script>";
-        echo $script;
+        echo "2";
 
     } else {
 
-        $insertSql = "INSERT INTO history (email, title, total, deyt, status) VALUES (?, ?, ?, ?, ?)";
+        $insertSql = "INSERT INTO history (email, title, total, deyt, status, input_fname, input_lname, input_mnumber, input_email, input_caddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $insertStmt = $conn->prepare($insertSql);
-        $insertStmt->bind_param("ssdss", $email, $title, $total, $date, $status);
+        $insertStmt->bind_param("ssdsssssss", $email, $title, $total, $date, $status, $input_fname, $input_lname, $input_mnumber, $input_email, $input_caddress);
 
         if ($insertStmt->execute()) {
 
@@ -58,12 +61,10 @@ if ($result->num_rows > 0) {
                     $newStmt = $conn->prepare($newSql);
                     $newStmt->bind_param("ssdss", $row["title"], $row["qty"], $row["price"], $email, $date);
                     if ($newStmt->execute()) {
-                        // Insertion was successful, now delete from cart
+                        
                     } else {
-                        // Handle the error if insertion fails
-                        echo "Error inserting into `order`: " . $newStmt->error;
+                        
                     }
-                    // Close the statement after each iteration
                     $newStmt->close();
                 }
                 $deleteSql = "DELETE FROM cart WHERE email = ?";
@@ -71,18 +72,15 @@ if ($result->num_rows > 0) {
                 $deleteStmt->bind_param("s", $email);
                 
                 if ($deleteStmt->execute()) {
-                    echo "<script>alert('Notice: Order has been submitted successfully.')</script>";
-                    $script = "<script>window.location = '../view_order.php';</script>";
-                    echo $script;
+
+                    echo "3";
 
                     $notifmessage = "[". $email ."] successfully completed an order of [". $title ."].";
                     $notifcategory = "order";
                     $notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
                     $notifresult = mysqli_query($conn, $notifsql);
                 } else {
-                    echo "Error deleting cart items: " . $deleteStmt->error;
-                    sleep(2);
-                    header("Location: ../proceed.php");
+                    echo "4";
                 }
             }
 
@@ -99,9 +97,7 @@ if ($result->num_rows > 0) {
     $checkstmt->close();
 } else {
 
-    echo "<script>alert('Notice: Your cart is empty.')</script>";
-    $script = "<script>window.location = '../index.php';</script>";
-    echo $script;
+    echo "1";
 
 }
 

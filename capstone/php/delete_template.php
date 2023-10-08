@@ -8,6 +8,7 @@ $deyt = mysqli_real_escape_string($conn, $deyt);
 $checksql = "SELECT * FROM history WHERE email = '$email' and deyt = '$deyt'";
 $checkresult = mysqli_query($conn, $checksql);
 if (mysqli_num_rows($checkresult) > 0) {
+    echo "1";
     exit;
 } else {
     $objectsql = "DELETE FROM object WHERE email = '$email' and deyt = '$deyt'";
