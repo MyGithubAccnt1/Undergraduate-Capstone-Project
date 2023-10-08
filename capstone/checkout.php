@@ -97,12 +97,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         var mnumber = $("#mnumber").val();
         var email = $("#email").val();
         var caddress = $("#caddress").val();
-        window.localStorage.setItem('fname', fname);
-        window.localStorage.setItem('lname', lname);
-        window.localStorage.setItem('mnumber', mnumber);
-        window.localStorage.setItem('email', email);
-        window.localStorage.setItem('caddress', caddress);
-        window.location.href = "proceed.php";
+
+        if (fname === "" || lname === "" || mnumber === "" || email === "" || caddress === "") {
+        	alert('Notice: There are some empty field, please fill it up.');
+        } else {
+        	window.localStorage.setItem('fname', fname);
+        	window.localStorage.setItem('lname', lname);
+        	window.localStorage.setItem('mnumber', mnumber);
+        	window.localStorage.setItem('email', email);
+        	window.localStorage.setItem('caddress', caddress);
+        	window.location.href = "proceed.php";
+        }
     });
 </script>
 <?php 
