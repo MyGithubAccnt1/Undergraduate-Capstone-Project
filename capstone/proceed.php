@@ -102,16 +102,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		    	} else if (data === "2") {
    		    		alert('Notice: Only 1 order can be made every minute per account.')
    		    	} else if (data === "3") {
+   		    		alert('Notice: An unexpected error occur during submitting your order, please try again.');
+   		    	} else if (data === "4") {
    		    		alert('Notice: Order has been submitted successfully.')
    		    		window.location.href = "view_order.php";
-   		    	} else {
+   		    	} else  if (data === "4") {
    		    		alert('Notice: The system experienced some error and cannot clear your cart automatically, order has been submitted successfully.')
    		    		window.location.href = "view_order.php";
+   		    	} else {
+   		    		alert('Notice: [' + data + ']')
    		    	}
-   		    },
-   		    error: function (xhr, status, error) {
-   		        console.error("AJAX Request Error:", status, error);
-   		    },
+   		    }
    		});
     });
 </script>

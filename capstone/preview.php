@@ -45,11 +45,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							</div>
 						</div>
 						<div class="product-details">
-							<form action="./php/add_cart.php" method="POST">
-								<input type="hidden" name="title" value="<?php echo $_SESSION['title'];?>">
-								<input type="hidden" name="price" value="<?php echo $_SESSION['price'];?>">
-								<input type="hidden" name="email" value="<?php echo $_SESSION['email'];?>">
-								<input type="hidden" name="qty" value="<?php echo $_SESSION['qty'];?>">
+							<form action="" id="add_cart">
+								<input type="hidden" id="title" value="<?php echo $_SESSION['title'];?>">
+								<input type="hidden" id="price" value="<?php echo $_SESSION['price'];?>">
+								<input type="hidden" id="email" value="<?php echo $_SESSION['email'];?>">
 							    <h1 class="text-center"><?php echo $_SESSION['title'];?></h1>
 							    <hr>
 							    <div>
@@ -172,6 +171,35 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	        // Show comments on page load
 	        showComments();
 	        setInterval(showComments, 1000);
+		</script>
+		<script type="text/javascript">
+			$(document).on("submit", "#add_cart", function (event) {
+		        event.preventDefault();
+
+		        var title = $("#title").val();
+		        var price = $("#price").val();
+		        var email = $("#email").val();
+
+		        $.ajax({
+	                url: "./php/add_cart.php", // PHP script to insert comments into the database
+	                method: "POST",
+	                data: {
+	                	title: title,
+	                	price: price,
+	                	email: email
+	                },
+	                success: function (data) {
+	                    if (data === "1") {
+	                    	alert('Notice: This item is already added to your cart. The same item cannot be added twice.')
+	                    } else if (data === "2") {
+	                    	alert('Notice: An item has been added to cart.');
+	                    	window.location.href = "preview.php"
+	                    } else {
+	                    	alert('Notice: An unexpected error occur during adding the item to your cart, please try again.');
+	                    }
+	                }
+	            });
+		    });
 		</script>
 	</body>
 </html>
