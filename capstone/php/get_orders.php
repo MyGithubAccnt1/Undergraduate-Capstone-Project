@@ -108,18 +108,31 @@
         	    		echo '</div>';
         	    }
         	} else {
-        		$templatesql = "SELECT thumbnail FROM template WHERE email = '$email' and deyt = '$date'";
-        		$templateresult = $conn->query($templatesql);
-        		if ($templateresult->num_rows > 0) {
-        			$templaterow = $templateresult->fetch_assoc();
         	   			echo '<div style="width: 100%; margin: 5px 0; text-align: center; display: flex; flex-direction: row;">';
-        	    			echo '<div style="width: 100%; text-align: center;">Template</div>';
+        	    			echo '<div style="width: 100%; text-align: center;">No Available Data</div>';
         	    		echo '</div>';
-        	    		echo '<div style="width: 100%; margin: 5px 0; display: flex; justify-content: center;">';
-		        	    	echo '<img src="'. $templaterow['thumbnail'] . '" style="width: auto; height: 300px;">';
-        	    		echo '</div>';
-        	    }
         	}
+        				echo '<div style="width: 100%; height: 2px; background-color: #000;"></div>';
+        				echo '<div style="width: 100%; margin: 5px 0; text-align: center;">';
+        	    			echo '<div style="width: 100%; text-align: center;">Personal Information</div>';
+        	    			echo '<div style="width: 100%; display: flex;">';
+        	    				echo '<div style="flex: 50%; text-align: right; margin-right: 2.5%;">';
+        	    					echo '<p style="color: #000; margin: 5px 0;">First Name:</p>';
+        	    					echo '<p style="color: #000; margin: 5px 0;">Last Name:</p>';
+        	    					echo '<p style="color: #000; margin: 5px 0;">Mobile Number:</p>';
+        	    					echo '<p style="color: #000; margin: 5px 0;">E-mail:</p>';
+        	    					echo '<p style="color: #000; margin: 5px 0;">Complete Address:</p>';
+        	    				echo '</div>';
+        	    				echo '<div style="flex: 50%; text-align: left; margin-left: 2.5%;">';
+        	    					echo '<p style="color: #000; margin: 5px 0;">'. $row['input_fname'] .'</p>';
+        	    					echo '<p style="color: #000; margin: 5px 0;">'. $row['input_lname'] .'</p>';
+        	    					echo '<p style="color: #000; margin: 5px 0;">'. $row['input_mnumber'] .'</p>';
+        	    					echo '<p style="color: #000; margin: 5px 0;">'. $row['input_email'] .'</p>';
+        	    					echo '<p style="color: #000; margin: 5px 0;">'. $row['input_caddress'] .'</p>';
+        	    				echo '</div>';
+        	    			echo '</div>';
+        	    		echo '</div>';
+
         				echo '<div style="width: 100%; height: 2px; background-color: #000;"></div>';
         			echo '</div>';
         			echo '<div style="width: 100%; display: flex; justify-content: space-around; text-align: center; padding: 10px 0;">';
