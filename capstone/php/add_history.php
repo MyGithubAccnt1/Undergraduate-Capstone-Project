@@ -56,50 +56,54 @@ if ($result->num_rows > 0) {
             $result = $stmt->get_result();
 
             if ($result->num_rows > 0) {
+
                 while ($row = $result->fetch_assoc()) {
                     $newSql = "INSERT INTO `order` (title, qty, price, email, deyt) VALUES (?, ?, ?, ?, ?)";
                     $newStmt = $conn->prepare($newSql);
                     $newStmt->bind_param("ssdss", $row["title"], $row["qty"], $row["price"], $email, $date);
-                    if ($newStmt->execute()) {
-                        
-                    } else {
-                        
-                    }
+                    $newStmt->execute();
                     $newStmt->close();
                 }
+
                 $deleteSql = "DELETE FROM cart WHERE email = ?";
                 $deleteStmt = $conn->prepare($deleteSql);
                 $deleteStmt->bind_param("s", $email);
                 
                 if ($deleteStmt->execute()) {
 
-                    echo "3";
+                    echo "4";
 
                     $notifmessage = "[". $email ."] successfully completed an order of [". $title ."].";
                     $notifcategory = "order";
                     $notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
                     $notifresult = mysqli_query($conn, $notifsql);
+
                 } else {
-                    echo "4";
+
+                    echo "5";
+
                 }
+
+                $deleteStmt->close();
+
             }
 
         } else {
-            echo "Error inserting into history: " . $insertStmt->error;
-            sleep(2);
-            header("Location: ../proceed.php");
+
+            echo "3";
+
         }
+
+        $insertStmt->close();
 
     }
 
-    $insertStmt->close();
-    $deleteStmt->close();
     $checkstmt->close();
+
 } else {
 
     echo "1";
 
 }
-
 $conn->close();
 ?>
