@@ -228,8 +228,7 @@ $email = $_SESSION['email'];
 	                                	<p>Last Name: <?php echo $row['input_lname'] ?></p><br>
 	                                	<p>Mobile Number: <?php echo $row['input_mnumber'] ?></p><br>
 	                                	<p>E-mail: <?php echo $row['input_email'] ?></p><br>
-	                                	<p>Complete Adress: <?php echo $row['input_caddress'] ?></p><br>
-	                                	<p>Payment Method: Cash On Delivery</p><br>
+	                                	<p>Complete Adress: <?php echo $row['input_caddress'] ?></p>
 	                                </div>
 	                                <div class="row my-1 text-center">
 	                                    <div class="bg-dark rounded" style="height: 3px;"></div>
