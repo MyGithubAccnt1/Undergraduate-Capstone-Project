@@ -674,19 +674,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
     			                	canvas.clear();
     	 	   		            	canvas.isDrawingMode = false;
     	 		   		    		removeButton();
-                		            $.ajax({
-                		                url: "./php/order_template.php",
-                		                method: "POST",
-                		                success: function (data) {
-                		                	canvas.clear();
-                 	   		            	canvas.isDrawingMode = false;
-                 		   		    		removeButton();
-                		                    window.location.href = "view_order.php";
-                		                },
-                		                error: function (xhr, status, error) {
-                		                    console.error("AJAX Request Error:", status, error);
-                		                },
-                		            });
+                		            window.location.href = "checkout_template.php";
     			                },
     			                error: function (xhr, status, error) {
     			                    console.error("AJAX Request Error:", status, error);
