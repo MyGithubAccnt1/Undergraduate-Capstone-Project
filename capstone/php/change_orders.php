@@ -22,6 +22,14 @@ if ($action === "otw") {
 
 	$status = "Rejected";
 
+}else if ($action === "reviewed") {
+
+	$status = "Reviewed";
+
+}else if ($action === "impossible") {
+
+	$status = "Impossible";
+
 }else{
 
 	$status = "Pending";
