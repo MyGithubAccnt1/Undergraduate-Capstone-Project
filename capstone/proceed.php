@@ -48,7 +48,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                                <label for="cod">Cash On Delivery</label>
 	                            </div>
 	                        </div>
-	                        <div class="row my-3"><p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this <a href="https://www.freeprivacypolicy.com/live/353db79e-7657-4eff-b91f-9ad4e772791f" target="_blank">Privacy Policy</a>.</p></div>
+	                        <div class="row my-3"><p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this <a href="https://www.privacypolicyonline.com/live.php?token=ZM97DWorTAK1pM4vwfamZ0eMicuqecNN" target="_blank">Privacy Policy</a>.</p></div>
 	                    </div>
 	                    <div class="col-sm-12 col-md-4 text-center">
 	                        <h2 class="">ORDER SUMMARY</h2>
