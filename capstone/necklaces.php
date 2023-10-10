@@ -9,7 +9,7 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
     $maxPrice = $_POST['maxPrice'];
     $minPrice = $_POST['minPrice'];
 
-    $sql = "SELECT price, title, thumbnail FROM product WHERE price BETWEEN ? AND ?";
+    $sql = "SELECT price, title, thumbnail FROM product WHERE category = 'Necklace' AND price BETWEEN ? AND ?";
 
     $stmt = $conn->prepare($sql);
 
@@ -63,7 +63,7 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 	<body class="font-monospace">
 		<?php include('./include/header.php') ?>
 		<main class="container-fluid m-0 p-0">
-			<section class="my-width mx-auto">
+			<section class="my-width mx-auto pt-3">
 				<div class="container">
 				    <div class="row d-flex align-items-center">
 				        <div class="col-sm-12 col-md-12 col-lg-4">
@@ -103,7 +103,7 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 				                                     style="height: auto;">
 				                                    <?php
 				                                    include('./php/connect.php');
-				                                    $sql = "SELECT price, title, thumbnail FROM product";
+				                                    $sql = "SELECT price, title, thumbnail FROM product WHERE category = 'Necklace'";
 				                                    $result = $conn->query($sql);
 				                                    if ($result->num_rows > 0) {
 				                                        // output data of each row
@@ -129,7 +129,9 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 				                                            <?php
 				                                        }
 				                                    } else {
-				                                        echo "0 results";
+				                                    ?>
+				                                    	<p class="w-100 text-center text-dark">[There is no available product at the moment]</p>
+				                                    <?php
 				                                    }
 				                                    $conn->close();
 				                                    ?>
@@ -208,10 +210,14 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 		        //make div empty
 		        productSection.innerHTML = "";
 
-		        //show warning when none products
-		        if (products.length <= 0) {
-		            productSection.innerHTML = "No Products Found In range";
-		        }
+		        const noProductsMessage = document.createElement("p");
+	            noProductsMessage.classList.add("w-100", "text-center", "text-dark");
+	            noProductsMessage.textContent = "[There is no available product found in range]";
+
+	            // Show the message when there are no products
+	            if (products.length <= 0) {
+	                productSection.appendChild(noProductsMessage);
+	            }
 
 		        //loop through each product and create the necessary details
 		        products.forEach(productData => {

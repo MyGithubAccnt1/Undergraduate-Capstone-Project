@@ -63,7 +63,7 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 	<body class="font-monospace">
 		<?php include('./include/header.php') ?>
 		<main class="container-fluid m-0 p-0">
-			<section class="my-width mx-auto">
+			<section class="my-width mx-auto pt-3">
 				<div class="container">
 				    <div class="row d-flex align-items-center">
 				        <div class="col-sm-12 col-md-12 col-lg-4">
