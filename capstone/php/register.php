@@ -8,9 +8,9 @@ $sql = "SELECT * FROM account WHERE email = '$email' and password = '$password'"
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 if(mysqli_num_rows($result) === 1) {
-	echo"<script>alert('Notice: This email is already used. Please try another email.')</script>";
-	$script = "<script>window.location = '../signin.php';</script>";
-	echo $script;
+
+	echo "1";
+
 } else {
 	$date = date('Y-m-d H:i');
 	$sql = "INSERT INTO account (email, password, role, status, deyt) VALUES ('$email','$password','Regular', 'Online','$date')";
@@ -42,18 +42,16 @@ if(mysqli_num_rows($result) === 1) {
 		    $_SESSION["caddress"] = $row['caddress'];
 		}
 
-	  	echo"<script>alert('Notice: An account is successfully created.')</script>";
-	  	$script = "<script>window.location = '../account.php';</script>";
-	  	echo $script;
+	  	echo "2";
 
 	  	$notifmessage = "A new account has been created with an email of [". $row['email'] ."].";
 		$notifcategory = "account";
 		$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
 		$notifresult = mysqli_query($conn, $notifsql);
 	} else {
-	  	echo "Error: " . $sql . "<br>" . $conn->error;
-	  	sleep(2); 
-	  	header("Location: ../signin.php");
+
+	  	echo "3";
+	  	
 	}
 }
 $conn->close();
