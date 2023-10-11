@@ -1,11 +1,8 @@
 <?php
 include("connect.php");
-$material = $_POST["material"];
-$quantity = $_POST["quantity"];
-$category = $_POST["category"];
-$material = mysqli_real_escape_string($conn, $material);
-$quantity = mysqli_real_escape_string($conn, $quantity);
-$category = mysqli_real_escape_string($conn, $category);
+$material = mysqli_real_escape_string($conn, $_POST["material"]);
+$quantity = mysqli_real_escape_string($conn, $_POST["quantity"]);
+$category = mysqli_real_escape_string($conn, $_POST["category"]);
 if ($material === "") {
     $material = "Empty";
 }

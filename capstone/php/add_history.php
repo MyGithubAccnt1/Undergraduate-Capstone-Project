@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
         $subtotal = $row["qty"] * $row["price"];
         $total += $subtotal;
     }
-
+    date_default_timezone_set('Asia/Manila');
     $date = date('Y-m-d H:i');
     $status = "Pending";
     $title = rtrim($title, ', ');

@@ -1,14 +1,10 @@
 <?php
 include("connect.php");
 $id = $_POST["id"];
-$name = $_POST["name"];
-$position = $_POST["position"];
-$deyt = $_POST["deyt"];
-$salary = $_POST["salary"];
-$name = mysqli_real_escape_string($conn, $name);
-$position = mysqli_real_escape_string($conn, $position);
-$deyt = mysqli_real_escape_string($conn, $deyt);
-$salary = mysqli_real_escape_string($conn, $salary);
+$name = mysqli_real_escape_string($conn, $_POST["name"]);
+$position = mysqli_real_escape_string($conn, $_POST["position"]);
+$deyt = mysqli_real_escape_string($conn, $_POST["deyt"]);
+$salary = mysqli_real_escape_string($conn, $_POST["salary"]);
 if ($id === "") {
 
 } else {

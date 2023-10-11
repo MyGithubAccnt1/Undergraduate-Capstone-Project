@@ -4,15 +4,12 @@ session_start(); // Start the session
 include("connect.php"); // Include your database connection
 
 $email = $_SESSION['email'];
-
-// Escape user inputs and use prepared statements
-$date = mysqli_real_escape_string($conn, $_REQUEST['date']);
+$date = mysqli_real_escape_string($conn, $_POST['date']);
 
 $newsql = "SELECT status FROM history WHERE email = '$email' AND deyt = '$date'";
 $result = mysqli_query($conn, $newsql);
 
 if (!$result) {
-    // Handle the query error, e.g., log it or show an error message
     die("Database query failed: " . mysqli_error($conn));
 }
 
@@ -31,26 +28,24 @@ if ($row) {
         $stmt->bind_param("sss", $status, $email, $date);
 
         if ($stmt->execute()) {
-            echo "<script>alert('Notice: An order has been canceled successfully!')</script>";
-            $script = "<script>window.location = '../view_order.php';</script>";
-            echo $script;
+
+            echo "1";
+
         } else {
-            echo "Error: " . $stmt->error;
-            sleep(2);
-            header("Location: ../view_order.php");
+
+            echo "2";
+
         }
 
         $stmt->close();
 
     } else {
-        echo "<script>alert('Notice: You can not cancel the order at this time.')</script>";
-        $script = "<script>window.location = '../view_order.php';</script>";
-        echo $script;
+        echo "3";
     }
 } else {
-    echo "<script>alert('Notice: There is something wrong with the selected order.')</script>";
-    $script = "<script>window.location = '../view_order.php';</script>";
-    echo $script;
+
+    echo "4";
+
 }
 
 $conn->close(); // Close the database connection

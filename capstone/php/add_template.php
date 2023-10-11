@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($email = "test@admin"){
         $email = $_SESSION['email'];
+        date_default_timezone_set('Asia/Manila');
         $date = date('Y-m-d H:i');
     }
 

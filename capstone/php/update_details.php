@@ -3,11 +3,11 @@ session_start();
 include("connect.php");
 
 // Escape user inputs for security
-$fname = mysqli_real_escape_string($conn, $_REQUEST['fname']);
-$lname = mysqli_real_escape_string($conn, $_REQUEST['lname']);
-$mnumber = mysqli_real_escape_string($conn, $_REQUEST['mnumber']);
+$fname = mysqli_real_escape_string($conn, $_POST['fname']);
+$lname = mysqli_real_escape_string($conn, $_POST['lname']);
+$mnumber = mysqli_real_escape_string($conn, $_POST['mnumber']);
 $email = $_SESSION["email"];
-$caddress = mysqli_real_escape_string($conn, $_REQUEST['caddress']);
+$caddress = mysqli_real_escape_string($conn, $_POST['caddress']);
 
 $sql = "UPDATE account SET fname='$fname', lname ='$lname', mnumber='$mnumber', caddress = '$caddress' WHERE email='$email'";
 
@@ -22,13 +22,9 @@ if ($conn->query($sql) === TRUE) {
 	$_SESSION["fname"] = $row['fname'];
 	$_SESSION["mnumber"] = $row['mnumber'];
 	$_SESSION["caddress"] = $row['caddress'];
-  	echo"<script>alert('Notice: Account details has been updated!')</script>";
-  	$script = "<script>window.location = '../account.php';</script>";
-  	echo $script;
+  	echo "1";
 } else {
-  	echo "Error: " . $sql . "<br>" . $conn->error;
-  	sleep(2); 
-  	header("Location: ../account.php");
+  	echo "2";
 }
 $conn->close();
 ?>

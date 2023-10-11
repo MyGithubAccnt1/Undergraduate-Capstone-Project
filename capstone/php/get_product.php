@@ -3,7 +3,7 @@ session_start();
 include("connect.php");
 
 // Escape user inputs for security
-$title = mysqli_real_escape_string($conn, $_REQUEST['title']);
+$title = mysqli_real_escape_string($conn, $_POST['title']);
 
 $sql = "SELECT * FROM product WHERE title = '$title'";
 $result = mysqli_query($conn, $sql);

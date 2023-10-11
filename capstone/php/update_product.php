@@ -1,14 +1,10 @@
 <?php
 include("connect.php");
 $id = $_POST["id"];
-$title = $_POST["title"];
-$price = $_POST["price"];
-$thumbnail = $_POST["thumbnail"];
-$description = $_POST["description"];
-$title = mysqli_real_escape_string($conn, $title);
-$price = mysqli_real_escape_string($conn, $price);
-$thumbnail = mysqli_real_escape_string($conn, $thumbnail);
-$description = mysqli_real_escape_string($conn, $description);
+$title = mysqli_real_escape_string($conn, $_POST["title"]);
+$price = mysqli_real_escape_string($conn, $_POST["price"]);
+$thumbnail = mysqli_real_escape_string($conn, $_POST["thumbnail"]);
+$description = mysqli_real_escape_string($conn, $_POST["description"]);
 if ($id === "") {
 
 } else {
@@ -38,14 +34,22 @@ if ($id === "") {
 
         if (mysqli_query($conn, $sql)) {
 
+            echo "2";
+
             $notifmessage = "An [Admin] has updated a product with a title of [". $title ."].";
             $notifcategory = "log";
             $notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
             $notifresult = mysqli_query($conn, $notifsql);
 
         } else {
-            echo "Error: " . mysqli_error($conn);
+
+            echo "3";
+            
         }
+
+    } else {
+
+        echo "1";
 
     }
     

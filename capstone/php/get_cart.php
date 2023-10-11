@@ -33,9 +33,9 @@ if ($result->num_rows > 0) {
         	<span>₱' . $row["total"] . '</span>
         </div>
         <div class="col-1 text-center mx-auto">
-            <form action="./php/delete_cart.php">
+            <form action="" id="delete">
                 <input type="hidden" value="' . $row["id"] . '" name="id">
-                <input type="submit" class="btn-main rounded-0 btn btn-md" value="X" onclick="return confirm_delete()">
+                <input type="submit" class="btn-main rounded-0 btn btn-md" value="X">
             </form>
         </div>
         ';

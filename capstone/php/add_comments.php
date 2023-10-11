@@ -5,23 +5,30 @@ include("connect.php");
 // Get the form data
 $name = $_POST["name"];
 $title = $_POST["title"];
-$comment = $_POST["comment"];
+date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d H:i');
+$role = $_POST["role"];
+$comment = mysqli_real_escape_string($conn, $_POST["comment"]);
 
-// Escape user input to prevent SQL injection (not secure, use prepared statements in production)
-$name = mysqli_real_escape_string($conn, $name);
-$comment = mysqli_real_escape_string($conn, $comment);
+if ($comment == "") {
 
-// Insert the comment into the database
-$sql = "INSERT INTO comments (name, comment, date, title) VALUES ('$name', '$comment', '$date', '$title')";
+    echo "1";
 
-if (mysqli_query($conn, $sql)) {
-    // Comment added successfully
 } else {
-    // Error inserting comment
-    echo "Error: " . mysqli_error($conn);
-}
 
-// Close the database connection
+    $sql = "INSERT INTO comments (name, date, comment, title, role) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssss", $name, $date, $comment, $title, $role);
+    if ($stmt->execute()) {
+
+        echo "2";
+
+    } else {
+
+        echo "3";
+
+    }
+    $stmt->close();
+}
 mysqli_close($conn);
 ?>

@@ -2,8 +2,6 @@
 include("connect.php");
 $email = $_POST["email"];
 $deyt = $_POST["deyt"];
-$email = mysqli_real_escape_string($conn, $email);
-$deyt = mysqli_real_escape_string($conn, $deyt);
 
 $checksql = "SELECT * FROM history WHERE email = '$email' and deyt = '$deyt'";
 $checkresult = mysqli_query($conn, $checksql);

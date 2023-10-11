@@ -3,8 +3,8 @@ session_start();
 include("connect.php");
 
 // Escape user inputs for security
-$password = mysqli_real_escape_string($conn, $_REQUEST['password']);
-$new_password = mysqli_real_escape_string($conn, $_REQUEST['new_password']);
+$password = mysqli_real_escape_string($conn, $_POST['old_password']);
+$new_password = mysqli_real_escape_string($conn, $_POST['password']);
 $email = $_SESSION["email"];
 
 $sql = "SELECT * FROM account WHERE email = '$email' and password = '$password'";
@@ -17,23 +17,17 @@ if(mysqli_num_rows($result) === 1) {
 
 	if ($conn->query($sql) === TRUE) {
 
-  		echo"<script>alert('Notice: Password has been updated!')</script>";
-  		$script = "<script>window.location = 'logout.php';</script>";
-  		echo $script;
+  		echo "2";
 
 	} else {
 
-	  	echo "Error: " . $sql . "<br>" . $conn->error;
-	  	sleep(2); 
-	  	header("Location: ../account.php");
+	  	echo "3";
 
 	}
 
 } else {
 
- 	echo"<script>alert('Notice: Old password is incorrect.')</script>";
-  	$script = "<script>window.location = '../account.php';</script>";
-  	echo $script;
+ 	echo "1";
 
 }
 $conn->close();

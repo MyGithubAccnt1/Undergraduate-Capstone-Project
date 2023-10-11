@@ -12,6 +12,7 @@ if(mysqli_num_rows($result) === 1) {
 	echo "1";
 
 } else {
+	date_default_timezone_set('Asia/Manila');
 	$date = date('Y-m-d H:i');
 	$sql = "INSERT INTO account (email, password, role, status, deyt) VALUES ('$email','$password','Regular', 'Online','$date')";
 	if ($conn->query($sql) === TRUE) {

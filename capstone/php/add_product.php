@@ -1,13 +1,9 @@
 <?php
 include("connect.php");
-$title = $_POST["title"];
-$price = $_POST["price"];
-$description = $_POST["description"];
-$category = $_POST["category"];
-$title = mysqli_real_escape_string($conn, $title);
-$price = mysqli_real_escape_string($conn, $price);
-$description = mysqli_real_escape_string($conn, $description);
-$category = mysqli_real_escape_string($conn, $category);
+$title = mysqli_real_escape_string($conn, $_POST["title"]);
+$price = mysqli_real_escape_string($conn, $_POST["price"]);
+$description = mysqli_real_escape_string($conn, $_POST["description"]);
+$category = mysqli_real_escape_string($conn, $_POST["category"]);
 
 if (empty($title)) {
     $title = "Empty";

@@ -7,12 +7,8 @@ $id = $_POST["id"];
 $email = $_POST["email"];
 $role = $_POST["role"];
 $date = $_POST["date"];
-$comment = $_POST["comment"];
 $seen = "No";
-
-// Escape user input to prevent SQL injection (not secure, use prepared statements in production)
-$email = mysqli_real_escape_string($conn, $email);
-$comment = mysqli_real_escape_string($conn, $comment);
+$comment = mysqli_real_escape_string($conn, $_POST["comment"]);
 
 // Insert the comment into the database
 if (!empty($id) && !empty($email) && !empty($comment) && !empty($date) && !empty($role)) {
