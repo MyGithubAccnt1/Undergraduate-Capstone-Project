@@ -288,9 +288,28 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
     });
 </script>
 <script>
-	function confirm_delete() {
-		return confirm('Are you sure you want to delete this item?')
-	}
+	$(document).on("submit", "#delete", function (event) {
+        event.preventDefault(event);
+        if (confirm("Are you sure you want to delete this item?") === true) {
+    	    var id = $(this).find("input[name='id']").val();
+			$.ajax({
+			    url: './php/delete_cart.php',
+			    type: 'POST',
+			    data: {
+			    	id: id
+			    },
+			    success: function (data) {
+			    	
+			    	if (data === "1") {
+			    		window.location.href = "index.php";
+			    	} else {
+			    		alert('Notice: [' + data + ']');
+			    	}
+			    	
+			    }
+			});
+        }
+    });
 </script>
 <?php
 }else{
