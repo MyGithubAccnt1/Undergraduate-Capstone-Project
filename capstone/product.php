@@ -256,7 +256,7 @@ if ($_SESSION['role'] === "Admin") {
 		            	if (data === "1") {
 		            		alert('Notice: ' + data + '.');
 	                	} else if (data === "2") {
-	                		alert('Notice: An item has been deleted successfully.');
+	                		alert('Notice: An item has been updated successfully.');
 	                		window.location.href = "product.php";
 	                	} else {
 	                		alert('Notice: There is an unexpected error while updating the product, please try again.');
