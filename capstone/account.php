@@ -45,7 +45,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                        <h2 class="my-4">My Profile</h2>
 	                        <hr>
 	                    </div>
-	                    <form action="./php/update_details.php" method="POST">
+	                    <form action="" id="details">
 	                        <div class="row mb-0 pb-0 gx-5">
 	                            <div class="col mb-0">
 	                                <div class="text-center text-danger">[Notice: Putting personal information here is just for convenience and not required by SBM]</div>
@@ -54,15 +54,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                                        <h4 class="mb-4 mt-0">Contact detail</h4>
 	                                        <div class="col-md-6">
 	                                            <label class="form-label">First Name</label>
-	                                            <input type="text" class="form-control" value="<?php echo $_SESSION['fname']; ?>" name="fname">
+	                                            <input type="text" class="form-control" value="<?php echo $_SESSION['fname']; ?>" id="fname">
 	                                        </div>
 	                                        <div class="col-md-6">
 	                                            <label class="form-label">Last Name</label>
-	                                            <input type="text" class="form-control" value="<?php echo $_SESSION['lname']; ?>" name="lname">
+	                                            <input type="text" class="form-control" value="<?php echo $_SESSION['lname']; ?>" id="lname">
 	                                        </div>
 	                                        <div class="col-md-6">
 	                                            <label class="form-label">Mobile Number</label>
-	                                            <input type="text" class="form-control" value="<?php echo $_SESSION['mnumber']; ?>" name="mnumber">
+	                                            <input type="text" class="form-control" value="<?php echo $_SESSION['mnumber']; ?>" id="mnumber">
 	                                        </div>
 	                                        <div class="col-md-6">
 	                                            <label class="form-label">Email</label>
@@ -70,7 +70,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                                        </div>
 	                                        <div class="col-md-12">
 	                                            <label class="form-label">Complete Address</label>
-	                                            <input type="text" class="form-control" value="<?php echo $_SESSION['caddress']; ?>" name="caddress">
+	                                            <input type="text" class="form-control" value="<?php echo $_SESSION['caddress']; ?>" id="caddress">
 	                                        </div>
 	                                        <div class="d-flex justify-content-center">
 				                        	  	<button type="submit" class="btn-main py-1 my-3 w-75 rounded-pill">Update Details</button>
@@ -80,7 +80,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                            </div>
 	                        </div>
 	                    </form>
-	                    <form action="./php/update_password.php" method="POST">
+	                    <form action="" id="passwords">
 	                        <div class="row mb-0 pb-0 gx-5">
 	                            <div class="col">
 	                                <div class="bg-secondary-soft px-4 py-5 rounded">
@@ -122,21 +122,86 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		        navigation.classList.remove('active-nav');
 		    })
 		</script>
-		<script>
-            var password = document.getElementById("password"),
-            confirm_password = document.getElementById("confirm_password");
+        <script type="text/javascript">
+    	    $("#details").submit(function (e) {
+    	        e.preventDefault();
 
-            function validatePassword(){
-                if(password.value != confirm_password.value) {
-                    confirm_password.setCustomValidity("Passwords don't match.");
-                } else {
-                    confirm_password.setCustomValidity('');
-                }
-            }
-            
-            password.onchange = validatePassword;
-            confirm_password.onkeyup = validatePassword;
+    	        var fname = $("#fname").val();
+    	        var lname = $("#lname").val();
+    	        var mnumber = $("#mnumber").val();
+    	        var caddress = $("#caddress").val();
+
+    	        $.ajax({
+    	            url: "./php/update_details.php",
+    	            method: "POST",
+    	            data: {
+    	            	fname: fname,
+    	            	lname: lname,
+    	            	mnumber: mnumber,
+    	            	caddress: caddress
+    	            },
+    	            success: function (data) {
+    	                if (data === "1") {
+    	                	alert('Notice: Account details has been updated successfully.');
+    	                } else {
+    	                	alert('Notice: [' + data + ']');
+    	                }
+    	            },
+    		        error: function (xhr, status, error) {
+    		            console.error("AJAX Request Error:", status, error);
+    		        }
+    	        });
+    	    });
         </script>
+        <script type="text/javascript">
+			$(document).on("submit", "#passwords", function (event) {
+		        event.preventDefault();
+		        var old_password = $("#old_password").val();
+		        var password = $("#password").val();
+		        var confirm_password = $("#confirm_password").val();
+
+		        if (password === confirm_password) {
+
+		        	if (old_password === password) {
+
+		        		alert('The new password can not be the same with old password.');
+		        		$("#password").val('');
+		        		$("#confirm_password").val('');
+
+		        	} else {
+
+		        		$.ajax({
+		        		    url: './php/update_password.php',
+		        		    type: 'POST',
+		        		    data: {
+		        		    	old_password: old_password,
+		        		    	password: password
+		        		    },
+		        		    success: function (data) {
+		        		    	
+		        		    	if (data === "1") {
+		        		    		alert('Notice: Old password is incorrect.');
+		        		    		$("#old_password").val('');
+		        		    	} else if (data === "2") {
+		        		    		alert('Notice: Account password has been updated successfully, proceed to logging out.');
+		        		    		window.location.href = "./php/logout.php";
+		        		    	} else {
+		        		    		alert('Notice: [' + data + ']');
+		        		    	}
+
+		        		    }
+		        		});
+
+		        	}
+		        	
+	        	} else {
+
+	        		alert('The new password does not match, please try again.');
+	        		$("#confirm_password").val('');
+
+	        	}
+		    });
+		</script>
 	</body>
 </html>
 <?php 

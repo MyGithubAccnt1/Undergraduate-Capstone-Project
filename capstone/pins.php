@@ -58,12 +58,67 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 			.product-button {
 			    width: 50%;
 			}
+			.my-product {
+				padding: 20px 5px 5px 5px;
+				margin: 0 auto;
+				width: 80%;
+			}
+			@media screen and (max-width: 1024px) {
+			    .my-product{
+			    	padding: 0;
+			    	margin: 0;
+			        width: 1024px;
+			    }
+			    .my-product > div.container{
+			    	padding: 20px 0 10px 0 ;
+			    }
+			}
+			@media (max-width: 768px) {
+			    .my-product{
+			    	padding: 0;
+			    	margin: 0;
+			        width: 768px;
+			    }
+			    .my-product > div.container{
+			    	padding: 20px 0 10px 0 ;
+			    }
+			}
+			@media (max-width: 425px) {
+			    .my-product{
+			    	padding: 0;
+			    	margin: 0;
+			        width: 425px;
+			    }
+			    .my-product > div.container{
+			    	padding: 15px 15px 0 15px ;
+			    }
+			}
+			@media (max-width: 375px) {
+			    .my-product{
+			    	padding: 0;
+			    	margin: 0;
+			        width: 375px;
+			    }
+			    .my-product > div.container{
+			    	padding: 15px 15px 0 15px ;
+			    }
+			}
+			@media screen and (max-width: 320px) {
+			    .my-product{
+			    	padding: 0;
+			    	margin: 0;
+			        width: 320px;
+			    }
+			    .my-product > div.container{
+			    	padding: 15px 15px 0 15px ;
+			    }
+			}
 		</style>
 	</head>
 	<body class="font-monospace">
 		<?php include('./include/header.php') ?>
 		<main class="container-fluid m-0 p-0">
-			<section class="my-width mx-auto pt-3">
+			<section class="my-product">
 				<div class="container">
 				    <div class="row d-flex align-items-center">
 				        <div class="col-sm-12 col-md-12 col-lg-4">

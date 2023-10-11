@@ -78,7 +78,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 </html>
 <script type="text/javascript">
 	$(document).on("submit", ".order", function (event) {
-        event.preventDefault();
+        event.preventDefault(event);
         var fname = window.localStorage.getItem('fname');
         var lname = window.localStorage.getItem('lname');
         var mnumber = window.localStorage.getItem('mnumber');
@@ -97,20 +97,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		    success: function (data) {
    		    	
    		    	if (data === "1") {
-   		    		alert('Notice: Your cart is empty.')
+   		    		alert('Notice: Your cart is empty.');
    		    		window.location.href = "index.php";
    		    	} else if (data === "2") {
-   		    		alert('Notice: Only 1 order can be made every minute per account.')
+   		    		alert('Notice: Only 1 order can be made every minute per account.');
    		    	} else if (data === "3") {
    		    		alert('Notice: An unexpected error occur during submitting your order, please try again.');
    		    	} else if (data === "4") {
-   		    		alert('Notice: Order has been submitted successfully.')
+   		    		alert('Notice: Order has been submitted successfully.');
    		    		window.location.href = "view_order.php";
    		    	} else  if (data === "4") {
-   		    		alert('Notice: The system experienced some error and cannot clear your cart automatically, order has been submitted successfully.')
+   		    		alert('Notice: The system experienced some error and cannot clear your cart automatically, order has been submitted successfully.');
    		    		window.location.href = "view_order.php";
    		    	} else {
-   		    		alert('Notice: [' + data + ']')
+   		    		alert('Notice: [' + data + ']');
    		    	}
    		    }
    		});

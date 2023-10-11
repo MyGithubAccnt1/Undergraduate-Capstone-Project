@@ -99,14 +99,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         	    },
         	    success: function (data) {
         	        if (data === "1") {
-        	        	alert('Notice: Only 1 order can be made every minute per account.')
+        	        	alert('Notice: Only 1 order can be made every minute per account.');
         	        } else if (data === "2") {
-        	        	alert('Notice: Order has been submitted successfully.')
+        	        	alert('Notice: Order has been submitted successfully.');
         	        	window.location.href = "view_order.php";
         	        } else if (data === "3") {
         	        	alert('Notice: An unexpected error occur during submitting your order, please try again.');
         	        } else {
-        	        	alert('Notice: [' + data + ']')
+        	        	alert('Notice: [' + data + ']');
         	        }
         	    },
         	    error: function (xhr, status, error) {

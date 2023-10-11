@@ -253,7 +253,14 @@ if ($_SESSION['role'] === "Admin") {
 		            	description: description
 		            },
 		            success: function (data) {
-		                window.location.href = "product.php";
+		            	if (data === "1") {
+		            		alert('Notice: ' + data + '.');
+	                	} else if (data === "2") {
+	                		alert('Notice: An item has been deleted successfully.');
+	                		window.location.href = "product.php";
+	                	} else {
+	                		alert('Notice: There is an unexpected error while updating the product, please try again.');
+	                	}
 		            },
 			        error: function (xhr, status, error) {
 			            console.error("AJAX Request Error:", status, error);
@@ -277,7 +284,12 @@ if ($_SESSION['role'] === "Admin") {
 		            	description: description
 		            },
 	                success: function (data) {
-	                    window.location.href = "product.php";
+	                	if (data === "1") {
+	                		alert('Notice: An item has been deleted successfully.');
+	                		window.location.href = "product.php";
+	                	} else {
+	                		alert('Notice: ' + data + '.');
+	                	}
 	                },
 	    	        error: function (xhr, status, error) {
 	    	            console.error("AJAX Request Error:", status, error);

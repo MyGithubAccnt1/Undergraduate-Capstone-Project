@@ -236,9 +236,9 @@ $email = $_SESSION['email'];
 		                    	</div>
 		                        <div class="row text-center d-flex align-items-center">
 		                            <div class="col-12 col-md-6">
-		                            	<form action="./php/cancel_order.php">
+		                            	<form action="" id="cancel">
 		                            		<input type="hidden" value="<?php echo $date; ?>" name="date">
-		                            		<input type="submit" class="btn btn-danger btn-sm rounded-0" value="Cancel Order" onclick="return confirm_cancel()">
+		                            		<input type="submit" class="btn btn-danger btn-sm rounded-0" value="Cancel Order">
 		                            	</form>
 		                            </div>
 		                            <div class="col-12 col-md-6">
@@ -330,9 +330,31 @@ $email = $_SESSION['email'];
 		    });
 		</script>
 		<script>
-			function confirm_cancel() {
-				return confirm('Are you sure you want to cancel this order?')
-			}
+			$(document).on("submit", "#cancel", function (event) {
+		        event.preventDefault(event);
+		        if (confirm("Are you sure you want to cancel this order?") === true) {
+	        	    var date = $(this).find("input[name='date']").val();
+        			$.ajax({
+        			    url: './php/cancel_order.php',
+        			    type: 'POST',
+        			    data: {
+        			    	date: date
+        			    },
+        			    success: function (data) {
+        			    	
+        			    	if (data === "1") {
+        			    		window.location.href = "view_order.php";
+        			    	} else if (data === "2" || data === "4") {
+        			    		alert('Notice: [' + data + ']');
+        			    	} else if (data === "3") {
+        			    		alert('Notice: You can not cancel the order at this time.');
+        			    	} else {
+        			    		alert('Notice: [' + data + ']');
+        			    	}
+        			    }
+        			});
+		        }
+		    });
 		</script>
 		<script>
 			function showComments() {

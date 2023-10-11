@@ -131,7 +131,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 								    	  			        type="checkbox" 
 								    	  			        id="acceptTNC" 
 								    	  			        unchecked/>
-								    	  			        <label class="form-check-label" style="font-size: 0.95rem;">
+								    	  			        <label class="form-check-label" style="font-size: 0.75rem;">
 								    	  			        	<small>Accept <a href="https://www.privacypolicyonline.com/live.php?token=r2kj81dFhmzvA2BRCVmzH585g5j7EWRR" target="_blank">Terms and Conditions</a></small>
 								    	  			        </label>
 								    	  			    </div>
@@ -185,15 +185,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		        		    success: function (data) {
 		        		    	
 		        		    	if (data === "1") {
-		        		    		alert('Notice: This email is already in used, please try another email.')
+		        		    		alert('Notice: This email is already in used, please try another email.');
 		        		    		$(this).find("input[name='email']").val('');
 		        		    	} else if (data === "2") {
-		        		    		alert('Notice: An account is successfully created.')
+		        		    		alert('Notice: An account is successfully created.');
 		        		    		window.location.href = "account.php";
 		        		    	} else if (data === "3") {
 		        		    		alert('Notice: An unexpected error occur during the creation of your account, please try again.');
 		        		    	} else {
-		        		    		alert('Notice: [' + data + ']')
+		        		    		alert('Notice: [' + data + ']');
 		        		    	}
 
 		        		    }

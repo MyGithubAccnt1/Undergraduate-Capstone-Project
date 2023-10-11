@@ -85,10 +85,12 @@ session_start();
 										<?php
 											}
 										} else {
-											echo "0 results";
-										}
-										$conn->close();
-										?>
+	                                    ?>
+	                                    	<p class="w-100 text-center text-dark">[There is no available product at the moment]</p>
+	                                    <?php
+	                                    }
+	                                    $conn->close();
+	                                    ?>
 										</div>
 									</div>
 								</div>
@@ -132,10 +134,12 @@ session_start();
 										<?php
 											}
 										} else {
-											echo "0 results";
-										}
-										$conn->close();
-										?>
+	                                    ?>
+	                                    	<p class="w-100 text-center text-dark">[There is no available product at the moment]</p>
+	                                    <?php
+	                                    }
+	                                    $conn->close();
+	                                    ?>
 										</div>
 									</div>
 								</div>
@@ -173,10 +177,12 @@ session_start();
 											}
 										}
 									} else {
-										echo "0 results";
-									}
-									$conn->close();
-									?>
+                                    ?>
+                                    	<p class="w-100 text-center text-dark">[There is no available product at the moment]</p>
+                                    <?php
+                                    }
+                                    $conn->close();
+                                    ?>
 							    </div>
 							</div>
 						</div>

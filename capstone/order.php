@@ -85,7 +85,6 @@ if ($_SESSION['role'] === "Admin") {
 	<body>
 		<div class="container">
         	<?php include('./include/admin_header.php') ?>
-
         	<main>
 	            <h1>Orders</h1>
 	            <div class="new-users">
