@@ -60,14 +60,14 @@
 	    	}
 	    	echo '<div style="width: 100%; background-color: lightgoldenrodyellow; padding: 1px 0; margin-bottom: 5px;">';
 	    		echo '<div style="width: 100%; margin: 5px 0; display: flex; flex-direction: row;">';
-		    		echo '<div style="width: 24.99%; color: #000; text-align: center; word-wrap: break-word;">'. $row['title'] .'</div>';
-		    		echo '<div style="width: 16.66%; color: #000; text-align: right; margin-right: 5px; word-wrap: break-word;">₱'. $row['price'] .'</div>';
-		    		echo '<div style="width: 16.66%; color: #000; text-align: left; margin-left: 5px; word-wrap: break-word;">'. $thumbnail .'</div>';
-		    		echo '<div style="width: 24.99%; color: #000; text-align: left; margin-left: 5px;">'. $description .'</div>';
-		    		echo '<div style="width: 16.66%; text-align: center;">';
+		    		echo '<div style="width: 24.99%; color: #000; text-align: left; margin-left: 5%; word-wrap: break-word;">'. $row['title'] .'</div>';
+		    		echo '<div style="width: 16.66%; color: #000; text-align: left; margin-left: 1%; word-wrap: break-word;">₱'. $row['price'] .'</div>';
+		    		echo '<div style="width: 16.66%; color: #000; text-align: left; margin-left: 1%; word-wrap: break-word;">'. $thumbnail .'</div>';
+		    		echo '<div style="width: 24.99%; color: #000; text-align: left; margin-left: 1%;">'. $description .'</div>';
+		    		echo '<div style="width: 16.66%; text-align: center; display: flex; justify-content: center; align-items: center;">';
 		    			echo '<form class="dynamic-form" action="">';
 		    				echo '<input type="hidden" name="id" value="'. $id .'">';
-		    				echo '<button type="submit" class="optionButton" data-id="'. $id .'" style="height: 100%; padding: 0 10px; background-color: inherit; cursor: inherit;">';
+		    				echo '<button type="submit" class="optionButton" data-id="'. $id .'" style="height: 100%; width: 100%; padding: 10px; background-color: inherit; cursor: inherit;">';
 		    					echo '<i class="fas fa-ellipsis-h" style="color: #000000;"></i>';
 		    				echo '</button>';
 		    			echo '</form>';
