@@ -11,6 +11,9 @@ if ($_SESSION['role'] === "Admin") {
 	  	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	  	<?php include('./include/admin_style.php') ?>
 		<style>
+			/**{
+				outline: 2px solid limegreen;
+			}*/
 			aside .sidebar a.prod-act{
 				width: 100%;
 				color: var(--color-primary);
@@ -75,7 +78,7 @@ if ($_SESSION['role'] === "Admin") {
 		<div class="container">
         	<?php include('./include/admin_header.php') ?>
 
-        	<main>
+        	<main style="overflow-x: hidden;">
 	            <h1>Products</h1>
 	            <div class="new-users">
 	                <div class="user-list" style="gap: 5px;">

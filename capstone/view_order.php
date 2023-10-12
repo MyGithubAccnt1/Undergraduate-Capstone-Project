@@ -136,7 +136,7 @@ $email = $_SESSION['email'];
 		        	                	if ($templateresult->num_rows > 0) {
 		        	                		$templaterow = $templateresult->fetch_assoc();
 		        	            ?>
-                 		                <div class="col-6 border p-4 template-img" id="image">
+                 		                <div class="col-6 border p-4 template-img" id="image" style="overflow-x: hidden;">
                  		                	<input type="hidden" name="image" value="<?php echo $templaterow['thumbnail'] ?>">
                  		                	<img src="<?php echo $templaterow['thumbnail'] ?>" style="width: auto; height: 300px;">
                  		                </div>
@@ -146,7 +146,7 @@ $email = $_SESSION['email'];
 		        	            		$objectresult = $conn->query($objectsql);
 		        	            		if ($objectresult->num_rows > 0) {
 		                        ?>        
-                 		                <div class="col-6 border text-start p-4" style="height: 350px; overflow-x:hidden; overflow-y:auto;">
+                 		                <div class="col-6 border text-start p-4" style="height: 350px; overflow-x:hidden; overflow-y:auto; font-size: 0.85rem;">
                  		        <?php
                  		        			while ($objectrow = $objectresult->fetch_assoc()) {
                  		        				$properties = $objectrow['properties'];
@@ -220,15 +220,29 @@ $email = $_SESSION['email'];
 	                    			<div class="row my-1 text-center">
 	                                    <div class="bg-dark rounded" style="height: 3px;"></div>
 	                                </div>
-	                                <div class="row w-100 text-center">
+	                                <div class="row w-100 text-center" style="font-size: 0.95rem;">
 	                                	<p>Personal Information</p>
 	                                </div>
-	                                <div class="row" style="padding-left: 100px;">
-	                                	<p>First Name: <?php echo $row['input_fname'] ?></p><br>
-	                                	<p>Last Name: <?php echo $row['input_lname'] ?></p><br>
-	                                	<p>Mobile Number: <?php echo $row['input_mnumber'] ?></p><br>
-	                                	<p>E-mail: <?php echo $row['input_email'] ?></p><br>
-	                                	<p>Complete Adress: <?php echo $row['input_caddress'] ?></p>
+	                                <div class="row">
+	                                	<div class="col-6 text-end" style="font-size: 0.75rem;">
+	                                		<p>First Name:</p>
+	                                		<p>Last Name:</p>
+	                                		<p>Mobile Number:</p>
+	                                		<p>E-mail:</p>
+	                                		<p>Complete Adress:</p>
+	                                	</div>
+	                                	<div class="col-6 text-start" style="font-size: 0.75rem;">
+	                                		<p><?php echo $row['input_fname'] ?></p>
+	                                		<p><?php echo $row['input_lname'] ?></p>
+	                                		<p><?php echo $row['input_mnumber'] ?></p>
+	                                		<p><?php echo $row['input_email'] ?></p>
+	                                		<p><?php echo $row['input_caddress'] ?></p>
+	                                	</div>
+	                                	
+	                                	
+	                                	
+	                                	
+	                                	
 	                                </div>
 	                                <div class="row my-1 text-center">
 	                                    <div class="bg-dark rounded" style="height: 3px;"></div>
