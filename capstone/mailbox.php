@@ -223,31 +223,33 @@ if ($_SESSION['role'] === "Admin") {
 		}
 		
 	    $("#comment-form").submit(function (e) {
-	        e.preventDefault(); // Prevent the form from submitting traditionally
-
-	        // Serialize the form data
+	        e.preventDefault();
 	        var formData = $(this).serialize();
-
-	        // Send the data to the PHP script to handle comment insertion
+	        $(this).find('textarea[name="comment"]').val('');
 	        $.ajax({
-	            url: "./php/add_adminmessages.php", // PHP script to insert comments into the database
+	            url: "./php/add_adminmessages.php",
 	            method: "POST",
 	            data: formData,
 	            success: function (data) {
-	                // If successful, show the updated comments
-	                showComments($("#idInput").val(), $("#dateInput").val());
-	            }
-	        });
+	            	if (data === "1") {
 
-	        // Clear the textarea for the current form
-	        $(this).find('textarea[name="comment"]').val('');
+	            	} else if (data === "2") {
+	            		showComments($("#idInput").val(), $("#dateInput").val());
+	            	} else {
+	            		alert('Notice: ' + data + '.');
+	            	}
+	            },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+	        });
 	    });
 
         showUsers();
         setInterval(showUsers, 1000);
-        setInterval(function () {
-            showComments($("#idInput").val(), $("#dateInput").val());
-        }, 1000);
+        // setInterval(function () {
+        //     showComments($("#idInput").val(), $("#dateInput").val());
+        // }, 1000);
 	</script>
 </html>
 <?php 
