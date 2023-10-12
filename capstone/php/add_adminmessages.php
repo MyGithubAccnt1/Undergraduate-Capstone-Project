@@ -8,14 +8,15 @@ $email = $_POST["email"];
 $role = "Admin";
 $date = $_POST["date"];
 $comment = mysqli_real_escape_string($conn, $_POST["comment"]);
+$seen = "Yes";
 
 if ($comment === "" || $date === "") {
     echo "1";
 } else {
 
-    $sql = "INSERT INTO message (sender, email, message, deyt, role) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO message (sender, email, message, deyt, role, seen) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $id, $email, $comment, $date, $role);
+    $stmt->bind_param("ssssss", $id, $email, $comment, $date, $role, $seen);
     if ($stmt->execute()) {
         echo "2";
     } else {
