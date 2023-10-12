@@ -25,14 +25,66 @@ $email = $_SESSION['email'];
 				background-color: rgba(0, 0, 0, 0.1);
 			}
 
-			/*.template-img > input[type=submit] {
-				display: none;
-			}*/
+			.my-product {
+				padding: 20px 5px 5px 5px;
+				margin: 0 auto;
+				width: 80%;
+			}
+			@media screen and (max-width: 1024px) {
+			    .my-product{
+			    	padding: 0;
+			    	margin: 0;
+			        width: 1024px;
+			    }
+			    .my-product > div.container{
+			    	padding: 20px 0 10px 0 ;
+			    }
+			}
+			@media (max-width: 768px) {
+			    .my-product{
+			    	padding: 0;
+			    	margin: 0;
+			        width: 768px;
+			    }
+			    .my-product > div.container{
+			    	padding: 20px 0 10px 0 ;
+			    }
+			}
+			@media (max-width: 425px) {
+			    .my-product{
+			    	padding: 0;
+			    	margin: 0;
+			        width: 425px;
+			    }
+			    .my-product > div.container{
+			    	padding: 15px 15px 0 15px ;
+			    }
+			}
+			@media (max-width: 375px) {
+			    .my-product{
+			    	padding: 0;
+			    	margin: 0;
+			        width: 375px;
+			    }
+			    .my-product > div.container{
+			    	padding: 15px 15px 0 15px ;
+			    }
+			}
+			@media screen and (max-width: 320px) {
+			    .my-product{
+			    	padding: 0;
+			    	margin: 0;
+			        width: 320px;
+			    }
+			    .my-product > div.container{
+			    	padding: 15px 15px 0 15px ;
+			    }
+			}
 		</style>
 	</head>
 	<body class="font-monospace">
-		<main class="container-fluid m-0 p-0">
-			<section class="my-width px-2 mx-auto my-4">
+		<main class="my-product mx-auto p-0">
+			<section class="container px-2 mx-auto my-4">
                 <div class="row text-center">
 					<div class="col-6">
 						<a href="index.php">
@@ -238,25 +290,20 @@ $email = $_SESSION['email'];
 	                                		<p><?php echo $row['input_email'] ?></p>
 	                                		<p><?php echo $row['input_caddress'] ?></p>
 	                                	</div>
-	                                	
-	                                	
-	                                	
-	                                	
-	                                	
 	                                </div>
 	                                <div class="row my-1 text-center">
 	                                    <div class="bg-dark rounded" style="height: 3px;"></div>
 	                                </div>
 		                    	</div>
-		                        <div class="row text-center d-flex align-items-center">
-		                            <div class="col-12 col-md-6">
+		                        <div class="row text-center d-flex justify-content-center align-items-center">
+		                            <div class="col-12 col-lg-6">
 		                            	<form action="" id="cancel">
 		                            		<input type="hidden" value="<?php echo $date; ?>" name="date">
 		                            		<input type="submit" class="btn btn-danger btn-sm rounded-0" value="Cancel Order">
 		                            	</form>
 		                            </div>
-		                            <div class="col-12 col-md-6">
-		                                <div class="form-check form-switch d-flex flex-row justify-content-center mt-3">
+		                            <div class="col-12 col-lg-6">
+		                                <div class="form-check form-switch mt-3" style="display: flex; flex-direction: row; justify-content: center; margin: 0; padding: 0;">
 		                                    <h5 class="text-center">MESSAGE</h5>
 		                                    <input class="form-check-input" type="checkbox" data-toggle="collapse" href="#collapseExample<?php echo $id; ?>-<?php echo $id; ?>">
 		                                </div>
