@@ -172,8 +172,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	    </section>
 	</div>
 	<div class="offcanvas-body">
-		<section class="container-fluid p-0 m-0" style="overflow-x: scroll; width: 350px;">
-            <div class="p-0 m-0 row" style="width: 400px;">
+		<section class="container p-0 m-0" style="overflow-x: scroll; width: 100%;">
+            <div class="p-0 m-0 row" style="width: 600px;">
                 <div class="col-3 text-center">
                 	<span>ITEM</span>
                 </div>
@@ -191,18 +191,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                 </div>
                 <hr class="border border-light border-1 opacity-75 my-3">
             </div>
-            <div class="p-0 m-0 row" style="width: 400px;" id="cart-container"></div>
-            <div class="p-0 m-0 row my-2" style="width: 400px;">
+            <div class="p-0 m-0 row" style="width: 600px;" id="cart-container"></div>
+            <div class="p-0 m-0 row my-2" style="width: 600px;">
             	<hr class="border border-light border-1 opacity-75 my-2">
                 <small id="subtotal-container"></small>
                 <hr class="border border-light border-1 opacity-75 my-2">
             </div>
-            <div class="p-0" style="width: 400px; margin: 0 50px;">
+            <div class="p-0 m-0 text-center" style="width: 600px;">
             	<a href="view_order.php" class="w-75">
             		<button class="btn-main py-1 my-2 w-75 rounded-pill" type="button">View Orders</button>
             	</a>
             </div>
-            <div class="p-0" style="width: 400px; margin: 0 50px;">
+            <div class="p-0 m-0 text-center" style="width: 600px;">
             	<a href="checkout.php" class="w-75">
             		<button class="btn-main py-1 my-2 w-75 rounded-pill" type="button">Checkout</button>
             	</a>
