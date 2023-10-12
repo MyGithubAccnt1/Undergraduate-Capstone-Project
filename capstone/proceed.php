@@ -54,9 +54,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                        <h2 class="">ORDER SUMMARY</h2>
 	                        <div class="m-0 p-0 border border-dark border-2 opacity-100 rounded-0">
 	                            <div class="row m-0 p-0">
-	                                <div class="col-6"><p class="my-auto">ITEM</p></div>
+	                                <div class="col-5"><p class="my-auto">ITEM</p></div>
 	                                <div class="col-3"><p class="my-auto">QTY</p></div>
-	                                <div class="col-3"><p class="my-auto">PRICE</p></div>
+	                                <div class="col-4"><p class="my-auto">PRICE</p></div>
 	                                <hr class="border border-dark border-1 my-1 opacity-100">
 	                            </div>
 	                            <div class="row m-0 p-0">
