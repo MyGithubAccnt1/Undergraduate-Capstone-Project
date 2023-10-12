@@ -8,10 +8,10 @@ if ($result->num_rows > 0) {
     // output data of each row
     while ($row = $result->fetch_assoc()) {
         echo '
-        <div class="col-3 text-center">
+        <div class="col-3 text-start">
         	<span>'. $row["title"] . '</span>
         </div>
-        <div class="col-2 text-center">
+        <div class="col-2 text-start">
         	<span>₱' . $row["price"] . '</span>
         </div>
         <div class="col-4 text-center d-flex justify-content-evenly">
@@ -29,7 +29,7 @@ if ($result->num_rows > 0) {
                 <input type="hidden" value="' . $row["id"] . '" name="id">
             </form>
         </div>
-        <div class="col-2 text-center">
+        <div class="col-2 text-start">
         	<span>₱' . $row["total"] . '</span>
         </div>
         <div class="col-1 text-center mx-auto">
