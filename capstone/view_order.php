@@ -180,19 +180,22 @@ $email = $_SESSION['email'];
 		        	                } else {
 		        	            ?>
 		        	            	<div class="row text-center">
-                 		                <div class="col-12">Template</div>
-                 		                <div class="bg-dark rounded mb-1" style="height: 3px;"></div>
 		        	            <?php
 		        	                	$templatesql = "SELECT thumbnail FROM template WHERE email = '$email' and deyt = '$date'";
 		        	                	$templateresult = $conn->query($templatesql);
 		        	                	if ($templateresult->num_rows > 0) {
 		        	                		$templaterow = $templateresult->fetch_assoc();
 		        	            ?>
+		        	            		<div class="bg-dark rounded mb-1" style="height: 3px;"></div>
                  		                <div class="col-6 border p-4 template-img" id="image" style="overflow-x: hidden;">
                  		                	<input type="hidden" name="image" value="<?php echo $templaterow['thumbnail'] ?>">
                  		                	<img src="<?php echo $templaterow['thumbnail'] ?>" style="width: auto; height: 300px;">
                  		                </div>
                  		        <?php
+		        	            		} else {
+		        	            ?>					
+		        	            		<div class="col-12">No Available Data</div>
+		        	            <?php			
 		        	            		}
 		        	            		$objectsql = "SELECT * FROM object WHERE email = '$email' and deyt = '$date'";
 		        	            		$objectresult = $conn->query($objectsql);

@@ -27,6 +27,43 @@ if ($_SESSION['role'] === "Admin") {
 				color: var(--color-primary);
 				margin-left: calc(1rem - 3px);
 			}
+			.input-button {
+				padding: 8px 0;
+				width: 100%;
+				border: 1px solid;
+				border-radius: 25px;
+				font-weight: bold;
+				border: 1px solid;
+			    background-color: #BB8A5B;
+			}
+
+			.input-button:hover {
+				background-color: #794B29;
+			    color: #fff;
+			}
+			.responsive-button{
+				display: flex;
+				flex-wrap: wrap;
+			}
+			.responsive-button > form{
+				margin-bottom: 5px;
+			}
+			@media (max-width: 768px) {
+			    .responsive-button > form{
+			    	flex: 50%;
+			    }
+			    .responsive-button > div{
+			    	margin-right: 80px;
+			    }
+			}
+			@media (max-width: 425px) {
+			    .responsive-button > form{
+			    	flex: 100%;
+			    }
+			    .responsive-button > div{
+			    	margin-right: 0;
+			    }
+			}
 		</style>
 	</head>
 	<body>
@@ -144,6 +181,37 @@ if ($_SESSION['role'] === "Admin") {
 	                    </span>
 	                </div>
             	</div>
+	            <div class="reminders">
+	                <div class="header">
+	                    <h2>Database Options</h2>
+	                </div>
+	                <div class="notification">
+	                    <div class="content">
+	                        <div class="info" style="width: 100%;">
+	                        	<div class="responsive-button">
+		                        	<form id="comment" action="" style="width: 100%;">
+	                        			<button type="submit" class="input-button">Reset Comments</button>
+	                        		</form>
+	                        		<form id="cart" action="" style="width: 100%;">
+	                        			<button type="submit" class="input-button">Reset Carts</button>
+	                        		</form>
+	                        		<form id="reset_order" action="" style="width: 100%;">
+	                        			<button type="submit" class="input-button">Reset Orders</button>
+	                        		</form>
+	                        		<form id="message" action="" style="width: 100%;">
+	                        			<button type="submit" class="input-button">Reset Messages</button>
+	                        		</form>
+	                        		<form id="template" action="" style="width: 100%;">
+	                        			<button type="submit" class="input-button">Reset Saved Templates</button>
+	                        		</form>
+	                        		<form id="notification" action="" style="width: 100%;">
+	                        			<button type="submit" class="input-button">Reset Notifications</button>
+	                        		</form>
+	                        	</div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
         	</div>
     	</div>
     </body>
@@ -293,6 +361,116 @@ if ($_SESSION['role'] === "Admin") {
 		}
 		showIncomePercent()
 		setInterval(showIncomePercent, 1000);
+    </script>
+    <script type="text/javascript">
+    	$("#comment").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+
+	        $.ajax({
+	            url: "./php/empty_comments.php",
+	            method: "POST",
+	            success: function (data) {
+	            	if (data === "1") {
+	            		alert('Notice: Comments has been emptied successfully.');
+	            	} else {
+	            		alert('Notice: ' + data + '.');
+	            	}
+	            },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+	        });
+	    });
+	    $("#cart").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+
+	        $.ajax({
+	            url: "./php/empty_carts.php",
+	            method: "POST",
+	            success: function (data) {
+	            	if (data === "1") {
+	            		alert('Notice: Carts has been emptied successfully.');
+	            	} else {
+	            		alert('Notice: ' + data + '.');
+	            	}
+	            },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+	        });
+	    });
+	    $("#template").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+
+	        $.ajax({
+	            url: "./php/empty_templates.php",
+	            method: "POST",
+	            success: function (data) {
+	            	if (data === "1") {
+	            		alert('Notice: Templates has been emptied successfully.');
+	            	} else {
+	            		alert('Notice: ' + data + '.');
+	            	}
+	            },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+	        });
+	    });
+	    $("#reset_order").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+
+	        $.ajax({
+	            url: "./php/empty_orders.php",
+	            method: "POST",
+	            success: function (data) {
+	            	if (data === "1") {
+	            		alert('Notice: Orders has been emptied successfully.');
+	            	} else {
+	            		alert('Notice: ' + data + '.');
+	            	}
+	            },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+	        });
+	    });
+	    $("#message").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+
+	        $.ajax({
+	            url: "./php/empty_messages.php",
+	            method: "POST",
+	            success: function (data) {
+	            	if (data === "1") {
+	            		alert('Notice: Messages has been emptied successfully.');
+	            	} else {
+	            		alert('Notice: ' + data + '.');
+	            	}
+	            },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+	        });
+	    });
+	    $("#notification").submit(function (e) {
+	        e.preventDefault(); // Prevent the form from submitting traditionally
+
+	        $.ajax({
+	            url: "./php/empty_notifications.php",
+	            method: "POST",
+	            success: function (data) {
+	            	if (data === "1") {
+	            		alert('Notice: Messages has been emptied successfully.');
+	            	} else {
+	            		alert('Notice: ' + data + '.');
+	            	}
+	            },
+		        error: function (xhr, status, error) {
+		            console.error("AJAX Request Error:", status, error);
+		        }
+	        });
+	    });
     </script>
 </html>
 <?php 
