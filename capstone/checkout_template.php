@@ -62,6 +62,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                                <input type="text" id="caddress" class="form-control" value="<?php echo $_SESSION['caddress']; ?>">
 	                            </div>
 	                        </div>
+	                        <div class="row g-3 mt-3">
+	                            <h4 class="my-2">Order Details</h4>
+	                            <div class="col-md-12">
+	                            	<label class="form-label">Main material of your design: </label>
+	                            	<select class="input" id="material">
+	                        	        <option value="Gold">Gold</option>
+	                        	        <option value="Silver">Silver</option>
+	                        	        <option value="Bronze">Bronze</option>
+	                        	    </select>
+	                            </div>
+	                            <div class="col-md-12">
+	                                <label class="form-label">Describe your design, emphasize how you want us to recreate your beautiful ideas.</label>
+	                                <textarea class="form-control" id="description" rows="5" style="resize: none;"></textarea>
+	                            </div>
+	                        </div>
 	                    </div>
 	                    <div class="col-sm-12 col-md-4 text-center">
 	                        <h2 class="">ORDER SUMMARY</h2>
@@ -83,6 +98,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         var mnumber = $("#mnumber").val();
         var email = $("#email").val();
         var caddress = $("#caddress").val();
+        var material = $("#material").val();
+        var description = $("#description").val();
 
         if (fname === "" || lname === "" || mnumber === "" || email === "" || caddress === "") {
         	alert('Notice: There are some empty field, please fill it up.');
@@ -95,7 +112,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
        		    	lname: lname,
        		    	mnumber: mnumber,
        		    	email: email,
-       		    	caddress: caddress
+       		    	caddress: caddress,
+       		    	material: material,
+       		    	description: description
         	    },
         	    success: function (data) {
         	        if (data === "1") {
