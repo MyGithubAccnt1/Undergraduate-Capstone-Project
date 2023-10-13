@@ -11,6 +11,8 @@ $input_lname = $_POST['lname'];
 $input_mnumber = $_POST['mnumber'];
 $input_email = $_POST['email'];
 $input_caddress = $_POST['caddress'];
+$input_material = $_POST['material'];
+$input_description = $_POST['description'];
 
 $checksql = "SELECT * FROM history WHERE email = ? and deyt = ?";
 $checkstmt = $conn->prepare($checksql);
@@ -24,9 +26,9 @@ if ($checkresult->num_rows > 0) {
 
 } else {
 
-    $insertSql = "INSERT INTO history (email, title, total, deyt, status, input_fname, input_lname, input_mnumber, input_email, input_caddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $insertSql = "INSERT INTO history (email, title, total, deyt, status, input_fname, input_lname, input_mnumber, input_email, input_caddress, input_material, input_description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $insertStmt = $conn->prepare($insertSql);
-    $insertStmt->bind_param("ssdsssssss", $email, $title, $total, $date, $status, $input_fname, $input_lname, $input_mnumber, $input_email, $input_caddress);
+    $insertStmt->bind_param("ssdsssssssss", $email, $title, $total, $date, $status, $input_fname, $input_lname, $input_mnumber, $input_email, $input_caddress, $input_material, $input_description);
 
     if ($insertStmt->execute()) {
 
