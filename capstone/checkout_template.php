@@ -101,7 +101,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         var material = $("#material").val();
         var description = $("#description").val();
 
-        if (fname === "" || lname === "" || mnumber === "" || email === "" || caddress === "") {
+        if (fname === "" || lname === "" || mnumber === "" || email === "" || caddress === "" || material === "" || description === "") {
         	alert('Notice: There are some empty field, please fill it up.');
         } else {
         	$.ajax({
