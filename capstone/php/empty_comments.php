@@ -1,0 +1,16 @@
+<?php
+include("connect.php");
+
+$sql = "TRUNCATE TABLE comments";
+
+if ($conn->query($sql) === TRUE) {
+
+    echo "1";
+
+} else {
+
+    echo "2";
+
+}
+$conn->close();
+?>
