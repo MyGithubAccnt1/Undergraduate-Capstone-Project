@@ -169,7 +169,20 @@
         	    				echo '</div>';
         	    			echo '</div>';
         	    		echo '</div>';
-
+        				echo '<div style="width: 100%; height: 2px; background-color: #000;"></div>';
+        				echo '<div style="width: 100%; margin: 5px 0; text-align: center;">';
+        	    			echo '<div style="width: 100%; text-align: center;">Other Information</div>';
+        	    			echo '<div style="width: 100%; display: flex;">';
+        	    				echo '<div style="flex: 50%; text-align: right; margin-right: 2.5%;">';
+        	    					echo '<p style="color: #000; margin: 5px 0;">Main Material:</p>';
+        	    					echo '<p style="color: #000; margin: 5px 0;">Description:</p>';
+        	    				echo '</div>';
+        	    				echo '<div style="flex: 50%; text-align: left; margin-left: 2.5%;">';
+        	    					echo '<p style="color: #000; margin: 5px 0;">'. $row['input_material'] .'</p>';
+        	    					echo '<p style="color: #000; margin: 5px 0;">'. $row['input_description'] .'</p>';
+        	    				echo '</div>';
+        	    			echo '</div>';
+        	    		echo '</div>';
         				echo '<div style="width: 100%; height: 2px; background-color: #000;"></div>';
         			echo '</div>';
         			echo '<div style="width: 100%; display: flex; justify-content: space-around; text-align: center; padding: 10px 0;">';
