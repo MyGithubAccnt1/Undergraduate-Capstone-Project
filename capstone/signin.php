@@ -116,7 +116,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					    	  					    	<input type="email" placeholder="Enter your email" class="form-control rounded-0" name="email" required>
 					    	  					    </div>
 					    	  					    <div class="form-outline mb-4">
-					    	  					    	<input type="password" class="form-control rounded-0" placeholder="Enter your password" name="password" required>
+					    	  					    	<input type="password" class="form-control rounded-0" placeholder="8-16 length password" name="password" required>
 					    	  					    	<i class="uil uil-eye-slash showHidePw"></i>
 					    	  					    </div>
 					    	  					    <div class="form-outline mb-4">
@@ -170,39 +170,54 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		        var password = $(this).find("input[name='password']").val();
 		        var repeat = $(this).find("input[name='repeat']").val();
 		        var acceptTNC = document.getElementById('acceptTNC');
-
 		        if (acceptTNC.checked) {
 
-		        	if (password === repeat) {
+		        	if (password.length < 8) {
 
-		        		$.ajax({
-		        		    url: './php/register.php',
-		        		    type: 'POST',
-		        		    data: {
-		        		    	email: email,
-		        		    	password: password
-		        		    },
-		        		    success: function (data) {
-		        		    	
-		        		    	if (data === "1") {
-		        		    		alert('Notice: This email is already in used, please try another email.');
-		        		    		$(this).find("input[name='email']").val('');
-		        		    	} else if (data === "2") {
-		        		    		alert('Notice: An account is successfully created.');
-		        		    		window.location.href = "account.php";
-		        		    	} else if (data === "3") {
-		        		    		alert('Notice: An unexpected error occur during the creation of your account, please try again.');
-		        		    	} else {
-		        		    		alert('Notice: [' + data + ']');
-		        		    	}
+		        		alert('Notice: The password does not met the 8-16 lenght requirement, please try again.');
+		        		$(this).find("input[name='password']").val('');
+		        		$(this).find("input[name='repeat']").val('');
 
-		        		    }
-		        		});
+		        	} else if (password.length > 16) {
+
+		        		alert('Notice: The password does not met the 8-16 lenght requirement, please try again.');
+		        		$(this).find("input[name='password']").val('');
+		        		$(this).find("input[name='repeat']").val('');
 
 		        	} else {
 
-		        		alert('The password does not match, please try again.');
-		        		$(this).find("input[name='repeat']").val('');
+		        		if (password === repeat) {
+
+			        		$.ajax({
+			        		    url: './php/register.php',
+			        		    type: 'POST',
+			        		    data: {
+			        		    	email: email,
+			        		    	password: password
+			        		    },
+			        		    success: function (data) {
+			        		    	
+			        		    	if (data === "1") {
+			        		    		alert('Notice: This email is already in used, please try another email.');
+			        		    		$(this).find("input[name='email']").val('');
+			        		    	} else if (data === "2") {
+			        		    		alert('Notice: An account is successfully created.');
+			        		    		window.location.href = "account.php";
+			        		    	} else if (data === "3") {
+			        		    		alert('Notice: An unexpected error occur during the creation of your account, please try again.');
+			        		    	} else {
+			        		    		alert('Notice: [' + data + ']');
+			        		    	}
+
+			        		    }
+			        		});
+
+			        	} else {
+
+			        		alert('The password does not match, please try again.');
+			        		$(this).find("input[name='repeat']").val('');
+
+			        	}
 
 		        	}
 
