@@ -32,7 +32,10 @@ if ($_SESSION['role'] === "Admin") {
 			}
 			.record {
 				width: 100%;
-				border: 1px solid;
+				border-top: 1px solid;
+				border-right: none;
+				border-bottom: 1px solid;
+				border-left: none;
 				padding: 5px 0;
 				margin-bottom: 5px;
 				display: flex;
@@ -192,6 +195,20 @@ if ($_SESSION['role'] === "Admin") {
 	                        		</form>
 	                        		<form id="clear" action="" style="width: 100%;">
 	                        			<button type="submit" class="input-button">Clear</button>
+	                        		</form>
+	                        	</div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="header">
+	                    <h2>Database Options</h2>
+	                </div>
+	                <div class="notification">
+	                    <div class="content">
+	                        <div class="info" style="width: 100%;">
+	                        	<div class="responsive-button">
+		                        	<form id="print" action="" style="width: 100%;">
+	                        			<button type="submit" class="input-button">Print</button>
 	                        		</form>
 	                        	</div>
 	                        </div>

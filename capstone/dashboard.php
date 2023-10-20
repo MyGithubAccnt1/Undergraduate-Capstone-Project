@@ -304,7 +304,7 @@ if ($_SESSION['role'] === "Admin") {
 		        method: "GET",
 		        success: function (data) {
 		            // Handle the AJAX response here
-		            $("#estimate").html("₱" + data);
+		            $("#estimate").html("PHP" + data);
 		        },
 		        error: function (xhr, status, error) {
 		            console.error("AJAX Request Error:", status, error);
@@ -336,7 +336,7 @@ if ($_SESSION['role'] === "Admin") {
 		        method: "GET",
 		        success: function (data) {
 		            // Handle the AJAX response here
-		            $("#income").html("₱" + data);
+		            $("#income").html("PHP" + data);
 		        },
 		        error: function (xhr, status, error) {
 		            console.error("AJAX Request Error:", status, error);

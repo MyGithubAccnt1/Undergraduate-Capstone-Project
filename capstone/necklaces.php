@@ -135,13 +135,12 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 				                <div class="collapse" id="collapseExample">
 					                <div class="card-body">
 					                    <form id="price-range-form" method="post" action="#">
-					                        <label for="min-price" class="form-label">Min price: </label>
-					                        <span id="min-price-txt">₱0</span>
+					                        <label for="min-price" class="form-label">Min price: PHP</label>
+					                        <span id="min-price-txt">0</span>
 					                        <input type="range" class="form-range" min="0" max="999" id="min-price" step="1" value="0">
-					                        <label for="max-price" class="form-label">Max price: </label>
-					                        <span id="max-price-txt">₱1000</span>
-					                        <input type="range" class="form-range" min="1" max="1000" id="max-price" step="1"
-					                               value="1000">
+					                        <label for="max-price" class="form-label">Max price: PHP</label>
+					                        <span id="max-price-txt">1000</span>
+					                        <input type="range" class="form-range" min="1" max="1000" id="max-price" step="1" value="1000">
 					                    </form>
 					                </div>
 					            </div>
@@ -175,7 +174,7 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 				                                                        <form action="./php/get_product.php" method="POST">
 				                                                            <input type="hidden" name="title" value="<?php echo $row['title']?>">
 				                                                            <h4><?php echo $row['title']?></h4>
-				                                                            <p class="item-price"><b>₱ <?php echo $row['price']?></b></p>
+				                                                            <p class="item-price"><b>PHP <?php echo $row['price']?></b></p>
 				                                                            <button type="submit" class="rounded-0 btn-main btn btn-md">View</button>
 				                                                        </form>
 				                                                    </div>
@@ -312,7 +311,7 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 
 		            const priceParagraph = document.createElement('p');
 		            priceParagraph.classList.add('item-price');
-		            priceParagraph.innerHTML = '<b>₱ ' + productData.price + '</b>';
+		            priceParagraph.innerHTML = '<b>PHP ' + productData.price + '</b>';
 
 		            const viewButton = document.createElement('button');
 		            viewButton.classList.add('rounded-0', 'btn-main', 'btn', 'btn-md');

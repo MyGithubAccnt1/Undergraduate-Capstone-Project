@@ -87,6 +87,45 @@ if ($_SESSION['role'] === "Admin") {
 			.template-img:hover {
 				background-color: rgba(0, 0, 0, 0.1);
 			}
+			.input-container {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				margin-bottom: 5px;
+				justify-content: left;
+			}
+			.input {
+				border: 1px solid;
+				margin: 5px 0;
+				width: 75%;
+				padding: 5px 5px 5px 10px;
+				border-radius: 5px;
+			}
+			.input-button {
+				padding: 8px 0;
+				width: 100%;
+				border: 1px solid;
+				border-radius: 25px;
+				font-weight: bold;
+				border: 1px solid;
+			    background-color: #BB8A5B;
+			}
+			.input-button:hover {
+				background-color: #794B29;
+			    color: #fff;
+			}
+			.responsive-button{
+				display: flex;
+				justify-content: space-around;
+				width: 100%;
+				padding: 10px 0;
+				margin-top: 5px;
+			}
+			.responsive-button > div{
+				width: 30%;
+				padding: 0 5px;
+			}
 		</style>
 	</head>
 	<body>
@@ -298,7 +337,55 @@ if ($_SESSION['role'] === "Admin") {
         	    } else {
         	      messageToggle.css("display", "none"); // If visible, hide it
         	    }
-	        }else{
+	        } else if (action === "update") {
+	        	var id = $(this).find("input[name='id']").val();
+        	    var price = $("#price" + id).val();
+        	    $.ajax({
+		            url: "./php/update_template_price.php",
+		            method: "POST",
+		            data: {
+		            	id: id,
+		            	price: price
+		            },
+		            success: function (data) {
+		            	if (data === "1") {
+		            		alert('Notice: ' + data + '.');
+	                	} else if (data === "2") {
+	                		alert('Notice: An item has been updated successfully.');
+	                		window.location.href = "template.php";
+	                	} else {
+	                		alert('Notice: There is an unexpected error while updating the product, please try again.');
+	                	}
+		            },
+			        error: function (xhr, status, error) {
+			            console.error("AJAX Request Error:", status, error);
+			        }
+		        });
+		    } else if (action === "delete") {
+		    	if (confirm("Are you sure you want to delete this template?") === true) {
+
+		            var id = $(this).find("input[name='id']").val();
+
+		            $.ajax({
+		                url: "./php/delete_template_order.php",
+		                method: "POST",
+		                data: {
+			            	id: id
+			            },
+		                success: function (data) {
+		                	if (data === "1") {
+		                		window.location.href = "template.php";
+		                	} else {
+		                		alert('Notice: ' + data + '.');
+		                	}
+		                },
+		    	        error: function (xhr, status, error) {
+		    	            console.error("AJAX Request Error:", status, error);
+		    	        }
+		            });
+
+	        	}
+	        } else {
 	            $.ajax({
 	                type: "POST", // You can change the HTTP method as needed
                     url: "./php/change_orders.php", // URL of your PHP script

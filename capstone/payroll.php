@@ -32,7 +32,10 @@ if ($_SESSION['role'] === "Admin") {
 			}
 			.record {
 				width: 100%;
-				border: 1px solid;
+				border-top: 1px solid;
+				border-right: none;
+				border-bottom: 1px solid;
+				border-left: none;
 				padding: 5px 0;
 				margin-bottom: 5px;
 				display: flex;
@@ -46,22 +49,23 @@ if ($_SESSION['role'] === "Admin") {
 				color: #000;
 			}
 			.record-1 {
-				width: 33.33%;
+				width: 35%;
 				text-align: left;
-				padding-left: 20px;
+				padding-left: 10%;
 			}
 			.record-2 {
-				width: 22.22%;
-				text-align: center;
+				width: 25%;
+				text-align: left;
+				padding-left: 1%;
 			}
 			.record-3 {
-				width: 22.22%;
+				width: 25%;
 				text-align: center;
 			}
 			.record-4 {
-				width: 22.22%;
+				width: 15%;
 				text-align: left;
-				padding-left: 20px;
+				padding-left: 1%;
 			}
 			.input-container {
 				width: 100%;
@@ -125,10 +129,10 @@ if ($_SESSION['role'] === "Admin") {
 	            <div class="new-users">
 	                <div class="user-list" style="gap: 5px;">
 	                	<div style="width: 100%; display: flex; flex-direction: row; text-align: center;">
-	                		<div style="width: 33.33%;">Name</div>
-	                		<div style="width: 22.22%;">Position</div>
-	                		<div style="width: 22.22%;">Date of Employment</div>
-	                		<div style="width: 22.22%;">Salary</div>
+	                		<div style="width: 35%;">Name</div>
+	                		<div style="width: 25%;">Position</div>
+	                		<div style="width: 25%;">Date of Employment</div>
+	                		<div style="width: 15%;">Salary</div>
 	                	</div>
                         <div class="border" style="width: 100%;"></div>
                         <div id="payroll-container" style="width: 100%;">

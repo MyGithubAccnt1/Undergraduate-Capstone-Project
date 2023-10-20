@@ -76,7 +76,7 @@ session_start();
 															<form action="./php/get_product.php" method="POST">
 																<input type="hidden" name="title" value="<?php echo $row['title']?>">
 																<h4><?php echo $row['title']?></h4>
-																<p class="item-price"><b>₱ <?php echo $row['price']?></b></p>
+																<p class="item-price"><b>PHP <?php echo $row['price']?></b></p>
 																<button type="submit" class="rounded-0 btn-main btn btn-md">View</button>
 															</form>
 														</div>
@@ -125,7 +125,7 @@ session_start();
 															<form action="./php/get_product.php" method="POST">
 																<input type="hidden" name="title" value="<?php echo $row['title']?>">
 																<h4><?php echo $row['title']?></h4>
-																<p class="item-price"><b>₱ <?php echo $row['price']?></b></p>
+																<p class="item-price"><b>PHP <?php echo $row['price']?></b></p>
 																<button type="submit" class="rounded-0 btn-main btn btn-md">View</button>
 															</form>
 														</div>

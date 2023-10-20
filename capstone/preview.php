@@ -52,7 +52,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							    <h1 class="text-center"><?php echo $_SESSION['title'];?></h1>
 							    <hr>
 							    <div>
-							        <h3 class="shop-item-price"><span>&#8369;</span> <?php echo $_SESSION['price']; ?></h3><br>
+							        <h3 class="shop-item-price">PHP <?php echo $_SESSION['price']; ?></h3><br>
 							        <h5>DESCRIPTION</h5>
 							        <p><?php echo $_SESSION['description']; ?></p>
 							        <div class="d-flex justify-content-center">

@@ -129,20 +129,20 @@ $email = $_SESSION['email'];
 	            	?>
 	                <div class="border border-white mt-3 card" style="background-color: <?php echo $color ?>;">
 	                    <div class="row text-center my-1">
-	                        <div class="col-4"><?php echo $row['title'] ?></div>
+	                        <div class="col-4 text-start" style="padding-left: 10%;"><?php echo $row['title'] ?></div>
 	                        <?php
 	                        if ($row['title'] === "Customize Item") {
 	                        ?>	
-	                        <div class="col-2">Estimating...</div>
+	                        <div class="col-2 text-start">Estimating...</div>
 	                        <?php
 	                        } else {
 	                        ?>	
-	                        <div class="col-2">₱<?php echo $row['total'] ?></div>
+	                        <div class="col-2 text-start">PHP <?php echo $row['total'] ?></div>
 	                        <?php
 	                        }
 	                        ?>
 	                        <div class="col-2"><?php echo $row['deyt'] ?></div>
-	                        <div class="col-2"><?php echo $row['status'] ?></div>
+	                        <div class="col-2 text-start"><?php echo $row['status'] ?></div>
 	                        <div class="col-2">
 	                            <a data-toggle="collapse" href="#collapseExample<?php echo $id; ?>">
 	                                <i class="fas fa-ellipsis-h" style="color: #000000;"></i>
@@ -171,9 +171,9 @@ $email = $_SESSION['email'];
 		                    		    while ($newrow = $newresult->fetch_assoc()) {
 		                    	?>
 	    		    	            <div class="row my-1 text-center">
-	    		    	                <div class="col-4"><?php echo $newrow['title'] ?></div>
+	    		    	                <div class="col-4 text-start" style="padding-left: 10%;"><?php echo $newrow['title'] ?></div>
 	    		    	                <div class="col-4"><?php echo $newrow['qty'] ?></div>
-	    		    	                <div class="col-4">₱<?php echo $newrow['price'] ?></div>
+	    		    	                <div class="col-4 text-start" style="padding-left: 10%;">PHP <?php echo $newrow['price'] ?></div>
 	    		    	            </div>
 		                        <?php
 		        	                    }

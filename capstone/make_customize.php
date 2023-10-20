@@ -595,7 +595,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                        	const triangle = new fabric.Triangle(properties);
    		                            canvas.add(triangle);
    		                        } else if (object.objectType === 'background') {
-   		                        	canvas.setBackgroundImage('images/unique.png', canvas.renderAll.bind(canvas));
+   		                        	canvas.setBackgroundImage('images/templates/651e9d3d23b45.png', canvas.renderAll.bind(canvas));
    		                        }
    		                    });
    		                },

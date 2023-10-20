@@ -80,6 +80,13 @@ if ($_SESSION['role'] === "Admin") {
 			    color: #000;
 			    border: 1px solid #D2D2D2;
 			}
+			.template-img {
+				cursor: zoom-in;
+			}
+
+			.template-img:hover {
+				background-color: rgba(0, 0, 0, 0.1);
+			}
 		</style>
 	</head>
 	<body>
@@ -165,6 +172,9 @@ if ($_SESSION['role'] === "Admin") {
 	            </div>
         	</div>
     	</div>
+    	<section id="imageToggle" style="top: 0; height: 100vh; width: 100%; position: absolute; z-index: 2; display: none; cursor: zoom-out;">
+    		<img src="" style="height: 100%; width: auto; background-color: #fff; text-align: center; margin: 0 auto; border: 1px solid #000;" id="file" alt="Missing_Image">
+    	</section>
     </body>
     <script src="./js/admin.js"></script>
     <script>
@@ -212,6 +222,34 @@ if ($_SESSION['role'] === "Admin") {
     	  });
     	});
     </script>
+    <script>
+	    $(document).on("click", "#image", function () {
+	    	var top = window.pageYOffset || document.documentElement.scrollTop;
+	        var image = $(this).find("input[name='image']").val();
+	        var imageToggle = $("#imageToggle");
+
+	        if (imageToggle.css("display") === "none") {
+        	    imageToggle.css("display", "block");
+        	    imageToggle.css('top', top);
+        	    document.body.style.overflow = "hidden";
+        	    $('#file').attr("src", image);
+        	} else {
+        		imageToggle.css("display", "none");
+        		document.body.style.overflow = "";
+        	}
+	    });
+	    $(document).on("click", "#imageToggle", function () {
+	    	
+	        var imageToggle = $("#imageToggle");
+
+	        if (imageToggle.css("display") === "none") {
+        	    
+        	} else {
+        		imageToggle.css("display", "none");
+        		document.body.style.overflow = "";
+        	}
+	    });
+	</script>
     <script>
 	    $(document).on("click", ".status-form", function () {
 	        // Get the data-action attribute value to determine the action

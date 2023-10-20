@@ -270,34 +270,38 @@ if ($_SESSION['role'] === "Admin") {
 			        }
 		        });
 	        }else{
-	            var id = $(this).find("input[name='id']").val();
-        	    var title = $("#title" + id).val();
-        	    var price = $("#price" + id).val();
-        	    var thumbnail = $("#thumbnail" + id).val();
-        	    var description = $("#description" + id).val();
 
-	            $.ajax({
-	                url: "./php/delete_product.php", // PHP script to insert comments into the database
-	                method: "POST",
-	                data: {
-		            	id: id,
-		            	title: title,
-		            	price: price,
-		            	thumbnail: thumbnail,
-		            	description: description
-		            },
-	                success: function (data) {
-	                	if (data === "1") {
-	                		alert('Notice: An item has been deleted successfully.');
-	                		window.location.href = "product.php";
-	                	} else {
-	                		alert('Notice: ' + data + '.');
-	                	}
-	                },
-	    	        error: function (xhr, status, error) {
-	    	            console.error("AJAX Request Error:", status, error);
-	    	        }
-	            });
+	        	if (confirm("Are you sure you want to delete this product?") === true) {
+
+		            var id = $(this).find("input[name='id']").val();
+	        	    var title = $("#title" + id).val();
+	        	    var price = $("#price" + id).val();
+	        	    var thumbnail = $("#thumbnail" + id).val();
+	        	    var description = $("#description" + id).val();
+
+		            $.ajax({
+		                url: "./php/delete_product.php", // PHP script to insert comments into the database
+		                method: "POST",
+		                data: {
+			            	id: id,
+			            	title: title,
+			            	price: price,
+			            	thumbnail: thumbnail,
+			            	description: description
+			            },
+		                success: function (data) {
+		                	if (data === "1") {
+		                		window.location.href = "product.php";
+		                	} else {
+		                		alert('Notice: ' + data + '.');
+		                	}
+		                },
+		    	        error: function (xhr, status, error) {
+		    	            console.error("AJAX Request Error:", status, error);
+		    	        }
+		            });
+
+	        	}
 	        }
 	    });
     </script>
