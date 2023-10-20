@@ -22,5 +22,5 @@ if(mysqli_num_rows($result) === 1) {
   	$script = "<script>window.location = '../index.php';</script>";
   	echo $script;
 }
-$conn->close();
+mysqli_close($conn);
 ?>

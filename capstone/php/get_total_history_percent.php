@@ -36,5 +36,5 @@ if ($totalAccount > 0) {
 
 echo $orderPercent;
 
-$conn->close();
+mysqli_close($conn);
 ?>

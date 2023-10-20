@@ -45,5 +45,5 @@ $notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage
 $notifresult = mysqli_query($conn, $notifsql);
 
 $stmt->close();
-$conn->close(); // Close the database connection
+mysqli_close($conn);
 ?>

@@ -61,7 +61,7 @@
 	    	echo '<div style="width: 100%; background-color: lightgoldenrodyellow; padding: 1px 0; margin-bottom: 5px;">';
 	    		echo '<div style="width: 100%; margin: 5px 0; display: flex; flex-direction: row;">';
 		    		echo '<div style="width: 24.99%; color: #000; text-align: left; margin-left: 5%; word-wrap: break-word;">'. $row['title'] .'</div>';
-		    		echo '<div style="width: 16.66%; color: #000; text-align: left; margin-left: 1%; word-wrap: break-word;">₱'. $row['price'] .'</div>';
+		    		echo '<div style="width: 16.66%; color: #000; text-align: left; margin-left: 1%; word-wrap: break-word;">PHP '. $row['price'] .'</div>';
 		    		echo '<div style="width: 16.66%; color: #000; text-align: left; margin-left: 1%; word-wrap: break-word;">'. $thumbnail .'</div>';
 		    		echo '<div style="width: 24.99%; color: #000; text-align: left; margin-left: 1%;">'. $description .'</div>';
 		    		echo '<div style="width: 16.66%; text-align: center; display: flex; justify-content: center; align-items: center;">';
@@ -121,5 +121,5 @@
 	    echo '<small>There are currently no orders.</small>';
 	    echo '</div>';
 	}
-	$conn->close();
+	mysqli_close($conn);
 ?>

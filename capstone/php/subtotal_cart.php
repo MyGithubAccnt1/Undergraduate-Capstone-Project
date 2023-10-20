@@ -13,11 +13,11 @@ if ($result->num_rows > 0) {
         ';
     }else{
         echo '
-        <strong>Sub-Total: ₱' . $subtotal_cart . '</strong>
+        <strong>Sub-Total: PHP ' . $subtotal_cart . '</strong>
         ';
     }
 } else {
     
 }
-$conn->close();
+mysqli_close($conn);
 ?>

@@ -15,7 +15,7 @@ if ($result->num_rows > 0) {
             <span style="margin: 0 5px;">' . $row["qty"] . '</span>
         </div>
         <div class="col-4 text-start">
-        	<span>₱' . $row["price"] . '</span>
+        	<span>PHP' . $row["price"] . '</span>
         </div>
         ';
     }
@@ -24,5 +24,5 @@ if ($result->num_rows > 0) {
     echo '<input type="hidden" name="proceed" value="no">';
 }
 
-$conn->close();
+mysqli_close($conn);
 ?>

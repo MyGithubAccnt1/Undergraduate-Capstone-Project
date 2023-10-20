@@ -30,5 +30,5 @@ if(mysqli_num_rows($result) === 1) {
  	echo "1";
 
 }
-$conn->close();
+mysqli_close($conn);
 ?>

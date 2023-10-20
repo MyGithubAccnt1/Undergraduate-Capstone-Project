@@ -105,5 +105,5 @@ if ($result->num_rows > 0) {
     echo "1";
 
 }
-$conn->close();
+mysqli_close($conn);
 ?>

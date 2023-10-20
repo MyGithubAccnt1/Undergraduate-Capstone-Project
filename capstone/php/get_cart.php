@@ -12,7 +12,7 @@ if ($result->num_rows > 0) {
         	<span>'. $row["title"] . '</span>
         </div>
         <div class="col-2 text-start">
-        	<span>₱' . $row["price"] . '</span>
+        	<span>PHP' . $row["price"] . '</span>
         </div>
         <div class="col-4 text-center d-flex justify-content-evenly">
             <form data-action="minus" class="status-form">
@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
             </form>
         </div>
         <div class="col-2 text-start">
-        	<span>₱' . $row["total"] . '</span>
+        	<span>PHP' . $row["total"] . '</span>
         </div>
         <div class="col-1 text-center mx-auto">
             <form action="" id="delete">
@@ -43,5 +43,5 @@ if ($result->num_rows > 0) {
 } else {
     echo '<small style="width: 100%; text-align: center;">Your cart is empty.</small>';
 }
-$conn->close();
+mysqli_close($conn);
 ?>

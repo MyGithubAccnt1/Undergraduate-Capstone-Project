@@ -48,5 +48,5 @@ if ($row) {
 
 }
 
-$conn->close(); // Close the database connection
+mysqli_close($conn);
 ?>

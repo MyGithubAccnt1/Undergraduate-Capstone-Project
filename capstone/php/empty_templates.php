@@ -28,5 +28,5 @@ if ($conn->query($sql) === TRUE) {
 } else {
     echo "3";
 }
-$conn->close();
+mysqli_close($conn);
 ?>

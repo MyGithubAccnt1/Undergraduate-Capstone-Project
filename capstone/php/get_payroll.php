@@ -15,7 +15,7 @@ if (mysqli_num_rows($result) > 0) {
                 echo '<div class="record-1">'. $row['name'] .'</div>';
                 echo '<div class="record-2">'. $row['position'] .'</div>';
                 echo '<div class="record-3">'. $row['deyt'] .'</div>';
-                echo '<div class="record-4">'. $row['salary'] .'</div>';
+                echo '<div class="record-4">PHP '. $row['salary'] .'</div>';
             echo '</button>';
         echo '</form>';
     }

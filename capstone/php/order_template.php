@@ -49,5 +49,5 @@ if ($checkresult->num_rows > 0) {
 
 $insertStmt->close();
 $checkstmt->close();
-$conn->close();
+mysqli_close($conn);
 ?>

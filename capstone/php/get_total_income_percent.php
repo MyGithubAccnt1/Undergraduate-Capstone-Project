@@ -40,5 +40,5 @@ if ($totalOrder > 0) {
 
 echo $estimatePercent;
 
-$conn->close();
+mysqli_close($conn);
 ?>

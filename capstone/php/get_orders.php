@@ -67,14 +67,14 @@
 	    	$id = $id + 1;
 	    	echo '<div style="width: 100%; background-color:' . $color . '; padding: 1px 0; margin-bottom: 5px;">';
 	    		echo '<div style="width: 100%; margin: 5px 0; display: flex; flex-direction: row;">';
-		    		echo '<div style="width: 33.33%; color: #000; text-align: center;">'. $row['title'] .'</div>';
-		    		if ($row['title'] === "Customize Item") {
-		    			echo '<div style="width: 16.66%; color: #000; text-align: center;">Estimating...</div>';
+		    		echo '<div style="width: 33.33%; color: #000; padding-left: 10%; text-align: left;">'. $row['title'] .'</div>';
+		    		if ($row['total'] === "0.00") {
+		    			echo '<div style="width: 16.66%; color: #000; text-align: left;">Estimating...</div>';
 		    		} else {
-		    			echo '<div style="width: 16.66%; color: #000; text-align: center;">₱'. $row['total'] .'</div>';
+		    			echo '<div style="width: 16.66%; color: #000; text-align: left;">PHP '. $row['total'] .'</div>';
 		    		}
 		    		echo '<div style="width: 16.66%; color: #000; text-align: center;">'. $row['deyt'] .'</div>';
-		    		echo '<div style="width: 16.66%; color: #000; text-align: center;">'. $row['status'] .'</div>';
+		    		echo '<div style="width: 16.66%; color: #000; padding-left: 2.5%; text-align: left;">'. $row['status'] .'</div>';
 		    		echo '<div style="width: 16.66%; text-align: center;">';
 		    			echo '<form class="dynamic-form" action="">';
 		    				echo '<input type="hidden" name="id" value="'. $id .'">';
@@ -83,7 +83,6 @@
 		    				echo '</button>';
 		    			echo '</form>';
 		    		echo '</div>';
-
 		    	echo '</div>';
 	    	echo '</div>';
 	    	$email = $row['email'];
@@ -102,15 +101,88 @@
         				echo '<div style="width: 100%; height: 2px; background-color: #000;"></div>';
         	    while ($newrow = $newresult->fetch_assoc()) {
         	    		echo '<div style="width: 100%; margin: 5px 0; text-align: center; display: flex; flex-direction: row;">';
-		        	    	echo '<div style="width: 33.33%;">'. $newrow['title'] .'</div>';
+		        	    	echo '<div style="width: 33.33%; padding-left: 10%; text-align: left;">'. $newrow['title'] .'</div>';
 		        	    	echo '<div style="width: 33.33%;">'. $newrow['qty'] .'</div>';
-		        	    	echo '<div style="width: 33.33%;">₱'. $newrow['price'] .'</div>';
+		        	    	echo '<div style="width: 33.33%; padding-left: 10%; text-align: left;">PHP '. $newrow['price'] .'</div>';
         	    		echo '</div>';
         	    }
         	} else {
+        		$templatesql = "SELECT thumbnail FROM template WHERE email = '$email' and deyt = '$date'";
+        		$templateresult = $conn->query($templatesql);
+        		if ($templateresult->num_rows > 0) {
+        			$templaterow = $templateresult->fetch_assoc();
+        				echo '<div style="width: 100%; margin: 5px 0;">';
+				        	echo '<div style="width: 100%; text-align: center">Template</div>';
+        				echo '</div>';
+        				echo '<div style="width: 100%; height: 2px; background-color: #000;"></div>';
+        				echo '<div style="width: 100%; margin: 5px 0; display: flex;">';
+		        			echo '<div style="flex: 50%; padding: 20px; display: flex; justify-content: center; align-items: center;" class="template-img border" id="image">';
+		        				echo '<input type="hidden" name="image" value="'. $templaterow['thumbnail'] .'">';
+		        				echo '<img src="'. $templaterow['thumbnail'] .'" style="width: auto; height: 300px;">';
+		        			echo '</div>';
+		        	$objectsql = "SELECT * FROM object WHERE email = '$email' and deyt = '$date'";
+		        	$objectresult = $conn->query($objectsql);
+		        	if ($objectresult->num_rows > 0) {
+		        			echo '<div style="flex: 50%; padding: 20px; height: 350px; overflow-x:hidden; overflow-y:auto; font-family: Monospace; font-size: 1.5rem;" class="border">';
+		        		while ($objectrow = $objectresult->fetch_assoc()) {
+		        			$properties = $objectrow['properties'];
+		        			$newProperties = explode(",", $properties);
+		        				echo '<small>'. $objectrow['objectType'] .':</small><br>';
+		        				if ($objectrow['objectType'] === "background" || $objectrow['objectType'] === "image") {
+		        				echo '<small style="margin-left: 100px;">';
+		        					echo $newProperties[6];
+		        				echo '</small><br>';
+		        				echo '<small style="margin-left: 100px;">';
+		        					echo $newProperties[7];
+		        				echo '</small><br><br>';
+		        				} else if ($objectrow['objectType'] === "i-text") {
+		        				echo '<small style="margin-left: 100px;">';
+		        					echo $newProperties[6];
+		        				echo '</small><br>';
+		        				echo '<small style="margin-left: 100px;">';
+		        					echo $newProperties[7];
+		        				echo '</small><br>';
+		        				echo '<small style="margin-left: 100px;">';
+		        					echo $newProperties[8];
+		        				echo '</small><br>';
+		        				echo '<small style="margin-left: 100px;">';
+		        					echo $newProperties[9];
+		        				echo '</small><br>';
+		        				echo '<small style="margin-left: 100px;">';
+		        					echo $newProperties[10];
+		        				echo '</small><br>';
+		        				echo '<small style="margin-left: 100px;">';
+		        					echo $newProperties[31];
+		        				echo '</small><br>';
+		        				echo '<small style="margin-left: 100px;">';
+		        					echo $newProperties[34];
+		        				echo '</small><br><br>';
+		        				} else {
+		        				echo '<small style="margin-left: 100px;">';
+		        					echo $newProperties[6];
+		        				echo '</small><br>';
+		        				echo '<small style="margin-left: 100px;">';
+		        					echo $newProperties[7];
+		        				echo '</small><br>';
+		        				echo '<small style="margin-left: 100px;">';
+		        					echo $newProperties[8];
+		        				echo '</small><br>';
+		        				echo '<small style="margin-left: 100px;">';
+		        					echo $newProperties[9];
+		        				echo '</small><br>';
+		        				echo '<small style="margin-left: 100px;">';
+		        					echo $newProperties[10];
+		        				echo '</small><br><br>';
+		        				}		
+		        		}
+		        			echo '</div>';
+		        		echo '</div>';
+		        	}
+        		} else {
         	   			echo '<div style="width: 100%; margin: 5px 0; text-align: center; display: flex; flex-direction: row;">';
         	    			echo '<div style="width: 100%; text-align: center;">No Available Data</div>';
         	    		echo '</div>';
+        	    }
         	}
         				echo '<div style="width: 100%; height: 2px; background-color: #000;"></div>';
         				echo '<div style="width: 100%; margin: 5px 0; text-align: center;">';
@@ -193,5 +265,5 @@
 	    echo '<small>There are currently no orders.</small>';
 	    echo '</div>';
 	}
-	$conn->close();
+	mysqli_close($conn);
 ?>

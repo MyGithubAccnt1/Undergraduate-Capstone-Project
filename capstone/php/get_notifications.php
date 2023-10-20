@@ -49,5 +49,5 @@
 	    echo '<small>There are currently no notification available.</small>';
 	    echo '</div>';
 	}
-	$conn->close();
+	mysqli_close($conn);
 ?>

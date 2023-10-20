@@ -16,5 +16,5 @@ if ($result === false) {
     }
 }
 
-$conn->close();
+mysqli_close($conn);
 ?>

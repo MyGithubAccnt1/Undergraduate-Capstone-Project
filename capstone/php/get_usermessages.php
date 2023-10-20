@@ -57,5 +57,5 @@ if ($result->num_rows > 0) {
         echo '<small>There are currently no messages found.</small>';
     echo '</div>';
 }
-$conn->close();
+mysqli_close($conn);
 ?>

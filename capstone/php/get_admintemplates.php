@@ -49,14 +49,14 @@
 	    	$id = $id + 1;
 	    	echo '<div style="width: 100%; background-color:' . $color . '; padding: 1px 0; margin-bottom: 5px;">';
 	    		echo '<div style="width: 100%; margin: 5px 0; display: flex; flex-direction: row;">';
-		    		echo '<div style="width: 33.33%; color: #000; text-align: center;">'. $row['title'] .'</div>';
-		    		if ($row['title'] === "Customize Item") {
-		    			echo '<div style="width: 16.66%; color: #000; text-align: center;">Estimating...</div>';
+		    		echo '<div style="width: 33.33%; color: #000; text-align: left; margin-left: 10%;">'. $row['title'] .'</div>';
+		    		if ($row['total'] === "0.00") {
+		    			echo '<div style="width: 16.66%; color: #000; text-align: left;">Estimating...</div>';
 		    		} else {
-		    			echo '<div style="width: 16.66%; color: #000; text-align: center;">₱'. $row['total'] .'</div>';
+		    			echo '<div style="width: 16.66%; color: #000; text-align: left;">PHP '. $row['total'] .'</div>';
 		    		}
 		    		echo '<div style="width: 16.66%; color: #000; text-align: center;">'. $row['deyt'] .'</div>';
-		    		echo '<div style="width: 16.66%; color: #000; text-align: center;">'. $row['status'] .'</div>';
+		    		echo '<div style="width: 16.66%; color: #000; padding-left: 2.5%; text-align: left;">'. $row['status'] .'</div>';
 		    		echo '<div style="width: 16.66%; text-align: center;">';
 		    			echo '<form class="dynamic-form" action="">';
 		    				echo '<input type="hidden" name="id" value="'. $id .'">';
@@ -228,6 +228,46 @@
 							echo '</form>';
                         echo '</div>';
                     echo '</div>';
+                    echo '<div style="width: 100%; height: 2px; background-color: #000;"></div>';
+            		echo '<div style="width: 100%;">';
+        				echo '<div style="width: 100%; margin: 5px 0; text-align: center;">';
+	        				echo '<div class="input-container">';
+	        					echo '<div style="margin: 0 10px 0 20px;">Price:</div>';
+	        					echo '<input type="text" class="input" value="'. $row['total'] .'" id="price'. $row['id'] .'">';
+	        				echo '</div>';
+	        			echo '</div>';
+        				echo '<div style="width: 100%; height: 2px; background-color: #000;"></div>';
+    	    			echo '<div class="responsive-button">';
+    	    				echo '<div data-action="update" class="status-form input-container">';
+    	    					echo '<input type="hidden" value="'. $row['id'] .'" name="id">';
+        			        	echo '<button type="submit" class="input-button">Update</button>';
+        			        echo '</div>';
+        			        echo '<div data-action="delete" class="status-form input-container">';
+    	    					echo '<input type="hidden" value="'. $row['id'] .'" name="id">';
+        			        	echo '<button type="submit" class="input-button">Delete</button>';
+        			        echo '</div>';
+    	    			echo '</div>';
+        			echo '</div>';
+                    echo '<div style="width: 100%; height: 2px; background-color: #000;"></div>';
+        			echo '<div style="width: 100%; display: flex; justify-content: space-around; text-align: center; padding: 10px 0;">';
+        			    echo '<div style="max-width: 100%; min-width: 20%;">';
+        			        echo '<div data-action="otw" class="status-form">';
+        			        	echo '<input type="hidden" value="'. $date .'" name="date">';
+        			        	echo '<input type="hidden" value="'. $email .'" name="email">';
+        			        	echo '<input type="submit" style="background-color: lightgreen; color: #fff; padding: 5px 0; width: 100%; cursor: inherit;" value="On-The-Way">';
+        			        echo '</div>';
+        			    echo '</div>';
+        			    echo '<div style="max-width: 100%; min-width: 20%;">';
+        			        echo '<div data-action="delivered" class="status-form">';
+        			        	echo '<input type="hidden" value="'. $date .'" name="date">';
+        			        	echo '<input type="hidden" value="'. $email .'" name="email">';
+        			        	echo '<input type="submit" style="background-color: lime; color: #fff; padding: 5px 0; width: 100%; cursor: inherit;" value="Delivered">';
+        			        echo '</div>';
+        			    echo '</div>';
+        			echo '</div>';
+        			echo '<div style="width: 100%; text-align: center;">';
+    			        echo '<p>Once this option is selected, it will became an order.</p>';
+    			    echo '</div>';
         		echo '</div>';
         	echo '</div>';
 	    }
@@ -236,5 +276,5 @@
 	    echo '<small>There are currently no orders.</small>';
 	    echo '</div>';
 	}
-	$conn->close();
+	mysqli_close($conn);
 ?>
