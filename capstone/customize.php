@@ -297,13 +297,26 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	            var deyt = $(this).find("input[name='deyt']").val();
 	            var link = "http://20.205.112.210/customize.php?&email=" + email + "&deyt=" + deyt;
 	            // var link = "http://localhost/capstone/make_customize.php?&email=" + email + "&deyt=" + deyt;
-	            navigator.clipboard.writeText(link)
-	                .then(function () {
-	                    alert('Notice: A shareable link has been copied to the clipboard.');
-	                })
-	                .catch(function () {
-	                    alert('Notice: An unexpected error occur during copying of shareable link to your clipboard, please do it manually: ' + link);
-	                });
+	            if (navigator.clipboard) {
+	                // Use Clipboard API
+	                navigator.clipboard.writeText(link)
+	                    .then(function () {
+	                        alert('Notice: A shareable link has been copied to the clipboard.');
+	                    })
+	                    .catch(function () {
+	                        alert('Notice: An unexpected error occurred during copying of shareable link to your clipboard, please do it manually: ' + link);
+	                    });
+	            } else {
+	                // Fallback for browsers that do not support Clipboard API
+	                var tempTextArea = document.createElement("textarea");
+	                tempTextArea.value = link;
+	                document.body.appendChild(tempTextArea);
+	                tempTextArea.select();
+	                document.execCommand('copy');
+	                document.body.removeChild(tempTextArea);
+
+	                alert('Notice: A shareable link has been copied to the clipboard (fallback method).');
+	            }
 	        });
 		</script>
 		<script type="text/javascript">
