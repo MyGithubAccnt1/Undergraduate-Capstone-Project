@@ -188,12 +188,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
 		        		if (password === repeat) {
 
+		        			function rot13Encrypt(str) {
+		        			  return str.replace(/[a-zA-Z]/g, function (char) {
+		        			    var offset = char <= 'Z' ? 65 : 97;
+		        			    return String.fromCharCode((char.charCodeAt(0) - offset + 13) % 26 + offset);
+		        			  });
+		        			}
+
+		        			var encryptedText = rot13Encrypt(password);
+
 			        		$.ajax({
 			        		    url: './php/register.php',
 			        		    type: 'POST',
 			        		    data: {
 			        		    	email: email,
-			        		    	password: password
+			        		    	password: encryptedText
 			        		    },
 			        		    success: function (data) {
 			        		    	
@@ -233,12 +242,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		        event.preventDefault();
 		        var email = $(this).find("input[name='email']").val();
 		        var password = $(this).find("input[name='password']").val();
+
+		        function rot13Encrypt(str) {
+		          return str.replace(/[a-zA-Z]/g, function (char) {
+		            var offset = char <= 'Z' ? 65 : 97;
+		            return String.fromCharCode((char.charCodeAt(0) - offset + 13) % 26 + offset);
+		          });
+		        }
+
+		        var encryptedText = rot13Encrypt(password);
+		        
 		        $.ajax({
 		            url: './php/login.php',
 		            type: 'POST',
 		            data: {
 		            	email: email,
-		            	password: password
+		            	password: encryptedText
 		            },
 		            success: function (data) {
 		            	

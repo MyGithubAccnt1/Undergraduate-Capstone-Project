@@ -170,12 +170,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
 		        	} else {
 
+		        		function rot13Encrypt(str) {
+		        		  return str.replace(/[a-zA-Z]/g, function (char) {
+		        		    var offset = char <= 'Z' ? 65 : 97;
+		        		    return String.fromCharCode((char.charCodeAt(0) - offset + 13) % 26 + offset);
+		        		  });
+		        		}
+
+		        		var encryptedText = rot13Encrypt(password);
+		        		var old_encryptedText = rot13Encrypt(old_password);
+
 		        		$.ajax({
 		        		    url: './php/update_password.php',
 		        		    type: 'POST',
 		        		    data: {
-		        		    	old_password: old_password,
-		        		    	password: password
+		        		    	old_password: old_encryptedText,
+		        		    	password: encryptedText
 		        		    },
 		        		    success: function (data) {
 		        		    	
