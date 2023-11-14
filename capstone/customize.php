@@ -307,7 +307,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                        alert('Notice: An unexpected error occurred during copying of shareable link to your clipboard, please do it manually: ' + link);
 	                    });
 	            } else {
-	                // Fallback for browsers that do not support Clipboard API
 	                var tempTextArea = document.createElement("textarea");
 	                tempTextArea.value = link;
 	                document.body.appendChild(tempTextArea);
@@ -315,7 +314,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                document.execCommand('copy');
 	                document.body.removeChild(tempTextArea);
 
-	                alert('Notice: A shareable link has been copied to the clipboard (fallback method).');
+	                alert('Notice: A shareable link has been copied to the clipboard.');
 	            }
 	        });
 		</script>
