@@ -229,7 +229,7 @@ session_start();
 														</div>
 														<div class="thumb-content">
 															<h4>Cleaning & Maintenance</h4>
-															<p class="item-price"><b>Providing customers with a professional cleaning and maintenance service for their necklaces.</b></p>
+															<p class="item-price"><b>Providing customers with a professional cleaning and maintenance service for their necklaces. Exclusive only to customers with delivered order history.</b></p>
 														</div>						
 													</div>
 												</div>
@@ -278,7 +278,7 @@ session_start();
 														</div>
 														<div class="thumb-content">
 															<h4>Cleaning & Maintenance</h4>
-															<p class="item-price"><b>Providing customers with a professional cleaning and maintenance service for their necklaces.</b></p>
+															<p class="item-price"><b>Providing customers with a professional cleaning and maintenance service for their necklaces. Exclusive only to customers with delivered order history.</b></p>
 														</div>						
 													</div>
 												</div>
@@ -327,7 +327,7 @@ session_start();
 														</div>
 														<div class="thumb-content">
 															<h4>Cleaning & Maintenance</h4>
-															<p class="item-price"><b>Providing customers with a professional cleaning and maintenance service for their necklaces.</b></p>
+															<p class="item-price"><b>Providing customers with a professional cleaning and maintenance service for their necklaces. Exclusive only to customers with delivered order history.</b></p>
 														</div>						
 													</div>
 												</div>
