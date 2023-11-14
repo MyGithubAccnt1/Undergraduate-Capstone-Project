@@ -562,7 +562,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
    		        function getSelectedTemplate() {
    		        	var currentURL = window.location.href;
-   		        	var desiredURL = "http://20.205.112.210/customize.php";
+   		        	var desiredURL = "http://20.205.112.210/make_customize.php";
    		        	// var desiredURL = "http://localhost/capstone/make_customize.php";
    		        	var email = "";
    		        	var deyt = "";

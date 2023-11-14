@@ -295,7 +295,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	            event.preventDefault();
 	            var email = $(this).find("input[name='email']").val();
 	            var deyt = $(this).find("input[name='deyt']").val();
-	            var link = "http://20.205.112.210/customize.php?&email=" + email + "&deyt=" + deyt;
+	            var link = "http://20.205.112.210/make_customize.php?&email=" + email + "&deyt=" + deyt;
 	            // var link = "http://localhost/capstone/make_customize.php?&email=" + email + "&deyt=" + deyt;
 	            if (navigator.clipboard) {
 	                // Use Clipboard API
