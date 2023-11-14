@@ -4,7 +4,7 @@ include("connect.php");
 // Escape user inputs for security
 $email = mysqli_real_escape_string($conn, $_REQUEST['email']);
 $password = mysqli_real_escape_string($conn, $_REQUEST['password']);
-$sql = "SELECT * FROM account WHERE email = '$email' and password = '$password'";
+$sql = "SELECT * FROM account WHERE email = '$email'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 if(mysqli_num_rows($result) === 1) {
@@ -12,6 +12,7 @@ if(mysqli_num_rows($result) === 1) {
 	echo "1";
 
 } else {
+
 	date_default_timezone_set('Asia/Manila');
 	$date = date('Y-m-d H:i');
 	$sql = "INSERT INTO account (email, password, role, status, deyt) VALUES ('$email','$password','Regular', 'Online','$date')";
