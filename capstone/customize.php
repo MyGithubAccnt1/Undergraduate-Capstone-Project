@@ -68,12 +68,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 																	<b>Created On: <br><br></b>
 																	<b style="margin-left: 20px;"><?php echo $row['deyt']?></b>
 																</p><br>
-																<button type="submit" class="rounded-0 btn-main btn btn-md">Select</button>
+																<button type="submit" class="rounded-0 w-100 btn-main btn btn-md mb-2">Select</button>
+															</form>
+															<form  action="" class="share_template">
+																<input type="hidden" name="email" value="<?php echo $row['email']?>">
+																<input type="hidden" name="deyt" value="<?php echo $row['deyt']?>">
+																<button type="submit" class="rounded-0 w-100 btn-main btn btn-md mb-2">Share</button>
 															</form>
 															<form  action="" class="delete_template">
 																<input type="hidden" name="email" value="<?php echo $row['email']?>">
 																<input type="hidden" name="deyt" value="<?php echo $row['deyt']?>">
-																<button type="submit" class="rounded-0 btn-main btn btn-md mb-2">Delete</button>
+																<button type="submit" class="rounded-0 w-100 btn-main btn btn-md">Delete</button>
 															</form>
 														</div>
 													</div>
@@ -126,12 +131,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 																	<b>Created On: <br><br></b>
 																	<b style="margin-left: 20px;"><?php echo $row['deyt']?></b>
 																</p><br>
-																<button type="submit" class="rounded-0 btn-main btn btn-md mb-2">Select</button>
+																<button type="submit" class="rounded-0 w-100 btn-main btn btn-md mb-2">Select</button>
+															</form>
+															<form  action="" class="share_template">
+																<input type="hidden" name="email" value="<?php echo $row['email']?>">
+																<input type="hidden" name="deyt" value="<?php echo $row['deyt']?>">
+																<button type="submit" class="rounded-0 w-100 btn-main btn btn-md mb-2">Share</button>
 															</form>
 															<form  action="" class="delete_template">
 																<input type="hidden" name="email" value="<?php echo $row['email']?>">
 																<input type="hidden" name="deyt" value="<?php echo $row['deyt']?>">
-																<button type="submit" class="rounded-0 btn-main btn btn-md">Delete</button>
+																<button type="submit" class="rounded-0 w-100 btn-main btn btn-md">Delete</button>
 															</form>
 														</div>
 													</div>
@@ -278,6 +288,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	            window.localStorage.setItem('email', email);
 	            window.localStorage.setItem('deyt', deyt);
 	            window.location.href = "make_customize.php";
+	        });
+		</script>
+		<script type="text/javascript">
+			$(document).on("submit", ".share_template", function (event) {
+	            event.preventDefault();
+	            var email = $(this).find("input[name='email']").val();
+	            var deyt = $(this).find("input[name='deyt']").val();
+	            var link = "http://20.205.112.210/customize.php?&email=" + email + "&deyt=" + deyt;
+	            // var link = "http://localhost/capstone/make_customize.php?&email=" + email + "&deyt=" + deyt;
+	            navigator.clipboard.writeText(link)
+	                .then(function () {
+	                    alert('Notice: A shareable link has been copied to the clipboard.');
+	                })
+	                .catch(function () {
+	                    alert('Notice: An unexpected error occur during copying of shareable link to your clipboard, please do it manually: ' + link);
+	                });
 	        });
 		</script>
 		<script type="text/javascript">

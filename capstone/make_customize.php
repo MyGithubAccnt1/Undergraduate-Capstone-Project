@@ -561,8 +561,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		        });
 
    		        function getSelectedTemplate() {
-   		            var email = window.localStorage.getItem('email');
-   		            var deyt = window.localStorage.getItem('deyt');
+   		        	var currentURL = window.location.href;
+   		        	var desiredURL = "http://20.205.112.210/customize.php";
+   		        	// var desiredURL = "http://localhost/capstone/make_customize.php";
+   		        	var email = "";
+   		        	var deyt = "";
+   		        	if (currentURL === desiredURL) {
+   		        	    email = window.localStorage.getItem('email');
+   		        	    deyt = window.localStorage.getItem('deyt');
+   		        	} else {
+   		        	    email = new URLSearchParams(currentURL).get('email');
+   		        	    deyt = new URLSearchParams(currentURL).get('deyt');
+   		        	}
    		            $.ajax({
    		                url: './php/get_template.php',
    		                type: 'GET',
