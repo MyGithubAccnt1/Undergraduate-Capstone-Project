@@ -267,10 +267,23 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		            		$(this).find("input[name='password']").val('');
 		            	} else if (data === "2") {
 		            		alert('Notice: Logging in successful, welcome back [Administrator]!')
-		            		window.location.href = "account.php";
+		            		var xlink = window.localStorage.getItem('xlink');
+		            		console.log(xlink);
+		            		if (xlink) {
+		            			window.location.href = xlink;
+		            			window.localStorage.removeItem('xlink');
+		            		} else {
+		            			window.location.href = "account.php";
+		            		}
 		            	} else if (data === "3") {
 		            		alert('Notice: Logging in successful, welcome back!')
-		            		window.location.href = "index.php";
+		            		var xlink = window.localStorage.getItem('xlink');
+		            		if (xlink) {
+		            			window.location.href = xlink;
+		            			window.localStorage.removeItem('xlink');
+		            		} else {
+		            			window.location.href = "index.php";
+		            		}
 		            	} else {
 		            		alert('Notice: [' + data + ']')
 		            	}

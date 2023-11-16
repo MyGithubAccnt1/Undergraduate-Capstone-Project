@@ -153,6 +153,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 </script>
 <?php 
 }else{
+	echo"<script>var xlink = window.location.href;</script>";
+	echo"<script>window.localStorage.setItem('xlink', xlink);</script>";
     echo"<script>alert('Notice: Please login to proceed.')</script>";
     $script = "<script>window.location = 'signin.php';</script>";
     echo $script;

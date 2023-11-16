@@ -313,7 +313,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                tempTextArea.select();
 	                document.execCommand('copy');
 	                document.body.removeChild(tempTextArea);
-
 	                alert('Notice: A shareable link has been copied to the clipboard.');
 	            }
 	        });
@@ -347,6 +346,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 </html>
 <?php 
 }else{
+	echo"<script>var xlink = window.location.href;</script>";
+	echo"<script>window.localStorage.setItem('xlink', xlink);</script>";
     echo"<script>alert('Notice: Please login to proceed.')</script>";
     $script = "<script>window.location = 'signin.php';</script>";
     echo $script;

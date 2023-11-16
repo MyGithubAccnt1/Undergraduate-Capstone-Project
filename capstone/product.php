@@ -347,8 +347,10 @@ if ($_SESSION['role'] === "Admin") {
 </html>
 <?php 
 }else{
-    echo"<script>alert('Notice: Please login to an administrative account.')</script>";
-    $script = "<script>window.location = 'signin';.php</script>";
+	echo"<script>var xlink = window.location.href;</script>";
+	echo"<script>window.localStorage.setItem('xlink', xlink);</script>";
+    echo"<script>alert('Notice: Please login to proceed.')</script>";
+    $script = "<script>window.location = 'signin.php';</script>";
     echo $script;
 }
 ?>
