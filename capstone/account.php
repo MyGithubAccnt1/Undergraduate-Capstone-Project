@@ -106,6 +106,46 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                            </div>
 	                        </div>
 	                    </form>
+	                    <?php
+	                    if ($_SESSION['role'] === "Admin") {
+
+		                }else{
+		                ?>	
+		                	<div class="row mb-0 pb-0 gx-5">
+	                            <div class="col">
+	                                <div class="bg-secondary-soft px-4 py-5 rounded">
+	                                    <div class="row g-3">
+
+	                                        <h4 class="my-4">Customer Support</h4>
+	                                        <div class="col-md-12 mt-0">
+	        	                                <div class="stick-top bg-dark text-center text-white py-2">Chat with SBM</div>
+	        			                        <div class="border card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="comments-container">
+	        										<!-- dynamic -->
+	        			                        </div>
+	        			                        <div class="stick-bot">
+	        										<form id="comment-form">
+	        											<div class="comment-area">
+	        												<input type="hidden" name="id" value="<?php echo $_SESSION['id'];?>"/>
+	        												<input type="hidden" name="email" value="<?php echo $_SESSION['email'];?>"/>
+	        												<input type="hidden" name="role" value="<?php echo $_SESSION['role'];?>"/>
+	        												<input type="hidden" name="date" value="" id="dateInput"/>
+	        												<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" name="comment" id="comment"></textarea>
+	        											</div>
+	        											<div class="d-flex justify-content-center">
+	        												<button type="submit" class="btn-main rounded-pill py-1 my-1 btn btn-md w-75">Send</button>
+	        											</div>
+	        										</form>
+	        			                        </div>
+	                                        </div>
+
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    <?php
+		                }
+	                    ?>
+                        
 	                </div>
 				</div>
 			</section>
@@ -211,6 +251,37 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
 	        	}
 		    });
+		</script>
+		<script>
+			function showComments() {
+			    $.ajax({
+			        url: "./php/get_messages.php",
+			        method: "GET",
+			        data: { date: $("#dateInput").val() },
+			        success: function (data) {
+			            $("#comments-container").html(data);
+			        }
+			    });
+			}
+			$("#comment-form").submit(function (e) {
+			    e.preventDefault(); // Prevent the form from submitting traditionally
+
+			    var formData = $(this).serialize();
+
+			    $.ajax({
+			        url: "./php/add_messages.php", // PHP script to insert comments into the database
+			        method: "POST",
+			        data: formData,
+			        success: function (data) {
+			            showComments();
+			        }
+			    });
+
+			    $(this).find('textarea[name="comment"]').val('');
+			});
+	
+	        showComments();
+	        setInterval(showComments, 1000);
 		</script>
 	</body>
 </html>
