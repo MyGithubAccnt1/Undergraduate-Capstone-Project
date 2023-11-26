@@ -61,7 +61,7 @@ session_start();
 										<div class="d-flex flex-direction-row gap-4" id="one_sm_slideshow" style="height: auto;">
 										<?php
 										include("./php/connect.php");
-										$sql = "SELECT price, title, thumbnail FROM product";
+										$sql = "SELECT price, title, thumbnail FROM product ORDER BY `popularity` DESC";
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
 											// output data of each row
@@ -110,7 +110,7 @@ session_start();
 										<div class="d-flex flex-direction-row gap-4" id="one_md_slideshow" style="height: auto;">
 										<?php
 										include("./php/connect.php");
-										$sql = "SELECT price, title, thumbnail FROM product";
+										$sql = "SELECT price, title, thumbnail FROM product ORDER BY `popularity` DESC";
 										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
 											// output data of each row
