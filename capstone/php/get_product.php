@@ -12,9 +12,15 @@ $_SESSION["title"] = $row['title'];
 $_SESSION["price"] = $row['price'];
 $_SESSION["description"] = $row['description'];
 $_SESSION["thumbnail"] = $row['thumbnail'];
-$_SESSION["qty"] = "1";
-// If result matched $myusername and $mypassword, table row must be 1 row
+$_SESSION["qty"] = 1;
+$popularity = $row['popularity'] + 1;
 if(mysqli_num_rows($result) === 1) {
+    $sql = "UPDATE product SET popularity = '$popularity' WHERE title = '$title'";
+
+    if (mysqli_query($conn, $sql)) {
+
+    }
+    
     $script = "<script>window.location = '../preview.php';</script>";
     echo $script;
 }else {

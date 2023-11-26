@@ -16,7 +16,8 @@ if (empty($description)) {
 }
 
 $thumbnail = "images/new.png";
-$sql = "INSERT INTO product (price, title, thumbnail, description, category) VALUES ('$price', '$title', '$thumbnail', '$description', '$category')";
+$popularity = 0;
+$sql = "INSERT INTO product (price, title, thumbnail, description, category, popularity) VALUES ('$price', '$title', '$thumbnail', '$description', '$category', '$popularity')";
 
 if (mysqli_query($conn, $sql)) {
 
