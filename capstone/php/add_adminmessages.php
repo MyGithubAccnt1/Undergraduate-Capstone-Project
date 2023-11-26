@@ -10,7 +10,7 @@ $date = $_POST["date"];
 $comment = mysqli_real_escape_string($conn, $_POST["comment"]);
 $seen = "Yes";
 
-if ($comment === "" || $date === "") {
+if ($comment === "") {
     echo "1";
 } else {
 
