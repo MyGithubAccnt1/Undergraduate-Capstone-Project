@@ -27,8 +27,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				background-color: #794B29;
 				color: #fff;
 			}
+			.template-img {
+				cursor: zoom-in;
+			}
+			.template-img:hover {
+				background-color: rgba(0, 0, 0, 0.1);
+			}
 			/**{
-				outline: 2px solid limegreen;
+				outline: 1px solid limegreen;
 			}*/
 		</style>
 	</head>
@@ -57,7 +63,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 										?>
 												<div class="col-sm-6 p-0">
 													<div class="thumb-wrapper rounded-0 text-dark border border-dark" style="width: 200px;">
-														<div class="img-box">
+														<div class="img-box template-img" id="image">
+															<input type="hidden" name="image" value="<?php echo $row['thumbnail']?>">
 															<img src="<?php echo $row['thumbnail']?>" class="img-fluid border" alt="Missing Image">
 														</div>
 														<div class="thumb-content">
@@ -120,7 +127,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 										?>
 												<div class="container p-0 m-0">
 													<div class="thumb-wrapper rounded-0 text-dark m-0 border border-dark" style="width: 200px;">
-														<div class="img-box">
+														<div class="img-box template-img" id="image">
+															<input type="hidden" name="image" value="<?php echo $row['thumbnail']?>">
 															<img src="<?php echo $row['thumbnail']?>" class="img-fluid border" alt="Missing Image">
 														</div>
 														<div class="thumb-content">
@@ -183,7 +191,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 										?>
 												<div class="col-sm-6 p-0">
 													<div class="thumb-wrapper rounded-0 text-dark border border-dark" style="width: 200px;">
-														<div class="img-box">
+														<div class="img-box template-img" id="image">
+															<input type="hidden" name="image" value="<?php echo $row['thumbnail']?>">
 															<img src="<?php echo $row['thumbnail']?>" class="img-fluid border" alt="Missing Image">
 														</div>
 														<div class="thumb-content">
@@ -234,7 +243,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 										?>
 												<div class="container p-0 m-0">
 													<div class="thumb-wrapper rounded-0 text-dark m-0 border border-dark" style="width: 200px;">
-														<div class="img-box">
+														<div class="img-box template-img" id="image">
+															<input type="hidden" name="image" value="<?php echo $row['thumbnail']?>">
 															<img src="<?php echo $row['thumbnail']?>" class="img-fluid border" alt="Missing Image">
 														</div>
 														<div class="thumb-content">
@@ -267,6 +277,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					</div>
 				</div>
 			</section>
+			<div style="text-align: center;">
+			    <section id="imageToggle" style="position: absolute; margin-top: 50px; height: calc(100vh - 50px); width: 100%; z-index: 2; display: none; cursor: zoom-out;">
+			        <img src="" style="height: 100%; width: auto; background-color: #fff; text-align: center; margin: 0 auto; border: 1px solid #000;" id="file" alt="Missing_Image">
+			    </section>
+			</div>
 		</main>
 		<?php include('./include/footer.php') ?>
 		<script>
@@ -341,6 +356,34 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         	        }
                 });
 	        });
+		</script>
+		<script>
+		    $(document).on("click", "#image", function () {
+		    	var top = window.pageYOffset || document.documentElement.scrollTop;
+		        var image = $(this).find("input[name='image']").val();
+		        var imageToggle = $("#imageToggle");
+
+		        if (imageToggle.css("display") === "none") {
+	        	    imageToggle.css("display", "block");
+	        	    imageToggle.css('top', top);
+	        	    document.body.style.overflow = "hidden";
+	        	    $('#file').attr("src", image);
+	        	} else {
+	        		imageToggle.css("display", "none");
+	        		document.body.style.overflow = "";
+	        	}
+		    });
+		    $(document).on("click", "#imageToggle", function () {
+		    	
+		        var imageToggle = $("#imageToggle");
+
+		        if (imageToggle.css("display") === "none") {
+	        	    
+	        	} else {
+	        		imageToggle.css("display", "none");
+	        		document.body.style.overflow = "";
+	        	}
+		    });
 		</script>
 	</body>
 </html>

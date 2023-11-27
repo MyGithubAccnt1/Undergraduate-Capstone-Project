@@ -12,6 +12,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	  	<?php include('./include/style.php') ?>
 		<style>
 			.my-button {
+				position: relative;
 				display: flex;
 				align-items: center;
 				justify-content: left;
@@ -21,10 +22,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				color: #000;
 				padding: 20px 40px;
 			}
-			.my-button:hover, .material-active{
+			.my-button span {
+				display: none;
+				margin-left: 5px;
+			}
+			.material-active {
 				border: 1px solid #000;
 				background-color: #794B29;
 				color: #fff;
+			}
+			.my-button:hover {
+				border: 1px solid #000;
+				background-color: #794B29;
+				color: #fff;
+			}
+			.my-button:hover span {
+				display: block !important;
 			}
 			/**{
 				outline: 2px solid limegreen;
@@ -38,18 +51,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					<div style="width: 40%; border: 2px solid; text-align: center; padding: 10px 10px;">
 						<h5>Tools</h5>
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px 5px 10px;" class="my-button material-active" id="move">
-								<i class="fas fa-expand-arrows-alt" style="margin-right: 5px;"></i><span>[Free Move]</span>
+							<div style="width: auto; padding: 7px;" class="my-button material-active" id="move">
+								<i class="fas fa-expand-arrows-alt"></i>
+								<span>[Free Move]</span>
 							</div>
-							<div style="flex: 33.33%; display: flex; justify-content: center; align-items: center;">
-								<span>Select / Resize / Rotate / Move</span>
+							<div style="flex: 33.33%; display: flex; justify-content: right; align-items: center;">
+								<span>Manipulate selected object</span>
 							</div>
 						</div>
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="flex: 33.33%; padding: 5px 5px 5px 10px;" class="my-button" id="draw">
-								<i class="fas fa-pen" style="margin-right: 5px;"></i><span>[Free Draw]</span>
+							<div style="width: auto; padding: 7px;" class="my-button" id="draw">
+								<i class="fas fa-pen"></i>
+								<span>[Free Draw]</span>
 							</div>
-							<div style="flex: 46.66%; display: flex; justify-content: center; align-items: center;">
+							<div style="flex: 20%; display: flex; justify-content: center; align-items: center;">
 								<span style="margin-right: 5px;">Color:</span>
 								<select id="color">
 									<option value="gold">Gold</option>
@@ -71,10 +86,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							</div>
 						</div>
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px 5px 10px; margin-bottom: 10px;" class="my-button" id="text">
-								<i class="fas fa-font" style="margin-right: 5px;"></i><span>[Text]</span>
+							<div style="width: auto; padding: 7px;" class="my-button" id="text">
+								<i class="fas fa-font"></i>
+								<span>[Text]</span>
 							</div>
-							<div style="flex: 40%; display: flex; justify-content: center; align-items: center;">
+							<div style="flex: 20%; display: flex; justify-content: center; align-items: center;">
 								<span style="margin-right: 5px;">Fill:</span>
 								<select id="fill">
                         	        <option value="gold">Gold</option>
@@ -92,27 +108,35 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							</div>
 						</div>
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px 5px 10px;" class="my-button" id="remove">
-								<i class="fas fa-eraser" style="margin-right: 5px;"></i><span>[Erase]</span>
+							<div style="width: auto; padding: 7px;" class="my-button" id="remove">
+								<i class="fas fa-eraser"></i>
+								<span>[Erase]</span>
 							</div>
-							<div style="flex: 33.33%; display: flex; justify-content: center; align-items: center;">
-								<span>Select an object</span>
+							<div style="flex: 20%; display: flex; justify-content: right; align-items: center;">
+								<span>Erase selected object</span>
 							</div>
 						</div>
-						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 60%; padding: 5px 5px 5px 5px;">
-								<input type="file" id="imageFile" accept="image/*">
+						<div style="display: flex; justify-content: left; flex-direction: column; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
+							<div style="display: flex; justify-content: left;">
+								<div style="width: auto; padding: 5px;">
+									<span>Upload PNG Type Images - Images won't be save. After successful saving/updating, templates won't show any of the uploaded images upon selecting/editing the template. However, it will still show up in the preview of your template after saving/updating the template.</span>
+								</div>
 							</div>
-							<div style="flex: 20%; display: flex; justify-content: center; align-items: center;">
-								<span>Upload an image</span>
+							<div style="width: auto; display: flex; justify-content: center; align-items: center;">
+								<div style="flex: 20%; display: flex; justify-content: center; align-items: center;">
+									<input type="file" id="imageFile" accept="image/*">
+								</div>
 							</div>
 						</div>
 						<h5>Shapes</h5>
-						<div style="padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px 5px 10px; margin-bottom: 10px;" class="my-button shape-button" data-action="square" id="square">
-								<i class="fas fa-vector-square" style="margin-right: 5px;"></i><span>[Square]</span>
-							</div>
+						<div style="display: flex; justify-content: left; flex-direction: column; padding: 10px 10px; border: 1px solid; margin-bottom: 5px; overflow-x: auto; overflow-y: hidden;">
 							<div style="display: flex; justify-content: left;">
+								<div style="width: auto; padding: 7px; margin-bottom: 10px;" class="my-button shape-button" data-action="square" id="square">
+									<i class="fas fa-vector-square"></i>
+									<span>[Square]</span>
+								</div>
+							</div>
+							<div style="width: 150%; display: flex; justify-content: center; align-items: center;">
 								<div style="flex: 40%; display: flex; justify-content: center; align-items: center;">
 									<span style="margin-right: 5px;">Style:</span>
 									<select id="square-style">
@@ -142,11 +166,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 								</div>
 							</div>
 						</div>
-						<div style="padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px 5px 10px; margin-bottom: 10px;" class="my-button shape-button" data-action="circle" id="circle">
-								<i class="far fa-circle" style="margin-right: 5px;"></i><span>[Circle]</span>
-							</div>
+						<div style="display: flex; justify-content: left; flex-direction: column; padding: 10px 10px; border: 1px solid; margin-bottom: 5px; overflow-x: auto; overflow-y: hidden;">
 							<div style="display: flex; justify-content: left;">
+								<div style="width: auto; padding: 7px; margin-bottom: 10px;" class="my-button shape-button" data-action="circle" id="circle">
+									<i class="far fa-circle"></i>
+									<span>[Circle]</span>
+								</div>
+							</div>
+							<div style="width: 150%; display: flex; justify-content: center; align-items: center;">
 								<div style="flex: 40%; display: flex; justify-content: center; align-items: center;">
 									<span style="margin-right: 5px;">Style:</span>
 									<select id="circle-style">
@@ -176,11 +203,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 								</div>
 							</div>
 						</div>
-						<div style="padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px 5px 10px; margin-bottom: 10px;" class="my-button shape-button" data-action="triangle" id="triangle">
-								<i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i><span>[Triangle]</span>
-							</div>
+						<div style="display: flex; justify-content: left; flex-direction: column; padding: 10px 10px; border: 1px solid; margin-bottom: 5px; overflow-x: auto; overflow-y: hidden;">
 							<div style="display: flex; justify-content: left;">
+								<div style="width: auto; padding: 7px; margin-bottom: 10px;" class="my-button shape-button" data-action="triangle" id="triangle">
+									<i class="fas fa-exclamation-triangle"></i>
+									<span>[Triangle]</span>
+								</div>
+							</div>
+							<div style="width: 150%; display: flex; justify-content: center; align-items: center;">
 								<div style="flex: 40%; display: flex; justify-content: center; align-items: center;">
 									<span style="margin-right: 5px;">Style:</span>
 									<select id="triangle-style">
@@ -212,34 +242,38 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						</div>
 						<h5>Options</h5>
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px 5px 10px;" class="my-button" id="save">
-								<span>[Save]</span>
+							<div style="width: auto; padding: 7px;" class="my-button" id="save">
+								<i class="fa-solid fa-check-to-slot"></i>
+								<span>[Save & Exit]</span>
 							</div>
-							<div style="flex: 33.33%; display: flex; justify-content: center; align-items: center;">
-								<span>Uploaded images can't be save</span>
+							<div style="flex: 33.33%; display: flex; justify-content: right; align-items: center;">
+								<span>Save to a new template</span>
 							</div>
 						</div>
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px 5px 10px;" class="my-button" id="update">
+							<div style="width: auto; padding: 7px;" class="my-button" id="update">
+								<i class="fa-solid fa-arrow-up-from-bracket"></i>
 								<span>[Update]</span>
 							</div>
-							<div style="flex: 33.33%; display: flex; justify-content: center; align-items: center;">
+							<div style="flex: 33.33%; display: flex; justify-content: right; align-items: center;">
 								<span>Update current template</span>
 							</div>
 						</div>
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px 5px 10px;" class="my-button" id="order">
+							<div style="width: auto; padding: 7px;" class="my-button" id="order">
+								<i class="fa-solid fa-cart-plus"></i>
 								<span>[Make Order]</span>
 							</div>
-							<div style="flex: 33.33%; display: flex; justify-content: center; align-items: center;">
-								<span>Order using this template</span>
+							<div style="flex: 33.33%; display: flex; justify-content: right; align-items: center;">
+								<span>Order this template</span>
 							</div>
 						</div>
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
-							<div style="width: 33.33%; padding: 5px 5px 5px 10px;" class="my-button" id="back">
+							<div style="width: auto; padding: 7px;" class="my-button" id="back">
+								<i class="fa-solid fa-xmark"></i>
 								<span>[Back]</span>
 							</div>
-							<div style="flex: 33.33%; display: flex; justify-content: center; align-items: center;">
+							<div style="flex: 33.33%; display: flex; justify-content: right; align-items: center;">
 								<span>Go back to previous page</span>
 							</div>
 						</div>
