@@ -200,7 +200,7 @@ if ($_SESSION['role'] === "Admin") {
 	                        </div>
 	                    </div>
 	                </div>
-	                <div class="header">
+	                <!-- <div class="header">
 	                    <h2>Database Options</h2>
 	                </div>
 	                <div class="notification">
@@ -213,7 +213,7 @@ if ($_SESSION['role'] === "Admin") {
 	                        	</div>
 	                        </div>
 	                    </div>
-	                </div>
+	                </div> -->
 	            </div>
         	</div>
     	</div>
