@@ -253,7 +253,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						<div style="display: flex; justify-content: left; padding: 10px 10px; border: 1px solid; margin-bottom: 5px;">
 							<div style="width: auto; padding: 7px;" class="my-button" id="update">
 								<i class="fa-solid fa-arrow-up-from-bracket"></i>
-								<span>[Update]</span>
+								<span>[Update & Exit]</span>
 							</div>
 							<div style="flex: 33.33%; display: flex; justify-content: right; align-items: center;">
 								<span>Update current template</span>
@@ -517,12 +517,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		            const backgroundImage = canvas.backgroundImage;
 
    		            for (const obj of objects) {
-   		                const serializedObj = {
-   		                    objectType: obj.type,
-   		                    properties: obj.toObject(),
-   		                };
-   		                serializedObjects.push(serializedObj);
+   		                if (obj.type !== 'image') {
+   		                    const serializedObj = {
+   		                        objectType: obj.type,
+   		                        properties: obj.toObject(),
+   		                    };
+   		                    serializedObjects.push(serializedObj);
+   		                }
    		            }
+
    		            if (backgroundImage) {
 	                    const bgData = {
 	                        objectType: 'background',
