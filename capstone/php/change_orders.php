@@ -1,5 +1,6 @@
 <?php
-include("connect.php"); // Include your database connection
+session_start();
+include("connect.php");
 $action = isset($_POST['action']) ? $_POST['action'] : '';
 $formData = isset($_POST['formData']) ? $_POST['formData'] : '';
 
@@ -39,8 +40,15 @@ $stmt = $conn->prepare("UPDATE history SET status = ? WHERE email = ? AND deyt =
 $stmt->bind_param("sss", $status, $email, $date);
 $stmt->execute();
 
-$notifmessage = "An [Admin] has changed an order status of [". $email ."] from [". $date ."] to [". $status ."].";
+date_default_timezone_set('Asia/Manila');
+$nowdate = date('Y-m-d H:i');
+$notifmessage = "[". $_SESSION['email'] ."] changed an order status of [". $email ."] to [". $status ."] on [". $nowdate ."].";
 $notifcategory = "log";
+$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+$notifresult = mysqli_query($conn, $notifsql);
+
+$notifmessage = "Your order has been updated and have status of [". $status ."].";
+$notifcategory = "user";
 $notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
 $notifresult = mysqli_query($conn, $notifsql);
 

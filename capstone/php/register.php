@@ -45,11 +45,17 @@ if(mysqli_num_rows($result) === 1) {
 		}
 
 	  	echo "2";
-
-	  	$notifmessage = "A new account has been created with an email of [". $row['email'] ."].";
+	  	$email = $row['email'];
+	  	$notifmessage = "A new account has been created with an email of [". $row['email'] ."] on [". $date ."].";
 		$notifcategory = "account";
-		$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+		$notifsql = "INSERT INTO notification (message, category, email) VALUES ('$notifmessage', '$notifcategory', '$email')";
 		$notifresult = mysqli_query($conn, $notifsql);
+
+		$notifmessage = "You successfully created your account on [". $date ."].";
+		$notifcategory = "user";
+		$notifsql = "INSERT INTO notification (message, category, email) VALUES ('$notifmessage', '$notifcategory', '$email')";
+		$notifresult = mysqli_query($conn, $notifsql);
+
 	} else {
 
 	  	echo "3";

@@ -53,7 +53,9 @@ if(mysqli_num_rows($result) === 1) {
 
 		echo "2";
 
-   		$notifmessage = "An [Admin] has logged in to the system with an email of [". $row['email'] ."].";
+		date_default_timezone_set('Asia/Manila');
+		$date = date('Y-m-d H:i');
+   		$notifmessage = "[". $email ."] logs to the system on [". $date ."].";
 		$notifcategory = "login";
 		$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
 		$notifresult = mysqli_query($conn, $notifsql);
@@ -62,7 +64,7 @@ if(mysqli_num_rows($result) === 1) {
 
 		echo "3";
 
-   		$notifmessage = "An [User] has logged in to the system with an email of [". $row['email'] ."].";
+   		$notifmessage = "[". $email ."] logs to the system on [". $date ."].";
 		$notifcategory = "login";
 		$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
 		$notifresult = mysqli_query($conn, $notifsql);

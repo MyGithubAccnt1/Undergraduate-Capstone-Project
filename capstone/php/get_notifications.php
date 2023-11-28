@@ -4,7 +4,7 @@
 
 	if ($action === "default") {
 	    
-	    $sql = "SELECT * FROM `notification` ORDER BY `id` DESC";
+	    $sql = "SELECT * FROM `notification` WHERE `category` = 'account' or `category` = 'login' or `category` = 'order' or `category` = 'log' ORDER BY `id` DESC";
 	    $result = $conn->query($sql);
 
 	} elseif ($action === "account") {
@@ -29,7 +29,7 @@
 
 	} else {
 	    
-		$sql = "SELECT * FROM `notification` ORDER BY `id` DESC";
+		$sql = "SELECT * FROM `notification` WHERE `category` = 'account' or `category` = 'login' or `category` = 'order' or `category` = 'log' ORDER BY `id` DESC";
 		$result = $conn->query($sql);
 
 	}

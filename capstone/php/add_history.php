@@ -73,9 +73,14 @@ if ($result->num_rows > 0) {
 
                     echo "4";
 
-                    $notifmessage = "[". $email ."] successfully completed an order of [". $title ."].";
+                    $notifmessage = "[". $email ."] successfully completed an order of [". $row["title"] ."] on [". $date ."].";
                     $notifcategory = "order";
-                    $notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+                    $notifsql = "INSERT INTO notification (message, category, email) VALUES ('$notifmessage', '$notifcategory', '$email')";
+                    $notifresult = mysqli_query($conn, $notifsql);
+
+                    $notifmessage = "You successfully completed an order on [". $date ."].";
+                    $notifcategory = "user";
+                    $notifsql = "INSERT INTO notification (message, category, email) VALUES ('$notifmessage', '$notifcategory', '$email')";
                     $notifresult = mysqli_query($conn, $notifsql);
 
                 } else {
