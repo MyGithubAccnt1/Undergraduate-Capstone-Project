@@ -15,6 +15,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			    background-color: #794B29;
 			    color: white;
 			}
+			.notif {
+				width: 100%;
+				padding: 1px 0;
+				margin-bottom: 5px;
+				border: 1px solid #000;
+			}
+			.notif:hover {
+				background-color: rgba(250, 250, 210, 0.5);
+				cursor: pointer;
+			}
 		</style>
 	</head>
 	<body class="font-monospace">
@@ -24,24 +34,37 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				<div class="row my-width mx-auto">
 	                <div class="col-12">
 	                    <div class="my-5">
-	                    	<a href="./php/logout.php">
-	                        	<div class="d-flex justify-content-end">
-	                        	  	<button type="submit" class="btn-main py-1 my-3 w-50 rounded-pill">Logout</button>
-	                        	</div>
-	                        </a>
-	                    <?php
-	                    if ($_SESSION['role'] === "Admin") {
-	                    ?>
-	                        <a href="dashboard.php">
-	                        	<div class="d-flex justify-content-end">
-	                        	  	<button type="submit" class="btn-main py-1 my-3 w-50 rounded-pill">[Admin Mode]</button>
-	                        	</div>
-	                        </a>
-	                    <?php
-		                }else{
+	                    	<div class="row">
+	                    		<div class="col-6">
+	                    			<h5>Notifications</h5>
+	                    			<hr class="mt-0">
+	                    			<div id="notification-container" style="overflow-x: hidden; overflow-y: 	auto; height: 100px;">
+            					        <div style="width: 100%; text-align: center; margin-top: 10px;">
+                				    		<small>There are currently no notification available.</small>
+                				    	</div>
+                    				</div>
+	                    		</div>
+	                    		<div class="col-6">
+			                    	<a href="./php/logout.php">
+			                        	<div class="d-flex justify-content-end">
+			                        	  	<button type="submit" class="btn-main py-1 my-3 w-50 rounded-pill">Logout</button>
+			                        	</div>
+			                        </a>
+			                    <?php
+			                    if ($_SESSION['role'] === "Admin") {
+			                    ?>
+			                        <a href="dashboard.php">
+			                        	<div class="d-flex justify-content-end">
+			                        	  	<button type="submit" class="btn-main py-1 my-3 w-50 rounded-pill">[Admin Mode]</button>
+			                        	</div>
+			                        </a>
+			                    <?php
+				                }else{
 
-		                }
-	                    ?>
+				                }
+			                    ?>
+	                    		</div>
+	                    	</div>
 	                        <h2 class="my-4">My Profile</h2>
 	                        <hr>
 	                    </div>
@@ -282,6 +305,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	
 	        showComments();
 	        setInterval(showComments, 1000);
+		</script>
+		<script type="text/javascript">
+			function showDefault() {
+    		    $.ajax({
+    		        url: "./php/get_usernotifications.php",
+    		        method: "GET",
+    		        success: function (data) {
+    		            $("#notification-container").html(data);
+    		        },
+    		        error: function (xhr, status, error) {
+    		            console.error("AJAX Request Error:", status, error);
+    		        }
+    		    });
+    		}
+    		showDefault()
+    		setInterval(showDefault, 1000);
 		</script>
 	</body>
 </html>
