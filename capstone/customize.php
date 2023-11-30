@@ -15,15 +15,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			    background-color: #794B29;
 			    color: white;
 			}
-			.my-button {
-				border: 1px solid #000;
-				cursor: pointer;
-				background-color: #BB8A5B;
-				color: #000;
-				padding: 20px 40px;
-			}
-			.my-button:hover, .material-active{
-				border: 1px solid #000;
+			/**{
+				outline: 1px solid limegreen;
+			}*/
+			.customize-active{
 				background-color: #794B29;
 				color: #fff;
 			}
@@ -33,22 +28,53 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			.template-img:hover {
 				background-color: rgba(0, 0, 0, 0.1);
 			}
-			/**{
-				outline: 1px solid limegreen;
-			}*/
 		</style>
 	</head>
 	<body class="font-monospace">
 		<?php include('./include/header.php') ?>
-		<main class="container-fluid m-0 p-0">
+		<main class="container-fluid m-0 py-5">
+			<section class="my-width mx-auto text-center rounded-pill border border-dark">
+				<div class="row">
+					<h4>CUSTOMIZATION STYLE</h4>
+					<div class="col-6">
+						<button class="btn-main py-1 my-3 w-50 rounded-pill" id="style_one">AUTO-GENERATE</button>
+					</div>
+					<div class="col-6">
+						<button class="btn-main py-1 my-3 w-50 rounded-pill" id="style_two">ADVANCE</button>
+					</div>
+				</div>
+			</section>
+			<br>
+			<section class="my-width mx-auto text-center rounded-pill border border-dark" style="opacity: 0; visibility: hidden; transition: opacity 0.5s ease-in-out;" id="product">
+				<div class="row">
+					<h4>PRODUCT LIST</h4>
+					<div class="col-3">
+						<button class="btn-main py-1 my-3 w-75 rounded-pill" id="product_one">NECKLACE</button>
+					</div>
+					<div class="col-3">
+						<button class="btn-main py-1 my-3 w-75 rounded-pill" id="product_two">PIN</button>
+					</div>
+					<div class="col-3">
+						<button class="btn-main py-1 my-3 w-75 rounded-pill" id="product_three">NAMEPLATE</button>
+					</div>
+					<div class="col-3">
+						<button class="btn-main py-1 my-3 w-75 rounded-pill" id="product_four">LOGO</button>
+					</div>
+				</div>
+			</section>
+			<br>
+			<section class="my-width mx-auto text-center rounded-pill border border-dark" style="opacity: 0; visibility: hidden; transition: opacity 0.5s ease-in-out;" id="proceed">
+				<button class="btn-main py-1 my-3 w-75 rounded-pill">PROCEED</button>
+			</section>
 			<section>
 				<div class="container-xl my-width d-block d-md-none">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="text-center text-danger mt-5">[Notice: A saved template can't be deleted if an order is made with it]</div>
-							<h2>Saved Templates</h2>
-							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">  
-								<!-- Wrapper for carousel items -->
+							<div class="text-center text-danger mt-5">
+								[Notice: A saved template can't be deleted if an order is made with it]
+							</div>
+							<h2 class="text-start my-2 p-0 mt-5">Saved Templates</h2>
+							<div class="carousel slide m-0 p-1 border border-2 border-dark" data-ride="carousel" data-interval="0">
 								<div class="carousel-inner" style="width: 100%">
 									<div class="item carousel-item active" style="overflow-x: auto;">
 										<div class="d-flex flex-direction-row gap-4" id="one_sm_slideshow" style="height: auto;">
@@ -109,10 +135,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				<div class="container-xl my-width d-none d-sm-block">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="text-center text-danger mt-5">[Notice: A saved template can't be deleted if an order is made with it]</div>
-							<h2>Saved Templates</h2>
-							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">  
-								<!-- Wrapper for carousel items -->
+							<div class="text-center text-danger mt-5">
+								[Notice: A saved template can't be deleted if an order is made with it]
+							</div>
+							<h2 class="text-start my-2 p-0 mt-5">Saved Templates</h2>
+							<div class="carousel slide m-0 p-1 border border-2 border-dark" data-ride="carousel" data-interval="0">
 								<div class="carousel-inner" style="width: 100%">
 									<div class="item carousel-item active" style="overflow-x: auto;">
 										<div class="d-flex flex-direction-row gap-4" id="one_md_slideshow" style="height: auto;">
@@ -175,9 +202,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				<div class="container-xl my-width d-block d-md-none">
 					<div class="row">
 						<div class="col-md-12">
-							<h2>Available Templates</h2>
-							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">  
-								<!-- Wrapper for carousel items -->
+							<h2 class="text-start my-2 p-0 mt-5">Available Templates</h2>
+							<div class="carousel slide m-0 p-1 border border-2 border-dark" data-ride="carousel" data-interval="0">
 								<div class="carousel-inner" style="width: 100%">
 									<div class="item carousel-item active" style="overflow-x: auto;">
 										<div class="d-flex flex-direction-row gap-4" id="one_sm_slideshow" style="height: auto;">
@@ -227,9 +253,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				<div class="container-xl my-width d-none d-sm-block">
 					<div class="row">
 						<div class="col-md-12">
-							<h2>Available Templates</h2>
-							<div class="carousel slide p-0" data-ride="carousel" data-interval="0">  
-								<!-- Wrapper for carousel items -->
+							<h2 class="text-start my-2 p-0 mt-5">Available Templates</h2>
+							<div class="carousel slide m-0 p-1 border border-2 border-dark" data-ride="carousel" data-interval="0">
 								<div class="carousel-inner" style="width: 100%">
 									<div class="item carousel-item active" style="overflow-x: auto;">
 										<div class="d-flex flex-direction-row gap-4" id="one_md_slideshow" style="height: auto;">
@@ -284,108 +309,189 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			</div>
 		</main>
 		<?php include('./include/footer.php') ?>
-		<script>
-		    var toggleClick = document.querySelector(".box,.icon");
-		    var navigation = document.querySelector("header");
-		    var removeClick = document.querySelector(".close");
-		    toggleClick.addEventListener('click', ()=>{
-		        navigation.classList.toggle('active-nav');
-		    })
-		    removeClick.addEventListener('click', ()=>{
-		        navigation.classList.remove('active-nav');
-		    })
-		</script>
-		<script type="text/javascript">
-			$(document).on("submit", ".template", function (event) {
-	            event.preventDefault();
-	            var email = $(this).find("input[name='email']").val();
-	            var deyt = $(this).find("input[name='deyt']").val();
-	            window.localStorage.setItem('email', email);
-	            window.localStorage.setItem('deyt', deyt);
-	            window.location.href = "make_customize.php";
-	        });
-		</script>
-		<script type="text/javascript">
-			$(document).on("submit", ".share_template", function (event) {
-	            event.preventDefault();
-	            var email = $(this).find("input[name='email']").val();
-	            var deyt = $(this).find("input[name='deyt']").val();
-	            var link = "http://20.205.112.210/make_customize.php?&email=" + email + "&deyt=" + deyt;
-	            // var link = "http://localhost/capstone/make_customize.php?&email=" + email + "&deyt=" + deyt;
-	            if (navigator.clipboard) {
-	                // Use Clipboard API
-	                navigator.clipboard.writeText(link)
-	                    .then(function () {
-	                        alert('Notice: A shareable link has been copied to the clipboard.');
-	                    })
-	                    .catch(function () {
-	                        alert('Notice: An unexpected error occurred during copying of shareable link to your clipboard, please do it manually: ' + link);
-	                    });
-	            } else {
-	                var tempTextArea = document.createElement("textarea");
-	                tempTextArea.value = link;
-	                document.body.appendChild(tempTextArea);
-	                tempTextArea.select();
-	                document.execCommand('copy');
-	                document.body.removeChild(tempTextArea);
-	                alert('Notice: A shareable link has been copied to the clipboard.');
-	            }
-	        });
-		</script>
-		<script type="text/javascript">
-			$(document).on("submit", ".delete_template", function (event) {
-	            event.preventDefault();
-	            var email = $(this).find("input[name='email']").val();
-	            var deyt = $(this).find("input[name='deyt']").val();
-                $.ajax({
-                    url: "./php/delete_template.php",
-                    method: "POST",
-                    data: {
-                    	email: email,
-                    	deyt: deyt
-                    },
-                    success: function (data) {
-                    	if (data === "1") {
-                    		alert('Notice: The selected template can not be deleted because it is submitted as an order.');
-                    	} else {
-                    		window.location.href = "customize.php";
-                    	}
-                    },
-        	        error: function (xhr, status, error) {
-        	            console.error("AJAX Request Error:", status, error);
-        	        }
-                });
-	        });
-		</script>
-		<script>
-		    $(document).on("click", "#image", function () {
-		    	var top = window.pageYOffset || document.documentElement.scrollTop;
-		        var image = $(this).find("input[name='image']").val();
-		        var imageToggle = $("#imageToggle");
-
-		        if (imageToggle.css("display") === "none") {
-	        	    imageToggle.css("display", "block");
-	        	    imageToggle.css('top', top);
-	        	    document.body.style.overflow = "hidden";
-	        	    $('#file').attr("src", image);
-	        	} else {
-	        		imageToggle.css("display", "none");
-	        		document.body.style.overflow = "";
-	        	}
-		    });
-		    $(document).on("click", "#imageToggle", function () {
-		    	
-		        var imageToggle = $("#imageToggle");
-
-		        if (imageToggle.css("display") === "none") {
-	        	    
-	        	} else {
-	        		imageToggle.css("display", "none");
-	        		document.body.style.overflow = "";
-	        	}
-		    });
-		</script>
 	</body>
+	<script>
+	    var toggleClick = document.querySelector(".box,.icon");
+	    var navigation = document.querySelector("header");
+	    var removeClick = document.querySelector(".close");
+	    toggleClick.addEventListener('click', ()=>{
+	        navigation.classList.toggle('active-nav');
+	    })
+	    removeClick.addEventListener('click', ()=>{
+	        navigation.classList.remove('active-nav');
+	    })
+	</script>
+	<script>
+	   	const style_one = document.getElementById('style_one');
+	   	const style_two = document.getElementById('style_two');
+
+	   	function RemoveStyle() {
+	   		style_one.classList.remove('customize-active');
+	      	style_two.classList.remove('customize-active');
+		}
+
+		style_one.addEventListener('click', () => {
+	   	    RemoveStyle();
+	   	    style_one.classList.add('customize-active');
+	   	    var product = $("#product");
+    	    if (product.css("opacity") === "0") {
+    	    	product.css("opacity", "1");
+    	    	product.css("visibility", "visible");
+    	    }
+	   	});
+
+	   	style_two.addEventListener('click', () => {
+	   	    RemoveStyle();
+	   	    style_two.classList.add('customize-active');
+	   	    var product = $("#product");
+    	    if (product.css("opacity") === "0") {
+    	    	product.css("opacity", "1");
+    	    	product.css("visibility", "visible");
+    	    }
+	   	});
+
+	   	const product_one = document.getElementById('product_one');
+	   	const product_two = document.getElementById('product_two');
+	   	const product_three = document.getElementById('product_three');
+	   	const product_four = document.getElementById('product_four');
+
+	   	function RemoveProduct() {
+	   		product_one.classList.remove('customize-active');
+	      	product_two.classList.remove('customize-active');
+	      	product_three.classList.remove('customize-active');
+	      	product_four.classList.remove('customize-active');
+		}
+
+		product_one.addEventListener('click', () => {
+	   	    RemoveProduct();
+	   	    product_one.classList.add('customize-active');
+	   	    var proceed = $("#proceed");
+    	    if (proceed.css("opacity") === "0") {
+    	    	proceed.css("opacity", "1");
+    	    	proceed.css("visibility", "visible");
+    	    }
+	   	});
+
+	   	product_two.addEventListener('click', () => {
+	   	    RemoveProduct();
+	   	    product_two.classList.add('customize-active');
+	   	    var proceed = $("#proceed");
+    	    if (proceed.css("opacity") === "0") {
+    	    	proceed.css("opacity", "1");
+    	    	proceed.css("visibility", "visible");
+    	    }
+	   	});
+
+	   	product_three.addEventListener('click', () => {
+	   	    RemoveProduct();
+	   	    product_three.classList.add('customize-active');
+	   	    var proceed = $("#proceed");
+    	    if (proceed.css("opacity") === "0") {
+    	    	proceed.css("opacity", "1");
+    	    	proceed.css("visibility", "visible");
+    	    }
+	   	});
+
+	   	product_four.addEventListener('click', () => {
+	   	    RemoveProduct();
+	   	    product_four.classList.add('customize-active');
+	   	    var proceed = $("#proceed");
+    	    if (proceed.css("opacity") === "0") {
+    	    	proceed.css("opacity", "1");
+    	    	proceed.css("visibility", "visible");
+    	    }
+	   	});
+	</script>
+	<script type="text/javascript">
+		$(document).on("submit", ".template", function (event) {
+            event.preventDefault();
+            var email = $(this).find("input[name='email']").val();
+            var deyt = $(this).find("input[name='deyt']").val();
+            window.localStorage.setItem('email', email);
+            window.localStorage.setItem('deyt', deyt);
+            window.location.href = "make_customize.php";
+        });
+	</script>
+	<script type="text/javascript">
+		$(document).on("submit", ".share_template", function (event) {
+            event.preventDefault();
+            var email = $(this).find("input[name='email']").val();
+            var deyt = $(this).find("input[name='deyt']").val();
+            var link = "http://20.205.112.210/make_customize.php?&email=" + email + "&deyt=" + deyt;
+            // var link = "http://localhost/capstone/make_customize.php?&email=" + email + "&deyt=" + deyt;
+            if (navigator.clipboard) {
+                // Use Clipboard API
+                navigator.clipboard.writeText(link)
+                    .then(function () {
+                        alert('Notice: A shareable link has been copied to the clipboard.');
+                    })
+                    .catch(function () {
+                        alert('Notice: An unexpected error occurred during copying of shareable link to your clipboard, please do it manually: ' + link);
+                    });
+            } else {
+                var tempTextArea = document.createElement("textarea");
+                tempTextArea.value = link;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempTextArea);
+                alert('Notice: A shareable link has been copied to the clipboard.');
+            }
+        });
+	</script>
+	<script type="text/javascript">
+		$(document).on("submit", ".delete_template", function (event) {
+            event.preventDefault();
+            var email = $(this).find("input[name='email']").val();
+            var deyt = $(this).find("input[name='deyt']").val();
+            $.ajax({
+                url: "./php/delete_template.php",
+                method: "POST",
+                data: {
+                	email: email,
+                	deyt: deyt
+                },
+                success: function (data) {
+                	if (data === "1") {
+                		alert('Notice: The selected template can not be deleted because it is submitted as an order.');
+                	} else {
+                		window.location.href = "customize.php";
+                	}
+                },
+    	        error: function (xhr, status, error) {
+    	            console.error("AJAX Request Error:", status, error);
+    	        }
+            });
+        });
+	</script>
+	<script>
+	    $(document).on("click", "#image", function () {
+	    	var top = window.pageYOffset || document.documentElement.scrollTop;
+	        var image = $(this).find("input[name='image']").val();
+	        var imageToggle = $("#imageToggle");
+
+	        if (imageToggle.css("display") === "none") {
+        	    imageToggle.css("display", "block");
+        	    imageToggle.css('top', top);
+        	    document.body.style.overflow = "hidden";
+        	    $('#file').attr("src", image);
+        	} else {
+        		imageToggle.css("display", "none");
+        		document.body.style.overflow = "";
+        	}
+	    });
+	    $(document).on("click", "#imageToggle", function () {
+	    	
+	        var imageToggle = $("#imageToggle");
+
+	        if (imageToggle.css("display") === "none") {
+        	    
+        	} else {
+        		imageToggle.css("display", "none");
+        		document.body.style.overflow = "";
+        	}
+	    });
+	</script>
 </html>
 <?php 
 }else{
