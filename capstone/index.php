@@ -49,7 +49,7 @@ session_start();
 				</div>
 			</section>
 			<section>
-				<div class="container-xl my-width d-block d-md-none" style="border: 1px solid #000; border-style: none solid none solid;">
+				<div class="container-xl my-width d-block d-md-none">
 					<div class="row">
 						<div class="col-md-12">
 							<h2>Popular Products</h2>
@@ -98,7 +98,7 @@ session_start();
 						</div>
 					</div>
 				</div>
-				<div class="container-xl my-width d-none d-sm-block" style="border: 1px solid #000; border-style: none solid none solid;">
+				<div class="container-xl my-width d-none d-sm-block">
 					<div class="row">
 						<div class="col-md-12">
 							<h2>Popular Products</h2>
@@ -148,12 +148,12 @@ session_start();
 					</div>
 				</div>
 			</section>
-			<section class="my-width mx-auto py-4" style="border: 1px solid #000; border-style: none solid none solid;">
+			<section class="my-width mx-auto py-4">
 				<hr>
 			</section>
 			<section>
 				<div class="container-fluid m-0 p-0 slide-edit mx-auto">
-					<div class="m-0 pt-0 pb-5 mx-auto my-width slide-edit" style="overflow: hidden; border: 1px solid #000; border-style: none solid none solid;">
+					<div class="m-0 pt-0 pb-5 mx-auto my-width slide-edit" style="overflow: hidden;">
 						<h2 class = "text-center">New Arrivals</h2>
 						<div class="container-fluid m-0 p-0">
 							<div class="slider">
@@ -194,7 +194,7 @@ session_start();
 			</section>
 			<section>
 				<div class="container-fluid m-0 p-0 text-center" style="background-color: #D0B89F;">
-					<div class="container-xl my-width d-none d-lg-block" style="border: 1px solid #000; border-style: none solid none solid;">
+					<div class="container-xl my-width d-none d-lg-block">
 						<div class="row">
 							<div class="col-md-12">
 								<h2>Services</h2>
@@ -243,7 +243,7 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<div class="container-xl my-width d-none d-md-block d-lg-none" style="border: 1px solid #000; border-style: none solid none solid;">
+					<div class="container-xl my-width d-none d-md-block d-lg-none">
 						<div class="row">
 							<div class="col-md-12">
 								<h2>Services</h2>
@@ -292,7 +292,7 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<div class="container-xl my-width d-block d-md-none" style="border: 1px solid #000; border-style: none solid none solid;">
+					<div class="container-xl my-width d-block d-md-none">
 						<div class="row">
 							<div class="col-md-12">
 								<h2>Services</h2>
@@ -344,7 +344,7 @@ session_start();
 				</div>
 			</section>
 			<section>
-				<div class="container-fluid pt-5 pb-3 text-center my-width" style="border: 1px solid #000; border-style: none solid none solid;">
+				<div class="container-fluid pt-5 pb-3 text-center my-width">
 					<div class="row">
 						<h2>Why Choose Us?</h2>
 					</div><br><br>
@@ -373,11 +373,11 @@ session_start();
 					</div>
 				</div>
 			</section>
-			<section class="my-width mx-auto py-5" style="border: 1px solid #000; border-style: none solid none solid;">
+			<section class="my-width mx-auto py-5">
 				<hr>
 			</section>
 			<section>
-				<div class="container-fluid text-center my-width py-4" style="border: 1px solid #000; border-style: none solid none solid;">
+				<div class="container-fluid text-center my-width py-4">
 					<div class="row">
 						<h2>About Us</h2>
 					</div><br>
