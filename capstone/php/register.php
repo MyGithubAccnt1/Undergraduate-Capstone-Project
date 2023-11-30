@@ -46,7 +46,7 @@ if(mysqli_num_rows($result) === 1) {
 
 	  	echo "2";
 	  	$email = $row['email'];
-	  	$notifmessage = "A new account has been created with an email of [". $row['email'] ."] on [". $date ."].";
+	  	$notifmessage = "A new account has been created with an email of [". $email ."] on [". $date ."].";
 		$notifcategory = "account";
 		$notifsql = "INSERT INTO notification (message, category, email) VALUES ('$notifmessage', '$notifcategory', '$email')";
 		$notifresult = mysqli_query($conn, $notifsql);
