@@ -89,6 +89,38 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			</div>
 		</div>
 	</section>
+	<section style="width: 35%;" class="d-none d-xl-block">
+		<div style="display: flex; flex-direction: row; align-items: center; justify-content: space-around;">
+			<div>
+		    	<a href="index.php">
+		    		<button class="btn-nav btn-home rounded-0 btn-sm text-start">
+		    			<i class="fas fa-home" style="margin: 0 10px 0 5px;"></i><small>HOME</small>
+		    		</button>
+		    	</a>
+		    </div>
+		    <div>
+		    	<a href="signin.php">
+			    	<button class="btn-nav btn-signin rounded-0 btn-sm text-start">
+			    		<i class="fas fa-sign-out-alt" style="margin: 0 10px 0 5px;"></i><small>SIGN IN</small>
+			    	</button>
+		    	</a>
+		    </div>
+		    <div>	
+		    	<a href="#offcanvasDark" data-bs-toggle="offcanvas">
+		    		<button class="btn-nav rounded-0 btn-sm text-start">
+		    			<i class="fas fa-shopping-cart" style="margin: 0 10px 0 5px;"></i><small>CART</small>
+		    		</button>
+		    	</a>
+		    </div>
+		    <div>
+		    	<a href="account.php">
+		    		<button class="btn-nav btn-account rounded-0 btn-sm text-start">
+		    			<i class="fas fa-user-circle" style="margin: 0 10px 0 5px;"></i><small>ACCOUNT</small>
+		    		</button>
+		    	</a>
+			</div>
+		</div>
+	</section>
 	<section style="width: 50%;" class="d-none d-lg-block">
 		<nav style="display: flex; flex-direction: row; align-items: center; justify-content: space-around;">
 			<div>
@@ -127,38 +159,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				</a>
 			</div>
 		</nav>
-	</section>
-	<section style="width: 35%;" class="d-none d-xl-block">
-		<div style="display: flex; flex-direction: row; align-items: center; justify-content: space-around;">
-			<div>
-		    	<a href="index.php">
-		    		<button class="btn-nav btn-home rounded-0 btn-sm text-start">
-		    			<i class="fas fa-home" style="margin: 0 10px 0 5px;"></i><small>HOME</small>
-		    		</button>
-		    	</a>
-		    </div>
-		    <div>
-		    	<a href="signin.php">
-			    	<button class="btn-nav btn-signin rounded-0 btn-sm text-start">
-			    		<i class="fas fa-sign-out-alt" style="margin: 0 10px 0 5px;"></i><small>SIGN IN</small>
-			    	</button>
-		    	</a>
-		    </div>
-		    <div>	
-		    	<a href="#offcanvasDark" data-bs-toggle="offcanvas">
-		    		<button class="btn-nav rounded-0 btn-sm text-start">
-		    			<i class="fas fa-shopping-cart" style="margin: 0 10px 0 5px;"></i><small>CART</small>
-		    		</button>
-		    	</a>
-		    </div>
-		    <div>
-		    	<a href="account.php">
-		    		<button class="btn-nav btn-account rounded-0 btn-sm text-start">
-		    			<i class="fas fa-user-circle" style="margin: 0 10px 0 5px;"></i><small>ACCOUNT</small>
-		    		</button>
-		    	</a>
-			</div>
-		</div>
 	</section>
 </header>
 
