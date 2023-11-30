@@ -49,7 +49,7 @@ session_start();
 				</div>
 			</section>
 			<section>
-				<div class="container-xl my-width d-block d-md-none">
+				<div class="container-xl my-width d-block d-md-none" style="border: 1px solid #000; border-style: none solid none solid;">
 					<div class="row">
 						<div class="col-md-12">
 							<h2>Popular Products</h2>
@@ -98,7 +98,7 @@ session_start();
 						</div>
 					</div>
 				</div>
-				<div class="container-xl my-width d-none d-sm-block">
+				<div class="container-xl my-width d-none d-sm-block" style="border: 1px solid #000; border-style: none solid none solid;">
 					<div class="row">
 						<div class="col-md-12">
 							<h2>Popular Products</h2>
@@ -148,9 +148,12 @@ session_start();
 					</div>
 				</div>
 			</section>
+			<section class="my-width mx-auto py-4" style="border: 1px solid #000; border-style: none solid none solid;">
+				<hr>
+			</section>
 			<section>
-				<div class="container-fluid py-5">
-					<div class="m-0 p-0 mx-auto my-width slide-edit" style="overflow: hidden;">
+				<div class="container-fluid m-0 p-0 slide-edit mx-auto">
+					<div class="m-0 pt-0 pb-5 mx-auto my-width slide-edit" style="overflow: hidden; border: 1px solid #000; border-style: none solid none solid;">
 						<h2 class = "text-center">New Arrivals</h2>
 						<div class="container-fluid m-0 p-0">
 							<div class="slider">
@@ -190,8 +193,8 @@ session_start();
 				</div>
 			</section>
 			<section>
-				<div class="container-fluid py-3 text-center" style="background-color: #D0B89F;">
-					<div class="container-xl my-width d-none d-lg-block">
+				<div class="container-fluid m-0 p-0 text-center" style="background-color: #D0B89F;">
+					<div class="container-xl my-width d-none d-lg-block" style="border: 1px solid #000; border-style: none solid none solid;">
 						<div class="row">
 							<div class="col-md-12">
 								<h2>Services</h2>
@@ -240,7 +243,7 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<div class="container-xl my-width d-none d-md-block d-lg-none">
+					<div class="container-xl my-width d-none d-md-block d-lg-none" style="border: 1px solid #000; border-style: none solid none solid;">
 						<div class="row">
 							<div class="col-md-12">
 								<h2>Services</h2>
@@ -289,7 +292,7 @@ session_start();
 							</div>
 						</div>
 					</div>
-					<div class="container-xl my-width d-block d-md-none">
+					<div class="container-xl my-width d-block d-md-none" style="border: 1px solid #000; border-style: none solid none solid;">
 						<div class="row">
 							<div class="col-md-12">
 								<h2>Services</h2>
@@ -341,7 +344,7 @@ session_start();
 				</div>
 			</section>
 			<section>
-				<div class="container-fluid mt-5 mb-3 text-center my-width">
+				<div class="container-fluid pt-5 pb-3 text-center my-width" style="border: 1px solid #000; border-style: none solid none solid;">
 					<div class="row">
 						<h2>Why Choose Us?</h2>
 					</div><br><br>
@@ -370,13 +373,15 @@ session_start();
 					</div>
 				</div>
 			</section>
-			<section class="my-width mx-auto"><hr></section>
+			<section class="my-width mx-auto py-5" style="border: 1px solid #000; border-style: none solid none solid;">
+				<hr>
+			</section>
 			<section>
-				<div class="container-fluid text-center py-4">
+				<div class="container-fluid text-center my-width py-4" style="border: 1px solid #000; border-style: none solid none solid;">
 					<div class="row">
 						<h2>About Us</h2>
 					</div><br>
-					<div class="row my-width mx-auto" style="text-align: justify;">
+					<div class="row mx-auto" style="text-align: justify;">
 						<p>I'm the proud owner of Saint Benedict Medallion, a business in Trece Martires City that specializes in making and selling beautiful, unique necklaces. As a small business, I'm passionate about providing my customers with one-of-a-kind pieces that are as special and meaningful to them as they are to me. My necklaces are all handmade with care and attention to detail, using only the finest materials. I'm committed to create pieces that will last a lifetime, and I'm proud to say that the quality of my products speaks for itself. I'm always happy to work with my customers to create something special for them. I hope you'll come and visit my store soon - I'm sure you'll find something unique and beautiful that you'll love.</p>
 					</div>
 				</div>
