@@ -21,13 +21,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				justify-content: center;
 				cursor: pointer;
 				width: 100%;
-				margin: 0 0 5px 0;
+				margin: 0;
 				padding: 12px 0;
+				border: none;
+				background-color: inherit;
 			}
 			.my-option {
 				cursor: pointer;
 				margin: 0 10px 0 0;
 				padding: 0 5px;
+				border: none;
+				background-color: inherit;
 			}
 			.my-info {
 				padding: 0 5px;
@@ -36,16 +40,57 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				background-color: #794B29;
 				color: #fff;
 			}
+			.button-options {
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 2;
+				border: 1px solid #000;
+				background-color: #fff;
+				display: none;
+			}
+			.options {
+				margin: 0;
+				padding: 3px 75px 3px 25px;
+				border: none;
+				background-color: inherit;
+				text-align: left;
+			}
+			.options:hover {
+				background-color: rgba(250, 250, 210, 1.0);
+				cursor: pointer;
+			}
 		</style>
 	</head>
 	<body class="font-monospace">
 		<main class="container-fluid m-0 p-0">
-			<section style="height: 100vh; width: 100%; padding: 20px; margin: 0; overflow-x: hidden; overflow-y: hidden;">
+			<section class="button-options" id="file-options">
+				<div style="display: flex; flex-direction: column; padding: 0; margin: 0;">
+					<button class="options" id="update">Save & Exit</button>
+					<button class="options" id="back">Exit</button>
+				</div>
+			</section>
+			<section class="button-options" id="image-options">
+				<div style="display: flex; flex-direction: column; padding: 0; margin: 0;">
+					<button class="options" id="image-url-button">From URL</button>
+					<input class="options" type="file" id="image" accept="image/png">
+				</div>
+			</section>
+			<section class="button-options" id="image-url-options">
+				<div style="display: flex; flex-direction: column; padding: 0; margin: 0;">
+					<div style="display: flex; align-items: center; justify-content: center; padding: 5px;">
+						<small>URL: </small>
+						<input type="text" name="image-url" style="width: 100%;">
+					</div>
+					<button class="options" style="text-align: center; padding: 3px 0;">Select</button>
+				</div>
+			</section>
+			<section style="height: 100vh; width: 100%; margin: 0; overflow-x: hidden; overflow-y: hidden;">
 				<div style="height: 25px; padding: 0; margin: 0; background-color: #794B29;"></div>
 				<div style="display: flex; flex-direction: row; align-items: center; height: 35px; padding-left: 10px; margin: 0; background-color: #D0B89F;">
-					<div class="my-option">File</div>
-					<div class="my-option">Image</div>
-					<div class="my-option">Order</div>
+					<button class="my-option" id="file-button">File</button>
+					<button class="my-option" id="image-button">Image</button>
+					<button class="my-option" id="order">Order</button>
 				</div>
 				<div style="display: flex; flex-direction: row; align-items: center; height: 35px; padding-left: 10px; margin: 0; background-color: #D0B89F;">
 					<div class="my-info">Current Tool:</div>
@@ -61,34 +106,34 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						<input type="text" id="current-y" value="0" style="width: 40px; padding: 0 5px; margin-right: 10px;">
 					</div>
 				</div>
-				<div style="display: flex; flex-direction: row; margin: 0; padding: 0; width: 100%; height: calc(100vh - 135px);">
+				<div style="display: flex; flex-direction: row; margin: 0; padding: 0; width: 100%; height: 100vh;">
 					<div style="display: flex; flex-direction: column; background-color: #D0B89F; width: 40px;">
-						<div class="my-button tool-active" id="move-tool">
+						<button class="my-button tool-active" id="move-tool" title="Move Tool">
 							<i class="fas fa-arrows-alt"></i>
-						</div>
-						<div class="my-button" id="brush-tool">
+						</button>
+						<button class="my-button" id="brush-tool" title="Brush Tool">
 							<i class="fas fa-paint-brush"></i>
-						</div>
-						<div class="my-button" id="eraser-tool">
+						</button>
+						<button class="my-button" id="eraser-tool" title="Eraser Tool">
 							<i class="fas fa-eraser"></i>
-						</div>
-						<div class="my-button" id="type-tool">
+						</button>
+						<button class="my-button" id="type-tool" title="Type Tool">
 							<i class="fas fa-font"></i>
-						</div>
-						<div class="my-button" id="square-tool">
+						</button>
+						<button class="my-button" id="square-tool" title="Square Tool">
 							<i class="fas fa-square"></i>
-						</div>
-						<div class="my-button" id="circle-tool">
+						</button>
+						<button class="my-button" id="circle-tool" title="Circle Tool">
 							<i class="fas fa-circle"></i>
-						</div>
-						<div class="my-button" id="triangle-tool">
+						</button>
+						<button class="my-button" id="triangle-tool" title="Triangle Tool">
 							<i class="fas fa-play"></i>
-						</div>
+						</button>
 					</div>
-					<div style="width: 75%; border: 1px solid #000" id="resize">
+					<div style="flex: 1; border: 1px solid #000; background-color: rgba(121, 75, 41, 0.5);" class="d-flex justify-content-center" id="resize">
 						<canvas id="canvas"></canvas>
 					</div>
-					<div style="display: flex; flex-direction: column; background-color: #D0B89F; width: 25%; text-align: left; padding: 0 10px;">
+					<div style="display: flex; flex-direction: column; background-color: #D0B89F; width: 20%; text-align: left; padding: 0 10px;">
 						<div class="text-center">Properties</div>
 						<hr class="mt-2">
 						<div id="move-property" style="display: block;">
@@ -122,20 +167,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							<hr>
 							<div>
 								<p><small class="text-primary">Instruction:</small> You can draw anywhere on the canvas when you activate this tool.</p>
+								<p><small class="text-primary">How To Use:</small> When <small class="text-danger">Activated</small>, use mouse click and movements to draw.</p>
 							</div>
 						</div>
 						<div id="eraser-property" style="display: none;">
-							<div style="display: flex; justify-content: left; align-items: center;">
-								<span style="margin: 0 5px 0 0; padding: 5px;">Text:</span>
-								<textarea id="selected-object" rows="2" class="w-100" style="resize: none;"></textarea>
-							</div>
-							<br>
 							<div style="display: flex; justify-content: center; align-items: center;">
 								<button id="eraser" class="btn-main rounded-pill w-75">Activate</button>
 							</div>
 							<hr>
 							<div>
 								<p><small class="text-primary">Instruction:</small> You can delete or remove a selected object using this tool.</p>
+								<p><small class="text-primary">How To Use:</small> Select object/s then <small class="text-danger">[Click]</small> activate.</p>
 							</div>
 						</div>
 						<div id="type-property" style="display: none;">
@@ -198,7 +240,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							<hr>
 							<div>
 								<p><small class="text-primary">Instruction:</small> You can type something using this tool.</p>
-								<p><small class="text-primary">How To Use:</small> When <small class="text-danger">Activated</small>, <small class="text-danger">[Click]</small> any where on the canvas for text to appear.</p>
+								<p><small class="text-primary">How To Use:</small> When <small class="text-danger">Activated</small>, <small class="text-danger">[Click]</small> anywhere on the canvas for text to appear.</p>
 							</div>
 						</div>
 						<div id="square-property" style="display: none;">
@@ -232,7 +274,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							<hr>
 							<div>
 								<p><small class="text-primary">Instruction:</small> You can create a square object using this tool.</p>
-								<p><small class="text-primary">How to use:</small> When <small class="text-danger">Activated</small>, <small class="text-danger">[Click & Drag]</small> any where on the canvas to create a square shape.</p>
+								<p><small class="text-primary">How to use:</small> When <small class="text-danger">Activated</small>, <small class="text-danger">[Click & Drag]</small> anywhere on the canvas to create a square shape.</p>
 							</div>
 						</div>
 						<div id="circle-property" style="display: none;">
@@ -266,7 +308,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							<hr>
 							<div>
 								<p><small class="text-primary">Instruction:</small> You can create a circle object using this tool.</p>
-								<p><small class="text-primary">How to use:</small> When <small class="text-danger">Activated</small>, <small class="text-danger">[Click & Drag]</small> any where on the canvas to create a circle shape.</p>
+								<p><small class="text-primary">How to use:</small> When <small class="text-danger">Activated</small>, <small class="text-danger">[Click & Drag]</small> anywhere on the canvas to create a circle shape.</p>
 							</div>
 						</div>
 						<div id="triangle-property" style="display: none;">
@@ -300,7 +342,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							<hr>
 							<div>
 								<p><small class="text-primary">Instruction:</small> You can create a triangle object using this tool.</p>
-								<p><small class="text-primary">How to use:</small> When <small class="text-danger">Activated</small>, <small class="text-danger">[Click & Drag]</small> any where on the canvas to create a triangle shape.</p>
+								<p><small class="text-primary">How to use:</small> When <small class="text-danger">Activated</small>, <small class="text-danger">[Click & Drag]</small> anywhere on the canvas to create a triangle shape.</p>
 							</div>
 						</div>
 					</div>
@@ -308,6 +350,70 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			</section>
 		</main>
 		<script>
+
+			function FileButton() {
+				if ($("#file-options").css("display") === "none") {
+		   	    	$("#file-options").css("display", "block");
+		   	    } else {
+		   	    	$("#file-options").css("display", "none");
+		   	    }
+		   	    const thisButton = document.getElementById('file-button').getBoundingClientRect();
+		   	    const thisTop = thisButton.top + 25;
+		   	    document.getElementById('file-options').style.top = thisTop + 'px';
+		   	    document.getElementById('file-options').style.left = thisButton.left + 'px';
+			}
+			document.getElementById('file-button').addEventListener('click', () => {
+		   	    FileButton();
+		   	});
+		   	document.getElementById('file-button').addEventListener('mouseover', () => {
+		   	    FileButton();
+		   	    $("#image-options").css("display", "none");
+		   	    $("#image-url-options").css("display", "none");
+		   	});
+
+		   	function ImageButton() {
+				if ($("#image-options").css("display") === "none") {
+		   	    	$("#image-options").css("display", "block");
+		   	    } else {
+		   	    	$("#image-options").css("display", "none");
+		   	    }
+		   	    const thisButton = document.getElementById('image-button').getBoundingClientRect();
+		   	    const thisTop = thisButton.top + 25;
+		   	    document.getElementById('image-options').style.top = thisTop + 'px';
+		   	    document.getElementById('image-options').style.left = thisButton.left + 'px';
+			}
+			document.getElementById('image-button').addEventListener('click', () => {
+		   	    ImageButton();
+		   	});
+		   	document.getElementById('image-button').addEventListener('mouseover', () => {
+		   	    ImageButton();
+		   	    $("#file-options").css("display", "none");
+		   	    $("#image-url-options").css("display", "none");
+		   	});
+
+		   	function ImageURLButton() {
+				if ($("#image-url-options").css("display") === "none") {
+		   	    	$("#image-url-options").css("display", "block");
+		   	    } else {
+		   	    	$("#image-url-options").css("display", "none");
+		   	    }
+		   	    const thisButtonTop = document.getElementById('image-button').getBoundingClientRect();
+		   	    const thisTop = thisButtonTop.top + 25;
+		   	    document.getElementById('image-url-options').style.top = thisTop + 'px';
+		   	    const thisButton = document.getElementById('image-url-button').getBoundingClientRect();
+		   	    const thisRight = thisButton.right + 2;
+		   	    document.getElementById('image-url-options').style.left = thisRight + 'px';
+			}
+			document.getElementById('image-url-button').addEventListener('click', () => {
+		   	    ImageURLButton();
+		   	});
+		   	document.getElementById('image-url-button').addEventListener('mouseover', () => {
+		   	    ImageURLButton();
+		   	});
+		   	document.getElementById('image').addEventListener('mouseover', () => {
+		   	    $("#image-url-options").css("display", "none");
+		   	});
+
 		   	const move = document.getElementById('move-tool');
 		   	const brush = document.getElementById('brush-tool');
 		   	const type = document.getElementById('type-tool');
@@ -426,9 +532,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   	function show() {
 		   		const canvas = new fabric.Canvas('canvas', {isDrawingMode: false});
 		   		const resize = document.getElementById('resize');
-		   		canvas.setHeight(resize.clientHeight);
-		   		canvas.setWidth(resize.clientWidth);
-		   		// canvas.setBackgroundColor('black', canvas.renderAll.bind(canvas));
+		   		const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+		   		if (vw > 1440) {
+		   			canvas.setHeight(1900);
+		   			canvas.setWidth(1800);
+		   		} else if (vw > 1024) {
+		   			canvas.setHeight(900);
+		   			canvas.setWidth(800);
+		   		} else {
+		   			canvas.setHeight(900);
+		   			canvas.setWidth((vw * 0.8) - 40);
+		   		}
+		   		canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
 		   		$('#move-tool').on('click', function () {
 		   		    canvas.isDrawingMode = false;
 	   		    	$('#brush').text('Activate');
@@ -519,19 +634,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	   		    	$('#brush').text('Activate');
 		   		});
 		   		canvas.on('selection:created', function () {
-		   		    $('#selected-object').val('');
-		   		    var selectedObject = canvas.getActiveObject();
-		   		    $('#selected-object').val(selectedObject ? selectedObject.toString() : '');
 		   		    $('#eraser').on('click', function () {
 		   		        canvas.isDrawingMode = false;
 		   		        canvas.remove(canvas.getActiveObject());
-		   		        $('#selected-object').val('');
 		   		    });
-		   		});
-		   		canvas.on('selection:updated', function () {
-		   		    $('#selected-object').val('');
-		   		    var selectedObject = canvas.getActiveObject();
-		   		    $('#selected-object').val(selectedObject ? selectedObject.toString() : '');
 		   		});
 		   		$('#type').on('click', function () {
 		   			canvas.isDrawingMode = false;
@@ -729,9 +835,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   			}
 		   		});
 
-		   		$('#imageFile').on('change', function (e) {
+		   		$('#image').on('change', function (e) {
 		   		  	canvas.isDrawingMode = false;
-		   		  	removeButton();
 		   		  	const file = e.target.files[0];
 		   		  	if (file) {
 		   		    	const reader = new FileReader();
@@ -747,64 +852,65 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				   		        canvas.add(img);
 				   		        canvas.renderAll(canvas);
 				   		    });
+	    		            const imageDataWithoutPrefix = imageUrl.split(',')[1];
+	    		            $.ajax({
+	    		                url: "./php/upload_temp.php",
+	    		                method: "POST",
+	    		                data: {
+	    		                    imageFile: imageDataWithoutPrefix
+	    		                },
+	    		                success: function (data) {
+	    		                	const images = window.localStorage.getItem('images');
+	    		                	if (images) {
+	    		                		window.localStorage.setItem('images', images + ',' + data);
+	    		                	} else {
+	    		                		window.localStorage.setItem('images', data);
+	    		                	}
+	    		                },
+	    		                error: function (xhr, status, error) {
+	    		                    console.error("AJAX Request Error:", status, error);
+	    		                },
+	    		            });
 			   		    };
 		   		    reader.readAsDataURL(file);
 		   		  	}
 		   		});
 
 		   		function serializeCanvasObjects(canvas) {
-   		            const objects = canvas.getObjects();
-   		            const serializedObjects = [];
-   		            const backgroundImage = canvas.backgroundImage;
+		   		    const objects = canvas.getObjects();
+		   		    const serializedObjects = [];
+		   		    const backgroundImage = canvas.backgroundImage;
+		   		    const imageUrlsString = window.localStorage.getItem('images');
+		   		    const imageUrls = imageUrlsString ? imageUrlsString.split(',') : [];
 
-   		            for (const obj of objects) {
-   		                if (obj.type !== 'image') {
-   		                    const serializedObj = {
-   		                        objectType: obj.type,
-   		                        properties: obj.toObject(),
-   		                    };
-   		                    serializedObjects.push(serializedObj);
-   		                }
-   		            }
+		   		    for (let i = 0; i < objects.length; i++) {
+		   		        const obj = objects[i];
+		   		        const serializedObj = {
+		   		            objectType: obj.type,
+		   		            properties: obj.toObject(),
+		   		        };
 
-   		            if (backgroundImage) {
-	                    const bgData = {
-	                        objectType: 'background',
-	                        properties: backgroundImage.toObject(),
-	                    };
-	                    serializedObjects.push(bgData);
-	                }
-   		            return serializedObjects;
-   		        }
+		   		        if (obj.type === 'image') {
+		   		            if (i < imageUrls.length) {
+		   		                serializedObj.properties.src = imageUrls[i];
+		   		            } else {
+		   		                serializedObj.properties.src = '';
+		   		            }
+		   		        }
 
-   		        function saveCanvasObjects() {
-   		            const serializedObjects = serializeCanvasObjects(canvas);
+		   		        serializedObjects.push(serializedObj);
+		   		    }
 
-   		            if (serializedObjects.length === 0) {
-	                    return;
-	                }
+		   		    if (backgroundImage) {
+		   		        const bgData = {
+		   		            objectType: 'background',
+		   		            properties: backgroundImage.toObject(),
+		   		        };
+		   		        serializedObjects.push(bgData);
+		   		    }
 
-	                var email = window.localStorage.getItem('email');
-   		            var deyt = window.localStorage.getItem('deyt');
-
-   		            $.ajax({
-   		                url: './php/add_template.php',
-   		                type: 'POST',
-   		                contentType: 'application/json',
-   		                data: JSON.stringify({
-   		                	canvasObjects: serializedObjects,
-   		                	email: email,
-   		                	deyt: deyt
-   		                }),
-   		                success: function (data) {
-   		                	uploadCanvasObjects();
-   		                },
-   		                error: function (xhr, status, error) {
-   		                    console.error("AJAX Request Error:", status, error);
-   		                },
-   		            });
-
-   		        }
+		   		    return serializedObjects;
+		   		}
 
    		        function convertCanvasToPNG(canvas) {
    		            const dataURL = canvas.toDataURL('image/png');
@@ -822,9 +928,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                    imageFile: imageDataWithoutPrefix
    		                },
    		                success: function (data) {
-   		                	canvas.clear();
     	   		            canvas.isDrawingMode = false;
-    		   		    	removeButton();
+    	   		            localStorage.removeItem('images');
    		                    window.location.href = "customize.php";
    		                },
    		                error: function (xhr, status, error) {
@@ -833,15 +938,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		            });
    		        }
 
-
-   		        $('#save').on('click', function () {
-   		            saveCanvasObjects();
-   		        });
-
    		        function getSelectedTemplate() {
    		        	var currentURL = window.location.href;
    		        	var desiredURL = "http://20.205.112.210/make_customize.php";
-   		        	// var desiredURL = "http://localhost/capstone/make_customize.php";
+   		        	// var desiredURL = "http://localhost/capstone/make_customize_v2.php";
    		        	var email = "";
    		        	var deyt = "";
    		        	if (currentURL === desiredURL) {
@@ -860,7 +960,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                    deyt: deyt
    		                },
    		                success: function (data) {
-   		                    canvas.clear();
    		                    data.forEach(function (object) {
    		                        if (object.objectType === 'path') {
    		                            const properties = JSON.parse(object.properties);
@@ -882,9 +981,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                        	const properties = JSON.parse(object.properties);
    		                        	const triangle = new fabric.Triangle(properties);
    		                            canvas.add(triangle);
-   		                        } else if (object.objectType === 'background') {
-   		                        	canvas.setBackgroundImage('images/templates/651e9d3d23b45.png', canvas.renderAll.bind(canvas));
-   		                        }
+   		                        } else if (object.objectType === 'image') {
+						            const properties = JSON.parse(object.properties);
+						            const baseUrl = window.location.origin;
+						            const absoluteUrl = baseUrl + '/' + properties.src;
+						            console.log(absoluteUrl);
+						            fabric.Image.fromURL(absoluteUrl, function (img) {
+				                        img.set(properties);
+				                        canvas.add(img);
+				                        canvas.renderAll(canvas);
+				                    });
+						        } else if (object.objectType === 'background') {
+						            canvas.setBackgroundImage('images/templates/651e9d3d23b45.png', canvas.renderAll.bind(canvas));
+						        }
    		                    });
    		                },
    		                error: function (xhr, status, error) {
@@ -959,9 +1068,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
     			                    imageFile: imageDataWithoutPrefix
     			                },
     			                success: function (data) {
-    			                	canvas.clear();
     	 	   		            	canvas.isDrawingMode = false;
-    	 		   		    		removeButton();
                 		            window.location.href = "checkout_template.php";
     			                },
     			                error: function (xhr, status, error) {
@@ -977,10 +1084,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		        });
 
    		        $('#back').on('click', function () {
-   		        	window.location.href = "customize.php";
    		            canvas.isDrawingMode = false;
-	   		    	removeButton();
-	   		    	canvas.clear();
+   		            window.location.href = "customize.php";
    		        });
 
 		   	}

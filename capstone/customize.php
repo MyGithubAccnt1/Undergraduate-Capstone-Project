@@ -73,8 +73,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							<div class="text-center text-danger mt-5">
 								[Notice: A saved template can't be deleted if an order is made with it]
 							</div>
-							<h2 class="text-start my-2 p-0 mt-5">Saved Templates</h2>
-							<div class="carousel slide m-0 p-1 border border-2 border-dark" data-ride="carousel" data-interval="0">
+							<h2 class="text-start mb-0 p-0 mt-5">Saved Templates</h2>
+							<hr class="mt-2">
+							<div class="carousel slide m-0 p-1" data-ride="carousel" data-interval="0">
 								<div class="carousel-inner" style="width: 100%">
 									<div class="item carousel-item active" style="overflow-x: auto;">
 										<div class="d-flex flex-direction-row gap-4" id="one_sm_slideshow" style="height: auto;">
@@ -138,8 +139,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							<div class="text-center text-danger mt-5">
 								[Notice: A saved template can't be deleted if an order is made with it]
 							</div>
-							<h2 class="text-start my-2 p-0 mt-5">Saved Templates</h2>
-							<div class="carousel slide m-0 p-1 border border-2 border-dark" data-ride="carousel" data-interval="0">
+							<h2 class="text-start mb-0 p-0 mt-5">Saved Templates</h2>
+							<hr class="mt-2">
+							<div class="carousel slide m-0 p-1" data-ride="carousel" data-interval="0">
 								<div class="carousel-inner" style="width: 100%">
 									<div class="item carousel-item active" style="overflow-x: auto;">
 										<div class="d-flex flex-direction-row gap-4" id="one_md_slideshow" style="height: auto;">
@@ -202,8 +204,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				<div class="container-xl my-width d-block d-md-none">
 					<div class="row">
 						<div class="col-md-12">
-							<h2 class="text-start my-2 p-0 mt-5">Available Templates</h2>
-							<div class="carousel slide m-0 p-1 border border-2 border-dark" data-ride="carousel" data-interval="0">
+							<h2 class="text-start mb-0 p-0 mt-5">Available Templates</h2>
+							<hr class="mt-2">
+							<div class="carousel slide m-0 p-1" data-ride="carousel" data-interval="0">
 								<div class="carousel-inner" style="width: 100%">
 									<div class="item carousel-item active" style="overflow-x: auto;">
 										<div class="d-flex flex-direction-row gap-4" id="one_sm_slideshow" style="height: auto;">
@@ -253,8 +256,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				<div class="container-xl my-width d-none d-sm-block">
 					<div class="row">
 						<div class="col-md-12">
-							<h2 class="text-start my-2 p-0 mt-5">Available Templates</h2>
-							<div class="carousel slide m-0 p-1 border border-2 border-dark" data-ride="carousel" data-interval="0">
+							<h2 class="text-start mb-0 p-0 mt-5">Available Templates</h2>
+							<hr class="mt-2">
+							<div class="carousel slide m-0 p-1" data-ride="carousel" data-interval="0">
 								<div class="carousel-inner" style="width: 100%">
 									<div class="item carousel-item active" style="overflow-x: auto;">
 										<div class="d-flex flex-direction-row gap-4" id="one_md_slideshow" style="height: auto;">
@@ -409,7 +413,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             var deyt = $(this).find("input[name='deyt']").val();
             window.localStorage.setItem('email', email);
             window.localStorage.setItem('deyt', deyt);
-            window.location.href = "make_customize.php";
+            window.location.href = "make_customize_v2.php";
         });
 	</script>
 	<script type="text/javascript">
@@ -417,8 +421,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             event.preventDefault();
             var email = $(this).find("input[name='email']").val();
             var deyt = $(this).find("input[name='deyt']").val();
-            var link = "http://20.205.112.210/make_customize.php?&email=" + email + "&deyt=" + deyt;
-            // var link = "http://localhost/capstone/make_customize.php?&email=" + email + "&deyt=" + deyt;
+            // var link = "http://20.205.112.210/make_customize.php?&email=" + email + "&deyt=" + deyt;
+            var link = "http://localhost/capstone/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
             if (navigator.clipboard) {
                 // Use Clipboard API
                 navigator.clipboard.writeText(link)
