@@ -15,7 +15,7 @@ if (empty($description)) {
     $description = "Empty";
 }
 
-$thumbnail = "images/new.png";
+$thumbnail = "images/products/new.png";
 $popularity = 0;
 $sql = "INSERT INTO product (price, title, thumbnail, description, category, popularity) VALUES ('$price', '$title', '$thumbnail', '$description', '$category', '$popularity')";
 
