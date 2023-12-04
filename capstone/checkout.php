@@ -21,7 +21,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				<div class="container-fluid my-width my-4">
 					<div class="row text-center">
 						<div class="col-6">
-							<a href="index.php">
+							<a href="javascript:history.back()">
 							    <button class="btn-main py-1 mt-4 w-75 rounded-pill">BACK</button>
 							</a>
 						</div>

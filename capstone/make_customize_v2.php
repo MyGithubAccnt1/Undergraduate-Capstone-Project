@@ -56,7 +56,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				background-color: inherit;
 				text-align: left;
 			}
-			.options:hover {
+			.template-options {
+				margin: 0;
+				padding: 3px 25px;
+				border: none;
+				background-color: inherit;
+				text-align: center;
+			}
+			.options:hover, .template-options:hover {
 				background-color: rgba(250, 250, 210, 1.0);
 				cursor: pointer;
 			}
@@ -73,6 +80,31 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			<section class="button-options" id="image-options">
 				<div style="display: flex; flex-direction: column; padding: 0; margin: 0;">
 					<input class="options" type="file" id="image" accept="image/png">
+					<button class="options" id="background-button">Templates</button>
+				</div>
+			</section>
+			<section class="button-options" id="background-options">
+				<div style="display: flex; flex-direction: column; padding: 0; margin: 0;">
+					<button class="options" id="necklace-button">Necklace</button>
+					<button class="options">Pin</button>
+					<button class="options">Table Nameplate</button>
+					<button class="options">Logo Seal</button>
+				</div>
+			</section>
+			<section class="button-options" id="necklace-options">
+				<div style="display: flex; flex-direction: row; padding: 0; margin: 0;">
+					<button class="template-options" id="gold-necklace">
+						<img src="images/gold-necklace.png" height="45px" width="40px">
+						<p>Gold</p>
+					</button>
+					<button class="template-options" id="silver-necklace">
+						<img src="images/silver-necklace.png" height="45px" width="40px">
+						<p>Silver</p>
+					</button>
+					<button class="template-options" id="bronze-necklace">
+						<img src="images/bronze-necklace.png" height="45px" width="40px">
+						<p>Bronze</p>
+					</button>
 				</div>
 			</section>
 			<section style="height: 100vh; width: 100%; margin: 0; overflow-x: hidden; overflow-y: hidden;">
@@ -367,9 +399,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   	    document.getElementById('image-options').style.left = thisButton.left + 'px';
 		   	});
 
+		   	document.getElementById('background-button').addEventListener('mouseover', () => {
+		   	    $("#background-options").css("display", "block");
+		   	    const thisButton = document.getElementById('background-button').getBoundingClientRect();
+		   	    const thisTop = thisButton.top - 1;
+		   	    document.getElementById('background-options').style.top = thisTop + 'px';
+		   	    document.getElementById('background-options').style.left = thisButton.right + 'px';
+		   	});
+
+		   	document.getElementById('necklace-button').addEventListener('mouseover', () => {
+		   	    $("#necklace-options").css("display", "block");
+		   	    const thisButton = document.getElementById('necklace-button').getBoundingClientRect();
+		   	    const thisTop = thisButton.top - 1;
+		   	    document.getElementById('necklace-options').style.top = thisTop + 'px';
+		   	    document.getElementById('necklace-options').style.left = thisButton.right + 'px';
+		   	});
+
 		   	document.getElementById('order').addEventListener('mouseover', () => {
 		   	    $("#file-options").css("display", "none");
 		   	    $("#image-options").css("display", "none");
+		   	    $("#background-options").css("display", "none");
+		   	    $("#necklace-options").css("display", "none");
 		   	});
 
 		   	document.getElementById('image-button').addEventListener('mouseover', () => {
@@ -378,6 +428,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
 		   	document.getElementById('file-button').addEventListener('mouseover', () => {
 		   	    $("#image-options").css("display", "none");
+		   	    $("#background-options").css("display", "none");
+		   	    $("#necklace-options").css("display", "none");
+		   	});
+
+		   	document.getElementById('image').addEventListener('mouseover', () => {
+		   	    $("#background-options").css("display", "none");
+		   	    $("#necklace-options").css("display", "none");
 		   	});
 
 		   	const move = document.getElementById('move-tool');
@@ -800,7 +857,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   				$('#triangle').text('Activate');
 		   			}
 		   		});
-
 		   		$('#image').on('change', function (e) {
 		   		  	canvas.isDrawingMode = false;
 		   		  	const file = e.target.files[0];
@@ -842,7 +898,24 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   		    reader.readAsDataURL(file);
 		   		  	}
 		   		});
-
+		   		$('#gold-necklace').on('click', function () {
+		   		    canvas.setBackgroundImage('images/gold-necklace.png', canvas.renderAll.bind(canvas));
+		   		    $("#image-options").css("display", "none");
+		   		    $("#background-options").css("display", "none");
+		   		    $("#necklace-options").css("display", "none");
+		   		});
+		   		$('#silver-necklace').on('click', function () {
+		   		    canvas.setBackgroundImage('images/silver-necklace.png', canvas.renderAll.bind(canvas));
+		   		    $("#image-options").css("display", "none");
+		   		    $("#background-options").css("display", "none");
+		   		    $("#necklace-options").css("display", "none");
+		   		});
+		   		$('#bronze-necklace').on('click', function () {
+		   		    canvas.setBackgroundImage('images/bronze-necklace.png', canvas.renderAll.bind(canvas));
+		   		    $("#image-options").css("display", "none");
+		   		    $("#background-options").css("display", "none");
+		   		    $("#necklace-options").css("display", "none");
+		   		});
 		   		function serializeCanvasObjects(canvas) {
 		   		    const objects = canvas.getObjects();
 		   		    const serializedObjects = [];
@@ -878,16 +951,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
 		   		    return serializedObjects;
 		   		}
-
    		        function convertCanvasToPNG(canvas) {
    		            const dataURL = canvas.toDataURL('image/png');
    		            return dataURL;
    		        }
-
    		        function uploadCanvasObjects() {
    		            const imageFile = convertCanvasToPNG(canvas);
    		            const imageDataWithoutPrefix = imageFile.split(',')[1];
-
    		            $.ajax({
    		                url: "./php/upload_template.php",
    		                method: "POST",
@@ -897,6 +967,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                success: function (data) {
     	   		            canvas.isDrawingMode = false;
     	   		            localStorage.removeItem('images');
+    	   		            localStorage.removeItem('email');
+    	   		            localStorage.removeItem('deyt');
    		                    window.location.href = "customize.php";
    		                },
    		                error: function (xhr, status, error) {
@@ -904,7 +976,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                },
    		            });
    		        }
-
    		        function getSelectedTemplate() {
    		        	var currentURL = window.location.href;
    		        	var email = "";
@@ -958,7 +1029,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				                    },{crossOrigin: 'anonymous'});
 				                    canvas.renderAll(canvas);
 						        } else if (object.objectType === 'background') {
-						            canvas.setBackgroundImage('images/templates/651e9d3d23b45.png', canvas.renderAll.bind(canvas));
+						        	const properties = JSON.parse(object.properties);
+						            canvas.setBackgroundImage(properties.src, canvas.renderAll.bind(canvas));
 						        }
    		                    });
    		                },
@@ -968,19 +1040,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                }
    		            });
    		        }
-
    		        getSelectedTemplate();
-
    		        function updateTemplate() {
    		            const serializedObjects = serializeCanvasObjects(canvas);
-
    		            if (serializedObjects.length === 0) {
 	                    return;
 	                }
-
    		            var email = window.localStorage.getItem('email');
    		            var deyt = window.localStorage.getItem('deyt');
-
    		            $.ajax({
    		                url: './php/update_template.php',
    		                type: 'POST',
@@ -997,23 +1064,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                    console.error("AJAX Request Error:", status, error);
    		                },
    		            });
-
    		        }
-
    		        $('#update').on('click', function () {
    		            updateTemplate();
    		        });
-
    		        $('#order').on('click', function () {
    		            const serializedObjects = serializeCanvasObjects(canvas);
-
    		            if (serializedObjects.length === 0) {
 	                    return;
 	                }
-
    		            var email = window.localStorage.getItem('email');
    		            var deyt = window.localStorage.getItem('deyt');
-
    		            $.ajax({
    		                url: './php/update_template.php',
    		                type: 'POST',
@@ -1035,6 +1096,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
     			                },
     			                success: function (data) {
     	 	   		            	canvas.isDrawingMode = false;
+    	 	   		            	localStorage.removeItem('images');
+    	 	   		            	localStorage.removeItem('email');
+    	 	   		            	localStorage.removeItem('deyt');
                 		            window.location.href = "checkout_template.php";
     			                },
     			                error: function (xhr, status, error) {
@@ -1046,15 +1110,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                    console.error("AJAX Request Error:", status, error);
    		                },
    		            });
-
    		        });
-
    		        $('#back').on('click', function () {
    		            canvas.isDrawingMode = false;
    		            localStorage.removeItem('images');
+   		            localStorage.removeItem('email');
+   		            localStorage.removeItem('deyt');
    		            window.location.href = "customize.php";
    		        });
-
 		   	}
 		</script>
 	</body>

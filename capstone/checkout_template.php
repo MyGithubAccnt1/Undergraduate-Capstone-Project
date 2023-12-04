@@ -21,7 +21,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				<div class="container-fluid my-width my-4">
 					<div class="row text-center">
 						<div class="col-6">
-							<a href="javascript:history.back()">
+							<!-- <a href="javascript:history.back()"> -->
+							<a href="customize.php">
 							    <button class="btn-main py-1 mt-4 w-75 rounded-pill">BACK</button>
 							</a>
 						</div>
@@ -81,7 +82,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                    <div class="col-sm-12 col-md-4 text-center">
 	                        <h2 class="">ORDER SUMMARY</h2>
 	                        <div class="m-0 p-0 border border-dark border-2 opacity-100 rounded-0" id="template-container">
-	                            
+	                            <!-- dynamic -->
 	                        </div>
 	                    </div>
 	                </div>

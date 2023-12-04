@@ -37,7 +37,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				<div class="row">
 					<h4>CUSTOMIZATION STYLE</h4>
 					<div class="col-6">
-						<button class="btn-main py-1 my-3 w-50 rounded-pill" id="style_one">AUTO-GENERATE</button>
+						<button class="btn-main py-1 my-3 w-50 rounded-pill" id="style_one">BASIC</button>
 					</div>
 					<div class="col-6">
 						<button class="btn-main py-1 my-3 w-50 rounded-pill" id="style_two">ADVANCE</button>
@@ -64,7 +64,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			</section>
 			<br>
 			<section class="my-width mx-auto text-center rounded-pill border border-dark" style="opacity: 0; visibility: hidden; transition: opacity 0.5s ease-in-out;" id="proceed">
-				<button class="btn-main py-1 my-3 w-75 rounded-pill">PROCEED</button>
+				<form action="" class="customize_style">
+					<button type="submit" class="btn-main py-1 my-3 w-75 rounded-pill">PROCEED</button>
+				</form>
 			</section>
 			<section>
 				<div class="container-xl my-width d-block d-md-none">
@@ -179,112 +181,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 																<input type="hidden" name="email" value="<?php echo $row['email']?>">
 																<input type="hidden" name="deyt" value="<?php echo $row['deyt']?>">
 																<button type="submit" class="rounded-0 w-100 btn-main btn btn-md">Delete</button>
-															</form>
-														</div>
-													</div>
-												</div>
-										<?php
-											}
-										} else {
-	                                    ?>
-	                                    	<p class="w-100 text-center text-dark">[There is no saved template]</p>
-	                                    <?php
-	                                    }
-	                                    $conn->close();
-	                                    ?>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section>
-				<div class="container-xl my-width d-block d-md-none">
-					<div class="row">
-						<div class="col-md-12">
-							<h2 class="text-start mb-0 p-0 mt-5">Available Templates</h2>
-							<hr class="mt-2">
-							<div class="carousel slide m-0 p-1" data-ride="carousel" data-interval="0">
-								<div class="carousel-inner" style="width: 100%">
-									<div class="item carousel-item active" style="overflow-x: auto;">
-										<div class="d-flex flex-direction-row gap-4" id="one_sm_slideshow" style="height: auto;">
-										<?php
-										include("./php/connect.php");
-										$sql = "SELECT * FROM template WHERE email = 'test@admin'";
-										$result = $conn->query($sql);
-										if ($result->num_rows > 0) {
-											// output data of each row
-											while($row = $result->fetch_assoc()) {
-										?>
-												<div class="col-sm-6 p-0">
-													<div class="thumb-wrapper rounded-0 text-dark border border-dark" style="width: 200px;">
-														<div class="img-box template-img" id="image">
-															<input type="hidden" name="image" value="<?php echo $row['thumbnail']?>">
-															<img src="<?php echo $row['thumbnail']?>" class="img-fluid border" alt="Missing Image">
-														</div>
-														<div class="thumb-content">
-															<form action="" class="template">
-																<input type="hidden" name="email" value="<?php echo $row['email']?>">
-																<input type="hidden" name="deyt" value="<?php echo $row['deyt']?>">
-																<p class="item-price text-start">
-																	<b>Created On: <br><br></b>
-																	<b style="margin-left: 20px;"><?php echo $row['deyt']?></b>
-																</p><br>
-																<button type="submit" class="rounded-0 btn-main btn btn-md">Select</button>
-															</form>
-														</div>
-													</div>
-												</div>
-										<?php
-											}
-										} else {
-	                                    ?>
-	                                    	<p class="w-100 text-center text-dark">[There is no saved template]</p>
-	                                    <?php
-	                                    }
-	                                    $conn->close();
-	                                    ?>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="container-xl my-width d-none d-sm-block">
-					<div class="row">
-						<div class="col-md-12">
-							<h2 class="text-start mb-0 p-0 mt-5">Available Templates</h2>
-							<hr class="mt-2">
-							<div class="carousel slide m-0 p-1" data-ride="carousel" data-interval="0">
-								<div class="carousel-inner" style="width: 100%">
-									<div class="item carousel-item active" style="overflow-x: auto;">
-										<div class="d-flex flex-direction-row gap-4" id="one_md_slideshow" style="height: auto;">
-										<?php
-										include("./php/connect.php");
-										$sql = "SELECT * FROM template WHERE email = 'test@admin'";
-										$result = $conn->query($sql);
-										if ($result->num_rows > 0) {
-											// output data of each row
-											while($row = $result->fetch_assoc()) {
-										?>
-												<div class="container p-0 m-0">
-													<div class="thumb-wrapper rounded-0 text-dark m-0 border border-dark" style="width: 200px;">
-														<div class="img-box template-img" id="image">
-															<input type="hidden" name="image" value="<?php echo $row['thumbnail']?>">
-															<img src="<?php echo $row['thumbnail']?>" class="img-fluid border" alt="Missing Image">
-														</div>
-														<div class="thumb-content">
-															<form action="" class="template">
-																<input type="hidden" name="email" value="<?php echo $row['email']?>">
-																<input type="hidden" name="deyt" value="<?php echo $row['deyt']?>">
-																<p class="item-price text-start">
-																	<b>Created On: <br><br></b>
-																	<b style="margin-left: 20px;"><?php echo $row['deyt']?></b>
-																</p><br>
-																<button type="submit" class="rounded-0 btn-main btn btn-md">Select</button>
 															</form>
 														</div>
 													</div>
@@ -407,6 +303,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	   	});
 	</script>
 	<script type="text/javascript">
+		$(document).on("submit", ".customize_style", function (event) {
+            event.preventDefault();
+            window.location.href = "make_customize_v2.php";
+        });
+	</script>
+	<script type="text/javascript">
 		$(document).on("submit", ".template", function (event) {
             event.preventDefault();
             var email = $(this).find("input[name='email']").val();
@@ -423,10 +325,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             var deyt = $(this).find("input[name='deyt']").val();
             var link = '';
             var currentURL = window.location.href;
-            if (currentURL.contains('http://20.205.112.210/make_customize.php')) {
-            	link = "http://20.205.112.210/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
+            if (currentURL.indexOf('http://20.205.112.210/make_customize.php') !== -1) {
+                // If the substring is found in currentURL
+                link = "http://20.205.112.210/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
             } else {
-            	link = "http://localhost/capstone/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
+                // If the substring is not found in currentURL
+                link = "http://localhost/capstone/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
             }
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(link)
