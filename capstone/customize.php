@@ -325,6 +325,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             var deyt = $(this).find("input[name='deyt']").val();
             var link = '';
             var currentURL = window.location.href;
+            console.log(currentURL);
             if (currentURL.indexOf('http://20.205.112.210/make_customize.php') !== -1) {
                 // If the substring is found in currentURL
                 link = "http://20.205.112.210/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
@@ -332,6 +333,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                 // If the substring is not found in currentURL
                 link = "http://localhost/capstone/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
             }
+            console.log(link);
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(link)
                     .then(function () {
