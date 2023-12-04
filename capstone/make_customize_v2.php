@@ -984,7 +984,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						            let imageUrl = properties.src;
 						            imageUrl = imageUrl.replace(/^([^.]*)\.(.*)\./, "$1$2.");
 						            const baseUrl = window.location.origin;
-						            const absoluteUrl = baseUrl + '/capstone/' + imageUrl;
+						            const absoluteUrl = baseUrl + '/' + imageUrl;
 						            fabric.Image.fromURL(absoluteUrl, (img) => {
 				                        img.set(properties);
 				                        canvas.add(img);
