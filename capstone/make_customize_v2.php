@@ -863,10 +863,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	    		                	const images = window.localStorage.getItem('images');
 	    		                	if (images) {
 	    		                		window.localStorage.setItem('images', images + ',' + data);
-	    		                		console.log('Saving img:' + images);
 	    		                	} else {
 	    		                		window.localStorage.setItem('images', data);
-	    		                		console.log('Saving img:' + data);
 	    		                	}
 	    		                },
 	    		                error: function (xhr, status, error) {
@@ -983,9 +981,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                            canvas.add(triangle);
    		                        } else if (object.objectType === 'image') {
 						            const properties = JSON.parse(object.properties);
+						            let imageUrl = properties.src;
+						            imageUrl = imageUrl.replace(/^([^.]*)\.(.*)\./, "$1$2.");
 						            const baseUrl = window.location.origin;
-						            const absoluteUrl = baseUrl + '/' + properties.src;
-						            console.log(absoluteUrl);
+						            const absoluteUrl = baseUrl + '/capstone/' + imageUrl;
 						            fabric.Image.fromURL(absoluteUrl, (img) => {
 				                        img.set(properties);
 				                        canvas.add(img);
@@ -1085,6 +1084,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
    		        $('#back').on('click', function () {
    		            canvas.isDrawingMode = false;
+   		            localStorage.removeItem('images');
    		            window.location.href = "customize.php";
    		        });
 
