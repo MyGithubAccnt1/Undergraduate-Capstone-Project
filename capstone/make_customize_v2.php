@@ -72,17 +72,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			</section>
 			<section class="button-options" id="image-options">
 				<div style="display: flex; flex-direction: column; padding: 0; margin: 0;">
-					<button class="options" id="image-url-button">From URL</button>
 					<input class="options" type="file" id="image" accept="image/png">
-				</div>
-			</section>
-			<section class="button-options" id="image-url-options">
-				<div style="display: flex; flex-direction: column; padding: 0; margin: 0;">
-					<div style="display: flex; align-items: center; justify-content: center; padding: 5px;">
-						<small>URL: </small>
-						<input type="text" name="image-url" style="width: 100%;">
-					</div>
-					<button class="options" style="text-align: center; padding: 3px 0;">Select</button>
 				</div>
 			</section>
 			<section style="height: 100vh; width: 100%; margin: 0; overflow-x: hidden; overflow-y: hidden;">
@@ -351,9 +341,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		</main>
 		<script>
 
-			function FileButton() {
-				if ($("#file-options").css("display") === "none") {
+			document.getElementById('file-button').addEventListener('click', () => {
+		   	    if ($("#file-options").css("display") === "none") {
 		   	    	$("#file-options").css("display", "block");
+		   	    	$("#image-options").css("display", "none");
 		   	    } else {
 		   	    	$("#file-options").css("display", "none");
 		   	    }
@@ -361,19 +352,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   	    const thisTop = thisButton.top + 25;
 		   	    document.getElementById('file-options').style.top = thisTop + 'px';
 		   	    document.getElementById('file-options').style.left = thisButton.left + 'px';
-			}
-			document.getElementById('file-button').addEventListener('click', () => {
-		   	    FileButton();
-		   	});
-		   	document.getElementById('file-button').addEventListener('mouseover', () => {
-		   	    FileButton();
-		   	    $("#image-options").css("display", "none");
-		   	    $("#image-url-options").css("display", "none");
 		   	});
 
-		   	function ImageButton() {
-				if ($("#image-options").css("display") === "none") {
+			document.getElementById('image-button').addEventListener('click', () => {
+		   	    if ($("#image-options").css("display") === "none") {
 		   	    	$("#image-options").css("display", "block");
+		   	    	$("#file-options").css("display", "none");
 		   	    } else {
 		   	    	$("#image-options").css("display", "none");
 		   	    }
@@ -381,37 +365,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   	    const thisTop = thisButton.top + 25;
 		   	    document.getElementById('image-options').style.top = thisTop + 'px';
 		   	    document.getElementById('image-options').style.left = thisButton.left + 'px';
-			}
-			document.getElementById('image-button').addEventListener('click', () => {
-		   	    ImageButton();
-		   	});
-		   	document.getElementById('image-button').addEventListener('mouseover', () => {
-		   	    ImageButton();
-		   	    $("#file-options").css("display", "none");
-		   	    $("#image-url-options").css("display", "none");
 		   	});
 
-		   	function ImageURLButton() {
-				if ($("#image-url-options").css("display") === "none") {
-		   	    	$("#image-url-options").css("display", "block");
-		   	    } else {
-		   	    	$("#image-url-options").css("display", "none");
-		   	    }
-		   	    const thisButtonTop = document.getElementById('image-button').getBoundingClientRect();
-		   	    const thisTop = thisButtonTop.top + 25;
-		   	    document.getElementById('image-url-options').style.top = thisTop + 'px';
-		   	    const thisButton = document.getElementById('image-url-button').getBoundingClientRect();
-		   	    const thisRight = thisButton.right + 2;
-		   	    document.getElementById('image-url-options').style.left = thisRight + 'px';
-			}
-			document.getElementById('image-url-button').addEventListener('click', () => {
-		   	    ImageURLButton();
+		   	document.getElementById('order').addEventListener('mouseover', () => {
+		   	    $("#file-options").css("display", "none");
+		   	    $("#image-options").css("display", "none");
 		   	});
-		   	document.getElementById('image-url-button').addEventListener('mouseover', () => {
-		   	    ImageURLButton();
+
+		   	document.getElementById('image-button').addEventListener('mouseover', () => {
+		   	    $("#file-options").css("display", "none");
 		   	});
-		   	document.getElementById('image').addEventListener('mouseover', () => {
-		   	    $("#image-url-options").css("display", "none");
+
+		   	document.getElementById('file-button').addEventListener('mouseover', () => {
+		   	    $("#image-options").css("display", "none");
 		   	});
 
 		   	const move = document.getElementById('move-tool');
@@ -984,7 +950,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						            let imageUrl = properties.src;
 						            imageUrl = imageUrl.replace(/^([^.]*)\.(.*)\./, "$1$2.");
 						            const baseUrl = window.location.origin;
-						            const absoluteUrl = baseUrl + '/' + imageUrl;
+						            const absoluteUrl = baseUrl + '/capstone/' + imageUrl;
 						            fabric.Image.fromURL(absoluteUrl, (img) => {
 				                        img.set(properties);
 				                        canvas.add(img);
