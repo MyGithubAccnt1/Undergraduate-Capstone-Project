@@ -863,8 +863,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	    		                	const images = window.localStorage.getItem('images');
 	    		                	if (images) {
 	    		                		window.localStorage.setItem('images', images + ',' + data);
+	    		                		console.log('Saving img:' + images);
 	    		                	} else {
 	    		                		window.localStorage.setItem('images', data);
+	    		                		console.log('Saving img:' + data);
 	    		                	}
 	    		                },
 	    		                error: function (xhr, status, error) {
