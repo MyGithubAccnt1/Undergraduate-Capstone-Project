@@ -48,22 +48,19 @@ if(mysqli_num_rows($result) === 1) {
 	    echo "Error: " . mysqli_error($conn);
 	}
 
+	date_default_timezone_set('Asia/Manila');
+	$date = date('Y-m-d H:i');
+
 	if($row['role'] === "Admin") {
 		$_SESSION["role"] = $row['role'];
-
 		echo "2";
-
-		date_default_timezone_set('Asia/Manila');
-		$date = date('Y-m-d H:i');
    		$notifmessage = "[". $email ."] logs to the system on [". $date ."].";
 		$notifcategory = "login";
 		$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
 		$notifresult = mysqli_query($conn, $notifsql);
 	}else{
 		$_SESSION["role"] = $row['role'];
-
 		echo "3";
-
    		$notifmessage = "[". $email ."] logs to the system on [". $date ."].";
 		$notifcategory = "login";
 		$notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
