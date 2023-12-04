@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $canvasObjects['email'];
     $date = $canvasObjects['deyt'];
 
-    if ($email == "test@admin"){
+    if ($email != $_SESSION['email'] || $email != ""){
         $new_email = $_SESSION['email'];
         $new_date = date('Y-m-d H:i');
         if (is_array($canvasObjects)) {
