@@ -940,11 +940,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
    		        function getSelectedTemplate() {
    		        	var currentURL = window.location.href;
-   		        	var desiredURL = "http://20.205.112.210/make_customize_v2.php";
-   		        	// var desiredURL = "http://localhost/capstone/make_customize_v2.php";
    		        	var email = "";
    		        	var deyt = "";
-   		        	if (currentURL === desiredURL) {
+   		        	if (currentURL === "http://20.205.112.210/make_customize_v2.php" || currentURL === "http://localhost/capstone/make_customize_v2.php") {
    		        	    email = window.localStorage.getItem('email');
    		        	    deyt = window.localStorage.getItem('deyt');
    		        	} else {
@@ -986,11 +984,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						            const baseUrl = window.location.origin;
 						            const absoluteUrl = baseUrl + '/' + properties.src;
 						            console.log(absoluteUrl);
-						            fabric.Image.fromURL(absoluteUrl, function (img) {
+						            fabric.Image.fromURL(absoluteUrl, (img) => {
 				                        img.set(properties);
 				                        canvas.add(img);
-				                        canvas.renderAll(canvas);
-				                    });
+				                    },{crossOrigin: 'anonymous'});
+				                    canvas.renderAll(canvas);
 						        } else if (object.objectType === 'background') {
 						            canvas.setBackgroundImage('images/templates/651e9d3d23b45.png', canvas.renderAll.bind(canvas));
 						        }

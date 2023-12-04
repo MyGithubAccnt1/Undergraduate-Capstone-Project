@@ -421,10 +421,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             event.preventDefault();
             var email = $(this).find("input[name='email']").val();
             var deyt = $(this).find("input[name='deyt']").val();
-            // var link = "http://20.205.112.210/make_customize.php?&email=" + email + "&deyt=" + deyt;
-            var link = "http://localhost/capstone/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
+            var link = '';
+            var currentURL = window.location.href;
+            if (currentURL.contains('http://20.205.112.210/make_customize.php')) {
+            	link = "http://20.205.112.210/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
+            } else {
+            	link = "http://localhost/capstone/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
+            }
             if (navigator.clipboard) {
-                // Use Clipboard API
                 navigator.clipboard.writeText(link)
                     .then(function () {
                         alert('Notice: A shareable link has been copied to the clipboard.');
