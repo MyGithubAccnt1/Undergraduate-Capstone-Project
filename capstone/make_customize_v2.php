@@ -826,6 +826,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	    		                    imageFile: imageDataWithoutPrefix
 	    		                },
 	    		                success: function (data) {
+	    		                	$("#image-options").css("display", "none");
 	    		                	const images = window.localStorage.getItem('images');
 	    		                	if (images) {
 	    		                		window.localStorage.setItem('images', images + ',' + data);
@@ -950,7 +951,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						            let imageUrl = properties.src;
 						            imageUrl = imageUrl.replace(/^([^.]*)\.(.*)\./, "$1$2.");
 						            const baseUrl = window.location.origin;
-						            const absoluteUrl = baseUrl + '/' + imageUrl;
+						            const absoluteUrl = baseUrl + '/capstone/' + imageUrl;
 						            fabric.Image.fromURL(absoluteUrl, (img) => {
 				                        img.set(properties);
 				                        canvas.add(img);
