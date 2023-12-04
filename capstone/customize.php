@@ -305,7 +305,28 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	<script type="text/javascript">
 		$(document).on("submit", ".customize_style", function (event) {
             event.preventDefault();
-            window.location.href = "make_customize_v2.php";
+            const product_one = document.getElementById('product_one');
+            const product_two = document.getElementById('product_two');
+            const product_three = document.getElementById('product_three');
+            const product_four = document.getElementById('product_four');
+            if (product_one.classList.contains('customize-active')) {
+              	window.localStorage.setItem('product', 'necklace');
+            } else if (product_two.classList.contains('customize-active')) {
+              	window.localStorage.setItem('product', 'pin');
+            } else if (product_three.classList.contains('customize-active')) {
+              	window.localStorage.setItem('product', 'nameplate');
+            } else if (product_four.classList.contains('customize-active')) {
+              	window.localStorage.setItem('product', 'logo');
+            } else {
+            	window.localStorage.setItem('product', 'necklace');
+            }
+            const style_one = document.getElementById('style_one');
+            const style_two = document.getElementById('style_two');
+            if (style_one.classList.contains('customize-active')) {
+              	
+            } else {
+              	window.location.href = "make_customize_v2.php";
+            }
         });
 	</script>
 	<script type="text/javascript">

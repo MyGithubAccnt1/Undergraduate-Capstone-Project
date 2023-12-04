@@ -58,14 +58,56 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			}
 			.template-options {
 				margin: 0;
-				padding: 3px 25px;
+				padding: 3px;
 				border: none;
 				background-color: inherit;
 				text-align: center;
+				max-width: 100px;
+				width: 100px;
 			}
 			.options:hover, .template-options:hover {
 				background-color: rgba(250, 250, 210, 1.0);
 				cursor: pointer;
+			}
+			.canvas-size {
+				flex: 1;
+				border: 1px solid #000;
+				background-color: rgba(121, 75, 41, 0.5);
+				overflow-y: auto;
+				overflow-x: auto;
+			    padding: 0;
+			}
+			@media screen and (min-width: 1140px) {
+			    .canvas-size {
+		    		display: flex;
+		    		justify-content: center;
+		    	    padding: 0 0 230px 0;
+			    }
+			}
+			@media screen and (min-width: 1024px) and (max-width: 1139px) {
+			    .canvas-size {
+			        padding: 0 0 95px 0;
+			    }
+			}
+			@media screen and (min-width: 768px) and (max-width: 1023px) {
+			    .canvas-size {
+			        padding: 5% 5% 16.5% 5%;
+			    }
+			}
+			@media screen and (min-width: 424px) and (max-width: 767px) {
+			    .canvas-size {
+			        padding: 10% 10% 30% 10%;
+			    }
+			}
+			@media screen and (min-width: 375px) and (max-width: 423px) {
+			    .canvas-size {
+			        padding: 10% 10% 34% 10%;
+			    }
+			}
+			@media screen and (max-width: 376px) {
+			    .canvas-size {
+			        padding: 15% 15% 42.5% 15%;
+			    }
 			}
 		</style>
 	</head>
@@ -93,16 +135,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			</section>
 			<section class="button-options" id="necklace-options">
 				<div style="display: flex; flex-direction: row; padding: 0; margin: 0;">
+					<button class="template-options" id="remove-necklace">Remove</button>
 					<button class="template-options" id="gold-necklace">
-						<img src="images/gold-necklace.png" height="45px" width="40px">
+						<img src="images/gold-necklace.png" height="45px" width="40px" alt="Missing_Image">
 						<p>Gold</p>
 					</button>
 					<button class="template-options" id="silver-necklace">
-						<img src="images/silver-necklace.png" height="45px" width="40px">
+						<img src="images/silver-necklace.png" height="45px" width="40px" alt="Missing_Image">
 						<p>Silver</p>
 					</button>
 					<button class="template-options" id="bronze-necklace">
-						<img src="images/bronze-necklace.png" height="45px" width="40px">
+						<img src="images/bronze-necklace.png" height="45px" width="40px" alt="Missing_Image">
 						<p>Bronze</p>
 					</button>
 				</div>
@@ -114,7 +157,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					<button class="my-option" id="image-button">Image</button>
 					<button class="my-option" id="order">Order</button>
 				</div>
-				<div style="display: flex; flex-direction: row; align-items: center; height: 35px; padding-left: 10px; margin: 0; background-color: #D0B89F;">
+				<div style="display: flex; flex-direction: row; align-items: center; height: 35px; padding-left: 10px; margin: 0; background-color: #D0B89F; overflow-x: auto; overflow-y: auto;">
 					<div class="my-info">Current Tool:</div>
 					<div class="my-info" id="current-tool" style="margin-right: 10px;">
 						<i class="fas fa-arrows-alt"></i>
@@ -152,10 +195,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							<i class="fas fa-play"></i>
 						</button>
 					</div>
-					<div style="flex: 1; border: 1px solid #000; background-color: rgba(121, 75, 41, 0.5);" class="d-flex justify-content-center" id="resize">
+					<div class="canvas-size">
 						<canvas id="canvas"></canvas>
 					</div>
-					<div style="display: flex; flex-direction: column; background-color: #D0B89F; width: 20%; text-align: left; padding: 0 10px;">
+					<div style="display: flex; flex-direction: column; background-color: #D0B89F; width: 20%; text-align: left; padding: 0 10px; overflow-x: auto; overflow-y: auto;">
 						<div class="text-center">Properties</div>
 						<hr class="mt-2">
 						<div id="move-property" style="display: block;">
@@ -554,18 +597,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   	});
 		   	function show() {
 		   		const canvas = new fabric.Canvas('canvas', {isDrawingMode: false});
-		   		const resize = document.getElementById('resize');
-		   		const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-		   		if (vw > 1440) {
-		   			canvas.setHeight(1900);
-		   			canvas.setWidth(1800);
-		   		} else if (vw > 1024) {
-		   			canvas.setHeight(900);
-		   			canvas.setWidth(800);
-		   		} else {
-		   			canvas.setHeight(900);
-		   			canvas.setWidth((vw * 0.8) - 40);
-		   		}
+		   		canvas.setHeight(900);
+		   		canvas.setWidth(800);
 		   		canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
 		   		$('#move-tool').on('click', function () {
 		   		    canvas.isDrawingMode = false;
@@ -898,6 +931,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   		    reader.readAsDataURL(file);
 		   		  	}
 		   		});
+		   		$('#remove-necklace').on('click', function () {
+		   		    canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
+		   		    $("#image-options").css("display", "none");
+		   		    $("#background-options").css("display", "none");
+		   		    $("#necklace-options").css("display", "none");
+		   		});
 		   		$('#gold-necklace').on('click', function () {
 		   		    canvas.setBackgroundImage('images/gold-necklace.png', canvas.renderAll.bind(canvas));
 		   		    $("#image-options").css("display", "none");
@@ -969,6 +1008,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
     	   		            localStorage.removeItem('images');
     	   		            localStorage.removeItem('email');
     	   		            localStorage.removeItem('deyt');
+    	   		            localStorage.removeItem('product');
    		                    window.location.href = "customize.php";
    		                },
    		                error: function (xhr, status, error) {
@@ -980,9 +1020,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		        	var currentURL = window.location.href;
    		        	var email = "";
    		        	var deyt = "";
+   		        	var product = "";
    		        	if (currentURL === "http://20.205.112.210/make_customize_v2.php" || currentURL === "http://localhost/capstone/make_customize_v2.php") {
    		        	    email = window.localStorage.getItem('email');
    		        	    deyt = window.localStorage.getItem('deyt');
+   		        	    product = window.localStorage.getItem('product');
    		        	} else {
    		        	    email = new URLSearchParams(currentURL).get('email');
    		        	    deyt = new URLSearchParams(currentURL).get('deyt');
@@ -1039,6 +1081,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                    console.log(xhr.responseText);
    		                }
    		            });
+   		            if (product === "necklace") {
+   		            	canvas.setBackgroundImage("images/gold-necklace.png", canvas.renderAll.bind(canvas));
+   		            } else if (product === "pin") {
+
+   		            } else if (product === "nameplate") {
+
+   		            } else if (product === "logo") {
+
+   		            } else {
+   		            	canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
+   		            }
    		        }
    		        getSelectedTemplate();
    		        function updateTemplate() {
@@ -1099,6 +1152,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
     	 	   		            	localStorage.removeItem('images');
     	 	   		            	localStorage.removeItem('email');
     	 	   		            	localStorage.removeItem('deyt');
+    	 	   		            	localStorage.removeItem('product');
                 		            window.location.href = "checkout_template.php";
     			                },
     			                error: function (xhr, status, error) {
@@ -1116,6 +1170,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		            localStorage.removeItem('images');
    		            localStorage.removeItem('email');
    		            localStorage.removeItem('deyt');
+   		            localStorage.removeItem('product');
    		            window.location.href = "customize.php";
    		        });
 		   	}
