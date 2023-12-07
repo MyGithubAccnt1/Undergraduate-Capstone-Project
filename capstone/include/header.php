@@ -56,6 +56,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			    	</a>
 			    </li>
 			    <li>
+		    	    <a href="customize.php">
+		    			<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
+		    				<i class="fas fa-pencil-ruler" style="margin: 0 20px 0 10px;"></i></i><small>Customize</small>
+		    			</button>
+		    		</a>
+			    </li>
+			    <li>
 			    	<a href="signin.php">
 				    	<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
 				    		<i class="fas fa-sign-out-alt" style="margin: 0 20px 0 10px;"></i><small>Sign In</small>
@@ -364,6 +371,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			    			<i class="fas fa-sign" style="margin: 0 20px 0 10px;"></i><small>Logo Seal</small>
 			    		</button>
 			    	</a>
+			    </li>
+			    <li>
+		    	    <a href="customize.php">
+		    			<button class="btn btn-dark w-100 rounded-0 text-start border border-white">
+		    				<i class="fas fa-pencil-ruler" style="margin: 0 20px 0 10px;"></i></i><small>Customize</small>
+		    			</button>
+		    		</a>
 			    </li>
 			    <li>
 			    	<a href="signin.php">
