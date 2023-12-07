@@ -84,20 +84,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							    	  		<div class="container-fluid">
 							    	  			<form action="" id="login">
 								    	  			<div class="form-outline my-4">
-								    	  			    <input type="email" placeholder="Enter your email" class="form-control rounded-0" name="email" required>
+								    	  			    <input type="email" placeholder="Enter your email" class="form-control rounded-0" name="email" id="email" required>
 								    	  			</div>
 								    	  			<div class="form-outline mb-4">
-								    	  			    <input type="password" class="form-control rounded-0" placeholder="Enter your password" name="password" class="form-control" required>
+								    	  			    <input type="password" class="form-control rounded-0" placeholder="Enter your password" name="password" id="password" class="form-control" required>
 								    	  			    <i class="uil uil-eye-slash showHidePw"></i>
 								    	  			</div>
 								    	  			<div class="row p-0 m-0" style="font-size: 0.75rem;">
-								    	  			    <div class="col-6 p-0 m-0" style="display: flex; align-items: center; justify-content: center; cursor: pointer;">
-								    	  			        <input
-								    	  			        class="form-check-input"
-								    	  			        style="margin-right: 5px;"
-								    	  			        type="checkbox"
-								    	  			        unchecked/>
-								    	  			        <small>Remember Me</small>
+								    	  			    <div class="col-6 p-0 m-0" style="display: flex; align-items: center; justify-content: center;">
+								    	  			        <input class="form-check-input" style="margin-right: 5px;" type="checkbox" id="remember-check" unchecked/>
+								    	  			        <button type="button" title="Save login credentials" style="border: none; margin: 0; background-color: inherit; color: inherit;" id="remember-button">Remember Me</button>
 								    	  			    </div>
 								    	  			    <div class="col-6 p-0 m-0" style="display: flex; align-items: center; justify-content: center; cursor: pointer;">
 								    	  			    	<small>Forgot Password?</small>
@@ -161,6 +157,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		    removeClick.addEventListener('click', ()=>{
 		        navigation.classList.remove('active-nav');
 		    })
+	   		$('#remember-button').on('click', function () {
+	   		    $("#remember-check").prop("checked", true);
+	   		});
+	   		$(document).ready(function() {
+	            const email = window.localStorage.getItem('remember-email');
+	            const password = window.localStorage.getItem('remember-password');
+	            $('#email').val(email);
+	            $('#password').val(password);
+	        });
 		</script>
 		<script src="./js/signin.js"></script>
 		<script type="text/javascript">
@@ -266,6 +271,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		            		$(this).find("input[name='email']").val('');
 		            		$(this).find("input[name='password']").val('');
 		            	} else if (data === "2") {
+		            		if ($("#remember-check").prop("checked")) {
+		            			window.localStorage.setItem('remember-email', email);
+		            			window.localStorage.setItem('remember-password', password);
+		            		} else {
+		            			window.localStorage.removeItem('remember-email');
+		            			window.localStorage.removeItem('remember-password');
+		            		}
 		            		alert('Notice: Logging in successful, welcome back [Administrator]!')
 		            		var xlink = window.localStorage.getItem('xlink');
 		            		console.log(xlink);
@@ -276,6 +288,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		            			window.location.href = "account.php";
 		            		}
 		            	} else if (data === "3") {
+		            		if ($("#remember-check").prop("checked")) {
+		            			window.localStorage.setItem('remember-email', email);
+		            			window.localStorage.setItem('remember-password', password);
+		            		} else {
+		            			window.localStorage.removeItem('remember-email');
+		            			window.localStorage.removeItem('remember-password');
+		            		}
 		            		alert('Notice: Logging in successful, welcome back!')
 		            		var xlink = window.localStorage.getItem('xlink');
 		            		if (xlink) {

@@ -34,38 +34,32 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		<?php include('./include/header.php') ?>
 		<main class="container-fluid m-0 py-5">
 			<section class="my-width mx-auto text-center rounded-pill border border-dark">
-				<div class="row">
+				<div class="m-0 p-0">
 					<h4>CUSTOMIZATION STYLE</h4>
-					<div class="col-6">
-						<button class="btn-main py-1 my-3 w-50 rounded-pill" id="style_one">BASIC</button>
-					</div>
-					<div class="col-6">
-						<button class="btn-main py-1 my-3 w-50 rounded-pill" id="style_two">ADVANCE</button>
+					<div style="display: flex; align-items: center; justify-content:space-evenly;">
+						<button class="btn-main py-1 my-3 rounded-pill" style="width: 35%;" id="style_one">Basic</button>
+						<button class="btn-main py-1 my-3 rounded-pill" style="width: 35%;" id="style_two">Advance</button>
 					</div>
 				</div>
 			</section>
 			<br>
 			<section class="my-width mx-auto text-center rounded-pill border border-dark" style="opacity: 0; visibility: hidden; transition: opacity 0.5s ease-in-out;" id="product">
-				<div class="row">
+				<div class="m-0 p-0">
 					<h4>PRODUCT LIST</h4>
-					<div class="col-3">
-						<button class="btn-main py-1 my-3 w-75 rounded-pill" id="product_one">NECKLACE</button>
+					<div style="display: flex; align-items: center; justify-content:space-evenly; flex-direction: row;">
+						<button class="btn-main py-1 my-3 rounded-pill" style="width: 35%;" id="product_one">Necklace</button>
+						<button class="btn-main py-1 my-3 rounded-pill" style="width: 35%;" id="product_two">Pin</button>
 					</div>
-					<div class="col-3">
-						<button class="btn-main py-1 my-3 w-75 rounded-pill" id="product_two">PIN</button>
-					</div>
-					<div class="col-3">
-						<button class="btn-main py-1 my-3 w-75 rounded-pill" id="product_three">NAMEPLATE</button>
-					</div>
-					<div class="col-3">
-						<button class="btn-main py-1 my-3 w-75 rounded-pill" id="product_four">LOGO</button>
+					<div style="display: flex; align-items: center; justify-content:space-evenly; flex-direction: row;">
+						<button class="btn-main py-1 my-3 rounded-pill" style="width: 35%;" id="product_three">Nameplate</button>
+						<button class="btn-main py-1 my-3 rounded-pill" style="width: 35%;" id="product_four">Logo</button>
 					</div>
 				</div>
 			</section>
 			<br>
 			<section class="my-width mx-auto text-center rounded-pill border border-dark" style="opacity: 0; visibility: hidden; transition: opacity 0.5s ease-in-out;" id="proceed">
 				<form action="" class="customize_style">
-					<button type="submit" class="btn-main py-1 my-3 w-75 rounded-pill">PROCEED</button>
+					<button type="submit" class="btn-main py-1 my-3 w-75 rounded-pill">Proceed</button>
 				</form>
 			</section>
 			<section>
