@@ -130,12 +130,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					<button class="options" id="necklace-button">Necklace</button>
 					<button class="options">Pin</button>
 					<button class="options">Table Nameplate</button>
-					<button class="options">Logo Seal</button>
+					<button class="options" id="logo-button">Logo Seal</button>
 				</div>
 			</section>
 			<section class="button-options" id="necklace-options">
 				<div style="display: flex; flex-direction: row; padding: 0; margin: 0;">
-					<button class="template-options" id="remove-necklace">Remove</button>
+					<button class="template-options" id="remove-necklace">Remove Chain</button>
 					<button class="template-options" id="gold-necklace">
 						<img src="images/gold-necklace.png" height="45px" width="40px" alt="Missing_Image">
 						<p>Gold</p>
@@ -146,6 +146,37 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					</button>
 					<button class="template-options" id="bronze-necklace">
 						<img src="images/bronze-necklace.png" height="45px" width="40px" alt="Missing_Image">
+						<p>Bronze</p>
+					</button>
+				</div>
+				<div style="display: flex; flex-direction: row; padding: 0; margin: 0;">
+					<button class="template-options" id="gold-cross">
+						<img src="images/gold-cross.png" height="45px" width="40px" alt="Missing_Image">
+						<p>Gold</p>
+					</button>
+					<button class="template-options" id="silver-cross">
+						<img src="images/silver-cross.png" height="45px" width="40px" alt="Missing_Image">
+						<p>Silver</p>
+					</button>
+					<button class="template-options" id="bronze-cross">
+						<img src="images/bronze-cross.png" height="45px" width="40px" alt="Missing_Image">
+						<p>Bronze</p>
+					</button>
+				</div>
+			</section>
+			<section class="button-options" id="logo-options">
+				<div style="display: flex; flex-direction: row; padding: 0; margin: 0;">
+					<button class="template-options" id="remove-logo">Remove</button>
+					<button class="template-options" id="gold-logo">
+						<img src="images/gold-logo.png" height="45px" width="40px" alt="Missing_Image">
+						<p>Gold</p>
+					</button>
+					<button class="template-options" id="silver-logo">
+						<img src="images/silver-logo.png" height="45px" width="40px" alt="Missing_Image">
+						<p>Silver</p>
+					</button>
+					<button class="template-options" id="bronze-logo">
+						<img src="images/bronze-logo.png" height="45px" width="40px" alt="Missing_Image">
 						<p>Bronze</p>
 					</button>
 				</div>
@@ -457,10 +488,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
 		   	document.getElementById('necklace-button').addEventListener('mouseover', () => {
 		   	    $("#necklace-options").css("display", "block");
+		   	    $("#logo-options").css("display", "none");
 		   	    const thisButton = document.getElementById('necklace-button').getBoundingClientRect();
 		   	    const thisTop = thisButton.top - 1;
 		   	    document.getElementById('necklace-options').style.top = thisTop + 'px';
 		   	    document.getElementById('necklace-options').style.left = thisButton.right + 'px';
+		   	});
+
+		   	document.getElementById('logo-button').addEventListener('mouseover', () => {
+		   	    $("#logo-options").css("display", "block");
+		   	    $("#necklace-options").css("display", "none");
+		   	    const thisButton = document.getElementById('logo-button').getBoundingClientRect();
+		   	    const thisTop = thisButton.top - 1;
+		   	    document.getElementById('logo-options').style.top = thisTop + 'px';
+		   	    document.getElementById('logo-options').style.left = thisButton.right + 'px';
 		   	});
 
 		   	document.getElementById('order').addEventListener('mouseover', () => {
@@ -468,6 +509,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   	    $("#image-options").css("display", "none");
 		   	    $("#background-options").css("display", "none");
 		   	    $("#necklace-options").css("display", "none");
+		   	    $("#logo-options").css("display", "none");
 		   	});
 
 		   	document.getElementById('view').addEventListener('mouseover', () => {
@@ -475,6 +517,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   	    $("#image-options").css("display", "none");
 		   	    $("#background-options").css("display", "none");
 		   	    $("#necklace-options").css("display", "none");
+		   	    $("#logo-options").css("display", "none");
 		   	});
 
 		   	document.getElementById('image-button').addEventListener('mouseover', () => {
@@ -485,11 +528,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   	    $("#image-options").css("display", "none");
 		   	    $("#background-options").css("display", "none");
 		   	    $("#necklace-options").css("display", "none");
+		   	    $("#logo-options").css("display", "none");
 		   	});
 
 		   	document.getElementById('image').addEventListener('mouseover', () => {
 		   	    $("#background-options").css("display", "none");
 		   	    $("#necklace-options").css("display", "none");
+		   	    $("#logo-options").css("display", "none");
 		   	});
 
 		   	const move = document.getElementById('move-tool');
@@ -943,29 +988,91 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   		    reader.readAsDataURL(file);
 		   		  	}
 		   		});
-		   		$('#remove-necklace').on('click', function () {
-		   		    canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
-		   		    $("#image-options").css("display", "none");
+		   		function hideOptions() {
+		   			$("#image-options").css("display", "none");
 		   		    $("#background-options").css("display", "none");
 		   		    $("#necklace-options").css("display", "none");
+		   		    $("#logo-options").css("display", "none");
+		   		}
+		   		$('#remove-necklace').on('click', function () {
+		   		    canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
+		   		    hideOptions();
 		   		});
 		   		$('#gold-necklace').on('click', function () {
 		   		    canvas.setBackgroundImage('images/gold-necklace.png', canvas.renderAll.bind(canvas));
-		   		    $("#image-options").css("display", "none");
-		   		    $("#background-options").css("display", "none");
-		   		    $("#necklace-options").css("display", "none");
+		   		    hideOptions();
 		   		});
 		   		$('#silver-necklace').on('click', function () {
 		   		    canvas.setBackgroundImage('images/silver-necklace.png', canvas.renderAll.bind(canvas));
-		   		    $("#image-options").css("display", "none");
-		   		    $("#background-options").css("display", "none");
-		   		    $("#necklace-options").css("display", "none");
+		   		    hideOptions();
 		   		});
 		   		$('#bronze-necklace').on('click', function () {
 		   		    canvas.setBackgroundImage('images/bronze-necklace.png', canvas.renderAll.bind(canvas));
-		   		    $("#image-options").css("display", "none");
-		   		    $("#background-options").css("display", "none");
-		   		    $("#necklace-options").css("display", "none");
+		   		    hideOptions();
+		   		});
+		   		$('#gold-cross').on('click', function () {
+		            const baseUrl = window.location.origin;
+		            const absoluteUrl = baseUrl + '/images/gold-cross.png';
+		            console.log(absoluteUrl);
+		            fabric.Image.fromURL(absoluteUrl, (img) => {
+                        img.set({
+                        	scaleY: 0.5,
+                            scaleX: 0.5,
+                            left: 200,
+                            top: 220,
+                        });
+                        canvas.add(img);
+                    },{crossOrigin: 'anonymous'});
+                    canvas.renderAll(canvas);
+		   		    hideOptions();
+		   		});
+		   		$('#silver-cross').on('click', function () {
+		   		    const baseUrl = window.location.origin;
+		            const absoluteUrl = baseUrl + '/images/silver-cross.png';
+		            console.log(absoluteUrl);
+		            fabric.Image.fromURL(absoluteUrl, (img) => {
+                        img.set({
+                        	scaleY: 0.5,
+                            scaleX: 0.5,
+                            left: 200,
+                            top: 220,
+                        });
+                        canvas.add(img);
+                    },{crossOrigin: 'anonymous'});
+                    canvas.renderAll(canvas);
+		   		    hideOptions();
+		   		});
+		   		$('#bronze-cross').on('click', function () {
+		   		    const baseUrl = window.location.origin;
+		            const absoluteUrl = baseUrl + '/images/bronze-cross.png';
+		            console.log(absoluteUrl);
+		            fabric.Image.fromURL(absoluteUrl, (img) => {
+                        img.set({
+                        	scaleY: 0.5,
+                            scaleX: 0.5,
+                            left: 200,
+                            top: 220,
+                        });
+                        canvas.add(img);
+                    },{crossOrigin: 'anonymous'});
+                    canvas.renderAll(canvas);
+		   		    hideOptions();
+		   		});
+		   		$('#remove-logo').on('click', function () {
+		   		    canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
+		   		    hideOptions();
+		   		});
+		   		$('#gold-logo').on('click', function () {
+		   		    canvas.setBackgroundImage('images/gold-logo.png', canvas.renderAll.bind(canvas));
+		   		    hideOptions();
+		   		});
+		   		$('#silver-logo').on('click', function () {
+		   		    canvas.setBackgroundImage('images/silver-logo.png', canvas.renderAll.bind(canvas));
+		   		    hideOptions();
+		   		});
+		   		$('#bronze-logo').on('click', function () {
+		   		    canvas.setBackgroundImage('images/bronze-logo.png', canvas.renderAll.bind(canvas));
+		   		    hideOptions();
 		   		});
 		   		function serializeCanvasObjects(canvas) {
 		   		    const objects = canvas.getObjects();
@@ -1106,7 +1213,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		            } else if (product === "nameplate") {
 
    		            } else if (product === "logo") {
-
+   		            	canvas.setBackgroundImage("images/gold-logo.png", canvas.renderAll.bind(canvas));
    		            } else {
    		            	canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
    		            }
