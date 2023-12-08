@@ -755,6 +755,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   		        activeObjects.forEach(function (object) {
 		   		            canvas.remove(object);
 		   		        });
+		   		        canvas.discardActiveObject().renderAll();
 		   		    });
 		   		});
 		   		$('#type').on('click', function () {
