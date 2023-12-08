@@ -81,7 +81,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			    .canvas-size {
 		    		display: flex;
 		    		justify-content: center;
-		    	    padding: 0 0 230px 0;
+		    	    padding: 0 0 200px 0;
 			    }
 			}
 			@media screen and (min-width: 1024px) and (max-width: 1139px) {
@@ -156,6 +156,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					<button class="my-option" id="file-button">File</button>
 					<button class="my-option" id="image-button">Image</button>
 					<button class="my-option" id="order">Order</button>
+					<button class="my-option" id="view">Switch View</button>
 				</div>
 				<div style="display: flex; flex-direction: row; align-items: center; height: 35px; padding-left: 10px; margin: 0; background-color: #D0B89F; overflow-x: auto; overflow-y: auto;">
 					<div class="my-info">Current Tool:</div>
@@ -164,11 +165,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					</div>
 					<div class="my-info">Current X:</div>
 					<div class="my-info">
-						<input type="text" id="current-x" value="0" style="width: 40px; padding: 0 5px; margin-right: 10px;">
+						<input type="text" id="current-x" value="0" style="width: 40px; padding: 0 5px; margin-right: 10px;" disabled="disabled">
 					</div>
 					<div class="my-info">Current Y:</div>
 					<div class="my-info">
-						<input type="text" id="current-y" value="0" style="width: 40px; padding: 0 5px; margin-right: 10px;">
+						<input type="text" id="current-y" value="0" style="width: 40px; padding: 0 5px; margin-right: 10px;" disabled="disabled">
+					</div>
+					<div class="my-info">Current View:</div>
+					<div class="my-info">
+						<input type="text" id="current-view" value="Front" style="width: 60px; padding: 0 5px; margin-right: 10px;" disabled="disabled">
 					</div>
 				</div>
 				<div style="display: flex; flex-direction: row; margin: 0; padding: 0; width: 100%; height: 100vh;">
@@ -459,6 +464,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   	});
 
 		   	document.getElementById('order').addEventListener('mouseover', () => {
+		   	    $("#file-options").css("display", "none");
+		   	    $("#image-options").css("display", "none");
+		   	    $("#background-options").css("display", "none");
+		   	    $("#necklace-options").css("display", "none");
+		   	});
+
+		   	document.getElementById('view').addEventListener('mouseover', () => {
 		   	    $("#file-options").css("display", "none");
 		   	    $("#image-options").css("display", "none");
 		   	    $("#background-options").css("display", "none");
@@ -1029,53 +1041,59 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		        	    email = new URLSearchParams(currentURL).get('email');
    		        	    deyt = new URLSearchParams(currentURL).get('deyt');
    		        	}
+   		        	var view = $('#current-view').val();
    		            $.ajax({
    		                url: './php/get_template.php',
    		                type: 'GET',
    		                contentType: 'application/json',
    		                data: {
    		                    email: email,
-   		                    deyt: deyt
+   		                    deyt: deyt,
+   		                    view: view
    		                },
    		                success: function (data) {
-   		                    data.forEach(function (object) {
-   		                        if (object.objectType === 'path') {
-   		                            const properties = JSON.parse(object.properties);
-                                    const fabricPath = new fabric.Path(properties.path, properties, properties.width);
-                                    canvas.add(fabricPath);
-   		                        } else if (object.objectType === 'i-text') {
-								    const properties = JSON.parse(object.properties);
-								    const text = new fabric.IText(properties.text, properties);
-								    canvas.add(text);
-								} else if (object.objectType === 'rect') {
-   		                        	const properties = JSON.parse(object.properties);
-   		                            const rect = new fabric.Rect(properties);
-   		                            canvas.add(rect);
-   		                        } else if (object.objectType === 'circle') {
-   		                        	const properties = JSON.parse(object.properties);
-   		                            const circle = new fabric.Circle(properties);
-   		                            canvas.add(circle);
-   		                        } else if (object.objectType === 'triangle') {
-   		                        	const properties = JSON.parse(object.properties);
-   		                        	const triangle = new fabric.Triangle(properties);
-   		                            canvas.add(triangle);
-   		                        } else if (object.objectType === 'image') {
-						            const properties = JSON.parse(object.properties);
-						            let imageUrl = properties.src;
-						            imageUrl = imageUrl.replace(/^([^.]*)\.(.*)\./, "$1$2.");
-						            const baseUrl = window.location.origin;
-						            const absoluteUrl = baseUrl + '/' + imageUrl;
-						            fabric.Image.fromURL(absoluteUrl, (img) => {
-				                        img.set(properties);
-				                        canvas.add(img);
-				                    },{crossOrigin: 'anonymous'});
-				                    canvas.renderAll(canvas);
-						        } else if (object.objectType === 'background') {
-						        	const properties = JSON.parse(object.properties);
-						            canvas.setBackgroundImage(properties.src, canvas.renderAll.bind(canvas));
-						        }
-   		                    });
-   		                },
+   		                	if (data === "1") {
+
+   		                	} else {
+	   		                	data.forEach(function (object) {
+	   		                        if (object.objectType === 'path') {
+	   		                            const properties = JSON.parse(object.properties);
+	                                    const fabricPath = new fabric.Path(properties.path, properties, properties.width);
+	                                    canvas.add(fabricPath);
+	   		                        } else if (object.objectType === 'i-text') {
+									    const properties = JSON.parse(object.properties);
+									    const text = new fabric.IText(properties.text, properties);
+									    canvas.add(text);
+									} else if (object.objectType === 'rect') {
+	   		                        	const properties = JSON.parse(object.properties);
+	   		                            const rect = new fabric.Rect(properties);
+	   		                            canvas.add(rect);
+	   		                        } else if (object.objectType === 'circle') {
+	   		                        	const properties = JSON.parse(object.properties);
+	   		                            const circle = new fabric.Circle(properties);
+	   		                            canvas.add(circle);
+	   		                        } else if (object.objectType === 'triangle') {
+	   		                        	const properties = JSON.parse(object.properties);
+	   		                        	const triangle = new fabric.Triangle(properties);
+	   		                            canvas.add(triangle);
+	   		                        } else if (object.objectType === 'image') {
+							            const properties = JSON.parse(object.properties);
+							            let imageUrl = properties.src;
+							            imageUrl = imageUrl.replace(/^([^.]*)\.(.*)\./, "$1$2.");
+							            const baseUrl = window.location.origin;
+							            const absoluteUrl = baseUrl + '/' + imageUrl;
+							            fabric.Image.fromURL(absoluteUrl, (img) => {
+					                        img.set(properties);
+					                        canvas.add(img);
+					                    },{crossOrigin: 'anonymous'});
+					                    canvas.renderAll(canvas);
+							        } else if (object.objectType === 'background') {
+							        	const properties = JSON.parse(object.properties);
+							            canvas.setBackgroundImage(properties.src, canvas.renderAll.bind(canvas));
+							        }
+	   		                    });
+	   		                }
+	   		            },
    		                error: function (xhr, status, error) {
    		                    console.error("Error retrieving data:", status, error);
    		                    console.log(xhr.responseText);
@@ -1101,6 +1119,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                }
    		            var email = window.localStorage.getItem('email');
    		            var deyt = window.localStorage.getItem('deyt');
+   		            var view = $('#current-view').val();
    		            $.ajax({
    		                url: './php/update_template.php',
    		                type: 'POST',
@@ -1108,7 +1127,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                data: JSON.stringify({
    		                	canvasObjects: serializedObjects,
    		                	email: email,
-   		                	deyt: deyt
+   		                	deyt: deyt,
+   		                	view: view
    		                }),
    		                success: function (data) {
    		                	uploadCanvasObjects();
@@ -1172,6 +1192,26 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		            localStorage.removeItem('deyt');
    		            localStorage.removeItem('product');
    		            window.location.href = "customize.php";
+   		        });
+   		        $('#view').on('click', function () {
+   		            canvas.isDrawingMode = false;
+   		            if ($('#current-view').val() === "Front") {
+   		            	$('#current-view').val('Back');
+   		            	document.getElementById('current-view').style.width = 50 + 'px';
+   		            	canvas.clear();
+   		            	canvas.setHeight(900);
+   		            	canvas.setWidth(800);
+   		            	canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
+   		            	getSelectedTemplate();
+   		            } else {
+   		            	$('#current-view').val('Front');
+   		            	document.getElementById('current-view').style.width = 60 + 'px';
+   		            	canvas.clear();
+   		            	canvas.setHeight(900);
+   		            	canvas.setWidth(800);
+   		            	canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
+   		            	getSelectedTemplate();
+   		            }
    		        });
 		   	}
 		</script>
