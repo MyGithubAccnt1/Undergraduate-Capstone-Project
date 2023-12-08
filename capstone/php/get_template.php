@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         $back = $row['back'];
     } else {
         echo "1";
-        exit;
+        exit();
     }
 
     if ($view === "Front") {

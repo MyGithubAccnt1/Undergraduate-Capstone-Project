@@ -4,6 +4,7 @@ include("connect.php");
 
 $email = $_SESSION['email'];
 $date = $_SESSION['date'];
+$view = $_SESSION['view'];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Extract the base64-encoded image data
@@ -20,27 +21,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if (file_put_contents($uploadFile, $imageBinary)) {
 
-            $gettemplatesql = "SELECT thumbnail FROM template WHERE email = '$email' and deyt = '$date'";
-            $result = mysqli_query($conn, $gettemplatesql);
-            if (mysqli_num_rows($result) > 0) {
-                 $row = $result->fetch_assoc();
-                 $Thumbnail = $row['thumbnail'];
-
-                 var_dump($Thumbnail);
-
-                 if (file_exists("../" . $Thumbnail)) {
-                    unlink("../" . $Thumbnail);
-                 }
-            }
-
             $thumbnailPath = "images/templates/" . $uniqueFilename;
-            $sql = "UPDATE template SET thumbnail = '$thumbnailPath' WHERE email = '$email' and deyt = '$date'";
+            
+            if ($view == "Front") {
+                $sql = "UPDATE template SET thumbnail = '$thumbnailPath', frontthumb = '$thumbnailPath' WHERE email = '$email' and deyt = '$date'";
+            } else {
+                $sql = "UPDATE template SET thumbnail = '$thumbnailPath', backthumb = '$thumbnailPath' WHERE email = '$email' and deyt = '$date'";
+            }
 
             if (mysqli_query($conn, $sql)) {
                 exit();
             } else {
                 echo "Error updating database: " . mysqli_error($conn);
             }
+            
         } else {
             echo "Error saving image.";
         }
