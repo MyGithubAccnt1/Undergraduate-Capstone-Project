@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 26, 2023 at 09:40 AM
+-- Generation Time: Dec 08, 2023 at 06:15 AM
 -- Server version: 10.11.4-MariaDB
 -- PHP Version: 8.2.8
 
@@ -46,7 +46,7 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`id`, `email`, `password`, `fname`, `lname`, `mnumber`, `caddress`, `role`, `status`, `deyt`) VALUES
 (1, 'test@admin', 'nqzva', 'admin', 'admin', '09123456789', 'Brgy. Test, Test City, Province of Test, Phiilippines', 'Admin', 'Online', '0000-00-00 00:00:00.000000'),
-(42, 'test1@reg', '12345ert', NULL, NULL, NULL, NULL, 'Regular', 'Offline', '2023-11-26 17:37');
+(47, 'test1@reg', '12345ert', NULL, NULL, NULL, NULL, 'Regular', 'Offline', '2023-12-02 10:15');
 
 -- --------------------------------------------------------
 
@@ -139,8 +139,45 @@ CREATE TABLE `message` (
 CREATE TABLE `notification` (
   `id` int(11) NOT NULL,
   `message` text NOT NULL,
-  `category` text NOT NULL
+  `category` text NOT NULL,
+  `email` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `notification`
+--
+
+INSERT INTO `notification` (`id`, `message`, `category`, `email`) VALUES
+(1, '[test@admin] logs to the system on [2023-11-30 15:37].', 'login', NULL),
+(2, '[test@admin] logs to the system on [2023-11-30 15:39].', 'login', NULL),
+(3, '[test@admin] logs to the system on [2023-12-01 03:28].', 'login', NULL),
+(4, '[test@admin] logs to the system on [2023-12-02 03:48].', 'login', NULL),
+(5, '[test@admin] logs to the system on [2023-12-02 09:45].', 'login', NULL),
+(6, 'A new account has been created with an email of [test1@reg] on [2023-12-02 10:15].', 'account', 'test1@reg'),
+(7, 'You successfully created your account on [2023-12-02 10:15].', 'user', 'test1@reg'),
+(8, '[test@admin] logs to the system on [2023-12-04 02:26].', 'login', NULL),
+(9, '[test@admin] logs to the system on [2023-12-04 02:26].', 'login', NULL),
+(10, '[test@admin] logs to the system on [2023-12-04 02:28].', 'login', NULL),
+(11, '[test@admin] logs to the system on [2023-12-04 02:28].', 'login', NULL),
+(12, '[test1@reg] logs to the system on [].', 'login', NULL),
+(13, '[test1@reg] logs to the system on [].', 'login', NULL),
+(14, '[test1@reg] logs to the system on [].', 'login', NULL),
+(15, '[test1@reg] logs to the system on [].', 'login', NULL),
+(16, '[test1@reg] logs to the system on [].', 'login', NULL),
+(17, '[test1@reg] logs to the system on [].', 'login', NULL),
+(18, '[test1@reg] logs to the system on [].', 'login', NULL),
+(19, '[test@admin] logs to the system on [2023-12-04 21:45].', 'login', NULL),
+(20, '[test@admin] logs to the system on [2023-12-05 01:48].', 'login', NULL),
+(21, '[test@admin] logs to the system on [2023-12-05 05:43].', 'login', NULL),
+(22, '[test@admin] logs to the system on [2023-12-05 13:40].', 'login', NULL),
+(23, '[test@admin] logs to the system on [2023-12-06 12:52].', 'login', NULL),
+(24, '[test@admin] logs to the system on [2023-12-07 17:59].', 'login', NULL),
+(25, '[test@admin] logs to the system on [2023-12-07 17:59].', 'login', NULL),
+(26, '[test@admin] logs to the system on [2023-12-07 17:59].', 'login', NULL),
+(27, '[test@admin] logs to the system on [2023-12-07 17:59].', 'login', NULL),
+(28, '[test@admin] logs to the system on [2023-12-07 18:03].', 'login', NULL),
+(29, '[test@admin] logs to the system on [2023-12-07 18:03].', 'login', NULL),
+(30, '[test@admin] logs to the system on [2023-12-08 14:11].', 'login', NULL);
 
 -- --------------------------------------------------------
 
@@ -153,15 +190,9 @@ CREATE TABLE `object` (
   `objectType` text NOT NULL,
   `properties` text NOT NULL,
   `email` text NOT NULL,
-  `deyt` text NOT NULL
+  `deyt` text NOT NULL,
+  `view` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `object`
---
-
-INSERT INTO `object` (`id`, `objectType`, `properties`, `email`, `deyt`) VALUES
-(227, 'background', '{\"type\":\"image\",\"version\":\"5.2.4\",\"originX\":\"left\",\"originY\":\"top\",\"left\":0,\"top\":0,\"width\":800,\"height\":900,\"fill\":\"rgb(0,0,0)\",\"stroke\":null,\"strokeWidth\":0,\"strokeDashArray\":null,\"strokeLineCap\":\"butt\",\"strokeDashOffset\":0,\"strokeLineJoin\":\"miter\",\"strokeUniform\":false,\"strokeMiterLimit\":4,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"flipX\":false,\"flipY\":false,\"opacity\":1,\"shadow\":null,\"visible\":true,\"backgroundColor\":\"\",\"fillRule\":\"nonzero\",\"paintFirst\":\"fill\",\"globalCompositeOperation\":\"source-over\",\"skewX\":0,\"skewY\":0,\"cropX\":0,\"cropY\":0,\"src\":\"http:\\/\\/localhost\\/capstone\\/images\\/unique.png\",\"crossOrigin\":null,\"filters\":[]}', 'test@admin', '2023-10-05 13:25');
 
 -- --------------------------------------------------------
 
@@ -228,7 +259,7 @@ INSERT INTO `product` (`id`, `price`, `title`, `thumbnail`, `description`, `cate
 (6, 499.00, 'SET 6', 'images/set6.png', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. This is for SET 6', 'Necklace', 0),
 (7, 499.00, 'SET 7', 'images/set7.png', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. This is for SET 7', 'Necklace', 0),
 (8, 499.00, 'SET 8', 'images/set8.png', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. This is for SET 8', 'Necklace', 0),
-(9, 499.00, 'SET 9', 'images/set9.png', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. This is for SET 9', 'Necklace', 0),
+(9, 499.00, 'SET 9', 'images/set9.png', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. This is for SET 9', 'Necklace', 1),
 (10, 499.00, 'SET 10', 'images/set10.png', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. This is for SET 10', 'Necklace', 0),
 (11, 499.00, 'SET 11', 'images/set11.png', 'A set of a beautiful religious cross and circle necklaces.', 'Necklace', 0);
 
@@ -242,16 +273,10 @@ CREATE TABLE `template` (
   `id` int(11) NOT NULL,
   `email` text NOT NULL,
   `deyt` text NOT NULL,
-  `thumbnail` text NOT NULL
+  `thumbnail` text NOT NULL,
+  `front` text DEFAULT NULL,
+  `back` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `template`
---
-
-INSERT INTO `template` (`id`, `email`, `deyt`, `thumbnail`) VALUES
-(45, 'test@admin', '2023-10-02 14:21', 'images/templates/651ab5c72a25a.png'),
-(63, 'test@admin', '2023-10-05 13:25', 'images/templates/651e9d3d23b45.png');
 
 --
 -- Indexes for dumped tables
@@ -337,13 +362,13 @@ ALTER TABLE `template`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -373,13 +398,13 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `object`
 --
 ALTER TABLE `object`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=306;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `order`
@@ -403,7 +428,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `template`
 --
 ALTER TABLE `template`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
