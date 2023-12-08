@@ -726,10 +726,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    				   	    canvas.isDrawingMode = true;
    				   	    if (canvas.isDrawingMode == true) {
    				   	    	if ($("#brush-width").val() > 0) {
-   				   	    		canvas.freeDrawingBrush.width = $("#brush-width").val();
+   				   	    		canvas.freeDrawingBrush.width = parseInt($("#brush-width").val(), 10);
+
    				   	    	} else {
    				   	    		$("#brush-width").val('1');
-   				   	    		canvas.freeDrawingBrush.width = $("#brush-width").val();
+   				   	    		canvas.freeDrawingBrush.width = parseInt($("#brush-width").val(), 10);
+
    				   	    	}
    				   	    	canvas.freeDrawingBrush.color = $("#brush-color").val();
    				   	    }
@@ -749,7 +751,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   		canvas.on('selection:created', function () {
 		   		    $('#eraser').on('click', function () {
 		   		        canvas.isDrawingMode = false;
-		   		        canvas.remove(canvas.getActiveObject());
+		   		        var activeObjects = canvas.getActiveObjects();
+		   		        activeObjects.forEach(function (object) {
+		   		            canvas.remove(object);
+		   		        });
 		   		    });
 		   		});
 		   		$('#type').on('click', function () {
