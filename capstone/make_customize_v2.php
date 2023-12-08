@@ -1141,8 +1141,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		        $('#update').on('click', function () {
    		            updateTemplate();
    		        });
-   		        $('#order').on('click', function () {
-   		            const serializedObjects = serializeCanvasObjects(canvas);
+   		        function orderTemplate() {
+   		        	const serializedObjects = serializeCanvasObjects(canvas);
    		            if (serializedObjects.length === 0) {
 	                    return;
 	                }
@@ -1162,7 +1162,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                success: function (data) {
     			            const imageFile = convertCanvasToPNG(canvas);
     			            const imageDataWithoutPrefix = imageFile.split(',')[1];
-
     			            $.ajax({
     			                url: "./php/upload_template.php",
     			                method: "POST",
@@ -1170,12 +1169,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
     			                    imageFile: imageDataWithoutPrefix
     			                },
     			                success: function (data) {
-    	 	   		            	canvas.isDrawingMode = false;
-    	 	   		            	localStorage.removeItem('images');
-    	 	   		            	localStorage.removeItem('email');
-    	 	   		            	localStorage.removeItem('deyt');
-    	 	   		            	localStorage.removeItem('product');
-                		            window.location.href = "checkout_template.php";
+	    	 	   		            canvas.isDrawingMode = false;
+	    	 	   		            localStorage.removeItem('images');
+	    	 	   		            localStorage.removeItem('email');
+	    	 	   		            localStorage.removeItem('deyt');
+	    	 	   		            localStorage.removeItem('product');
+    			                    window.location.href = "checkout_template.php";
     			                },
     			                error: function (xhr, status, error) {
     			                    console.error("AJAX Request Error:", status, error);
@@ -1186,6 +1185,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                    console.error("AJAX Request Error:", status, error);
    		                },
    		            });
+   		        }
+   		        $('#order').on('click', function () {
+   		            orderTemplate();
    		        });
    		        $('#back').on('click', function () {
    		            canvas.isDrawingMode = false;

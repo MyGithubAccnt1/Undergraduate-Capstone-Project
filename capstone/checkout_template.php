@@ -81,8 +81,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                    </div>
 	                    <div class="col-sm-12 col-md-4 text-center">
 	                        <h2 class="">ORDER SUMMARY</h2>
-	                        <div class="m-0 p-0 border border-dark border-2 opacity-100 rounded-0" id="template-container">
+	                        <div class="m-0 p-0 border border-dark border-2 opacity-100 rounded-0" id="front-container">
 	                            <!-- dynamic -->
+	                        </div>
+	                        <div class="w-75 mx-auto">
+	                        	<hr class="mt-3 mb-1">
+	                        	<p class="m-0">FRONT</p>
+	                        	<hr class="mt-1 mb-3">
+	                        </div>
+	                        <br>
+	                        <div class="m-0 p-0 border border-dark border-2 opacity-100 rounded-0" id="back-container">
+	                            <!-- dynamic -->
+	                        </div>
+	                        <div class="w-75 mx-auto">
+	                        	<hr class="mt-3 mb-1">
+	                        	<p class="m-0">BACK</p>
+	                        	<hr class="mt-1 mb-3">
 	                        </div>
 	                    </div>
 	                </div>
@@ -139,10 +153,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 <script type="text/javascript">
 	function showTemplate() {
 	    $.ajax({
-	        url: "./php/get_template_image.php",
+	        url: "./php/get_template_front.php",
 	        method: "GET",
 	        success: function (data) {
-	            $("#template-container").html(data);
+	            $("#front-container").html(data);
+	        },
+	        error: function (xhr, status, error) {
+	            console.error("AJAX Request Error:", status, error);
+	        }
+	    });
+	    $.ajax({
+	        url: "./php/get_template_back.php",
+	        method: "GET",
+	        success: function (data) {
+	            $("#back-container").html(data);
 	        },
 	        error: function (xhr, status, error) {
 	            console.error("AJAX Request Error:", status, error);
