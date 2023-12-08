@@ -2,101 +2,203 @@
 session_start(); 
 include("connect.php");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $requestData = file_get_contents("php://input");
+    if (!isset($requestData)) {
+        echo 'Error in receiving data';
+        exit;
+    }
+
     $canvasObjects = json_decode($requestData, true);
+    if (!is_array($canvasObjects)) {
+        echo 'Error in JSON data format';
+        exit;
+    }
 
     $email = $canvasObjects['email'];
     $date = $canvasObjects['deyt'];
+    $view = $canvasObjects['view'];
 
-    if ($email != $_SESSION['email'] || $email != ""){
+    if (empty($email) || $email != $_SESSION['email']) {
+
         $new_email = $_SESSION['email'];
         $new_date = date('Y-m-d H:i');
-        if (is_array($canvasObjects)) {
+    
+        foreach ($canvasObjects as $obj) {
+
+            foreach ($obj as $new) {
+
+                if (isset($new['objectType']) && isset($new['properties'])) {
+
+                    $viewsql = "SELECT * FROM template WHERE email = '$new_email' and deyt = '$new_date'";
+                    $viewresult = mysqli_query($conn, $viewsql);
+
+                    if (mysqli_num_rows($viewresult) < 1) {
+
+                        $thumbnail = "images/products/new.png";
+
+                        if ($view == 'Front') {
+
+                            $viewsql = "INSERT INTO template (email, deyt, thumbnail, front) VALUES (?, ?, ?, ?)";
+                            $stmt = $conn->prepare($viewsql);
+                            $stmt->bind_param("ssss", $new_email, $new_date, $thumbnail, $new_date);
+
+                        } else {
+
+                            $viewsql = "INSERT INTO template (email, deyt, thumbnail, back) VALUES (?, ?, ?, ?)";
+                            $stmt = $conn->prepare($viewsql);
+                            $stmt->bind_param("ssss", $new_email, $new_date, $thumbnail, $new_date);
+
+                        }
+                        if ($stmt->execute()) {
+
+                            $_SESSION['date'] = $new_date;
+                            $new_date = $_SESSION['date'];
+                            $stmt->close();
+
+                        } else {
+
+                            echo 'Error executing SQL query: ' . $stmt->error;
+                            exit;
+
+                        }
+
+                    }
+
+                    $objectType = $new['objectType'];
+                    $properties = json_encode($new['properties']);
+
+                    $sql = "SELECT * FROM object WHERE objectType = '$objectType' and properties = '$properties' and email = '$new_email' and deyt = '$new_date' and view = '$view'";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+
+                        exit;
+
+                    } else {
+
+                        $sql = "INSERT INTO object (objectType, properties, email, deyt, view) VALUES (?, ?, ?, ?, ?)";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("sssss", $objectType, $properties, $new_email, $new_date, $view);
+
+                        if ($stmt->execute()) {
+
+                            $stmt->close();
+
+                        } else {
+
+                            echo 'Error executing SQL query: ' . $stmt->error;
+                            exit;
+
+                        }
+
+                    }
+
+                } else {
+
+                    echo 'Invalid JSON data';
+                    exit;
+
+                }
+
+            }
+
+        }
+        
+    } else {
+
+        $front = "";
+        $back = "";
+
+        $viewsql = "SELECT * FROM template WHERE email = '$email' and deyt = '$date'";
+        $viewresult = mysqli_query($conn, $viewsql);
+
+        if (mysqli_num_rows($viewresult) > 0) {
+
+            $row = $viewresult->fetch_assoc();
+            $front = $row["front"];
+            $back = $row["back"];
+
+        }
+
+        if ($view == "Front") {
+
+            if ($front) {
+
+                $sql = "DELETE FROM object WHERE email = '$email' and deyt = '$front' and view = '$view'";
+
+            } else {
+
+                $front = date('Y-m-d H:i');
+                $sql = "UPDATE template SET front = '$front' WHERE email = '$email' and deyt = '$date'";
+
+            }
+
+        } else {
+
+            if ($back) {
+
+                $sql = "DELETE FROM object WHERE email = '$email' and deyt = '$back' and view = '$view'";
+
+            } else {
+
+                $back = date('Y-m-d H:i');
+                $sql = "UPDATE template SET back = '$back' WHERE email = '$email' and deyt = '$date'";
+
+            }
+            
+        }
+
+        if (mysqli_query($conn, $sql)) {
+
             foreach ($canvasObjects as $obj) {
+
                 foreach ($obj as $new) {
+
                     if (isset($new['objectType']) && isset($new['properties'])) {
+
                         $objectType = $new['objectType'];
                         $properties = json_encode($new['properties']);
 
-                        $viewsql = "SELECT * FROM template WHERE email = '$new_email' and deyt = '$new_date'";
-                        $viewresult = mysqli_query($conn, $viewsql);
-                        if (mysqli_num_rows($viewresult) > 0) {
-                            
-                        }else{
-                            $thumbnail = "images/new.png";
-                            $viewsql = "INSERT INTO template (email, deyt, thumbnail) VALUES (?, ?, ?)";
-                            $stmt = $conn->prepare($viewsql);
-                            $stmt->bind_param("sss", $new_email, $new_date, $thumbnail);
-                            if ($stmt->execute()) {
-                                $_SESSION['date'] = $new_date;
-                                $new_date = $_SESSION['date'];
-                                $stmt->close();
-                            } else {
-                                echo 'Error executing SQL query: ' . $stmt->error;
-                                exit;
-                            }
-                        }
-                        $sql = "SELECT * FROM object WHERE objectType = '$objectType' and properties = '$properties' and email = '$new_email' and deyt = '$new_date'";
-                        $result = mysqli_query($conn, $sql);
-                        if (mysqli_num_rows($result) > 0) {
-                            exit;
-                        } else {
-                            $sql = "INSERT INTO object (objectType, properties, email, deyt) VALUES (?, ?, ?, ?)";
+                        if ($view == "Front") {
+
+                            $sql = "INSERT INTO object (objectType, properties, email, deyt, view) VALUES (?, ?, ?, ?, ?)";
                             $stmt = $conn->prepare($sql);
-                            $stmt->bind_param("ssss", $objectType, $properties, $new_email, $new_date);
-                            if ($stmt->execute()) {
-                                $stmt->close();
-                            } else {
-                                echo 'Error executing SQL query: ' . $stmt->error;
-                                exit;
-                            }
+                            $stmt->bind_param("sssss", $objectType, $properties, $email, $front, $view);
+
+                        } else {
+
+                            $sql = "INSERT INTO object (objectType, properties, email, deyt, view) VALUES (?, ?, ?, ?, ?)";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->bind_param("sssss", $objectType, $properties, $email, $back, $view);
+
                         }
+
+                        if ($stmt->execute()) {
+
+                            $_SESSION['date'] = $date;
+                            $stmt->close();
+
+                        } else {
+
+                            exit;
+
+                        }
+
                     } else {
+
                         echo 'Invalid JSON data';
                         exit;
+
                     }
                 }
+                
             }
-            echo 'Canvas objects saved successfully';
-        } else {
-            echo 'Error in JSON data format';
+            
         }
-    } else {
-        $sql = "DELETE FROM object WHERE email = '$email' and deyt = '$date'";
-        if (mysqli_query($conn, $sql)) {
-            if (is_array($canvasObjects)) {
-                foreach ($canvasObjects as $obj) {
-                    foreach ($obj as $new) {
-                        if (isset($new['objectType']) && isset($new['properties'])) {
-                            $objectType = $new['objectType'];
-                            $properties = json_encode($new['properties']);
-                            $sql = "INSERT INTO object (objectType, properties, email, deyt) VALUES (?, ?, ?, ?)";
-                            $stmt = $conn->prepare($sql);
-                            $stmt->bind_param("ssss", $objectType, $properties, $email, $date);
-                            if ($stmt->execute()) {
-                                $_SESSION['date'] = $date;
-                                $stmt->close();
-                            } else {
-                                echo 'Error executing SQL query: ' . $stmt->error;
-                                exit;
-                            }
-                        } else {
-                            echo 'Invalid JSON data';
-                            exit;
-                        }
-                    }
-                    
-                }
-                echo 'Canvas objects saved successfully';
-            } else {
-                echo 'Error in JSON data format';
-            }
-        } else {
-            echo "Error: " . mysqli_error($conn);
-        }
+
     }
-} else {
-    echo 'Method not allowed';
+
 }
 mysqli_close($conn);
 ?>

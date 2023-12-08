@@ -4,15 +4,34 @@ include("connect.php");
 
 $email = mysqli_real_escape_string($conn, $_GET['email']);
 $deyt = mysqli_real_escape_string($conn, $_GET['deyt']);
+$view = mysqli_real_escape_string($conn, $_GET['view']);
+$front = "";
+$back = "";
 
 $_SESSION['date'] = $deyt;
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
-    // Retrieve objects from the database
-    $sql = "SELECT objectType, properties FROM object WHERE email = '$email' AND deyt = '$deyt'";
-    $result = mysqli_query($conn, $sql);
 
-    if ($result) {
+    $new_sql = "SELECT front, back FROM template WHERE email = '$email' and deyt = '$deyt'";
+    $new_result = mysqli_query($conn, $new_sql);
+    if (mysqli_num_rows($new_result) > 0) {
+        $row = $new_result->fetch_assoc();
+        $front = $row['front'];
+        $back = $row['back'];
+    } else {
+        echo "1";
+        exit;
+    }
+
+    if ($view === "Front") {
+        $sql = "SELECT objectType, properties FROM object WHERE email = '$email' AND deyt = '$front' AND view = '$view'";
+        $result = mysqli_query($conn, $sql);
+    } else if ($view === "Back") {
+        $sql = "SELECT objectType, properties FROM object WHERE email = '$email' AND deyt = '$back' AND view = '$view'";
+        $result = mysqli_query($conn, $sql);
+    }
+
+    if (mysqli_num_rows($result) > 0) {
         $objects = array(); // Create an array to store the objects
 
         // Loop through the results and fetch each row
