@@ -1148,6 +1148,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                }
    		            var email = window.localStorage.getItem('email');
    		            var deyt = window.localStorage.getItem('deyt');
+   		            var view = $('#current-view').val();
    		            $.ajax({
    		                url: './php/update_template.php',
    		                type: 'POST',
@@ -1155,7 +1156,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                data: JSON.stringify({
    		                	canvasObjects: serializedObjects,
    		                	email: email,
-   		                	deyt: deyt
+   		                	deyt: deyt,
+   		                	view: view
    		                }),
    		                success: function (data) {
     			            const imageFile = convertCanvasToPNG(canvas);
