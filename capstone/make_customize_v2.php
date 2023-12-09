@@ -128,8 +128,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			<section class="button-options" id="background-options">
 				<div style="display: flex; flex-direction: column; padding: 0; margin: 0;">
 					<button class="options" id="necklace-button">Necklace</button>
-					<button class="options">Pin</button>
-					<button class="options">Table Nameplate</button>
+					<button class="options" id="pin-button">Pin</button>
+					<button class="options" id="table-button">Table Nameplate</button>
 					<button class="options" id="logo-button">Logo Seal</button>
 				</div>
 			</section>
@@ -161,6 +161,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					<button class="template-options" id="bronze-cross">
 						<img src="images/bronze-cross.png" height="45px" width="40px" alt="Missing_Image">
 						<p>Bronze</p>
+					</button>
+				</div>
+			</section>
+			<section class="button-options" id="table-options">
+				<div style="display: flex; flex-direction: row; padding: 0; margin: 0;">
+					<button class="template-options" id="remove-table">Remove</button>
+					<button class="template-options" id="one-table">
+						<img src="images/one-table.png" height="45px" width="40px" alt="Missing_Image">
+						<p>Design 1</p>
 					</button>
 				</div>
 			</section>
@@ -489,15 +498,30 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   	document.getElementById('necklace-button').addEventListener('mouseover', () => {
 		   	    $("#necklace-options").css("display", "block");
 		   	    $("#logo-options").css("display", "none");
+		   	    $("#pin-options").css("display", "none");
+		   	    $("#table-options").css("display", "none");
 		   	    const thisButton = document.getElementById('necklace-button').getBoundingClientRect();
 		   	    const thisTop = thisButton.top - 1;
 		   	    document.getElementById('necklace-options').style.top = thisTop + 'px';
 		   	    document.getElementById('necklace-options').style.left = thisButton.right + 'px';
 		   	});
 
+		   	document.getElementById('table-button').addEventListener('mouseover', () => {
+		   	    $("#table-options").css("display", "block");
+		   	    $("#necklace-options").css("display", "none");
+		   	    $("#pin-options").css("display", "none");
+		   	    $("#logo-options").css("display", "none");
+		   	    const thisButton = document.getElementById('table-button').getBoundingClientRect();
+		   	    const thisTop = thisButton.top - 1;
+		   	    document.getElementById('table-options').style.top = thisTop + 'px';
+		   	    document.getElementById('table-options').style.left = thisButton.right + 'px';
+		   	});
+
 		   	document.getElementById('logo-button').addEventListener('mouseover', () => {
 		   	    $("#logo-options").css("display", "block");
 		   	    $("#necklace-options").css("display", "none");
+		   	    $("#pin-options").css("display", "none");
+		   	    $("#table-options").css("display", "none");
 		   	    const thisButton = document.getElementById('logo-button').getBoundingClientRect();
 		   	    const thisTop = thisButton.top - 1;
 		   	    document.getElementById('logo-options').style.top = thisTop + 'px';
@@ -510,6 +534,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   	    $("#background-options").css("display", "none");
 		   	    $("#necklace-options").css("display", "none");
 		   	    $("#logo-options").css("display", "none");
+		   	    $("#pin-options").css("display", "none");
+		   	    $("#table-options").css("display", "none");
 		   	});
 
 		   	document.getElementById('view').addEventListener('mouseover', () => {
@@ -518,6 +544,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   	    $("#background-options").css("display", "none");
 		   	    $("#necklace-options").css("display", "none");
 		   	    $("#logo-options").css("display", "none");
+		   	    $("#pin-options").css("display", "none");
+		   	    $("#table-options").css("display", "none");
 		   	});
 
 		   	document.getElementById('image-button').addEventListener('mouseover', () => {
@@ -529,12 +557,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   	    $("#background-options").css("display", "none");
 		   	    $("#necklace-options").css("display", "none");
 		   	    $("#logo-options").css("display", "none");
+		   	    $("#pin-options").css("display", "none");
+		   	    $("#table-options").css("display", "none");
 		   	});
 
 		   	document.getElementById('image').addEventListener('mouseover', () => {
 		   	    $("#background-options").css("display", "none");
 		   	    $("#necklace-options").css("display", "none");
 		   	    $("#logo-options").css("display", "none");
+		   	    $("#pin-options").css("display", "none");
+		   	    $("#table-options").css("display", "none");
 		   	});
 
 		   	const move = document.getElementById('move-tool');
@@ -998,6 +1030,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   			$("#image-options").css("display", "none");
 		   		    $("#background-options").css("display", "none");
 		   		    $("#necklace-options").css("display", "none");
+		   		    $("#pin-options").css("display", "none");
+		   		    $("#table-options").css("display", "none");
 		   		    $("#logo-options").css("display", "none");
 		   		}
 		   		$('#remove-necklace').on('click', function () {
@@ -1062,6 +1096,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                         canvas.add(img);
                     },{crossOrigin: 'anonymous'});
                     canvas.renderAll(canvas);
+		   		    hideOptions();
+		   		});
+		   		$('#remove-table').on('click', function () {
+		   		    canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
+		   		    hideOptions();
+		   		});
+		   		$('#one-table').on('click', function () {
+		   		    canvas.setBackgroundImage('images/one-table.png', canvas.renderAll.bind(canvas));
 		   		    hideOptions();
 		   		});
 		   		$('#remove-logo').on('click', function () {
