@@ -1052,8 +1052,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   		});
 		   		$('#gold-cross').on('click', function () {
 		            const baseUrl = window.location.origin;
-		            const absoluteUrl = baseUrl + '/images/gold-cross.png';
-		            console.log(absoluteUrl);
+		            var product = '';
+		            if (baseUrl === "http://localhost") {
+		                product = '/capstone/images/gold-cross.png';
+		            } else {
+		                product = '/images/gold-cross.png';
+		            }
+		            const absoluteUrl = baseUrl + product;
 		            fabric.Image.fromURL(absoluteUrl, (img) => {
                         img.set({
                         	scaleY: 0.5,
@@ -1065,11 +1070,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                     },{crossOrigin: 'anonymous'});
                     canvas.renderAll(canvas);
 		   		    hideOptions();
+		   		    const images = window.localStorage.getItem('images');
+		   		    if (images) {
+		   		    	window.localStorage.setItem('images', images + product);
+		   		    } else {
+		   		    	window.localStorage.setItem('images', product);
+		   		    }
 		   		});
 		   		$('#silver-cross').on('click', function () {
 		   		    const baseUrl = window.location.origin;
-		            const absoluteUrl = baseUrl + '/images/silver-cross.png';
-		            console.log(absoluteUrl);
+		   		    var product = '';
+		            if (baseUrl === "http://localhost") {
+		                product = '/capstone/images/silver-cross.png';
+		            } else {
+		                product = '/images/silver-cross.png';
+		            }
+		            const absoluteUrl = baseUrl + product;
 		            fabric.Image.fromURL(absoluteUrl, (img) => {
                         img.set({
                         	scaleY: 0.5,
@@ -1081,11 +1097,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                     },{crossOrigin: 'anonymous'});
                     canvas.renderAll(canvas);
 		   		    hideOptions();
+		   		    const images = window.localStorage.getItem('images');
+		   		    if (images) {
+		   		    	window.localStorage.setItem('images', images + ',' + product);
+		   		    } else {
+		   		    	window.localStorage.setItem('images', product);
+		   		    }
 		   		});
 		   		$('#bronze-cross').on('click', function () {
 		   		    const baseUrl = window.location.origin;
-		            const absoluteUrl = baseUrl + '/images/bronze-cross.png';
-		            console.log(absoluteUrl);
+		   		    var product = '';
+		            if (baseUrl === "http://localhost") {
+		                product = '/capstone/images/bronze-cross.png';
+		            } else {
+		                product = '/images/bronze-cross.png';
+		            }
+		            const absoluteUrl = baseUrl + product;
 		            fabric.Image.fromURL(absoluteUrl, (img) => {
                         img.set({
                         	scaleY: 0.5,
@@ -1097,6 +1124,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                     },{crossOrigin: 'anonymous'});
                     canvas.renderAll(canvas);
 		   		    hideOptions();
+		   		    const images = window.localStorage.getItem('images');
+		   		    if (images) {
+		   		    	window.localStorage.setItem('images', images + ',' + product);
+		   		    } else {
+		   		    	window.localStorage.setItem('images', product);
+		   		    }
 		   		});
 		   		$('#remove-table').on('click', function () {
 		   		    canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
@@ -1237,6 +1270,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							            imageUrl = imageUrl.replace(/^([^.]*)\.(.*)\./, "$1$2.");
 							            const baseUrl = window.location.origin;
 							            const absoluteUrl = baseUrl + '/' + imageUrl;
+							            const images = window.localStorage.getItem('images');
+							            if (images) {
+							            	window.localStorage.setItem('images', images + ',' + imageUrl);
+							            } else {
+							            	window.localStorage.setItem('images', imageUrl);
+							            }
 							            fabric.Image.fromURL(absoluteUrl, (img) => {
 					                        img.set(properties);
 					                        canvas.add(img);
@@ -1248,6 +1287,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							        }
 	   		                    });
 	   		                }
+	   		                console.log(window.localStorage.getItem('images'));
 	   		            },
    		                error: function (xhr, status, error) {
    		                    console.error("Error retrieving data:", status, error);
@@ -1361,6 +1401,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		            	canvas.setHeight(900);
    		            	canvas.setWidth(800);
    		            	canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
+   		            	localStorage.removeItem('images');
    		            	getSelectedTemplate();
    		            } else {
    		            	$('#current-view').val('Front');
@@ -1369,6 +1410,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		            	canvas.setHeight(900);
    		            	canvas.setWidth(800);
    		            	canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
+   		            	localStorage.removeItem('images');
    		            	getSelectedTemplate();
    		            }
    		        });
