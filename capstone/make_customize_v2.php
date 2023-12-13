@@ -996,6 +996,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				   		        img.set({
 				   		          	left: 0,
 				   		          	top: 0,
+				   		          	originX: 0,
+        							originY: 0,
 				   		          	scaleX: 0.5,
 				   		          	scaleY: 0.5,
 				   		        });
@@ -1026,6 +1028,44 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   		    reader.readAsDataURL(file);
 		   		  	}
 		   		});
+
+		   		function Copy() {
+		   			canvas.getActiveObject().clone(function(cloned) {
+		   				_clipboard = cloned;
+		   			});
+		   		}
+
+		   		function Paste() {
+		   			_clipboard.clone(function(clonedObj) {
+		   				canvas.discardActiveObject();
+		   				clonedObj.set({
+		   					left: clonedObj.left + clonedObj.width,
+		   					top: clonedObj.top,
+		   					evented: true,
+		   				});
+		   				if (clonedObj.type === 'activeSelection') {
+		   					clonedObj.canvas = canvas;
+		   					clonedObj.forEachObject(function(obj) {
+		   						canvas.add(obj);
+		   					});
+		   					clonedObj.setCoords();
+		   				} else {
+		   					canvas.add(clonedObj);
+		   				}
+		   				_clipboard.left += 10;
+		   				canvas.setActiveObject(clonedObj);
+		   				canvas.requestRenderAll();
+		   			});
+		   		}
+
+		   		document.addEventListener('keydown', function(event) {
+		   		  if (event.ctrlKey && event.keyCode === 67) {
+		   		    Copy();
+		   		  } else if (event.ctrlKey && event.keyCode === 86) {
+		   		  	Paste()
+		   		  }
+		   		});
+
 		   		function hideOptions() {
 		   			$("#image-options").css("display", "none");
 		   		    $("#background-options").css("display", "none");
@@ -1299,7 +1339,38 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		            } else if (product === "pin") {
 
    		            } else if (product === "nameplate") {
-
+   		            	canvas.setBackgroundImage('images/one-table.png', canvas.renderAll.bind(canvas));
+   		            	const text1 = new fabric.IText('HON. FAMILY NAME', {
+   				   		    left: 345,
+   				   		    top: 326,
+   				   		    objecttype: 'text',
+   				   		    fill: 'Gold',
+    						fontFamily: 'Arial',
+    						textAlign: 'Left',
+    						fontWeight: 'Bold',
+    						fontSize: 20,
+   				   		});
+   				   		canvas.add(text1);
+   				   		const text2 = new fabric.IText('GIVEN NAME M.I.', {
+   				   		    left: 345,
+   				   		    top: 351,
+   				   		    objecttype: 'text',
+   				   		    fill: 'Gold',
+    						fontFamily: 'Arial',
+    						textAlign: 'Left',
+    						fontWeight: 'Bold',
+    						fontSize: 20,
+   				   		});
+   				   		canvas.add(text2);
+   				   		const Circle_Shape = new fabric.Circle({
+   				   		    left: 285,
+   				   		    top: 326,
+   				   		    radius: 23,
+   				   		    fill: 'transparent',
+   				   		    stroke: 'Gold',
+   				   		    strokeWidth: 2,
+   				   		});
+   				   		canvas.add(Circle_Shape);
    		            } else if (product === "logo") {
    		            	canvas.setBackgroundImage("images/gold-logo.png", canvas.renderAll.bind(canvas));
    		            } else {
