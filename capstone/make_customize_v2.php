@@ -1059,11 +1059,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   		}
 
 		   		document.addEventListener('keydown', function(event) {
-		   		  if (event.ctrlKey && event.keyCode === 67) {
-		   		    Copy();
-		   		  } else if (event.ctrlKey && event.keyCode === 86) {
-		   		  	Paste()
-		   		  }
+		   		  	if (event.ctrlKey && event.keyCode === 67) {
+		   		    	Copy();
+		   		  	} else if (event.ctrlKey && event.keyCode === 86) {
+		   		  		Paste()
+		   		  	} else if (event.key === 'Delete' || event.key === 'Del') {
+		   		  		canvas.isDrawingMode = false;
+		   		  		var activeObjects = canvas.getActiveObjects();
+   		  		        if (activeObjects.length > 0) {
+   		  		            activeObjects.forEach(function(object) {
+   		  		                canvas.remove(object);
+   		  		            });
+   		  		            canvas.discardActiveObject().renderAll();
+   		  		        }
+		   		  	}
 		   		});
 
 		   		function hideOptions() {
