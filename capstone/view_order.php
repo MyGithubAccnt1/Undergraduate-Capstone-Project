@@ -202,6 +202,25 @@ $email = $_SESSION['email'];
 		        	            		if ($objectresult->num_rows > 0) {
 		                        ?>        
                  		                <div class="col-6 border text-start p-4" style="height: 350px; overflow-x:hidden; overflow-y:auto; font-size: 0.85rem;">
+                 		                	<small>Live URL: </small><br>
+                 		                	<small style="margin-left: 100px;">
+                 		        				<?php
+                 		        				    echo '<script>';
+                 		        				    echo 'var link = "";';
+                 		        				    echo 'var currentURL = window.location.href;';
+                 		        				    echo 'var email = "' . $email . '";'; // Assuming $email is a PHP variable
+                 		        				    echo 'var deyt = "' . $date . '";';  // Assuming $date is a PHP variable
+
+                 		        				    echo 'if (currentURL.indexOf("http://20.205.112.210/customize.php") !== -1) {';
+                 		        				    echo '    link = "http://20.205.112.210/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;';
+                 		        				    echo '} else {';
+                 		        				    echo '    link = "http://localhost/capstone/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;';
+                 		        				    echo '}';
+                 		        				    
+                 		        				    echo 'document.write("<a href=\'" + link + "\' target=\'_blank\'>" + link + "</a>");';
+                 		        				    echo '</script>';
+                 		        				?>
+                 		        			</small><br><br>
                  		        <?php
                  		        			while ($objectrow = $objectresult->fetch_assoc()) {
                  		        				$properties = $objectrow['properties'];
