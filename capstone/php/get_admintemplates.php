@@ -87,6 +87,13 @@
 	        	    			echo '<img src="'. $templaterow['thumbnail'] .'" style="width: auto; height: 300px;">';
 	        	    		echo '</div>';
 	        	    		echo '<div style="flex: 50%; margin: 5px 0; padding: 20px; height: 350px; overflow-x:hidden; overflow-y:auto; font-family: Monospace; font-size: 1.5rem;" class="border">';
+    	    		        	
+    	    		        	echo '<small>Live URL: </small><br>';
+    	    		        	echo '<small style="margin-left: 100px;">';
+    	    		        	$link = 'http://20.205.112.210/make_customize_v2.php?&email=' . $email . '&deyt=' . $date;
+    	    		        	echo '<a href="' . $link . '" target="_blank" style="color: #0A58CA;">' . $link . '</a>';
+    	    		        	echo '</small><br><br>';
+    	    		        	
 	        	$objectsql = "SELECT * FROM object WHERE email = '$email' and deyt = '$date'";
 	        	$objectresult = $conn->query($objectsql);
 	        	if ($objectresult->num_rows > 0) {
