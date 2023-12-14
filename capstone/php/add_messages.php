@@ -6,7 +6,7 @@ include("connect.php");
 $id = $_POST["id"];
 $email = $_POST["email"];
 $role = $_POST["role"];
-$date = $_POST["date"];
+$date = "";
 $seen = "No";
 $comment = mysqli_real_escape_string($conn, $_POST["comment"]);
 
