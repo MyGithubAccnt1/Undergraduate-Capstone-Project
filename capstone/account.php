@@ -151,7 +151,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	        												<input type="hidden" name="id" value="<?php echo $_SESSION['id'];?>"/>
 	        												<input type="hidden" name="email" value="<?php echo $_SESSION['email'];?>"/>
 	        												<input type="hidden" name="role" value="<?php echo $_SESSION['role'];?>"/>
-	        												<input type="hidden" name="date" value="" id="dateInput"/>
 	        												<textarea class="form-control rounded-0" placeholder="Type your message here." rows="1" name="comment" id="comment"></textarea>
 	        											</div>
 	        											<div class="d-flex justify-content-center">
@@ -280,7 +279,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			    $.ajax({
 			        url: "./php/get_messages.php",
 			        method: "GET",
-			        data: { date: $("#dateInput").val() },
 			        success: function (data) {
 			            $("#comments-container").html(data);
 			        }
