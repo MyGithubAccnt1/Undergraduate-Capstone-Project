@@ -208,15 +208,9 @@ $email = $_SESSION['email'];
                  		        				    echo '<script>';
                  		        				    echo 'var link = "";';
                  		        				    echo 'var currentURL = window.location.href;';
-                 		        				    echo 'var email = "' . $email . '";'; // Assuming $email is a PHP variable
-                 		        				    echo 'var deyt = "' . $date . '";';  // Assuming $date is a PHP variable
-
-                 		        				    echo 'if (currentURL.indexOf("http://20.205.112.210/customize.php") !== -1) {';
-                 		        				    echo '    link = "http://20.205.112.210/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;';
-                 		        				    echo '} else {';
-                 		        				    echo '    link = "http://localhost/capstone/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;';
-                 		        				    echo '}';
-                 		        				    
+                 		        				    echo 'var email = "' . $email . '";';
+                 		        				    echo 'var deyt = "' . $date . '";';
+                 		        				    echo 'link = "http://20.205.112.210/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;';
                  		        				    echo 'document.write("<a href=\'" + link + "\' target=\'_blank\'>" + link + "</a>");';
                  		        				    echo '</script>';
                  		        				?>
