@@ -992,18 +992,55 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   		    	const reader = new FileReader();
 		   		    	reader.onload = function (event) {
 		   		      		const imageUrl = event.target.result;
-				   		    fabric.Image.fromURL(imageUrl, function (img) {
-				   		        img.set({
-				   		          	left: 0,
-				   		          	top: 0,
-				   		          	originX: 0,
-        							originY: 0,
-				   		          	scaleX: 0.5,
-				   		          	scaleY: 0.5,
-				   		        });
-				   		        canvas.add(img);
-				   		        canvas.renderAll(canvas);
-				   		    });
+		   		      		var product = window.localStorage.getItem('product');
+		   		      		if (product === "nameplate") {
+		   		      			const Circle_Shape = new fabric.Circle({
+		   		      			    left: 285,
+		   		      			    top: 326,
+		   		      			    radius: 23,
+		   		      			    fill: 'transparent',
+		   		      			    stroke: 'Gold',
+		   		      			    strokeWidth: 2,
+		   		      			});
+		   		      			fabric.Image.fromURL(imageUrl, function (img) {
+		   		      			    var targetRadius = 23;
+
+		   		      			    img.set({
+		   		      			        left: 309,
+		   		      			        top: 350,
+		   		      			        originX: 'center',
+		   		      			        originY: 'center',
+		   		      			    });
+
+		   		      			    if (img.width > img.height) {
+		   		      			        img.scaleToWidth(targetRadius * 2);
+		   		      			    } else {
+		   		      			        img.scaleToHeight(targetRadius * 2);
+		   		      			    }
+
+		   		      			    img.clipPath = new fabric.Circle({
+		   		      			        radius: 570,
+		   		      			        originX: 'center',
+		   		      			        originY: 'center',
+		   		      			    });
+
+		   		      			    canvas.add(img, Circle_Shape);
+		   		      			    canvas.renderAll();
+		   		      			});
+		   		      		} else {
+		   		      			fabric.Image.fromURL(imageUrl, function (img) {
+					   		        img.set({
+					   		          	left: 0,
+					   		          	top: 0,
+					   		          	originX: 0,
+	        							originY: 0,
+					   		          	scaleX: 0.5,
+					   		          	scaleY: 0.5,
+					   		        });
+					   		        canvas.add(img);
+					   		        canvas.renderAll();
+					   		    });
+		   		      		}
 	    		            const imageDataWithoutPrefix = imageUrl.split(',')[1];
 	    		            $.ajax({
 	    		                url: "./php/upload_temp.php",
@@ -1012,6 +1049,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	    		                    imageFile: imageDataWithoutPrefix
 	    		                },
 	    		                success: function (data) {
+	    		                	const baseUrl = window.location.origin;
+	    		                	var product = '';
+	    		                	if (baseUrl === "http://localhost") {
+	    		                	    data = 'capstone/' + data;
+	    		                	}
+	    		                	console.log('upload image: ' + data);
 	    		                	$("#image-options").css("display", "none");
 	    		                	const images = window.localStorage.getItem('images');
 	    		                	if (images) {
@@ -1019,6 +1062,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	    		                	} else {
 	    		                		window.localStorage.setItem('images', data);
 	    		                	}
+	    		                	console.log('local storage: ' + window.localStorage.getItem('images'));
 	    		                },
 	    		                error: function (xhr, status, error) {
 	    		                    console.error("AJAX Request Error:", status, error);
@@ -1125,6 +1169,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   		    } else {
 		   		    	window.localStorage.setItem('images', product);
 		   		    }
+		   		    console.log('select template: ' + product);
+		   		    console.log('local storage: ' + window.localStorage.getItem('images'));
 		   		});
 		   		$('#silver-cross').on('click', function () {
 		   		    const baseUrl = window.location.origin;
@@ -1210,7 +1256,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   		    const backgroundImage = canvas.backgroundImage;
 		   		    const imageUrlsString = window.localStorage.getItem('images');
 		   		    const imageUrls = imageUrlsString ? imageUrlsString.split(',') : [];
-
+		   		    let x = 0;
 		   		    for (let i = 0; i < objects.length; i++) {
 		   		        const obj = objects[i];
 		   		        const serializedObj = {
@@ -1219,8 +1265,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   		        };
 
 		   		        if (obj.type === 'image') {
-		   		            if (i < imageUrls.length) {
-		   		                serializedObj.properties.src = imageUrls[i];
+
+		   		            if (x < imageUrls.length) {
+		   		                serializedObj.properties.src = imageUrls[x];
+		   		                x ++;
 		   		            } else {
 		   		                serializedObj.properties.src = '';
 		   		            }
@@ -1327,16 +1375,23 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							            }
 							            fabric.Image.fromURL(absoluteUrl, (img) => {
 					                        img.set(properties);
+					                        if (properties.clipPath) {
+					                        	img.clipPath = new fabric.Circle({
+					                        	    radius: 570,
+					                        	    originX: 'center',
+					                        	    originY: 'center',
+					                        	});
+					                        }
 					                        canvas.add(img);
 					                    },{crossOrigin: 'anonymous'});
-					                    canvas.renderAll(canvas);
+					                    canvas.renderAll();
 							        } else if (object.objectType === 'background') {
 							        	const properties = JSON.parse(object.properties);
 							            canvas.setBackgroundImage(properties.src, canvas.renderAll.bind(canvas));
 							        }
 	   		                    });
 	   		                }
-	   		                console.log(window.localStorage.getItem('images'));
+	   		                console.log('local storage: ' + window.localStorage.getItem('images'));
 	   		            },
    		                error: function (xhr, status, error) {
    		                    console.error("Error retrieving data:", status, error);
@@ -1371,15 +1426,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
     						fontSize: 20,
    				   		});
    				   		canvas.add(text2);
-   				   		const Circle_Shape = new fabric.Circle({
-   				   		    left: 285,
-   				   		    top: 326,
-   				   		    radius: 23,
-   				   		    fill: 'transparent',
-   				   		    stroke: 'Gold',
-   				   		    strokeWidth: 2,
-   				   		});
-   				   		canvas.add(Circle_Shape);
    		            } else if (product === "logo") {
    		            	canvas.setBackgroundImage("images/gold-logo.png", canvas.renderAll.bind(canvas));
    		            } else {
