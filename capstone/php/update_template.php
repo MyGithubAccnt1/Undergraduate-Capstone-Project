@@ -65,9 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         }
 
-                    } else {
-                        echo '1';
-                        exit;
                     }
 
                     $objectType = $new['objectType'];
