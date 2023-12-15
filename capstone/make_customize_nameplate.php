@@ -125,45 +125,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					<button class="options" id="background-button">Templates</button>
 				</div>
 			</section>
-			<section class="button-options" id="background-options">
-				<div style="display: flex; flex-direction: column; padding: 0; margin: 0;">
-					<button class="options" id="necklace-button">Necklace</button>
-					<button class="options" id="pin-button">Pin</button>
-					<button class="options" id="table-button">Table Nameplate</button>
-					<button class="options" id="logo-button">Logo Seal</button>
-				</div>
-			</section>
-			<section class="button-options" id="necklace-options">
-				<div style="display: flex; flex-direction: row; padding: 0; margin: 0;">
-					<button class="template-options" id="remove-necklace">Remove Chain</button>
-					<button class="template-options" id="gold-necklace">
-						<img src="images/gold-necklace.png" height="45px" width="40px" alt="Missing_Image">
-						<p>Gold</p>
-					</button>
-					<button class="template-options" id="silver-necklace">
-						<img src="images/silver-necklace.png" height="45px" width="40px" alt="Missing_Image">
-						<p>Silver</p>
-					</button>
-					<button class="template-options" id="bronze-necklace">
-						<img src="images/bronze-necklace.png" height="45px" width="40px" alt="Missing_Image">
-						<p>Bronze</p>
-					</button>
-				</div>
-				<div style="display: flex; flex-direction: row; padding: 0; margin: 0;">
-					<button class="template-options" id="gold-cross">
-						<img src="images/gold-cross.png" height="45px" width="40px" alt="Missing_Image">
-						<p>Gold</p>
-					</button>
-					<button class="template-options" id="silver-cross">
-						<img src="images/silver-cross.png" height="45px" width="40px" alt="Missing_Image">
-						<p>Silver</p>
-					</button>
-					<button class="template-options" id="bronze-cross">
-						<img src="images/bronze-cross.png" height="45px" width="40px" alt="Missing_Image">
-						<p>Bronze</p>
-					</button>
-				</div>
-			</section>
 			<section class="button-options" id="table-options">
 				<div style="display: flex; flex-direction: row; padding: 0; margin: 0;">
 					<button class="template-options" id="remove-table">Remove</button>
@@ -173,30 +134,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					</button>
 				</div>
 			</section>
-			<section class="button-options" id="logo-options">
-				<div style="display: flex; flex-direction: row; padding: 0; margin: 0;">
-					<button class="template-options" id="remove-logo">Remove</button>
-					<button class="template-options" id="gold-logo">
-						<img src="images/gold-logo.png" height="45px" width="40px" alt="Missing_Image">
-						<p>Gold</p>
-					</button>
-					<button class="template-options" id="silver-logo">
-						<img src="images/silver-logo.png" height="45px" width="40px" alt="Missing_Image">
-						<p>Silver</p>
-					</button>
-					<button class="template-options" id="bronze-logo">
-						<img src="images/bronze-logo.png" height="45px" width="40px" alt="Missing_Image">
-						<p>Bronze</p>
-					</button>
-				</div>
-			</section>
 			<section style="height: 100vh; width: 100%; margin: 0; overflow-x: hidden; overflow-y: hidden;">
 				<div style="height: 25px; padding: 0; margin: 0; background-color: #794B29;"></div>
 				<div style="display: flex; flex-direction: row; align-items: center; height: 35px; padding-left: 10px; margin: 0; background-color: #D0B89F;">
 					<button class="my-option" id="file-button">File</button>
 					<button class="my-option" id="image-button">Image</button>
 					<button class="my-option" id="order">Order</button>
-					<button class="my-option" id="view">Switch View</button>
+					<!-- <button class="my-option" id="view">Switch View</button> -->
 				</div>
 				<div style="display: flex; flex-direction: row; align-items: center; height: 35px; padding-left: 10px; margin: 0; background-color: #D0B89F; overflow-x: auto; overflow-y: auto;">
 					<div class="my-info">Current Tool:</div>
@@ -488,44 +432,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   	});
 
 		   	document.getElementById('background-button').addEventListener('mouseover', () => {
-		   	    $("#background-options").css("display", "block");
-		   	    const thisButton = document.getElementById('background-button').getBoundingClientRect();
-		   	    const thisTop = thisButton.top - 1;
-		   	    document.getElementById('background-options').style.top = thisTop + 'px';
-		   	    document.getElementById('background-options').style.left = thisButton.right + 'px';
-		   	});
-
-		   	document.getElementById('necklace-button').addEventListener('mouseover', () => {
-		   	    $("#necklace-options").css("display", "block");
-		   	    $("#logo-options").css("display", "none");
-		   	    $("#pin-options").css("display", "none");
-		   	    $("#table-options").css("display", "none");
-		   	    const thisButton = document.getElementById('necklace-button').getBoundingClientRect();
-		   	    const thisTop = thisButton.top - 1;
-		   	    document.getElementById('necklace-options').style.top = thisTop + 'px';
-		   	    document.getElementById('necklace-options').style.left = thisButton.right + 'px';
-		   	});
-
-		   	document.getElementById('table-button').addEventListener('mouseover', () => {
 		   	    $("#table-options").css("display", "block");
-		   	    $("#necklace-options").css("display", "none");
-		   	    $("#pin-options").css("display", "none");
-		   	    $("#logo-options").css("display", "none");
-		   	    const thisButton = document.getElementById('table-button').getBoundingClientRect();
+		   	    const thisButton = document.getElementById('background-button').getBoundingClientRect();
 		   	    const thisTop = thisButton.top - 1;
 		   	    document.getElementById('table-options').style.top = thisTop + 'px';
 		   	    document.getElementById('table-options').style.left = thisButton.right + 'px';
-		   	});
-
-		   	document.getElementById('logo-button').addEventListener('mouseover', () => {
-		   	    $("#logo-options").css("display", "block");
-		   	    $("#necklace-options").css("display", "none");
-		   	    $("#pin-options").css("display", "none");
-		   	    $("#table-options").css("display", "none");
-		   	    const thisButton = document.getElementById('logo-button').getBoundingClientRect();
-		   	    const thisTop = thisButton.top - 1;
-		   	    document.getElementById('logo-options').style.top = thisTop + 'px';
-		   	    document.getElementById('logo-options').style.left = thisButton.right + 'px';
 		   	});
 
 		   	document.getElementById('order').addEventListener('mouseover', () => {
@@ -538,15 +449,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   	    $("#table-options").css("display", "none");
 		   	});
 
-		   	document.getElementById('view').addEventListener('mouseover', () => {
-		   	    $("#file-options").css("display", "none");
-		   	    $("#image-options").css("display", "none");
-		   	    $("#background-options").css("display", "none");
-		   	    $("#necklace-options").css("display", "none");
-		   	    $("#logo-options").css("display", "none");
-		   	    $("#pin-options").css("display", "none");
-		   	    $("#table-options").css("display", "none");
-		   	});
+		   	// document.getElementById('view').addEventListener('mouseover', () => {
+		   	//     $("#file-options").css("display", "none");
+		   	//     $("#image-options").css("display", "none");
+		   	//     $("#background-options").css("display", "none");
+		   	//     $("#necklace-options").css("display", "none");
+		   	//     $("#logo-options").css("display", "none");
+		   	//     $("#pin-options").css("display", "none");
+		   	//     $("#table-options").css("display", "none");
+		   	// });
 
 		   	document.getElementById('image-button').addEventListener('mouseover', () => {
 		   	    $("#file-options").css("display", "none");
@@ -993,59 +904,44 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   		    	reader.onload = function (event) {
 		   		      		const imageUrl = event.target.result;
 		   		      		var product = window.localStorage.getItem('product');
-		   		      		if (product === "nameplate") {
-		   		      			const Circle_Shape = new fabric.Circle({
-		   		      			    left: 285,
-		   		      			    top: 326,
-		   		      			    radius: 23,
-		   		      			    fill: 'transparent',
-		   		      			    stroke: 'Gold',
-		   		      			    strokeWidth: 2,
-		   		      			});
-		   		      			fabric.Image.fromURL(imageUrl, function (img) {
-		   		      			    var targetRadius = 23;
+		   		      		const Circle_Shape = new fabric.Circle({
+	   		      			    left: 285,
+	   		      			    top: 326,
+	   		      			    radius: 23,
+	   		      			    fill: 'transparent',
+	   		      			    stroke: 'Gold',
+	   		      			    strokeWidth: 2,
+	   		      			});
+	   		      			fabric.Image.fromURL(imageUrl, function (img) {
+	   		      			    var targetRadius = 23;
 
-		   		      			    img.set({
-		   		      			        left: 309,
-		   		      			        top: 350,
-		   		      			        originX: 'center',
-		   		      			        originY: 'center',
-		   		      			    });
-		   		      			    let newrad = "";
-		   		      			    if (img.width > img.height) {
-		   		      			        img.scaleToWidth(targetRadius * 2);
-		   		      			        newrad = (img.width / 2);
-		   		      			    } else if (img.width < img.height) {
-		   		      			        img.scaleToHeight(targetRadius * 2);
-		   		      			        newrad = (img.height / 2);
-		   		      			    } else {
-		   		      			    	img.scaleToHeight(targetRadius * 2);
-		   		      			        img.scaleToWidth(targetRadius * 2);
-		   		      			        newrad = (Math.min(img.width, img.height) / 2);
-		   		      			    }
-		   		      			    img.clipPath = new fabric.Circle({
-		   		      			        radius: newrad,
-		   		      			        originX: 'center',
-		   		      			        originY: 'center',
-		   		      			    });
+	   		      			    img.set({
+	   		      			        left: 309,
+	   		      			        top: 350,
+	   		      			        originX: 'center',
+	   		      			        originY: 'center',
+	   		      			    });
+	   		      			    let newrad = "";
+	   		      			    if (img.width > img.height) {
+	   		      			        img.scaleToWidth(targetRadius * 2);
+	   		      			        newrad = (img.width / 2);
+	   		      			    } else if (img.width < img.height) {
+	   		      			        img.scaleToHeight(targetRadius * 2);
+	   		      			        newrad = (img.height / 2);
+	   		      			    } else {
+	   		      			    	img.scaleToHeight(targetRadius * 2);
+	   		      			        img.scaleToWidth(targetRadius * 2);
+	   		      			        newrad = (Math.min(img.width, img.height) / 2);
+	   		      			    }
+	   		      			    img.clipPath = new fabric.Circle({
+	   		      			        radius: newrad,
+	   		      			        originX: 'center',
+	   		      			        originY: 'center',
+	   		      			    });
 
-		   		      			    canvas.add(img, Circle_Shape);
-		   		      			    canvas.renderAll();
-		   		      			});
-		   		      		} else {
-		   		      			fabric.Image.fromURL(imageUrl, function (img) {
-					   		        img.set({
-					   		          	left: 0,
-					   		          	top: 0,
-					   		          	originX: 0,
-	        							originY: 0,
-					   		          	scaleX: 0.5,
-					   		          	scaleY: 0.5,
-					   		        });
-					   		        canvas.add(img);
-					   		        canvas.renderAll();
-					   		    });
-		   		      		}
+	   		      			    canvas.add(img, Circle_Shape);
+	   		      			    canvas.renderAll();
+	   		      			});
 	    		            const imageDataWithoutPrefix = imageUrl.split(',')[1];
 	    		            $.ajax({
 	    		                url: "./php/upload_temp.php",
@@ -1123,7 +1019,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		  		        }
 		   		  	}
 		   		});
-
 		   		function hideOptions() {
 		   			$("#image-options").css("display", "none");
 		   		    $("#background-options").css("display", "none");
@@ -1132,127 +1027,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		   		    $("#table-options").css("display", "none");
 		   		    $("#logo-options").css("display", "none");
 		   		}
-		   		$('#remove-necklace').on('click', function () {
-		   		    canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
-		   		    hideOptions();
-		   		});
-		   		$('#gold-necklace').on('click', function () {
-		   		    canvas.setBackgroundImage('images/gold-necklace.png', canvas.renderAll.bind(canvas));
-		   		    hideOptions();
-		   		});
-		   		$('#silver-necklace').on('click', function () {
-		   		    canvas.setBackgroundImage('images/silver-necklace.png', canvas.renderAll.bind(canvas));
-		   		    hideOptions();
-		   		});
-		   		$('#bronze-necklace').on('click', function () {
-		   		    canvas.setBackgroundImage('images/bronze-necklace.png', canvas.renderAll.bind(canvas));
-		   		    hideOptions();
-		   		});
-		   		$('#gold-cross').on('click', function () {
-		            const baseUrl = window.location.origin;
-		            var product = '';
-		            if (baseUrl === "http://localhost") {
-		                product = '/capstone/images/gold-cross.png';
-		            } else {
-		                product = '/images/gold-cross.png';
-		            }
-		            const absoluteUrl = baseUrl + product;
-		            fabric.Image.fromURL(absoluteUrl, (img) => {
-                        img.set({
-                        	scaleY: 0.5,
-                            scaleX: 0.5,
-                            left: 200,
-                            top: 220,
-                        });
-                        canvas.add(img);
-                    },{crossOrigin: 'anonymous'});
-                    canvas.renderAll(canvas);
-		   		    hideOptions();
-		   		    const images = window.localStorage.getItem('images');
-		   		    if (images) {
-		   		    	window.localStorage.setItem('images', images + product);
-		   		    } else {
-		   		    	window.localStorage.setItem('images', product);
-		   		    }
-		   		    console.log('select template: ' + product);
-		   		    console.log('local storage: ' + window.localStorage.getItem('images'));
-		   		});
-		   		$('#silver-cross').on('click', function () {
-		   		    const baseUrl = window.location.origin;
-		   		    var product = '';
-		            if (baseUrl === "http://localhost") {
-		                product = '/capstone/images/silver-cross.png';
-		            } else {
-		                product = '/images/silver-cross.png';
-		            }
-		            const absoluteUrl = baseUrl + product;
-		            fabric.Image.fromURL(absoluteUrl, (img) => {
-                        img.set({
-                        	scaleY: 0.5,
-                            scaleX: 0.5,
-                            left: 200,
-                            top: 220,
-                        });
-                        canvas.add(img);
-                    },{crossOrigin: 'anonymous'});
-                    canvas.renderAll(canvas);
-		   		    hideOptions();
-		   		    const images = window.localStorage.getItem('images');
-		   		    if (images) {
-		   		    	window.localStorage.setItem('images', images + ',' + product);
-		   		    } else {
-		   		    	window.localStorage.setItem('images', product);
-		   		    }
-		   		});
-		   		$('#bronze-cross').on('click', function () {
-		   		    const baseUrl = window.location.origin;
-		   		    var product = '';
-		            if (baseUrl === "http://localhost") {
-		                product = '/capstone/images/bronze-cross.png';
-		            } else {
-		                product = '/images/bronze-cross.png';
-		            }
-		            const absoluteUrl = baseUrl + product;
-		            fabric.Image.fromURL(absoluteUrl, (img) => {
-                        img.set({
-                        	scaleY: 0.5,
-                            scaleX: 0.5,
-                            left: 200,
-                            top: 220,
-                        });
-                        canvas.add(img);
-                    },{crossOrigin: 'anonymous'});
-                    canvas.renderAll(canvas);
-		   		    hideOptions();
-		   		    const images = window.localStorage.getItem('images');
-		   		    if (images) {
-		   		    	window.localStorage.setItem('images', images + ',' + product);
-		   		    } else {
-		   		    	window.localStorage.setItem('images', product);
-		   		    }
-		   		});
 		   		$('#remove-table').on('click', function () {
 		   		    canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
 		   		    hideOptions();
 		   		});
 		   		$('#one-table').on('click', function () {
 		   		    canvas.setBackgroundImage('images/one-table.png', canvas.renderAll.bind(canvas));
-		   		    hideOptions();
-		   		});
-		   		$('#remove-logo').on('click', function () {
-		   		    canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
-		   		    hideOptions();
-		   		});
-		   		$('#gold-logo').on('click', function () {
-		   		    canvas.setBackgroundImage('images/gold-logo.png', canvas.renderAll.bind(canvas));
-		   		    hideOptions();
-		   		});
-		   		$('#silver-logo').on('click', function () {
-		   		    canvas.setBackgroundImage('images/silver-logo.png', canvas.renderAll.bind(canvas));
-		   		    hideOptions();
-		   		});
-		   		$('#bronze-logo').on('click', function () {
-		   		    canvas.setBackgroundImage('images/bronze-logo.png', canvas.renderAll.bind(canvas));
 		   		    hideOptions();
 		   		});
 		   		function serializeCanvasObjects(canvas) {
@@ -1323,7 +1103,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		        	var email = "";
    		        	var deyt = "";
    		        	var product = "";
-   		        	if (currentURL === "http://20.205.112.210/make_customize_v2.php" || currentURL === "http://localhost/capstone/make_customize_v2.php") {
+   		        	if (currentURL === "http://20.205.112.210/make_customize_v2.php" || currentURL === "http://localhost/capstone/make_customize_v2.php" || "http://localhost/capstone/make_customize_nameplate.php") {
    		        	    email = window.localStorage.getItem('email');
    		        	    deyt = window.localStorage.getItem('deyt');
    		        	    product = window.localStorage.getItem('product');
@@ -1416,39 +1196,29 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                    console.log(xhr.responseText);
    		                }
    		            });
-   		            if (product === "necklace") {
-   		            	canvas.setBackgroundImage("images/gold-necklace.png", canvas.renderAll.bind(canvas));
-   		            } else if (product === "pin") {
-
-   		            } else if (product === "nameplate") {
-   		            	canvas.setBackgroundImage('images/one-table.png', canvas.renderAll.bind(canvas));
-   		            	const text1 = new fabric.IText('HON. FAMILY NAME', {
-   				   		    left: 345,
-   				   		    top: 326,
-   				   		    objecttype: 'text',
-   				   		    fill: 'Gold',
-    						fontFamily: 'Arial',
-    						textAlign: 'Left',
-    						fontWeight: 'Bold',
-    						fontSize: 20,
-   				   		});
-   				   		canvas.add(text1);
-   				   		const text2 = new fabric.IText('GIVEN NAME M.I.', {
-   				   		    left: 345,
-   				   		    top: 351,
-   				   		    objecttype: 'text',
-   				   		    fill: 'Gold',
-    						fontFamily: 'Arial',
-    						textAlign: 'Left',
-    						fontWeight: 'Bold',
-    						fontSize: 20,
-   				   		});
-   				   		canvas.add(text2);
-   		            } else if (product === "logo") {
-   		            	canvas.setBackgroundImage("images/gold-logo.png", canvas.renderAll.bind(canvas));
-   		            } else {
-   		            	canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
-   		            }
+   		            canvas.setBackgroundImage('images/one-table.png', canvas.renderAll.bind(canvas));
+	            	const text1 = new fabric.IText('HON. FAMILY NAME', {
+			   		    left: 345,
+			   		    top: 326,
+			   		    objecttype: 'text',
+			   		    fill: 'Gold',
+						fontFamily: 'Arial',
+						textAlign: 'Left',
+						fontWeight: 'Bold',
+						fontSize: 20,
+			   		});
+			   		canvas.add(text1);
+			   		const text2 = new fabric.IText('GIVEN NAME M.I.', {
+			   		    left: 345,
+			   		    top: 351,
+			   		    objecttype: 'text',
+			   		    fill: 'Gold',
+						fontFamily: 'Arial',
+						textAlign: 'Left',
+						fontWeight: 'Bold',
+						fontSize: 20,
+			   		});
+			   		canvas.add(text2);
    		        }
    		        getSelectedTemplate();
    		        function updateTemplate() {
@@ -1459,6 +1229,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		            var email = window.localStorage.getItem('email');
    		            var deyt = window.localStorage.getItem('deyt');
    		            var view = $('#current-view').val();
+   		            var product = window.localStorage.getItem('product');
    		            $.ajax({
    		                url: './php/update_template.php',
    		                type: 'POST',
@@ -1467,9 +1238,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                	canvasObjects: serializedObjects,
    		                	email: email,
    		                	deyt: deyt,
-   		                	view: view
+   		                	view: view,
+   		                	product: product
    		                }),
    		                success: function (data) {
+   		                	// console.log('error: ' + data);
    		                	uploadCanvasObjects();
    		                },
    		                error: function (xhr, status, error) {
@@ -1536,28 +1309,28 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		            localStorage.removeItem('product');
    		            window.location.href = "customize.php";
    		        });
-   		        $('#view').on('click', function () {
-   		            canvas.isDrawingMode = false;
-   		            if ($('#current-view').val() === "Front") {
-   		            	$('#current-view').val('Back');
-   		            	document.getElementById('current-view').style.width = 50 + 'px';
-   		            	canvas.clear();
-   		            	canvas.setHeight(900);
-   		            	canvas.setWidth(800);
-   		            	canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
-   		            	localStorage.removeItem('images');
-   		            	getSelectedTemplate();
-   		            } else {
-   		            	$('#current-view').val('Front');
-   		            	document.getElementById('current-view').style.width = 60 + 'px';
-   		            	canvas.clear();
-   		            	canvas.setHeight(900);
-   		            	canvas.setWidth(800);
-   		            	canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
-   		            	localStorage.removeItem('images');
-   		            	getSelectedTemplate();
-   		            }
-   		        });
+   		        // $('#view').on('click', function () {
+   		        //     canvas.isDrawingMode = false;
+   		        //     if ($('#current-view').val() === "Front") {
+   		        //     	$('#current-view').val('Back');
+   		        //     	document.getElementById('current-view').style.width = 50 + 'px';
+   		        //     	canvas.clear();
+   		        //     	canvas.setHeight(900);
+   		        //     	canvas.setWidth(800);
+   		        //     	canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
+   		        //     	localStorage.removeItem('images');
+   		        //     	getSelectedTemplate();
+   		        //     } else {
+   		        //     	$('#current-view').val('Front');
+   		        //     	document.getElementById('current-view').style.width = 60 + 'px';
+   		        //     	canvas.clear();
+   		        //     	canvas.setHeight(900);
+   		        //     	canvas.setWidth(800);
+   		        //     	canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
+   		        //     	localStorage.removeItem('images');
+   		        //     	getSelectedTemplate();
+   		        //     }
+   		        // });
 		   	}
 		</script>
 	</body>

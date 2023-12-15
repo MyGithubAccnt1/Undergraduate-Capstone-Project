@@ -94,6 +94,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 															<form action="" class="template">
 																<input type="hidden" name="email" value="<?php echo $row['email']?>">
 																<input type="hidden" name="deyt" value="<?php echo $row['deyt']?>">
+																<input type="hidden" name="product" value="<?php echo $row['product']?>">
 																<p class="item-price text-start">
 																	<b>Created On: <br><br></b>
 																	<b style="margin-left: 20px;"><?php echo $row['deyt']?></b>
@@ -103,6 +104,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 															<form  action="" class="share_template">
 																<input type="hidden" name="email" value="<?php echo $row['email']?>">
 																<input type="hidden" name="deyt" value="<?php echo $row['deyt']?>">
+																<input type="hidden" name="product" value="<?php echo $row['product']?>">
 																<button type="submit" class="rounded-0 w-100 btn-main btn btn-md mb-2">Share</button>
 															</form>
 															<form  action="" class="delete_template">
@@ -160,6 +162,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 															<form action="" class="template">
 																<input type="hidden" name="email" value="<?php echo $row['email']?>">
 																<input type="hidden" name="deyt" value="<?php echo $row['deyt']?>">
+																<input type="hidden" name="product" value="<?php echo $row['product']?>">
 																<p class="item-price text-start">
 																	<b>Created On: <br><br></b>
 																	<b style="margin-left: 20px;"><?php echo $row['deyt']?></b>
@@ -169,6 +172,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 															<form  action="" class="share_template">
 																<input type="hidden" name="email" value="<?php echo $row['email']?>">
 																<input type="hidden" name="deyt" value="<?php echo $row['deyt']?>">
+																<input type="hidden" name="product" value="<?php echo $row['product']?>">
 																<button type="submit" class="rounded-0 w-100 btn-main btn btn-md mb-2">Share</button>
 															</form>
 															<form  action="" class="delete_template">
@@ -303,23 +307,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             const product_two = document.getElementById('product_two');
             const product_three = document.getElementById('product_three');
             const product_four = document.getElementById('product_four');
-            if (product_one.classList.contains('customize-active')) {
-              	window.localStorage.setItem('product', 'necklace');
-            } else if (product_two.classList.contains('customize-active')) {
-              	window.localStorage.setItem('product', 'pin');
-            } else if (product_three.classList.contains('customize-active')) {
-              	window.localStorage.setItem('product', 'nameplate');
-            } else if (product_four.classList.contains('customize-active')) {
-              	window.localStorage.setItem('product', 'logo');
-            } else {
-            	window.localStorage.setItem('product', 'necklace');
-            }
             const style_one = document.getElementById('style_one');
             const style_two = document.getElementById('style_two');
             if (style_one.classList.contains('customize-active')) {
               	
             } else {
-              	window.location.href = "make_customize_v2.php";
+            	if (product_one.classList.contains('customize-active')) {
+            	  	window.localStorage.setItem('product', 'necklace');
+        	  		window.location.href = "make_customize_v2.php";
+            	} else if (product_two.classList.contains('customize-active')) {
+            	  	window.localStorage.setItem('product', 'pin');
+            	  	window.location.href = "make_customize_v2.php";
+            	} else if (product_three.classList.contains('customize-active')) {
+            	  	window.localStorage.setItem('product', 'nameplate');
+					window.location.href = "make_customize_nameplate.php";
+            	} else if (product_four.classList.contains('customize-active')) {
+            	  	window.localStorage.setItem('product', 'logo');
+            	  	window.location.href = "make_customize_v2.php";
+            	} else {
+            		window.localStorage.setItem('product', 'necklace');
+            		window.location.href = "make_customize_v2.php";
+            	}
             }
         });
 	</script>
@@ -328,9 +336,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             event.preventDefault();
             var email = $(this).find("input[name='email']").val();
             var deyt = $(this).find("input[name='deyt']").val();
+            var product = $(this).find("input[name='product']").val();
             window.localStorage.setItem('email', email);
             window.localStorage.setItem('deyt', deyt);
-            window.location.href = "make_customize_v2.php";
+            window.localStorage.setItem('product', product);
+            if (product === "nameplate") {
+            	window.location.href = "make_customize_nameplate.php";
+            } else {
+            	window.location.href = "make_customize_v2.php";
+            }
         });
 	</script>
 	<script type="text/javascript">
@@ -338,14 +352,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             event.preventDefault();
             var email = $(this).find("input[name='email']").val();
             var deyt = $(this).find("input[name='deyt']").val();
+            var product = $(this).find("input[name='product']").val();
             var link = '';
             var currentURL = window.location.href;
             if (currentURL.indexOf('http://20.205.112.210/customize.php') !== -1) {
-                // If the substring is found in currentURL
-                link = "http://20.205.112.210/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
+            	if (product === "nameplate") {
+            		link = "http://20.205.112.210/make_customize_nameplate.php?&email=" + email + "&deyt=" + deyt;
+            	} else {
+            		link = "http://20.205.112.210/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
+            	}
             } else {
-                // If the substring is not found in currentURL
-                link = "http://localhost/capstone/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
+                if (product === "nameplate") {
+            		link = "http://localhost/capstone/make_customize_nameplate.php?&email=" + email + "&deyt=" + deyt;
+            	} else {
+            		link = "http://localhost/capstone/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
+            	}
             }
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(link)
