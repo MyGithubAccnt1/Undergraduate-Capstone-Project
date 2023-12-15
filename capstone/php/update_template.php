@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $canvasObjects['email'];
     $date = $canvasObjects['deyt'];
     $view = $canvasObjects['view'];
+    $product = $canvasObjects['product'];
 
     if (empty($email) || $email != $_SESSION['email']) {
 
@@ -39,15 +40,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         if ($view == 'Front') {
 
-                            $viewsql = "INSERT INTO template (email, deyt, thumbnail, front) VALUES (?, ?, ?, ?)";
+                            $viewsql = "INSERT INTO template (email, deyt, thumbnail, front, product) VALUES (?, ?, ?, ?, ?)";
                             $stmt = $conn->prepare($viewsql);
-                            $stmt->bind_param("ssss", $new_email, $new_date, $thumbnail, $new_date);
+                            $stmt->bind_param("sssss", $new_email, $new_date, $thumbnail, $new_date, $product);
 
                         } else {
 
-                            $viewsql = "INSERT INTO template (email, deyt, thumbnail, back) VALUES (?, ?, ?, ?)";
+                            $viewsql = "INSERT INTO template (email, deyt, thumbnail, back, product) VALUES (?, ?, ?, ?, ?)";
                             $stmt = $conn->prepare($viewsql);
-                            $stmt->bind_param("ssss", $new_email, $new_date, $thumbnail, $new_date);
+                            $stmt->bind_param("sssss", $new_email, $new_date, $thumbnail, $new_date, $product);
 
                         }
                         if ($stmt->execute()) {
@@ -111,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $front = "";
         $back = "";
 
-        $viewsql = "SELECT * FROM template WHERE email = '$email' and deyt = '$date'";
+        $viewsql = "SELECT * FROM template WHERE email = '$email' and deyt = '$date' and product = '$product'";
         $viewresult = mysqli_query($conn, $viewsql);
 
         if (mysqli_num_rows($viewresult) > 0) {
@@ -131,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
 
                 $front = date('Y-m-d H:i');
-                $sql = "UPDATE template SET front = '$front' WHERE email = '$email' and deyt = '$date'";
+                $sql = "UPDATE template SET front = '$front' WHERE email = '$email' and deyt = '$date' and product = '$product'";
 
             }
 
@@ -144,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
 
                 $back = date('Y-m-d H:i');
-                $sql = "UPDATE template SET back = '$back' WHERE email = '$email' and deyt = '$date'";
+                $sql = "UPDATE template SET back = '$back' WHERE email = '$email' and deyt = '$date' and product = '$product'";
 
             }
             
