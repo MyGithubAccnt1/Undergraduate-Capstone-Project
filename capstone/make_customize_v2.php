@@ -1471,11 +1471,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                }),
    		                success: function (data) {
    		                	// console.log('error: ' + data);
-   		                	if (data === "1"){
-
-   		                	} else {
-   		                		uploadCanvasObjects();
-   		                	}
+   		                	uploadCanvasObjects();
    		                },
    		                error: function (xhr, status, error) {
    		                    console.error("AJAX Request Error:", status, error);
