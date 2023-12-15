@@ -1119,7 +1119,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                data: {
    		                    email: email,
    		                    deyt: deyt,
-   		                    view: view
+   		                    view: view,
+   		                    product: product
    		                },
    		                success: function (data) {
    		                	if (data === "1") {
@@ -1243,7 +1244,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                }),
    		                success: function (data) {
    		                	// console.log('error: ' + data);
-   		                	uploadCanvasObjects();
+   		                	if (data === "1") {
+    	 	   		            canvas.isDrawingMode = false;
+    	 	   		            localStorage.removeItem('images');
+    	 	   		            localStorage.removeItem('email');
+    	 	   		            localStorage.removeItem('deyt');
+    	 	   		            localStorage.removeItem('product');
+			                    window.location.href = "customize.php";
+   		                	} else {
+   		                		uploadCanvasObjects();
+   		                	}
    		                },
    		                error: function (xhr, status, error) {
    		                    console.error("AJAX Request Error:", status, error);

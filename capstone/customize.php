@@ -110,6 +110,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 															<form  action="" class="delete_template">
 																<input type="hidden" name="email" value="<?php echo $row['email']?>">
 																<input type="hidden" name="deyt" value="<?php echo $row['deyt']?>">
+																<input type="hidden" name="product" value="<?php echo $row['product']?>">
 																<button type="submit" class="rounded-0 w-100 btn-main btn btn-md">Delete</button>
 															</form>
 														</div>
@@ -178,6 +179,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 															<form  action="" class="delete_template">
 																<input type="hidden" name="email" value="<?php echo $row['email']?>">
 																<input type="hidden" name="deyt" value="<?php echo $row['deyt']?>">
+																<input type="hidden" name="product" value="<?php echo $row['product']?>">
 																<button type="submit" class="rounded-0 w-100 btn-main btn btn-md">Delete</button>
 															</form>
 														</div>
@@ -392,12 +394,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             event.preventDefault();
             var email = $(this).find("input[name='email']").val();
             var deyt = $(this).find("input[name='deyt']").val();
+            var product = $(this).find("input[name='product']").val();
             $.ajax({
                 url: "./php/delete_template.php",
                 method: "POST",
                 data: {
                 	email: email,
-                	deyt: deyt
+                	deyt: deyt,
+                	product: product
                 },
                 success: function (data) {
                 	if (data === "1") {

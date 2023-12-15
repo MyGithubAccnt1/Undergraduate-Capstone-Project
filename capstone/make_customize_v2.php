@@ -1339,7 +1339,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                data: {
    		                    email: email,
    		                    deyt: deyt,
-   		                    view: view
+   		                    view: view,
+   		                    product: product
    		                },
    		                success: function (data) {
    		                	if (data === "1") {
@@ -1459,6 +1460,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		            var email = window.localStorage.getItem('email');
    		            var deyt = window.localStorage.getItem('deyt');
    		            var view = $('#current-view').val();
+   		            var product = window.localStorage.getItem('product');
    		            $.ajax({
    		                url: './php/update_template.php',
    		                type: 'POST',
@@ -1467,11 +1469,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                	canvasObjects: serializedObjects,
    		                	email: email,
    		                	deyt: deyt,
-   		                	view: view
+   		                	view: view,
+   		                	product: product
    		                }),
    		                success: function (data) {
    		                	// console.log('error: ' + data);
-   		                	uploadCanvasObjects();
+   		                	if (data === "1") {
+    	 	   		            canvas.isDrawingMode = false;
+    	 	   		            localStorage.removeItem('images');
+    	 	   		            localStorage.removeItem('email');
+    	 	   		            localStorage.removeItem('deyt');
+    	 	   		            localStorage.removeItem('product');
+			                    window.location.href = "customize.php";
+   		                	} else {
+   		                		uploadCanvasObjects();
+   		                	}
    		                },
    		                error: function (xhr, status, error) {
    		                    console.error("AJAX Request Error:", status, error);
