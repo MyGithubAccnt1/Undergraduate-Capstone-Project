@@ -40,7 +40,11 @@ if ($result->num_rows > 0) {
 		echo '<small>' . $row['email'] . '</small>';
 		echo '</span>';
 		echo '<small class="text_muted">';
-		echo $row['deyt'];
+		if ($row['deyt'] === "") {
+			echo "Customer Support";
+		} else {
+			echo $row['deyt'];
+		}
 		echo '</small>';
 		if ($row['seen'] == "No") {
 			echo '<span class="alert">NEW</span>';
