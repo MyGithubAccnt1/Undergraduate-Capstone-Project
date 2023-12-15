@@ -277,7 +277,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		<script>
 			function showComments() {
 			    $.ajax({
-			        url: "./php/get_messages.php",
+			        url: "./php/get_support_messages.php",
 			        method: "GET",
 			        success: function (data) {
 			            $("#comments-container").html(data);
@@ -285,12 +285,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			    });
 			}
 			$("#comment-form").submit(function (e) {
-			    e.preventDefault(); // Prevent the form from submitting traditionally
+			    e.preventDefault();
 
 			    var formData = $(this).serialize();
 
 			    $.ajax({
-			        url: "./php/add_messages.php", // PHP script to insert comments into the database
+			        url: "./php/add_support_messages.php",
 			        method: "POST",
 			        data: formData,
 			        success: function (data) {

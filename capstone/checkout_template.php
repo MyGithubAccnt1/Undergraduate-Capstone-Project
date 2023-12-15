@@ -152,21 +152,30 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 </script>
 <script type="text/javascript">
 	function showTemplate() {
+		var product = window.localStorage.getItem('product');
 	    $.ajax({
 	        url: "./php/get_template_front.php",
-	        method: "GET",
-	        success: function (data) {
-	            $("#front-container").html(data);
+	        data: {
+	            product: product
 	        },
-	        error: function (xhr, status, error) {
-	            console.error("AJAX Request Error:", status, error);
-	        }
-	    });
-	    $.ajax({
-	        url: "./php/get_template_back.php",
 	        method: "GET",
 	        success: function (data) {
-	            $("#back-container").html(data);
+	        	console.log('front: ', data);
+	            $("#front-container").html(data);
+	            $.ajax({
+	                url: "./php/get_template_back.php",
+	                data: {
+	                    product: product
+	                },
+	                method: "GET",
+	                success: function (data) {
+	                	console.log('back: ', data);
+	                    $("#back-container").html(data);
+	                },
+	                error: function (xhr, status, error) {
+	                    console.error("AJAX Request Error:", status, error);
+	                }
+	            });
 	        },
 	        error: function (xhr, status, error) {
 	            console.error("AJAX Request Error:", status, error);
@@ -174,7 +183,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	    });
 	}
 	showTemplate();
-	setInterval(showTemplate, 1000);
 </script>
 <?php 
 }else{

@@ -1251,6 +1251,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
     	 	   		            localStorage.removeItem('deyt');
     	 	   		            localStorage.removeItem('product');
 			                    window.location.href = "customize.php";
+			                    <?php $_SESSION['product'] = ""; ?>
    		                	} else {
    		                		uploadCanvasObjects();
    		                	}
@@ -1271,6 +1272,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		            var email = window.localStorage.getItem('email');
    		            var deyt = window.localStorage.getItem('deyt');
    		            var view = $('#current-view').val();
+   		            var product = window.localStorage.getItem('product');
    		            $.ajax({
    		                url: './php/update_template.php',
    		                type: 'POST',
@@ -1279,7 +1281,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		                	canvasObjects: serializedObjects,
    		                	email: email,
    		                	deyt: deyt,
-   		                	view: view
+   		                	view: view,
+   		                	product: product
    		                }),
    		                success: function (data) {
     			            const imageFile = convertCanvasToPNG(canvas);
@@ -1295,8 +1298,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	    	 	   		            localStorage.removeItem('images');
 	    	 	   		            localStorage.removeItem('email');
 	    	 	   		            localStorage.removeItem('deyt');
-	    	 	   		            localStorage.removeItem('product');
     			                    window.location.href = "checkout_template.php";
+    			                    <?php $_SESSION['product'] = ""; ?>
     			                },
     			                error: function (xhr, status, error) {
     			                    console.error("AJAX Request Error:", status, error);
@@ -1318,6 +1321,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		            localStorage.removeItem('deyt');
    		            localStorage.removeItem('product');
    		            window.location.href = "customize.php";
+   		            <?php $_SESSION['product'] = ""; ?>
+
    		        });
    		        // $('#view').on('click', function () {
    		        //     canvas.isDrawingMode = false;
