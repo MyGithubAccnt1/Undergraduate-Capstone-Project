@@ -6,12 +6,12 @@ include("connect.php");
 $id = $_POST["id"];
 $email = $_POST["email"];
 $role = $_POST["role"];
-$date = $_POST["date"];
+$date = "";
 $seen = "No";
 $comment = mysqli_real_escape_string($conn, $_POST["comment"]);
 
 // Insert the comment into the database
-if (!empty($id) && !empty($email) && !empty($comment) && !empty($date) && !empty($role)) {
+if (!empty($id) && !empty($email) && !empty($comment) && !empty($role)) {
     $sql = "INSERT INTO message (sender, email, message, deyt, role, seen) VALUES ('$id', '$email', '$comment', '$date', '$role', '$seen')";
     // Execute the SQL statement here (e.g., using a database connection)
     if (mysqli_query($conn, $sql)) {

@@ -3,7 +3,7 @@ session_start();
 include("connect.php");
 // Get the form data
 $id = $_SESSION["id"];
-$date = $_GET['date'];
+$date = "";
 // Fetch comments from the database
 $sql = "SELECT * FROM message WHERE sender = '$id' and deyt = '$date' ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
