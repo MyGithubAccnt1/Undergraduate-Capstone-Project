@@ -5,6 +5,7 @@ include("connect.php");
 $email = $_SESSION['email'];
 $date = $_SESSION['date'];
 $view = $_SESSION['view'];
+$product = $_SESSION['product'];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Extract the base64-encoded image data
@@ -24,9 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $thumbnailPath = "images/templates/" . $uniqueFilename;
             
             if ($view == "Front") {
-                $sql = "UPDATE template SET thumbnail = '$thumbnailPath', frontthumb = '$thumbnailPath' WHERE email = '$email' and deyt = '$date'";
+                $sql = "UPDATE template SET thumbnail = '$thumbnailPath', frontthumb = '$thumbnailPath' WHERE email = '$email' and deyt = '$date' and product = '$product'";
             } else {
-                $sql = "UPDATE template SET thumbnail = '$thumbnailPath', backthumb = '$thumbnailPath' WHERE email = '$email' and deyt = '$date'";
+                $sql = "UPDATE template SET thumbnail = '$thumbnailPath', backthumb = '$thumbnailPath' WHERE email = '$email' and deyt = '$date' and product = '$product'";
             }
 
             if (mysqli_query($conn, $sql)) {

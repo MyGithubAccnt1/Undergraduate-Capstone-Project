@@ -2,6 +2,7 @@
 include("connect.php");
 $email = $_POST["email"];
 $deyt = $_POST["deyt"];
+$product = $_POST["product"];
 
 $checksql = "SELECT * FROM history WHERE email = '$email' and deyt = '$deyt'";
 $checkresult = mysqli_query($conn, $checksql);
@@ -11,7 +12,7 @@ if (mysqli_num_rows($checkresult) > 0) {
 } else {
     $front = "";
     $back = "";
-    $gettemplatesql = "SELECT front, back FROM template WHERE email = '$email' and deyt = '$deyt'";
+    $gettemplatesql = "SELECT front, back FROM template WHERE email = '$email' and deyt = '$deyt' and product = '$product'";
     $result = mysqli_query($conn, $gettemplatesql);
     if (mysqli_num_rows($result) > 0) {
         $row = $result->fetch_assoc();
@@ -22,7 +23,7 @@ if (mysqli_num_rows($checkresult) > 0) {
 
         } else {
              
-            $objectsql = "DELETE FROM object WHERE email = '$email' and deyt = '$front'";
+            $objectsql = "DELETE FROM object WHERE email = '$email' and deyt = '$front' and product = '$product'";
 
         }
 
@@ -30,13 +31,13 @@ if (mysqli_num_rows($checkresult) > 0) {
 
         } else {
              
-            $objectsql = "DELETE FROM object WHERE email = '$email' and deyt = '$back'";
+            $objectsql = "DELETE FROM object WHERE email = '$email' and deyt = '$back' and product = '$product'";
              
         }
 
         if (mysqli_query($conn, $objectsql)) {
 
-            $gettemplatesql = "SELECT thumbnail FROM template WHERE email = '$email' and deyt = '$deyt'";
+            $gettemplatesql = "SELECT thumbnail FROM template WHERE email = '$email' and deyt = '$deyt' and product = '$product'";
             $result = mysqli_query($conn, $gettemplatesql);
             if (mysqli_num_rows($result) > 0) {
                 $row = $result->fetch_assoc();
@@ -46,7 +47,7 @@ if (mysqli_num_rows($checkresult) > 0) {
                 }
             }
 
-            $templatesql = "DELETE FROM template WHERE email = '$email' and deyt = '$deyt'";
+            $templatesql = "DELETE FROM template WHERE email = '$email' and deyt = '$deyt' and product = '$product'";
             if (mysqli_query($conn, $templatesql)) {
 
             } else {

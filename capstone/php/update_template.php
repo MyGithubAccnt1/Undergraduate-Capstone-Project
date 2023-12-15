@@ -55,12 +55,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             $_SESSION['view'] = $view;
                             $_SESSION['date'] = $new_date;
+                            $_SESSION['product'] = $product;
                             $new_date = $_SESSION['date'];
                             $stmt->close();
 
                         } else {
 
-                            echo 'Error executing SQL query: ' . $stmt->error;
+                            echo '1';
                             exit;
 
                         }
@@ -70,18 +71,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $objectType = $new['objectType'];
                     $properties = json_encode($new['properties']);
 
-                    $sql = "SELECT * FROM object WHERE objectType = '$objectType' and properties = '$properties' and email = '$new_email' and deyt = '$new_date' and view = '$view'";
+                    $sql = "SELECT * FROM object WHERE objectType = '$objectType' and properties = '$properties' and email = '$new_email' and deyt = '$new_date' and view = '$view' and product = '$product'";
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
 
+                        echo '1';
                         exit;
 
                     } else {
 
-                        $sql = "INSERT INTO object (objectType, properties, email, deyt, view) VALUES (?, ?, ?, ?, ?)";
+                        $sql = "INSERT INTO object (objectType, properties, email, deyt, view, product) VALUES (?, ?, ?, ?, ?, ?)";
                         $stmt = $conn->prepare($sql);
-                        $stmt->bind_param("sssss", $objectType, $properties, $new_email, $new_date, $view);
+                        $stmt->bind_param("ssssss", $objectType, $properties, $new_email, $new_date, $view, $product);
 
                         if ($stmt->execute()) {
 
@@ -89,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         } else {
 
-                            echo 'Error executing SQL query: ' . $stmt->error;
+                            echo '1';
                             exit;
 
                         }
@@ -98,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 } else {
 
-                    echo 'Invalid JSON data';
+                    echo '1';
                     exit;
 
                 }
@@ -127,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($front) {
 
-                $sql = "DELETE FROM object WHERE email = '$email' and deyt = '$front' and view = '$view'";
+                $sql = "DELETE FROM object WHERE email = '$email' and deyt = '$front' and view = '$view' and product = '$product'";
 
             } else {
 
@@ -140,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($back) {
 
-                $sql = "DELETE FROM object WHERE email = '$email' and deyt = '$back' and view = '$view'";
+                $sql = "DELETE FROM object WHERE email = '$email' and deyt = '$back' and view = '$view' and product = '$product'";
 
             } else {
 
@@ -164,15 +166,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         if ($view == "Front") {
 
-                            $sql = "INSERT INTO object (objectType, properties, email, deyt, view) VALUES (?, ?, ?, ?, ?)";
+                            $sql = "INSERT INTO object (objectType, properties, email, deyt, view, product) VALUES (?, ?, ?, ?, ?, ?)";
                             $stmt = $conn->prepare($sql);
-                            $stmt->bind_param("sssss", $objectType, $properties, $email, $front, $view);
+                            $stmt->bind_param("ssssss", $objectType, $properties, $email, $front, $view, $product);
 
                         } else {
 
-                            $sql = "INSERT INTO object (objectType, properties, email, deyt, view) VALUES (?, ?, ?, ?, ?)";
+                            $sql = "INSERT INTO object (objectType, properties, email, deyt, view, product) VALUES (?, ?, ?, ?, ?, ?)";
                             $stmt = $conn->prepare($sql);
-                            $stmt->bind_param("sssss", $objectType, $properties, $email, $back, $view);
+                            $stmt->bind_param("ssssss", $objectType, $properties, $email, $back, $view, $product);
 
                         }
 
@@ -180,17 +182,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             
                             $_SESSION['view'] = $view;
                             $_SESSION['date'] = $date;
+                            $_SESSION['product'] = $product;
                             $stmt->close();
 
                         } else {
 
+                            echo '1';
                             exit;
 
                         }
 
                     } else {
 
-                        echo 'Invalid JSON data';
+                        echo '1';
                         exit;
 
                     }

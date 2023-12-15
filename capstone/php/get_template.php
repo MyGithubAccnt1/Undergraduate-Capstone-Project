@@ -5,6 +5,7 @@ include("connect.php");
 $email = mysqli_real_escape_string($conn, $_GET['email']);
 $deyt = mysqli_real_escape_string($conn, $_GET['deyt']);
 $view = mysqli_real_escape_string($conn, $_GET['view']);
+$product = mysqli_real_escape_string($conn, $_GET['product']);
 $front = "";
 $back = "";
 
@@ -12,7 +13,7 @@ $_SESSION['date'] = $deyt;
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
-    $new_sql = "SELECT front, back FROM template WHERE email = '$email' and deyt = '$deyt'";
+    $new_sql = "SELECT front, back FROM template WHERE email = '$email' and deyt = '$deyt' and product = '$product'";
     $new_result = mysqli_query($conn, $new_sql);
     if (mysqli_num_rows($new_result) > 0) {
         $row = $new_result->fetch_assoc();
@@ -24,10 +25,10 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     }
 
     if ($view === "Front") {
-        $sql = "SELECT objectType, properties FROM object WHERE email = '$email' AND deyt = '$front' AND view = '$view'";
+        $sql = "SELECT objectType, properties FROM object WHERE email = '$email' AND deyt = '$front' AND view = '$view' and product = '$product'";
         $result = mysqli_query($conn, $sql);
     } else if ($view === "Back") {
-        $sql = "SELECT objectType, properties FROM object WHERE email = '$email' AND deyt = '$back' AND view = '$view'";
+        $sql = "SELECT objectType, properties FROM object WHERE email = '$email' AND deyt = '$back' AND view = '$view' and product = '$product'";
         $result = mysqli_query($conn, $sql);
     }
 
