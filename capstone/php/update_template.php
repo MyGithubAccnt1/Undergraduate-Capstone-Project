@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         }
 
                     } else {
-                        echo 'Already Exist';
+                        echo '1';
                         exit;
                     }
 
