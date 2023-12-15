@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 if (isset($new['objectType']) && isset($new['properties'])) {
 
-                    $viewsql = "SELECT * FROM template WHERE email = '$new_email' and deyt = '$new_date'";
+                    $viewsql = "SELECT * FROM template WHERE email = '$new_email' and deyt = '$new_date' and product = '$product'";
                     $viewresult = mysqli_query($conn, $viewsql);
 
                     if (mysqli_num_rows($viewresult) < 1) {
@@ -65,6 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         }
 
+                    } else {
+                        echo 'Already Exist';
+                        exit;
                     }
 
                     $objectType = $new['objectType'];
