@@ -73,24 +73,26 @@
             echo '<div id="optionToggle'. $id .'" style="width: 100%; background-color: #fff; color: #000; display: none; margin: 0 0 5px 0;">';
             	echo '<div style="padding: 20px 20px;">';
             		echo '<div style="width: 100%;">';
-        	$templatesql = "SELECT thumbnail FROM template WHERE email = '$email' and deyt = '$date'";
+            $product = "";
+        	$templatesql = "SELECT frontthumb, product FROM template WHERE email = '$email' and deyt = '$date'";
         	$templateresult = $conn->query($templatesql);
         	if ($templateresult->num_rows > 0) {
         		$templaterow = $templateresult->fetch_assoc();
+        		$product = $templaterow['product'];
         	    		echo '<div style="width: 100%; margin: 5px 0;">';
 				        	echo '<div style="width: 100%; text-align: center">Template</div>';
         				echo '</div>';
         				echo '<div style="width: 100%; height: 2px; background-color: #000;"></div>';
         				echo '<div style="width: 100%; margin: 5px 0; display: flex;">';
 	        	    		echo '<div style="flex: 50%; margin: 5px 0; padding: 20px; display: flex; justify-content: center; align-items: center;" class="template-img border" id="image">';
-	        	    			echo '<input type="hidden" name="image" value="'. $templaterow['thumbnail'] .'">';
-	        	    			echo '<img src="'. $templaterow['thumbnail'] .'" style="width: auto; height: 300px;">';
+	        	    			echo '<input type="hidden" name="image" value="'. $templaterow['frontthumb'] .'">';
+	        	    			echo '<img src="'. $templaterow['frontthumb'] .'" style="width: auto; height: 300px;">';
 	        	    		echo '</div>';
 	        	    		echo '<div style="flex: 50%; margin: 5px 0; padding: 20px; height: 350px; overflow-x:hidden; overflow-y:auto; font-family: Monospace; font-size: 1.5rem;" class="border">';
     	    		        	
     	    		        	echo '<small>Live URL: </small><br>';
     	    		        	echo '<small style="margin-left: 100px;">';
-    	    		        	$link = 'http://20.205.112.210/make_customize_v2.php?&email=' . $email . '&deyt=' . $date;
+    	    		        	$link = 'http://20.205.112.210/make_customize_v2.php?&email=' . $email . '&deyt=' . $date . '&product=' . $product;
     	    		        	echo '<a href="' . $link . '" target="_blank" style="color: #0A58CA;">' . $link . '</a>';
     	    		        	echo '</small><br><br>';
     	    		        	
