@@ -359,15 +359,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             var currentURL = window.location.href;
             if (currentURL.indexOf('http://20.205.112.210/customize.php') !== -1) {
             	if (product === "nameplate") {
-            		link = "http://20.205.112.210/make_customize_nameplate.php?&email=" + email + "&deyt=" + deyt;
+            		link = "http://20.205.112.210/make_customize_nameplate.php?&email=" + email + "&deyt=" + deyt + "&product=" + product;
             	} else {
-            		link = "http://20.205.112.210/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
+            		link = "http://20.205.112.210/make_customize_v2.php?&email=" + email + "&deyt=" + deyt + "&product=" + product;
             	}
             } else {
                 if (product === "nameplate") {
-            		link = "http://localhost/capstone/make_customize_nameplate.php?&email=" + email + "&deyt=" + deyt;
+            		link = "http://localhost/capstone/make_customize_nameplate.php?&email=" + email + "&deyt=" + deyt + "&product=" + product;
             	} else {
-            		link = "http://localhost/capstone/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;
+            		link = "http://localhost/capstone/make_customize_v2.php?&email=" + email + "&deyt=" + deyt + "&product=" + product;
             	}
             }
             if (navigator.clipboard) {

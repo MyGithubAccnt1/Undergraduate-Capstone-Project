@@ -131,7 +131,7 @@ $email = $_SESSION['email'];
 	                    <div class="row text-center my-1">
 	                        <div class="col-4 text-start" style="padding-left: 10%;"><?php echo $row['title'] ?></div>
 	                        <?php
-	                        if ($row['title'] === "Customize Item") {
+	                        if ($row['total'] === "0.00") {
 	                        ?>	
 	                        <div class="col-2 text-start">Estimating...</div>
 	                        <?php
@@ -181,15 +181,17 @@ $email = $_SESSION['email'];
 		        	            ?>
 		        	            	<div class="row text-center">
 		        	            <?php
-		        	                	$templatesql = "SELECT thumbnail FROM template WHERE email = '$email' and deyt = '$date'";
+		        	            		$product = "";
+		        	                	$templatesql = "SELECT frontthumb, product FROM template WHERE email = '$email' and deyt = '$date'";
 		        	                	$templateresult = $conn->query($templatesql);
 		        	                	if ($templateresult->num_rows > 0) {
 		        	                		$templaterow = $templateresult->fetch_assoc();
+		        	                		$product = $templaterow['product'];
 		        	            ?>
 		        	            		<div class="bg-dark rounded mb-1" style="height: 3px;"></div>
                  		                <div class="col-6 border p-4 template-img" id="image" style="overflow-x: hidden;">
-                 		                	<input type="hidden" name="image" value="<?php echo $templaterow['thumbnail'] ?>">
-                 		                	<img src="<?php echo $templaterow['thumbnail'] ?>" style="width: auto; height: 300px;">
+                 		                	<input type="hidden" name="image" value="<?php echo $templaterow['frontthumb'] ?>">
+                 		                	<img src="<?php echo $templaterow['frontthumb'] ?>" style="width: auto; height: 300px;">
                  		                </div>
                  		        <?php
 		        	            		} else {
@@ -210,7 +212,8 @@ $email = $_SESSION['email'];
                  		        				    echo 'var currentURL = window.location.href;';
                  		        				    echo 'var email = "' . $email . '";';
                  		        				    echo 'var deyt = "' . $date . '";';
-                 		        				    echo 'link = "http://20.205.112.210/make_customize_v2.php?&email=" + email + "&deyt=" + deyt;';
+                 		        				    echo 'var product = "' . $product . '";';
+                 		        				    echo 'link = "http://20.205.112.210/make_customize_v2.php?&email=" + email + "&deyt=" + deyt + "&product=" + product;';
                  		        				    echo 'document.write("<a href=\'" + link + "\' target=\'_blank\'>" + link + "</a>");';
                  		        				    echo '</script>';
                  		        				?>

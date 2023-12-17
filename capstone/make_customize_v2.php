@@ -1330,6 +1330,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
    		        	} else {
    		        	    email = new URLSearchParams(currentURL).get('email');
    		        	    deyt = new URLSearchParams(currentURL).get('deyt');
+   		        	    product = new URLSearchParams(currentURL).get('product');
    		        	}
    		        	var view = $('#current-view').val();
    		            $.ajax({

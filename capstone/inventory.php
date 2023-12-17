@@ -200,20 +200,6 @@ if ($_SESSION['role'] === "Admin") {
 	                        </div>
 	                    </div>
 	                </div>
-	                <!-- <div class="header">
-	                    <h2>Database Options</h2>
-	                </div>
-	                <div class="notification">
-	                    <div class="content">
-	                        <div class="info" style="width: 100%;">
-	                        	<div class="responsive-button">
-		                        	<form id="print" action="" style="width: 100%;">
-	                        			<button type="submit" class="input-button">Print</button>
-	                        		</form>
-	                        	</div>
-	                        </div>
-	                    </div>
-	                </div> -->
 	            </div>
         	</div>
     	</div>

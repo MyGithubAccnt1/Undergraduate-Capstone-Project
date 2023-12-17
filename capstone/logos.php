@@ -140,8 +140,7 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 					                        <input type="range" class="form-range" min="0" max="999" id="min-price" step="1" value="0">
 					                        <label for="max-price" class="form-label">Max price: PHP</label>
 					                        <span id="max-price-txt">1000</span>
-					                        <input type="range" class="form-range" min="1" max="1000" id="max-price" step="1"
-					                               value="1000">
+					                        <input type="range" class="form-range" min="1" max="1000" id="max-price" step="1" value="1000">
 					                    </form>
 					                </div>
 					            </div>
@@ -250,12 +249,24 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 
 		    //call updateProductView when min price value change
 		    minPriceInput.addEventListener('input', (event) => {
+		    	if (minPriceInput.value > 0 && maxPriceInput.value < 1000) {
+		    		if (minPriceInput.value > maxPriceInput.value) {
+		    			
+		    			minPriceInput.value = maxPriceInput.value;
+		    		}
+		    	}
 		        minPriceLabel.textContent = event.target.value;
 		        updateProductView();
 		    })
 
 		    //call updateProductView when max price value change
 		    maxPriceInput.addEventListener('input', (event) => {
+		    	if (minPriceInput.value > 0 && maxPriceInput.value < 1000) {
+		    		if (maxPriceInput.value < minPriceInput.value) {
+		    			
+		    			maxPriceInput.value = minPriceInput.value;
+		    		}
+		    	}
 		        maxPriceLabel.textContent = event.target.value;
 		        updateProductView();
 		    })

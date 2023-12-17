@@ -249,12 +249,24 @@ if (isset($_POST['maxPrice'], $_POST['minPrice'])) {
 
 		    //call updateProductView when min price value change
 		    minPriceInput.addEventListener('input', (event) => {
+		    	if (minPriceInput.value > 0 && maxPriceInput.value < 1000) {
+		    		if (minPriceInput.value > maxPriceInput.value) {
+		    			
+		    			minPriceInput.value = maxPriceInput.value;
+		    		}
+		    	}
 		        minPriceLabel.textContent = event.target.value;
 		        updateProductView();
 		    })
 
 		    //call updateProductView when max price value change
 		    maxPriceInput.addEventListener('input', (event) => {
+		    	if (minPriceInput.value > 0 && maxPriceInput.value < 1000) {
+		    		if (maxPriceInput.value < minPriceInput.value) {
+		    			
+		    			maxPriceInput.value = minPriceInput.value;
+		    		}
+		    	}
 		        maxPriceLabel.textContent = event.target.value;
 		        updateProductView();
 		    })
