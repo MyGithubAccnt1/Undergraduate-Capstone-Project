@@ -116,6 +116,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			<section class="button-options" id="file-options">
 				<div style="display: flex; flex-direction: column; padding: 0; margin: 0;">
 					<button class="options" id="update">Save & Exit</button>
+					<div class="px-3"><hr></div>
 					<button class="options" id="back">Exit</button>
 				</div>
 			</section>
