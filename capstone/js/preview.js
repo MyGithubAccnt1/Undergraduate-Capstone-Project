@@ -22,7 +22,7 @@
 $(document).on('change', '#quantity', function() {
     if ($(this).val() < 1) {
         $(this).val('1');
-	$('#price').text('PHP ' + window.localStorage.getItem('price'));
+        $('#price').text('PHP ' + window.localStorage.getItem('price'));
     } else {
         var price = window.localStorage.getItem('price');
         var quantity = $(this).val();
@@ -84,11 +84,16 @@ function buy_now() {
     alert('Test: buy now.');
 }
 
+function redirect_to_login() {
+    if (confirm("Notice: You need to login in order to add this item to your cart. Do you wish to login now?") === true) {
+        var xlink = window.location.href;
+        window.localStorage.setItem('xlink', xlink);
+        window.location.href = 'signin.php';
+    }
+}
+
 function ShowComment() {
 	var title = window.localStorage.getItem('title');
-	// var thumbnail = window.localStorage.getItem('thumbnail');
-	// var price = window.localStorage.getItem('price');
-	// var description = window.localStorage.getItem('description');
 	var category = window.localStorage.getItem('category');
 
     $.ajax({
