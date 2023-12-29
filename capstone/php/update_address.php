@@ -14,37 +14,107 @@ $block = mysqli_real_escape_string($conn, $_POST['block']);
 $lot = mysqli_real_escape_string($conn, $_POST['lot']);
 $caddress = '';
 
-if (empty($phase)) {
-
-} else {
-	$caddress = $phase;
-}
-
 if (empty($block)) {
 
 } else {
-	$caddress = $caddress . ', ' . $block;
+
+	$blocks = ['BLOCK', 'Block', 'block', 'BLK', 'Blk', 'blk'];
+	$try = false;
+	foreach ($blocks as $keyword) {
+	    if (stripos($block, $keyword) !== false) {
+	        $try = true;
+	        break;
+	    }
+	}
+	if ($try === true) {
+	    $caddress = $block;
+	} else {
+		$caddress = 'Blk. ' . $block;
+	}
+
 }
 
 if (empty($lot)) {
 
 } else {
-	$caddress = $caddress . ', ' . $lot;
+
+	$lots = ['LOT', 'Lot', 'lot', 'LT', 'Lt', 'lt'];
+	$try = false;
+	foreach ($lots as $keyword) {
+	    if (stripos($block, $keyword) !== false) {
+	    	$try = true;
+	        break;
+	    }
+	}
+	if ($try === true) {
+	    $caddress = $caddress . ', ' . $lot;
+	} else {
+		$caddress = $caddress . ', Lot ' . $lot;
+	}
+
+}
+
+if (empty($phase)) {
+
+} else {
+
+	$phases = ['PHASE', 'Phase', 'phase', 'PH', 'Ph', 'ph'];
+	$try = false;
+	foreach ($phases as $keyword) {
+	    if (stripos($block, $keyword) !== false) {
+	        $try = true;
+	        break;
+	    }
+	}
+	if ($try === true) {
+	    $caddress = $caddress . ', ' . $phase;
+	} else {
+		$caddress = $caddress . ', Ph. ' . $phase;
+	}
+
 }
 
 if (empty($street)) {
 
 } else {
-	$caddress = $caddress . ', ' . $street;
+
+	$streets = ['STREET', 'Street', 'street', 'ST', 'St', 'st'];
+	$try = false;
+	foreach ($streets as $keyword) {
+	    if (stripos($block, $keyword) !== false) {
+	        $try = true;
+	        break;
+	    }
+	}
+	if ($try === true) {
+	    $caddress = $caddress . ', ' . $street;
+	} else {
+		$caddress = $caddress . ', ' . $street . ' St.';
+	}
+
 }
 
 if (empty($subdivision)) {
 
 } else {
-	$caddress = $caddress . ', ' . $subdivision;
+
+	$subdivisions = ['SUBDIVISION', 'Subdivision', 'subdivision', 'SUBD', 'Subd', 'subd'];
+	$try = false;
+	foreach ($subdivisions as $keyword) {
+	    if (stripos($block, $keyword) !== false) {
+	        $try = true;
+	        break;
+	    }
+	}
+	if ($try === true) {
+	    $caddress = $caddress . ' ' . $subdivision;
+	} else {
+		$caddress = $caddress . ' ' . $subdivision . ' Subd.';
+	}
+
 }
 
-$caddress = $caddress . ', ' . $barangay . ', ' . $city . ', ' . $province . ', ' . $region . ', ' . $country;
+$caddress = $caddress . ' Bgry. ' . $barangay . ', ' . $city . ', ' . $province . ', ' . $region . ', ' . $country;
 
 $sql = "UPDATE account SET caddress = '$caddress', region = '$region', province = '$province', city = '$city', barangay = '$barangay', subdivision = '$subdivision', street = '$street', phase = '$phase', block = '$block', lot = '$lot' WHERE email='$email'";
 
