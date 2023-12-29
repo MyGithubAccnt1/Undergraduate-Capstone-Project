@@ -84,7 +84,7 @@ $(document).on("submit", "#register", function (event) {
                         } else if (data === "2") {
                             $(".loader").fadeIn('slow');
                             var currentOrigin = window.location.origin;
-                            var apiUrl = currentOrigin + ':3000/send-otp';
+                            var apiUrl = currentOrigin + ':8000/send-otp';
                             $.ajax({
                                 type: 'POST',
                                 url: apiUrl,
