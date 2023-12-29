@@ -22,7 +22,7 @@
 $(document).on('change', '#quantity', function() {
     if ($(this).val() < 1) {
         $(this).val('1');
-	$('#price').text(window.localStorage.getItem('price'));
+	$('#price').text('PHP ' + window.localStorage.getItem('price'));
     } else {
         var price = window.localStorage.getItem('price');
         var quantity = $(this).val();
