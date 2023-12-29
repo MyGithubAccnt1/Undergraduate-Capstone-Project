@@ -94,7 +94,7 @@ session_start();
 		    }
 	    	?>
 		    <li>
-	    	    <a href="#">
+	    	    <a href="./php/logout.php">
 	    			<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
 	    				<i class="fas fa-bell" style="margin: 0 20px 0 10px;"></i><small>Logout</small>
 	    			</button>
