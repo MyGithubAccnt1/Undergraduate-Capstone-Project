@@ -28,11 +28,20 @@ session_start();
 			}
 			@media (max-width: 767px) {
 			    .preview-options {
-			    	display: flex;
-			    	justify-content: space-evenly;
-			    	align-items: center;
 			    	flex-direction: column;
-			    	gap: 10px;
+			    }
+			}
+			.preview-details {
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+				flex-direction: row;
+				gap: 10px;
+			}
+			@media (max-width: 425px) {
+			    .preview-details {
+			    	flex-direction: column;
+			    	margin-bottom: 10px;
 			    }
 			}
 			.card {
@@ -83,9 +92,11 @@ session_start();
 									<h1 class="text-center" id="title"></h1>
 									<hr>
 									<div>
-										<div style="display: flex; align-items: center; justify-content:space-evenly;">
-											<h4 id="price" class="m-1"></h4>
-											<div style="display: flex; align-items: center; flex-direction: row;">
+										<div class="preview-details">
+											<div>
+												<h4 id="price" class="m-1"></h4>
+											</div>
+											<div  style="display: flex; align-items: center; flex-direction: row;">
 												<h5 style="flex: 50%; margin: 0 5px 0 0;">Quantity: </h5>
 												<input type="number" id="quantity" value="1" style="width: 45px;">
 											</div>
@@ -104,6 +115,17 @@ session_start();
 									    		<button class="btn btn-sm btn-outline-danger py-1 w-100 rounded-pill" type="button" onclick="buy_now();">Buy Now</button>
 									    	</div>
 									    </div>
+							    	    <?php
+							    	    } else {
+						    	    	?>
+						    	    	<div class="col-md-12 mt-0 mb-3 preview-options">
+						    	    		<div class="w-100">
+						    	    			<button class="btn btn-sm btn-outline-success py-1 w-100 rounded-pill" type="button" onclick="redirect_to_login();">Add to Cart</button>
+						    	    		</div>
+						    	    		<div class="w-100">
+						    	    			<button class="btn btn-sm btn-outline-danger py-1 w-100 rounded-pill" type="button" onclick="redirect_to_login();">Buy Now</button>
+						    	    		</div>
+						    	    	</div>
 							    	    <?php
 							    	    }
 							        	?>

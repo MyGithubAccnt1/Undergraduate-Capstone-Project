@@ -32,11 +32,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			}
 			@media (max-width: 767px) {
 			    .profile-options {
-			    	display: flex;
-			    	justify-content: space-evenly;
-			    	align-items: center;
 			    	flex-direction: column;
-			    	gap: 10px;
 			    }
 			}
 			.card {
