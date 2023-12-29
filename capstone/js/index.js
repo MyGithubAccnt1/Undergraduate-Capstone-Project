@@ -13,7 +13,6 @@ $(document).ready(function() {
 
     function ShowProduct() {
         var category = $('#category').val();
-        console.log('this is category: ' + category);
         $.ajax({
             url: "./php/get_product.php",
             method: "GET",
@@ -44,7 +43,6 @@ $(document).ready(function() {
 $(document).on('change', '#category', function() {
     function ShowProduct() {
         var category = $('#category').val();
-        console.log('this is category: ' + category);
         $.ajax({
             url: "./php/get_product.php",
             method: "GET",

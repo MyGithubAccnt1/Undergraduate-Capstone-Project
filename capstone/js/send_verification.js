@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = 3000;
+const port = 8000;
 
 const corsOptions = {
   origin: ['http://localhost', 'http://20.205.112.210'],
