@@ -80,6 +80,7 @@
 		<script type="text/javascript">
 			$(window).on('load', function() {
 			  $(".loader").fadeOut('slow');
+			  $('#verify').find("input[name='email']").focus();
 			});
 		</script>
 		<script type="text/javascript" src="js/forgot.js"></script>

@@ -81,6 +81,7 @@
 		<script type="text/javascript">
 			$(window).on('load', function() {
 			  $(".loader").fadeOut('slow');
+			  $('#verify').find("input[name='password']").focus();
 			});
 		</script>
 		<script type="text/javascript" src="js/forgot_change.js"></script>
