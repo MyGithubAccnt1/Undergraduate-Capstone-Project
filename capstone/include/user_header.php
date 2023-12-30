@@ -91,22 +91,15 @@ session_start();
 		    if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		    ?>
 		    <li>
-	    	    <a href="cart.php">
-	    			<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
-	    				<i class="fas fa-shopping-cart" style="margin: 0 20px 0 10px;"></i><small>Cart</small>
-	    			</button>
-	    		</a>
-		    </li>
-		    <?php
-		    }
-	    	?>
-		    <li>
 	    	    <a href="./php/logout.php">
 	    			<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
 	    				<i class="fas fa-sign-out-alt" style="margin: 0 20px 0 10px;"></i><small>Logout</small>
 	    			</button>
 	    		</a>
 		    </li>
+		    <?php
+		    }
+	    	?>
 		</ul>
 	</div>
 
@@ -223,10 +216,10 @@ session_start();
 		<?php
 		if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		?>
-		<div class="d-none d-md-block">
-			<a href="#">
-				<button type="button" class="btn-nav rounded-0 btn-sm">
-					<small>CART</small>
+		<div>
+			<a href="cart.php">
+				<button type="button" class="btn-nav rounded-0 btn-sm" title="My Cart">
+					<i class="fas fa-shopping-cart"></i>
 				</button>
 			</a>
 		</div>
@@ -235,7 +228,7 @@ session_start();
 		?>
 		<div>
 			<a href="#">
-				<button type="button" class="btn-nav rounded-0 btn-sm">
+				<button type="button" class="btn-nav rounded-0 btn-sm" title="My Notifications">
 					<i class="fas fa-bell"></i>
 				</button>
 			</a>
