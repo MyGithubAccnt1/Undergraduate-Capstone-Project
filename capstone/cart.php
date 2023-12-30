@@ -98,26 +98,7 @@
 
 				<div class="container">
 					<div class="cart-container" id="cart-container">
-						<div class="row">
-							<div>
-								<img src="images/products/set1.png" class="cart-img" alt="X">
-							</div>
-							<div>
-								<small>SET 1</small>
-							</div>
-							<div>
-								<small>PHP 499.00</small>
-							</div>
-							<div>
-								<small>1</small>
-							</div>
-							<div>
-								<small>PHP 499.001</small>
-							</div>
-							<div>
-								<button class="btn btn-sm btn-outline-danger rounded-0">X</button>
-							</div>
-						</div>
+						<!-- dynamic -->
 					</div>
 				</div>
 
