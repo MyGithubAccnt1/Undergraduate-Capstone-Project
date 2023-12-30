@@ -47,29 +47,9 @@ if (empty($lot)) {
 	    }
 	}
 	if ($try === true) {
-	    $caddress = $caddress . ', ' . $lot;
+	    $caddress = $caddress . ' ' . $lot;
 	} else {
-		$caddress = $caddress . ', Lot ' . $lot;
-	}
-
-}
-
-if (empty($phase)) {
-
-} else {
-
-	$phases = ['PHASE', 'Phase', 'phase', 'PH', 'Ph', 'ph'];
-	$try = false;
-	foreach ($phases as $keyword) {
-	    if (stripos($block, $keyword) !== false) {
-	        $try = true;
-	        break;
-	    }
-	}
-	if ($try === true) {
-	    $caddress = $caddress . ', ' . $phase;
-	} else {
-		$caddress = $caddress . ', Ph. ' . $phase;
+		$caddress = $caddress . ' Lot ' . $lot;
 	}
 
 }
@@ -87,9 +67,29 @@ if (empty($street)) {
 	    }
 	}
 	if ($try === true) {
-	    $caddress = $caddress . ', ' . $street;
+	    $caddress = $caddress . ' ' . $street;
 	} else {
-		$caddress = $caddress . ', ' . $street . ' St.';
+		$caddress = $caddress . ' ' . $street . ' St.';
+	}
+
+}
+
+if (empty($phase)) {
+
+} else {
+
+	$phases = ['PHASE', 'Phase', 'phase', 'PH', 'Ph', 'ph'];
+	$try = false;
+	foreach ($phases as $keyword) {
+	    if (stripos($block, $keyword) !== false) {
+	        $try = true;
+	        break;
+	    }
+	}
+	if ($try === true) {
+	    $caddress = $caddress . ' ' . $phase;
+	} else {
+		$caddress = $caddress . ' Ph. ' . $phase;
 	}
 
 }
@@ -107,9 +107,9 @@ if (empty($subdivision)) {
 	    }
 	}
 	if ($try === true) {
-	    $caddress = $caddress . ' ' . $subdivision;
+	    $caddress = $caddress . ', ' . $subdivision;
 	} else {
-		$caddress = $caddress . ' ' . $subdivision . ' Subd.';
+		$caddress = $caddress . ', ' . $subdivision . ' Subd.';
 	}
 
 }
