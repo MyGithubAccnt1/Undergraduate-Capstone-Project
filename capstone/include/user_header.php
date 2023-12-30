@@ -32,6 +32,13 @@ session_start();
 		    		</button>
 		    	</a>
 		    </li>
+		    <li>
+		    	<a href="#">
+		    		<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
+		    			<i class="fas fa-clipboard-list" style="margin: 0 20px 0 10px;"></i><small>My Orders</small>
+		    		</button>
+		    	</a>
+		    </li>
 		    <?php
 		    } else {
 	    	?>
@@ -96,7 +103,7 @@ session_start();
 		    <li>
 	    	    <a href="./php/logout.php">
 	    			<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
-	    				<i class="fas fa-bell" style="margin: 0 20px 0 10px;"></i><small>Logout</small>
+	    				<i class="fas fa-sign-out-alt" style="margin: 0 20px 0 10px;"></i><small>Logout</small>
 	    			</button>
 	    		</a>
 		    </li>
@@ -134,6 +141,13 @@ session_start();
 		    		<a class="dropdown-item" href="account.php">
 		    			<button type="button" class="btn-nav rounded-0 btn-sm">
 		    				<small>MY PROFILE</small>
+		    			</button>
+		    		</a>
+		    	</li>
+		    	<li>
+		    		<a class="dropdown-item" href="#">
+		    			<button type="button" class="btn-nav rounded-0 btn-sm">
+		    				<small>MY ORDERS</small>
 		    			</button>
 		    		</a>
 		    	</li>
