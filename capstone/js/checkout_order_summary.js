@@ -6,11 +6,10 @@ function alt_address() {
 		    navigator.geolocation.getCurrentPosition(function(position) {
 		        var latitude = position.coords.latitude;
 		        var longitude = position.coords.longitude;
-
-		        var nominatimApiUrl = "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + latitude + "&lon=" + longitude;
-
-	            $.ajax({
-	                url: nominatimApiUrl,
+		        var currentOrigin = window.location.origin;
+		        var apiUrl = currentOrigin + ':3000/get-nominatim-data?format=json&lat=' + latitude + '&lon=' + longitude;
+		        $.ajax({
+	                url: apiUrl,
 	                type: 'GET',
 	                success: function(data) {
 	                    if (data && data.display_name) {
