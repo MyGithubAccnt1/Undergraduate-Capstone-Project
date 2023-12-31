@@ -14,7 +14,7 @@ $(document).ready(function() {
     function ShowProduct() {
         var category = $('#category').val();
         $.ajax({
-            url: "./php/get_product.php",
+            url: "./php/get_popular_product.php",
             method: "GET",
             data: {
                 category: category
@@ -44,7 +44,7 @@ $(document).on('change', '#category', function() {
     function ShowProduct() {
         var category = $('#category').val();
         $.ajax({
-            url: "./php/get_product.php",
+            url: "./php/get_popular_product.php",
             method: "GET",
             data: {
                 category: category
