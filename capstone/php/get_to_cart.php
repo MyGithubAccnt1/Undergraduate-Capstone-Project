@@ -40,7 +40,9 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     echo '
     <div class="row">
-        <small style="width: 100%; text-align: center; margin-block: auto;">Your cart is empty.</small>
+        <small style="width: 100%; text-align: center; margin-block: auto;">
+            Your cart is empty.
+        </small>
     </div>
     ';
 }
