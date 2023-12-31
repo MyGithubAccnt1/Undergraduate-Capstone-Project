@@ -94,14 +94,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 									</div>
 									<div class="col-md-12 my-3">
 									    <div class="w-50 mx-auto">
-									    	<button class="btn btn-sm btn-outline-primary py-1 w-100 rounded-pill" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" onclick="alt_address();">Add Alternative Address</button>
+									    	<button class="btn btn-sm btn-outline-success py-1 w-100 rounded-pill" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" onclick="alt_address();">Add Alternative Address</button>
 									    </div>
 									</div>
 								</div>
 								<div class="collapse" id="collapseExample">
 									<div class="card card-body border border-dark">
 										<div class="row">
-											<h5 class="text-center">ADD NEW ADDRESS</h5>
 											<div class="col-md-12">
 											    <label class="form-label">Alternative Address</label>
 											    <input type="text" id="alt-address" class="form-control">
