@@ -38,7 +38,7 @@
 			.main > div:nth-child(2) {
 				border: 1px solid #000;
 				flex: auto;
-				height: 80%;
+				height: 75%;
 			}
 			.cart-container {
 				padding: 10px;
@@ -104,7 +104,7 @@
 
 				<div class="container">
 					<div class="w-100 text-center">
-						<a href="checkout.php" class="btn btn-sm btn-outline-success rounded-pill w-50">Checkout</a>
+						<a href="checkout_order_summary.php" class="btn btn-sm btn-outline-success rounded-pill w-50">Checkout</a>
 					</div>
 					<div class="w-100 text-center">
 						<a href="index.php" class="btn btn-sm btn-outline-danger rounded-pill w-50">Back</a>
