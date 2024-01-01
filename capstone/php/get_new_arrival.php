@@ -11,7 +11,11 @@ if ($result->num_rows > 0) {
 		} else {
 			echo '<div class="items">';
 				echo '<form action="" id="viewProduct" class="img-box">';
-					echo '<img src="' . $row['thumbnail'] . '" class="img-responsive" alt="Missing Image" style="background-color: rgba(255, 255, 255, 0.5);"/>';
+					echo '
+						<button type="submit" style="border: none; padding: 0;">
+							<img src="' . $row['thumbnail'] . '" class="img-responsive" alt="Missing Image" style="background-color: rgba(255, 255, 255, 0.5);"/>
+						</button>
+					';
 					echo '<input type="hidden" name="image" value="' . $row['thumbnail'] . '">';
 					echo '<input type="hidden" name="title" value="' . $row['title'] . '">';
 					echo '<input type="hidden" name="thumbnail" value="' . $row['thumbnail'] . '">';
