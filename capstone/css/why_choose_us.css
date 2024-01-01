@@ -187,7 +187,7 @@
     }
 }
 @media screen and (max-width: 425px) {
-	.sub .why-box {
+	.why-box {
     	width: 75%;
     }
     .why-box:nth-child(2) {
