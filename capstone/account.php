@@ -15,10 +15,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	  	<?php include('include/style.php') ?>
 		<style>
 			header {
-				background-color: #000;
+				background-color: rgba(0, 0, 0, 0.75);
 			}
 			.dropdown-menu {
-				background-color: #000;
+				background-color: rgba(0, 0, 0, 0.75);
 			}
 			input {
 				margin-bottom: 15px;
@@ -52,11 +52,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	<body>
 		<main class="container-fluid p-0 m-0">
 			<?php include('include/user_header.php') ?>
-			<section class="w-75 mx-auto">
-				<div class="my-4">
-					<h2>My Profile</h2>
-					<hr class="m-0 p-0">
-				</div>
+			<section class="container py-5">
+				<h2 class="mb-5">My Profile</h2>
+				<hr>
 				<form action="" id="personal">
 					<div class="row text-muted">
 						<h5 class="mb-4 mt-0">Personal details</h5>
@@ -145,6 +143,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	                    </form>
                     </div>
             	</div>
+            </section>
+            <section class="container py-5">
 				<form action="" id="passwords">
                     <div class="row text-muted">
                         <h5 class="mb-4 mt-0">Change Password</h5>
@@ -165,7 +165,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                     	</div>
                     </div>
 				</form>
-				<div class="row text-muted my-3">
+			</section>
+			<section class="container py-5">
+				<div class="row text-muted">
 				    <h5 class="mb-4 mt-0">Customer Support</h5>
                     <div class="col-md-12 mt-0">
                         <div class="stick-top bg-dark text-center text-white py-2">Chat with SBM</div>
@@ -193,7 +195,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		</main>
 		<script type="text/javascript">
 			$(window).on('load', function() {
-			  $(".loader").fadeOut('slow');
+			  	$(".loader").fadeOut('slow');
+			  	$(".sticky-top").fadeIn('slow');
 			});
 		</script>
 		<script type="text/javascript" src="js/user_header.js"></script>

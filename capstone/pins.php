@@ -29,7 +29,7 @@
 					<div class="row">
 						<div class="col-md-12 text-center">
 
-							<h1 class="mb-5">Necklace</h1>
+							<h1 class="mb-5">Pins</h1>
 							<div class="d-flex justify-content-start align-items-center">
 								<div style="margin-right: 5px;">Filter:</div>
 	                    	    <select class="input" id="filter">
@@ -75,7 +75,7 @@
 			});
 		</script>
 		<script type="text/javascript" src="js/user_header.js"></script>
-		<script type="text/javascript" src="js/necklace.js"></script>
+		<script type="text/javascript" src="js/pins.js"></script>
 		<script type="text/javascript" src="js/image_hover.js"></script>
 	</body>
 </html>

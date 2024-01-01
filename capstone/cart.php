@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 	<head>
@@ -9,40 +12,17 @@
 	  	<meta name="keywords" content="capstone, project, thesis">
 	  	<meta name="author" content="Mhel Voi A. Bernabe">
 	  	<?php include('include/style.php') ?>
+	  	<link rel="stylesheet" type="text/css" href="./css/slider.css">
 		<style>
-			.main {
-				position: absolute;
-				top: 0;
-				left: 0;
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100vh;
-				overflow: hidden;
-				display: flex;
-				flex-direction: column;
+			header {
+				background-color: rgba(0, 0, 0, 0.75);
 			}
-			.main > div:first-child, .main > div:nth-child(3) {
-				display: flex;
-				align-items: center;
-				justify-content: space-evenly;
-				height: auto;
-			}
-			.main > div:nth-child(3) {
-				padding: 15px 0;
-			}
-			.main > div:first-child > h1 {
-				margin: 0;
-				padding: 10px 0;
-			}
-			.main > div:nth-child(2) {
-				border: 1px solid #000;
-				flex: auto;
-				height: 75%;
+			.dropdown-menu {
+				background-color: rgba(0, 0, 0, 0.75);
 			}
 			.cart-container {
 				padding: 10px;
-				height: 100%;
+				height: 50vh;
 				overflow-x: hidden;
 				overflow-y: auto;
 			}
@@ -89,30 +69,56 @@
 	</head>
 	<body>
 		<main class="container-fluid p-0 m-0">
+			<?php include('include/user_header.php') ?>
 			<img src="" id="imagePreview" class="imagePreview" alt="Missing_Image">
-			<section class="main">
-
-				<div class="container">
-					<h1>Cart</h1>
-				</div>
-
-				<div class="container">
-					<div class="cart-container" id="cart-container">
-						<!-- dynamic -->
+			<section class="container py-5">
+				<h1 class="mb-5">Cart</h1>
+				<hr>
+				<div class="row">
+					<div class="container">
+						<div class="cart-container" id="cart-container">
+							<!-- dynamic -->
+						</div>
 					</div>
 				</div>
-
-				<div class="container">
-					<div class="w-100 text-center">
-						<a href="checkout_order_summary.php" class="btn btn-sm btn-outline-success rounded-pill w-50">Checkout</a>
-					</div>
-					<div class="w-100 text-center">
-						<a href="index.php" class="btn btn-sm btn-outline-danger rounded-pill w-50">Back</a>
+				<div class="row mt-4">
+					<div class="container d-flex align-items-center justify-content-evenly">
+						<div class="w-100 text-center">
+							<a href="checkout_order_summary.php" class="btn btn-sm btn-outline-success rounded-pill w-50">Checkout</a>
+						</div>
+						<div class="w-100 text-center">
+							<a href="index.php" class="btn btn-sm btn-outline-danger rounded-pill w-50">Back</a>
+						</div>
 					</div>
 				</div>
-
 			</section>
+			<section class="container py-5">
+		    	<div class="row">
+		    		<h1 class="mb-5">YOU MAY LIKE</h1>
+		    		<hr class="m-0">
+		    		<div class="col-12">
+		    			<div class="carousel slide p-0" data-ride="carousel" data-interval="0"> 
+		    				<div class="carousel-inner">
+		    					<div class="item carousel-item active">
+		    						<div class="row" id="product-container">
+		    							<!-- dynamic -->
+		    						</div>
+		    					</div>
+		    				</div>
+		    			</div>
+		    		</div>
+		    	</div>
+			</section>
+			<?php include('include/user_footer.php') ?>
 		</main>
+		<script type="text/javascript">
+			$(window).on('load', function() {
+			  $(".loader").fadeOut('slow');
+			  $(".sticky-top").fadeIn('slow');
+			});
+		</script>
+		<script type="text/javascript" src="js/user_header.js"></script>
 		<script type="text/javascript" src="js/cart.js"></script>
+		<script type="text/javascript" src="js/image_hover.js"></script>
 	</body>
 </html>
