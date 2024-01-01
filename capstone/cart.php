@@ -81,14 +81,12 @@ session_start();
 						</div>
 					</div>
 				</div>
-				<div class="row mt-4">
-					<div class="container d-flex align-items-center justify-content-evenly">
-						<div class="w-100 text-center">
-							<a href="checkout_order_summary.php" class="btn btn-sm btn-outline-success rounded-pill w-50">Checkout</a>
-						</div>
-						<div class="w-100 text-center">
-							<a href="index.php" class="btn btn-sm btn-outline-danger rounded-pill w-50">Back</a>
-						</div>
+				<div class="row text-center p-3 gy-2">
+					<div class="col-sm-12 col-md-6">
+						<a href="checkout_order_summary.php" class="btn btn-sm btn-outline-success rounded-pill w-75">Checkout</a>
+					</div>
+					<div class="col-sm-12 col-md-6">
+						<a href="index.php" class="btn btn-sm btn-outline-danger rounded-pill w-75">Back</a>
 					</div>
 				</div>
 			</section>

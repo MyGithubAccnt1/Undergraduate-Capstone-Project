@@ -21,31 +21,6 @@ session_start();
 			.dropdown-menu {
 				background-color: rgba(0, 0, 0, 1.0);
 			}
-			.preview-options {
-				display: flex;
-				justify-content: space-evenly;
-				align-items: center;
-				flex-direction: row;
-				gap: 10px;
-			}
-			@media (max-width: 767px) {
-			    .preview-options {
-			    	flex-direction: column;
-			    }
-			}
-			.preview-details {
-				display: flex;
-				justify-content: space-evenly;
-				align-items: center;
-				flex-direction: row;
-				gap: 10px;
-			}
-			@media (max-width: 425px) {
-			    .preview-details {
-			    	flex-direction: column;
-			    	margin-bottom: 10px;
-			    }
-			}
 			.card {
 			    box-shadow: 5px 6px 6px 2px #e9ecef;
 			    border-radius: 4px;
@@ -92,13 +67,15 @@ session_start();
 								<h1 class="text-center" id="title"></h1>
 								<div class="container"><hr></div>
 								<div>
-									<div class="preview-details">
-										<div>
-											<h4 id="price" class="m-1"></h4>
-										</div>
-										<div  style="display: flex; align-items: center; flex-direction: row;">
-											<h5 style="flex: 50%; margin: 0 5px 0 0;">Quantity: </h5>
-											<input type="number" id="quantity" value="1" style="width: 45px;">
+									<div class="col-md-12 text-center">
+										<div class="row gy-3 p-3">
+											<div class="col-sm-12 col-md-6">
+												<h4 id="price" class="m-1"></h4>
+											</div>
+											<div class="col-sm-12 col-md-6" style="display: flex; justify-content: center; align-items: center;">
+												<h5 style="margin-right: 5px;">Quantity: </h5>
+												<input type="number" id="quantity" value="1" style="width: 45px;">
+											</div>
 										</div>
 									</div>
 								    
@@ -107,12 +84,14 @@ session_start();
 								    <?php
 								    if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 								    ?>
-								    <div class="col-md-12 mt-0 mb-3 preview-options">
-								    	<div class="w-100">
-								    		<button class="btn btn-sm btn-outline-success py-1 w-100 rounded-pill" type="button" onclick="add_to_cart();">Add to Cart</button>
-								    	</div>
-								    	<div class="w-100">
-								    		<button class="btn btn-sm btn-outline-danger py-1 w-100 rounded-pill" type="button" onclick="buy_now();">Buy Now</button>
+								    <div class="col-md-12 text-center">
+								    	<div class="row gy-3 p-3">
+								    		<div class="col-sm-12 col-md-6">
+								    			<button class="btn btn-sm btn-outline-success py-1 w-75 rounded-pill" type="button" onclick="add_to_cart();">Add to Cart</button>
+								    		</div>
+								    		<div class="col-sm-12 col-md-6">
+								    			<button class="btn btn-sm btn-outline-danger py-1 w-75 rounded-pill" type="button" onclick="buy_now();">Buy Now</button>
+								    		</div>
 								    	</div>
 								    </div>
 						    	    <?php

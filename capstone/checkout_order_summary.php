@@ -22,6 +22,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			.dropdown-menu {
 				background-color: rgba(0, 0, 0, 1.0);
 			}
+			input {
+				margin-bottom: 15px;
+			}
 			.checkout-options {
 				display: flex;
 				justify-content: space-evenly;
@@ -111,12 +114,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						</div>
 					</div>
 				</div>
-				<div class="row text-center p-3">
+				<div class="row text-center p-3 gy-2">
 					<div class="col-sm-12 col-md-6">
-						<a href="checkout_order_finalize.php" class="btn btn-sm btn-outline-success rounded-pill w-50">Proceed</a>
+						<a href="checkout_order_finalize.php" class="btn btn-sm btn-outline-success rounded-pill w-75">Proceed</a>
 					</div>
 					<div class="col-sm-12 col-md-6">
-						<a href="cart.php" class="btn btn-sm btn-outline-danger rounded-pill w-50">Back</a>
+						<a href="cart.php" class="btn btn-sm btn-outline-danger rounded-pill w-75">Back</a>
 					</div>
 				</div>
 			</section>

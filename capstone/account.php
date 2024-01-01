@@ -23,18 +23,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			input {
 				margin-bottom: 15px;
 			}
-			.profile-options {
-				display: flex;
-				justify-content: space-evenly;
-				align-items: center;
-				flex-direction: row;
-				gap: 10px;
-			}
-			@media (max-width: 767px) {
-			    .profile-options {
-			    	flex-direction: column;
-			    }
-			}
 			.card {
 			    box-shadow: 5px 6px 6px 2px #e9ecef;
 			    border-radius: 4px;
@@ -78,13 +66,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                             <label class="form-label">Complete Address</label>
                             <input type="text" class="form-control" value="<?php echo $_SESSION['caddress']; ?>" name="caddress" disabled>
                         </div>
-                        <div class="col-md-12 mt-0 mb-3 profile-options">
-                        	<div class="w-100">
-                            	<button type="submit" class="btn btn-sm btn-outline-success py-1 w-100 rounded-pill">Update Personal Details</button>
-                            </div>
-                            <div class="w-100">
-                            	<button class="btn btn-sm btn-outline-primary py-1 w-100 rounded-pill" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">Update Address</button>
-                            </div>
+                        <div class="col-sm-12 text-center">
+                        	<div class="row gy-3 p-3">
+                        		<div class="col-sm-12 col-md-6">
+                        			<button type="submit" class="btn btn-sm btn-outline-success py-1 w-75 rounded-pill">Update Personal Details</button>
+                        		</div>
+                        		<div class="col-sm-12 col-md-6">
+                        			<button class="btn btn-sm btn-outline-primary py-1 w-75 rounded-pill" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">Update Address</button>
+                        		</div>
+                        	</div>
                         </div>
 					</div>
 				</form>
