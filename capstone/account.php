@@ -15,10 +15,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	  	<?php include('include/style.php') ?>
 		<style>
 			header {
-				background-color: rgba(0, 0, 0, 0.75);
+				background-color: rgba(0, 0, 0, 1.0);
 			}
 			.dropdown-menu {
-				background-color: rgba(0, 0, 0, 0.75);
+				background-color: rgba(0, 0, 0, 1.0);
 			}
 			input {
 				margin-bottom: 15px;

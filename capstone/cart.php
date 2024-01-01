@@ -15,10 +15,10 @@ session_start();
 	  	<link rel="stylesheet" type="text/css" href="./css/slider.css">
 		<style>
 			header {
-				background-color: rgba(0, 0, 0, 0.75);
+				background-color: rgba(0, 0, 0, 1.0);
 			}
 			.dropdown-menu {
-				background-color: rgba(0, 0, 0, 0.75);
+				background-color: rgba(0, 0, 0, 1.0);
 			}
 			.cart-container {
 				padding: 10px;
@@ -72,7 +72,7 @@ session_start();
 			<?php include('include/user_header.php') ?>
 			<img src="" id="imagePreview" class="imagePreview" alt="Missing_Image">
 			<section class="container py-5">
-				<h1 class="mb-5">Cart</h1>
+				<h2 class="mb-5">Cart</h2>
 				<hr>
 				<div class="row">
 					<div class="container">

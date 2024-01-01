@@ -12,10 +12,10 @@
 		<link rel="stylesheet" type="text/css" href="./css/slider.css">
 		<style>
 			header {
-				background-color: rgba(0, 0, 0, 0.75);
+				background-color: rgba(0, 0, 0, 1.0);
 			}
 			.dropdown-menu {
-				background-color: rgba(0, 0, 0, 0.75);
+				background-color: rgba(0, 0, 0, 1.0);
 			}
 		</style>
 	</head>

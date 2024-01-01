@@ -16,10 +16,10 @@ session_start();
 		<link rel="stylesheet" type="text/css" href="./css/slider.css">
 		<style>
 			header {
-				background-color: rgba(0, 0, 0, 0.75);
+				background-color: rgba(0, 0, 0, 1.0);
 			}
 			.dropdown-menu {
-				background-color: rgba(0, 0, 0, 0.75);
+				background-color: rgba(0, 0, 0, 1.0);
 			}
 			.preview-options {
 				display: flex;
@@ -158,6 +158,29 @@ session_start();
 									</div>
 								</div>
 							</form>
+                        </div>
+                    </div>
+				</div>	
+			    <?php
+			    } else {
+			    ?>
+			    <div class="row">
+                    <div class="col-md-12">
+                        <div class="stick-top bg-dark text-center text-white py-2">Comment Section</div>
+                        <div class="border border-black card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="comment-container">
+							<!-- dynamic -->
+                        </div>
+                        <div class="stick-bot">
+							<div class="comment-area">
+								<div class="bg-dark" style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
+									<div class="w-100 p-1">
+										<textarea class="form-control rounded-pill" placeholder="Sign in to leave a comment." rows="1" name="comment" required></textarea>
+									</div>
+									<div class="w-50 p-1 d-flex align-items-center">
+										<button type="button" class="btn btn-sm btn-primary py-1 w-100 rounded-pill" onclick="redirect_to_login();">Send</button>
+									</div>
+								</div>
+							</div>
                         </div>
                     </div>
 				</div>	

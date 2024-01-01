@@ -10,6 +10,12 @@
 	  	<meta name="author" content="Mhel Voi A. Bernabe">
 	  	<?php include('include/style.php') ?>
 		<style>
+			header {
+				background-color: rgba(0, 0, 0, 1.0);
+			}
+			.dropdown-menu {
+				background-color: rgba(0, 0, 0, 1.0);
+			}
 			main {
 				height: calc(100vh - 50px);
 				overflow: hidden;
@@ -46,10 +52,9 @@
 		<script type="text/javascript">
 			$(window).on('load', function() {
 			  $(".loader").fadeOut('slow');
-			  $('#login').find("input[name='email']").focus();
+			  $(".sticky-top").fadeIn('slow');
 			});
 		</script>
 		<script type="text/javascript" src="js/user_header.js"></script>
-		<script type="text/javascript" src="js/signin.js"></script>
 	</body>
 </html>
