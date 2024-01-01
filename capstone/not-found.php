@@ -33,7 +33,7 @@
 		</style>
 	</head>
 	<body>
-		<main class="container-fluid p-0 m-0">
+		<main class="container-fluid p-0">
 			<?php include('include/user_header.php') ?>
 			<section class="main">
 				<div class="container text-center">

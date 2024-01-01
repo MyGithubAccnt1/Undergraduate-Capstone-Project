@@ -50,7 +50,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		</style>
 	</head>
 	<body>
-		<main class="container-fluid p-0 m-0">
+		<main class="container-fluid p-0">
 			<?php include('include/user_header.php') ?>
 			<section class="container py-5">
 				<h2 class="mb-5">My Profile</h2>

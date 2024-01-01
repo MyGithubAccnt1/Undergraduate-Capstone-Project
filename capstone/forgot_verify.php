@@ -10,45 +10,37 @@
 	  	<meta name="author" content="Mhel Voi A. Bernabe">
 	  	<?php include('include/style.php') ?>
 		<style>
-			.bg{
+			.hero-section {
 		  		position: absolute;
 		  		z-index: -1;
 		  		top: 0;
 		  		left: 0;
-				height: 100vh;
+		  		height: 100vh;
 		  		width: 100%;
 		  		background-image: url('images/bg.gif');
 		  		background-size: cover;
 		  		background-repeat: no-repeat;
-		  		filter: brightness(30%);
-		  		padding: 0;
-		  		margin: 0;
-		  		display: flex;
-		  		align-items: center;
-		  		justify-content: center;
+		  		filter: brightness(25%);
 		  	}
-		  	.main {
-		  		height: 100vh;
-		  		width: 100%;
-		  		display: flex;
-			    justify-content: center;
-			    align-items: center;
+		  	.hero {
+		  		height: calc(100vh - 50px);
+				display: flex;
+				justify-content: center;
+				align-items: center;
 		  	}
-			.verification-container {
-				min-width: 320px;
-			    width: 50%;
-			    background-color: rgba(255, 255, 255, 0.1);
+		  	.hero > .row {
+		  		min-width: 320px;
+		  		width: 50%;
+		  		padding: 50px 25px;
+
+		  		background-color: rgba(255, 255, 255, 0.1);
 			    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
 			    border: 1px solid rgba(255, 255, 255, 0.5);
 			    border-radius: 5px;
 			    border-right: 1px solid rgba(255, 255, 255, 0.2);
 			    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 			    backdrop-filter: blur(5px);
-			    display: flex;
-			    justify-content: center;
-			    align-items: center;
-			    color: #fff;
-			}
+		  	}
 			.verification-close {
 				position: absolute;
 				top: 0;
@@ -59,12 +51,12 @@
 	</head>
 	<body>
 		<section class="loader"></section>
-		<main class="container-fluid p-0 m-0">
-			<section class="bg"></section>
-			<section class="main">
-				<div class="verification-container">
+		<main class="container-fluid p-0">
+			<section class="hero-section"></section>
+			<section class="hero container">
+				<div class="row">
 					<button type="button" class="verification-close btn-main py-1 my-3 w-25 rounded-pill">Back</button>
-					<div class="w-75 py-5">
+					<div class="col-md-12 py-5">
 						<form action="" id="verify">
 	  					    <div class="form-outline mt-4 mb-0">
 	  					    	<input type="text" placeholder="Enter your verification code" class="form-control rounded-0" name="otp" required>

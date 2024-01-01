@@ -20,7 +20,7 @@
 		</style>
 	</head>
 	<body>
-		<main class="container-fluid p-0 m-0">
+		<main class="container-fluid p-0">
 			<?php include('include/user_header.php') ?>
 			<img src="" id="imagePreview" class="imagePreview" alt="Missing_Image">
 			<section>
