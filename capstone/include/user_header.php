@@ -33,7 +33,7 @@ session_start();
 		    	</a>
 		    </li>
 		    <li>
-		    	<a href="#">
+		    	<a href="order_history.php">
 		    		<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
 		    			<i class="fas fa-clipboard-list" style="margin: 0 20px 0 10px;"></i><small>My Orders</small>
 		    		</button>
@@ -81,7 +81,7 @@ session_start();
 		    	</a>
 		    </li>
 		    <li>
-	    	    <a href="#">
+	    	    <a href="customize.php">
 	    			<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
 	    				<i class="fas fa-pencil-ruler" style="margin: 0 20px 0 10px;"></i></i><small>Customize</small>
 	    			</button>
@@ -138,7 +138,7 @@ session_start();
 		    		</a>
 		    	</li>
 		    	<li>
-		    		<a class="dropdown-item" href="#">
+		    		<a class="dropdown-item" href="order_history.php">
 		    			<button type="button" class="btn-nav rounded-0 btn-sm">
 		    				<small>MY ORDERS</small>
 		    			</button>
@@ -205,7 +205,7 @@ session_start();
 		  	</ul>
 		</div>
 		<div class="d-none d-md-block">
-			<a href="#">
+			<a href="customize.php">
 				<button type="button" class="btn-nav rounded-0 btn-sm">
 					<small>CUSTOMIZE</small>
 				</button>
@@ -223,9 +223,6 @@ session_start();
 				</button>
 			</a>
 		</div>
-		<?php
-		}
-		?>
 		<div>
 			<a href="#">
 				<button type="button" class="btn-nav rounded-0 btn-sm" title="My Notifications">
@@ -233,5 +230,8 @@ session_start();
 				</button>
 			</a>
 		</div>
+		<?php
+		}
+		?>
 	</div>
 </header>
