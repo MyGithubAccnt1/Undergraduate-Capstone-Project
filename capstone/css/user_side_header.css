@@ -6,8 +6,12 @@ header{
     justify-content: center;
     flex-direction: row;
     background-color: transparent;
+    transition: background-color 0.5s ease;
     font-size: 0.8rem;
     gap: 10px;
+}
+.sticky-top {
+    display: none;
 }
 .navigation {
     display: flex;
