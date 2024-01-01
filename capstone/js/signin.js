@@ -20,20 +20,20 @@ $('#accept-button').on('click', function () {
     } else {
         $("#accept-check").prop("checked", true);
         $('.termsNcondition').css('visibility', 'visible');
-        $('.darker').css('visibility', 'visible');
+        $('.hero').css('visibility', 'hidden');
     }
 });
 
 $('#accept-check').on('change', function () {
     if ($("#accept-check").prop('checked')){
         $('.termsNcondition').css('visibility', 'visible');
-        $('.darker').css('visibility', 'visible');
+        $('.hero').css('visibility', 'hidden');
     }
 });
 
 $('.tnc-close').on('click', function () {
     $('.termsNcondition').css('visibility', 'hidden');
-    $('.darker').css('visibility', 'hidden');
+    $('.hero').css('visibility', 'visible');
 });
 
 $('#forgot-button').on('click', function () {

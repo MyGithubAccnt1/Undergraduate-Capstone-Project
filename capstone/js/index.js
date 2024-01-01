@@ -92,25 +92,6 @@ $(document).on('submit', '#viewProduct', function(event) {
     });
 });
 
-$(document).on('mouseover', '.img-responsive', function() {
-    var parentContainer = $(this).closest('.img-box');
-    var image = parentContainer.find("input[name='image']").val();
-    $('#imagePreview').attr("src", image);
-
-    var offset = $(this).offset();
-    $('#imagePreview').css({
-        top: window.pageYOffset || document.documentElement.scrollTop + 'px',
-        left: offset.left + $(this).outerWidth() + 'px'
-    });
-
-    $('#imagePreview').stop().fadeIn('slow');
-    
-});
-
-$(document).on('mouseout', '.img-responsive', function() {
-    $('#imagePreview').stop().hide();
-});
-
 function handleIntersection(entries, observer) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {

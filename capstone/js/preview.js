@@ -35,8 +35,6 @@ function add_to_cart() {
     var title = window.localStorage.getItem('title');
     var thumbnail = window.localStorage.getItem('thumbnail');
     var price = window.localStorage.getItem('price');
-    var description = window.localStorage.getItem('description');
-    var category = window.localStorage.getItem('category');
     var quantity = $('#quantity').val();
 
     $.ajax({
@@ -133,4 +131,50 @@ $("#comment-form").submit(function (e) {
     });
 
     $(this).find('textarea[name="comment"]').val('');
+});
+
+function ShowProduct() {
+    $.ajax({
+        url: "./php/get_you_may_like.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            $("#product-container").html(data);
+        }
+    });
+}
+setInterval(ShowProduct, 1000);
+
+$(document).on('submit', '#viewProduct', function(event) {
+    event.preventDefault();
+    var title = $(this).find("input[name='title']").val();
+    var thumbnail = $(this).find("input[name='thumbnail']").val();
+    var price = $(this).find("input[name='price']").val();
+    var description = $(this).find("input[name='description']").val();
+    var category = $(this).find("input[name='category']").val();
+
+    $.ajax({
+        url: "./php/update_popularity.php",
+        method: "POST",
+        data: {
+            title: title,
+            thumbnail: thumbnail,
+            price: price,
+            description: description,
+            category: category
+        },
+        success: function (data) {
+            data = data.trim();
+            if (data === '1'){
+                window.localStorage.setItem('title', title);
+                window.localStorage.setItem('thumbnail', thumbnail);
+                window.localStorage.setItem('price', price);
+                window.localStorage.setItem('description', description);
+                window.localStorage.setItem('category', category);
+                window.location.href = "preview.php";
+            } else {
+                alert('Unexpected Error: [' + data + '].');
+            }
+        }
+    });
 });

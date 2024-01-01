@@ -32,21 +32,48 @@ $(document).on("submit", "#delete", function (event) {
     }
 });
 
-$(document).on('mouseover', '.img-responsive', function() {
-    var parentContainer = $(this).closest('.img-box');
-    var image = parentContainer.find("input[name='image']").val();
-    $('#imagePreview').attr("src", image);
-
-    var offset = $(this).offset();
-    $('#imagePreview').css({
-        top: window.pageYOffset || document.documentElement.scrollTop + 'px',
-        left: offset.left + $(this).outerWidth() + 'px'
+function ShowProduct() {
+    $.ajax({
+        url: "./php/get_you_may_like.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            $("#product-container").html(data);
+        }
     });
+}
+setInterval(ShowProduct, 1000);
 
-    $('#imagePreview').stop().fadeIn('slow');
-    
-});
+$(document).on('submit', '#viewProduct', function(event) {
+    event.preventDefault();
+    var title = $(this).find("input[name='title']").val();
+    var thumbnail = $(this).find("input[name='thumbnail']").val();
+    var price = $(this).find("input[name='price']").val();
+    var description = $(this).find("input[name='description']").val();
+    var category = $(this).find("input[name='category']").val();
 
-$(document).on('mouseout', '.img-responsive', function() {
-    $('#imagePreview').stop().hide();
+    $.ajax({
+        url: "./php/update_popularity.php",
+        method: "POST",
+        data: {
+            title: title,
+            thumbnail: thumbnail,
+            price: price,
+            description: description,
+            category: category
+        },
+        success: function (data) {
+            data = data.trim();
+            if (data === '1'){
+                window.localStorage.setItem('title', title);
+                window.localStorage.setItem('thumbnail', thumbnail);
+                window.localStorage.setItem('price', price);
+                window.localStorage.setItem('description', description);
+                window.localStorage.setItem('category', category);
+                window.location.href = "preview.php";
+            } else {
+                alert('Unexpected Error: [' + data + '].');
+            }
+        }
+    });
 });
