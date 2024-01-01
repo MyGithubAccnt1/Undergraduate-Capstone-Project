@@ -48,21 +48,6 @@ app.post('/send-otp', async (req, res) => {
   }
 });
 
-app.get('/get-nominatim-data', (req, res) => {
-    const latitude = req.query.latitude;
-    const longitude = req.query.longitude;
-
-    const nominatimApiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
-
-    request(nominatimApiUrl, (error, response, body) => {
-        if (!error && response.statusCode === 200) {
-            res.send(body);
-        } else {
-            res.status(response ? response.statusCode : 500).send(error || 'Internal Server Error');
-        }
-    });
-});
-
 app.listen(port, () => {
   console.log(`Server running at ${corsOptions.origin.join(', ')}:${port}`);
 });

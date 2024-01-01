@@ -83,7 +83,7 @@ function buy_now() {
 }
 
 function redirect_to_login() {
-    if (confirm("Notice: You need to login in order to add this item to your cart. Do you wish to login now?") === true) {
+    if (confirm("Notice: You need to login in order to do this action. Do you wish to login now?") === true) {
         var xlink = window.location.href;
         window.localStorage.setItem('xlink', xlink);
         window.location.href = 'signin.php';

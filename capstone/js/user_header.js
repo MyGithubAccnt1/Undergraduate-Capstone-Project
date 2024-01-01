@@ -12,15 +12,20 @@ $(document).ready(function() {
                 if (current_url === origin + '/capstone/index.php' | current_url === origin + '/capstone/signin.php') {
                     $(".sticky-top").css("background-color", "transparent");
                     $(".dropdown-menu").css("background-color", "transparent");
+                } else {
+                    $(".sticky-top").css("background-color", "rgba(0, 0, 0, 1.0)");
+                    $(".dropdown-menu").css("background-color", "rgba(0, 0, 0, 1.0)");
                 }
             } else {
                 var current_url = window.location.href;
                 if (current_url === origin + '/index.php' | current_url === origin + '/signin.php') {
                     $(".sticky-top").css("background-color", "transparent");
                     $(".dropdown-menu").css("background-color", "transparent");
+                } else {
+                    $(".sticky-top").css("background-color", "rgba(0, 0, 0, 1.0)");
+                    $(".dropdown-menu").css("background-color", "rgba(0, 0, 0, 1.0)");
                 }
             }
-            
         }
     });
 });
