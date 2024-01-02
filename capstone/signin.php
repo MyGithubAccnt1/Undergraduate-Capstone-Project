@@ -221,7 +221,7 @@
 			  	$(".sticky-top").fadeIn('slow');
 			});
 		</script>
-		<script type="text/javascript" src="js/user_header.js"></script>
+		<script type="text/javascript" src="js/custom_user_header.js"></script>
 		<script type="text/javascript" src="js/signin.js"></script>
 	</body>
 </html>

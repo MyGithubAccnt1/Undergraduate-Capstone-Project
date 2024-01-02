@@ -97,14 +97,16 @@ session_start();
 						    	    <?php
 						    	    } else {
 					    	    	?>
-					    	    	<div class="col-md-12 mt-0 mb-3 preview-options">
-					    	    		<div class="w-100">
-					    	    			<button class="btn btn-sm btn-outline-success py-1 w-100 rounded-pill" type="button" onclick="redirect_to_login();">Add to Cart</button>
-					    	    		</div>
-					    	    		<div class="w-100">
-					    	    			<button class="btn btn-sm btn-outline-danger py-1 w-100 rounded-pill" type="button" onclick="redirect_to_login();">Buy Now</button>
-					    	    		</div>
-					    	    	</div>
+					    	    	<div class="col-md-12 text-center">
+								    	<div class="row gy-3 p-3">
+								    		<div class="col-sm-12 col-md-6">
+								    			<button class="btn btn-sm btn-outline-success py-1 w-75 rounded-pill" type="button" onclick="redirect_to_login();">Add to Cart</button>
+								    		</div>
+								    		<div class="col-sm-12 col-md-6">
+								    			<button class="btn btn-sm btn-outline-danger py-1 w-75 rounded-pill" type="button" onclick="redirect_to_login();">Buy Now</button>
+								    		</div>
+								    	</div>
+								    </div>
 						    	    <?php
 						    	    }
 						        	?>

@@ -61,7 +61,7 @@
 							<p class="d-none d-lg-block">We are proud to have <?php include ('./php/get_user_count.php') ?> registered users as of today.</p>
 							<p>Don’t miss this opportunity to create your very own account.</p>
 							<a href="signin.php">
-								<button type="button" class="btn btn-lg btn-outline-success rounded-0">REGISTER NOW FOR FREE</button>
+								<button type="button" class="btn btn-md btn-outline-success rounded-0">REGISTER NOW FOR FREE</button>
 							</a>
 						</div>
 						<?php
@@ -247,7 +247,7 @@
 			  	$(".sticky-top").fadeIn('slow');
 			});
 		</script>
-		<script type="text/javascript" src="js/user_header.js"></script>
+		<script type="text/javascript" src="js/custom_user_header.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript" src="js/image_hover.js"></script>
 	</body>
