@@ -16,7 +16,25 @@ $(document).on('input change', '#caddress', function() {
 
 function alt_address() {
     if ($('#alt-address').val() === "") {
-        $('#alternative_address').text('Alternative: Test');
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                  const lat = position.coords.latitude;
+                  const lon = position.coords.longitude;
+                  const nominatimApiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
+
+                    fetch(nominatimApiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.display_name) {
+                                const address = data.display_name;
+                                $('#alt-address').val(address);
+                                $('#alternative_address').text('Alternative: ' + address);
+                            }
+                        });
+                }
+            );
+        }
     } else {
         $('#alternative_address').text('Alternative: ' + $('#alt-address').val());
     }
@@ -24,6 +42,10 @@ function alt_address() {
 
 $(document).on('input', '#alt-address', function() {
 	alt_address();
+});
+
+$(document).on('change', '#alt-address', function() {
+    $('#alternative_address').text('Alternative: ' + $('#alt-address').val());
 });
 
 $(document).ready(function() {
