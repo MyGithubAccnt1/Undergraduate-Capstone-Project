@@ -148,7 +148,7 @@
 					<div class="col-md-12 text-center">
 						<h1 class="mb-5">New Arrivals</h1>
 					</div>
-					<div class="container">
+					<div class="container" style="overflow-x: hidden;">
 						<div class="slider">
 						    <div class="rotator" id="new_arrival-container">
 						    	<!-- dynamic -->
@@ -231,7 +231,6 @@
 			                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123734.56420033834!2d120.78699919463828!3d14.27041091980823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd806bdc892737%3A0x760e08400b4e91d8!2sTrece%20Martires%2C%20Cavite!5e0!3m2!1sen!2sph!4v1685830770393!5m2!1sen!2sph"
 			                width="100%"
 			                height="400"
-			                style=""
 			                allowfullscreen="false"
 			                loading="lazy"
 			                referrerpolicy="no-referrer-when-downgrade"
