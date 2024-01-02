@@ -20,7 +20,43 @@ function ShowProduct() {
         }
     });
 }
-setInterval(ShowProduct, 1000);
+ShowProduct()
+setInterval(ShowProduct, 30000);
+
+function handleIntersection(entries, observer) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            if (entry.target.id === 'product-container') {
+                var filter = $('#filter').val();
+                var min_price = $('#min-price').val();
+                var max_price = $('#max-price').val();
+                var page = window.localStorage.getItem('page');
+
+                $.ajax({
+                    url: "./php/get_table_nameplate.php",
+                    method: "GET",
+                    data: {
+                        filter: filter,
+                        min_price: min_price,
+                        max_price: max_price,
+                        page: page
+                    },
+                    success: function (data) {
+                        $(".loader").fadeOut('slow');
+                        data = data.trim();
+                        $("#product-container").html(data);
+                    }
+                });
+            }
+        }
+    });
+}
+
+const observerProductContainer = new IntersectionObserver(handleIntersection, {
+    threshold: 0.165,
+});
+const productContainerElement = document.getElementById('product-container');
+observerProductContainer.observe(productContainerElement);
 
 $(document).on('change', '#filter', function() {
     var category = $('#filter').val();

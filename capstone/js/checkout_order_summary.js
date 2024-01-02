@@ -16,25 +16,6 @@ $(document).on('input change', '#caddress', function() {
 
 function alt_address() {
     if ($('#alt-address').val() === "") {
-        // if (navigator.geolocation) {
-        //     navigator.geolocation.getCurrentPosition(
-        //         function (position) {
-        //             const lat = position.coords.latitude;
-        //             const lon = position.coords.longitude;
-        //             const nominatimApiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
-
-        //             fetch(nominatimApiUrl)
-        //                 .then(response => response.json())
-        //                 .then(data => {
-        //                     if (data.display_name) {
-        //                         const address = data.display_name;
-        //                         $('#alt-address').val(address);
-        //                         $('#alternative_address').text('Alternative: ' + address);
-        //                     }
-        //                 });
-        //         }
-        //     );
-        // }
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 function (position) {
@@ -43,25 +24,14 @@ function alt_address() {
                     const nominatimApiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
 
                     fetch(nominatimApiUrl)
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-                            return response.json();
-                        })
+                        .then(response => response.json())
                         .then(data => {
                             if (data.display_name) {
                                 const address = data.display_name;
                                 $('#alt-address').val(address);
                                 $('#alternative_address').text('Alternative: ' + address);
                             }
-                        })
-                        .catch(error => {
-                            console.error('Error fetching geolocation data:', error);
                         });
-                },
-                function (error) {
-                    console.error('Error getting geolocation:', error);
                 }
             );
         }
