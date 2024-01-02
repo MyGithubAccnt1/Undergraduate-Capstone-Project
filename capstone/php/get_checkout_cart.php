@@ -52,7 +52,7 @@ if (mysqli_num_rows($result) > 0) {
                 Shipping Fee
             </div>
             <div class="col-2 text-center">
-                Free
+                -
             </div>
             <div class="col-5">
                 PHP 0.00
