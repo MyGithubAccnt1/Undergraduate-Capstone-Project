@@ -79,7 +79,50 @@ function add_to_cart() {
 }
 
 function buy_now() {
-    alert('Test: buy now.');
+    var title = window.localStorage.getItem('title');
+    var thumbnail = window.localStorage.getItem('thumbnail');
+    var price = window.localStorage.getItem('price');
+    var quantity = $('#quantity').val();
+
+    $.ajax({
+        url: "./php/add_to_cart.php",
+        method: "POST",
+        data: {
+            thumbnail: thumbnail,
+            title: title,
+            price: price,
+            quantity: quantity
+        },
+        success: function (data) {
+            data = data.trim();
+            if (data === "1") {
+                if (confirm("Notice: This item is already added to your cart, do you wish to continue to add it again?") === true) {
+                    $.ajax({
+                        url: './php/add_to_cart_forced.php',
+                        type: 'POST',
+                        data: {
+                            thumbnail: thumbnail,
+                            title: title,
+                            price: price,
+                            quantity: quantity
+                        },
+                        success: function (data) {
+                            data = data.trim();
+                            if (data === "1") {
+                                window.location.href = 'checkout_order_summary.php';
+                            } else {
+                                alert('Unexpected Error: [' + data + '].');
+                            }
+                        }
+                    });
+                }
+            } else if (data === "2") {
+                window.location.href = 'checkout_order_summary.php';
+            } else {
+                alert('Unexpected Error: [' + data + '].');
+            }
+        }
+    });
 }
 
 function redirect_to_login() {

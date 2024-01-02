@@ -25,7 +25,8 @@ $(document).ready(function() {
             }
         });
     }
-    setInterval(ShowProduct, 1000);
+    ShowProduct();
+    setInterval(ShowProduct, 30000);
 
     function ShowArrival() {
         $.ajax({
@@ -37,7 +38,8 @@ $(document).ready(function() {
             }
         });
     }
-    setInterval(ShowArrival, 1000);
+    ShowArrival();
+    setInterval(ShowArrival, 30000);
 });
 
 $(document).on('change', '#category', function() {
@@ -95,16 +97,51 @@ $(document).on('submit', '#viewProduct', function(event) {
 function handleIntersection(entries, observer) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            document.querySelectorAll('.why-box').forEach(box => {
-                box.style.animationPlayState = "running";
-            });
+            if (entry.target.classList.contains('why-box')) {
+                document.querySelectorAll('.why-box').forEach(box => {
+                    box.style.animationPlayState = "running";
+                });
+            } else if (entry.target.id === 'product-container') {
+                var category = $('#category').val();
+                $.ajax({
+                    url: "./php/get_popular_product.php",
+                    method: "GET",
+                    data: {
+                        category: category
+                    },
+                    success: function (data) {
+                        data = data.trim();
+                        $("#product-container").html(data);
+                    }
+                });
+            } else if (entry.target.id === 'new_arrival-container') {
+                $.ajax({
+                    url: "./php/get_new_arrival.php",
+                    method: "GET",
+                    success: function (data) {
+                        data = data.trim();
+                        $("#new_arrival-container").html(data);
+                    }
+                });
+            }
         }
     });
 }
 
-const observer = new IntersectionObserver(handleIntersection, {
-    threshold: 0.01,
+const observerWhyChooseUs = new IntersectionObserver(handleIntersection, {
+    threshold: 0.165,
 });
+const whyChooseUsElement = document.querySelector('.why-box');
+observerWhyChooseUs.observe(whyChooseUsElement);
 
-const targetElement = document.querySelector('.why-box');
-observer.observe(targetElement);
+const observerProductContainer = new IntersectionObserver(handleIntersection, {
+    threshold: 0.165,
+});
+const productContainerElement = document.getElementById('product-container');
+observerProductContainer.observe(productContainerElement);
+
+const observerNewArrivalContainer = new IntersectionObserver(handleIntersection, {
+    threshold: 0.165,
+});
+const newArrivalContainerElement = document.getElementById('new_arrival-container');
+observerNewArrivalContainer.observe(newArrivalContainerElement);

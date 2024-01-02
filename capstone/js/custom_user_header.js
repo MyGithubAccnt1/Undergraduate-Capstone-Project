@@ -6,8 +6,8 @@ $(document).ready(function() {
             $(".sticky-top").css("background-color", "rgba(0, 0, 0, 0.75)");
             $(".dropdown-menu").css("background-color", "rgba(0, 0, 0, 0.75)");
         } else {
-            $(".sticky-top").css("background-color", "rgba(0, 0, 0, 1.0)");
-            $(".dropdown-menu").css("background-color", "rgba(0, 0, 0, 1.0)");
+            $(".sticky-top").css("background-color", "transparent");
+            $(".dropdown-menu").css("background-color", "transparent");
         }
     });
 });
