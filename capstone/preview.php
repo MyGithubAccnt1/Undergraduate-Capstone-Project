@@ -177,7 +177,7 @@ session_start();
 		    			<div class="carousel slide p-0" data-ride="carousel" data-interval="0"> 
 		    				<div class="carousel-inner">
 		    					<div class="item carousel-item active">
-		    						<div class="row" id="product-container">
+		    						<div class="row" id="you_may_like-container">
 		    							<!-- dynamic -->
 		    						</div>
 		    					</div>

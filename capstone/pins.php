@@ -23,47 +23,58 @@
 		<main class="container-fluid p-0">
 			<?php include('include/user_header.php') ?>
 			<img src="" id="imagePreview" class="imagePreview" alt="Missing_Image">
-			<section>
-				<div class="container py-5">
+			<section class="container py-5">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<h1 class="mb-5">Pins</h1>
+						<div class="d-flex justify-content-start align-items-center">
+							<div style="margin-right: 5px;">Filter:</div>
+							<select class="input" id="filter">
+								<option value="None">None</option>
+								<option value="Price">Price</option>
+							</select>
+						</div>
+						<hr class="mt-2 mb-0 mx-0 p-0">
 
-					<div class="row">
-						<div class="col-md-12 text-center">
+						<div class="container mt-2 px-5 border border-black" id="price" style="display: none; padding-block: 5px; background-color: rgba(0, 0, 0, 0.1);">
+							<p class="text-start m-0" id="min-text">Min price: PHP 0</p>
+							<input type="range" class="form-range" min="0" max="999" id="min-price" step="1" value="0">
+							<input type="range" class="form-range" min="1" max="1000" id="max-price" step="1" value="1000">
+							<p class="text-start m-0" id="max-text">Max price: PHP 1000</p>
+						</div>
 
-							<h1 class="mb-5">Pins</h1>
-							<div class="d-flex justify-content-start align-items-center">
-								<div style="margin-right: 5px;">Filter:</div>
-	                    	    <select class="input" id="filter">
-	                    	    	<option value="None">None</option>
-	                    	    	<option value="Price">Price</option>
-	                    	    </select>
-							</div>
-							<hr class="mt-2 mb-0 mx-0 p-0">
-
-							<div class="container mt-2 px-5 border border-black" id="price" style="display: none; padding-block: 5px; background-color: rgba(0, 0, 0, 0.1);">
-								<p class="text-start m-0" id="min-text">Min price: PHP 0</p>
-								<input type="range" class="form-range" min="0" max="999" id="min-price" step="1" value="0">
-								<input type="range" class="form-range" min="1" max="1000" id="max-price" step="1" value="1000">
-								<p class="text-start m-0" id="max-text">Max price: PHP 1000</p>
-							</div>
-
-							<div class="carousel slide p-0" data-ride="carousel" data-interval="0"> 
-								<div class="carousel-inner">
-									<div class="item carousel-item active">
-										<div class="row" id="product-container">
-											<!-- dynamic -->
-										</div>
-										<div>
-											<button class="btn btn-sm btn-outline-dark rounded-0" id="prev">< Prev</button>
-											<button class="btn btn-sm btn-outline-dark rounded-0" id="next">Next ></button>
-										</div>
+						<div class="carousel slide p-0" data-ride="carousel" data-interval="0"> 
+							<div class="carousel-inner">
+								<div class="item carousel-item active">
+									<div class="row" id="product-container">
+										<!-- dynamic -->
+									</div>
+									<div>
+										<button class="btn btn-sm btn-outline-dark rounded-0" id="prev">< Prev</button>
+										<button class="btn btn-sm btn-outline-dark rounded-0" id="next">Next ></button>
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</div>
-
 				</div>
+			</section>
+			<section class="container py-5">
+		    	<div class="row">
+		    		<h1 class="mb-5">YOU MAY LIKE</h1>
+		    		<hr class="m-0">
+		    		<div class="col-12">
+		    			<div class="carousel slide p-0" data-ride="carousel" data-interval="0"> 
+		    				<div class="carousel-inner">
+		    					<div class="item carousel-item active">
+		    						<div class="row" id="you_may_like-container">
+		    							<!-- dynamic -->
+		    						</div>
+		    					</div>
+		    				</div>
+		    			</div>
+		    		</div>
+		    	</div>
 			</section>
 			<?php include('include/user_footer.php') ?>
 		</main>
