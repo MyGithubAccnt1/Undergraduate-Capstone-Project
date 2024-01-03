@@ -8,7 +8,7 @@ header{
     background-color: transparent;
     transition: background-color 1s ease;
     font-size: 0.8rem;
-    gap: 10px;
+    gap: 50px;
 }
 .sticky-top {
     display: none;
@@ -18,7 +18,7 @@ header{
     align-items: center;
     justify-content: space-evenly;
     flex-direction: row;
-    gap: 10px;
+    gap: 30px;
 }
 .btn-nav, .btn-nav > small {
     border: none;
