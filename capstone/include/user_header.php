@@ -9,10 +9,9 @@ session_start();
 		<ul>
 			<li>
 		    	<a href="index.php">
-		    		<button type="button" class="btn btn-dark w-100 rounded-0 text-center border border-white">
-		    			<small style="letter-spacing: 3px; font-size: 1rem; font-family: 'Great Vibes', sans-serif;" class="text-warning">SB</small>
-		    			<small style="letter-spacing: 3px; font-size: 0.7rem; font-family: 'Open Sans', sans-serif; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;" class="text-black">MEDALLION</small>
-		    		</button>
+		    		<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
+						<img src="images/saint.png" height="20px" alt="Missing_Image" style="margin: 0 20px 0 10px;"><small>Saint Benedict Medallion</small>
+					</button>
 		    	</a>
 		    </li>
 		    <li>
@@ -112,17 +111,15 @@ session_start();
 	<div class="navigation">
 		<div>
 			<a href="index.php">
-				<div class="m-0 p-0 row btn-nav">
-					<div class="m-0 mr-1 p-0 col-4 text-end d-flex align-items-center">
-						<small style="margin-right: 2px; font-size: 1.25rem; font-family: 'Great Vibes', sans-serif;" class="text-warning">SB</small>
-					</div>
-					<div class="m-0 p-0 col-8 text-start d-flex align-items-center">
-						<small style="margin-left: 2px; font-size: 0.7rem; font-family: 'Open Sans', sans-serif; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;" class="text-black">MEDALLION</small>
-					</div>
+				<div class="m-0 p-0 btn-nav">
+					<img src="images/saint.png" height="40px" alt="Missing_Image">
 				</div>
 			</a>
 		</div>
-		<?php
+	</div>
+	
+	<div class="navigation">
+	<?php
 		if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		?>
 		<div class="dropdown d-none d-lg-block">
@@ -166,9 +163,6 @@ session_start();
 		<?php
 		}
 		?>
-	</div>
-	
-	<div class="navigation">
 		<div class="dropdown d-none d-md-block">
 		  	<button type="button" class="btn-nav dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 		    	PRODUCTS
