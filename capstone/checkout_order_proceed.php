@@ -46,9 +46,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				<div class="row mt-3">
 					<div class="col-12" style="position: relative;">
 						<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 12px;">
-							<div class="progress-bar" style="width: 50%">50%</div>
+							<div class="progress-bar" style="width: 100%">100%</div>
 						</div>
-						<div style="position: absolute; top: -2px; left: 0; margin-left: 49.5%; background-color: #000; border-radius: 180px; width: 16px; height: 15px; display: flex; align-items: center; justify-content: center; border: 2.5px solid #0D6EFD;">
+						<div style="position: absolute; top: -2px; left: 0; margin-left: 98%; background-color: #000; border-radius: 180px; width: 16px; height: 15px; display: flex; align-items: center; justify-content: center; border: 2.5px solid #0D6EFD;">
 							..
 						</div>
 					</div>
@@ -57,42 +57,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					<div class="col-sm-12 col-md-7">
 						<div class="container text-start p-3">
 							<div class="row">
-								<h5 class="text-center">BILLING ADDRESS</h5>
+								<h5 class="text-center">PAYMENT METHOD</h5>
 								<div class="col-md-6">
-								    <label class="form-label">First Name</label>
-								    <input type="text" id="fname" class="form-control" value="<?php echo $_SESSION['fname']; ?>" disabled>
-								</div>
-								<div class="col-md-6">
-								    <label class="form-label">Last Name</label>
-								    <input type="text" id="lname" class="form-control" value="<?php echo $_SESSION['lname']; ?>" disabled>
-								</div>
-								<div class="col-md-6">
-								    <label class="form-label">Mobile Number</label>
-								    <input type="text" id="mnumber" class="form-control" value="<?php echo $_SESSION['mnumber']; ?>" disabled>
-								</div>
-								<div class="col-md-6">
-								    <label class="form-label">Email</label>
-								    <input type="email" id="email" class="form-control" value="<?php echo $_SESSION['email']; ?>" disabled>
-								</div>
-								<div class="col-md-12">
-								    <label class="form-label">Complete Address</label>
-								    <input type="text" id="caddress" class="form-control" value="<?php echo $_SESSION['caddress']; ?>" disabled>
-								</div>
-								<div class="col-md-12 my-3">
-								    <div class="w-50 mx-auto">
-								    	<button class="btn btn-sm btn-outline-success py-1 w-100 rounded-pill" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" onclick="alt_address();">Add Alternative Address</button>
-								    </div>
-								</div>
-							</div>
-							<div class="collapse" id="collapseExample">
-								<div class="card card-body border border-dark">
-									<div class="row">
-										<div class="col-md-12">
-										    <label class="form-label">Alternative Address</label>
-										    <input type="text" id="alt-address" class="form-control">
-										</div>
-									</div>
-								</div>
+								    <input type="radio" id="cod" value="Cash On Delivery" checked>
+	                                <label for="cod">Cash On Delivery</label>
+                                </div>
+                                <div class="col-md-12">
+                                <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this <a href="https://www.freeprivacypolicy.com/live/e89caaee-d937-4d6e-bcde-c47ca892ee3b" target="_blank">Privacy Policy</a>.</p>
+                                </div>
 							</div>
 						</div>
 					</div>
@@ -110,6 +82,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							<p>Email: <?php echo $_SESSION['email']; ?></p>
 							<p>Address: <?php echo $_SESSION['caddress']; ?></p>
 							<p id="alternative_address"></p>
+							<p>Mode: COD</p>
 							<div class="container" id="cart-container">
 								<!-- dynamic -->
 							</div>
@@ -121,7 +94,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						<a class="btn btn-sm btn-outline-success rounded-pill w-75" id="proceed">Proceed</a>
 					</div>
 					<div class="col-sm-12 col-md-6">
-						<a href="cart.php" class="btn btn-sm btn-outline-danger rounded-pill w-75">Back</a>
+						<a href="checkout_order_summary.php" class="btn btn-sm btn-outline-danger rounded-pill w-75">Back</a>
 					</div>
 				</div>
 			</section>
@@ -134,7 +107,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			});
 		</script>
 		<script type="text/javascript" src="js/user_header.js"></script>
-		<script type="text/javascript" src="js/checkout_order_summary.js"></script>
+		<script type="text/javascript" src="js/checkout_order_proceed.js"></script>
 	</body>
 </html>
 <?php 
