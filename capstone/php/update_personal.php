@@ -5,9 +5,8 @@ $fname = mysqli_real_escape_string($conn, $_POST['fname']);
 $lname = mysqli_real_escape_string($conn, $_POST['lname']);
 $mnumber = mysqli_real_escape_string($conn, $_POST['mnumber']);
 $email = $_SESSION["email"];
-$caddress = mysqli_real_escape_string($conn, $_POST['caddress']);
 
-$sql = "UPDATE account SET fname='$fname', lname ='$lname', mnumber='$mnumber', caddress = '$caddress' WHERE email='$email'";
+$sql = "UPDATE account SET fname='$fname', lname ='$lname', mnumber='$mnumber' WHERE email='$email'";
 
 if ($conn->query($sql) === TRUE) {
 	$sql = "SELECT * FROM account WHERE email = '$email'";
@@ -16,7 +15,6 @@ if ($conn->query($sql) === TRUE) {
 	$_SESSION["fname"] = $row['fname'];
 	$_SESSION["lname"] = $row['lname'];
 	$_SESSION["mnumber"] = $row['mnumber'];
-	$_SESSION["caddress"] = $row['caddress'];
   	echo "1";
 } else {
   	echo "2";
