@@ -4,7 +4,6 @@ $(document).on("submit", "#personal", function (event) {
     var fname = $(this).find("input[name='fname']").val();
     var lname = $(this).find("input[name='lname']").val();
     var mnumber = $(this).find("input[name='mnumber']").val();
-    var caddress = $(this).find("input[name='caddress']").val();
 
     $.ajax({
         url: "./php/update_personal.php",
@@ -12,8 +11,7 @@ $(document).on("submit", "#personal", function (event) {
         data: {
             fname: fname,
             lname: lname,
-            mnumber: mnumber,
-            caddress: caddress
+            mnumber: mnumber
         },
         success: function (data) {
             data = data.trim();

@@ -1,19 +1,3 @@
-$(document).on('input change', '#fname', function() {
-    $('#full_name').text('Buyer: ' + $(this).val() + ' ' + $('#lname').val());
-});
-
-$(document).on('input change', '#lname', function() {
-    $('#full_name').text('Buyer: ' + $('#fname').val() + ' ' + $(this).val());
-});
-
-$(document).on('input change', '#mnumber', function() {
-    $('#mobile_number').text('Number: ' + $(this).val());
-});
-
-$(document).on('input change', '#caddress', function() {
-    $('#complete_address').text('Address: ' + $(this).val());
-});
-
 function alt_address() {
     if ($('#alt-address').val() === "") {
         if (navigator.geolocation) {
@@ -52,13 +36,24 @@ $(document).ready(function() {
 	var currentDate = new Date();
 	var readyDate = currentDate.toISOString().slice(0,10);
 	$('#date').text('Date: ' + readyDate);
-    if ($('#fname').val() & $('#lname').val()) {
-        $('#full_name').text('Buyer: ' + $('#fname').val() + ' ' + $('#lname').val());
+});
+
+$(document).on('click', '#proceed', function() {
+    var date = $("#date").text();
+    var fname = $("#fname").val();
+    var lname = $("#lname").val();
+    var mnumber = $("#mnumber").val();
+    var caddress = $("#caddress").val();
+    var alt_address = $("#alternative_address").text();
+
+    if (fname === "" || lname === "" || mnumber === "" || caddress === "Philippines") {
+        alert('Notice: There are some empty field, please fill it up in you profile to continue.');
+        window.location.href = 'account.php';
+    } else {
+        window.localStorage.setItem('date', date);
+        window.localStorage.setItem('alt_address', alt_address);
+        window.location.href = "checkout_order_proceed.php";
     }
-    if ($('#mnumber').val()) {
-        $('#mobile_number').text('Number: ' + $('#mnumber').val());
-    }
-	$('#complete_address').text('Address: ' + $('#caddress').val());
 });
 
 function ShowCart() {
