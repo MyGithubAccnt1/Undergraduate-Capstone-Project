@@ -29,7 +29,6 @@ session_start();
 				height: 50vh;
 				overflow-x: hidden;
 				overflow-y: auto;
-				position: relative;
 			}
 			.order-container > .row {
 				border: 1px solid #000;
@@ -37,9 +36,6 @@ session_start();
 				padding: 5px;
 				height: 50px;
 				overflow: hidden;
-				color: #000;
-				background-color: inherit;
-				width: 100%;
 			}
 			.order-container > .row:not(:nth-child(2)):hover {
 			    background-color: rgba(0, 0, 0, 0.1);
@@ -65,15 +61,13 @@ session_start();
 				width: 25%;
 			}
 			.collapse {
-				position: absolute;
-				left: 0;
-				width: calc(100% - 22px);
 				transition: 1s linear;
 				background-color: rgba(255, 255, 255, 0.9);
 			}
 			.collapse > .container {
 				border: 1px solid #000;
-				border-style: none solid none solid;
+				border-style: none solid solid solid;
+				padding-bottom: 10px;
 			}
 			.cart-container > .row {
 				border: 1px solid #000;
@@ -138,6 +132,9 @@ session_start();
 					</div>
 				</div>
 				<div class="row text-center p-3 gy-2">
+					<div class="col-sm-12 col-md-6">
+						
+					</div>
 					<div class="col-sm-12 col-md-6">
 						<a href="index.php" class="btn btn-sm btn-outline-danger rounded-pill w-75">Back</a>
 					</div>
