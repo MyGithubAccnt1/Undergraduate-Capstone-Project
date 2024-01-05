@@ -7,13 +7,6 @@ session_start();
 <header class="sticky-top">
 	<div class="mobile-navigation">
 		<ul>
-			<li>
-		    	<a href="index.php">
-		    		<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
-						<img src="images/saint.png" height="20px" alt="Missing_Image" style="margin: 0 20px 0 10px;"><small>Saint Benedict Medallion</small>
-					</button>
-		    	</a>
-		    </li>
 		    <li>
 		    	<a href="#" class="close">
 	            	<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
@@ -32,7 +25,7 @@ session_start();
 		    	</a>
 		    </li>
 		    <li>
-		    	<a href="order_history.php">
+		    	<a href="order.php">
 		    		<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
 		    			<i class="fas fa-clipboard-list" style="margin: 0 20px 0 10px;"></i><small>My Orders</small>
 		    		</button>
@@ -101,12 +94,6 @@ session_start();
 	    	?>
 		</ul>
 	</div>
-
-	<div class="d-block d-lg-none">
-		<div class="button">
-			<button type="button" class="icon"></button>
-		</div>
-	</div>
 	
 	<div class="navigation">
 		<div>
@@ -135,7 +122,7 @@ session_start();
 		    		</a>
 		    	</li>
 		    	<li>
-		    		<a class="dropdown-item" href="order_history.php">
+		    		<a class="dropdown-item" href="order.php">
 		    			<button type="button" class="btn-nav rounded-0 btn-sm">
 		    				<small>MY ORDERS</small>
 		    			</button>
@@ -227,5 +214,10 @@ session_start();
 		<?php
 		}
 		?>
+		<div class="d-block d-lg-none">
+			<div class="button">
+				<button type="button" class="icon"></button>
+			</div>
+		</div>
 	</div>
 </header>
