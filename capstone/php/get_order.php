@@ -57,7 +57,7 @@ if (mysqli_num_rows($result) > 0) {
         ';
         $date = $row['deyt'];
         echo '
-        <div class="collapse" id="collapseExample'. $id .'">
+        <div class="custom-collapse collapse" id="collapseExample'. $id .'">
             <div class="container">
                 <div class="row">
                     <div class="container">
@@ -216,7 +216,7 @@ if (mysqli_num_rows($result) > 0) {
     echo '
     <div class="row">
         <small style="width: 100%; text-align: center; margin-block: auto;">
-            Your cart is empty.
+            There is no history of order.
         </small>
     </div>
     ';
