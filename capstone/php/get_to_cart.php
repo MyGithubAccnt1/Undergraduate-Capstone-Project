@@ -7,7 +7,28 @@ $sql = "SELECT * FROM cart WHERE email = '$email' ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-
+    echo '
+    <div class="row">
+        <div>
+            
+        </div>
+        <div>
+            <small>NAME</small>
+        </div>
+        <div>
+            <small>PRICE</small>
+        </div>
+        <div>
+            <small>QTY</small>
+        </div>
+        <div>
+            <small>TOTAL</small>
+        </div>
+        <div>
+            
+        </div>
+    </div>
+    ';
     while ($row = mysqli_fetch_assoc($result)) {
         echo '
         <div class="row">
@@ -30,7 +51,7 @@ if (mysqli_num_rows($result) > 0) {
             <div>
                 <form action="" id="delete">
                     <input type="hidden" value="'. $row["id"] .'" name="id">
-                    <button type="submit" class="btn btn-sm btn-outline-danger rounded-0">X</button>
+                    <button type="submit" title="Delete this item" class="btn btn-sm btn-outline-danger rounded-0">X</button>
                 </form>
             </div>
         </div>
