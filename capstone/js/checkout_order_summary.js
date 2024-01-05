@@ -1,5 +1,6 @@
 function alt_address() {
     if ($('#alt-address').val() === "") {
+        $('#alternative_address').text('');
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 function (position) {
@@ -40,14 +41,11 @@ $(document).ready(function() {
 
 $(document).on('click', '#proceed', function() {
     var date = $("#date").text();
-    var fname = $("#fname").val();
-    var lname = $("#lname").val();
-    var mnumber = $("#mnumber").val();
     var caddress = $("#caddress").val();
     var alt_address = $("#alternative_address").text();
 
-    if (fname === "" || lname === "" || mnumber === "" || caddress === "Philippines") {
-        alert('Notice: There are some empty field, please fill it up in you profile to continue.');
+    if (caddress === "Philippines") {
+        alert('Notice: You have not yet updated your address in your profile, please update it.');
         window.location.href = 'account.php';
     } else {
         window.localStorage.setItem('date', date);

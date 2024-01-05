@@ -8,19 +8,33 @@ $(document).ready(function() {
 });
 
 $(document).on('click', '#proceed', function() {
-    var date = $("#date").val();
-    var fname = $("#fname").val();
-    var lname = $("#lname").val();
-    var mnumber = $("#mnumber").val();
-    var caddress = $("#caddress").val();
-    var alt_address = $("#alt-address").val();
-
-    if (fname === "" || lname === "" || mnumber === "" || caddress === "Philippines") {
-        alert('Notice: There are some empty field, please fill it up in you profile to continue.');
-        window.location.href = 'account.php';
-    } else {
-        
+    var buyer = $("#buyer").text().replace("Buyer: ", "");
+    var alt_address = $("#alternative_address").text().replace("Alternative: ", "");
+    if (!alt_address) {
+        alt_address = null;
     }
+    $.ajax({
+        url: './php/add_order.php',
+        type: 'POST',
+        data: {
+            buyer: buyer,
+            alt_address: alt_address
+        },
+        success: function (data) {
+            data = data.trim();
+            if (data === "1") {
+                alert('Error: Your cart is empty.');
+                window.location.href = "cart.php";
+            } else if (data === "2") {
+                alert('Notice: Only 1 checkout can be made every minute.');
+            }else if (data === "4") {
+                alert('Notice: Ordering successful.');
+                window.location.href = "order.php";
+            } else {
+                alert('Unexpected Error: [' + data + ']');
+            }
+        }
+    });
 });
 
 function ShowCart() {
