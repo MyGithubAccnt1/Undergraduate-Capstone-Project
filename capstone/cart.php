@@ -97,9 +97,9 @@ session_start();
 			</section>
 			<section class="container py-5">
 		    	<div class="row">
-		    		<h1 class="mb-5">YOU MAY LIKE</h1>
-		    		<hr class="m-0">
 		    		<div class="col-12">
+		    			<h1 class="m-0">YOU MAY LIKE</h1>
+		    			<hr class="mt-2 mb-0">
 		    			<div class="carousel slide p-0" data-ride="carousel" data-interval="0"> 
 		    				<div class="carousel-inner">
 		    					<div class="item carousel-item active">

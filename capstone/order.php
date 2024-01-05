@@ -61,9 +61,16 @@ session_start();
 				width: 25%;
 			}
 			.collapse {
-				transition: 1s linear;
 				background-color: rgba(255, 255, 255, 0.9);
 			}
+			.custom-collapse {
+	            transition: height 0.5s linear;
+	            overflow: hidden;
+	            height: 0;
+	        }
+	        .custom-collapse.show {
+	            height: auto;
+	        }
 			.collapse > .container {
 				border: 1px solid #000;
 				border-style: none solid solid solid;
@@ -122,7 +129,7 @@ session_start();
 			<?php include('include/user_header.php') ?>
 			<img src="" id="imagePreview" class="imagePreview" alt="Missing_Image">
 			<section class="container py-5">
-				<h2 class="mb-5">Order</h2>
+				<h2 class="mb-5">My Orders</h2>
 				<hr>
 				<div class="row">
 					<div class="container">
@@ -142,9 +149,9 @@ session_start();
 			</section>
 			<section class="container py-5">
 		    	<div class="row">
-		    		<h1 class="mb-5">YOU MAY LIKE</h1>
-		    		<hr class="m-0">
 		    		<div class="col-12">
+		    			<h1 class="m-0">YOU MAY LIKE</h1>
+		    			<hr class="mt-2 mb-0">
 		    			<div class="carousel slide p-0" data-ride="carousel" data-interval="0"> 
 		    				<div class="carousel-inner">
 		    					<div class="item carousel-item active">

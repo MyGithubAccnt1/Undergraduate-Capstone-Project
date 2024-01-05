@@ -34,7 +34,7 @@
 								<option value="Price">Price</option>
 							</select>
 						</div>
-						<hr class="mt-2 mb-0 mx-0 p-0">
+						<hr class="mt-2 mb-0">
 
 						<div class="container mt-2 px-5 border border-black" id="price" style="display: none; padding-block: 5px; background-color: rgba(0, 0, 0, 0.1);">
 							<p class="text-start m-0" id="min-text">Min price: PHP 0</p>
@@ -61,9 +61,9 @@
 			</section>
 			<section class="container py-5">
 		    	<div class="row">
-		    		<h1 class="mb-5">YOU MAY LIKE</h1>
-		    		<hr class="m-0">
 		    		<div class="col-12">
+		    			<h1 class="m-0">YOU MAY LIKE</h1>
+		    			<hr class="mt-2 mb-0">
 		    			<div class="carousel slide p-0" data-ride="carousel" data-interval="0"> 
 		    				<div class="carousel-inner">
 		    					<div class="item carousel-item active">
