@@ -24,11 +24,56 @@ session_start();
 			.dropdown-menu {
 				background-color: rgba(0, 0, 0, 1.0);
 			}
-			.cart-container {
+			.order-container {
 				padding: 10px;
 				height: 50vh;
 				overflow-x: hidden;
 				overflow-y: auto;
+				position: relative;
+			}
+			.order-container > .row {
+				border: 1px solid #000;
+				border-style: none none solid none;
+				padding: 5px;
+				height: 50px;
+				overflow: hidden;
+				color: #000;
+				background-color: inherit;
+				width: 100%;
+			}
+			.order-container > .row:not(:nth-child(2)):hover {
+			    background-color: rgba(0, 0, 0, 0.1);
+			}
+			.order-container > .row > div {
+				display: flex;
+				align-items: top;
+				justify-content: center;
+				padding-inline: 10px;
+			}
+			.order-container > .row > div:first-child {
+				width: 25%;
+				justify-content: left;
+			}
+			.order-container > .row > div:nth-child(2) {
+				width: 25%;
+				justify-content: left;
+			}
+			.order-container > .row > div:nth-child(3) {
+				width: 25%;
+			}
+			.order-container > .row > div:nth-child(4) {
+				width: 25%;
+			}
+			.collapse {
+				position: absolute;
+				left: 0;
+				width: calc(100% - 22px);
+				transition: 1s linear;
+				background-color: rgba(255, 255, 255, 0.9);
+			}
+			.collapse > .container {
+				border: 1px solid #000;
+				border-style: none solid none solid;
 			}
 			.cart-container > .row {
 				border: 1px solid #000;
@@ -36,9 +81,6 @@ session_start();
 				padding: 5px;
 				height: 50px;
 				overflow: hidden;
-			}
-			.cart-container > .row:not(:first-child):hover {
-			    background-color: rgba(0, 0, 0, 0.1);
 			}
 			.cart-container > .row > div {
 				display: flex;
@@ -61,14 +103,23 @@ session_start();
 				justify-content: left;
 			}
 			.cart-container > .row > div:nth-child(4) {
-				width: 8.25%;
+				width: 16.50%;
 			}
 			.cart-container > .row > div:nth-child(5) {
 				width: 24.75%;
 				justify-content: left;
 			}
-			.cart-container > .row > div:nth-child(6) {
-				width: 8.25%;
+			.card {
+			    box-shadow: 5px 6px 6px 2px #e9ecef;
+			    border-radius: 4px;
+			}
+			.comment-area textarea{
+			    resize: none; 
+			    border: 1px solid #000;
+			}
+			.ellipsis {
+				text-overflow: ellipsis;
+				overflow: hidden;
 			}
 		</style>
 	</head>
@@ -77,19 +128,16 @@ session_start();
 			<?php include('include/user_header.php') ?>
 			<img src="" id="imagePreview" class="imagePreview" alt="Missing_Image">
 			<section class="container py-5">
-				<h2 class="mb-5">Cart</h2>
+				<h2 class="mb-5">Order</h2>
 				<hr>
 				<div class="row">
 					<div class="container">
-						<div class="cart-container" id="cart-container">
+						<div class="order-container" id="order-container">
 							<!-- dynamic -->
 						</div>
 					</div>
 				</div>
 				<div class="row text-center p-3 gy-2">
-					<div class="col-sm-12 col-md-6">
-						<a href="checkout_order_summary.php" class="btn btn-sm btn-outline-success rounded-pill w-75">Checkout</a>
-					</div>
 					<div class="col-sm-12 col-md-6">
 						<a href="index.php" class="btn btn-sm btn-outline-danger rounded-pill w-75">Back</a>
 					</div>
@@ -121,7 +169,7 @@ session_start();
 			});
 		</script>
 		<script type="text/javascript" src="js/user_header.js"></script>
-		<script type="text/javascript" src="js/cart.js"></script>
+		<script type="text/javascript" src="js/order.js"></script>
 		<script type="text/javascript" src="js/image_hover.js"></script>
 	</body>
 </html>

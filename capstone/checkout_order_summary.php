@@ -1,8 +1,10 @@
 <?php 
 session_start();
+error_reporting(0);
+ini_set('display_errors', 0);
 if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
-	error_reporting(0);
-	ini_set('display_errors', 0);
+
+	if (!empty($_SESSION['fname']) || !empty($_SESSION['lname']) || !empty($_SESSION['mnumber'])) {
 ?>
 <!doctype html>
 <html lang="en">
@@ -99,7 +101,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					<div class="col-sm-12 col-md-5 p-3">
 						<div class="container border border-dark text-start p-3">
 							<h5 class="text-center">SALES INVOICE</h5>
-							<p class="text-end" id="date"></p>
+							<p id="date"></p>
 							<p>
 								Seller: Saint Benedict Medallion
 								<br>
@@ -137,11 +139,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		<script type="text/javascript" src="js/checkout_order_summary.js"></script>
 	</body>
 </html>
-<?php 
-}else{
+<?php
+	} else {
+		    echo"<script>alert('Notice: There are some empty field in your profile, please fill it up to continue.');</script>";
+		    $script = "<script>window.location = 'account.php';</script>";
+		    echo $script;
+	}
+} else {
 	echo"<script>var xlink = window.location.href;</script>";
 	echo"<script>window.localStorage.setItem('xlink', xlink);</script>";
-    echo"<script>alert('Notice: Please login to proceed.')</script>";
+    echo"<script>alert('Notice: Please login to proceed.');</script>";
     $script = "<script>window.location = 'signin.php';</script>";
     echo $script;
 }

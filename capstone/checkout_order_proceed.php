@@ -1,8 +1,10 @@
 <?php 
 session_start();
+error_reporting(0);
+ini_set('display_errors', 0);
 if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
-	error_reporting(0);
-	ini_set('display_errors', 0);
+
+	if (!empty($_SESSION['fname']) || !empty($_SESSION['lname']) || !empty($_SESSION['mnumber'])) {
 ?>
 <!doctype html>
 <html lang="en">
@@ -48,7 +50,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 12px;">
 							<div class="progress-bar" style="width: 100%">100%</div>
 						</div>
-						<div style="position: absolute; top: -2px; left: 0; margin-left: 98%; background-color: #000; border-radius: 180px; width: 16px; height: 15px; display: flex; align-items: center; justify-content: center; border: 2.5px solid #0D6EFD;">
+						<div style="position: absolute; top: -2px; right: 0; margin-right: 1%; background-color: #000; border-radius: 180px; width: 16px; height: 15px; display: flex; align-items: center; justify-content: center; border: 2.5px solid #0D6EFD;">
 							..
 						</div>
 					</div>
@@ -71,13 +73,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					<div class="col-sm-12 col-md-5 p-3">
 						<div class="container border border-dark text-start p-3">
 							<h5 class="text-center">SALES INVOICE</h5>
-							<p class="text-end" id="date"></p>
+							<p id="date"></p>
 							<p>
 								Seller: Saint Benedict Medallion
 								<br>
 								Address: Trece Martires City, Cavite
 							</p>
-							<p class="m-0">Buyer: <?php echo $_SESSION['fname']; ?> <?php echo $_SESSION['lname']; ?></p>
+							<p class="m-0" id="buyer">Buyer: <?php echo $_SESSION['fname']; ?> <?php echo $_SESSION['lname']; ?></p>
 							<p class="m-0">Number: <?php echo $_SESSION['mnumber']; ?></p>
 							<p>Email: <?php echo $_SESSION['email']; ?></p>
 							<p>Address: <?php echo $_SESSION['caddress']; ?></p>
@@ -110,11 +112,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		<script type="text/javascript" src="js/checkout_order_proceed.js"></script>
 	</body>
 </html>
-<?php 
-}else{
+<?php
+	} else {
+		    echo"<script>alert('Notice: There are some empty field in your profile, please fill it up to continue.');</script>";
+		    $script = "<script>window.location = 'account.php';</script>";
+		    echo $script;
+	}
+} else {
 	echo"<script>var xlink = window.location.href;</script>";
 	echo"<script>window.localStorage.setItem('xlink', xlink);</script>";
-    echo"<script>alert('Notice: Please login to proceed.')</script>";
+    echo"<script>alert('Notice: Please login to proceed.');</script>";
     $script = "<script>window.location = 'signin.php';</script>";
     echo $script;
 }
