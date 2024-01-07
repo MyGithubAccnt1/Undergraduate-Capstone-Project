@@ -163,7 +163,7 @@ function ShowCanvas(variable) {
                     var targetRadius = 85;
                     img.set({
                         left: canvas.width / 2,
-                        top: canvas.height / 2,
+                        top: canvas.height / 2, //local -7
                         originX: 'center',
                         originY: 'center',
                     });
@@ -222,7 +222,7 @@ function ShowCanvas(variable) {
 
         const circle = new fabric.Circle({
             left: canvas.width / 2,
-            top: canvas.height / 2,
+            top: canvas.height / 2, //local -7
             originX: 'center',
             originY: 'center',
             radius: 100,
@@ -237,7 +237,7 @@ function ShowCanvas(variable) {
             fontSize: 16,
             fontFamily: $("#type-font").val(),
             fill: 'black',
-            path: new fabric.Path('M 0 -50 A 99 99 0 1 1 0.1 -50', {
+            path: new fabric.Path('M 0 -50 A 98 98 0 1 1 0.1 -50', { //local 94 94
                 fill: null,
                 stroke: null,
                 strokeWidth: 0
