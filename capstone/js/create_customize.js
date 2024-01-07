@@ -163,7 +163,7 @@ function ShowCanvas(variable) {
                     var targetRadius = 85;
                     img.set({
                         left: canvas.width / 2,
-                        top: canvas.height / 2 - 7,
+                        top: canvas.height / 2,
                         originX: 'center',
                         originY: 'center',
                     });
@@ -222,7 +222,7 @@ function ShowCanvas(variable) {
 
         const circle = new fabric.Circle({
             left: canvas.width / 2,
-            top: canvas.height / 2 - 7,
+            top: canvas.height / 2,
             originX: 'center',
             originY: 'center',
             radius: 100,
