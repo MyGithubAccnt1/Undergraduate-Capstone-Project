@@ -55,6 +55,13 @@ $(document).on('click', '#logo_seal_image', function() {
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
 });
+$(document).on('click', '#logo_seal_done', function() {
+    var close = product;
+    product = document.getElementById('logo_seal_final');
+    document.getElementById('6').scrollIntoView();
+    new bootstrap.Collapse($(product)).show();
+    new bootstrap.Collapse($(close)).hide();
+});
 
 $(document).on('click', '#necklace', function() {
     product = document.getElementById('necklace_material');
@@ -152,19 +159,8 @@ function ShowCanvas(variable) {
             const reader = new FileReader();
             reader.onload = function (event) {
                 const imageUrl = event.target.result;
-                const Circle_Shape = new fabric.Circle({
-                    left: canvas.width / 2,
-                    top: canvas.height / 2 - 7,
-                    originX: 'center',
-                    originY: 'center',
-                    radius: 85,
-                    fill: 'transparent',
-                    stroke: material,
-                    strokeWidth: 2,
-                });
                 fabric.Image.fromURL(imageUrl, function (img) {
                     var targetRadius = 85;
-
                     img.set({
                         left: canvas.width / 2,
                         top: canvas.height / 2 - 7,
@@ -189,7 +185,7 @@ function ShowCanvas(variable) {
                         originY: 'center',
                     });
 
-                    canvas.add(img, Circle_Shape);
+                    canvas.add(img);
                     canvas.renderAll();
                 });
                 const imageDataWithoutPrefix = imageUrl.split(',')[1];
@@ -215,23 +211,55 @@ function ShowCanvas(variable) {
             };
         reader.readAsDataURL(file);
         }
+        logo_seal_change_text();
+        $("textarea[name='company']").focus();
     });
 
-    $('#logo_seal_company_form').on('submit', function(event) {
-        event.preventDefault();
-        var company = $(this).find("input[name='company']").val();
-        const Circle_Shape = new fabric.Circle({
+    function logo_seal_change_text() {
+        var company = $("textarea[name='company']").val();
+
+        canvas.getObjects('text').forEach(obj => canvas.remove(obj));
+
+        const circle = new fabric.Circle({
             left: canvas.width / 2,
             top: canvas.height / 2 - 7,
             originX: 'center',
             originY: 'center',
             radius: 100,
             fill: 'transparent',
-            stroke: material,
-            strokeWidth: 1,
+            stroke: 'black',
+            strokeWidth: 1
         });
-        canvas.add(Circle_Shape);
-        canvas.renderAll();
+
+        const text = new fabric.Text(company, {
+            left: circle.left,
+            top: circle.top,
+            fontSize: 16,
+            fontFamily: $("#type-font").val(),
+            fill: 'black',
+            path: new fabric.Path('M 0 -50 A 95 95 45 1 1 0.1 -50', {
+                fill: null,
+                stroke: null,
+                strokeWidth: 0
+            }),
+            originX: 'center',
+            originY: 'center'
+        });
+
+        canvas.add(text);
+    }
+
+    $("textarea[name='company']").on('input change', function(event) {
+        logo_seal_change_text();
+    });
+
+    $("#type-font").on('change', function(event) {
+        logo_seal_change_text();
+    });
+
+    $('#logo_seal_company_form').on('submit', function(event) {
+        event.preventDefault();
+        logo_seal_change_text();
     });
 
     $(document).on('click', '#necklace_silver', function() {
