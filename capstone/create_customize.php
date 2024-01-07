@@ -91,18 +91,18 @@ session_start();
 
 							<div class="custom-collapse collapse py-5" id="logo_seal_material">
 							  	<div class="row gy-3">
-							  		<div class="col-md-6 d-flex justify-content-start">
+							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
 							  		</div>
 									<h1 class="mb-3">Select Material</h1>
 									<hr>
-									<div class="col-md-12">
+									<div class="col-12">
 										<button type="button" id="logo_seal_gold" class="btn btn-outline-light rounded-0 w-50">Gold</button>
 									</div>
-									<div class="col-md-12">
+									<div class="col-12">
 										<button type="button" id="logo_seal_silver" class="btn btn-outline-light rounded-0 w-50">Silver</button>
 									</div>
-									<div class="col-md-12">
+									<div class="col-12">
 										<button type="button" id="logo_seal_bronze" class="btn btn-outline-light rounded-0 w-50">Bronze</button>
 									</div>
 								</div>
@@ -110,18 +110,18 @@ session_start();
 
 							<div class="custom-collapse collapse py-5" id="necklace_material">
 							  	<div class="row gy-3">
-							  		<div class="col-md-6 d-flex justify-content-start">
+							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
 							  		</div>
 									<h1 class="mb-3">Select Material</h1>
 									<hr>
-									<div class="col-md-12">
+									<div class="col-12">
 										<button type="button" id="necklace_gold" class="btn btn-outline-light rounded-0 w-50">Gold</button>
 									</div>
-									<div class="col-md-12">
+									<div class="col-12">
 										<button type="button" id="necklace_silver" class="btn btn-outline-light rounded-0 w-50">Silver</button>
 									</div>
-									<div class="col-md-12">
+									<div class="col-12">
 										<button type="button" id="necklace_bronze" class="btn btn-outline-light rounded-0 w-50">Bronze</button>
 									</div>
 								</div>
@@ -133,12 +133,12 @@ session_start();
 
 							<div class="custom-collapse collapse py-5" id="logo_seal_shape">
 							  	<div class="row gy-3">
-							  		<div class="col-md-6 d-flex justify-content-start">
+							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
 							  		</div>
 									<h1 class="mb-3">Select Shape</h1>
 									<hr>
-									<div class="col-md-12">
+									<div class="col-12">
 										<button type="button" id="logo_seal_circle" class="btn btn-outline-light rounded-0 w-50">Circle</button>
 									</div>
 								</div>
@@ -146,12 +146,12 @@ session_start();
 
 							<div class="custom-collapse collapse py-5" id="necklace_shape">
 							  	<div class="row gy-3">
-							  		<div class="col-md-6 d-flex justify-content-start">
+							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
 							  		</div>
 									<h1 class="mb-3">Select Shape</h1>
 									<hr>
-									<div class="col-md-12">
+									<div class="col-12">
 										<button type="button" id="necklace_cross" class="btn btn-outline-light rounded-0 w-50">Cross</button>
 									</div>
 								</div>
@@ -163,13 +163,13 @@ session_start();
 
 							<div class="custom-collapse collapse py-5" id="logo_seal_logo">
 							  	<div class="row gy-3">
-							  		<div class="col-md-6 d-flex justify-content-start">
+							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
 							  		</div>
 									<h1 class="mb-3">Select Logo</h1>
 									<hr>
-									<div class="col-md-12">
-										<input class="options" type="file" id="logo_seal_image" accept="image/png">
+									<div class="col-12">
+										<input type="file" id="logo_seal_image" accept="image/png">
 									</div>
 								</div>
 							</div>
@@ -180,24 +180,57 @@ session_start();
 
 							<div class="custom-collapse collapse py-5" id="logo_seal_company">
 							  	<div class="row gy-3">
-							  		<div class="col-md-6 d-flex justify-content-start">
+							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
 							  		</div>
 									<h1 class="mb-3">Insert Company</h1>
 									<hr>
-									<div class="col-md-12">
+									<div class="col-12">
 										<form id="logo_seal_company_form">
-										    <div class="comment-area">
-										        <div class="bg-dark" style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
+										    <div class="comment-area gy-3">
+										    	<div style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
+		            								<span style="margin: 0 5px 0 0; padding: 5px;">Font Style:</span>
+		            								<select id="type-font">
+		                                    	        <option value="Arial">Arial</option>
+		                                    	        <option value="Courier" selected>Courier</option>
+		            									<option value="Helvetica">Helvetica</option>
+		            									<option value="Impact">Impact</option>
+		            									<option value="Segoe UI">Segoe UI</option>
+		            									<option value="Times New Roman">Times New Roman</option>
+		            									<option value="Verdana">Verdana</option>
+		                                    	    </select>
+										        </div>
+
+										        <div style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
 										            <div class="w-100 p-1">
-										                <textarea class="form-control rounded-pill" placeholder="Type your company here." rows="1" name="company"></textarea>
+										                <textarea class="form-control rounded-pill" rows="1" name="company">TYPE YOUR COMPANY HERE.</textarea>
 										            </div>
 										            <div class="w-50 p-1 d-flex align-items-center">
-										                <button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+										                <button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill" id="logo_seal_done">Done</button>
 										            </div>
 										        </div>
 										    </div>
 										</form>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div id="6">
+
+							<div class="custom-collapse collapse py-5" id="logo_seal_final">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  		</div>
+									<h1 class="mb-3">Final Design</h1>
+									<hr>
+									<div class="col-12">
+										<button type="button" class="btn btn-outline-light rounded-0 w-50">ADVANCE DESIGN</button>
+									</div>
+									<div class="col-12">
+										<button type="button" class="btn btn-outline-light rounded-0 w-50">ORDER NOW</button>
 									</div>
 								</div>
 							</div>
