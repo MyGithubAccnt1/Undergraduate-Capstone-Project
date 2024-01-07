@@ -106,7 +106,7 @@ session_start();
 	</div>
 	
 	<div class="navigation">
-	<?php
+		<?php
 		if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		?>
 		<div class="dropdown d-none d-lg-block">
@@ -185,6 +185,9 @@ session_start();
 		    	</li>
 		  	</ul>
 		</div>
+		<?php
+		if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+		?>
 		<div class="d-none d-md-block">
 			<a href="customize.php">
 				<button type="button" class="btn-nav rounded-0 btn-sm">
@@ -192,6 +195,9 @@ session_start();
 				</button>
 			</a>
 		</div>
+		<?php
+		}
+		?>
 	</div>
 	<div class="navigation">
 		<?php
