@@ -211,7 +211,9 @@ function ShowCanvas(variable) {
             };
         reader.readAsDataURL(file);
         }
+        $("textarea[name='company']").val('- TYPE YOU COMPANY NAME HERE - SAMPLE -');
         logo_seal_change_text();
+        $("textarea[name='company']").val('');
         $("textarea[name='company']").focus();
     });
 
