@@ -237,7 +237,7 @@ function ShowCanvas(variable) {
             fontSize: 16,
             fontFamily: $("#type-font").val(),
             fill: 'black',
-            path: new fabric.Path('M 0 -50 A 95 95 45 1 1 0.1 -50', {
+            path: new fabric.Path('M 0 -50 A 96 96 0 1 1 0.1 -50', {
                 fill: null,
                 stroke: null,
                 strokeWidth: 0
