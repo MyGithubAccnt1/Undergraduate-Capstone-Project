@@ -203,7 +203,7 @@ session_start();
 
 										        <div style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
 										            <div class="w-100 p-1">
-										                <textarea class="form-control rounded-pill" rows="1" name="company">TYPE YOUR COMPANY HERE.</textarea>
+										                <textarea class="form-control rounded-pill" rows="1" name="company"></textarea>
 										            </div>
 										            <div class="w-50 p-1 d-flex align-items-center">
 										                <button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill" id="logo_seal_done">Done</button>
