@@ -127,6 +127,19 @@ session_start();
 								</div>
 							</div>
 
+							<div class="custom-collapse collapse py-5" id="table_nameplate_material">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  		</div>
+									<h1 class="mb-3">Select Material</h1>
+									<hr>
+									<div class="col-12">
+										<button type="button" id="table_nameplate_wood" class="btn btn-outline-light rounded-0 w-50">Wood</button>
+									</div>
+								</div>
+							</div>
+
 						</div>
 
 						<div id="3">
@@ -157,6 +170,19 @@ session_start();
 								</div>
 							</div>
 
+							<div class="custom-collapse collapse py-5" id="table_nameplate_shape">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  		</div>
+									<h1 class="mb-3">Select Shape</h1>
+									<hr>
+									<div class="col-12">
+										<button type="button" id="table_nameplate_rectangle" class="btn btn-outline-light rounded-0 w-50">Rectangle</button>
+									</div>
+								</div>
+							</div>
+
 						</div>
 
 						<div id="4">
@@ -174,11 +200,24 @@ session_start();
 								</div>
 							</div>
 
+							<div class="custom-collapse collapse py-5" id="table_nameplate_logo">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  		</div>
+									<h1 class="mb-3">Select Logo</h1>
+									<hr>
+									<div class="col-12">
+										<input type="file" id="table_nameplate_image" accept="image/png">
+									</div>
+								</div>
+							</div>
+
 						</div>
 
 						<div id="5">
 
-							<div class="custom-collapse collapse py-5" id="logo_seal_company">
+							<div class="custom-collapse collapse py-5" id="logo_seal_text">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
@@ -187,10 +226,10 @@ session_start();
 									<hr>
 									<div class="col-12">
 										<form id="logo_seal_company_form">
-										    <div class="comment-area gy-3">
-										    	<div style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
-		            								<span style="margin: 0 5px 0 0; padding: 5px;">Font Style:</span>
-		            								<select id="type-font">
+										    <div class="comment-area">
+										    	<div style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+		            								<span style="margin: 0 5px 0 7px;">Font Style:</span>
+		            								<select id="logo_seal_font">
 		                                    	        <option value="Arial">Arial</option>
 		                                    	        <option value="Courier" selected>Courier</option>
 		            									<option value="Helvetica">Helvetica</option>
@@ -200,14 +239,35 @@ session_start();
 		            									<option value="Verdana">Verdana</option>
 		                                    	    </select>
 										        </div>
+										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+										        	<span>Company:</span>
+										            <textarea class="form-control rounded-pill" rows="2" name="logo_seal_company" required></textarea>
+										        </div>
+										        <div class="w-75 mx-auto p-1">
+										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+										        </div>
+										    </div>
+										</form>
+									</div>
+								</div>
+							</div>
 
-										        <div style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
-										            <div class="w-100 p-1">
-										                <textarea class="form-control rounded-pill" rows="1" name="company"></textarea>
-										            </div>
-										            <div class="w-50 p-1 d-flex align-items-center">
-										                <button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill" id="logo_seal_done">Done</button>
-										            </div>
+							<div class="custom-collapse collapse py-5" id="table_nameplate_company">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  		</div>
+									<h1 class="mb-3">Insert Company</h1>
+									<hr>
+									<div class="col-12">
+										<form id="table_nameplate_company_form">
+										    <div class="comment-area gy-3">
+										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+										        	<span>Company:</span>
+										            <textarea class="form-control rounded-pill" rows="2" name="table_nameplate_company" required></textarea>
+										        </div>
+										        <div class="w-75 mx-auto p-1">
+										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
 										        </div>
 										    </div>
 										</form>
@@ -220,6 +280,92 @@ session_start();
 						<div id="6">
 
 							<div class="custom-collapse collapse py-5" id="logo_seal_final">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  		</div>
+									<h1 class="mb-3">Final Design</h1>
+									<hr>
+									<div class="col-12">
+										<button type="button" class="btn btn-outline-light rounded-0 w-50">ADVANCE DESIGN</button>
+									</div>
+									<div class="col-12">
+										<button type="button" class="btn btn-outline-light rounded-0 w-50">ORDER NOW</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="custom-collapse collapse py-5" id="table_nameplate_name">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  		</div>
+									<h1 class="mb-3">Insert Name</h1>
+									<hr>
+									<div class="col-12">
+										<form id="table_nameplate_name_form">
+										    <div class="comment-area gy-3">
+										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+										        	<span style="margin-left: 30px;">Name:</span>
+										            <textarea class="form-control rounded-pill" rows="2" name="table_nameplate_name" required></textarea>
+										        </div>
+										        <div class="w-75 mx-auto p-1">
+										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+										        </div>
+										    </div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div id="7">
+
+							<div class="custom-collapse collapse py-5" id="logo_seal_final">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  		</div>
+									<h1 class="mb-3">Final Design</h1>
+									<hr>
+									<div class="col-12">
+										<button type="button" class="btn btn-outline-light rounded-0 w-50">ADVANCE DESIGN</button>
+									</div>
+									<div class="col-12">
+										<button type="button" class="btn btn-outline-light rounded-0 w-50">ORDER NOW</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="custom-collapse collapse py-5" id="table_nameplate_position">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  		</div>
+									<h1 class="mb-3">Insert Position</h1>
+									<hr>
+									<div class="col-12">
+										<form id="table_nameplate_position_form">
+										    <div class="comment-area gy-3">
+										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+										        	<span style="margin-left: 17px;">Position:</span>
+										            <textarea class="form-control rounded-pill" rows="1" name="table_nameplate_position" required></textarea>
+										        </div>
+										        <div class="w-75 mx-auto p-1">
+										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+										        </div>
+										    </div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div id="8">
+
+							<div class="custom-collapse collapse py-5" id="table_nameplate_final">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>

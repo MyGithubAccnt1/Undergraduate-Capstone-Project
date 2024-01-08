@@ -193,7 +193,7 @@
 												<div class="thumb-content">
 													<h5>Customization</h5>
 													<p>Offering customers the opportunity to personalize the design of their chosen product.</p>
-													<a href="#" class="btn">Learn More</a>
+													<a href="customize.php" class="btn">Learn More</a>
 												</div>
 											</div>
 										</div>
