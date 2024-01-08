@@ -50,12 +50,13 @@ $(document).on('click', '#logo_seal_circle', function() {
 });
 $(document).on('click', '#logo_seal_image', function() {
     var close = product;
-    product = document.getElementById('logo_seal_company');
+    product = document.getElementById('logo_seal_text');
     document.getElementById('5').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
 });
-$(document).on('click', '#logo_seal_done', function() {
+$(document).on('submit', '#logo_seal_company_form', function() {
+    event.preventDefault();
     var close = product;
     product = document.getElementById('logo_seal_final');
     document.getElementById('6').scrollIntoView();
@@ -99,6 +100,58 @@ $(document).on('click', '#necklace_cross', function() {
     // document.getElementById('4').scrollIntoView();
     // new bootstrap.Collapse($(product)).show();
     // new bootstrap.Collapse($(close)).hide();
+});
+
+$(document).on('click', '#table_nameplate', function() {
+    product = document.getElementById('table_nameplate_material');
+    ShowCanvas('product');
+    document.getElementById('2').scrollIntoView();
+    new bootstrap.Collapse($(product)).show();
+});
+
+$(document).on('click', '#table_nameplate_wood', function() {
+    var close = product;
+    product = document.getElementById('table_nameplate_shape');
+    material = 'wood';
+    document.getElementById('3').scrollIntoView();
+    new bootstrap.Collapse($(product)).show();
+    new bootstrap.Collapse($(close)).hide();
+});
+$(document).on('click', '#table_nameplate_shape', function() {
+    var close = product;
+    product = document.getElementById('table_nameplate_logo');
+    document.getElementById('4').scrollIntoView();
+    new bootstrap.Collapse($(product)).show();
+    new bootstrap.Collapse($(close)).hide();
+});
+$(document).on('click', '#table_nameplate_image', function() {
+    var close = product;
+    product = document.getElementById('table_nameplate_company');
+    document.getElementById('5').scrollIntoView();
+    new bootstrap.Collapse($(product)).show();
+    new bootstrap.Collapse($(close)).hide();
+});
+$(document).on('submit', '#table_nameplate_company_form', function() {
+    var close = product;
+    product = document.getElementById('table_nameplate_name');
+    document.getElementById('6').scrollIntoView();
+    new bootstrap.Collapse($(product)).show();
+    new bootstrap.Collapse($(close)).hide();
+});
+$(document).on('submit', '#table_nameplate_name_form', function() {
+    var close = product;
+    product = document.getElementById('table_nameplate_position');
+    document.getElementById('7').scrollIntoView();
+    new bootstrap.Collapse($(product)).show();
+    new bootstrap.Collapse($(close)).hide();
+});
+$(document).on('submit', '#table_nameplate_position_form', function() {
+    event.preventDefault();
+    var close = product;
+    product = document.getElementById('table_nameplate_final');
+    document.getElementById('8').scrollIntoView();
+    new bootstrap.Collapse($(product)).show();
+    new bootstrap.Collapse($(close)).hide();
 });
 
 $('.reset').on('click', function() {
@@ -163,9 +216,13 @@ function ShowCanvas(variable) {
                     var targetRadius = 85;
                     img.set({
                         left: canvas.width / 2,
-                        top: canvas.height / 2, //local -7
+                        top: canvas.height / 2,
                         originX: 'center',
                         originY: 'center',
+                        lockMovementX: true,
+                        lockMovementY: true,
+                        lockScalingX: true,
+                        lockScalingY: true
                     });
                     let newrad = "";
                     if (img.width > img.height) {
@@ -211,20 +268,28 @@ function ShowCanvas(variable) {
             };
         reader.readAsDataURL(file);
         }
-        $("textarea[name='company']").val('- TYPE YOU COMPANY NAME HERE - SAMPLE -');
+        $("textarea[name='logo_seal_company']").val('- TYPE YOU COMPANY NAME HERE - SAMPLE -');
         logo_seal_change_text();
-        $("textarea[name='company']").val('');
-        $("textarea[name='company']").focus();
+        $("textarea[name='logo_seal_company']").val('');
+        $("textarea[name='logo_seal_company']").focus();
     });
 
     function logo_seal_change_text() {
-        var company = $("textarea[name='company']").val();
+        var company = $("textarea[name='logo_seal_company']").val();
 
-        canvas.getObjects('text').forEach(obj => canvas.remove(obj));
+        const textObjects = canvas.getObjects('text');
+
+        if (textObjects.length > 0) {
+            const lastIndex = textObjects.length - 1;
+
+            const lastTextObject = textObjects[lastIndex];
+
+            canvas.remove(lastTextObject);
+        }
 
         const circle = new fabric.Circle({
             left: canvas.width / 2,
-            top: canvas.height / 2, //local -7
+            top: canvas.height / 2,
             originX: 'center',
             originY: 'center',
             radius: 100,
@@ -237,30 +302,29 @@ function ShowCanvas(variable) {
             left: circle.left,
             top: circle.top,
             fontSize: 16,
-            fontFamily: $("#type-font").val(),
+            fontFamily: $("#logo_seal_font").val(),
             fill: 'black',
-            path: new fabric.Path('M 0 -50 A 98 98 0 1 1 0.1 -50', { //local 94 94
+            path: new fabric.Path('M 0 -50 A 98 98 0 1 1 0.1 -50', {
                 fill: null,
                 stroke: null,
                 strokeWidth: 0
             }),
             originX: 'center',
-            originY: 'center'
+            originY: 'center',
+            lockMovementX: true,
+            lockMovementY: true,
+            lockScalingX: true,
+            lockScalingY: true
         });
 
         canvas.add(text);
     }
 
-    $("textarea[name='company']").on('input change', function(event) {
+    $("textarea[name='logo_seal_company']").on('input change', function(event) {
         logo_seal_change_text();
     });
 
-    $("#type-font").on('change', function(event) {
-        logo_seal_change_text();
-    });
-
-    $('#logo_seal_company_form').on('submit', function(event) {
-        event.preventDefault();
+    $("#logo_seal_font").on('change', function(event) {
         logo_seal_change_text();
     });
 
@@ -306,4 +370,284 @@ function ShowCanvas(variable) {
         });
         canvas.renderAll(canvas);
     })
+
+    $(document).on('click', '#table_nameplate_rectangle', function() {
+        fabric.Image.fromURL('images/customize/table_nameplate_' + material + '_rectangle.png', function(img) {
+            img.set({
+                left: canvas.width / 2,
+                top: canvas.height / 2,
+                originX: 'center',
+                originY: 'center',
+                scaleX: 0.5,
+                scaleY: 0.5,
+            });
+            canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+        });
+    })
+
+    $('#table_nameplate_image').on('change', function (e) {
+        const circle = new fabric.Circle({
+            left: ((canvas.width / 2) - 200) + (400 * 0.35),
+            top: (canvas.height / 2) - ((canvas.height / 2) * 0.015),
+            originX: 'center',
+            originY: 'center',
+            radius: 15,
+            fill: 'yellow',
+            selectable: false,
+            evented: false
+        });
+        canvas.add(circle);
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const imageUrl = event.target.result;
+                fabric.Image.fromURL(imageUrl, function (img) {
+                    var targetRadius = 10;
+                    img.set({
+                        left: ((canvas.width / 2) - 200) + (400 * 0.35),
+                        top: (canvas.height / 2) - ((canvas.height / 2) * 0.015),
+                        originX: 'center',
+                        originY: 'center',
+                        lockMovementX: true,
+                        lockMovementY: true,
+                        lockScalingX: true,
+                        lockScalingY: true
+                    });
+                    let newrad = "";
+                    if (img.width > img.height) {
+                        img.scaleToWidth(targetRadius * 2);
+                        newrad = (img.width / 2);
+                    } else if (img.width < img.height) {
+                        img.scaleToHeight(targetRadius * 2);
+                        newrad = (img.height / 2);
+                    } else {
+                        img.scaleToHeight(targetRadius * 2);
+                        img.scaleToWidth(targetRadius * 2);
+                        newrad = (Math.min(img.width, img.height) / 2);
+                    }
+                    img.clipPath = new fabric.Circle({
+                        radius: newrad,
+                        originX: 'center',
+                        originY: 'center',
+                    });
+
+                    canvas.add(img);
+                    canvas.renderAll();
+                });
+                const imageDataWithoutPrefix = imageUrl.split(',')[1];
+                $.ajax({
+                    url: "./php/upload_temp.php",
+                    method: "POST",
+                    data: {
+                        imageFile: imageDataWithoutPrefix
+                    },
+                    success: function (data) {
+                        const baseUrl = window.location.origin;
+                        if (baseUrl === "http://localhost") {
+                            data = 'capstone/' + data;
+                        }
+                        const images = window.localStorage.getItem('images');
+                        if (images) {
+                            window.localStorage.setItem('images', images + ',' + data);
+                        } else {
+                            window.localStorage.setItem('images', data);
+                        }
+                    }
+                });
+            };
+        reader.readAsDataURL(file);
+        }
+        $("textarea[name='table_nameplate_company']").val('- TYPE YOUR COMPANY HERE -');
+        table_nameplate_change_company();
+        var zoomFactor = 7.5;
+        var newZoom = canvas.getZoom() * zoomFactor;
+        var zoomCenter = new fabric.Point(((canvas.width / 2) - 200) + (400 * 0.328), (canvas.height / 2));
+        canvas.zoomToPoint(zoomCenter, newZoom);
+        canvas.renderAll();
+        $("textarea[name='table_nameplate_company']").val('');
+        $("textarea[name='table_nameplate_company']").focus();
+    });
+
+    function table_nameplate_change_company() {
+        var company = $("textarea[name='table_nameplate_company']").val();
+
+        const textObjects = canvas.getObjects('text');
+
+        if (textObjects.length > 0) {
+            const lastIndex = textObjects.length - 1;
+
+            const lastTextObject = textObjects[lastIndex];
+
+            canvas.remove(lastTextObject);
+        }
+
+        const circle = new fabric.Circle({
+            left: ((canvas.width / 2) - 200) + (400 * 0.35),
+            top: (canvas.height / 2) - ((canvas.height / 2) * 0.015),
+            originX: 'center',
+            originY: 'center',
+            radius: 12,
+            fill: 'transparent',
+            stroke: 'white',
+            strokeWidth: 1
+        });
+
+        const text = new fabric.Text(company, {
+            left: circle.left,
+            top: circle.top,
+            fontSize: 3,
+            fontFamily: 'Courier',
+            fill: 'black',
+            path: new fabric.Path('M 0 -50 A 11.5 11.5 0 1 1 0.1 -50', {
+                fill: null,
+                stroke: null,
+                strokeWidth: 0
+            }),
+            originX: 'center',
+            originY: 'center',
+            lockMovementX: true,
+            lockMovementY: true,
+            lockScalingX: true,
+            lockScalingY: true
+        });
+
+        canvas.add(text);
+    }
+
+    $("textarea[name='table_nameplate_company']").on('input change', function(event) {
+        table_nameplate_change_company();
+    });
+
+    $('#table_nameplate_company_form').on('submit', function(event) {
+        event.preventDefault();
+
+        var originalZoom = 1;
+        var resetZoomCenter = new fabric.Point(((canvas.width / 2) - 200) + (400 * 0.328), (canvas.height / 2));
+        canvas.zoomToPoint(resetZoomCenter, originalZoom);
+        canvas.renderAll();
+
+        $("textarea[name='table_nameplate_name']").val('YOUR NAME');
+        table_nameplate_change_name();
+        $("textarea[name='table_nameplate_name']").val('');
+        $("textarea[name='table_nameplate_name']").focus();
+
+        if (window.innerWidth > 1023) {
+            var zoomFactor = 2.5;
+            var newZoom = canvas.getZoom() * zoomFactor;
+            var zoomCenter = new fabric.Point(canvas.width / 2, canvas.height / 2);
+            canvas.zoomToPoint(zoomCenter, newZoom);
+            canvas.renderAll();
+        } else {
+            var zoomFactor = 1.5;
+            var newZoom = canvas.getZoom() * zoomFactor;
+            var zoomCenter = new fabric.Point(canvas.width / 2, canvas.height / 2);
+            canvas.zoomToPoint(zoomCenter, newZoom);
+            canvas.renderAll();
+        }
+    });
+
+    function table_nameplate_change_name() {
+        var name = $("textarea[name='table_nameplate_name']").val();
+
+        const text = new fabric.Text(name, {
+            left: ((canvas.width / 2) - 200) + (400 * 0.565),
+            top: (canvas.height / 2) - ((canvas.height / 2) * 0.035),
+            fontSize: 9,
+            fontFamily: 'Courier',
+            fill: 'gold',
+            originX: 'center',
+            originY: 'center',
+            lockMovementX: true,
+            lockMovementY: true,
+            lockRotation: true
+        });
+
+        canvas.add(text);
+    }
+
+    $("textarea[name='table_nameplate_name']").on('input change', function(event) {
+        const textObjects = canvas.getObjects('text');
+
+        if (textObjects.length > 0) {
+            const lastIndex = textObjects.length - 1;
+
+            const lastTextObject = textObjects[lastIndex];
+
+            canvas.remove(lastTextObject);
+        }
+
+        if ($("textarea[name='table_nameplate_name']").val().length > 26) {
+            var name = $("textarea[name='table_nameplate_name']").val();
+
+            const text = new fabric.Text(name, {
+                left: ((canvas.width / 2) - 200) + (400 * 0.55),
+                top: (canvas.height / 2) - ((canvas.height / 2) * 0.035),
+                fontSize: 8,
+                fontFamily: 'Courier',
+                fill: 'gold',
+                originX: 'center',
+                originY: 'center',
+                lockMovementX: true,
+                lockMovementY: true,
+                lockRotation: true
+            });
+
+            canvas.add(text);
+        } else {
+            table_nameplate_change_name();
+        }
+    });
+
+    let table_nameplate_text_left, table_nameplate_text_size;
+
+    $('#table_nameplate_name_form').on('submit', function(event) {
+        event.preventDefault();
+
+        if ($("textarea[name='table_nameplate_name']").val().length > 26) {
+            table_nameplate_text_left = ((canvas.width / 2) - 200) + (400 * 0.55);
+            table_nameplate_text_size = 8;
+        } else {
+            table_nameplate_text_left = ((canvas.width / 2) - 200) + (400 * 0.565);
+            table_nameplate_text_size = 9;
+        }
+
+        $("textarea[name='table_nameplate_position']").val('YOUR POSITION');
+        table_nameplate_change_position();
+        $("textarea[name='table_nameplate_position']").val('');
+        $("textarea[name='table_nameplate_position']").focus();
+    });
+
+    function table_nameplate_change_position() {
+        var name = $("textarea[name='table_nameplate_position']").val();
+
+        const text = new fabric.Text(name, {
+            left: table_nameplate_text_left,
+            top: (canvas.height / 2) - ((canvas.height / 2) * 0),
+            fontSize: table_nameplate_text_size,
+            fontFamily: 'Courier',
+            fill: 'gold',
+            originX: 'center',
+            originY: 'center',
+            lockMovementX: true,
+            lockMovementY: true,
+            lockRotation: true
+        });
+
+        canvas.add(text);
+    }
+
+    $("textarea[name='table_nameplate_position']").on('input change', function(event) {
+        const textObjects = canvas.getObjects('text');
+
+        if (textObjects.length > 0) {
+            const lastIndex = textObjects.length - 1;
+
+            const lastTextObject = textObjects[lastIndex];
+
+            canvas.remove(lastTextObject);
+        }
+
+        table_nameplate_change_position();
+    });
 }
