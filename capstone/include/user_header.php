@@ -205,10 +205,11 @@ session_start();
 		?>
 		<div>
 			<a href="cart.php">
-				<button type="button" class="btn-nav rounded-0 btn-sm" title="My Cart">
-					<i class="fas fa-shopping-cart"></i>
+				<button type="button" class="btn-nav rounded-0 btn-sm">
+					<i class="fas fa-shopping-cart">(0)</i>
 				</button>
 			</a>
+			<div class="cart-header" id="cart-header-container"></div>
 		</div>
 		<div>
 			<a href="#">
