@@ -38,8 +38,32 @@ if (mysqli_num_rows($result) > 0) {
     $date = "";
     while ($row = mysqli_fetch_assoc($result)) {
         $id = $id + 1;
+        if ($row['status'] === "Pending"){
+            echo '
+            <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'" style="background-color: rgba(255, 215, 0, 0.3);">
+            ';
+        }elseif ($row['status'] === "On-The-Way"){
+            echo '
+            <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'" style="background-color: rgba(144, 238, 144, 0.3);">
+            ';
+        }elseif ($row['status'] === "Delivered"){
+            echo '
+            <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'" style="background-color: rgba(57, 255, 20, 0.3);">
+            ';
+        }elseif ($row['status'] === "Canceled"){
+            echo '
+            <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'" style="background-color: rgba(240, 128, 128, 0.3);">
+            ';
+        }elseif ($row['status'] === "Rejected"){
+            echo '
+            <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'" style="background-color: rgba(255, 0, 0, 0.3);">
+            ';
+        }else{
+            echo '
+            <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'">
+            ';
+        }
         echo '
-        <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'">
             <div>
                 <small>'. $row["title"] .'</small>
             </div>

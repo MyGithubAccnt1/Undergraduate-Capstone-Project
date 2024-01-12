@@ -17,7 +17,7 @@ if (mysqli_num_rows($result) > 0) {
                     echo '<div class="d-flex flex-row align-items-center">';
                         echo '<span>';
                             echo '<small class="font-weight-bold text-warning">[Administrator]</small>';
-                            echo '<small class="font-weight-bold">: ';
+                            echo '<small>: ';
                             echo "{$row['message']}</small>";
                         echo '</span>';
                     echo '</div>';
@@ -28,7 +28,7 @@ if (mysqli_num_rows($result) > 0) {
             echo '<div class="card p-3" style="width: 85%; margin: 20px; margin-left: auto;">';
                 echo '<div class="d-flex justify-content-between align-items-center">';
                     echo '<div style="display: flex; align-items: center; justify-content: space-around; width: 100%;">';
-                        echo '<div class="ellipsis" style="flex: 75%;">';
+                        echo '<div class="ellipsis" style="flex: 75%; text-align: left;">';
                             echo '<span><small class="font-weight-bold text-primary">';
                             echo "{$row['email']}</small>";
                             echo '<small class="font-weight-bold">: ';
@@ -50,7 +50,7 @@ if (mysqli_num_rows($result) > 0) {
             echo '<div class="d-flex flex-row align-items-center">';
                 echo '<span>';
                     echo '<small class="font-weight-bold text-warning">[Administrator]</small>';
-                    echo '<small class="font-weight-bold">: Do not hesitate to ask questions.</small>';
+                    echo '<small>: Do not hesitate to ask questions.</small>';
                 echo '</span>';
             echo '</div>';
             echo '<small class="text-warning">Verified</small>';
