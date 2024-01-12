@@ -20,6 +20,56 @@ header{
     gap: 25px;
 }
 
+.navigation > div{
+    position: relative;
+}
+
+.cart-header {
+    position: absolute;
+    left: -140px;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 1.0);
+    border: 1px solid #000;
+    border-style: none solid solid solid;
+    max-height: 300px;
+    overflow: hidden;
+    width:  300px;
+    color: #000;
+    display: none;
+}
+
+.cart-header > .row {
+    display: flex;
+    flex-direction: row;
+}
+
+.cart-header > .row > div:first-child {
+    display: flex;
+    justify-content: center;
+    width: 20%;
+}
+
+.cart-header-img {
+    margin-top: 8px;
+    height: 30px;
+}
+
+.cart-header > .row > div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    overflow-y: hidden;
+}
+
+.cart-header > .row > div:nth-child(3) {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 40%;
+    color: red;
+}
+
 .btn-nav, .btn-nav > small {
     border: none;
     padding: 0 1px;
@@ -27,11 +77,24 @@ header{
     color: #fff;
     font-size: 0.8rem;
     letter-spacing: 3px;
+    position: relative;
 }
-.btn-nav:hover {
-    border: 1px dashed; color: #fff;;
-    border-style: none none solid none;
+
+.btn-nav::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #fff;
+    transition: width 0.3s linear;
 }
+
+.btn-nav:hover::before {
+    width: 100%;
+}
+
 .button{
     height: 40px;
     width: 40px;
@@ -46,13 +109,17 @@ header{
     border: 2px solid #fff;
 }
 .dropdown-menu {
-    top: 13px !important;
     background-color: transparent;
     border-radius: 0;
     font-size: 0.8rem;
     border: none;
-    transition: 0.4s ease-in;
+    transition: 0.4s ease-in !important;
 }
+
+.dropdown-toggle:focus {
+    outline: none;
+}
+
 .dropdown-item:hover {
     background-color: transparent !important;
 }

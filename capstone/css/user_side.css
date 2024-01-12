@@ -32,3 +32,34 @@ div > a{
     width: auto;
     display: none;
 }
+
+.floating_chat_head {
+    display: none;
+    position: fixed;
+    z-index: 6;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    background-image: url('../images/saint.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+    margin: 0 15px 15px 0;
+    border-radius: 90px;
+    border: 3px solid #000;
+}
+
+.floating_chat_body {
+    display: none;
+    position: fixed;
+    z-index: 6;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    height: 400px;
+    max-width: 300px;
+    width: calc(100vw - 30px);
+    margin: 15px;
+    border: 1px solid #000;
+}
