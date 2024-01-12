@@ -11,7 +11,7 @@ $sub_total = 0;
 if (mysqli_num_rows($result) > 0) {
 
     echo '
-        <div class="row text-center" style="background-color: rgba(0, 0, 0, 0.1);">
+        <div class="row text-center text-white bg-dark">
             <div class="col-5">
                 Product Name
             </div>
@@ -33,8 +33,8 @@ if (mysqli_num_rows($result) > 0) {
                 <div class="col-2 text-center">
                     '. $row['qty'] .'
                 </div>
-                <div class="col-5">
-                    PHP '. $row['price'] .'
+                <div class="col-5 text-end">
+                    <b>PHP '. $row['price'] .'</b>
                 </div>
             </div>
         ';
@@ -42,9 +42,9 @@ if (mysqli_num_rows($result) > 0) {
     }
     $formatted_total = number_format($total, 2);
     echo '
-        <div class="row text-center" style="background-color: rgba(0, 0, 0, 0.1);">
+        <div class="row text-center text-white bg-dark">
             <div class="col-12 text-end">
-                Total: PHP '. $formatted_total .'
+                <b>Total: PHP '. $formatted_total .'</b>
             </div>
         </div>
         <div class="row text-start border" style="border-style: none none solid none !important;">
@@ -54,13 +54,13 @@ if (mysqli_num_rows($result) > 0) {
             <div class="col-2 text-center">
                 -
             </div>
-            <div class="col-5">
-                PHP 0.00
+            <div class="col-5 text-end">
+                <b>PHP 0.00</b>
             </div>
         </div>
-        <div class="row text-center" style="background-color: rgba(0, 0, 0, 0.1);">
+        <div class="row text-center text-white bg-dark">
             <div class="col-12 text-end">
-                Sub-Total: PHP '. $formatted_total .'
+                <b>Sub-Total: PHP '. $formatted_total .'</b>
             </div>
         </div>
     ';
