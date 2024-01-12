@@ -40,6 +40,29 @@
 	<body>
 		<main class="container-fluid p-0">
 			<?php include('include/user_header.php') ?>
+			<section class="floating_chat_body">
+                <div class="col-md-12 mt-0">
+                    <button type="button" onclick="hide_chat_body();" class="stick-top bg-dark text-center text-white py-2 w-100 border-0">Chat with SBM</button>
+                    <div class="border border-black card-body" style="overflow-x:hidden; overflow-y:auto; height: 314px;" id="support-container">
+						<p class="text-center mt-5">NOT YET WORKING</p>
+                    </div>
+                    <div class="stick-bot">
+						<form id="support-form">
+							<div class="comment-area">
+								<div class="bg-dark" style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
+									<div class="w-100 p-1">
+										<textarea class="form-control rounded-pill" placeholder="Type your message here." rows="1" name="comment" required></textarea>
+									</div>
+									<div class="w-50 p-1 d-flex align-items-center">
+										<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Send</button>
+									</div>
+								</div>
+							</div>
+						</form>
+                    </div>
+                </div>
+			</section>
+			<section class="floating_chat_head"></section>
 			<img src="" id="imagePreview" class="imagePreview" alt="Missing_Image">
 			<section class="hero-section"></section>
 			<section class="hero container">
@@ -248,7 +271,18 @@
 			$(window).on('load', function() {
 			  	$(".loader").fadeOut('slow');
 			  	$(".sticky-top").fadeIn('slow');
+			  	$('.floating_chat_head').fadeIn('slow');
 			});
+
+			$('.floating_chat_head').on('click', function() {
+				$('.floating_chat_body').fadeIn('slow');
+				$(this).fadeOut('slow');
+			})
+
+			function hide_chat_body() {
+				$('.floating_chat_body').fadeOut('slow');
+				$('.floating_chat_head').fadeIn('slow');
+			}
 		</script>
 		<script type="text/javascript" src="js/custom_user_header.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>

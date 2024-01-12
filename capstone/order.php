@@ -37,6 +37,9 @@ session_start();
 				height: 50px;
 				overflow: hidden;
 			}
+			.order-container > .row:not(:nth-child(2)) {
+			    cursor: pointer;
+			}
 			.order-container > .row:not(:nth-child(2)):hover {
 			    background-color: rgba(0, 0, 0, 0.1);
 			}
@@ -139,9 +142,6 @@ session_start();
 					</div>
 				</div>
 				<div class="row text-center p-3 gy-2">
-					<div class="col-sm-12 col-md-6">
-						
-					</div>
 					<div class="col-sm-12 col-md-6">
 						<a href="index.php" class="btn btn-sm btn-outline-danger rounded-pill w-75">Back</a>
 					</div>
