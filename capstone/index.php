@@ -40,29 +40,32 @@
 	<body>
 		<main class="container-fluid p-0">
 			<?php include('include/user_header.php') ?>
-			<section class="floating_chat_body">
-                <div class="col-md-12 mt-0">
-                    <button type="button" onclick="hide_chat_body();" class="stick-top bg-dark text-center text-white py-2 w-100 border-0">Chat with SBM</button>
-                    <div class="border border-black card-body" style="overflow-x:hidden; overflow-y:auto; height: 314px;" id="support-container">
-						<p class="text-center mt-5">NOT YET WORKING</p>
+			<?php
+			if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+			?>
+			<section class="floating_chat_head" onclick="maximize_floating_chat();">
+				<section class="floating_chat_body">
+                    <button type="button" onclick="minimize_floating_chat();" class="bg-dark text-center text-white py-2 w-100 border-0">Chat with SBM</button>
+                    <div id="support-container">
+                    	<!-- dynamic -->
                     </div>
-                    <div class="stick-bot">
-						<form id="support-form">
-							<div class="comment-area">
-								<div class="bg-dark" style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
-									<div class="w-100 p-1">
-										<textarea class="form-control rounded-pill" placeholder="Type your message here." rows="1" name="comment" required></textarea>
-									</div>
-									<div class="w-50 p-1 d-flex align-items-center">
-										<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Send</button>
-									</div>
-								</div>
-							</div>
-						</form>
-                    </div>
-                </div>
+                    <form id="support-form">
+                    	<div class="comment-area">
+                    		<div class="bg-dark" style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
+                    			<div class="w-100 p-1">
+                    				<textarea class="form-control rounded-pill" placeholder="Type your message here." rows="1" name="comment" required></textarea>
+                    			</div>
+                    			<div class="w-50 p-1 d-flex align-items-center">
+                    				<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Send</button>
+                    			</div>
+                    		</div>
+                    	</div>
+                    </form>
+				</section>
 			</section>
-			<section class="floating_chat_head"></section>
+			<?php
+			}
+			?>
 			<img src="" id="imagePreview" class="imagePreview" alt="Missing_Image">
 			<section class="hero-section"></section>
 			<section class="hero container">
@@ -254,14 +257,7 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<h1 class="mb-5">Location</h1>
-						<iframe
-			                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123734.56420033834!2d120.78699919463828!3d14.27041091980823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd806bdc892737%3A0x760e08400b4e91d8!2sTrece%20Martires%2C%20Cavite!5e0!3m2!1sen!2sph!4v1685830770393!5m2!1sen!2sph"
-			                width="100%"
-			                height="400"
-			                allowfullscreen="false"
-			                loading="lazy"
-			                referrerpolicy="no-referrer-when-downgrade"
-			            ></iframe>
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6242.9620110606675!2d120.8525477349758!3d14.276026010202813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd81b44ee6817f%3A0x99dbeb82e2e88a1b!2sUNO!5e1!3m2!1sen!2sph!4v1705042739806!5m2!1sen!2sph" width="100%" height="400" style="border: none;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 					</div>
 				</div>
 			</section>
@@ -273,19 +269,10 @@
 			  	$(".sticky-top").fadeIn('slow');
 			  	$('.floating_chat_head').fadeIn('slow');
 			});
-
-			$('.floating_chat_head').on('click', function() {
-				$('.floating_chat_body').fadeIn('slow');
-				$(this).fadeOut('slow');
-			})
-
-			function hide_chat_body() {
-				$('.floating_chat_body').fadeOut('slow');
-				$('.floating_chat_head').fadeIn('slow');
-			}
 		</script>
 		<script type="text/javascript" src="js/custom_user_header.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript" src="js/image_hover.js"></script>
+		<script type="text/javascript" src="js/support.js"></script>
 	</body>
 </html>

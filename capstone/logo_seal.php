@@ -26,6 +26,32 @@
 	<body>
 		<main class="container-fluid p-0">
 			<?php include('include/user_header.php') ?>
+			<?php
+			if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+			?>
+			<section class="floating_chat_head" onclick="maximize_floating_chat();">
+				<section class="floating_chat_body">
+                    <button type="button" onclick="minimize_floating_chat();" class="bg-dark text-center text-white py-2 w-100 border-0">Chat with SBM</button>
+                    <div id="support-container">
+                    	<!-- dynamic -->
+                    </div>
+                    <form id="support-form">
+                    	<div class="comment-area">
+                    		<div class="bg-dark" style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
+                    			<div class="w-100 p-1">
+                    				<textarea class="form-control rounded-pill" placeholder="Type your message here." rows="1" name="comment" required></textarea>
+                    			</div>
+                    			<div class="w-50 p-1 d-flex align-items-center">
+                    				<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Send</button>
+                    			</div>
+                    		</div>
+                    	</div>
+                    </form>
+				</section>
+			</section>
+			<?php
+			}
+			?>
 			<img src="" id="imagePreview" class="imagePreview" alt="Missing_Image">
 			<section class="container py-5">
 				<div class="row">
@@ -87,10 +113,12 @@
 			  	$(".loader").fadeOut('slow');
 			  	$(".sticky-top").fadeIn('slow');
 			  	window.localStorage.setItem('page', '0');
+			  	$('.floating_chat_head').fadeIn('slow');
 			});
 		</script>
 		<script type="text/javascript" src="js/user_header.js"></script>
 		<script type="text/javascript" src="js/logo_seal.js"></script>
 		<script type="text/javascript" src="js/image_hover.js"></script>
+		<script type="text/javascript" src="js/support.js"></script>
 	</body>
 </html>

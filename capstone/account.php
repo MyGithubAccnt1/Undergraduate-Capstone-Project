@@ -44,6 +44,32 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	<body>
 		<main class="container-fluid p-0">
 			<?php include('include/user_header.php') ?>
+			<?php
+			if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+			?>
+			<section class="floating_chat_head" onclick="maximize_floating_chat();">
+				<section class="floating_chat_body">
+                    <button type="button" onclick="minimize_floating_chat();" class="bg-dark text-center text-white py-2 w-100 border-0">Chat with SBM</button>
+                    <div id="support-container">
+                    	<!-- dynamic -->
+                    </div>
+                    <form id="support-form">
+                    	<div class="comment-area">
+                    		<div class="bg-dark" style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
+                    			<div class="w-100 p-1">
+                    				<textarea class="form-control rounded-pill" placeholder="Type your message here." rows="1" name="comment" required></textarea>
+                    			</div>
+                    			<div class="w-50 p-1 d-flex align-items-center">
+                    				<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Send</button>
+                    			</div>
+                    		</div>
+                    	</div>
+                    </form>
+				</section>
+			</section>
+			<?php
+			}
+			?>
 			<section class="container py-5">
 				<h2 class="mb-5">My Profile</h2>
 				<hr>
@@ -160,42 +186,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                     </div>
 				</form>
 			</section>
-			<section class="container py-5">
-				<div class="row text-muted">
-				    <h5 class="mb-4 mt-0">Customer Support</h5>
-                    <div class="col-md-12 mt-0">
-                        <div class="stick-top bg-dark text-center text-white py-2">Chat with SBM</div>
-                        <div class="border border-black card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="support-container">
-							<!-- dynamic -->
-                        </div>
-                        <div class="stick-bot">
-							<form id="support-form">
-								<div class="comment-area">
-									<div class="bg-dark" style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
-										<div class="w-100 p-1">
-											<textarea class="form-control rounded-pill" placeholder="Type your message here." rows="1" name="comment" required></textarea>
-										</div>
-										<div class="w-50 p-1 d-flex align-items-center">
-											<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Send</button>
-										</div>
-									</div>
-								</div>
-							</form>
-                        </div>
-                    </div>
-				</div>
-			</section>
 			<?php include('include/user_footer.php') ?>
 		</main>
 		<script type="text/javascript">
 			$(window).on('load', function() {
 			  	$(".loader").fadeOut('slow');
 			  	$(".sticky-top").fadeIn('slow');
+			  	$('.floating_chat_head').fadeIn('slow');
 			});
 		</script>
 		<script type="text/javascript" src="js/user_header.js"></script>
 		<script type="text/javascript" src="js/ph-address-selector.js"></script>
 		<script type="text/javascript" src="js/account.js"></script>
+		<script type="text/javascript" src="js/support.js"></script>
 	</body>
 </html>
 <?php 

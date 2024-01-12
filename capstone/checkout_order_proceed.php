@@ -56,7 +56,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-sm-12 col-md-7">
+					<div class="col-12">
 						<div class="container text-start p-3">
 							<div class="row">
 								<h5 class="text-center">PAYMENT METHOD</h5>
@@ -70,21 +70,23 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-12 col-md-5 p-3">
+				</div>
+				<div class="row">
+					<div class="col-12">
 						<div class="container border border-dark text-start p-3">
-							<h5 class="text-center">SALES INVOICE</h5>
-							<p id="date"></p>
-							<p>
+							<h1 class="text-center bg-dark text-white">SALES INVOICE</h1>
+							<h6 id="date"></h6>
+							<h6>
 								Seller: Saint Benedict Medallion
 								<br>
 								Address: Trece Martires City, Cavite
-							</p>
-							<p class="m-0" id="buyer">Buyer: <?php echo $_SESSION['fname']; ?> <?php echo $_SESSION['lname']; ?></p>
-							<p class="m-0">Number: <?php echo $_SESSION['mnumber']; ?></p>
-							<p>Email: <?php echo $_SESSION['email']; ?></p>
-							<p>Address: <?php echo $_SESSION['caddress']; ?></p>
-							<p id="alternative_address"></p>
-							<p>Mode: COD</p>
+							</h6>
+							<h6 class="m-0">Buyer: <?php echo $_SESSION['fname']; ?> <?php echo $_SESSION['lname']; ?></h6>
+							<h6 class="m-0">Number: <?php echo $_SESSION['mnumber']; ?></h6>
+							<h6>Email: <?php echo $_SESSION['email']; ?></h6>
+							<h6>Address: <?php echo $_SESSION['caddress']; ?></h6>
+							<h6 id="alternative_address"></h6>
+							<h6>Payment Method: COD</h6>
 							<div class="container" id="cart-container">
 								<!-- dynamic -->
 							</div>
