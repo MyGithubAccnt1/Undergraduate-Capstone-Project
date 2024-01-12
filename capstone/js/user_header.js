@@ -10,6 +10,42 @@ $(document).ready(function() {
             $(".dropdown-menu").css("background-color", "rgba(0, 0, 0, 1.0)");
         }
     });
+
+    $('.dropdown').on('mouseenter', function(){
+        var dropdown = new bootstrap.Dropdown($(this).find('.dropdown-toggle')[0]);
+        dropdown.toggle();
+    });
+
+    function ShowCart() {
+        $.ajax({
+            url: "./php/get_header_cart.php",
+            method: "GET",
+            success: function (data) {
+                data = data.trim();
+                $("#cart-header-container").html(data);
+            }
+        });
+
+        $.ajax({
+            url: "./php/get_cart_count.php",
+            method: "GET",
+            success: function (data) {
+                data = data.trim();
+                $('.fa-shopping-cart').text(data);
+            }
+        });
+    }
+    setInterval(ShowCart, 1000);
+
+    $('.fa-shopping-cart').on({
+        mouseover: function() {
+            $('.cart-header').fadeIn('slow');
+        },
+        mouseout: function() {
+            $('.cart-header').fadeOut('slow');
+        }
+    });
+
 });
 
 const openIconHeader = document.querySelector('.button,.icon');
