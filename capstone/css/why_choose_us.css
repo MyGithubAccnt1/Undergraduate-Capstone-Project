@@ -15,7 +15,7 @@
 }
 @media screen and (max-width: 1440px) {
 	.why-box:nth-child(6) {
-        animation: slide6 5s linear infinite paused;
+        animation: slide6 5s linear forwards paused;
     }
     @keyframes slide6 {
     	0% {
@@ -41,7 +41,7 @@
   	  	}
     }
     .why-box:nth-child(5) {
-        animation: slide5 5s linear infinite paused;
+        animation: slide5 5s linear forwards paused;
     }
     @keyframes slide5 {
       	0% {
@@ -71,7 +71,7 @@
   	  	}
     }
     .why-box:nth-child(4) {
-        animation: slide4 5s linear infinite paused;
+        animation: slide4 5s linear forwards paused;
     }
     @keyframes slide4 {
       	0% {
@@ -105,7 +105,7 @@
   	  	}
     }
     .why-box:nth-child(3) {
-        animation: slide3 5s linear infinite paused;
+        animation: slide3 5s linear forwards paused;
     }
     @keyframes slide3 {
       	0% {
@@ -143,7 +143,7 @@
   	  	}
     }
     .why-box:nth-child(2) {
-        animation: slide2 5s linear infinite paused;
+        animation: slide2 5s linear forwards paused;
     }
     @keyframes slide2 {
       	0% {
