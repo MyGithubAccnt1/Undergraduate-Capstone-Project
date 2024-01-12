@@ -1,7 +1,9 @@
 <?php
+session_start(); 
 include("connect.php");
+$email = $_SESSION['email'];
 
-$sql = "SELECT COUNT(*) AS total_rows FROM cart";
+$sql = "SELECT COUNT(*) AS total_rows FROM cart WHERE email = '$email'";
 $result = $conn->query($sql);
 
 if ($result === false) {
