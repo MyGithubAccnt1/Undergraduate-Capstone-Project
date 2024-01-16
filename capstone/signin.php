@@ -1,3 +1,12 @@
+<?php 
+error_reporting(0);
+ini_set('display_errors', 0);
+session_start(); 
+if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+    $script = "<script>window.location.href = 'account.php';</script>";
+    echo $script;
+}else{
+?>
 <!doctype html>
 <html lang="en">
 	<head>
@@ -102,10 +111,10 @@
 							<div class="tab-pane fade show active signin_navigation border-0" id="login-tab-pane" role="tabpanel" aria-labelledby="login-tab" tabindex="0">
 								<form action="" id="login">
 				    	  			<div class="form-outline my-4">
-				    	  			    <input type="email" placeholder="Enter your email" class="form-control rounded-0" name="email" id="email" required>
+				    	  			    <input type="email" placeholder="Enter Email Address" class="form-control rounded-0" name="email" id="email" required>
 				    	  			</div>
 				    	  			<div class="form-outline mb-4">
-				    	  			    <input type="password" class="form-control rounded-0" placeholder="Enter your password" name="password" id="password" required>
+				    	  			    <input type="password" class="form-control rounded-0" placeholder="Enter Password" name="password" id="password" required>
 				    	  			    <i class="uil uil-eye-slash"></i>
 				    	  			</div>
 				    	  			<div class="row p-0 m-0">
@@ -125,14 +134,14 @@
 							<div class="tab-pane fade signin_navigation border-0" id="register-tab-pane" role="tabpanel" aria-labelledby="register-tab" tabindex="0">
 								<form action="" id="register">
 	    	  					    <div class="form-outline my-4">
-	    	  					    	<input type="email" placeholder="Enter your email" class="form-control rounded-0" name="email" required>
+	    	  					    	<input type="email" placeholder="Email Address" class="form-control rounded-0" name="email" required>
 	    	  					    </div>
 	    	  					    <div class="form-outline mb-4">
-	    	  					    	<input type="password" class="form-control rounded-0" placeholder="8-16 digit password" name="password" required>
+	    	  					    	<input type="password" class="form-control rounded-0" placeholder="8-16 Digit Password" name="password" required>
 	    	  					    	<i class="uil uil-eye-slash"></i>
 	    	  					    </div>
 	    	  					    <div class="form-outline mb-4">
-	    	  					        <input type="password" class="form-control rounded-0"placeholder="Repeat your password" name="repeat" required>
+	    	  					        <input type="password" class="form-control rounded-0"placeholder="Repeat Password" name="repeat" required>
 	    	  					        <i class="uil uil-eye-slash"></i>
 	    	  					    </div>
 	    	  					    <div class="row m-0 p-0">
@@ -229,3 +238,6 @@
 		<script type="text/javascript" src="js/signin.js"></script>
 	</body>
 </html>
+<?php 
+}
+?>

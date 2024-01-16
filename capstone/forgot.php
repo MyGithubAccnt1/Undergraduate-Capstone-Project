@@ -63,7 +63,7 @@
 					<div class="col-md-12">
 						<form action="" id="verify">
 	  					    <div class="form-outline mt-4 mb-0">
-	  					    	<input type="email" placeholder="Enter your email" class="form-control rounded-0" name="email" required>
+	  					    	<input type="email" placeholder="Enter Email Address" class="form-control rounded-0" name="email" required>
 	  					    </div>
 		    	  			<div class="d-flex justify-content-center">
 		    	  			  	<button type="submit" class="btn-main py-1 mt-3 w-100 rounded-pill">Confirm</button>

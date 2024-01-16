@@ -63,7 +63,7 @@
 					<div class="col-md-12 py-5">
 						<form action="" id="verify">
 	  					    <div class="form-outline mt-4 mb-0">
-	  					    	<input type="text" placeholder="Enter your verification code" class="form-control rounded-0" name="otp" required>
+	  					    	<input type="text" placeholder="Enter Verification Code" class="form-control rounded-0" name="otp" required>
 	  					    </div>
 		    	  			<div class="d-flex justify-content-center">
 		    	  			  	<button type="submit" class="btn-main py-1 mt-3 w-100 rounded-pill">Confirm</button>

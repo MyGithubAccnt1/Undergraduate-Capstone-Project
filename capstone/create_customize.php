@@ -92,7 +92,7 @@ session_start();
 							<div class="custom-collapse collapse py-5" id="logo_seal_material">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_product">Back</button>
 							  		</div>
 									<h1 class="mb-3">Select Material</h1>
 									<hr>
@@ -111,7 +111,7 @@ session_start();
 							<div class="custom-collapse collapse py-5" id="necklace_material">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_product">Back</button>
 							  		</div>
 									<h1 class="mb-3">Select Material</h1>
 									<hr>
@@ -130,7 +130,7 @@ session_start();
 							<div class="custom-collapse collapse py-5" id="table_nameplate_material">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50  back_product">Back</button>
 							  		</div>
 									<h1 class="mb-3">Select Material</h1>
 									<hr>
@@ -147,7 +147,7 @@ session_start();
 							<div class="custom-collapse collapse py-5" id="logo_seal_shape">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_logo_seal_shape">Back</button>
 							  		</div>
 									<h1 class="mb-3">Select Shape</h1>
 									<hr>
@@ -160,7 +160,7 @@ session_start();
 							<div class="custom-collapse collapse py-5" id="necklace_shape">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_necklace_shape">Back</button>
 							  		</div>
 									<h1 class="mb-3">Select Shape</h1>
 									<hr>
@@ -173,7 +173,7 @@ session_start();
 							<div class="custom-collapse collapse py-5" id="table_nameplate_shape">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_table_nameplate_shape">Back</button>
 							  		</div>
 									<h1 class="mb-3">Select Shape</h1>
 									<hr>
@@ -190,7 +190,7 @@ session_start();
 							<div class="custom-collapse collapse py-5" id="logo_seal_logo">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_logo_seal_logo">Back</button>
 							  		</div>
 									<h1 class="mb-3">Select Logo</h1>
 									<hr>
@@ -200,10 +200,46 @@ session_start();
 								</div>
 							</div>
 
+							<div class="custom-collapse collapse py-5" id="necklace_text">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_necklace_text">Back</button>
+							  		</div>
+									<h1 class="mb-3">Insert Text</h1>
+									<hr>
+									<small>THIS TEXT WILL BE ENGRAVE TO YOUR NECKLACE</small>
+									<div class="col-12">
+										<form id="necklace_text_form">
+										    <div class="comment-area">
+										    	<div style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+		            								<span style="margin: 0 5px 0 7px;">Font Style:</span>
+		            								<select id="necklace_text_font">
+		                                    	        <option value="Arial">Arial</option>
+		                                    	        <option value="Courier" selected>Courier</option>
+		            									<option value="Helvetica">Helvetica</option>
+		            									<option value="Impact">Impact</option>
+		            									<option value="Segoe UI">Segoe UI</option>
+		            									<option value="Times New Roman">Times New Roman</option>
+		            									<option value="Verdana">Verdana</option>
+		                                    	    </select>
+										        </div>
+										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+										        	<span>Company:</span>
+										            <textarea class="form-control rounded-pill" rows="2" name="necklace_text" required></textarea>
+										        </div>
+										        <div class="w-75 mx-auto p-1">
+										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+										        </div>
+										    </div>
+										</form>
+									</div>
+								</div>
+							</div>
+
 							<div class="custom-collapse collapse py-5" id="table_nameplate_logo">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_table_nameplate_logo">Back</button>
 							  		</div>
 									<h1 class="mb-3">Select Logo</h1>
 									<hr>
@@ -220,7 +256,7 @@ session_start();
 							<div class="custom-collapse collapse py-5" id="logo_seal_text">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_logo_seal_text">Back</button>
 							  		</div>
 									<h1 class="mb-3">Insert Company</h1>
 									<hr>
@@ -255,7 +291,7 @@ session_start();
 							<div class="custom-collapse collapse py-5" id="table_nameplate_company">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_table_nameplate_company">Back</button>
 							  		</div>
 									<h1 class="mb-3">Insert Company</h1>
 									<hr>
@@ -279,26 +315,10 @@ session_start();
 
 						<div id="6">
 
-							<div class="custom-collapse collapse py-5" id="logo_seal_final">
-							  	<div class="row gy-3">
-							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
-							  		</div>
-									<h1 class="mb-3">Final Design</h1>
-									<hr>
-									<div class="col-12">
-										<button type="button" class="btn btn-outline-light rounded-0 w-50">ADVANCE DESIGN</button>
-									</div>
-									<div class="col-12">
-										<button type="button" class="btn btn-outline-light rounded-0 w-50">ORDER NOW</button>
-									</div>
-								</div>
-							</div>
-
 							<div class="custom-collapse collapse py-5" id="table_nameplate_name">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_table_nameplate_name">Back</button>
 							  		</div>
 									<h1 class="mb-3">Insert Name</h1>
 									<hr>
@@ -322,26 +342,10 @@ session_start();
 
 						<div id="7">
 
-							<div class="custom-collapse collapse py-5" id="logo_seal_final">
-							  	<div class="row gy-3">
-							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
-							  		</div>
-									<h1 class="mb-3">Final Design</h1>
-									<hr>
-									<div class="col-12">
-										<button type="button" class="btn btn-outline-light rounded-0 w-50">ADVANCE DESIGN</button>
-									</div>
-									<div class="col-12">
-										<button type="button" class="btn btn-outline-light rounded-0 w-50">ORDER NOW</button>
-									</div>
-								</div>
-							</div>
-
 							<div class="custom-collapse collapse py-5" id="table_nameplate_position">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_table_nameplate_position">Back</button>
 							  		</div>
 									<h1 class="mb-3">Insert Position</h1>
 									<hr>
@@ -365,7 +369,7 @@ session_start();
 
 						<div id="8">
 
-							<div class="custom-collapse collapse py-5" id="table_nameplate_final">
+							<div class="custom-collapse collapse py-5" id="final">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 reset">Reset</button>
@@ -373,7 +377,7 @@ session_start();
 									<h1 class="mb-3">Final Design</h1>
 									<hr>
 									<div class="col-12">
-										<button type="button" class="btn btn-outline-light rounded-0 w-50">ADVANCE DESIGN</button>
+										<button type="button" class="btn btn-outline-light rounded-0 w-50">TRY ME(Augmented reality)</button>
 									</div>
 									<div class="col-12">
 										<button type="button" class="btn btn-outline-light rounded-0 w-50">ORDER NOW</button>

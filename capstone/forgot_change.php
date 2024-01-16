@@ -63,7 +63,7 @@
 					<div class="col-md-12 py-5">
 						<form action="" id="verify">
 	  					    <div class="form-outline mt-4 mb-0">
-	  					    	<input type="password" class="form-control rounded-0" placeholder="Enter your password" name="password" required>
+	  					    	<input type="password" class="form-control rounded-0" placeholder="Enter New Password" name="password" required>
 	  					    	<i class="uil uil-eye-slash"></i>
 	  					    </div>
 		    	  			<div class="d-flex justify-content-center">
