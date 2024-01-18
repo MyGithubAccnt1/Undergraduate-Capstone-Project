@@ -94,8 +94,15 @@ $(document).on('click', '#necklace_bronze', function() {
 });
 $(document).on('click', '#necklace_cross', function() {
     var close = product;
-    product = document.getElementById('necklace_text');
+    product = document.getElementById('necklace_engrave');
     document.getElementById('4').scrollIntoView();
+    new bootstrap.Collapse($(product)).show();
+    new bootstrap.Collapse($(close)).hide();
+});
+$(document).on('click', '#necklace_engrave_text', function() {
+    var close = product;
+    product = document.getElementById('necklace_text');
+    document.getElementById('5').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
 });
@@ -176,10 +183,17 @@ $('.back_necklace_shape').on('click', function() {
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
 });
-$('.back_necklace_text').on('click', function() {
+$('.back_necklace_engrave').on('click', function() {
     var close = product;
     product = document.getElementById('necklace_shape');
     document.getElementById('3').scrollIntoView();
+    new bootstrap.Collapse($(product)).show();
+    new bootstrap.Collapse($(close)).hide();
+});
+$('.back_necklace_text').on('click', function() {
+    var close = product;
+    product = document.getElementById('necklace_engrave');
+    document.getElementById('4').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
 });
@@ -284,25 +298,14 @@ function ShowCanvas() {
         });
     });
 
-    $('.back_necklace_text').on('click', function() {
+    $('.back_necklace_engrave, .back_necklace_text').on('click', function() {
         var objects = canvas.getObjects();
 
         if (objects.length > 0) {
-
-            if (objects.length > 1) {
-                var lastTwoObjects = objects.slice(-2);
-                lastTwoObjects.forEach(function (obj) {
-                    canvas.remove(obj);
-                });
-                canvas.renderAll();
-            } else {
-                var lastTwoObjects = objects.slice(-1);
-                lastTwoObjects.forEach(function (obj) {
-                    canvas.remove(obj);
-                });
-                canvas.renderAll();
-            }
-            
+            var lastTwoObjects = objects.slice(-1);
+            lastTwoObjects.forEach(function (obj) {
+                canvas.remove(obj);
+            });
         }
     });
 
@@ -567,6 +570,12 @@ function ShowCanvas() {
             canvas.add(img);
         });
         canvas.renderAll();
+    })
+
+    $(document).on('click', '#necklace_engrave_text', function() {
+        $("textarea[name='necklace_text']").val('SAMPLE');
+        necklace_text_change_text();
+        $("textarea[name='necklace_text']").val('');
         $("textarea[name='necklace_text']").focus();
     })
 
