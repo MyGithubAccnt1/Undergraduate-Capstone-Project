@@ -304,6 +304,20 @@ session_start();
 								</div>
 							</div>
 
+							<div class="custom-collapse collapse py-5" id="necklace_image">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_necklace_image">Back</button>
+							  		</div>
+									<h1 class="mb-3">Select Image</h1>
+									<hr>
+									<small>THIS IMAGE WILL BE ENGRAVE TO YOUR NECKLACE</small>
+									<div class="col-12">
+										<input type="file" id="necklace_image" accept="image/png">
+									</div>
+								</div>
+							</div>
+
 							<div class="custom-collapse collapse py-5" id="table_nameplate_company">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
