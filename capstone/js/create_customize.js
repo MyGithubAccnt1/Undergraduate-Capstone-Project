@@ -106,6 +106,13 @@ $(document).on('click', '#necklace_engrave_text', function() {
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
 });
+$(document).on('click', '#necklace_engrave_image', function() {
+    var close = product;
+    product = document.getElementById('necklace_image');
+    document.getElementById('5').scrollIntoView();
+    new bootstrap.Collapse($(product)).show();
+    new bootstrap.Collapse($(close)).hide();
+});
 $(document).on('submit', '#necklace_text_form', function() {
     event.preventDefault();
     var close = product;
@@ -190,7 +197,7 @@ $('.back_necklace_engrave').on('click', function() {
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
 });
-$('.back_necklace_text').on('click', function() {
+$('.back_necklace_text, .back_necklace_image').on('click', function() {
     var close = product;
     product = document.getElementById('necklace_engrave');
     document.getElementById('4').scrollIntoView();
