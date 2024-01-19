@@ -313,7 +313,10 @@ session_start();
 									<hr>
 									<small>THIS IMAGE WILL BE ENGRAVE TO YOUR NECKLACE</small>
 									<div class="col-12">
-										<input type="file" id="necklace_image" accept="image/png">
+										<input type="file" id="necklace_image_file" accept="image/png">
+									</div>
+									<div class="w-75 mx-auto p-1">
+										<button type="button" id="necklace_image_engrave" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
 									</div>
 								</div>
 							</div>
