@@ -9,7 +9,7 @@ $(document).on('load', function() {
     new bootstrap.Collapse(document.getElementById('table_nameplate'));
 });
 
-let product, material;
+let product, material, shape;
 
 $(document).on('click', '#logo_seal', function() {
     product = document.getElementById('logo_seal_material');
@@ -95,6 +95,7 @@ $(document).on('click', '#necklace_bronze', function() {
 $(document).on('click', '#necklace_cross', function() {
     var close = product;
     product = document.getElementById('necklace_engrave');
+    shape = 'cross';
     document.getElementById('4').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
@@ -313,6 +314,41 @@ function ShowCanvas() {
             lastTwoObjects.forEach(function (obj) {
                 canvas.remove(obj);
             });
+        }
+    });
+
+    $('.back_necklace_image').on('click', function() {
+        var objects = canvas.getObjects();
+
+        if (objects.length > 0) {
+            canvas.clear();
+            canvas.setHeight(parseFloat($('.canvas-size').css('height')));
+            canvas.setWidth(parseFloat($('.canvas-size').css('width')));
+            canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
+            fabric.Image.fromURL('images/customize/necklace_' + material + '.png', function(img) {
+                img.set({
+                    left: canvas.width / 2,
+                    top: canvas.height / 2,
+                    originX: 'center',
+                    originY: 'center',
+                    scaleX: 0.5,
+                    scaleY: 0.5,
+                });
+                canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+            });
+            fabric.Image.fromURL('images/customize/necklace_' + material + '_' + shape + '.png', function(img) {
+                img.set({
+                    left: canvas.width / 2,
+                    top: canvas.height / 2 + 10,
+                    originX: 'center',
+                    originY: 'center',
+                    scaleX: 0.3,
+                    scaleY: 0.3,
+                    evented: false
+                });
+                canvas.add(img);
+            });
+            canvas.renderAll();
         }
     });
 
@@ -614,6 +650,130 @@ function ShowCanvas() {
 
     $("textarea[name='necklace_text']").on('input change', function() {
         necklace_text_change_text();
+    });
+
+    $("#necklace_text_font").on('change', function() {
+        necklace_text_change_text();
+    });
+
+    $('#necklace_image_file').on('change', function (e) {
+        const textObjects = canvas.getObjects();
+
+        if (textObjects.length > 0) {
+            const lastIndex = textObjects.length - 1;
+
+            const lastTextObject = textObjects[lastIndex];
+
+            canvas.remove(lastTextObject);
+        }
+
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const imageUrl = event.target.result;
+                fabric.Image.fromURL('images/customize/necklace_' + material + '_' + shape + '.png', function(maskImage) {
+                    maskImage.set({
+                        scaleX: 0.3,
+                        scaleY: 0.3,
+                        left: canvas.width / 2,
+                        top: canvas.height / 2 + 10,
+                        originX: 'center',
+                        originY: 'center',
+                        evented: false
+                    });
+
+                    fabric.Image.fromURL(imageUrl, function(clippedImage) {
+
+                        clippedImage.set({
+                            left: canvas.width / 2,
+                            top: canvas.height / 2 + 10,
+                            originX: 'center',
+                            originY: 'center'
+                        });
+
+                        if (clippedImage.width > clippedImage.height) {
+                            clippedImage.scaleToWidth(maskImage.width * 0.3);
+                        } else if (clippedImage.width < clippedImage.height) {
+                            clippedImage.scaleToHeight(maskImage.height * 0.3);
+                        } else {
+                            clippedImage.scaleToHeight(maskImage.height * 0.3);
+                            clippedImage.scaleToWidth(maskImage.width * 0.3);
+                        }
+
+                        clippedImage.globalCompositeOperation = 'source-atop';
+                        maskImage.globalCompositeOperation = 'destination-in';
+
+                        canvas.add(maskImage, clippedImage);
+                        canvas.renderAll();
+                    });
+                });
+
+                const imageDataWithoutPrefix = imageUrl.split(',')[1];
+                $.ajax({
+                    url: "./php/upload_temp.php",
+                    method: "POST",
+                    data: {
+                        imageFile: imageDataWithoutPrefix
+                    },
+                    success: function (data) {
+                        const baseUrl = window.location.origin;
+                        if (baseUrl === "http://localhost") {
+                            data = 'capstone/' + data;
+                        }
+                        const images = window.localStorage.getItem('images');
+                        window.localStorage.setItem('images', data);
+                    }
+                });
+            };
+        reader.readAsDataURL(file);
+        }
+    });
+
+    $('#necklace_image_engrave').on('click', function() {
+        const textObjects = canvas.getObjects();
+
+        if (textObjects.length > 1) {
+            
+            var compositionDataURL = canvas.toDataURL({
+                format: 'png',
+                quality: 1.0
+            });
+
+            fabric.Image.fromURL(compositionDataURL, function(savedImage) {
+                savedImage.set({
+                    left: canvas.width / 2,
+                    top: canvas.height / 2,
+                    originX: 'center',
+                    originY: 'center',
+                    evented: false
+                });
+
+                canvas.clear();
+                canvas.setHeight(parseFloat($('.canvas-size').css('height')));
+                canvas.setWidth(parseFloat($('.canvas-size').css('width')));
+                canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
+                fabric.Image.fromURL('images/customize/necklace_' + material + '.png', function(img) {
+                    img.set({
+                        left: canvas.width / 2,
+                        top: canvas.height / 2,
+                        originX: 'center',
+                        originY: 'center',
+                        scaleX: 0.5,
+                        scaleY: 0.5,
+                    });
+                    canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+                });
+                canvas.add(savedImage);
+                canvas.renderAll();
+            });
+
+            var close = product;
+            product = document.getElementById('final');
+            document.getElementById('8').scrollIntoView();
+            new bootstrap.Collapse($(product)).show();
+            new bootstrap.Collapse($(close)).hide();
+        }
     });
 
     $(document).on('click', '#table_nameplate_rectangle', function() {
