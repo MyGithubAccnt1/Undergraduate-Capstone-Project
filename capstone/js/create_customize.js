@@ -1058,4 +1058,15 @@ function ShowCanvas() {
 
         table_nameplate_change_position();
     });
+
+    $('#try_me_ar').on('click', function() {
+        canvas.setBackgroundColor(null, canvas.renderAll.bind(canvas));
+        var zoomFactor = 1;
+        var zoomCenter = new fabric.Point(canvas.width / 2, canvas.height / 2);
+        canvas.zoomToPoint(zoomCenter, zoomFactor);
+        canvas.renderAll();
+        localStorage.setItem('Object', canvas.toDataURL({ format: 'png', quality: 1.0 }));
+        var popupWindow = window.open('try_me_ar.php', 'Popup', 'width=640, height=480, resizable=yes, scrollbars=yes');
+        canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
+    });
 }
