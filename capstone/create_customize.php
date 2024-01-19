@@ -410,7 +410,7 @@ session_start();
 									<h1 class="mb-3">Final Design</h1>
 									<hr>
 									<div class="col-12">
-										<button type="button" class="btn btn-outline-light rounded-0 w-50">TRY ME(Augmented reality)</button>
+										<button type="button" id="try_me_ar" class="btn btn-outline-light rounded-0 w-50">TRY ME(Augmented reality)</button>
 									</div>
 									<div class="col-12">
 										<button type="button" class="btn btn-outline-light rounded-0 w-50">ORDER NOW</button>
