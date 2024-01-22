@@ -92,7 +92,7 @@ $(document).on('click', '#necklace_bronze', function() {
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
 });
-$(document).on('click', '#necklace_cross', function() {
+$(document).on('click', '#necklace_shape_cross', function() {
     var close = product;
     product = document.getElementById('necklace_engrave');
     shape = 'cross';
@@ -599,7 +599,7 @@ function ShowCanvas() {
         });
     })
 
-    $(document).on('click', '#necklace_cross', function() {
+    $(document).on('click', '#necklace_shape_cross', function() {
         fabric.Image.fromURL('images/customize/necklace_' + material + '_cross.png', function(img) {
             img.set({
                 left: canvas.width / 2,
