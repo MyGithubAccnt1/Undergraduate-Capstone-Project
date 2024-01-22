@@ -35,7 +35,7 @@
 	</head>
 	<body>
 		<section class="loader"></section>
-		<video id="video" width="640" height="480" autoplay></video>
+		<video id="video" width="100%" height="100%" autoplay></video>
 		<canvas id="canvas"></canvas>
 		<script type="text/javascript" src="include/fabric-5.4.2.min.js"></script>
 		<script type="text/javascript">
@@ -52,6 +52,9 @@
                         window.close();
 			        });
 			    ShowCanvas();
+			    $(window).on('resize', function() {
+		            ShowCanvas();
+		        });
 			});
 
 			function ShowCanvas() {

@@ -165,7 +165,13 @@ session_start();
 									<h1 class="mb-3">Select Shape</h1>
 									<hr>
 									<div class="col-12">
-										<button type="button" id="necklace_cross" class="btn btn-outline-light rounded-0 w-50">Cross</button>
+										<button type="button" id="necklace_shape_cross" class="btn btn-outline-light rounded-0 w-50">Cross</button>
+									</div>
+									<div class="col-12">
+										<button type="button" id="necklace_shape_circle" class="btn btn-outline-light rounded-0 w-50">Circle</button>
+									</div>
+									<div class="col-12">
+										<button type="button" id="necklace_shape_text" class="btn btn-outline-light rounded-0 w-50">Text</button>
 									</div>
 								</div>
 							</div>
