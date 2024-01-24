@@ -44,8 +44,8 @@ $(document).on('click', '#proceed', function() {
     var caddress = $("#caddress").val();
     var alt_address = $("#alternative_address").text();
 
-    if (caddress === "Philippines") {
-        alert('Notice: You have not yet updated your address in your profile, please update it.');
+    if (caddress === "") {
+        alert('You have not yet updated your address in your profile, please update it.');
         window.location.href = 'account.php';
     } else {
         window.localStorage.setItem('date', date);

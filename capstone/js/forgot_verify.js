@@ -4,7 +4,7 @@ $(document).on("submit", "#verify", function (event) {
     var input = $(this).find("input[name='otp']").val();
 
     if (otp === input) {
-        alert('Notice: The system verified you, proceed to change password.');
+        alert('The system verified you, proceed to change password.');
         window.location.href = 'forgot_change.php';
     } else {
         alert('Error: The verification code does not match, please try again.');

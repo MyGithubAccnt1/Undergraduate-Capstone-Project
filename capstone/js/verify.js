@@ -24,7 +24,7 @@ $(document).on("submit", "#verify", function (event) {
             success: function (data) {
                 data = data.trim();
                 if (data === "1") {
-                    alert('Notice: Your account is successfully created.');
+                    alert('Your account is successfully created.');
                     window.location.href = "account.php";
                     window.localStorage.removeItem('xlink');
                 } else {
@@ -33,7 +33,7 @@ $(document).on("submit", "#verify", function (event) {
             }
         });
     } else {
-        alert('Notice: The verification code does not match, please try again.');
+        alert('The verification code does not match, please try again.');
         $(this).find("input[name='otp']").val('');
         $(this).find("input[name='otp']").focus();
     }

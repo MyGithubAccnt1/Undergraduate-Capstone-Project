@@ -111,7 +111,7 @@ $(document).on("submit", "#register", function (event) {
             }
         }
     } else {
-        alert('Notice: Please read and accept our Terms and Conditions.');
+        alert('Please read and accept our Terms and Conditions.');
     }
 });
 
@@ -151,7 +151,7 @@ $(document).on("submit", "#login", function (event) {
                     window.localStorage.removeItem('remember-email');
                     window.localStorage.removeItem('remember-password');
                 }
-                alert('Notice: Logging in successful, welcome back [Administrator]!')
+                alert('Logging in successful, welcome back [Administrator]!')
                 var xlink = window.localStorage.getItem('xlink');
                 console.log(xlink);
                 if (xlink) {
@@ -168,7 +168,7 @@ $(document).on("submit", "#login", function (event) {
                     window.localStorage.removeItem('remember-email');
                     window.localStorage.removeItem('remember-password');
                 }
-                alert('Notice: Logging in successful, welcome back!')
+                alert('Logging in successful, welcome back!')
                 var xlink = window.localStorage.getItem('xlink');
                 if (xlink) {
                     window.location.href = xlink;

@@ -26,9 +26,9 @@ $(document).on('click', '#proceed', function() {
                 alert('Error: Your cart is empty.');
                 window.location.href = "cart.php";
             } else if (data === "2") {
-                alert('Notice: Only 1 checkout can be made every minute.');
+                alert('Only 1 checkout can be made every minute.');
             }else if (data === "4") {
-                alert('Notice: Ordering successful.');
+                alert('Ordering successful.');
                 window.location.href = "order.php";
             } else {
                 alert('Unexpected Error: [' + data + ']');

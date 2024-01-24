@@ -49,7 +49,7 @@ function add_to_cart() {
         success: function (data) {
             data = data.trim();
             if (data === "1") {
-                if (confirm("Notice: This item is already added to your cart, do you wish to continue to add it again?") === true) {
+                if (confirm("This item is already added to your cart, do you wish to continue to add it again?") === true) {
                     $.ajax({
                         url: './php/add_to_cart_forced.php',
                         type: 'POST',
@@ -62,7 +62,7 @@ function add_to_cart() {
                         success: function (data) {
                             data = data.trim();
                             if (data === "1") {
-                                alert('Notice: This item has been added successfully to your cart.');
+                                alert('This item has been added successfully to your cart.');
                             } else {
                                 alert('Unexpected Error: [' + data + '].');
                             }
@@ -70,7 +70,7 @@ function add_to_cart() {
                     });
                 }
             } else if (data === "2") {
-                alert('Notice: This item has been added successfully to your cart.');
+                alert('This item has been added successfully to your cart.');
             } else {
                 alert('Unexpected Error: [' + data + '].');
             }
@@ -96,7 +96,7 @@ function buy_now() {
         success: function (data) {
             data = data.trim();
             if (data === "1") {
-                if (confirm("Notice: This item is already added to your cart, do you wish to continue to add it again?") === true) {
+                if (confirm("This item is already added to your cart, do you wish to continue to add it again?") === true) {
                     $.ajax({
                         url: './php/add_to_cart_forced.php',
                         type: 'POST',
@@ -126,7 +126,7 @@ function buy_now() {
 }
 
 function redirect_to_login() {
-    if (confirm("Notice: You need to login in order to do this action. Do you wish to login now?") === true) {
+    if (confirm("You need to login in order to do this action. Do you wish to login now?") === true) {
         var xlink = window.location.href;
         window.localStorage.setItem('xlink', xlink);
         window.location.href = 'signin.php';

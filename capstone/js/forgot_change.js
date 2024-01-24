@@ -4,11 +4,11 @@ $(document).on("submit", "#verify", function (event) {
     var password = $(this).find("input[name='password']").val();
 
     if (password.length < 8) {
-        alert('Notice: The password does not met the 8-16 lenght requirement, please try again.');
+        alert('The password does not met the 8-16 lenght requirement, please try again.');
         $(this).find("input[name='password']").val('');
         $(this).find("input[name='password']").focus();
     } else if (password.length > 16) {
-        alert('Notice: The password does not met the 8-16 lenght requirement, please try again.');
+        alert('The password does not met the 8-16 lenght requirement, please try again.');
         $(this).find("input[name='password']").val('');
         $(this).find("input[name='password']").focus();
     } else {
@@ -31,7 +31,7 @@ $(document).on("submit", "#verify", function (event) {
             success: function (data) {
                 data = data.trim();
                 if (data === "1") {
-                    alert('Notice: Your password is successfully changed.');
+                    alert('Your password is successfully changed.');
                     window.location.href = "signin.php";
                 } else if (data === "2") {
                     alert('Error: An error occur during the creation of your account due to connection problems, please try again.');

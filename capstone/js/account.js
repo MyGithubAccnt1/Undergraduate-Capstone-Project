@@ -18,7 +18,7 @@ $(document).on("submit", "#personal", function (event) {
         success: function (data) {
             data = data.trim();
             if (data === "1") {
-                alert('Notice: Personal details has been updated successfully.');
+                alert('Personal details has been updated successfully.');
                 window.location.href = 'account.php';
             } else {
                 alert('Unexpected Error: [' + data + ']');
@@ -53,7 +53,7 @@ function caddress() {
     }
 }
 
-$(document).on('input', "input[name='caddress']", function() {
+$(document).on('click input change', "input[name='caddress']", function() {
     caddress();
 });
 
@@ -86,7 +86,7 @@ $(document).on('input', "input[name='caddress']", function() {
 //         success: function (data) {
 //             data = data.trim();
 //             if (data === "1") {
-//                 alert('Notice: Address has been updated successfully.');
+//                 alert('Address has been updated successfully.');
 //                 window.location.href = 'account.php';
 //             } else {
 //                 alert('Unexpected Error: [' + data + ']');
@@ -148,7 +148,7 @@ $(document).on("submit", "#passwords", function (event) {
                             $("#old_password").val('');
                             $("#old_password").focus();
                         } else if (data === "2") {
-                            alert('Notice: Account password has been updated successfully, proceed to log out.');
+                            alert('Account password has been updated successfully, proceed to log out.');
                             window.location.href = "./php/logout.php";
                         } else {
                             alert('Unexpected Error: [' + data + ']');
