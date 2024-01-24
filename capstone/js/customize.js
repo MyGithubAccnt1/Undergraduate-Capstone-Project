@@ -93,6 +93,21 @@ $(document).on('click', '#necklace_shape_cross', function() {
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
 });
+$(document).on('click', '#necklace_shape_circle', function() {
+    var close = product;
+    product = document.getElementById('necklace_engrave');
+    shape = 'circle';
+    document.getElementById('4').scrollIntoView();
+    new bootstrap.Collapse($(product)).show();
+    new bootstrap.Collapse($(close)).hide();
+});
+$(document).on('click', '#necklace_shape_text', function() {
+    var close = product;
+    product = document.getElementById('necklace_text_body');
+    document.getElementById('4').scrollIntoView();
+    new bootstrap.Collapse($(product)).show();
+    new bootstrap.Collapse($(close)).hide();
+});
 $(document).on('click', '#necklace_engrave_text', function() {
     var close = product;
     product = document.getElementById('necklace_text');
@@ -559,6 +574,22 @@ function ShowCanvas() {
 
     $(document).on('click', '#necklace_shape_cross', function() {
         fabric.Image.fromURL('images/customize/necklace_' + material + '_cross.png', function(img) {
+            img.set({
+                left: canvas.width / 2,
+                top: canvas.height / 2 + 10,
+                originX: 'center',
+                originY: 'center',
+                scaleX: 0.3,
+                scaleY: 0.3,
+                evented: false
+            });
+            canvas.add(img);
+        });
+        canvas.renderAll();
+    })
+
+    $(document).on('click', '#necklace_shape_circle', function() {
+        fabric.Image.fromURL('images/customize/necklace_' + material + '_circle.png', function(img) {
             img.set({
                 left: canvas.width / 2,
                 top: canvas.height / 2 + 10,
