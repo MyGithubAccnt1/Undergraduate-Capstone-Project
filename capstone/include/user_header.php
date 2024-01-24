@@ -14,40 +14,18 @@ session_start();
 	            	</button>
 	    		</a>
 		    </li>
-		    <?php
-		    if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
-		    ?>
 		    <li>
-		    	<a href="account.php">
-		    		<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
-		    			<i class="fas fa-user-circle" style="margin: 0 20px 0 10px;"></i><small>My Profile</small>
-		    		</button>
-		    	</a>
+		    	<a href="#" class="close">
+	            	<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
+	            		<img src="images/saint.png" height="17" width="17" alt="Missing_Image" style="margin: 0 20px 0 10px;">
+	            		<small>Home</small>
+	            	</button>
+	    		</a>
 		    </li>
 		    <li>
-		    	<a href="order.php">
+		    	<a href="directory_marker.php">
 		    		<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
-		    			<i class="fas fa-clipboard-list" style="margin: 0 20px 0 10px;"></i><small>My Orders</small>
-		    		</button>
-		    	</a>
-		    </li>
-		    <?php
-		    } else {
-	    	?>
-	    	<li>
-		    	<a href="signin.php">
-			    	<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
-			    		<i class="fas fa-sign-out-alt" style="margin: 0 20px 0 10px;"></i><small>Sign In</small>
-			    	</button>
-		    	</a>
-		    </li>
-	    	<?php
-		    }
-		    ?>
-		    <li>
-		    	<a href="logo_seal.php">
-		    		<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
-		    			<i class="fas fa-sign" style="margin: 0 20px 0 10px;"></i><small>Logo Seal</small>
+		    			<i class="fas fa-sign" style="margin: 0 20px 0 10px;"></i><small>Directory Marker</small>
 		    		</button>
 		    	</a>
 		    </li>
@@ -83,6 +61,20 @@ session_start();
 		    if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		    ?>
 		    <li>
+		    	<a href="account.php">
+		    		<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
+		    			<i class="fas fa-user-circle" style="margin: 0 20px 0 10px;"></i><small>My Profile</small>
+		    		</button>
+		    	</a>
+		    </li>
+		    <li>
+		    	<a href="order.php">
+		    		<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
+		    			<i class="fas fa-clipboard-list" style="margin: 0 20px 0 10px;"></i><small>My Orders</small>
+		    		</button>
+		    	</a>
+		    </li>
+		    <li>
 	    	    <a href="./php/logout.php">
 	    			<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
 	    				<i class="fas fa-sign-out-alt" style="margin: 0 20px 0 10px;"></i><small>Logout</small>
@@ -90,8 +82,18 @@ session_start();
 	    		</a>
 		    </li>
 		    <?php
-		    }
+		    } else {
 	    	?>
+	    	<li>
+		    	<a href="signin.php">
+			    	<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
+			    		<i class="fas fa-sign-out-alt" style="margin: 0 20px 0 10px;"></i><small>Sign In</small>
+			    	</button>
+		    	</a>
+		    </li>
+	    	<?php
+		    }
+		    ?>
 		</ul>
 	</div>
 	
@@ -99,31 +101,97 @@ session_start();
 		<div>
 			<a href="index.php">
 				<div class="m-0 p-0 btn-nav">
-					<img src="images/saint.png" height="40px" alt="Missing_Image">
+					<img src="images/saint.png" height="54px" alt="Missing_Image">
 				</div>
 			</a>
 		</div>
 	</div>
 	
 	<div class="navigation">
+		<div class="dropdown d-none d-lg-block">
+			<a href="index.php">
+				<button type="button" class="btn-nav rounded-0 btn-sm home-nav">
+					<small>HOME</small>
+				</button>
+			</a>
+		</div>
+		<div class="dropdown d-none d-md-block">
+		  	<button type="button" class="btn-nav dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+		    	PRODUCTS
+		  	</button>
+		  	<ul class="dropdown-menu">
+		    	<li>
+		    		<a class="dropdown-item" href="directory_marker.php">
+		    			<button type="button" class="btn-nav rounded-0 btn-sm directory-nav">
+		    				<small>DIRECTORY MARKER</small>
+		    			</button>
+		    		</a>
+		    	</li>
+		    	<li>
+		    		<a class="dropdown-item" href="necklace.php">
+		    			<button type="button" class="btn-nav rounded-0 btn-sm necklace-nav">
+		    				<small>NECKLACE</small>
+		    			</button>
+		    		</a>
+		    	</li>
+		    	<li>
+		    		<a class="dropdown-item" href="pins.php">
+		    			<button type="button" class="btn-nav rounded-0 btn-sm pins-nav">
+		    				<small>PINS</small>
+		    			</button>
+		    		</a>
+		    	</li>
+		    	<li>
+		    		<a class="dropdown-item" href="table_nameplate.php">
+		    			<button type="button" class="btn-nav rounded-0 btn-sm table-nav">
+		    				<small>TABLE NAMEPLATE</small>
+		    			</button>
+		    		</a>
+		    	</li>
+		  	</ul>
+		</div>
+		<div class="d-none d-md-block">
+			<a href="customize.php">
+				<button type="button" class="btn-nav rounded-0 btn-sm customize-nav">
+					<small>CUSTOMIZE</small>
+				</button>
+			</a>
+		</div>
+	</div>
+	<div class="navigation">
 		<?php
 		if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		?>
+		<div>
+			<a href="cart.php">
+				<button type="button" class="btn-nav rounded-0 btn-sm cart-nav">
+					<i class="fas fa-shopping-cart">(0)</i>
+				</button>
+			</a>
+			<div class="cart-header" id="cart-header-container"></div>
+		</div>
+		<div>
+			<a href="#">
+				<button type="button" class="btn-nav rounded-0 btn-sm" title="My Notifications">
+					<i class="fas fa-bell"></i>
+				</button>
+			</a>
+		</div>
 		<div class="dropdown d-none d-lg-block">
 		  	<button type="button" class="btn-nav dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-		    	ACCOUNT
+		    	<i class="fas fa-user"></i>
 		  	</button>
 		  	<ul class="dropdown-menu">
 		    	<li>
 		    		<a class="dropdown-item" href="account.php">
-		    			<button type="button" class="btn-nav rounded-0 btn-sm">
+		    			<button type="button" class="btn-nav rounded-0 btn-sm profile-nav">
 		    				<small>MY PROFILE</small>
 		    			</button>
 		    		</a>
 		    	</li>
 		    	<li>
 		    		<a class="dropdown-item" href="order.php">
-		    			<button type="button" class="btn-nav rounded-0 btn-sm">
+		    			<button type="button" class="btn-nav rounded-0 btn-sm orders-nav">
 		    				<small>MY ORDERS</small>
 		    			</button>
 		    		</a>
@@ -144,71 +212,6 @@ session_start();
 			<a href="signin.php">
 				<button type="button" class="btn-nav rounded-0 btn-sm">
 					<small>SIGN IN</small>
-				</button>
-			</a>
-		</div>
-		<?php
-		}
-		?>
-		<div class="dropdown d-none d-md-block">
-		  	<button type="button" class="btn-nav dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-		    	PRODUCTS
-		  	</button>
-		  	<ul class="dropdown-menu">
-		    	<li>
-		    		<a class="dropdown-item" href="logo_seal.php">
-		    			<button type="button" class="btn-nav rounded-0 btn-sm">
-		    				<small>LOGO SEAL</small>
-		    			</button>
-		    		</a>
-		    	</li>
-		    	<li>
-		    		<a class="dropdown-item" href="necklace.php">
-		    			<button type="button" class="btn-nav rounded-0 btn-sm">
-		    				<small>NECKLACE</small>
-		    			</button>
-		    		</a>
-		    	</li>
-		    	<li>
-		    		<a class="dropdown-item" href="pins.php">
-		    			<button type="button" class="btn-nav rounded-0 btn-sm">
-		    				<small>PINS</small>
-		    			</button>
-		    		</a>
-		    	</li>
-		    	<li>
-		    		<a class="dropdown-item" href="table_nameplate.php">
-		    			<button type="button" class="btn-nav rounded-0 btn-sm">
-		    				<small>TABLE NAMEPLATE</small>
-		    			</button>
-		    		</a>
-		    	</li>
-		  	</ul>
-		</div>
-		<div class="d-none d-md-block">
-			<a href="customize.php">
-				<button type="button" class="btn-nav rounded-0 btn-sm">
-					<small>CUSTOMIZE</small>
-				</button>
-			</a>
-		</div>
-	</div>
-	<div class="navigation">
-		<?php
-		if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
-		?>
-		<div>
-			<a href="cart.php">
-				<button type="button" class="btn-nav rounded-0 btn-sm">
-					<i class="fas fa-shopping-cart">(0)</i>
-				</button>
-			</a>
-			<div class="cart-header" id="cart-header-container"></div>
-		</div>
-		<div>
-			<a href="#">
-				<button type="button" class="btn-nav rounded-0 btn-sm" title="My Notifications">
-					<i class="fas fa-bell"></i>
 				</button>
 			</a>
 		</div>
