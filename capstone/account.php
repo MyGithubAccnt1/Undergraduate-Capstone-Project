@@ -97,7 +97,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                         </div>
                         <div class="col-md-12">
                             <label class="form-label">Complete Address</label>
-                            <input type="text" class="form-control" value="<?php echo $_SESSION['caddress']; ?>" name="caddress" required>
+                            <input type="text" class="form-control" value="<?php echo (!empty($_SESSION['caddress']) ? $_SESSION['caddress'] : null); ?>" name="caddress" required>
                         </div>
                         <div class="col-sm-12 text-center">
                         	<div class="row gy-3 p-3">
