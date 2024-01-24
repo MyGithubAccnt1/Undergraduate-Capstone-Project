@@ -4,7 +4,11 @@
 	  	<meta charset="UTF-8">
 	  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	  	<title>Saint Benedict Medallion</title>
-	  	<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+	  	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+		<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+		<link rel="manifest" href="images/site.webmanifest">
 	  	<meta name="description" content="In partial fulfilment of the requirements for the degree of Bachelor of Science in Information Technology">
 	  	<meta name="keywords" content="capstone, project, thesis">
 	  	<meta name="author" content="Mhel Voi A. Bernabe">
@@ -17,7 +21,7 @@
 			.dropdown-menu {
 				background-color: rgba(0, 0, 0, 1.0);
 			}
-			.table-nav::before{
+			.directory-nav::before{
 			    width: 100%;
 			}
 		</style>
@@ -55,7 +59,7 @@
 			<section class="container py-5">
 				<div class="row">
 					<div class="col-md-12 text-center">
-						<h1 class="mb-5">Table Nameplate</h1>
+						<h1 class="mb-5">Directory Marker</h1>
 						<div class="d-flex justify-content-start align-items-center">
 							<div style="margin-right: 5px;">Filter:</div>
 							<select class="input" id="filter">
@@ -64,7 +68,7 @@
 							</select>
 						</div>
 						<hr class="mt-2 mb-0">
-
+						
 						<div class="container mt-2 px-5 border border-black" id="price" style="display: none; padding-block: 5px; background-color: rgba(0, 0, 0, 0.1);">
 							<p class="text-start m-0" id="min-text">Min price: PHP 0</p>
 							<input type="range" class="form-range" min="0" max="999" id="min-price" step="1" value="0">
@@ -116,7 +120,7 @@
 			});
 		</script>
 		<script type="text/javascript" src="js/user_header.js"></script>
-		<script type="text/javascript" src="js/table_nameplate.js"></script>
+		<script type="text/javascript" src="js/directory_marker.js"></script>
 		<script type="text/javascript" src="js/image_hover.js"></script>
 		<script type="text/javascript" src="js/support.js"></script>
 	</body>

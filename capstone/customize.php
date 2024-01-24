@@ -17,113 +17,441 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	  	<meta name="keywords" content="capstone, project, thesis">
 	  	<meta name="author" content="Mhel Voi A. Bernabe">
 	  	<?php include('include/style.php') ?>
-	  	<link rel="stylesheet" type="text/css" href="./css/slider.css">
 		<style>
-			header {
-				background-color: rgba(0, 0, 0, 1.0);
+			.custom-collapse {
+	            transition: height 0.5s linear;
+	            overflow: hidden;
+	            height: 0;
+	        }
+	        .custom-collapse.show {
+	            height: auto;
+	        }
+			.left {
+				height: 100vh;
+				overflow: hidden;
+				padding-block: 10vh;
 			}
-			.dropdown-menu {
-				background-color: rgba(0, 0, 0, 1.0);
+			.left > div {
+				height: 80vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.right {
+				height: 100vh;
+				overflow: hidden;
+			}
+			.right > div {
+				margin-block: 10vh;
+				height: 80vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.canvas-size {
+				border: 1px solid #fff;
+				padding: 0;
+				overflow: hidden;
+			}
+			.comment-area textarea{
+			    resize: none; 
+			    border: 1px solid #000;
 			}
 		</style>
 	</head>
 	<body>
-		<main class="container-fluid p-0">
-			<?php include('include/user_header.php') ?>
-			<?php
-			if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
-			?>
-			<section class="floating_chat_head" onclick="maximize_floating_chat();">
-				<section class="floating_chat_body">
-                    <button type="button" onclick="minimize_floating_chat();" class="bg-dark text-center text-white py-2 w-100 border-0">Chat with SBM</button>
-                    <div id="support-container">
-                    	<!-- dynamic -->
-                    </div>
-                    <form id="support-form">
-                    	<div class="comment-area">
-                    		<div class="bg-dark" style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
-                    			<div class="w-100 p-1">
-                    				<textarea class="form-control rounded-pill" placeholder="Type your message here." rows="1" name="comment" required></textarea>
-                    			</div>
-                    			<div class="w-50 p-1 d-flex align-items-center">
-                    				<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Send</button>
-                    			</div>
-                    		</div>
-                    	</div>
-                    </form>
-				</section>
-			</section>
-			<?php
-			}
-			?>
-			<img src="" id="imagePreview" class="imagePreview" alt="Missing_Image">
-			<section class="container py-5">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<h1 class="mb-5">Customize</h1>
-						<div class="container">
-							<div class="row">
-								<div class="col-6 d-flex align-items-center justify-content-start" style="overflow-x: hidden;">
-									<div style="margin-right: 5px;">Filter:</div>
-									<select class="input" id="filter">
-										<option value="Logo">Logo Seal</option>
-										<option value="Necklace">Necklace</option>
-										<option value="Pins">Pins</option>
-										<option value="Table">Table Nameplate</option>
-									</select>
+		<section class="loader"></section>
+		<main class="container-fluid p-0 bg-dark">
+			<section class="container">
+				<div class="row text-white text-center">
+					<div class="col-md-6 left">
+
+						<div id="1">
+
+							<div class="row gy-3 py-5">
+								<div class="col-6 d-flex justify-content-start">
+									<a href="javascript:window.history.back();" class="btn btn-outline-light rounded-0 w-50">Back</a>
 								</div>
-								<div class="col-6 d-flex align-items-center justify-content-end">
-									<a href="create_customize.php" class="btn btn-sm btn-outline-success rounded-0">+ Create</a>
+								<h1 class="mb-3">Select Product</h1>
+								<hr>
+								<div class="col-12">
+									<button type="button" id="logo_seal" class="btn btn-outline-light rounded-0 w-50">Logo Seal</button>
+								</div>
+								<div class="col-12">
+									<button type="button" id="necklace" class="btn btn-outline-light rounded-0 w-50">Necklace</button>
+								</div>
+								<div class="col-12">
+									<button type="button" id="pins" class="btn btn-outline-light rounded-0 w-50">Pins</button>
+								</div>
+								<div class="col-12">
+									<button type="button" id="table_nameplate" class="btn btn-outline-light rounded-0 w-50">Table Nameplate</button>
 								</div>
 							</div>
+
 						</div>
-						<hr class="mt-2 mb-0">
-						<div class="carousel slide p-0" data-ride="carousel" data-interval="0"> 
-							<div class="carousel-inner">
-								<div class="item carousel-item active">
-									<div class="row" id="product-container">
-										<!-- dynamic -->
+
+						<div id="2">
+
+							<div class="custom-collapse collapse py-5" id="logo_seal_material">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_product">Back</button>
+							  		</div>
+									<h1 class="mb-3">Select Material</h1>
+									<hr>
+									<div class="col-12">
+										<button type="button" id="logo_seal_gold" class="btn btn-outline-light rounded-0 w-50">Gold</button>
 									</div>
-									<div>
-										<button class="btn btn-sm btn-outline-dark rounded-0" id="prev">< Prev</button>
-										<button class="btn btn-sm btn-outline-dark rounded-0" id="next">Next ></button>
+									<div class="col-12">
+										<button type="button" id="logo_seal_silver" class="btn btn-outline-light rounded-0 w-50">Silver</button>
+									</div>
+									<div class="col-12">
+										<button type="button" id="logo_seal_bronze" class="btn btn-outline-light rounded-0 w-50">Bronze</button>
 									</div>
 								</div>
 							</div>
+
+							<div class="custom-collapse collapse py-5" id="necklace_material">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_product">Back</button>
+							  		</div>
+									<h1 class="mb-3">Select Material</h1>
+									<hr>
+									<div class="col-12">
+										<button type="button" id="necklace_gold" class="btn btn-outline-light rounded-0 w-50">Gold</button>
+									</div>
+									<div class="col-12">
+										<button type="button" id="necklace_silver" class="btn btn-outline-light rounded-0 w-50">Silver</button>
+									</div>
+									<div class="col-12">
+										<button type="button" id="necklace_bronze" class="btn btn-outline-light rounded-0 w-50">Bronze</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="custom-collapse collapse py-5" id="table_nameplate_logo">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_product">Back</button>
+							  		</div>
+									<h1 class="mb-3">Select Logo</h1>
+									<hr>
+									<div class="col-12">
+										<input type="file" id="table_nameplate_image" accept="image/png">
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div id="3">
+
+							<div class="custom-collapse collapse py-5" id="logo_seal_logo">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_logo_seal_logo">Back</button>
+							  		</div>
+									<h1 class="mb-3">Select Logo</h1>
+									<hr>
+									<div class="col-12">
+										<input type="file" id="logo_seal_image" accept="image/png">
+									</div>
+								</div>
+							</div>
+
+							<div class="custom-collapse collapse py-5" id="necklace_shape">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_necklace_shape">Back</button>
+							  		</div>
+									<h1 class="mb-3">Select Shape</h1>
+									<hr>
+									<div class="col-12">
+										<button type="button" id="necklace_shape_cross" class="btn btn-outline-light rounded-0 w-50">Cross</button>
+									</div>
+									<div class="col-12">
+										<button type="button" id="necklace_shape_circle" class="btn btn-outline-light rounded-0 w-50">Circle</button>
+									</div>
+									<div class="col-12">
+										<button type="button" id="necklace_shape_text" class="btn btn-outline-light rounded-0 w-50">Text</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="custom-collapse collapse py-5" id="table_nameplate_company">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_table_nameplate_company">Back</button>
+							  		</div>
+									<h1 class="mb-3">Insert Company</h1>
+									<hr>
+									<div class="col-12">
+										<form id="table_nameplate_company_form">
+										    <div class="comment-area gy-3">
+										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+										        	<span>Company:</span>
+										            <textarea class="form-control rounded-pill" rows="2" name="table_nameplate_company" required></textarea>
+										        </div>
+										        <div class="w-75 mx-auto p-1">
+										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+										        </div>
+										    </div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div id="4">
+
+							<div class="custom-collapse collapse py-5" id="logo_seal_text">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_logo_seal_text">Back</button>
+							  		</div>
+									<h1 class="mb-3">Insert Company</h1>
+									<hr>
+									<div class="col-12">
+										<form id="logo_seal_company_form">
+										    <div class="comment-area">
+										    	<div style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+		            								<span style="margin: 0 5px 0 7px;">Font Style:</span>
+		            								<select id="logo_seal_font">
+		                                    	        <option value="Arial">Arial</option>
+		                                    	        <option value="Courier" selected>Courier</option>
+		            									<option value="Helvetica">Helvetica</option>
+		            									<option value="Impact">Impact</option>
+		            									<option value="Segoe UI">Segoe UI</option>
+		            									<option value="Times New Roman">Times New Roman</option>
+		            									<option value="Verdana">Verdana</option>
+		                                    	    </select>
+										        </div>
+										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+										        	<span>Company:</span>
+										            <textarea class="form-control rounded-pill" rows="2" name="logo_seal_company" required></textarea>
+										        </div>
+										        <div class="w-75 mx-auto p-1">
+										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+										        </div>
+										    </div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+							<div class="custom-collapse collapse py-5" id="necklace_engrave">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_necklace_engrave">Back</button>
+							  		</div>
+									<h1 class="mb-3">Select Engrave</h1>
+									<hr>
+									<div class="col-12">
+										<button type="button" id="necklace_engrave_text" class="btn btn-outline-light rounded-0 w-50">Text</button>
+									</div>
+									<div class="col-12">
+										<button type="button" id="necklace_engrave_image" class="btn btn-outline-light rounded-0 w-50">Image</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="custom-collapse collapse py-5" id="table_nameplate_name">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_table_nameplate_name">Back</button>
+							  		</div>
+									<h1 class="mb-3">Insert Name</h1>
+									<hr>
+									<div class="col-12">
+										<form id="table_nameplate_name_form">
+										    <div class="comment-area gy-3">
+										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+										        	<span style="margin-left: 30px;">Name:</span>
+										            <textarea class="form-control rounded-pill" rows="2" name="table_nameplate_name" required></textarea>
+										        </div>
+										        <div class="w-75 mx-auto p-1">
+										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+										        </div>
+										    </div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div id="5">
+
+							<div class="custom-collapse collapse py-5" id="necklace_text">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_necklace_text">Back</button>
+							  		</div>
+									<h1 class="mb-3">Insert Text</h1>
+									<hr>
+									<small>THIS TEXT WILL BE ENGRAVE TO YOUR NECKLACE</small>
+									<div class="col-12">
+										<form id="necklace_text_form">
+										    <div class="comment-area">
+										    	<div style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+		            								<span style="margin: 0 5px 0 7px;">Font Style:</span>
+		            								<select id="necklace_text_font">
+		                                    	        <option value="Arial">Arial</option>
+		                                    	        <option value="Courier" selected>Courier</option>
+		            									<option value="Helvetica">Helvetica</option>
+		            									<option value="Impact">Impact</option>
+		            									<option value="Segoe UI">Segoe UI</option>
+		            									<option value="Times New Roman">Times New Roman</option>
+		            									<option value="Verdana">Verdana</option>
+		                                    	    </select>
+										        </div>
+										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+										        	<span>Company:</span>
+										            <textarea class="form-control rounded-pill" rows="2" name="necklace_text" required></textarea>
+										        </div>
+										        <div class="w-75 mx-auto p-1">
+										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+										        </div>
+										    </div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+							<div class="custom-collapse collapse py-5" id="necklace_image">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_necklace_image">Back</button>
+							  		</div>
+									<h1 class="mb-3">Select Image</h1>
+									<hr>
+									<small>THIS IMAGE WILL BE ENGRAVE TO YOUR NECKLACE</small>
+									<div class="col-12">
+										<input type="file" id="necklace_image_file" accept="image/png">
+									</div>
+									<div class="w-75 mx-auto p-1">
+										<button type="button" id="necklace_image_engrave" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="custom-collapse collapse py-5" id="table_nameplate_position">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_table_nameplate_position">Back</button>
+							  		</div>
+									<h1 class="mb-3">Insert Position</h1>
+									<hr>
+									<div class="col-12">
+										<form id="table_nameplate_position_form">
+										    <div class="comment-area gy-3">
+										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+										        	<span style="margin-left: 17px;">Position:</span>
+										            <textarea class="form-control rounded-pill" rows="1" name="table_nameplate_position" required></textarea>
+										        </div>
+										        <div class="w-75 mx-auto p-1">
+										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+										        </div>
+										    </div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div id="6">
+
+							<div class="custom-collapse collapse py-5" id="table_nameplate_name">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_table_nameplate_name">Back</button>
+							  		</div>
+									<h1 class="mb-3">Insert Name</h1>
+									<hr>
+									<div class="col-12">
+										<form id="table_nameplate_name_form">
+										    <div class="comment-area gy-3">
+										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+										        	<span style="margin-left: 30px;">Name:</span>
+										            <textarea class="form-control rounded-pill" rows="2" name="table_nameplate_name" required></textarea>
+										        </div>
+										        <div class="w-75 mx-auto p-1">
+										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+										        </div>
+										    </div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div id="7">
+
+							<div class="custom-collapse collapse py-5" id="table_nameplate_position">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_table_nameplate_position">Back</button>
+							  		</div>
+									<h1 class="mb-3">Insert Position</h1>
+									<hr>
+									<div class="col-12">
+										<form id="table_nameplate_position_form">
+										    <div class="comment-area gy-3">
+										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+										        	<span style="margin-left: 17px;">Position:</span>
+										            <textarea class="form-control rounded-pill" rows="1" name="table_nameplate_position" required></textarea>
+										        </div>
+										        <div class="w-75 mx-auto p-1">
+										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+										        </div>
+										    </div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div id="8">
+
+							<div class="custom-collapse collapse py-5" id="final">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" id="reset" class="btn btn-outline-light rounded-0 w-50">Reset</button>
+							  		</div>
+									<h1 class="mb-3">Final Design</h1>
+									<hr>
+									<div class="col-12">
+										<button type="button" id="try_me_ar" class="btn btn-outline-light rounded-0 w-50">TRY ME(Augmented reality)</button>
+									</div>
+									<div class="col-12">
+										<button type="button" id="order" class="btn btn-outline-light rounded-0 w-50">ORDER NOW</button>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+					<div class="col-md-6 right">
+						<div class="canvas-size">
+							<canvas id="canvas"></canvas>
 						</div>
 					</div>
 				</div>
 			</section>
-			<section class="container py-5">
-		    	<div class="row">
-		    		<div class="col-12">
-		    			<h1 class="m-0">YOU MAY LIKE</h1>
-		    			<hr class="mt-2 mb-0">
-		    			<div class="carousel slide p-0" data-ride="carousel" data-interval="0"> 
-		    				<div class="carousel-inner">
-		    					<div class="item carousel-item active">
-		    						<div class="row" id="you_may_like-container">
-		    							<!-- dynamic -->
-		    						</div>
-		    					</div>
-		    				</div>
-		    			</div>
-		    		</div>
-		    	</div>
-			</section>
-			<?php include('include/user_footer.php') ?>
 		</main>
 		<script type="text/javascript">
 			$(window).on('load', function() {
-			  	$(".loader").fadeOut('slow');
-			  	$(".sticky-top").fadeIn('slow');
-			  	$('.floating_chat_head').fadeIn('slow');
+			  $(".loader").fadeOut('slow');
 			});
 		</script>
-		<script type="text/javascript" src="js/user_header.js"></script>
+		<script type="text/javascript" src="include/fabric-5.4.2.min.js"></script>
 		<script type="text/javascript" src="js/customize.js"></script>
-		<script type="text/javascript" src="js/image_hover.js"></script>
-		<script type="text/javascript" src="js/support.js"></script>
 	</body>
 </html>
 <?php 

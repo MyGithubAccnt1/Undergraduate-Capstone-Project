@@ -17,6 +17,9 @@
 	  	<link rel="stylesheet" type="text/css" href="./css/slider.css">
 		<link rel="stylesheet" type="text/css" href="./css/new_arrival.css">
 		<style>
+			.home-nav::before{
+			    width: 100%;
+			}
 			.hero-section {
 		  		position: absolute;
 		  		z-index: -1;
@@ -27,7 +30,7 @@
 		  		background-image: url('images/bg.gif');
 		  		background-size: cover;
 		  		background-repeat: no-repeat;
-		  		filter: brightness(25%);
+		  		filter: brightness(35%);
 		  	}
 		  	.hero {
 		  		height: calc(100vh - 50px);
@@ -91,7 +94,7 @@
 							<p class="d-none d-lg-block">We are proud to have <?php include ('./php/get_user_count.php') ?> registered users as of today.</p>
 							<p>Don’t miss this opportunity to create your very own account.</p>
 							<a href="signin.php">
-								<button type="button" class="btn btn-md btn-outline-success rounded-0">REGISTER NOW FOR FREE</button>
+								<button type="button" class="btn btn-md btn-outline-success mt-5 rounded-0">REGISTER NOW FOR FREE</button>
 							</a>
 						</div>
 						<?php
@@ -104,7 +107,7 @@
 			</section>
 			<section class="container py-5" id="learn-more">
 				<div class="row d-flex justify-content-center text-center why-container">
-					<h1 class="mb-5">Why Choose Us?</h1>
+					<h2 class="mb-5">Why Choose Us?</h2>
 					<div class="col-md-2 why-box">
 						<div>
 							<i class="fas fa-shipping-fast fa-lg"></i>
@@ -150,12 +153,12 @@
 			<section class="container py-5">
 				<div class="row">
 					<div class="col-md-12 text-center">
-						<h1 class="mb-5">Popular Products</h1>
+						<h2 class="mb-5">Popular Products</h2>
 						<div class="d-flex justify-content-start align-items-center">
 							<div style="margin-right: 5px;">Category:</div>
                     	    <select class="input" id="category">
-                    	    	<option value="Necklace">Necklace</option>
-                    	    	<option value="Logo">Logo Seal</option>
+                    	    	<option value="Directory">Directory Marker</option>
+                    	    	<option value="Necklace" selected>Necklace</option>
                     	        <option value="Pin">Pins</option>
                     	        <option value="Table">Table Nameplates</option>
                     	    </select>
@@ -176,7 +179,7 @@
 			<section class="container py-5">
 				<div class="row">
 					<div class="col-md-12 text-center">
-						<h1 class="mb-5">New Arrivals</h1>
+						<h2 class="mb-5">New Arrivals</h2>
 					</div>
 					<div class="container" style="overflow-x: hidden;">
 						<div class="slider">
@@ -190,7 +193,7 @@
 			<section class="container py-5">
 				<div class="row">
 					<div class="col-md-12 text-center">
-						<h1 class="mb-5">Services</h1>
+						<h2 class="mb-5">Services</h2>
 						<div class="carousel slide p-0" data-ride="carousel" data-interval="0"> 
 							<div class="carousel-inner">
 								<div class="item carousel-item active">
@@ -248,7 +251,7 @@
 			<section class="container py-5">
 				<div class="row">
 					<div class="col-md-12 text-center">
-						<h1 class="mb-5">About Us</h1>
+						<h2 class="mb-5">About Us</h2>
 						<p>I'm the proud owner of Saint Benedict Medallion, a business in Trece Martires City that specializes in making and selling beautiful, unique necklaces. As a small business, I'm passionate about providing my customers with one-of-a-kind pieces that are as special and meaningful to them as they are to me. My necklaces are all handmade with care and attention to detail, using only the finest materials. I'm committed to create pieces that will last a lifetime, and I'm proud to say that the quality of my products speaks for itself. I'm always happy to work with my customers to create something special for them. I hope you'll come and visit my store soon - I'm sure you'll find something unique and beautiful that you'll love.</p>
 					</div>
 				</div>
@@ -256,7 +259,7 @@
 			<section class="container py-5">
 				<div class="row">
 					<div class="col-md-12 text-center">
-						<h1 class="mb-5">Location</h1>
+						<h2 class="mb-5">Location</h2>
 						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6242.9620110606675!2d120.8525477349758!3d14.276026010202813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd81b44ee6817f%3A0x99dbeb82e2e88a1b!2sUNO!5e1!3m2!1sen!2sph!4v1705042739806!5m2!1sen!2sph" width="100%" height="400" style="border: none;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 					</div>
 				</div>

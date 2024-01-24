@@ -24,6 +24,9 @@ session_start();
 			.dropdown-menu {
 				background-color: rgba(0, 0, 0, 1.0);
 			}
+			.orders-nav::before{
+			    width: 100%;
+			}
 			.order-container {
 				padding: 10px;
 				height: 50vh;
@@ -158,7 +161,7 @@ session_start();
 			?>
 			<img src="" id="imagePreview" class="imagePreview" alt="Missing_Image">
 			<section class="container py-5">
-				<h2 class="mb-5">My Orders</h2>
+				<h1 class="mb-5">My Orders</h1>
 				<hr>
 				<div class="row">
 					<div class="container">

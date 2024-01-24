@@ -97,15 +97,75 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                         </div>
                         <div class="col-md-12">
                             <label class="form-label">Complete Address</label>
-                            <input type="text" class="form-control" value="<?php echo $_SESSION['caddress']; ?>" name="caddress" required>
+                            <input type="text" class="form-control" value="<?php echo $_SESSION['caddress']; ?>" name="caddress" disabled>
                         </div>
                         <div class="col-sm-12 text-center">
                         	<div class="row gy-3 p-3">
-                        		<button type="submit" class="btn btn-sm btn-outline-success py-1 mx-auto w-50 rounded-pill">Update Personal Details</button>
+                        		<div class="col-sm-12 col-md-6">
+                        			<button type="submit" class="btn btn-sm btn-outline-success py-1 w-75 rounded-pill">Update Personal Details</button>
+                        		</div>
+                        		<div class="col-sm-12 col-md-6">
+                        			<button class="btn btn-sm btn-outline-primary py-1 w-75 rounded-pill" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">Update Address</button>
+                        		</div>
                         	</div>
                         </div>
 					</div>
 				</form>
+                <div class="collapse mb-3" id="collapseExample">
+                	<div class="card card-body border">
+                		<form action="" id="address">
+                			<div class="row">
+		                        <div class="col-sm-12 col-md-6 col-lg-4">
+		                            <label class="form-label">Country</label>
+		                            <input type="text" class="form-control" value="<?php echo $_SESSION['country']; ?>" disabled>
+		                        </div>
+		                        <div class="col-sm-12 col-md-6 col-lg-4">
+		                            <label class="form-label">Region</label>
+		                            <select name="region" class="form-control" id="region"></select>
+		                            <input type="hidden" class="form-control" name="region_text" id="region-text" required>
+		                        </div>
+		                        <div class="col-sm-12 col-md-6 col-lg-4">
+		                            <label class="form-label">Province</label>
+		                            <select name="province" class="form-control" id="province"></select>
+		                            <input type="hidden" class="form-control" name="province_text" id="province-text" required>
+		                        </div>
+		                        <div class="col-sm-12 col-md-6 col-lg-4">
+		                            <label class="form-label">City / Municipality</label>
+		                            <select name="city" class="form-control" id="city"></select>
+		                            <input type="hidden" class="form-control" name="city_text" id="city-text" required>
+		                        </div>
+		                        <div class="col-sm-12 col-md-6 col-lg-4">
+		                            <label class="form-label">Barangay</label>
+		                            <select name="barangay" class="form-control" id="barangay"></select>
+		                            <input type="hidden" class="form-control" name="barangay_text" id="barangay-text" required>
+		                        </div>
+		                        <div class="col-sm-12 col-md-6 col-lg-4">
+		                            <label for="street-text" class="form-label">Subdivision</label>
+		                            <input type="text" class="form-control" name="subdivision" placeholder="Sample Subd.">
+		                        </div>
+		                        <div class="col-sm-12 col-md-6 col-lg-4">
+		                            <label for="street-text" class="form-label">Street / Apartment / Building</label>
+		                            <input type="text" class="form-control" name="street" placeholder="Sample St. / Apt. / Bldg.">
+		                        </div>
+		                        <div class="col-sm-12 col-md-6 col-lg-4">
+		                            <label for="street-text" class="form-label">Phase</label>
+		                            <input type="text" class="form-control" name="phase" placeholder="Ph. Sample">
+		                        </div>
+		                        <div class="col-sm-12 col-md-6 col-lg-4">
+		                            <label for="street-text" class="form-label">Block</label>
+		                            <input type="text" class="form-control" name="block" placeholder="Blk. Sample">
+		                        </div>
+		                        <div class="col-sm-12 col-md-6 col-lg-4">
+		                            <label for="street-text" class="form-label">Lot</label>
+		                            <input type="text" class="form-control" name="lot" placeholder="Lot Sample">
+		                        </div>
+		                        <div class="d-flex justify-content-center align-items-center">
+		                        	<button type="submit" class="btn btn-sm btn-outline-success py-1 w-75 rounded-pill">Submit Address</button>
+		                        </div>
+		                    </div>
+	                    </form>
+                    </div>
+            	</div>
             </section>
             <section class="container py-5">
 				<form action="" id="passwords">
@@ -139,6 +199,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			});
 		</script>
 		<script type="text/javascript" src="js/user_header.js"></script>
+		<script type="text/javascript" src="js/ph-address-selector.js"></script>
 		<script type="text/javascript" src="js/account.js"></script>
 		<script type="text/javascript" src="js/support.js"></script>
 	</body>

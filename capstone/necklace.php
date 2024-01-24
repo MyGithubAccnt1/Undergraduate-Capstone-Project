@@ -21,6 +21,9 @@
 			.dropdown-menu {
 				background-color: rgba(0, 0, 0, 1.0);
 			}
+			.necklace-nav::before{
+			    width: 100%;
+			}
 		</style>
 	</head>
 	<body>
