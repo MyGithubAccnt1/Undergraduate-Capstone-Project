@@ -38,40 +38,42 @@ if (mysqli_num_rows($result) > 0) {
     $date = "";
     while ($row = mysqli_fetch_assoc($result)) {
         $id = $id + 1;
-        if ($row['status'] === "Pending"){
-            echo '
-            <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'" style="background-color: rgba(255, 215, 0, 0.3);">
-            ';
-        }elseif ($row['status'] === "On-The-Way"){
-            echo '
-            <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'" style="background-color: rgba(144, 238, 144, 0.3);">
-            ';
-        }elseif ($row['status'] === "Delivered"){
-            echo '
-            <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'" style="background-color: rgba(57, 255, 20, 0.3);">
-            ';
-        }elseif ($row['status'] === "Canceled"){
-            echo '
-            <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'" style="background-color: rgba(240, 128, 128, 0.3);">
-            ';
-        }elseif ($row['status'] === "Rejected"){
-            echo '
-            <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'" style="background-color: rgba(255, 0, 0, 0.3);">
-            ';
-        }else{
-            echo '
-            <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'">
-            ';
-        }
         echo '
+        <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'">
             <div>
                 <small>'. $row["title"] .'</small>
             </div>
             <div>
-                <small>PHP '. $row["total"] .'</small>
+                <small style="color: red;">PHP '. $row["total"] .'</small>
             </div>
             <div>
+        ';
+            if ($row['status'] === "Pending"){
+                echo '
+                <small style="color: #f4c430;">'. $row["status"] .'</small>
+                ';
+            }elseif ($row['status'] === "On-The-Way"){
+                echo '
+                <small style="color: #f4c430;">'. $row["status"] .'</small>
+                ';
+            }elseif ($row['status'] === "Delivered"){
+                echo '
+                <small style="color: #f4c430">'. $row["status"] .'</small>
+                ';
+            }elseif ($row['status'] === "Canceled"){
+                echo '
+                <small style="color: #f4c430;">'. $row["status"] .'</small>
+                ';
+            }elseif ($row['status'] === "Rejected"){
+                echo '
+                <small style="color: #f4c430;">'. $row["status"] .'</small>
+                ';
+            }else{
+                echo '
                 <small>'. $row["status"] .'</small>
+                ';
+            }
+        echo '
             </div>
             <div>
                 <small>'. $row["deyt"] .'</small>
@@ -208,7 +210,7 @@ if (mysqli_num_rows($result) > 0) {
                         <div class="row mt-3">
                             <div class="col-12 text-center">
                                 <div class="stick-top bg-dark text-center text-white py-2">Chat with SBM</div>
-                                <div class="border border-black card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="message-container'. $id .'">
+                                <div class="border border-black card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px; transform: scaleY(-1);" id="message-container'. $id .'">
                                     <!-- dynamic -->
                                 </div>
                                 <div class="stick-bot">
