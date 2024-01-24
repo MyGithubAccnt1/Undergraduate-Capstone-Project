@@ -257,6 +257,41 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 								</div>
 							</div>
 
+							<div class="custom-collapse collapse py-5" id="necklace_text_body">
+							  	<div class="row gy-3">
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_necklace_engrave">Back</button>
+							  		</div>
+									<h1 class="mb-3">Insert Text</h1>
+									<hr>
+									<div class="col-12">
+										<form id="necklace_text_body_form">
+										    <div class="comment-area">
+										    	<div style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+		            								<span style="margin: 0 5px 0 7px;">Font Style:</span>
+		            								<select id="necklace_text_body_font">
+		                                    	        <option value="Arial">Arial</option>
+		                                    	        <option value="Courier" selected>Courier</option>
+		            									<option value="Helvetica">Helvetica</option>
+		            									<option value="Impact">Impact</option>
+		            									<option value="Segoe UI">Segoe UI</option>
+		            									<option value="Times New Roman">Times New Roman</option>
+		            									<option value="Verdana">Verdana</option>
+		                                    	    </select>
+										        </div>
+										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+										        	<span>Text:</span>
+										            <textarea class="form-control rounded-pill" rows="2" name="necklace_text_body" required></textarea>
+										        </div>
+										        <div class="w-75 mx-auto p-1">
+										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+										        </div>
+										    </div>
+										</form>
+									</div>
+								</div>
+							</div>
+
 							<div class="custom-collapse collapse py-5" id="table_nameplate_name">
 							  	<div class="row gy-3">
 							  		<div class="col-6 d-flex justify-content-start">
