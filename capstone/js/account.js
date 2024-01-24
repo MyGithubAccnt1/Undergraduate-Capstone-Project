@@ -4,6 +4,7 @@ $(document).on("submit", "#personal", function (event) {
     var fname = $(this).find("input[name='fname']").val();
     var lname = $(this).find("input[name='lname']").val();
     var mnumber = $(this).find("input[name='mnumber']").val();
+    var caddress = $(this).find("input[name='caddress']").val();
 
     $.ajax({
         url: "./php/update_personal.php",
@@ -11,7 +12,8 @@ $(document).on("submit", "#personal", function (event) {
         data: {
             fname: fname,
             lname: lname,
-            mnumber: mnumber
+            mnumber: mnumber,
+            caddress: caddress
         },
         success: function (data) {
             data = data.trim();
@@ -28,46 +30,73 @@ $(document).on("submit", "#personal", function (event) {
     });
 });
 
-$(document).on("submit", "#address", function (event) {
-    event.preventDefault();
+function caddress() {
+    if ($("input[name='caddress']").val() === "") {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    const nominatimApiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
 
-    var region = $("#region option:selected").text();
-    var province = $("#province option:selected").text();
-    var city = $("#city option:selected").text();
-    var barangay = $("#barangay option:selected").text();
-    var subdivision = $(this).find("input[name='subdivision']").val();
-    var street = $(this).find("input[name='street']").val();
-    var phase = $(this).find("input[name='phase']").val();
-    var block = $(this).find("input[name='block']").val();
-    var lot = $(this).find("input[name='lot']").val();
-    $.ajax({
-        url: "./php/update_address.php",
-        method: "POST",
-        data: {
-            region: region,
-            province: province,
-            city: city,
-            barangay: barangay,
-            subdivision: subdivision,
-            street: street,
-            phase: phase,
-            block: block,
-            lot: lot
-        },
-        success: function (data) {
-            data = data.trim();
-            if (data === "1") {
-                alert('Notice: Address has been updated successfully.');
-                window.location.href = 'account.php';
-            } else {
-                alert('Unexpected Error: [' + data + ']');
-            }
-        },
-        error: function (xhr, status, error) {
-            console.error("AJAX Request Error:", status, error);
+                    fetch(nominatimApiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.display_name) {
+                                const address = data.display_name;
+                                $("input[name='caddress']").val(address);
+                            }
+                        });
+                }
+            );
         }
-    });
+    }
+}
+
+$(document).on('input', "input[name='caddress']", function() {
+    caddress();
 });
+
+// $(document).on("submit", "#address", function (event) {
+//     event.preventDefault();
+
+//     var region = $("#region option:selected").text();
+//     var province = $("#province option:selected").text();
+//     var city = $("#city option:selected").text();
+//     var barangay = $("#barangay option:selected").text();
+//     var subdivision = $(this).find("input[name='subdivision']").val();
+//     var street = $(this).find("input[name='street']").val();
+//     var phase = $(this).find("input[name='phase']").val();
+//     var block = $(this).find("input[name='block']").val();
+//     var lot = $(this).find("input[name='lot']").val();
+//     $.ajax({
+//         url: "./php/update_address.php",
+//         method: "POST",
+//         data: {
+//             region: region,
+//             province: province,
+//             city: city,
+//             barangay: barangay,
+//             subdivision: subdivision,
+//             street: street,
+//             phase: phase,
+//             block: block,
+//             lot: lot
+//         },
+//         success: function (data) {
+//             data = data.trim();
+//             if (data === "1") {
+//                 alert('Notice: Address has been updated successfully.');
+//                 window.location.href = 'account.php';
+//             } else {
+//                 alert('Unexpected Error: [' + data + ']');
+//             }
+//         },
+//         error: function (xhr, status, error) {
+//             console.error("AJAX Request Error:", status, error);
+//         }
+//     });
+// });
 
 $(document).on("submit", "#passwords", function (event) {
     event.preventDefault();
