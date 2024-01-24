@@ -5,13 +5,12 @@ $email = mysqli_real_escape_string($conn, $_POST['email']);
 $password = mysqli_real_escape_string($conn, $_POST['password']);
 date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d H:i');
-$place = 'Philippines';
 $role = 'Regular';
 $status = 'Online';
 
-$sql = "INSERT INTO account (email, password, role, status, deyt, caddress, country) VALUES (?, ?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO account (email, password, role, status, deyt) VALUES (?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sssssss", $email, $password, $role, $status, $date, $place, $place);
+$stmt->bind_param("sssss", $email, $password, $role, $status, $date);
 
 if ($stmt->execute()) {
 	$sql = "SELECT * FROM account WHERE email = '$email' and password = '$password'";
@@ -37,18 +36,6 @@ if ($stmt->execute()) {
 	    $_SESSION["mnumber"] = '';
 	} else {
 	    $_SESSION["mnumber"] = $row['mnumber'];
-	}
-
-	if (empty($row['caddress'])) {
-	    $_SESSION["caddress"] = '';
-	} else {
-	    $_SESSION["caddress"] = $row['caddress'];
-	}
-
-	if (empty($row['country'])) {
-	    $_SESSION["country"] = '';
-	} else {
-	    $_SESSION["country"] = $row['country'];
 	}
 
   	echo "1";
