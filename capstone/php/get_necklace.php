@@ -25,7 +25,7 @@ if ($filter === "None") {
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
 			echo '<div class="col-sm-12 col-md-4 col-lg-3 mb-3">';
-				echo '<div class="thumb-wrapper">';
+				echo '<div class="thumb-wrapper cool">';
 					echo '<div class="img-box">';
 						echo '<img src="' . $row['thumbnail'] . '" class="img-responsive" alt="Missing Image">';
 						echo '<input type="hidden" name="image" value="' . $row['thumbnail'] . '">';

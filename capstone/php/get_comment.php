@@ -14,7 +14,7 @@ if (mysqli_num_rows($result) > 0) {
         if ($row['email'] === $_SESSION['email']) {
 
             if ($row['role'] === 'Admin'){
-                echo '<div class="card p-3" style="width: 85%; margin: 20px; margin-left: auto;">';
+                echo '<div class="card p-3" style="width: 85%; margin: 20px; margin-left: auto; transform: scaleY(-1);">';
                     echo '<div class="d-flex justify-content-between align-items-center">';
                         echo '<div class="d-flex flex-row align-items-center">';
                             echo '<span>';
@@ -27,7 +27,7 @@ if (mysqli_num_rows($result) > 0) {
                     echo '</div>';
                 echo '</div>';
             } else {
-                echo '<div class="card p-3" style="width: 85%; margin: 20px; margin-left: auto;">';
+                echo '<div class="card p-3" style="width: 85%; margin: 20px; margin-left: auto; transform: scaleY(-1);">';
                     echo '<div class="d-flex justify-content-between align-items-center">';
                         echo '<div style="display: flex; align-items: center; justify-content: space-around; width: 100%;">';
                             echo '<div class="ellipsis" style="flex: 75%;">';
@@ -41,17 +41,17 @@ if (mysqli_num_rows($result) > 0) {
                             echo '</div>';
                         echo '</div>';
                     echo '</div>';
-                    echo '<div class="d-flex justify-content-between align-items-center mb-0 mt-2">';
-                        echo '<a href="#" class="text-secondary">Reply</a>';
-                        echo '<a href="#" class="text-danger" style="margin-left: auto;">Delete</a>';
-                    echo '</div>';   
+                    // echo '<div class="d-flex justify-content-between align-items-center mb-0 mt-2">';
+                    //     echo '<a href="#" class="text-secondary">Reply</a>';
+                    //     echo '<a href="#" class="text-danger" style="margin-left: auto;">Delete</a>';
+                    // echo '</div>';   
                 echo '</div>';
             }
 
         } else {
 
             if ($row['role'] === 'Admin'){
-                echo '<div class="card p-3" style="width: 85%; margin: 20px; margin-right: auto;">';
+                echo '<div class="card p-3" style="width: 85%; margin: 20px; margin-right: auto; transform: scaleY(-1);">';
                     echo '<div class="d-flex justify-content-between align-items-center">';
                         echo '<div class="d-flex flex-row align-items-center">';
                             echo '<span>';
@@ -64,7 +64,7 @@ if (mysqli_num_rows($result) > 0) {
                     echo '</div>';
                 echo '</div>';
             } else {
-                echo '<div class="card p-3" style="width: 85%; margin: 20px; margin-right: auto;">';
+                echo '<div class="card p-3" style="width: 85%; margin: 20px; margin-right: auto; transform: scaleY(-1);">';
                     echo '<div class="d-flex justify-content-between align-items-center">';
                         echo '<div style="display: flex; align-items: center; justify-content: space-around; width: 100%;">';
                             echo '<div class="ellipsis" style="flex: 75%;">';
@@ -86,7 +86,7 @@ if (mysqli_num_rows($result) > 0) {
     }
     mysqli_free_result($result);
 } else {
-    echo '<div class="card p-3" style="width: 95%; margin: 20px auto;">';
+    echo '<div class="card p-3" style="width: 95%; margin: 20px auto; transform: scaleY(-1);">';
         echo '<div class="d-flex justify-content-between align-items-center">';
             echo '<div class="d-flex flex-row align-items-center">';
                 echo '<span>';
