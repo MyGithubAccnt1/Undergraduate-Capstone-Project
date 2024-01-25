@@ -75,7 +75,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 								<h1 class="mb-3">Select Product</h1>
 								<hr>
 								<div class="col-12">
-									<button type="button" id="logo_seal" class="btn btn-outline-light rounded-0 w-50">Logo Seal</button>
+									<button type="button" id="logo_seal" class="btn btn-outline-light rounded-0 w-50">Directory Marker</button>
 								</div>
 								<div class="col-12">
 									<button type="button" id="necklace" class="btn btn-outline-light rounded-0 w-50">Necklace</button>
