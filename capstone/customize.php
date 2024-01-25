@@ -267,18 +267,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 									<div class="col-12">
 										<form id="necklace_text_body_form">
 										    <div class="comment-area">
-										    	<div style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
-		            								<span style="margin: 0 5px 0 7px;">Font Style:</span>
-		            								<select id="necklace_text_body_font">
-		                                    	        <option value="Arial">Arial</option>
-		                                    	        <option value="Courier" selected>Courier</option>
-		            									<option value="Helvetica">Helvetica</option>
-		            									<option value="Impact">Impact</option>
-		            									<option value="Segoe UI">Segoe UI</option>
-		            									<option value="Times New Roman">Times New Roman</option>
-		            									<option value="Verdana">Verdana</option>
-		                                    	    </select>
-										        </div>
 										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
 										        	<span>Text:</span>
 										            <textarea class="form-control rounded-pill" rows="2" name="necklace_text_body" required></textarea>
@@ -347,7 +335,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 										            <textarea class="form-control rounded-pill" rows="2" name="necklace_text" required></textarea>
 										        </div>
 										        <div class="w-75 mx-auto p-1">
-										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+										        	<button type="button" id="necklace_text_body_clip" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Clip</button>
+										        </div>
+										        <div class="w-75 mx-auto p-1">
+										        	<button type="button" class="btn btn-sm btn-primary py-1 w-100 rounded-pill necklace_convert">Done</button>
 										        </div>
 										    </div>
 										</form>
@@ -367,7 +358,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 										<input type="file" id="necklace_image_file" accept="image/png">
 									</div>
 									<div class="w-75 mx-auto p-1">
-										<button type="button" id="necklace_image_engrave" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
+										<button type="button" class="btn btn-sm btn-primary py-1 w-100 rounded-pill necklace_convert">Done</button>
 									</div>
 								</div>
 							</div>
