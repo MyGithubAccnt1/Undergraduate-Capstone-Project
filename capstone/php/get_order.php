@@ -36,6 +36,7 @@ if (mysqli_num_rows($result) > 0) {
     ';
     $id = 0;
     $date = "";
+    $detailsArray = array();
     while ($row = mysqli_fetch_assoc($result)) {
         $id = $id + 1;
         echo '
@@ -93,7 +94,7 @@ if (mysqli_num_rows($result) > 0) {
                         $newresult = $conn->query($newsql);
                         if ($newresult->num_rows > 0) {
 
-                            echo '
+        echo '
                             <div class="row">
                                 <div>
                                     
@@ -111,17 +112,18 @@ if (mysqli_num_rows($result) > 0) {
                                     <small>TOTAL</small>
                                 </div>
                             </div>
-                            ';
+        ';
 
                             while ($newrow = $newresult->fetch_assoc()) {
 
-                                echo '
+        echo '
                                 <div class="row">
                                     <div class="img-box">
                                         <img src="'. $newrow["thumbnail"] .'" class="cart-img img-responsive" alt="X">
                                         <input type="hidden" value="'. $newrow["thumbnail"] .'" name="image">
                                     </div>
-                                    <div>';
+                                    <div>
+        ';
 
                                     if (empty($newrow['title'])) {
                                         echo '
@@ -135,7 +137,8 @@ if (mysqli_num_rows($result) > 0) {
 
                                 echo '
                                     </div>
-                                    <div>';
+                                    <div>
+                                ';
 
                                     if (empty($newrow['price'])) {
                                         echo '
@@ -152,7 +155,8 @@ if (mysqli_num_rows($result) > 0) {
                                     <div>
                                         <small>'. $newrow["qty"] .'</small>
                                     </div>
-                                    <div>';
+                                    <div>
+                                    ';
 
                                     if (empty($newrow['total'])) {
                                         echo '
@@ -169,11 +173,40 @@ if (mysqli_num_rows($result) > 0) {
                                 </div>
                                 ';
 
+                                if (!is_null($newrow['details'])) {
+                                    $detailsArray = explode(', ', $newrow['details']);
+                                } else {
+                                    $detailsArray = array();
+                                }
                             }
                         }
         echo '
                         </div>
+        ';
+                        if (!empty($detailsArray)) {
+                            echo'
+                            <div class="row mt-3">
+                                <div class="col-12 text-center">
+                                    <p>ORDER DETAILS</p>
+                                </div>
+                            </div>
+                            ';
 
+                            foreach ($detailsArray as $value) {
+                                $details = explode(': ', $value);
+                                echo '
+                                    <div class="row">
+                                        <div class="col-6 text-end">
+                                            <p>'. $details[0] .' : </p>
+                                        </div>
+                                        <div class="col-6 text-start">
+                                            <p>'. $details[1] .'</p>
+                                        </div>
+                                    </div>
+                                ';
+                            }
+                        }
+        echo '
                         <div class="row mt-3">
                             <div class="col-12 text-center">
                                 <p>PERSONAL DETAILS</p>
@@ -210,7 +243,8 @@ if (mysqli_num_rows($result) > 0) {
                             <div class="col-6 text-start">
                                 <p>'. $row['caddress'] .'</p>
                             </div>
-                        </div>';
+                        </div>
+        ';
 
                         if (!empty($row['alt_address'])) {
                             echo '
