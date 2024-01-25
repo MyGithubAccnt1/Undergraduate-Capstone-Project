@@ -121,17 +121,50 @@ if (mysqli_num_rows($result) > 0) {
                                         <img src="'. $newrow["thumbnail"] .'" class="cart-img img-responsive" alt="X">
                                         <input type="hidden" value="'. $newrow["thumbnail"] .'" name="image">
                                     </div>
-                                    <div>
+                                    <div>';
+
+                                    if (empty($newrow['title'])) {
+                                        echo '
+                                        <small>Customize Item</small>
+                                        ';
+                                    } else {
+                                        echo '
                                         <small>'. $newrow["title"] .'</small>
+                                        ';
+                                    }
+
+                                echo '
                                     </div>
-                                    <div>
+                                    <div>';
+
+                                    if (empty($newrow['price'])) {
+                                        echo '
+                                        <small>Estimating...</small>
+                                        ';
+                                    } else {
+                                        echo '
                                         <small>PHP '. $newrow["price"] .'</small>
+                                        ';
+                                    }
+
+                                echo '
                                     </div>
                                     <div>
                                         <small>'. $newrow["qty"] .'</small>
                                     </div>
-                                    <div>
+                                    <div>';
+
+                                    if (empty($newrow['total'])) {
+                                        echo '
+                                        <small>Estimating...</small>
+                                        ';
+                                    } else {
+                                        echo '
                                         <small>PHP '. $newrow["total"] .'</small>
+                                        ';
+                                    }
+
+                                echo '
                                     </div>
                                 </div>
                                 ';

@@ -42,7 +42,16 @@ echo '
         <div class="col-5 text-end">
             PHP Estimating...
         </div>
-
+    </div>
+    <div class="row text-center text-white bg-dark">
+        <div class="col-6 text-start">
+            Items: 1
+        </div>
+        <div class="col-6 text-end">
+            Total: PHP Estimating...
+        </div>
+    </div>
+    <div class="row text-start border" style="border-style: none none solid none !important;">
         <div class="col-5">
             Shipping Fee
         </div>
