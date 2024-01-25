@@ -6,6 +6,7 @@ $email = $_SESSION['email'];
 $sql = "SELECT * FROM cart WHERE email = '$email' ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
 $total = 0;
+$quantity = 0;
 $sub_total = 0;
 
 if (mysqli_num_rows($result) > 0) {
@@ -34,17 +35,21 @@ if (mysqli_num_rows($result) > 0) {
                     '. $row['qty'] .'
                 </div>
                 <div class="col-5 text-end">
-                    <b>PHP '. $row['price'] .'</b>
+                    PHP '. $row['price'] .'
                 </div>
             </div>
         ';
+        $quantity = $quantity + str_replace([','], '', $row['qty']);
         $total = $total + floatval(str_replace([','], '', $row['total']));
     }
     $formatted_total = number_format($total, 2);
     echo '
         <div class="row text-center text-white bg-dark">
-            <div class="col-12 text-end">
-                <b>Total: PHP '. $formatted_total .'</b>
+            <div class="col-6 text-start">
+                Items: '. $quantity .'
+            </div>
+            <div class="col-6 text-end">
+                Total: PHP '. $formatted_total .'
             </div>
         </div>
         <div class="row text-start border" style="border-style: none none solid none !important;">
@@ -52,10 +57,10 @@ if (mysqli_num_rows($result) > 0) {
                 Shipping Fee
             </div>
             <div class="col-2 text-center">
-                -
+                
             </div>
             <div class="col-5 text-end">
-                <b>PHP 0.00</b>
+                PHP 0.00
             </div>
         </div>
         <div class="row text-center text-white bg-dark">
