@@ -40,6 +40,23 @@ $(document).ready(function() {
 });
 
 $(document).on('click', '#proceed', function() {
+    var dataURL = localStorage.getItem('Object');
+    const imageDataWithoutPrefix = dataURL.split(',')[1];
+    $.ajax({
+        url: "./php/upload_temp.php",
+        method: "POST",
+        data: {
+            imageFile: imageDataWithoutPrefix
+        },
+        success: function (data) {
+            const baseUrl = window.location.origin;
+            if (baseUrl === "http://localhost") {
+                data = 'capstone/' + data;
+            }
+            dataURL = data
+        }
+    });
+    const details = window.localStorage.getItem('details');
     var buyer = $("#buyer").text().replace("Buyer: ", "");
     var alt_address = $("#alternative_address").text().replace("Alternative: ", "");
     if (!alt_address) {
@@ -50,18 +67,17 @@ $(document).on('click', '#proceed', function() {
         type: 'POST',
         data: {
             buyer: buyer,
-            alt_address: alt_address
+            alt_address: alt_address,
+            thumbnail: dataURL,
+            details: details
         },
         success: function (data) {
             data = data.trim();
             if (data === "1") {
-                alert('Error: Your cart is empty.');
-                window.location.href = "cart.php";
-            } else if (data === "2") {
                 alert('Only 1 checkout can be made every minute.');
-            }else if (data === "4") {
+            }else if (data === "3") {
                 alert('Ordering successful.');
-                window.location.href = "order.php";
+                // window.location.href = "order.php";
             } else {
                 alert('Unexpected Error: [' + data + ']');
             }
