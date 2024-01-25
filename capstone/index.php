@@ -111,7 +111,7 @@ session_start();
 			<section class="container py-5" id="learn-more">
 				<div class="row d-flex justify-content-center text-center why-container">
 					<h2 class="mb-5">Why Choose Us?</h2>
-					<div class="col-md-2 why-box">
+					<div class="col-md-2 why-box cool">
 						<div>
 							<i class="fas fa-shipping-fast fa-lg"></i>
 						</div>
@@ -119,7 +119,7 @@ session_start();
 							<h5>Free Shipping</h5>
 						</div>
 					</div>
-					<div class="col-md-2 why-box">
+					<div class="col-md-2 why-box cool">
 						<div>
 							<i class="fas fa-handshake"></i>
 						</div>
@@ -127,7 +127,7 @@ session_start();
 							<h5>Big Discounts</h5>
 						</div>
 					</div>
-					<div class="col-md-2 why-box">
+					<div class="col-md-2 why-box cool">
 						<div>
 							<i class="fas fa-award"></i>
 						</div>
@@ -135,7 +135,7 @@ session_start();
 							<h5>Certified</h5>
 						</div>
 					</div>
-					<div class="col-md-2 why-box">
+					<div class="col-md-2 why-box cool">
 						<div>
 							<i class="fas fa-people-carry fa-lg"></i>
 						</div>
@@ -143,7 +143,7 @@ session_start();
 							<h5>Cash on Delivery</h5>
 						</div>
 					</div>
-					<div class="col-md-2 why-box">
+					<div class="col-md-2 why-box cool">
 						<div>
 							<i class="fas fa-clipboard-check"></i>
 						</div>
