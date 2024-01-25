@@ -122,7 +122,7 @@ $(document).on('click', '#necklace_engrave_image', function() {
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
 });
-$(document).on('submit', '#necklace_text_form', function() {
+$(document).on('submit', '#necklace_text_body_form', function() {
     event.preventDefault();
     var close = product;
     product = document.getElementById('final');
@@ -522,7 +522,7 @@ function ShowCanvas() {
         canvas.add(text);
     }
 
-    $("textarea[name='logo_seal_company']").on('input change', function() {
+    $("textarea[name='logo_seal_company']").on('input', function() {
         logo_seal_change_text();
     });
 
@@ -604,6 +604,39 @@ function ShowCanvas() {
         canvas.renderAll();
     })
 
+    $(document).on('click', '#necklace_shape_text', function() {
+        $("textarea[name='necklace_text_body']").val('');
+        $("textarea[name='necklace_text_body']").focus();
+    });
+
+    $("textarea[name='necklace_text_body']").on('input', function() {
+        necklace_text_body();
+    });
+
+    function necklace_text_body() {
+        var UserText = $("textarea[name='necklace_text_body']").val();
+
+        const textObjects = canvas.getObjects('text');
+
+        if (textObjects.length > 0) {
+            const lastIndex = textObjects.length - 1;
+            const lastTextObject = textObjects[lastIndex];
+            canvas.remove(lastTextObject);
+        }
+
+        const text = new fabric.Text(UserText, {
+            left: canvas.width / 2,
+            top: canvas.height / 2 - 10,
+            fontSize: 75,
+            fontFamily: 'Great Vibes',
+            fill: 'black',
+            originX: 'center',
+            originY: 'center'
+        });
+
+        canvas.add(text);
+    }
+
     $(document).on('click', '#necklace_engrave_text', function() {
         $("textarea[name='necklace_text']").val('SAMPLE');
         necklace_text_change_text();
@@ -629,7 +662,7 @@ function ShowCanvas() {
             top: canvas.height / 2 - 21,
             fontSize: 15,
             fontFamily: $("#necklace_text_font").val(),
-            fill: material,
+            fill: 'black',
             originX: 'center',
             originY: 'center'
         });
@@ -637,13 +670,42 @@ function ShowCanvas() {
         canvas.add(text);
     }
 
-    $("textarea[name='necklace_text']").on('input change', function() {
+    $("textarea[name='necklace_text']").on('input', function() {
         necklace_text_change_text();
     });
 
     $("#necklace_text_font").on('change', function() {
         necklace_text_change_text();
     });
+
+    $('#necklace_text_body_clip').on('click', function () {
+        canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
+        fabric.Image.fromURL('images/customize/necklace_' + material + '_' + shape + '.png', function(maskImage) {
+            maskImage.set({
+                scaleX: 0.3,
+                scaleY: 0.3,
+                left: canvas.width / 2,
+                top: canvas.height / 2 + 10,
+                originX: 'center',
+                originY: 'center',
+                evented: false
+            });
+
+            const textObjects = canvas.getObjects('text');
+
+            if (textObjects.length > 0) {
+                const lastIndex = textObjects.length - 1;
+
+                const lastTextObject = textObjects[lastIndex];
+
+                lastTextObject.globalCompositeOperation = 'source-atop';
+                maskImage.globalCompositeOperation = 'destination-in';
+
+                canvas.add(maskImage, lastTextObject);
+                canvas.renderAll();
+            }
+        });
+    })
 
     $('#necklace_image_file').on('change', function (e) {
         const textObjects = canvas.getObjects();
@@ -720,7 +782,7 @@ function ShowCanvas() {
         }
     });
 
-    $('#necklace_image_engrave').on('click', function() {
+    $('.necklace_convert').on('click', function() {
         const textObjects = canvas.getObjects();
 
         if (textObjects.length > 1) {
@@ -913,7 +975,7 @@ function ShowCanvas() {
         });
     }
 
-    $("textarea[name='table_nameplate_company']").on('input change', function() {
+    $("textarea[name='table_nameplate_company']").on('input', function() {
         table_nameplate_change_company();
     });
 
@@ -964,7 +1026,7 @@ function ShowCanvas() {
         canvas.add(text);
     }
 
-    $("textarea[name='table_nameplate_name']").on('input change', function() {
+    $("textarea[name='table_nameplate_name']").on('input', function() {
         const textObjects = canvas.getObjects('text');
 
         if (textObjects.length > 0) {
@@ -1035,7 +1097,7 @@ function ShowCanvas() {
         canvas.add(text);
     }
 
-    $("textarea[name='table_nameplate_position']").on('input change', function() {
+    $("textarea[name='table_nameplate_position']").on('input', function() {
         const textObjects = canvas.getObjects('text');
 
         if (textObjects.length > 0) {
