@@ -15,7 +15,7 @@ session_start();
 	    		</a>
 		    </li>
 		    <li>
-		    	<a href="#" class="close">
+		    	<a href="index.php">
 	            	<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
 	            		<img src="images/saint.png" height="17" width="17" alt="Missing_Image" style="margin: 0 20px 0 10px;">
 	            		<small>Home</small>
@@ -162,10 +162,11 @@ session_start();
 		<?php
 		if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		?>
-		<div>
+		<div style="margin-right: 10px !important;">
 			<a href="cart.php">
-				<button type="button" class="btn-nav rounded-0 btn-sm cart-nav">
-					<i class="fas fa-shopping-cart">(0)</i>
+				<button type="button" id="cart-only" class="btn-nav rounded-0 btn-sm cart-nav position-relative">
+					<i class="fas fa-cart-arrow-down"></i>
+					<span class="font-monospace position-absolute"></span>
 				</button>
 			</a>
 			<div class="cart-header" id="cart-header-container"></div>
@@ -210,7 +211,7 @@ session_start();
 		?>
 		<div class="d-none d-lg-block">
 			<a href="signin.php">
-				<button type="button" class="btn-nav rounded-0 btn-sm">
+				<button type="button" class="btn-nav rounded-0 btn-sm signin-nav">
 					<small>SIGN IN</small>
 				</button>
 			</a>
