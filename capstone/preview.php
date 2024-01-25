@@ -42,6 +42,32 @@ session_start();
 	<body>
 		<main class="container-fluid p-0">
 			<?php include('include/user_header.php') ?>
+			<?php
+			if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+			?>
+			<section class="floating_chat_head" onclick="maximize_floating_chat();">
+				<section class="floating_chat_body">
+                    <button type="button" onclick="minimize_floating_chat();" class="bg-dark text-center text-white py-2 w-100 border-0">Chat with SBM</button>
+                    <div id="support-container">
+                    	<!-- dynamic -->
+                    </div>
+                    <form id="support-form">
+                    	<div class="comment-area">
+                    		<div class="bg-dark" style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
+                    			<div class="w-100 p-1">
+                    				<textarea class="form-control rounded-pill" placeholder="Type your message here." rows="1" name="comment" required></textarea>
+                    			</div>
+                    			<div class="w-50 p-1 d-flex align-items-center">
+                    				<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Send</button>
+                    			</div>
+                    		</div>
+                    	</div>
+                    </form>
+				</section>
+			</section>
+			<?php
+			}
+			?>
 			<img src="" id="imagePreview" class="imagePreview" alt="Missing_Image">
 			<section class="container py-5">
 				<div class="row">
@@ -49,7 +75,7 @@ session_start();
 						<div id="content-wrapper">
 							<div>
 								<div class="d-flex justify-content-center m-0 p-0">
-									<img id="featured" src="">
+									<img id="featured" src="" class="cool">
 								</div>
 								<!-- <div class="d-flex justify-content-center m-0 p-0">
 									<div id="slide-wrapper" class="m-0 p-0">
@@ -127,7 +153,7 @@ session_start();
 				<div class="row">
                     <div class="col-md-12">
                         <div class="stick-top bg-dark text-center text-white py-2">Comment Section</div>
-                        <div class="border border-black card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="comment-container">
+                        <div class="border border-black card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px; transform: scaleY(-1);" id="comment-container">
 							<!-- dynamic -->
                         </div>
                         <div class="stick-bot">
@@ -152,7 +178,7 @@ session_start();
 			    <div class="row">
                     <div class="col-md-12">
                         <div class="stick-top bg-dark text-center text-white py-2">Comment Section</div>
-                        <div class="border border-black card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px;" id="comment-container">
+                        <div class="border border-black card-body" style="overflow-x: hidden; overflow-y: auto; height: 200px; transform: scaleY(-1);" id="comment-container">
 							<!-- dynamic -->
                         </div>
                         <div class="stick-bot">
@@ -196,6 +222,7 @@ session_start();
 			$(window).on('load', function() {
 			  $(".loader").fadeOut('slow');
 			  $(".sticky-top").fadeIn('slow');
+			  $('.floating_chat_head').fadeIn('slow');
 			  $('#title').text(window.localStorage.getItem('title'));
 			  $('#featured').attr('src', window.localStorage.getItem('thumbnail'));
 			  $('#price').text('PHP ' + window.localStorage.getItem('price'));
@@ -205,5 +232,6 @@ session_start();
 		<script type="text/javascript" src="js/user_header.js"></script>
 		<script type="text/javascript" src="js/preview.js"></script>
 		<script type="text/javascript" src="js/image_hover.js"></script>
+		<script type="text/javascript" src="js/support.js"></script>
 	</body>
 </html>
