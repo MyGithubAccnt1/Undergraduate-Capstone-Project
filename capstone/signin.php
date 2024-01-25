@@ -26,6 +26,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	  	<link rel="stylesheet" type="text/css" href="./css/slider.css">
 		<link rel="stylesheet" type="text/css" href="./css/new_arrival.css">
 		<style>
+			.signin-nav::before{
+			    width: 100%;
+			}
 			.hero-section {
 		  		position: absolute;
 		  		z-index: -1;
@@ -36,7 +39,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		  		background-image: url('images/bg.gif');
 		  		background-size: cover;
 		  		background-repeat: no-repeat;
-		  		filter: brightness(25%);
+		  		filter: brightness(35%);
 		  	}
 		  	.hero {
 		  		height: calc(100vh - 50px);
