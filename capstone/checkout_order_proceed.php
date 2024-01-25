@@ -4,7 +4,7 @@ error_reporting(0);
 ini_set('display_errors', 0);
 if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
-	if (!empty($_SESSION['fname']) || !empty($_SESSION['lname']) || !empty($_SESSION['mnumber'])) {
+	if (!empty($_SESSION['fname']) || !empty($_SESSION['lname']) || !empty($_SESSION['mnumber']) || !empty($_SESSION['caddress'])) {
 ?>
 <!doctype html>
 <html lang="en">
@@ -72,14 +72,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-12">
+					<div class="col-sm-12 col-md-6 col-lg-6 mx-auto">
 						<div class="container border border-dark text-start p-3">
 							<h1 class="text-center bg-dark text-white">SALES INVOICE</h1>
-							<h6 id="date"></h6>
-							<h6>
-								Seller: Saint Benedict Medallion
+							<h6 class="text-center">
+								Saint Benedict Medallion
 								<br>
-								Address: Trece Martires City, Cavite
+								Trece Martires City, Cavite
+								<br>
+								<p id="date"></p>
 							</h6>
 							<h6 class="m-0">Buyer: <?php echo $_SESSION['fname']; ?> <?php echo $_SESSION['lname']; ?></h6>
 							<h6 class="m-0">Number: <?php echo $_SESSION['mnumber']; ?></h6>
@@ -116,9 +117,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 </html>
 <?php
 	} else {
-		    echo"<script>alert('Notice: There are some empty field in your profile, please fill it up to continue.');</script>";
-		    $script = "<script>window.location = 'account.php';</script>";
-		    echo $script;
+	    echo"<script>alert('Notice: There are some empty field in your profile, please fill it up to continue.');</script>";
+	    $script = "<script>window.location = 'account.php';</script>";
+	    echo $script;
 	}
 } else {
 	echo"<script>var xlink = window.location.href;</script>";

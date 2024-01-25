@@ -61,7 +61,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	</head>
 	<body>
 		<section class="loader"></section>
-		<main class="container-fluid p-0 bg-dark">
+		<main class="container-fluid p-0" style="background-image: repeating-linear-gradient(90deg, hsla(57,0%,42%,0.09) 0px, hsla(57,0%,42%,0.09) 1px,transparent 1px, transparent 60px),repeating-linear-gradient(0deg, hsla(57,0%,42%,0.09) 0px, hsla(57,0%,42%,0.09) 1px,transparent 1px, transparent 60px),repeating-linear-gradient(0deg, hsla(57,0%,42%,0.09) 0px, hsla(57,0%,42%,0.09) 1px,transparent 1px, transparent 10px),repeating-linear-gradient(90deg, hsla(57,0%,42%,0.09) 0px, hsla(57,0%,42%,0.09) 1px,transparent 1px, transparent 10px),linear-gradient(90deg, rgb(20,20,20),rgb(20,20,20));">
 			<section class="container">
 				<div class="row text-white text-center">
 					<div class="col-md-6 left">
@@ -331,7 +331,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		                                    	    </select>
 										        </div>
 										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
-										        	<span>Company:</span>
+										        	<span>Text:</span>
 										            <textarea class="form-control rounded-pill" rows="2" name="necklace_text" required></textarea>
 										        </div>
 										        <div class="w-75 mx-auto p-1">
@@ -362,60 +362,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 									</div>
 								</div>
 							</div>
-
-							<div class="custom-collapse collapse py-5" id="table_nameplate_position">
-							  	<div class="row gy-3">
-							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_table_nameplate_position">Back</button>
-							  		</div>
-									<h1 class="mb-3">Insert Position</h1>
-									<hr>
-									<div class="col-12">
-										<form id="table_nameplate_position_form">
-										    <div class="comment-area gy-3">
-										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
-										        	<span style="margin-left: 17px;">Position:</span>
-										            <textarea class="form-control rounded-pill" rows="1" name="table_nameplate_position" required></textarea>
-										        </div>
-										        <div class="w-75 mx-auto p-1">
-										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
-										        </div>
-										    </div>
-										</form>
-									</div>
-								</div>
-							</div>
-
-						</div>
-
-						<div id="6">
-
-							<div class="custom-collapse collapse py-5" id="table_nameplate_name">
-							  	<div class="row gy-3">
-							  		<div class="col-6 d-flex justify-content-start">
-							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_table_nameplate_name">Back</button>
-							  		</div>
-									<h1 class="mb-3">Insert Name</h1>
-									<hr>
-									<div class="col-12">
-										<form id="table_nameplate_name_form">
-										    <div class="comment-area gy-3">
-										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
-										        	<span style="margin-left: 30px;">Name:</span>
-										            <textarea class="form-control rounded-pill" rows="2" name="table_nameplate_name" required></textarea>
-										        </div>
-										        <div class="w-75 mx-auto p-1">
-										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Done</button>
-										        </div>
-										    </div>
-										</form>
-									</div>
-								</div>
-							</div>
-
-						</div>
-
-						<div id="7">
 
 							<div class="custom-collapse collapse py-5" id="table_nameplate_position">
 							  	<div class="row gy-3">

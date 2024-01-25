@@ -42,6 +42,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	<body>
 		<main class="container-fluid p-0">
 			<?php include('include/user_header.php') ?>
+			<img src="" id="imagePreview" class="imagePreview" alt="Missing_Image">
 			<section class="container py-5">
 				<h2 class="mb-5">Order Summary</h2>
 				<hr>
@@ -139,7 +140,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			});
 		</script>
 		<script type="text/javascript" src="js/user_header.js"></script>
-		<script type="text/javascript" src="js/checkout_order_summary.js"></script>
+		<script type="text/javascript" src="js/checkout_customize_summary.js"></script>
+		<script type="text/javascript" src="js/image_hover.js"></script>
 	</body>
 </html>
 <?php

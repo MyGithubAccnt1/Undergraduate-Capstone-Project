@@ -62,11 +62,9 @@
 			    canvas.setHeight(parseFloat($('#video').css('height')));
 			    canvas.setWidth(parseFloat($('#video').css('width')));
 
-			    // Retrieve the data URL from local storage
 			    var dataURL = localStorage.getItem('Object');
 
 			    if (dataURL) {
-			        // Create a Fabric.js image object from the data URL
 			        fabric.Image.fromURL(dataURL, function (img) {
 			            img.set({
 			            	originX: 'center',
@@ -76,8 +74,6 @@
 			            	evented: false
 			            });
 			            canvas.add(img);
-
-			            // Render the canvas
 			            canvas.renderAll();
 			        });
 			    }

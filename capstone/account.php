@@ -124,7 +124,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                             <input type="password" class="form-control" id="confirm_password" required>
                         </div>
                         <div class="d-flex justify-content-center">
-                    	  	<button type="submit" class="btn btn-sm btn-outline-success py-1 w-75 rounded-pill">Update Password</button>
+                    	  	<button type="submit" class="btn btn-sm btn-outline-success py-1 w-50 rounded-pill">Update Password</button>
                     	</div>
                     </div>
 				</form>
