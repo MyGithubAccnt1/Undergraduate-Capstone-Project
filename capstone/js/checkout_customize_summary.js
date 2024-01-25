@@ -77,7 +77,7 @@ $(document).on('click', '#proceed', function() {
                 alert('Only 1 checkout can be made every minute.');
             }else if (data === "3") {
                 alert('Ordering successful.');
-                // window.location.href = "order.php";
+                window.location.href = "order.php";
             } else {
                 alert('Unexpected Error: [' + data + ']');
             }
