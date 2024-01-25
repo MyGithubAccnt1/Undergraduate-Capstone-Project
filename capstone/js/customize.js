@@ -9,10 +9,11 @@ $(document).on('load', function() {
     new bootstrap.Collapse(document.getElementById('table_nameplate'));
 });
 
-let product, material, shape;
+let product, material, shape, category, company, necklace_text, name, necklace_engrave;
 
 $(document).on('click', '#logo_seal', function() {
     product = document.getElementById('logo_seal_material');
+    category = 'directory marker';
     document.getElementById('2').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
 });
@@ -54,10 +55,12 @@ $(document).on('submit', '#logo_seal_company_form', function() {
     document.getElementById('8').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
+    company = $('textarea[name="logo_seal_company"]').val();
 });
 
 $(document).on('click', '#necklace', function() {
     product = document.getElementById('necklace_material');
+    category = 'necklace';
     document.getElementById('2').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
 });
@@ -103,6 +106,7 @@ $(document).on('click', '#necklace_shape_circle', function() {
 });
 $(document).on('click', '#necklace_shape_text', function() {
     var close = product;
+    shape = 'text';
     product = document.getElementById('necklace_text_body');
     document.getElementById('4').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
@@ -129,10 +133,12 @@ $(document).on('submit', '#necklace_text_body_form', function() {
     document.getElementById('8').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
+    necklace_text = $('textarea[name="necklace_text_body"]').val();
 });
 
 $(document).on('click', '#table_nameplate', function() {
     product = document.getElementById('table_nameplate_logo');
+    category = 'table nameplate';
     material = 'wood';
     document.getElementById('2').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
@@ -150,6 +156,7 @@ $(document).on('submit', '#table_nameplate_company_form', function() {
     document.getElementById('4').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
+    company = $('textarea[name="table_nameplate_company"]').val();
 });
 $(document).on('submit', '#table_nameplate_name_form', function() {
     var close = product;
@@ -157,6 +164,7 @@ $(document).on('submit', '#table_nameplate_name_form', function() {
     document.getElementById('5').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
+    name = $('textarea[name="table_nameplate_name"]').val();
 });
 $(document).on('submit', '#table_nameplate_position_form', function() {
     event.preventDefault();
@@ -165,6 +173,7 @@ $(document).on('submit', '#table_nameplate_position_form', function() {
     document.getElementById('8').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
+    position = $('textarea[name="table_nameplate_position"]').val();
 });
 
 $('.back_product').on('click', function() {
@@ -184,6 +193,7 @@ $('.back_necklace_shape').on('click', function() {
     document.getElementById('2').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
+    shape = null;
 });
 $('.back_necklace_engrave').on('click', function() {
     var close = product;
@@ -191,6 +201,7 @@ $('.back_necklace_engrave').on('click', function() {
     document.getElementById('3').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
+    necklace_text = null;
 });
 $('.back_necklace_text, .back_necklace_image').on('click', function() {
     var close = product;
@@ -198,6 +209,7 @@ $('.back_necklace_text, .back_necklace_image').on('click', function() {
     document.getElementById('4').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
+    necklace_engrave = null;
 });
 $('.back_logo_seal_text').on('click', function() {
     var close = product;
@@ -205,6 +217,7 @@ $('.back_logo_seal_text').on('click', function() {
     document.getElementById('3').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
+    company = null;
 });
 $('.back_table_nameplate_company').on('click', function() {
     var close = product;
@@ -212,6 +225,7 @@ $('.back_table_nameplate_company').on('click', function() {
     document.getElementById('2').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
+    company = null;
 });
 $('.back_table_nameplate_name').on('click', function() {
     var close = product;
@@ -219,6 +233,7 @@ $('.back_table_nameplate_name').on('click', function() {
     document.getElementById('3').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
+    name = null;
 });
 $('.back_table_nameplate_position').on('click', function() {
     var close = product;
@@ -226,6 +241,7 @@ $('.back_table_nameplate_position').on('click', function() {
     document.getElementById('4').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
+    position = null;
 });
 $('#reset').on('click', function() {
     window.location.href = 'customize.php'
@@ -760,7 +776,6 @@ function ShowCanvas() {
                         canvas.renderAll();
                     });
                 });
-
                 const imageDataWithoutPrefix = imageUrl.split(',')[1];
                 $.ajax({
                     url: "./php/upload_temp.php",
@@ -826,6 +841,7 @@ function ShowCanvas() {
             new bootstrap.Collapse($(product)).show();
             new bootstrap.Collapse($(close)).hide();
         }
+        necklace_engrave = $('textarea[name="necklace_text"]').val();
     });
 
     $(document).on('click', '#table_nameplate', function() {
@@ -1123,6 +1139,30 @@ function ShowCanvas() {
     });
 
     $('#order').on('click', function() {
-
+        canvas.setBackgroundColor(null, canvas.renderAll.bind(canvas));
+        var zoomFactor = 1;
+        var zoomCenter = new fabric.Point(canvas.width / 2, canvas.height / 2);
+        canvas.zoomToPoint(zoomCenter, zoomFactor);
+        canvas.renderAll();
+        localStorage.setItem('Object', canvas.toDataURL({ format: 'png', quality: 1.0 }));
+        canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
+        if (category === 'directory marker') {
+            const log = 'Product: ' + category + ', Material: ' + material + ', Company: ' + company;
+            window.localStorage.setItem('details', log);
+        } else if (category === 'necklace') {
+            if (shape === 'text') {
+                const log = 'Product: ' + category + ', Material: ' + material + ', Shape: ' + shape + ', Text: ' + necklace_text;
+                window.localStorage.setItem('details', log);
+            } else if (category === 'circle') {
+                const log = 'Product: ' + category + ', Material: ' + material + ', Shape: ' + shape;
+                window.localStorage.setItem('details', log);  
+            } else {
+                const log = 'Product: ' + category + ', Material: ' + material + ', Shape: ' + shape + ', Text: ' + necklace_engrave;
+                window.localStorage.setItem('details', log);            }
+        } else if (category === 'table nameplate') {
+            const log = 'Product: ' + category + ', Material: ' + material + ', Company: ' + company + ', Name: ' + name + ', Position: ' + position;
+            window.localStorage.setItem('details', log);
+        }
+        window.location.href = 'checkout_customize_summary.php'
     });
 }

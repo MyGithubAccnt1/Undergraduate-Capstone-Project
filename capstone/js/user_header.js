@@ -31,13 +31,13 @@ $(document).ready(function() {
             method: "GET",
             success: function (data) {
                 data = data.trim();
-                $('.fa-shopping-cart').text(data);
+                $('.font-monospace').text(data);
             }
         });
     }
     setInterval(ShowCart, 1000);
 
-    $('.fa-shopping-cart').on({
+    $('#cart-only').on({
         mouseover: function() {
             $('.cart-header').fadeIn('slow');
         },
