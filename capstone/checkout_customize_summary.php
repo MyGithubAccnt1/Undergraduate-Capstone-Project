@@ -111,7 +111,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 								<br>
 								<p id="date"></p>
 							</h6>
-							<h6 class="m-0">Buyer: <?php echo $_SESSION['fname']; ?> <?php echo $_SESSION['lname']; ?></h6>
+							<h6 class="m-0" id="buyer">Buyer: <?php echo $_SESSION['fname']; ?> <?php echo $_SESSION['lname']; ?></h6>
 							<h6 class="m-0">Number: <?php echo $_SESSION['mnumber']; ?></h6>
 							<h6>Email: <?php echo $_SESSION['email']; ?></h6>
 							<h6>Address: <?php echo $_SESSION['caddress']; ?></h6>
