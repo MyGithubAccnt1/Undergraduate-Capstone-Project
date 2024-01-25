@@ -35,10 +35,10 @@ $(document).ready(function() {
             }
         });
     }
-    setInterval(ShowCart, 1000);
 
     $('#cart-only').on({
         mouseover: function() {
+            ShowCart();
             $('.cart-header').fadeIn('slow');
         },
         mouseout: function() {

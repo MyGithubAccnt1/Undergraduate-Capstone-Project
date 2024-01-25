@@ -8,8 +8,7 @@ function ShowCart() {
         }
     });
 }
-ShowCart();
-setInterval(ShowCart, 30000);
+setInterval(ShowCart, 1000);
 
 $(document).on("submit", "#delete", function (event) {
     event.preventDefault(event);
@@ -43,46 +42,7 @@ function ShowYouMayLike() {
         }
     });
 }
-ShowYouMayLike();
-setInterval(ShowYouMayLike, 30000);
-
-function handleIntersection(entries, observer) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            if (entry.target.id === 'order-container') {
-                $.ajax({
-                    url: "./php/get_to_cart.php",
-                    method: "GET",
-                    success: function (data) {
-                        data = data.trim();
-                        $("#cart-container").html(data);
-                    }
-                });
-            } else if (entry.target.id === 'you_may_like-container') {
-                $.ajax({
-                    url: "./php/get_you_may_like.php",
-                    method: "GET",
-                    success: function (data) {
-                        data = data.trim();
-                        $("#you_may_like-container").html(data);
-                    }
-                });
-            }
-        }
-    });
-}
-
-const observerCartContainer = new IntersectionObserver(handleIntersection, {
-    threshold: 0.165,
-});
-const cartContainerElement = document.getElementById('cart-container');
-observerCartContainer.observe(cartContainerElement);
-
-const observerYoumaylikeContainer = new IntersectionObserver(handleIntersection, {
-    threshold: 0.165,
-});
-const youmaylikeContainerElement = document.getElementById('you_may_like-container');
-observerYoumaylikeContainer.observe(youmaylikeContainerElement);
+setInterval(ShowYouMayLike, 1000);
 
 $(document).on('submit', '#viewProduct', function(event) {
     event.preventDefault();

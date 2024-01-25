@@ -20,8 +20,7 @@ function ShowProduct() {
         }
     });
 }
-ShowProduct()
-setInterval(ShowProduct, 30000);
+setInterval(ShowProduct, 1000);
 
 function ShowYouMayLike() {
     $.ajax({
@@ -33,58 +32,7 @@ function ShowYouMayLike() {
         }
     });
 }
-ShowYouMayLike();
-setInterval(ShowYouMayLike, 30000);
-
-function handleIntersection(entries, observer) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            if (entry.target.id === 'product-container') {
-                var filter = $('#filter').val();
-                var min_price = $('#min-price').val();
-                var max_price = $('#max-price').val();
-                var page = window.localStorage.getItem('page');
-
-                $.ajax({
-                    url: "./php/get_pins.php",
-                    method: "GET",
-                    data: {
-                        filter: filter,
-                        min_price: min_price,
-                        max_price: max_price,
-                        page: page
-                    },
-                    success: function (data) {
-                        $(".loader").fadeOut('slow');
-                        data = data.trim();
-                        $("#product-container").html(data);
-                    }
-                });
-            } else if (entry.target.id === 'you_may_like-container') {
-                $.ajax({
-                    url: "./php/get_you_may_like.php",
-                    method: "GET",
-                    success: function (data) {
-                        data = data.trim();
-                        $("#you_may_like-container").html(data);
-                    }
-                });
-            }
-        }
-    });
-}
-
-const observerProductContainer = new IntersectionObserver(handleIntersection, {
-    threshold: 0.165,
-});
-const productContainerElement = document.getElementById('product-container');
-observerProductContainer.observe(productContainerElement);
-
-const observerYoumaylikeContainer = new IntersectionObserver(handleIntersection, {
-    threshold: 0.165,
-});
-const youmaylikeContainerElement = document.getElementById('you_may_like-container');
-observerYoumaylikeContainer.observe(youmaylikeContainerElement);
+setInterval(ShowYouMayLike, 1000);
 
 $(document).on('change', '#filter', function() {
     var category = $('#filter').val();

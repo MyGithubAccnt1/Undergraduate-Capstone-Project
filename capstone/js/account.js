@@ -57,47 +57,6 @@ $(document).on('click input change', "input[name='caddress']", function() {
     caddress();
 });
 
-// $(document).on("submit", "#address", function (event) {
-//     event.preventDefault();
-
-//     var region = $("#region option:selected").text();
-//     var province = $("#province option:selected").text();
-//     var city = $("#city option:selected").text();
-//     var barangay = $("#barangay option:selected").text();
-//     var subdivision = $(this).find("input[name='subdivision']").val();
-//     var street = $(this).find("input[name='street']").val();
-//     var phase = $(this).find("input[name='phase']").val();
-//     var block = $(this).find("input[name='block']").val();
-//     var lot = $(this).find("input[name='lot']").val();
-//     $.ajax({
-//         url: "./php/update_address.php",
-//         method: "POST",
-//         data: {
-//             region: region,
-//             province: province,
-//             city: city,
-//             barangay: barangay,
-//             subdivision: subdivision,
-//             street: street,
-//             phase: phase,
-//             block: block,
-//             lot: lot
-//         },
-//         success: function (data) {
-//             data = data.trim();
-//             if (data === "1") {
-//                 alert('Address has been updated successfully.');
-//                 window.location.href = 'account.php';
-//             } else {
-//                 alert('Unexpected Error: [' + data + ']');
-//             }
-//         },
-//         error: function (xhr, status, error) {
-//             console.error("AJAX Request Error:", status, error);
-//         }
-//     });
-// });
-
 $(document).on("submit", "#passwords", function (event) {
     event.preventDefault();
 
