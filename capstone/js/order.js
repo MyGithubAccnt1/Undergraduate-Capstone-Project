@@ -8,7 +8,7 @@ function ShowOrder() {
         }
     });
 }
-setInterval(ShowOrder, 1000);
+ShowOrder()
 
 function ShowYouMayLike() {
     $.ajax({
