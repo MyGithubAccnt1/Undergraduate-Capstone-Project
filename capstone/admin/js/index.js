@@ -1,0 +1,168 @@
+$(document).ready(function() {
+    ShowOnlines();
+    FillAccounts();
+});
+function ShowOnlines() {
+    $.ajax({
+        url: "./php/get_onlines.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            $("#online").html(data);
+        }
+    });
+}
+setInterval(ShowOnlines, 1000);
+function ShowPendings() {
+    $.ajax({
+        url: "./php/get_pendings.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            $("#pending").html(data);
+        }
+    });
+}
+setInterval(ShowPendings, 1000);
+function ShowDelivered() {
+    $.ajax({
+        url: "./php/get_delivered.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            $("#delivered").html(data);
+        }
+    });
+}
+setInterval(ShowDelivered, 1000);
+function FillAccounts() {
+    $.ajax({
+        url: "./php/get_accounts.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            $("#account_database").html(data);
+            ShowAccounts();
+        }
+    });
+}
+function ShowAccounts() {
+    const datatablesSimple = document.getElementById('account_database');
+    if (datatablesSimple) {
+        new simpleDatatables.DataTable(datatablesSimple);
+    }
+}
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#292b2c';
+
+function getDaysInMonth(year, month) {
+    return new Date(year, month + 1, 0).getDate();
+}
+
+function generateMonthLabels() {
+    var today = new Date();
+    var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var currentMonth = today.getMonth();
+    var totalDaysInMonth = getDaysInMonth(today.getFullYear(), currentMonth);
+
+    var labels = [];
+    for (var i = 1; i <= today.getDate(); i++) {
+        labels.push(monthNames[currentMonth] + " " + i);
+    }
+
+    return labels;
+}
+
+function createDynamicChart(data) {
+    var ctx = document.getElementById("myAreaChart");
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: generateMonthLabels(),
+            datasets: [{
+                label: "Earnings",
+                lineTension: 0.3,
+                backgroundColor: "rgba(2,117,216,0.2)",
+                borderColor: "rgba(2,117,216,1)",
+                pointRadius: 5,
+                pointBackgroundColor: "rgba(2,117,216,1)",
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                pointHitRadius: 50,
+                pointBorderWidth: 2,
+                data: data,
+            }],
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'date'
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        maxTicksLimit: generateMonthLabels().length
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: Math.max(...data),
+                        maxTicksLimit: 5
+                    },
+                    gridLines: {
+                        color: "rgba(0, 0, 0, .125)",
+                    }
+                }],
+            },
+            legend: {
+                display: false
+            }
+        }
+    });
+}
+
+var ctx = document.getElementById("myBarChart");
+var myLineChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ["Directory Markers", "Necklaces", "Pins", "Table Nameplates"],
+    datasets: [{
+      label: "Items",
+      backgroundColor: "rgba(2,117,216,1)",
+      borderColor: "rgba(2,117,216,1)",
+      data: [100, 1000, 55, 100],
+    }],
+  },
+  options: {
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'month'
+        },
+        gridLines: {
+          display: false
+        },
+        ticks: {
+          maxTicksLimit: 6
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 1000,
+          maxTicksLimit: 5
+        },
+        gridLines: {
+          display: true
+        }
+      }],
+    },
+    legend: {
+      display: false
+    }
+  }
+});

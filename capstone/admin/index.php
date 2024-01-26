@@ -1,0 +1,105 @@
+<?php
+session_start();
+?>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Saint Benedict Medallion</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+        <meta name="description" content="In partial fulfilment of the requirements for the degree of Bachelor of Science in Information Technology">
+        <meta name="keywords" content="capstone, project, thesis">
+        <meta name="author" content="Mhel Voi A. Bernabe">
+        <?php include('include/style.php') ?>
+    </head>
+    <body>
+        <main class="container-fluid p-0">
+            <?php include('include/admin_header.php') ?>
+            <section class="container-fluid p-0" style="background-color: #EDEEF1;">
+                <?php include('include/admin_upper_header.php') ?>
+                <div class="container p-3">
+                    
+                    <div class="row pb-3">
+                        <div class="col-12">
+                            <h1>Dashboard</h1>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3">
+                            <div class="bg-white p-3" style="border: 5px solid #4E73DF; border-style: none none none solid; border-radius: 6px;">
+                                <small style="color: #4E73DF">ONLINE USERS</small>
+                                <h6><b id="online">0</b></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3">
+                            <div class="bg-white p-3" style="border: 5px solid #1CC88A; border-style: none none none solid; border-radius: 6px;">
+                                <small style="color: #1CC88A">PENDING ORDERS</small>
+                                <h6><b id="pending">0</b></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3">
+                            <div class="bg-white p-3" style="border: 5px solid #36B9CC; border-style: none none none solid; border-radius: 6px;">
+                                <small style="color: #36B9CC">DELIVERED ORDERS</small>
+                                <h6><b id="delivered">0</b></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3">
+                            <div class="bg-white p-3" style="border: 5px solid #F6C23E; border-style: none none none solid; border-radius: 6px;">
+                                <small style="color: #F6C23E">TODAY EARNINGS</small>
+                                <h6><b>PHP</b> <b id="earnings">0</b></h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-area me-1"></i>
+                                    Earnings Chart
+                                </div>
+                                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar me-1"></i>
+                                    Bar Chart Example
+                                </div>
+                                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <i class="fas fa-table me-1"></i>
+                                    Accounts
+                                </div>
+                                <div class="card-body">
+                                    <table id="account_database">
+                                        <!-- dynamic -->
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <script type="text/javascript" src="./js/index.js"></script>
+            <script type="text/javascript">
+                var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+                createDynamicChart(data);
+            </script>
+        </main>
+    </body>
+</html>
