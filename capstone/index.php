@@ -97,7 +97,7 @@ session_start();
 							<p class="d-none d-lg-block">We are proud to have <?php include ('./php/get_user_count.php') ?> registered users as of today.</p>
 							<p>Don’t miss this opportunity to create your very own account.</p>
 							<a href="signin.php">
-								<button type="button" class="btn btn-lg btn-success mt-5 rounded-0">REGISTER NOW FOR FREE</button>
+								<button type="button" class="btn btn-md btn-success mt-5 rounded-0">REGISTER NOW FOR FREE</button>
 							</a>
 						</div>
 						<?php
