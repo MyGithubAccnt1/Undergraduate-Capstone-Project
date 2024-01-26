@@ -14,7 +14,7 @@ $detailsArray = explode(', ', $details);
 foreach ($detailsArray as $value) {
     echo '
         <div class="row text-start border" style="border-style: none none solid none !important;">
-            <div class="col-12 text-start">
+            <div class="col-12 text-start" style="overflow-x: hidden;">
                 '. $value .'
             </div>
         </div>

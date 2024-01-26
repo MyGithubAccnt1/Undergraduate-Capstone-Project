@@ -24,22 +24,25 @@ $checkresult = $checkstmt->get_result();
 if ($checkresult->num_rows > 0) {
     echo "1";
 } else {
-    if ($alt_address === null) {
-        $insertSql = "INSERT INTO history (email, title, total, deyt, status, buyer, mnumber, caddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        $insertStmt = $conn->prepare($insertSql);
-        $insertStmt->bind_param("ssssssss", $email, $title, $total, $date, $status, $buyer, $mnumber, $caddress);
-    } else {
-        $insertSql = "INSERT INTO history (email, title, total, deyt, status, buyer, mnumber, caddress, alt_address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $insertStmt = $conn->prepare($insertSql);
-        $insertStmt->bind_param("sssssssss", $email, $title, $total, $date, $status, $buyer, $mnumber, $caddress, $alt_address);
-    }
-    if ($insertStmt->execute()) {
-        $newSql = "INSERT INTO `order` (thumbnail, qty, email, deyt, details) VALUES (?, ?, ?, ?, ?)";
-        $newStmt = $conn->prepare($newSql);
-        $newStmt->bind_param("sssss", $thumbnail, $quantity, $email, $date, $details);
-        
-        if ($newStmt->execute()) {
-            echo "3";
+    $newSql = "INSERT INTO `order` (thumbnail, qty, email, deyt, details) VALUES (?, ?, ?, ?, ?)";
+    $newStmt = $conn->prepare($newSql);
+    $newStmt->bind_param("sssss", $thumbnail, $quantity, $email, $date, $details);
+    
+    if ($newStmt->execute()) {
+
+        if ($alt_address === null) {
+            $insertSql = "INSERT INTO history (email, title, total, deyt, status, buyer, mnumber, caddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $insertStmt = $conn->prepare($insertSql);
+            $insertStmt->bind_param("ssssssss", $email, $title, $total, $date, $status, $buyer, $mnumber, $caddress);
+        } else {
+            $insertSql = "INSERT INTO history (email, title, total, deyt, status, buyer, mnumber, caddress, alt_address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $insertStmt = $conn->prepare($insertSql);
+            $insertStmt->bind_param("sssssssss", $email, $title, $total, $date, $status, $buyer, $mnumber, $caddress, $alt_address);
+        }
+
+        if ($insertStmt->execute()) {
+
+            echo "2";
             $notifmessage = "[". $email ."] successfully completed an order of [". $title ."] on [". $date ."].";
             $notifcategory = "order";
             $notifsql = "INSERT INTO notification (message, category, email) VALUES ('$notifmessage', '$notifcategory', '$email')";
@@ -49,12 +52,12 @@ if ($checkresult->num_rows > 0) {
             $notifcategory = "user";
             $notifsql = "INSERT INTO notification (message, category, email) VALUES ('$notifmessage', '$notifcategory', '$email')";
             $notifresult = mysqli_query($conn, $notifsql);
+
         }
-        $newStmt->close();
-    } else {
-        echo "2";
+        $insertStmt->close();
+
     }
-    $insertStmt->close();
+    $newStmt->close();
 }
 mysqli_close($conn);
 ?>
