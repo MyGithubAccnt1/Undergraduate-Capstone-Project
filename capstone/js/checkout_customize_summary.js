@@ -40,22 +40,7 @@ $(document).ready(function() {
 });
 
 $(document).on('click', '#proceed', function() {
-    var dataURL = localStorage.getItem('Object');
-    const imageDataWithoutPrefix = dataURL.split(',')[1];
-    $.ajax({
-        url: "./php/upload_temp.php",
-        method: "POST",
-        data: {
-            imageFile: imageDataWithoutPrefix
-        },
-        success: function (data) {
-            const baseUrl = window.location.origin;
-            if (baseUrl === "http://localhost") {
-                data = 'capstone/' + data;
-            }
-            dataURL = data
-        }
-    });
+    var preview = localStorage.getItem('preview');
     const details = window.localStorage.getItem('details');
     var buyer = $("#buyer").text().replace("Buyer: ", "");
     var alt_address = $("#alternative_address").text().replace("Alternative: ", "");
@@ -68,14 +53,14 @@ $(document).on('click', '#proceed', function() {
         data: {
             buyer: buyer,
             alt_address: alt_address,
-            thumbnail: dataURL,
+            thumbnail: preview,
             details: details
         },
         success: function (data) {
             data = data.trim();
             if (data === "1") {
                 alert('Only 1 checkout can be made every minute.');
-            }else if (data === "3") {
+            }else if (data === "2") {
                 alert('Ordering successful.');
                 window.location.href = "order.php";
             } else {
@@ -96,9 +81,9 @@ function ShowCart() {
         success: function (data) {
             data = data.trim();
             $("#cart-container").html(data);
-            var dataURL = localStorage.getItem('Object');
-            $('#image').attr('src', dataURL);
-            $('#hidden_image').val(dataURL);
+            var preview = localStorage.getItem('preview');
+            $('#image').attr('src', preview);
+            $('#hidden_image').val(preview);
         }
     });
 }
