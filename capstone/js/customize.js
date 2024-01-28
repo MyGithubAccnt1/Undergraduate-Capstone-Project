@@ -404,7 +404,6 @@ function ShowCanvas() {
         canvas.zoomToPoint(zoomCenter, newZoom);
         canvas.renderAll();
         $("textarea[name='table_nameplate_company']").val('');
-        $("textarea[name='table_nameplate_company']").focus();
     });
 
     $('.back_table_nameplate_position').on('click', function() {
@@ -499,7 +498,6 @@ function ShowCanvas() {
         $("textarea[name='logo_seal_company']").val('- TYPE YOUR COMPANY NAME HERE -');
         logo_seal_change_text();
         $("textarea[name='logo_seal_company']").val('');
-        $("textarea[name='logo_seal_company']").focus();
     });
 
     function logo_seal_change_text() {
@@ -632,7 +630,6 @@ function ShowCanvas() {
 
     $(document).on('click', '#necklace_shape_text', function() {
         $("textarea[name='necklace_text_body']").val('');
-        $("textarea[name='necklace_text_body']").focus();
     });
 
     $("textarea[name='necklace_text_body']").on('input', function() {
@@ -667,7 +664,6 @@ function ShowCanvas() {
         $("textarea[name='necklace_text']").val('SAMPLE');
         necklace_text_change_text();
         $("textarea[name='necklace_text']").val('');
-        $("textarea[name='necklace_text']").focus();
     })
 
     function necklace_text_change_text() {
@@ -945,7 +941,6 @@ function ShowCanvas() {
         canvas.zoomToPoint(zoomCenter, newZoom);
         canvas.renderAll();
         $("textarea[name='table_nameplate_company']").val('');
-        $("textarea[name='table_nameplate_company']").focus();
     });
 
     var text_angle = 0;
@@ -1101,7 +1096,6 @@ function ShowCanvas() {
         $("textarea[name='table_nameplate_position']").val('YOUR POSITION');
         table_nameplate_change_position();
         $("textarea[name='table_nameplate_position']").val('');
-        $("textarea[name='table_nameplate_position']").focus();
     });
 
     function table_nameplate_change_position() {
