@@ -35,7 +35,7 @@ $(document).ready(function() {
             }
         });
     }
-
+    ShowCart();
     $('#cart-only').on({
         mouseover: function() {
             ShowCart();
