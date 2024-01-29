@@ -1,5 +1,8 @@
 $(document).ready(function() {
     ShowOnlines();
+    ShowPendings();
+    ShowDelivered();
+    ShowProducts();
     FillAccounts();
 });
 function ShowOnlines() {
@@ -35,6 +38,17 @@ function ShowDelivered() {
     });
 }
 setInterval(ShowDelivered, 1000);
+function ShowProducts() {
+    $.ajax({
+        url: "./php/get_products.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            data = data.split(',').map(Number);
+            Product_Count(data);
+        }
+    });
+}
 function FillAccounts() {
     $.ajax({
         url: "./php/get_accounts.php",
@@ -125,44 +139,47 @@ function createDynamicChart(data) {
     });
 }
 
-var ctx = document.getElementById("myBarChart");
-var myLineChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ["Directory Markers", "Necklaces", "Pins", "Table Nameplates"],
-    datasets: [{
-      label: "Items",
-      backgroundColor: "rgba(2,117,216,1)",
-      borderColor: "rgba(2,117,216,1)",
-      data: [100, 1000, 55, 100],
-    }],
-  },
-  options: {
-    scales: {
-      xAxes: [{
-        time: {
-          unit: 'month'
+function Product_Count(data) {
+    var max = Math.max.apply(null, data);
+    var ctx = document.getElementById("myBarChart");
+    var myLineChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+                labels: ["Directory Markers", "Necklaces", "Pins", "Table Nameplates"],
+                datasets: [{
+                    label: "Items",
+                    backgroundColor: "rgba(2,117,216,1)",
+                    borderColor: "rgba(2,117,216,1)",
+                data: data,
+                }],
         },
-        gridLines: {
-          display: false
-        },
-        ticks: {
-          maxTicksLimit: 6
+        options: {
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'month'
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 6
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: max,
+                        maxTicksLimit: 5
+                    },
+                    gridLines: {
+                        display: true
+                    }
+                }],
+            },
+            legend: {
+                display: false
+            }
         }
-      }],
-      yAxes: [{
-        ticks: {
-          min: 0,
-          max: 1000,
-          maxTicksLimit: 5
-        },
-        gridLines: {
-          display: true
-        }
-      }],
-    },
-    legend: {
-      display: false
-    }
-  }
-});
+    });
+}
