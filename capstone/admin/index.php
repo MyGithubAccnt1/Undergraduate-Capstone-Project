@@ -22,12 +22,6 @@ session_start();
             <section class="container-fluid p-0" style="background-color: #EDEEF1;">
                 <?php include('include/admin_upper_header.php') ?>
                 <div class="container p-3">
-                    
-                    <div class="row pb-3">
-                        <div class="col-12">
-                            <h1>Dashboard</h1>
-                        </div>
-                    </div>
 
                     <div class="row">
                         <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3">
@@ -61,7 +55,7 @@ session_start();
                             <div class="card mb-3">
                                 <div class="card-header">
                                     <i class="fas fa-chart-area me-1"></i>
-                                    Earnings Chart
+                                    Monthly Earnings
                                 </div>
                                 <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
                             </div>
@@ -70,7 +64,7 @@ session_start();
                             <div class="card mb-3">
                                 <div class="card-header">
                                     <i class="fas fa-chart-bar me-1"></i>
-                                    Bar Chart Example
+                                    Product Count
                                 </div>
                                 <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
                             </div>
@@ -84,7 +78,7 @@ session_start();
                                     <i class="fas fa-table me-1"></i>
                                     Accounts
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body overflow-x-auto">
                                     <table id="account_database">
                                         <!-- dynamic -->
                                     </table>
