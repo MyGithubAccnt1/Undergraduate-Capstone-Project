@@ -11,8 +11,22 @@
 
     <div class="mb-2">
         <a href="index.php">
-            <i class="fas fa-tachometer-alt"></i>
+            <i class="fas fa-tachometer-alt" style="height: 20px; width: 20px;"></i>
             <small><b>Dashboard</b></small>
+        </a>
+    </div>
+
+    <div class="mb-2">
+        <a href="inventory.php">
+            <i class="fas fa-warehouse" style="height: 20px; width: 20px;"></i>
+            <small><b>Inventory</b></small>
+        </a>
+    </div>
+
+    <div class="mb-2">
+        <a href="message.php">
+            <i class="fas fa-comment-dots" style="height: 20px; width: 20px;"></i>
+            <small><b>Message</b></small>
         </a>
     </div>
 </header>
