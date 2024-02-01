@@ -1,5 +1,6 @@
 <?php
 session_start();
+if ($_SESSION['role'] === "Admin") {
 ?>
 <!doctype html>
 <html lang="en">
@@ -16,6 +17,9 @@ session_start();
         <meta name="author" content="Mhel Voi A. Bernabe">
         <?php include('include/style.php') ?>
         <style type="text/css">
+            .message-nav {
+                color: rgb(255, 255, 255, 1.0);
+            }
             #contact-container > .row:not(:first-child) {
                 border: 1px solid #000;
                 border-style: none none solid none;
@@ -38,27 +42,29 @@ session_start();
         </style>
     </head>
     <body>
-        <main class="container-fluid p-0">
+        <main class="container-fluid p-0" style="height: 100vh;">
             <?php include('include/admin_header.php') ?>
-            <section class="container-fluid p-0" style="background-color: #EDEEF1;">
+            <section class="container-fluid p-0 d-flex" style="background-color: #EDEEF1; flex-direction: column;">
                 <?php include('include/admin_upper_header.php') ?>
-                <div class="container p-3 h-100">
+                <div class="container pt-3" style="flex: auto;">
 
-                    <div class="d-flex" style="height: calc(100% - 70px);">
-                        <div class="col-sm-12 col-md-5 col-lg-4 pe-1 flex-grow-1">
-                            <div class="bg-white border border-dark container p-0" style="border-radius: 6px; height: 100%;" id="contact-container">
-                                <!-- dynamic -->
+                    <div class="row h-100 pb-3">
+                        <div class="col-sm-12 col-md-5 col-lg-4 pe-1">
+                            <div class="bg-white border border-dark container p-0" style="border-radius: 6px; height: 100%; overflow-x:hidden; overflow-y:auto;" id="contact-container">
+
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-7 col-lg-8 ps-1 flex-grow-1">
+
+                        <div class="col-sm-12 col-md-7 col-lg-8 ps-1">
                             <div class="bg-white border border-dark container p-0" style="border-radius: 6px; height: 100%; display: flex; flex-direction: column;">
-                                <div class="sticky-top bg-dark text-center text-white py-2">Chat with SBM</div>
-                                <div style="overflow-x:hidden; overflow-y:auto; flex: auto; max-height: 69vh; transform: scaleY(-1);" id="message-container">
-                                    <!-- dynamic -->
+                                <div class="bg-dark text-center text-white py-2">Chat with SBM</div>
+                                <div style="overflow-x:hidden; overflow-y:auto; flex: 1; transform: scaleY(-1);" id="message-container">
+                                    <div style="transform: scaleY(-1); display: flex; justify-content: center; align-items: center; height: 100%;">SELECT A CONTACT</div>
                                 </div>
-                                <div class="sticky-bot">
+                                <div>
                                     <form id="message-form">
                                         <input type="hidden" name="date">
+                                        <input type="hidden" name="email">
                                         <div class="comment-area">
                                             <div class="bg-dark" style="display: flex; justify-content: center; align-items: center; flex-direction: row; margin: 0; padding: 0;">
                                                 <div class="w-100 p-1">
@@ -75,10 +81,17 @@ session_start();
                         </div>
                     </div>
 
-
                 </div>
             </section>
             <script type="text/javascript" src="./js/message.js"></script>
+            <script type="text/javascript" src="./js/header.js"></script>
         </main>
     </body>
 </html>
+<?php 
+}else{
+    echo"<script>alert('Notice: Please login to an Administrator account.')</script>";
+    $script = "<script>window.location = '../php/logout.php';</script>";
+    echo $script;
+}
+?>

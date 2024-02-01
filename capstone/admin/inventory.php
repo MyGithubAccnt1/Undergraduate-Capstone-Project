@@ -1,5 +1,6 @@
 <?php
 session_start();
+if ($_SESSION['role'] === "Admin") {
 ?>
 <!doctype html>
 <html lang="en">
@@ -15,6 +16,11 @@ session_start();
         <meta name="keywords" content="capstone, project, thesis">
         <meta name="author" content="Mhel Voi A. Bernabe">
         <?php include('include/style.php') ?>
+        <style type="text/css">
+            .inventory-nav {
+                color: rgb(255, 255, 255, 1.0);
+            }
+        </style>
     </head>
     <body>
         <main class="container-fluid p-0">
@@ -82,6 +88,14 @@ session_start();
                 </div>
             </section>
             <script type="text/javascript" src="./js/inventory.js"></script>
+            <script type="text/javascript" src="./js/header.js"></script>
         </main>
     </body>
 </html>
+<?php 
+}else{
+    echo"<script>alert('Notice: Please login to an Administrator account.')</script>";
+    $script = "<script>window.location = '../php/logout.php';</script>";
+    echo $script;
+}
+?>

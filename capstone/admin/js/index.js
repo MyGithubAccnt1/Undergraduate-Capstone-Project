@@ -2,8 +2,17 @@ $(document).ready(function() {
     ShowOnlines();
     ShowPendings();
     ShowDelivered();
+    ShowEarnings();
     ShowProducts();
     FillAccounts();
+    $.ajax({
+        url: "./php/get_monthly_earnings.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            createDynamicChart(JSON.parse(data));
+        }
+    });
 });
 function ShowOnlines() {
     $.ajax({
@@ -18,7 +27,7 @@ function ShowOnlines() {
 setInterval(ShowOnlines, 1000);
 function ShowPendings() {
     $.ajax({
-        url: "./php/get_pendings.php",
+        url: "./php/get_daily_pendings.php",
         method: "GET",
         success: function (data) {
             data = data.trim();
@@ -29,7 +38,7 @@ function ShowPendings() {
 setInterval(ShowPendings, 1000);
 function ShowDelivered() {
     $.ajax({
-        url: "./php/get_delivered.php",
+        url: "./php/get_daily_delivered.php",
         method: "GET",
         success: function (data) {
             data = data.trim();
@@ -38,6 +47,17 @@ function ShowDelivered() {
     });
 }
 setInterval(ShowDelivered, 1000);
+function ShowEarnings() {
+    $.ajax({
+        url: "./php/get_daily_earnings.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            $("#earnings").html(data);
+        }
+    });
+}
+setInterval(ShowEarnings, 1000);
 function ShowProducts() {
     $.ajax({
         url: "./php/get_products.php",
@@ -64,6 +84,13 @@ function ShowAccounts() {
     const datatablesSimple = document.getElementById('account_database');
     if (datatablesSimple) {
         new simpleDatatables.DataTable(datatablesSimple);
+
+        const columnWidths = ['40%', '20%', '10%', '10%', '20%'];
+        const headers = datatablesSimple.querySelectorAll('th');
+
+        headers.forEach((header, index) => {
+            header.style.width = columnWidths[index];
+        });
     }
 }
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
@@ -105,7 +132,7 @@ function createDynamicChart(data) {
                 pointHoverBackgroundColor: "rgba(2,117,216,1)",
                 pointHitRadius: 50,
                 pointBorderWidth: 2,
-                data: data,
+                data: data.data,
             }],
         },
         options: {
@@ -124,7 +151,7 @@ function createDynamicChart(data) {
                 yAxes: [{
                     ticks: {
                         min: 0,
-                        max: Math.max(...data),
+                        max: Math.max(...data.data),
                         maxTicksLimit: 5
                     },
                     gridLines: {

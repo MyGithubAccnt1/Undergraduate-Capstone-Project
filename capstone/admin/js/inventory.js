@@ -16,6 +16,13 @@ function ShowInventory() {
     const datatablesSimple = document.getElementById('materials_database');
     if (datatablesSimple) {
         new simpleDatatables.DataTable(datatablesSimple);
+
+        const columnWidths = ['5%', '40%', '25%', '15%', '15%'];
+        const headers = datatablesSimple.querySelectorAll('th');
+
+        headers.forEach((header, index) => {
+            header.style.width = columnWidths[index];
+        });
     }
 }
 $('#material').on('input change', function() {
@@ -52,17 +59,19 @@ $('#erase_category').on('click', function() {
 })
 
 function delete_button(data) {
-    $.ajax({
-        url: "./php/delete_inventory.php",
-        method: "POST",
-        data: {
-            id: data
-        },
-        success: function (data) {
-            data = data.trim();
-            window.location.href = 'inventory.php';
-        }
-    });
+    if (confirm("Are you sure you want to delete this item?") === true) {
+        $.ajax({
+            url: "./php/delete_inventory.php",
+            method: "POST",
+            data: {
+                id: data
+            },
+            success: function (data) {
+                data = data.trim();
+                window.location.href = 'inventory.php';
+            }
+        });
+    }
 }
 function success_button(data) {
     $.ajax({

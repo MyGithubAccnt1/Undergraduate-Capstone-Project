@@ -1,5 +1,6 @@
 <?php
 session_start();
+if ($_SESSION['role'] === "Admin") {
 ?>
 <!doctype html>
 <html lang="en">
@@ -333,6 +334,14 @@ session_start();
 
                 </div>
             </section>
+        <script type="text/javascript" src="./js/header.js"></script>
         </main>
     </body>
 </html>
+<?php 
+}else{
+    echo"<script>alert('Notice: Please login to an Administrator account.')</script>";
+    $script = "<script>window.location = '../php/logout.php';</script>";
+    echo $script;
+}
+?>
