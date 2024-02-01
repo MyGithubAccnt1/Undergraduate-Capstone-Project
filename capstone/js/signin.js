@@ -152,14 +152,7 @@ $(document).on("submit", "#login", function (event) {
                     window.localStorage.removeItem('remember-password');
                 }
                 alert('Logging in successful, welcome back [Administrator]!')
-                var xlink = window.localStorage.getItem('xlink');
-                console.log(xlink);
-                if (xlink) {
-                    window.location.href = xlink;
-                    window.localStorage.removeItem('xlink');
-                } else {
-                    window.location.href = "dashboard.php";
-                }
+                window.location.href = "admin/index.php";
             } else if (data === "3") {
                 if ($("#remember-check").prop("checked")) {
                     window.localStorage.setItem('remember-email', email);
