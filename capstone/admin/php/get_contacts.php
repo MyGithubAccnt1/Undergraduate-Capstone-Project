@@ -47,7 +47,8 @@ if ($result->num_rows > 0) {
 	}
 } else {
 	echo '
-	<div class="row text-center">No one send a message.</div>
+	<div class="row text-center pt-2"><h2>CONTACTS</h2></div>
+	<div class="row text-center mt-5"><small>NO ONE SENT A MESSAGE</small></div>
 	';
 }
 mysqli_close($conn);
