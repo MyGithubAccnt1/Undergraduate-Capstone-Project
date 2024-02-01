@@ -1179,10 +1179,6 @@ function ShowCanvas() {
             },
             success: function (data) {
                 data = data.trim();
-                const baseUrl = window.location.origin;
-                if (baseUrl === "http://localhost") {
-                    data = 'capstone/' + data;
-                }
                 canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
                 window.localStorage.setItem('preview', data);
                 window.location.href = 'checkout_customize_summary.php'
