@@ -6,6 +6,7 @@ if (mysqli_num_rows($result) > 0) {
     echo'
     <thead>
         <tr>
+            <th>ID</th>
             <th>Material</th>
             <th>Quantity</th>
             <th>Category</th>
@@ -17,6 +18,7 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         echo'
         <tr>
+            <th>'. $row['id'] .'</th>
             <th>'. $row['material'] .'</th>
             <th>'. $row['quantity'] .'</th>
             <th>'. $row['category'] .'</th>

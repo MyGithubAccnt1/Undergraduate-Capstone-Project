@@ -9,6 +9,10 @@ if (mysqli_num_rows($result) > 0) {
     $sql = "UPDATE inventory SET quantity = '$quantity', category = '$category' WHERE material = '$material'";
     $conn->query($sql);
     echo "1";
+    $notifmessage = "An [Admin] has updated [". $material ."] on inventory.";
+    $notifcategory = "inventory";
+    $notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+    $notifresult = mysqli_query($conn, $notifsql);
     mysqli_free_result($result);
 } else {
     $sql = "INSERT INTO inventory (material, quantity, category) VALUES (?, ?, ?)";
@@ -16,6 +20,10 @@ if (mysqli_num_rows($result) > 0) {
     $stmt->bind_param("sss", $material, $quantity, $category);
     if ($stmt->execute()) {
         echo "1";
+        $notifmessage = "An [Admin] has added [". $material ."] on inventory.";
+        $notifcategory = "inventory";
+        $notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+        $notifresult = mysqli_query($conn, $notifsql);
         $stmt->close();
     }
 }
