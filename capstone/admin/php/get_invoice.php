@@ -104,8 +104,7 @@ if (mysqli_num_rows($result) > 0) {
             </div>
             ';
             if ($title === 'Customize Item') {
-                $image = explode('/', $image);
-                $image = ('../' . $image[2] . '/' . $image[3] . '/' . $image[4]);
+                $image = ($image);
                 echo '
                     <div class="row bg-dark text-white">
                         <div class="col-12 text-center">
