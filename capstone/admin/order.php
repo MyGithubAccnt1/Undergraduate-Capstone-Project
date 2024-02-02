@@ -70,6 +70,12 @@ if ($_SESSION['role'] === "Admin") {
                     </div>
 
                     <div class="row mb-3">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <button class="btn btn-outline-success rounded-0 ms-auto btn-sm" onclick="generatePDFordertable();">DOWNLOAD ORDER TABLE AS PDF</button>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3" id="print_order_table">
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header">
@@ -87,10 +93,13 @@ if ($_SESSION['role'] === "Admin") {
 
                     <div id="selected" class="p-3" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2; display: none; overflow-y: auto;">
                         <div class="bg-white p-3">
-                            <button class="btn btn-outline-danger rounded-0 mb-3" id="close_selected">X</button>
+                            <div class="d-flex align-items-center mb-3">
+                                <button class="btn btn-outline-danger rounded-0 me-auto btn-sm" id="close_selected">X</button>
+                                <button class="btn btn-outline-success rounded-0 ms-auto btn-sm" onclick="generatePDFsalesinvoice();">DOWNLOAD SALES INVOICE AS PDF</button>
+                            </div>
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                    <div class="col-sm-12 col-md-6 col-lg-6 mb-3" id="print_sales_invoice">
                                         <div class="container border border-dark text-start p-3" id="invoice">
                                             <!-- dynamic -->
                                         </div>

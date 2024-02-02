@@ -29,12 +29,18 @@ if ($_SESSION['role'] === "Admin") {
                 <?php include('include/admin_upper_header.php') ?>
                 <div class="container p-3">
 
-                    <div class="row">
+                    <div class="row mb-3">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <button class="btn btn-outline-success rounded-0 ms-auto btn-sm" onclick="generatePDFinventorytable();">DOWNLOAD INVENTORY TABLE AS PDF</button>
+                        </div>
+                    </div>
+
+                    <div class="row" id="print_inventory_table">
                         <div class="col-12">
                             <div class="card mb-3">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
-                                    Materials
+                                    Inventory
                                 </div>
                                 <div class="card-body overflow-x-auto">
                                     <table id="materials_database">

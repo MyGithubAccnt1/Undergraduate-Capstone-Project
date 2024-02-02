@@ -57,6 +57,12 @@ if ($_SESSION['role'] === "Admin") {
                     </div>
 
                     <div class="row mb-3">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <button class="btn btn-outline-success rounded-0 ms-auto btn-sm" onclick="generatePDFproducttable();">DOWNLOAD PRODUCT TABLE AS PDF</button>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3" id="print_product_table">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
