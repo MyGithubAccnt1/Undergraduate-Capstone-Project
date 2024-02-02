@@ -50,7 +50,8 @@ if ($stmt->execute()) {
 	if ($notifstmt->execute()) {
 	    $notifstmt->close();
 	}
-
+	
+	$email = $row['email'];
 	$notifmessage = "You successfully created your account on [". $date ."].";
 	$notifcategory = "user";
 
