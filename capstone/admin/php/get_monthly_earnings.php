@@ -1,8 +1,8 @@
 <?php
 include("connect.php");
-$sqlToday = "SELECT earn FROM earning WHERE DATE(deyt) = CURDATE();";
-$resultToday = mysqli_query($conn, $sqlToday);
-$todayEarn = mysqli_num_rows($resultToday) > 0 ? mysqli_fetch_assoc($resultToday)['earn'] : 0;
+// $sqlToday = "SELECT earn FROM earning WHERE DATE(deyt) = CURDATE();";
+// $resultToday = mysqli_query($conn, $sqlToday);
+// $todayEarn = mysqli_num_rows($resultToday) > 0 ? mysqli_fetch_assoc($resultToday)['earn'] : 0;
 $sql = "SELECT DAY(deyt) AS day, earn
     FROM earning
     WHERE DATE_FORMAT(deyt, '%Y-%m') = DATE_FORMAT(CURDATE(), '%Y-%m')
