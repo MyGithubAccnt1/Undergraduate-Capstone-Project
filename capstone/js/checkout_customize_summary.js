@@ -82,6 +82,7 @@ function ShowCart() {
             data = data.trim();
             $("#cart-container").html(data);
             var preview = localStorage.getItem('preview');
+            var preview = preview.replace(/\.\.\//g, '');
             $('#image').attr('src', preview);
             $('#hidden_image').val(preview);
         }

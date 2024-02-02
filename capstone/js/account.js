@@ -189,3 +189,24 @@ $("#support-form").submit(function (e) {
 
     $(this).find('textarea[name="comment"]').val('');
 });
+
+$(document).on('mouseover', '#caddress_guide', function() {
+    var offset = $(this).offset();
+    var leftPosition = offset.left + $(this).outerWidth();
+    var topPosition = offset.top;
+    if (leftPosition + $('#guide').outerWidth() > $(window).width()) {
+        leftPosition = offset.$(this) - $('#guide').outerWidth();
+    }
+    if (topPosition + $('#guide').outerHeight() > $(window).height()) {
+        topPosition = $(window).height() - $('#guide').outerHeight();
+    }
+    $('#guide').css({
+        top: topPosition + 'px',
+        left: leftPosition + 'px'
+    });
+    $('#guide').stop(true, true).fadeIn('slow');
+});
+
+$(document).on('mouseout', '#caddress_guide', function() {
+    $('#guide').stop(true, true).delay(250).fadeOut('slow');
+});

@@ -1186,3 +1186,109 @@ function ShowCanvas() {
         });
     });
 }
+function guide(element) {
+    var offset = element.offset();
+    var leftPosition = offset.left + element.outerWidth();
+    var topPosition = offset.top;
+    if (leftPosition + $('#guide').outerWidth() > $(window).width()) {
+        leftPosition = offset.left - $('#guide').outerWidth();
+    }
+    if (topPosition + $('#guide').outerHeight() > $(window).height()) {
+        topPosition = $(window).height() - $('#guide').outerHeight();
+    }
+    $('#guide').css({
+        top: topPosition + 'px',
+        left: leftPosition + 'px'
+    });
+    $('#guide').stop(true, true).fadeIn('slow');
+}
+$(document).on({
+    mouseover: function () {
+        guide($(this));
+        $('#guide').attr('src', 'images/product-guide.gif');
+    },
+    mouseout: function () {
+        $('#guide').stop(true, true).delay(250).fadeOut('slow');
+    }
+}, '#product_guide');
+$(document).on({
+    mouseover: function () {
+        guide($(this));
+        $('#guide').attr('src', 'images/directorymarker_logo-guide.gif');
+    },
+    mouseout: function () {
+        $('#guide').stop(true, true).delay(250).fadeOut('slow');
+    }
+}, '#directorymarker_logo-guide');
+$(document).on({
+    mouseover: function () {
+        guide($(this));
+        $('#guide').attr('src', 'images/directorymarker_company-guide.gif');
+    },
+    mouseout: function () {
+        $('#guide').stop(true, true).delay(250).fadeOut('slow');
+    }
+}, '#directorymarker_company-guide');
+$(document).on({
+    mouseover: function () {
+        guide($(this));
+        $('#guide').attr('src', 'images/necklace_engrave_text-guide.gif');
+    },
+    mouseout: function () {
+        $('#guide').stop(true, true).delay(250).fadeOut('slow');
+    }
+}, '#necklace_engrave_text-guide');
+$(document).on({
+    mouseover: function () {
+        guide($(this));
+        $('#guide').attr('src', 'images/necklace_engrave_image-guide.gif');
+    },
+    mouseout: function () {
+        $('#guide').stop(true, true).delay(250).fadeOut('slow');
+    }
+}, '#necklace_engrave_image-guide');
+$(document).on({
+    mouseover: function () {
+        guide($(this));
+        $('#guide').attr('src', 'images/tablenameplate_logo-guide.gif');
+    },
+    mouseout: function () {
+        $('#guide').stop(true, true).delay(250).fadeOut('slow');
+    }
+}, '#tablenameplate_logo-guide');
+$(document).on({
+    mouseover: function () {
+        guide($(this));
+        $('#guide').attr('src', 'images/tablenameplate_company-guide.gif');
+    },
+    mouseout: function () {
+        $('#guide').stop(true, true).delay(250).fadeOut('slow');
+    }
+}, '#tablenameplate_company-guide');
+$(document).on({
+    mouseover: function () {
+        guide($(this));
+        $('#guide').attr('src', 'images/tablenameplate_text-guide.gif');
+    },
+    mouseout: function () {
+        $('#guide').stop(true, true).delay(250).fadeOut('slow');
+    }
+}, '#tablenameplate_text-guide');
+$(document).on({
+    mouseover: function () {
+        guide($(this));
+        $('#guide').attr('src', 'images/final-guide.gif');
+    },
+    mouseout: function () {
+        $('#guide').stop(true, true).delay(250).fadeOut('slow');
+    }
+}, '#final-guide');
+$(document).on({
+    mouseover: function () {
+        guide($(this));
+        $('#guide').attr('src', 'images/necklace_text_body-guide.gif');
+    },
+    mouseout: function () {
+        $('#guide').stop(true, true).delay(250).fadeOut('slow');
+    }
+}, '#necklace_text_body-guide');

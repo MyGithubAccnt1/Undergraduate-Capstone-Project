@@ -139,3 +139,29 @@ $(document).on("submit", ".message-form", function (event) {
 
     $(this).find('textarea[name="comment"]').val('');
 });
+$(document).on('mouseover', '#order_guide', function () {
+    var offset = $(this).offset();
+    var leftPosition = offset.left + $(this).outerWidth();
+    var topPosition = offset.top;
+
+    // Check if the guide overflows on the right
+    if (leftPosition + $('#guide').outerWidth() > $(window).width()) {
+        leftPosition = offset.left - $('#guide').outerWidth();
+    }
+
+    // Check if the guide overflows at the bottom
+    if (topPosition + $('#guide').outerHeight() > $(window).height()) {
+        topPosition = $(window).height() - $('#guide').outerHeight();
+    }
+
+    $('#guide').css({
+        top: topPosition + 'px',
+        left: leftPosition + 'px'
+    });
+
+    $('#guide').stop(true, true).fadeIn('slow');
+});
+
+$(document).on('mouseout', '#order_guide', function () {
+    $('#guide').stop(true, true).delay(250).fadeOut('slow');
+});
