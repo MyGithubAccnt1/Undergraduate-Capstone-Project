@@ -194,3 +194,51 @@ function validate(input) {
 $('#close_selected').on('click', function() {
     window.location.href = 'order.php';
 })
+function generatePDFsalesinvoice() {
+    var element = document.getElementById('print_sales_invoice');
+    var date = document.getElementById('current-date').textContent || document.getElementById('current-date').innerText;
+    html2pdf(element, {
+        margin: 10,
+        filename: 'sales_invoice_' + date + '.pdf',
+        image: { type: 'png', quality: 1.0 },
+        html2canvas: { scale: 1 },
+        jsPDF: { 
+            unit: 'mm', 
+            format: 'a4', 
+            orientation: 'portrait',
+        },
+        pagebreak: { mode: 'avoid-all' },
+        html2pdf: {
+            margin: 10,
+            jsPDF: { 
+                unit: 'mm', 
+                format: 'a4', 
+                orientation: 'portrait',
+            }
+        },
+    });
+}
+function generatePDFordertable() {
+    var element = document.getElementById('print_order_table');
+    var date = new Date();
+    html2pdf(element, {
+        margin: 10,
+        filename: 'Order_Table' + date + '.pdf',
+        image: { type: 'png', quality: 1.0 },
+        html2canvas: { scale: 1 },
+        jsPDF: { 
+            unit: 'mm', 
+            format: 'a4', 
+            orientation: 'portrait',
+        },
+        pagebreak: { mode: 'avoid-all' },
+        html2pdf: {
+            margin: 10,
+            jsPDF: { 
+                unit: 'mm', 
+                format: 'a4', 
+                orientation: 'portrait',
+            }
+        },
+    });
+}

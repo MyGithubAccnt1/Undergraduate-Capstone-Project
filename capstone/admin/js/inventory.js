@@ -117,3 +117,27 @@ $(document).on("submit", "#inventory_add_update", function (event) {
         }
     });
 });
+function generatePDFinventorytable() {
+    var element = document.getElementById('print_inventory_table');
+    var date = new Date();
+    html2pdf(element, {
+        margin: 10,
+        filename: 'Inventory_Table' + date + '.pdf',
+        image: { type: 'png', quality: 1.0 },
+        html2canvas: { scale: 1 },
+        jsPDF: { 
+            unit: 'mm', 
+            format: 'a4', 
+            orientation: 'portrait',
+        },
+        pagebreak: { mode: 'avoid-all' },
+        html2pdf: {
+            margin: 10,
+            jsPDF: { 
+                unit: 'mm', 
+                format: 'a4', 
+                orientation: 'portrait',
+            }
+        },
+    });
+}
