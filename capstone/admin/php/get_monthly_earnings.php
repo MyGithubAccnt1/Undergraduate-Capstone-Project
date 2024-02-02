@@ -9,7 +9,8 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $dailyEarnings = array();
     while ($row = mysqli_fetch_assoc($result)) {
-        $dailyEarnings[] = floatval($row['earn']);
+        $earnings = floatval(str_replace(',', '', $row['earn']));
+        $dailyEarnings[] = $earnings;
     }
     echo json_encode(['data' => $dailyEarnings], JSON_NUMERIC_CHECK);
     mysqli_free_result($result);
