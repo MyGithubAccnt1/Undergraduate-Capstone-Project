@@ -13,7 +13,7 @@ if ($result->num_rows > 0) {
 				echo '<form action="" id="viewProduct" class="img-box">';
 					echo '
 						<button type="submit" style="border: none; padding: 0;">
-							<img src="' . $row['thumbnail'] . '" class="img-responsive cool" alt="Missing Image"/>
+							<img src="' . $row['thumbnail'] . '" class="img-responsive" alt="Missing Image"/>
 						</button>
 					';
 					echo '<input type="hidden" name="image" value="' . $row['thumbnail'] . '">';

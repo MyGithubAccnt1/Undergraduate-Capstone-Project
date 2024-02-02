@@ -44,9 +44,9 @@ if ($stmt->execute()) {
   	$notifmessage = "A new account has been created with an email of [". $email ."] on [". $date ."].";
 	$notifcategory = "account";
 
-	$notifsql = "INSERT INTO notification (message, category, email) VALUES (?, ?, ?)";
+	$notifsql = "INSERT INTO notification (message, category) VALUES (?, ?)";
 	$notifstmt = $conn->prepare($notifsql);
-	$notifstmt->bind_param("sss", $notifmessage, $notifcategory, $email);
+	$notifstmt->bind_param("sss", $notifmessage, $notifcategory);
 	if ($notifstmt->execute()) {
 	    $notifstmt->close();
 	}

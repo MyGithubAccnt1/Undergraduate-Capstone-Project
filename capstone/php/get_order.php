@@ -115,12 +115,14 @@ if (mysqli_num_rows($result) > 0) {
         ';
 
                             while ($newrow = $newresult->fetch_assoc()) {
+                                $image = $newrow['thumbnail'];
+                                $image = str_replace('../', '', $image);
 
         echo '
                                 <div class="row">
                                     <div class="img-box">
-                                        <img src="'. $newrow["thumbnail"] .'" class="cart-img img-responsive" alt="X">
-                                        <input type="hidden" value="'. $newrow["thumbnail"] .'" name="image">
+                                        <img src="'. $image .'" class="cart-img img-responsive" alt="X">
+                                        <input type="hidden" value="'. $image .'" name="image">
                                     </div>
                                     <div>
         ';

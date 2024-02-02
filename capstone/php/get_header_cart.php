@@ -8,7 +8,7 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     echo '
-    <div>
+    <div class="mb-2">
         <small>Recently Added Products</small>
     </div>
     ';
