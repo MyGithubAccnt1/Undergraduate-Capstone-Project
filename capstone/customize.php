@@ -61,6 +61,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	</head>
 	<body>
 		<section class="loader"></section>
+		<img src="" id="guide" style="display: none; position: absolute; z-index: 3;">
 		<main class="container-fluid p-0" style="background-image: repeating-linear-gradient(90deg, hsla(57,0%,42%,0.09) 0px, hsla(57,0%,42%,0.09) 1px,transparent 1px, transparent 60px),repeating-linear-gradient(0deg, hsla(57,0%,42%,0.09) 0px, hsla(57,0%,42%,0.09) 1px,transparent 1px, transparent 60px),repeating-linear-gradient(0deg, hsla(57,0%,42%,0.09) 0px, hsla(57,0%,42%,0.09) 1px,transparent 1px, transparent 10px),repeating-linear-gradient(90deg, hsla(57,0%,42%,0.09) 0px, hsla(57,0%,42%,0.09) 1px,transparent 1px, transparent 10px),linear-gradient(90deg, rgb(20,20,20),rgb(20,20,20));">
 			<section class="container">
 				<div class="row text-white text-center">
@@ -72,7 +73,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 								<div class="col-6 d-flex justify-content-start">
 									<a href="javascript:window.history.back();" class="btn btn-outline-light rounded-0 w-50">Back</a>
 								</div>
-								<h1 class="mb-3">Select Product</h1>
+								<h1 class="mb-3">
+									Select Product
+									<button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="product_guide">
+										<small>?</small>
+									</button>
+								</h1>
 								<hr>
 								<div class="col-12">
 									<button type="button" id="logo_seal" class="btn btn-outline-light rounded-0 w-50">Directory Marker</button>
@@ -135,8 +141,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_product">Back</button>
 							  		</div>
-									<h1 class="mb-3">Select Logo</h1>
+									<h1 class="mb-3">
+										Select Logo
+										<button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="tablenameplate_logo-guide">
+											<small>?</small>
+										</button>
+									</h1>
 									<hr>
+									<small>CHOOSE DIFFERENT IMAGE EACH TIME</small>
 									<div class="col-12">
 										<input type="file" id="table_nameplate_image" accept="image/png">
 									</div>
@@ -152,8 +164,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_logo_seal_logo">Back</button>
 							  		</div>
-									<h1 class="mb-3">Select Logo</h1>
+									<h1 class="mb-3">
+										Select Logo
+										<button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="directorymarker_logo-guide">
+											<small>?</small>
+										</button>
+									</h1>
 									<hr>
+									<small>CHOOSE DIFFERENT IMAGE EACH TIME</small>
 									<div class="col-12">
 										<input type="file" id="logo_seal_image" accept="image/png">
 									</div>
@@ -184,7 +202,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_table_nameplate_company">Back</button>
 							  		</div>
-									<h1 class="mb-3">Insert Company</h1>
+									<h1 class="mb-3">
+										Insert Company
+										<button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="tablenameplate_company-guide">
+											<small>?</small>
+										</button>
+									</h1>
 									<hr>
 									<div class="col-12">
 										<form id="table_nameplate_company_form">
@@ -211,7 +234,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_logo_seal_text">Back</button>
 							  		</div>
-									<h1 class="mb-3">Insert Company</h1>
+									<h1 class="mb-3">
+										Insert Company
+										<button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="directorymarker_company-guide">
+											<small>?</small>
+										</button>
+									</h1>
 									<hr>
 									<div class="col-12">
 										<form id="logo_seal_company_form">
@@ -262,7 +290,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_necklace_engrave">Back</button>
 							  		</div>
-									<h1 class="mb-3">Insert Text</h1>
+									<h1 class="mb-3">
+										Insert Text
+										<button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="necklace_text_body-guide">
+											<small>?</small>
+										</button>
+									</h1>
 									<hr>
 									<div class="col-12">
 										<form id="necklace_text_body_form">
@@ -285,7 +318,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_table_nameplate_name">Back</button>
 							  		</div>
-									<h1 class="mb-3">Insert Name</h1>
+									<h1 class="mb-3">
+										Insert Name
+										<button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="tablenameplate_text-guide">
+											<small>?</small>
+										</button>
+									</h1>
 									<hr>
 									<div class="col-12">
 										<form id="table_nameplate_name_form">
@@ -312,7 +350,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_necklace_text">Back</button>
 							  		</div>
-									<h1 class="mb-3">Insert Text</h1>
+									<h1 class="mb-3">
+										Insert Text
+										<button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="necklace_engrave_text-guide">
+											<small>?</small>
+										</button>
+									</h1>
 									<hr>
 									<small>THIS TEXT WILL BE ENGRAVE TO YOUR NECKLACE</small>
 									<div class="col-12">
@@ -351,7 +394,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_necklace_image">Back</button>
 							  		</div>
-									<h1 class="mb-3">Select Image</h1>
+									<h1 class="mb-3">
+										Select Image
+										<button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="necklace_engrave_image-guide">
+											<small>?</small>
+										</button>
+									</h1>
 									<hr>
 									<small>THIS IMAGE WILL BE ENGRAVE TO YOUR NECKLACE</small>
 									<div class="col-12">
@@ -395,7 +443,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							  		<div class="col-6 d-flex justify-content-start">
 							  			<button type="button" id="reset" class="btn btn-outline-light rounded-0 w-50">Reset</button>
 							  		</div>
-									<h1 class="mb-3">Final Design</h1>
+									<h1 class="mb-3">
+										Final Design
+										<button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="final-guide">
+											<small>?</small>
+										</button>
+									</h1>
 									<hr>
 									<div class="col-12">
 										<button type="button" id="try_me_ar" class="btn btn-outline-light rounded-0 w-50">TRY ME(Augmented reality)</button>

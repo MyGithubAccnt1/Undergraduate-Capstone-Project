@@ -73,10 +73,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			<?php
 			}
 			?>
+			<img src="images/auto-complete.gif" id="guide" style="display: none; position: absolute;">
 			<section class="container py-5">
 				<h1 class="mb-5">My Profile</h1>
 				<hr>
-				<form action="" id="personal">
+				<form id="personal">
 					<div class="row text-muted">
 						<h2 class="mb-4 mt-0">Personal details</h2>
 						<div class="col-md-6">
@@ -97,6 +98,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                         </div>
                         <div class="col-md-12">
                             <label class="form-label">Complete Address</label>
+                            <button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="caddress_guide"><small>?</small></button>
                             <input type="text" class="form-control" value="<?php echo (!empty($_SESSION['caddress']) ? $_SESSION['caddress'] : null); ?>" name="caddress" required>
                         </div>
                         <div class="col-sm-12 text-center">

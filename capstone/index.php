@@ -109,46 +109,46 @@ session_start();
 				</div>
 			</section>
 			<section class="container py-5" id="learn-more">
-				<div class="row d-flex justify-content-center text-center why-container">
+				<div class="row d-flex justify-content-center text-center why-container py-5">
 					<h2 class="mb-5">Why Choose Us?</h2>
-					<div class="col-md-2 why-box cool">
+					<div class="col-md-2 why-box">
 						<div>
-							<i class="fas fa-shipping-fast fa-lg"></i>
-						</div>
-						<div style="display: flex; align-items: start;">
-							<h5>Free Shipping</h5>
-						</div>
-					</div>
-					<div class="col-md-2 why-box cool">
-						<div>
-							<i class="fas fa-handshake"></i>
+							<i class="fas fa-shipping-fast fa-lg" style="height: 25px; width: 25px;"></i>
 						</div>
 						<div>
-							<h5>Big Discounts</h5>
+							<h5><small>Free Shipping</small></h5>
 						</div>
 					</div>
-					<div class="col-md-2 why-box cool">
+					<div class="col-md-2 why-box">
 						<div>
-							<i class="fas fa-award"></i>
+							<i class="fas fa-handshake" style="height: 25px; width: 25px;"></i>
 						</div>
 						<div>
-							<h5>Certified</h5>
-						</div>
-					</div>
-					<div class="col-md-2 why-box cool">
-						<div>
-							<i class="fas fa-people-carry fa-lg"></i>
-						</div>
-						<div>
-							<h5>Cash on Delivery</h5>
+							<h5><small>Big Discounts</small></h5>
 						</div>
 					</div>
-					<div class="col-md-2 why-box cool">
+					<div class="col-md-2 why-box">
 						<div>
-							<i class="fas fa-clipboard-check"></i>
+							<i class="fas fa-award" style="height: 25px; width: 25px;"></i>
 						</div>
 						<div>
-							<h5>Real-Time Updates</h5>
+							<h5><small>Certified</small></h5>
+						</div>
+					</div>
+					<div class="col-md-2 why-box">
+						<div>
+							<i class="fas fa-people-carry fa-lg" style="height: 25px; width: 25px;"></i>
+						</div>
+						<div>
+							<h5><small>Cash on Delivery</small></h5>
+						</div>
+					</div>
+					<div class="col-md-2 why-box">
+						<div>
+							<i class="fas fa-clipboard-check" style="height: 25px; width: 25px;"></i>
+						</div>
+						<div>
+							<h5><small>Real-Time Updates</small></h5>
 						</div>
 					</div>
 				</div>
@@ -210,8 +210,8 @@ session_start();
 												</div>
 												<div class="thumb-content">
 													<h5>Nation Wide Delivery</h5>
-													<p>Your go-to for beautiful handmade necklaces. Choose from a selection of high-quality, one-of-a-kind pieces, or create your own design for a truly unique accessory.</p>
-													<a href="#" class="btn">Learn More</a>
+													<p>Your go-to for beautiful handmade necklaces. Choose from a selection of high-quality, one-of-a-kind pieces.</p>
+													<a href="necklace.php" class="btn">Order Now</a>
 												</div>
 											</div>
 										</div>
@@ -239,7 +239,7 @@ session_start();
 												<div class="thumb-content">
 													<h5>Cleaning & Maintenance</h5>
 													<p>Providing customers with a professional cleaning and maintenance service for their necklaces.</p>
-													<a href="#" class="btn">Learn More</a>
+													<button type="button" onclick="maximize_floating_chat();" class="btn">Message Us</button>
 												</div>
 											</div>
 										</div>
