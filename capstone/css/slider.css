@@ -73,7 +73,7 @@
 }
 .carousel .thumb-content .btn:hover, .carousel .thumb-content .btn:focus {
 	color: #fff;
-	background: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.5);
 	box-shadow: none;
 	border: 1px solid #fff;
 }

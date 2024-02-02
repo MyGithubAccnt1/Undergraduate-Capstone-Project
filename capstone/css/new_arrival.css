@@ -39,6 +39,7 @@
     border: 1px solid black;
 }
 .items img {
+    background-color: #fff;
     height: 100%;
     width: 100%;
     transition: all 3s ease;

@@ -24,7 +24,7 @@ header{
     position: relative;
 }
 
-.cart-header {
+.add-header {
     position: absolute;
     left: -140px;
     margin-top: 15px;
@@ -39,9 +39,21 @@ header{
     display: none;
 }
 
+.notif-header > .row {
+    display: flex;
+    flex-direction: column;
+}
+
+.notif-header > .row > div {
+    background-color: rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
+
 .cart-header > .row {
     display: flex;
     flex-direction: row;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
 }
 
 .cart-header > .row > div:first-child {
