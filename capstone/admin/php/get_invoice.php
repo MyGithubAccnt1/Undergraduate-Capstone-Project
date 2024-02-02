@@ -9,7 +9,7 @@ if (mysqli_num_rows($result) > 0) {
     <h1 class="text-center bg-dark text-white">SALES INVOICE</h1>
     <p class="mb-0 text-center"><small>Saint Benedict Medallion</small></p>
     <p class="mb-0 text-center"><small>Trece Martires City, Cavite</small></p>
-    <p class="mb-0 text-center"><small>'. $row['deyt'] .'</small></p>
+    <p class="mb-0 text-center"><small id="current-date">'. $row['deyt'] .'</small></p>
     <p class="my-1 mt-3"><small>Buyer: '. $row['buyer'] .'</small></p>
     <p class="my-1"><small>Number: '. $row['mnumber'] .'</small></p>
     <p class="my-1"><small>Email: '. $row['email'] .'</small></p>
