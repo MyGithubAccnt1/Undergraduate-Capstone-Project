@@ -195,7 +195,7 @@ $(document).on('mouseover', '#caddress_guide', function() {
     var leftPosition = offset.left + $(this).outerWidth();
     var topPosition = offset.top;
     if (leftPosition + $('#guide').outerWidth() > $(window).width()) {
-        leftPosition = offset.leftPosition - $('#guide').outerWidth();
+        leftPosition = offset.left - $('#guide').outerWidth();
     }
     if (topPosition + $('#guide').outerHeight() > $(window).height()) {
         topPosition = $(window).height() - $('#guide').outerHeight();
