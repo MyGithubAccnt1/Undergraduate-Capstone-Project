@@ -16,37 +16,48 @@ function FillContacts() {
     });
 }
 setInterval(FillContacts, 1000);
+let LoopKey, Loop = false;
 function ShowMessages(email, date) {
-    if (email) {
-        function UpdateMessage(email, date) {
-            $.ajax({
-                url: "./php/get_messages.php",
-                method: "GET",
-                data: {
-                    data: email + ' ' + date
-                },
-                success: function (data) {
-                    data = data.trim();
-                    $("#message-container").html(data);
-                    $('#message-form').find('input[name="email"]').val(email);
-                    $('#message-form').find('input[name="date"]').val(date);
-                    $.ajax({
-                        url: "./php/update_messages.php",
-                        method: "POST",
-                        data: {
-                            data: email + ' ' + date
-                        },
-                        success: function (data) {
-                            
-                        }
-                    });
+    LoopKey = true;
+    UpdateMessage(email, date);
+    function UpdateMessage(email, date) {
+        $.ajax({
+            url: "./php/get_messages.php",
+            method: "GET",
+            data: {
+                data: email + ' ' + date
+            },
+            success: function (data) {
+                data = data.trim();
+                $("#message-container").html(data);
+                $('#message-form').find('input[name="email"]').val(email);
+                $('#message-form').find('input[name="date"]').val(date);
+
+                if (LoopKey) {
+                    if (Loop) {
+                        clearInterval(Loop);
+                    }
                 }
-            });
-        }
-        setInterval(function () {
-            UpdateMessage(email, date);
-        }, 1000);
-    } 
+                
+                $.ajax({
+                    url: "./php/update_messages.php",
+                    method: "POST",
+                    data: {
+                        data: email + ' ' + date
+                    },
+                    success: function (data) {
+                        if (LoopKey) {
+                            Loop = setInterval(function () {
+                                UpdateMessage(email, date);
+                            }, 1000);
+
+                            LoopKey = false;
+                        }
+                    }
+                });
+            }
+        });
+    }
 }
 $(document).on("submit", "#message-form", function (event) {
     event.preventDefault();
