@@ -18,7 +18,7 @@ function ShowPendings() {
 setInterval(ShowPendings, 1000);
 function ShowOTW() {
     $.ajax({
-        url: "./php/get_otw.php",
+        url: "./php/get_OTW.php",
         method: "GET",
         success: function (data) {
             data = data.trim();
