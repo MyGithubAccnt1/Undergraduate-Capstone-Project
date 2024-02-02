@@ -46,12 +46,11 @@ if ($stmt->execute()) {
 
 	$notifsql = "INSERT INTO notification (message, category) VALUES (?, ?)";
 	$notifstmt = $conn->prepare($notifsql);
-	$notifstmt->bind_param("sss", $notifmessage, $notifcategory);
+	$notifstmt->bind_param("ss", $notifmessage, $notifcategory);
 	if ($notifstmt->execute()) {
 	    $notifstmt->close();
 	}
 	
-	$email = $row['email'];
 	$notifmessage = "You successfully created your account on [". $date ."].";
 	$notifcategory = "user";
 
