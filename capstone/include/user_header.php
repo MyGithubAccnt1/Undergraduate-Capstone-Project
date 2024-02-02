@@ -166,17 +166,18 @@ session_start();
 			<a href="cart.php">
 				<button type="button" id="cart-only" class="btn-nav rounded-0 btn-sm cart-nav position-relative">
 					<i class="fas fa-cart-arrow-down"></i>
-					<span class="font-monospace position-absolute"></span>
+					<span id="cart-number" class="font-monospace position-absolute"></span>
 				</button>
 			</a>
-			<div class="cart-header" id="cart-header-container"></div>
+			<div class="cart-header add-header" id="cart-header-container"></div>
 		</div>
 		<div>
 			<a href="#">
-				<button type="button" class="btn-nav rounded-0 btn-sm" title="My Notifications">
+				<button type="button" id="notif-only" class="btn-nav rounded-0 btn-sm">
 					<i class="fas fa-bell"></i>
 				</button>
 			</a>
+			<div class="notif-header add-header" id="notif-header-container"></div>
 		</div>
 		<div class="dropdown d-none d-lg-block">
 		  	<button type="button" class="btn-nav dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
