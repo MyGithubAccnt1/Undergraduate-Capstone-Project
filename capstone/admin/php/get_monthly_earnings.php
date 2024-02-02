@@ -14,9 +14,9 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $dailyEarnings[] = $row['earn'];
     }
-    if (!$todayEarn) {
-        $dailyEarnings[] = 0;
-    }
+    // if (!$todayEarn) {
+    //     $dailyEarnings[] = 0;
+    // }
     echo json_encode(['data' => $dailyEarnings], JSON_NUMERIC_CHECK);
     mysqli_free_result($result);
 } else {
