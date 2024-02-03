@@ -10,6 +10,8 @@ $(window).on('load', function() {
         } else if (category === "Table") {
             $('#table_nameplate').click();
         }
+    } else {
+        window.localStorage.removeItem('quantity');
     }
 });
 
