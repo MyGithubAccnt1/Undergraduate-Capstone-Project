@@ -1,6 +1,8 @@
-<?php
+<?php 
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+
+	if (!empty($_SESSION['fname']) || !empty($_SESSION['lname']) || !empty($_SESSION['mnumber']) || !empty($_SESSION['caddress'])) {
 ?>
 <!doctype html>
 <html lang="en">
@@ -479,11 +481,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		<script type="text/javascript" src="js/customize.js"></script>
 	</body>
 </html>
-<?php 
-}else{
+<?php
+	} else {
+	    echo"<script>alert('Notice: There are some empty field in your profile, please fill it up to continue.');</script>";
+	    $script = "<script>window.location = 'account.php';</script>";
+	    echo $script;
+	}
+} else {
 	echo"<script>var xlink = window.location.href;</script>";
 	echo"<script>window.localStorage.setItem('xlink', xlink);</script>";
-    echo"<script>alert('Notice: Please login to proceed.')</script>";
+    echo"<script>alert('Notice: Please login to proceed.');</script>";
     $script = "<script>window.location = 'signin.php';</script>";
     echo $script;
 }

@@ -1,7 +1,5 @@
 <?php 
 session_start();
-error_reporting(0);
-ini_set('display_errors', 0);
 if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
 	if (!empty($_SESSION['fname']) || !empty($_SESSION['lname']) || !empty($_SESSION['mnumber']) || !empty($_SESSION['caddress'])) {
