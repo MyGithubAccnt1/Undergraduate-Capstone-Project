@@ -83,7 +83,7 @@ session_start();
 							<p>Our timeless designs are inspired by faith and nature, crafted with quality materials and love.</p>
 						</div>
 					</div>
-					<div class="col-sm-12 col-md-4 d-none d-md-block">
+					<div class="col-sm-12 col-md-4 d-none d-md-block pt-5">
 						<?php
 						if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						?>
@@ -96,16 +96,13 @@ session_start();
 						<div class="container">
 							<p class="d-none d-lg-block">We are proud to have <?php include ('./php/get_user_count.php') ?> registered users as of today.</p>
 							<p>Don’t miss this opportunity to create your very own account.</p>
-							<a href="signin.php">
-								<button type="button" class="btn btn-md btn-success mt-5 rounded-0">REGISTER NOW FOR FREE</button>
-							</a>
 						</div>
 						<?php
 						}
 						?>
 					</div>
 					<div class="container"><hr></div>
-					<a href="#learn-more" class="w-50 btn btn-sm btn-danger rounded-pill">Learn More</a>
+					<a href="#learn-more" class="w-50 btn btn-sm btn-danger rounded-pill"><small>Learn More</small></a>
 				</div>
 			</section>
 			<section class="container py-5" id="learn-more">

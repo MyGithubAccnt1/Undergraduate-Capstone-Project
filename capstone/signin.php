@@ -24,8 +24,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	  	<link rel="stylesheet" type="text/css" href="./css/slider.css">
 		<link rel="stylesheet" type="text/css" href="./css/new_arrival.css">
 		<style>
-			.signin-nav::before{
-			    width: 100%;
+			.signin-nav{
+			    display: none;
 			}
 			.hero-section {
 		  		position: fixed;
