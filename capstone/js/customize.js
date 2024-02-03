@@ -1,22 +1,16 @@
 $(window).on('load', function() {
     ShowCanvas();
-});
-
-$(document).on('load', function() {
-    new bootstrap.Collapse(document.getElementById('logo_seal_material'));
-    new bootstrap.Collapse(document.getElementById('logo_seal_logo'));
-    new bootstrap.Collapse(document.getElementById('logo_seal_text'));
-    new bootstrap.Collapse(document.getElementById('necklace_material'));
-    new bootstrap.Collapse(document.getElementById('necklace_shape'));
-    new bootstrap.Collapse(document.getElementById('necklace_engrave'));
-    new bootstrap.Collapse(document.getElementById('necklace_text_body'));
-    new bootstrap.Collapse(document.getElementById('necklace_text'));
-    new bootstrap.Collapse(document.getElementById('necklace_image'));
-    new bootstrap.Collapse(document.getElementById('table_nameplate_logo'));
-    new bootstrap.Collapse(document.getElementById('table_nameplate_company'));
-    new bootstrap.Collapse(document.getElementById('table_nameplate_name'));
-    new bootstrap.Collapse(document.getElementById('table_nameplate_position'));
-    new bootstrap.Collapse(document.getElementById('final'));
+    var currentURL = window.location.href;
+    if (currentURL !== "http://20.205.112.210/customize.php" || currentURL !== "http://localhost/capstone/customize.php") {
+        category = new URLSearchParams(currentURL).get('category');
+        if (category === "Directory") {
+            $('#logo_seal').click();
+        } else if (category === "Necklace") {
+            $('#necklace').click();
+        } else if (category === "Table") {
+            $('#table_nameplate').click();
+        }
+    }
 });
 
 let product, material, shape, category, company, necklace_text, name, necklace_engrave;

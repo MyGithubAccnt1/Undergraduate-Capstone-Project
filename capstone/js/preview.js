@@ -221,3 +221,23 @@ $(document).on('submit', '#viewProduct', function(event) {
         }
     });
 });
+
+$(window).on('load', function() {
+    var category = window.localStorage.getItem('category');
+    $.ajax({
+        url: "./php/preview_options.php",
+        method: "GET",
+        data: {
+            category: category
+        },
+        success: function (data) {
+            data = data.trim();
+            $("#options").html(data);
+        }
+    });
+})
+
+function make_customize() {
+    var category = window.localStorage.getItem('category');
+    window.location.href = 'customize.php?&category=' + category;
+}
