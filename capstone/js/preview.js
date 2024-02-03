@@ -233,11 +233,16 @@ $(window).on('load', function() {
         success: function (data) {
             data = data.trim();
             $("#options").html(data);
+            $('#title').text(window.localStorage.getItem('title'));
+            $('#featured').attr('src', window.localStorage.getItem('thumbnail'));
+            $('#price').text('PHP ' + window.localStorage.getItem('price'));
+            $('#decription').text(window.localStorage.getItem('description'));
         }
     });
 })
 
 function make_customize() {
+    window.localStorage.setItem('quantity', $('#quantity').val());
     var category = window.localStorage.getItem('category');
     window.location.href = 'customize.php?&category=' + category;
 }
