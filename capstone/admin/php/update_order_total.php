@@ -9,10 +9,21 @@ if (mysqli_num_rows($result) > 0) {
     $email = $row['email'];
     $date = $row['deyt'];
 
-    $sql = "UPDATE history SET total = '$total' WHERE id = '$id'";
+    $sql = "UPDATE `order` SET price = '$total' WHERE email = '$email' and deyt = '$date'";
     $result = mysqli_query($conn, $sql);
 
-    $sql = "UPDATE `order` SET price = '$total' WHERE email = '$email' and deyt = '$date'";
+    $total = null;
+
+    $sql = "SELECT * FROM `order` WHERE email = '$email' and deyt = '$date'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $total = $total + ($row['price'] * $row['qty']);
+    }
+
+    $total = number_format($total, 2, '.', ',');
+
+    $sql = "UPDATE history SET total = '$total' WHERE id = '$id'";
     $result = mysqli_query($conn, $sql);
 
     $notifmessage = "An [Admin] has updated an order total with id [". $id ."].";

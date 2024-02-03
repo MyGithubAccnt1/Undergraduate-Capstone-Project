@@ -18,15 +18,26 @@ if (mysqli_num_rows($result) > 0) {
             echo '
                 <option value="Pending" selected>Pending</option>
                 <option value="On-The-Way">On-The-Way</option>
-                <option value="Delivered">Delivered</option>
+            ';
+            if ($row['total'] === 'Estimating...') {
+                
+            } else {
+                echo '<option value="Delivered">Delivered</option>';
+            }
+            echo '
                 <option value="Rejected">Rejected</option>
             ';
         } else if ($row['status'] === 'On-The-Way') {
             echo '
                 <option value="Pending">Pending</option>
                 <option value="On-The-Way" selected>On-The-Way</option>
-                <option value="Delivered">Delivered</option>
-                <option value="Canceled">Canceled</option>
+            ';
+            if ($row['total'] === 'Estimating...') {
+                
+            } else {
+                echo '<option value="Delivered">Delivered</option>';
+            }
+            echo '
                 <option value="Rejected">Rejected</option>
             ';
         } else if ($row['status'] === 'Delivered') {
@@ -37,8 +48,13 @@ if (mysqli_num_rows($result) > 0) {
             echo '
                 <option value="Pending">Pending</option>
                 <option value="On-The-Way">On-The-Way</option>
-                <option value="Delivered">Delivered</option>
-                <option value="Canceled">Canceled</option>
+            ';
+            if ($row['total'] === 'Estimating...') {
+                
+            } else {
+                echo '<option value="Delivered">Delivered</option>';
+            }
+            echo '
                 <option value="Rejected" selected>Rejected</option>
             ';
         }
