@@ -96,24 +96,8 @@ session_start();
 							<div class="product-details">
 								<h1 class="text-center" id="title"></h1>
 								<div class="container"><hr></div>
-								<div>
-									<div class="col-md-12 text-center">
-										<div class="row gy-3 p-3">
-											<div class="col-sm-12 col-md-6">
-												<h4 id="price" class="m-1"></h4>
-											</div>
-											<div class="col-sm-12 col-md-6" style="display: flex; justify-content: center; align-items: center;">
-												<h5 style="margin-right: 5px;">Quantity: </h5>
-												<input type="number" id="quantity" value="1" style="width: 45px;">
-											</div>
-										</div>
-									</div>
-								    
-								    <h5>DESCRIPTION</h5>
-								    <p id="decription"></p>
-								    <div class="col-md-12 text-center" id="options">
-								    	<!-- dynamic -->
-								    </div>
+								<div id="options">
+									<!-- dynamic -->
 								</div>
 							</div>
 						</div>
@@ -197,10 +181,6 @@ session_start();
 			  $(".loader").fadeOut('slow');
 			  $(".sticky-top").fadeIn('slow');
 			  $('.floating_chat_head').fadeIn('slow');
-			  $('#title').text(window.localStorage.getItem('title'));
-			  $('#featured').attr('src', window.localStorage.getItem('thumbnail'));
-			  $('#price').text('PHP ' + window.localStorage.getItem('price'));
-			  $('#decription').text(window.localStorage.getItem('description'));
 			});
 		</script>
 		<script type="text/javascript" src="js/user_header.js"></script>
