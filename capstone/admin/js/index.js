@@ -10,7 +10,6 @@ $(document).ready(function() {
         method: "GET",
         success: function (data) {
             data = data.trim();
-            console.log(data);
             createDynamicChart(JSON.parse(data));
         }
     });
