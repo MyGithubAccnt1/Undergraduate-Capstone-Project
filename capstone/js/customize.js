@@ -1,8 +1,8 @@
 $(window).on('load', function() {
     ShowCanvas();
     var currentURL = window.location.href;
-    if (currentURL !== "http://20.205.112.210/customize.php" || currentURL !== "http://localhost/capstone/customize.php") {
-        category = new URLSearchParams(currentURL).get('category');
+    if (currentURL !== "http://20.205.112.210/customize.php" && currentURL !== "http://localhost/capstone/customize.php") {
+        var category = new URLSearchParams(currentURL).get('category');
         if (category === "Directory") {
             $('#logo_seal').click();
         } else if (category === "Necklace") {

@@ -42,6 +42,10 @@ $(document).ready(function() {
 $(document).on('click', '#proceed', function() {
     var preview = localStorage.getItem('preview');
     const details = window.localStorage.getItem('details');
+    const quantity = window.localStorage.getItem('quantity');
+    if (!quantity) {
+        quantity = 1;
+    }
     var buyer = $("#buyer").text().replace("Buyer: ", "");
     var alt_address = $("#alternative_address").text().replace("Alternative: ", "");
     if (!alt_address) {
@@ -54,7 +58,8 @@ $(document).on('click', '#proceed', function() {
             buyer: buyer,
             alt_address: alt_address,
             thumbnail: preview,
-            details: details
+            details: details,
+            quantity: quantity
         },
         success: function (data) {
             data = data.trim();
@@ -72,11 +77,17 @@ $(document).on('click', '#proceed', function() {
 
 function ShowCart() {
     const details = window.localStorage.getItem('details');
+    const quantity = window.localStorage.getItem('quantity');
+    if (!quantity) {
+        quantity = 1;
+    }
+    console.log(quantity);
     $.ajax({
         url: "./php/get_checkout_customize.php",
         method: "GET",
         data: {
-            details: details
+            details: details,
+            quantity: quantity
         },
         success: function (data) {
             data = data.trim();
