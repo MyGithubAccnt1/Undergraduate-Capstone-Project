@@ -11,7 +11,7 @@ if (mysqli_num_rows($result) > 0) {
 
     while ($row = mysqli_fetch_assoc($result)) {
 
-        if ($row['email'] === $_SESSION['email']) {
+        if (isset($_SESSION['email']) AND $row['email'] === $_SESSION['email']) {
 
             if ($row['role'] === 'Admin'){
                 echo '<div class="card p-3" style="width: 85%; margin: 20px; margin-left: auto; transform: scaleY(-1);">';
