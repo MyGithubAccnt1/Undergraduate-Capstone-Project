@@ -23,4 +23,3 @@
 <!-- admin side css -->
 <link rel="stylesheet" type="text/css" href="./css/admin_side.css">
 <link rel="stylesheet" type="text/css" href="./css/admin_side_header.css">
-<link rel="stylesheet" type="text/css" href="./css/admin_side_footer.css">
