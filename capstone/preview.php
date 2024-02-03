@@ -111,35 +111,9 @@ session_start();
 								    
 								    <h5>DESCRIPTION</h5>
 								    <p id="decription"></p>
-								    <?php
-								    if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
-								    ?>
-								    <div class="col-md-12 text-center">
-								    	<div class="row gy-3 p-3">
-								    		<div class="col-sm-12 col-md-6">
-								    			<button class="btn btn-sm btn-outline-success py-1 w-75 rounded-pill" type="button" onclick="add_to_cart();">Add to Cart</button>
-								    		</div>
-								    		<div class="col-sm-12 col-md-6">
-								    			<button class="btn btn-sm btn-outline-danger py-1 w-75 rounded-pill" type="button" onclick="buy_now();">Buy Now</button>
-								    		</div>
-								    	</div>
+								    <div class="col-md-12 text-center" id="options">
+								    	<!-- dynamic -->
 								    </div>
-						    	    <?php
-						    	    } else {
-					    	    	?>
-					    	    	<div class="col-md-12 text-center">
-								    	<div class="row gy-3 p-3">
-								    		<div class="col-sm-12 col-md-6">
-								    			<button class="btn btn-sm btn-outline-success py-1 w-75 rounded-pill" type="button" onclick="redirect_to_login();">Add to Cart</button>
-								    		</div>
-								    		<div class="col-sm-12 col-md-6">
-								    			<button class="btn btn-sm btn-outline-danger py-1 w-75 rounded-pill" type="button" onclick="redirect_to_login();">Buy Now</button>
-								    		</div>
-								    	</div>
-								    </div>
-						    	    <?php
-						    	    }
-						        	?>
 								</div>
 							</div>
 						</div>
