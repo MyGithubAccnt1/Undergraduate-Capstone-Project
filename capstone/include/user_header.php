@@ -212,7 +212,7 @@ session_start();
 		?>
 		<div class="d-none d-lg-block">
 			<a href="signin.php">
-				<button type="button" class="btn-nav rounded-0 btn-sm signin-nav">
+				<button type="button" class="btn btn-outline-danger rounded-0 btn-sm signin-nav">
 					<small>SIGN IN</small>
 				</button>
 			</a>
