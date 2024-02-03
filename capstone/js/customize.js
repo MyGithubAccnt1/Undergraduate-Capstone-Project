@@ -11,7 +11,6 @@ $(window).on('load', function() {
             $('#table_nameplate').click();
         }
     } else {
-        console.log('Working');
         window.localStorage.removeItem('quantity');
     }
 });

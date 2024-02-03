@@ -42,7 +42,7 @@ $(document).ready(function() {
 $(document).on('click', '#proceed', function() {
     var preview = localStorage.getItem('preview');
     const details = window.localStorage.getItem('details');
-    const quantity = window.localStorage.getItem('quantity');
+    let quantity = window.localStorage.getItem('quantity');
     if (!quantity) {
         quantity = 1;
     }
@@ -77,11 +77,10 @@ $(document).on('click', '#proceed', function() {
 
 function ShowCart() {
     const details = window.localStorage.getItem('details');
-    const quantity = window.localStorage.getItem('quantity');
+    let quantity = window.localStorage.getItem('quantity');
     if (!quantity) {
         quantity = 1;
     }
-    console.log(quantity);
     $.ajax({
         url: "./php/get_checkout_customize.php",
         method: "GET",
