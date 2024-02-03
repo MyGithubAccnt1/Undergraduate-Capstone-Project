@@ -44,7 +44,17 @@ function caddress() {
                         .then(data => {
                             if (data.display_name) {
                                 const address = data.display_name;
-                                $("input[name='caddress']").val(address);
+                                $.ajax({
+                                    url: "./php/update_verified_location.php",
+                                    method: "GET",
+                                    data: {
+                                        caddress: address
+                                    },
+                                    success: function (data) {
+                                        data = data.trim();
+                                        $("input[name='caddress']").val(data);
+                                    }
+                                });
                             }
                         });
                 }
