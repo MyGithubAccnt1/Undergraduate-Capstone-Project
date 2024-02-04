@@ -8,12 +8,12 @@ $caddress = $_SESSION['caddress'];
 $alt_address = $_POST['alt_address'];
 $thumbnail = $_POST['thumbnail'];
 $details = $_POST['details'];
+$quantity = $_POST['quantity'];
 date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d H:i');
 $status = "Pending";
 $title = 'Customize Item';
 $total = 'Estimating...';
-$quantity = '1';
 
 $checksql = "SELECT * FROM history WHERE email = ? and deyt = ?";
 $checkstmt = $conn->prepare($checksql);
@@ -43,9 +43,9 @@ if ($checkresult->num_rows > 0) {
         if ($insertStmt->execute()) {
 
             echo "2";
-            $notifmessage = "[". $email ."] successfully completed an order of [". $title ."] on [". $date ."].";
+            $notifmessage = "[". $email ."] successfully completed an order on [". $date ."].";
             $notifcategory = "order";
-            $notifsql = "INSERT INTO notification (message, category, email) VALUES ('$notifmessage', '$notifcategory', '$email')";
+            $notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
             $notifresult = mysqli_query($conn, $notifsql);
 
             $notifmessage = "You successfully completed an order on [". $date ."].";
