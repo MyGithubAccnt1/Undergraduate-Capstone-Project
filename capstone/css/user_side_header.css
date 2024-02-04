@@ -39,21 +39,33 @@ header{
     display: none;
 }
 
+.notif-header {
+    overflow-y: auto;
+}
+
 .notif-header > .row {
     display: flex;
     flex-direction: column;
 }
 
 .notif-header > .row > div {
-    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid #000;
     margin-bottom: 5px;
+}
+
+.notif-header > .row > div:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .cart-header > .row {
     display: flex;
     flex-direction: row;
-    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid #000;
     margin-bottom: 5px;
+}
+
+.cart-header > .row:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .cart-header > .row > div:first-child {
