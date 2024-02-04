@@ -172,7 +172,7 @@ session_start();
 			<div class="cart-header add-header" id="cart-header-container"></div>
 		</div>
 		<div>
-			<a href="#">
+			<a>
 				<button type="button" id="notif-only" class="btn-nav rounded-0 btn-sm">
 					<i class="fas fa-bell"></i>
 				</button>
