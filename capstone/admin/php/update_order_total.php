@@ -38,10 +38,11 @@ if (mysqli_num_rows($result) > 0) {
     
     $notifmessage = "An [Admin] has updated your order total with date [". $date ."].";
     $notifcategory = "order";
+    $notifredirect = $date;
 
-    $notifsql = "INSERT INTO notification (message, category, email) VALUES (?, ?, ?)";
+    $notifsql = "INSERT INTO notification (message, category, email, redirect) VALUES (?, ?, ?, ?)";
     $notifstmt = $conn->prepare($notifsql);
-    $notifstmt->bind_param("sss", $notifmessage, $notifcategory, $email);
+    $notifstmt->bind_param("ssss", $notifmessage, $notifcategory, $email, $notifredirect);
     if ($notifstmt->execute()) {
         $notifstmt->close();
     }
