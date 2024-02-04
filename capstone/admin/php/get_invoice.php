@@ -16,9 +16,19 @@ if (mysqli_num_rows($result) > 0) {
     <p class="my-1"><small>Address: '. $row['caddress'] .'</small></p>
     ';
     if ($row['alt_address']) {
-        echo'<h6 class="m-1">Alternative: '. $row['alt_address'] .'</h6>';
+        echo'
+            <p class="my-1"><small>Address: '. $row['alt_address'] .'</small></p>
+        ';
     }
     $email = $row['email'];
+    $accountsql = "SELECT * FROM account WHERE email = '$email'";
+    $accountresult = mysqli_query($conn, $accountsql);
+    if (mysqli_num_rows($accountresult) > 0) {
+        $accountrow = mysqli_fetch_assoc($accountresult);
+        echo'
+            <p class="my-1"><small>Address: '. $accountrow['verified_location'] .'</small></p>
+        ';
+    }
     $date = $row['deyt'];
     $newsql = "SELECT * FROM `order` WHERE email = '$email' and deyt = '$date'";
     $newresult = $conn->query($newsql);
