@@ -1,5 +1,6 @@
 <?php
 include('connect.php');
+
 $sql = "WITH LatestMessages AS (
     SELECT
         email,
@@ -14,6 +15,7 @@ SELECT DISTINCT deyt, email, message, timestamp, seen
 FROM LatestMessages
 WHERE rn = 1
 ORDER BY seen ASC, timestamp DESC";
+
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 	echo '
