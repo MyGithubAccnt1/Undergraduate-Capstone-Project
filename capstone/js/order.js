@@ -5,10 +5,24 @@ function ShowOrder() {
         success: function (data) {
             data = data.trim();
             $("#order-container").html(data);
+            var currentURL = window.location.href;
+            if (currentURL !== "http://20.205.112.210/order.php" && currentURL !== "http://localhost/capstone/order.php") {
+                var notification = new URLSearchParams(currentURL).get('notification');
+                notification = decodeURIComponent(notification.replace(/\+/g, ' '));
+                var element = document.getElementById(notification);
+                var target = element.getAttribute('data-bs-target');
+                var collapseElement = document.querySelector(target);
+                if (collapseElement) {
+                   var bsCollapse = new bootstrap.Collapse(collapseElement);
+                   bsCollapse.toggle();
+                }
+            }
         }
     });
 }
-ShowOrder()
+$(document).ready(function() {
+    ShowOrder();
+});
 
 function ShowYouMayLike() {
     $.ajax({

@@ -59,13 +59,13 @@ $(document).ready(function() {
         });
     }
     ShowNotif();
-    $('#notif-only').on('mouseover', function () {
-        ShowCart();
-        $('.notif-header').stop(true, true).fadeIn('slow');
-    });
     $('#notif-only').on('click', function () {
         ShowCart();
-        $('.notif-header').toggle('slow');
+        if ($('.notif-header').is(':visible')) {
+            $('.notif-header').fadeOut('slow');
+        } else {
+            $('.notif-header').fadeIn('slow');
+        }
     });
 
 });
@@ -81,3 +81,9 @@ openIconHeader.addEventListener('click', ()=> {
 closeIconHeader.addEventListener('click', ()=> {
     navigationHeader.classList.remove('active-navigation');
 });
+
+function redirect(data) {
+    if (data) {
+        window.location.href = "order.php?&notification=" + data;
+    }
+}
