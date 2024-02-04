@@ -71,8 +71,9 @@ if ($result->num_rows > 0) {
                     $notifresult = mysqli_query($conn, $notifsql);
 
                     $notifmessage = "You successfully completed an order on [". $date ."].";
-                    $notifcategory = "user";
-                    $notifsql = "INSERT INTO notification (message, category, email) VALUES ('$notifmessage', '$notifcategory', '$email')";
+                    $notifcategory = "order";
+                    $notifredirect = $date;
+                    $notifsql = "INSERT INTO notification (message, category, email, redirect) VALUES ('$notifmessage', '$notifcategory', '$email', '$notifredirect')";
                     $notifresult = mysqli_query($conn, $notifsql);
                 }
                 $deleteStmt->close();

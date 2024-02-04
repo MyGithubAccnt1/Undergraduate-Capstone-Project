@@ -40,7 +40,7 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $id = $id + 1;
         echo '
-        <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'">
+        <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'" id="'. $row["deyt"] .'">
             <div>
                 <small>'. $row["title"] .'</small>
             </div>

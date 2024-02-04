@@ -30,8 +30,8 @@ if (isset($_SESSION['email'])){
         mysqli_free_result($result);
     } else {
         echo '
-        <div class="row">
-            <small style="width: 100%; text-align: center; margin-block: auto;">
+        <div class="row my-auto">
+            <small class="py-2" style="width: 100%; text-align: center; margin-block: auto;">
                 Your cart is empty.
             </small>
         </div>
