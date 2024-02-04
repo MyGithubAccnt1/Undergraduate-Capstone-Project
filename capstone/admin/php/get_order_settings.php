@@ -57,6 +57,19 @@ if (mysqli_num_rows($result) > 0) {
             echo '
                 <option value="Rejected" selected>Rejected</option>
             ';
+        } else if ($row['status'] === 'Canceled') {
+            echo '
+                <option value="Pending">Pending</option>
+                <option value="On-The-Way">On-The-Way</option>
+            ';
+            if ($row['total'] === 'Estimating...') {
+                
+            } else {
+                echo '<option value="Delivered">Delivered</option>';
+            }
+            echo '
+                <option value="Rejected">Rejected</option>
+            ';
         }
     echo '
             </select></small>
