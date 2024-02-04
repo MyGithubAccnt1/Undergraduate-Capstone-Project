@@ -15,8 +15,8 @@ function FillContacts() {
         }
     });
 }
-setInterval(FillContacts, 1000);
-let LoopKey, Loop = false;
+setInterval(FillContacts, 5000);
+let LoopKey, Loop;
 function ShowMessages(email, date) {
     LoopKey = true;
     UpdateMessage(email, date);
@@ -34,11 +34,9 @@ function ShowMessages(email, date) {
                 $('#message-form').find('input[name="date"]').val(date);
 
                 if (LoopKey) {
-                    if (Loop) {
-                        clearInterval(Loop);
-                    }
+                    clearInterval(Loop);
                 }
-                
+
                 $.ajax({
                     url: "./php/update_messages.php",
                     method: "POST",
@@ -46,12 +44,12 @@ function ShowMessages(email, date) {
                         data: email + ' ' + date
                     },
                     success: function (data) {
+                        data = data.trim();
                         if (LoopKey) {
+                            LoopKey = false;
                             Loop = setInterval(function () {
                                 UpdateMessage(email, date);
-                            }, 1000);
-
-                            LoopKey = false;
+                            }, 5000);
                         }
                     }
                 });
