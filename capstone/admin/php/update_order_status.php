@@ -6,6 +6,8 @@ $sql = "SELECT * FROM history WHERE id = '$id'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $row = $result->fetch_assoc();
+    $email = $row['email'];
+    $date = $row['deyt'];
     $sql = "UPDATE history SET status = '$status' WHERE id = '$id'";
     $result = mysqli_query($conn, $sql);
     
@@ -26,11 +28,26 @@ if (mysqli_num_rows($result) > 0) {
             $result = mysqli_query($conn, $sql);
         }
     }
-    
-    $notifmessage = "An [Admin] has updated an order status with id [". $id ."].";
+
+    $notifmessage = "An [Admin] has updated an order status of id [". $id ."].";
     $notifcategory = "order";
-    $notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
-    $notifresult = mysqli_query($conn, $notifsql);
+
+    $notifsql = "INSERT INTO notification (message, category) VALUES (?, ?)";
+    $notifstmt = $conn->prepare($notifsql);
+    $notifstmt->bind_param("ss", $notifmessage, $notifcategory);
+    if ($notifstmt->execute()) {
+        $notifstmt->close();
+    }
+    
+    $notifmessage = "An [Admin] has updated your orders' status with date [". $date ."].";
+    $notifcategory = "order";
+
+    $notifsql = "INSERT INTO notification (message, category, email) VALUES (?, ?, ?)";
+    $notifstmt = $conn->prepare($notifsql);
+    $notifstmt->bind_param("sss", $notifmessage, $notifcategory, $email);
+    if ($notifstmt->execute()) {
+        $notifstmt->close();
+    }
 }
 mysqli_close($conn);
 ?>
