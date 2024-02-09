@@ -48,33 +48,7 @@ if (mysqli_num_rows($result) > 0) {
                 <small style="color: red;">PHP '. $row["total"] .'</small>
             </div>
             <div>
-        ';
-            if ($row['status'] === "Pending"){
-                echo '
                 <small style="color: #f4c430;">'. $row["status"] .'</small>
-                ';
-            }elseif ($row['status'] === "On-The-Way"){
-                echo '
-                <small style="color: #f4c430;">'. $row["status"] .'</small>
-                ';
-            }elseif ($row['status'] === "Delivered"){
-                echo '
-                <small style="color: #f4c430">'. $row["status"] .'</small>
-                ';
-            }elseif ($row['status'] === "Canceled"){
-                echo '
-                <small style="color: #f4c430;">'. $row["status"] .'</small>
-                ';
-            }elseif ($row['status'] === "Rejected"){
-                echo '
-                <small style="color: #f4c430;">'. $row["status"] .'</small>
-                ';
-            }else{
-                echo '
-                <small>'. $row["status"] .'</small>
-                ';
-            }
-        echo '
             </div>
             <div>
                 <small>'. $row["deyt"] .'</small>
@@ -195,17 +169,47 @@ if (mysqli_num_rows($result) > 0) {
                             ';
 
                             foreach ($detailsArray as $value) {
-                                $details = explode(': ', $value);
-                                echo '
-                                    <div class="row">
-                                        <div class="col-6 text-end">
-                                            <p>'. $details[0] .' : </p>
+                                if (strpos($value, ':') !== false) {
+                                    $details = explode(': ', $value);
+                                    if ($details[0] === 'Reference') {
+                                        $image = $details[1];
+                                        $image = str_replace('../', '', $image);
+                                        echo '
+                                            <div class="row">
+                                                <div class="col-6 text-end">
+                                                    <p>'. $details[0] .' : </p>
+                                                </div>
+                                                <div class="col-6 text-start">
+                                                    <img src="'. $image .'" class="img-fluid">
+                                                </div>
+                                            </div>
+                                        ';
+                                    } else {
+                                        echo '
+                                            <div class="row">
+                                                <div class="col-6 text-end">
+                                                    <p>'. $details[0] .' : </p>
+                                                </div>
+                                                <div class="col-6 text-start">
+                                                    <p>'. $details[1] .'</p>
+                                                </div>
+                                            </div>
+                                        ';
+                                    }
+                                } else {
+                                    $image = $value;
+                                    $image = str_replace('../', '', $image);
+                                    echo '
+                                        <div class="row">
+                                            <div class="col-6 text-end">
+                                                
+                                            </div>
+                                            <div class="col-6 text-start">
+                                                <img src="'. $image .'" class="img-fluid">
+                                            </div>
                                         </div>
-                                        <div class="col-6 text-start">
-                                            <p>'. $details[1] .'</p>
-                                        </div>
-                                    </div>
-                                ';
+                                    ';
+                                }
                             }
                         }
         echo '

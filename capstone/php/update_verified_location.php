@@ -19,7 +19,7 @@ if ($result) {
             $stmt->execute();
             echo $caddress;
         } else {
-            echo $row['verified_location'];
+            echo $caddress;
         }
     } else {
         echo "Email not found";

@@ -1,7 +1,8 @@
 <?php
 session_start();
 include('connect.php');
-$details = mysqli_real_escape_string($conn, $_GET['details']);
+$details = $_GET['details'];
+$quantity = $_GET['quantity'];
 
 echo '
     <div class="row text-center text-white bg-dark">
@@ -12,13 +13,44 @@ echo '
 ';
 $detailsArray = explode(', ', $details);
 foreach ($detailsArray as $value) {
-    echo '
-        <div class="row text-start border" style="border-style: none none solid none !important;">
-            <div class="col-12 text-start" style="overflow-x: hidden;">
-                '. $value .'
+    if (strpos($value, ':') !== false) {
+        if (strpos($value, 'Reference') !== false) {
+            $details = explode(': ', $value);
+            $image = $details[1];
+            $image = str_replace('../', '', $image);
+            echo '
+                <div class="row text-start">
+                    <div class="col-6 text-end" style="overflow-x: hidden;">
+                        '. $details[0] .' :
+                    </div>
+                    <div class="col-6 text-start" style="overflow-x: hidden;">
+                        <img src="'. $image .'" class="img-fluid">
+                    </div>
+                </div>
+            ';
+        } else {
+            echo '
+                <div class="row text-start border" style="border-style: none none solid none !important;">
+                    <div class="col-12 text-start" style="overflow-x: hidden;">
+                        '. $value .'
+                    </div>
+                </div>
+            ';
+        }
+    } else {
+        $image = $value;
+        $image = str_replace('../', '', $image);
+        echo '
+            <div class="row text-start border" style="border-style: none none solid none !important;">
+                <div class="col-6 text-end" style="overflow-x: hidden;">
+                    
+                </div>
+                <div class="col-6 text-start" style="overflow-x: hidden;">
+                    <img src="'. $image .'" class="img-fluid">
+                </div>
             </div>
-        </div>
-    ';
+        ';
+    }
 }
 echo '
     <div class="row text-center text-white bg-dark">
@@ -37,7 +69,7 @@ echo '
             Customize Item
         </div>
         <div class="col-2 text-center">
-            1
+            '. $quantity .'
         </div>
         <div class="col-5 text-end">
             PHP Estimating...
@@ -72,7 +104,7 @@ echo '
     <div class="row">
         <div class="col-12 text-center">
             <div class="img-box">
-                <img src="" class="img-responsive" width="75%" height="auto" alt="Missing Image" id="image" style="background-image: linear-gradient(90deg, rgb(33,33,33) 0%,transparent 59%),repeating-linear-gradient(45deg, rgba(168, 168, 168,0.1) 0px, rgba(168, 168, 168,0.1) 1px,transparent 1px, transparent 13px),repeating-linear-gradient(135deg, rgba(168, 168, 168,0.1) 0px, rgba(168, 168, 168,0.1) 1px,transparent 1px, transparent 13px),linear-gradient(90deg, rgb(33,33,33),rgb(33,33,33));">
+                <img src="" class="img-responsive" width="75%" height="auto" alt="Missing Image" id="image">
                 <input type="hidden" name="image" id="hidden_image" value="">
             </div>
         </div>
