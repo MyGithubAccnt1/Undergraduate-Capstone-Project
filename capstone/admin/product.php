@@ -20,6 +20,101 @@ if ($_SESSION['role'] === "Admin") {
             .product-nav {
                 color: rgb(255, 255, 255, 1.0);
             }
+            .pending-button {
+                border: 5px solid #4E73DF;
+                color: #4E73DF;
+                border-style: none none none solid; 
+                border-radius: 6px; 
+                position: relative;
+            }
+            .pending-button::before {
+                content: attr(data-content);
+                position: absolute;
+                bottom: 0;
+                left: -5px;
+                width: 0;
+                height: 100%;
+                background-color: #4E73DF;
+                border-radius: 6px;
+                transition: width 0.4s linear;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                overflow: hidden;
+            }
+            .processing-button {
+                border: 5px solid #1CC88A;
+                color: #1CC88A;
+                border-style: none none none solid; 
+                border-radius: 6px; 
+                position: relative;
+            }
+            .processing-button::before {
+                content: attr(data-content);
+                position: absolute;
+                bottom: 0;
+                left: -5px;
+                width: 0;
+                height: 100%;
+                background-color: #1CC88A;
+                border-radius: 6px;
+                transition: width 0.4s linear;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                overflow: hidden;
+            }
+            .delivered-button {
+                border: 5px solid #36B9CC;
+                color: #36B9CC;
+                border-style: none none none solid; 
+                border-radius: 6px; 
+                position: relative;
+            }
+            .delivered-button::before {
+                content: attr(data-content);
+                position: absolute;
+                bottom: 0;
+                left: -5px;
+                width: 0;
+                height: 100%;
+                background-color: #36B9CC;
+                border-radius: 6px;
+                transition: width 0.4s linear;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                overflow: hidden;
+            }
+            .rejected-button {
+                border: 5px solid #F6C23E;
+                color: #F6C23E;
+                border-style: none none none solid; 
+                border-radius: 6px; 
+                position: relative;
+            }
+            .rejected-button::before {
+                content: attr(data-content);
+                position: absolute;
+                bottom: 0;
+                left: -5px;
+                width: 0;
+                height: 100%;
+                background-color: #F6C23E;
+                border-radius: 6px;
+                transition: width 0.4s linear;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                overflow: hidden;
+            }
+            .pending-button:hover::before, .processing-button:hover::before, .delivered-button:hover::before, .rejected-button:hover::before {
+                width: calc(100% + 5px);
+            }
         </style>
     </head>
     <body>
@@ -31,26 +126,26 @@ if ($_SESSION['role'] === "Admin") {
 
                     <div class="row">
                         <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3" id="directory_search" style="cursor: pointer;">
-                            <div class="bg-white p-3" style="border: 5px solid #4E73DF; border-style: none none none solid; border-radius: 6px;">
-                                <small style="color: #4E73DF">DIRECTORY MARKERS</small>
+                            <div class="bg-white p-3 pending-button" data-content="DIRECTORY MARKERS">
+                                <small>DIRECTORY MARKERS</small>
                                 <h6><b id="directory">0</b></h6>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3" id="necklace_search" style="cursor: pointer;">
-                            <div class="bg-white p-3" style="border: 5px solid #1CC88A; border-style: none none none solid; border-radius: 6px;">
-                                <small style="color: #1CC88A">NECKLACE</small>
+                            <div class="bg-white p-3 processing-button" data-content="NECKLACE">
+                                <small>NECKLACE</small>
                                 <h6><b id="necklace">0</b></h6>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3" id="pin_search" style="cursor: pointer;">
-                            <div class="bg-white p-3" style="border: 5px solid #36B9CC; border-style: none none none solid; border-radius: 6px;">
-                                <small style="color: #36B9CC">PINS</small>
+                            <div class="bg-white p-3 delivered-button" data-content="PINS">
+                                <small>PINS</small>
                                 <h6><b id="pin">0</b></h6>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3" id="table_search" style="cursor: pointer;">
-                            <div class="bg-white p-3" style="border: 5px solid #F6C23E; border-style: none none none solid; border-radius: 6px;">
-                                <small style="color: #F6C23E">TABLE NAMEPLATE</small>
+                            <div class="bg-white p-3 rejected-button" data-content="TABLE NAMEPLATE">
+                                <small>TABLE NAMEPLATE</small>
                                 <h6><b id="table">0</b></h6>
                             </div>
                         </div>

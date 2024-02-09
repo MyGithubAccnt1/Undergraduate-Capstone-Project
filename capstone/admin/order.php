@@ -32,6 +32,101 @@ if ($_SESSION['role'] === "Admin") {
                 text-overflow: ellipsis;
                 overflow: hidden;
             }
+            .pending-button {
+                border: 5px solid #4E73DF;
+                color: #4E73DF;
+                border-style: none none none solid; 
+                border-radius: 6px; 
+                position: relative;
+            }
+            .pending-button::before {
+                content: attr(data-content);
+                position: absolute;
+                bottom: 0;
+                left: -5px;
+                width: 0;
+                height: 100%;
+                background-color: #4E73DF;
+                border-radius: 6px;
+                transition: width 0.4s linear;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                overflow: hidden;
+            }
+            .processing-button {
+                border: 5px solid #1CC88A;
+                color: #1CC88A;
+                border-style: none none none solid; 
+                border-radius: 6px; 
+                position: relative;
+            }
+            .processing-button::before {
+                content: attr(data-content);
+                position: absolute;
+                bottom: 0;
+                left: -5px;
+                width: 0;
+                height: 100%;
+                background-color: #1CC88A;
+                border-radius: 6px;
+                transition: width 0.4s linear;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                overflow: hidden;
+            }
+            .delivered-button {
+                border: 5px solid #36B9CC;
+                color: #36B9CC;
+                border-style: none none none solid; 
+                border-radius: 6px; 
+                position: relative;
+            }
+            .delivered-button::before {
+                content: attr(data-content);
+                position: absolute;
+                bottom: 0;
+                left: -5px;
+                width: 0;
+                height: 100%;
+                background-color: #36B9CC;
+                border-radius: 6px;
+                transition: width 0.4s linear;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                overflow: hidden;
+            }
+            .rejected-button {
+                border: 5px solid #F6C23E;
+                color: #F6C23E;
+                border-style: none none none solid; 
+                border-radius: 6px; 
+                position: relative;
+            }
+            .rejected-button::before {
+                content: attr(data-content);
+                position: absolute;
+                bottom: 0;
+                left: -5px;
+                width: 0;
+                height: 100%;
+                background-color: #F6C23E;
+                border-radius: 6px;
+                transition: width 0.4s linear;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                overflow: hidden;
+            }
+            .pending-button:hover::before, .processing-button:hover::before, .delivered-button:hover::before, .rejected-button:hover::before {
+                width: calc(100% + 5px);
+            }
         </style>
     </head>
     <body>
@@ -44,26 +139,26 @@ if ($_SESSION['role'] === "Admin") {
 
                     <div class="row">
                         <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3" id="pending_search" style="cursor: pointer;">
-                            <div class="bg-white p-3" style="border: 5px solid #4E73DF; border-style: none none none solid; border-radius: 6px;">
-                                <small style="color: #4E73DF">PENDING ORDERS</small>
+                            <div class="bg-white p-3 pending-button" data-content="PENDING ORDERS">
+                                <small>PENDING ORDERS</small>
                                 <h6><b id="pending">0</b></h6>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3" id="on-the-way_search" style="cursor: pointer;">
-                            <div class="bg-white p-3" style="border: 5px solid #1CC88A; border-style: none none none solid; border-radius: 6px;">
-                                <small style="color: #1CC88A">ON THE WAY ORDERS</small>
+                            <div class="bg-white p-3 processing-button" data-content="PROCESSING ORDERS">
+                                <small>PROCESSING ORDERS</small>
                                 <h6><b id="otw">0</b></h6>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3" id="delivered_search" style="cursor: pointer;">
-                            <div class="bg-white p-3" style="border: 5px solid #36B9CC; border-style: none none none solid; border-radius: 6px;">
-                                <small style="color: #36B9CC">DELIVERED ORDERS</small>
+                            <div class="bg-white p-3 delivered-button" data-content="DELIVERED ORDERS">
+                                <small>DELIVERED ORDERS</small>
                                 <h6><b id="delivered">0</b></h6>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3" id="rejected_search" style="cursor: pointer;">
-                            <div class="bg-white p-3" style="border: 5px solid #F6C23E; border-style: none none none solid; border-radius: 6px;">
-                                <small style="color: #F6C23E">REJECTED ORDERS</small>
+                            <div class="bg-white p-3 rejected-button" data-content="REJECTED ORDERS">
+                                <small>REJECTED ORDERS</small>
                                 <h6><b id="rejected">0</b></h6>
                             </div>
                         </div>

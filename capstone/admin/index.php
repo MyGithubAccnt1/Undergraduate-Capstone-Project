@@ -38,19 +38,19 @@ if ($_SESSION['role'] === "Admin") {
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3">
                             <div class="bg-white p-3" style="border: 5px solid #1CC88A; border-style: none none none solid; border-radius: 6px;">
-                                <small style="color: #1CC88A">DAILY PENDING ORDERS</small>
+                                <small style="color: #1CC88A">TODAYS PENDING ORDER</small>
                                 <h6><b id="pending">0</b></h6>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3">
                             <div class="bg-white p-3" style="border: 5px solid #36B9CC; border-style: none none none solid; border-radius: 6px;">
-                                <small style="color: #36B9CC">DAILY DELIVERED ORDERS</small>
+                                <small style="color: #36B9CC">TODAYS DELIVERED ORDER</small>
                                 <h6><b id="delivered">0</b></h6>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3">
                             <div class="bg-white p-3" style="border: 5px solid #F6C23E; border-style: none none none solid; border-radius: 6px;">
-                                <small style="color: #F6C23E">DAILY EARNINGS</small>
+                                <small style="color: #F6C23E">TODAYS EARNING</small>
                                 <h6><b>PHP</b> <b id="earnings">0</b></h6>
                             </div>
                         </div>
