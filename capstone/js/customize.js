@@ -47,13 +47,6 @@ $(document).on('click', '#logo_seal_bronze', function() {
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
 });
-$(document).on('click', '#logo_seal_image', function() {
-    var close = product;
-    product = document.getElementById('logo_seal_text');
-    document.getElementById('4').scrollIntoView();
-    new bootstrap.Collapse($(product)).show();
-    new bootstrap.Collapse($(close)).hide();
-});
 $(document).on('submit', '#logo_seal_company_form', function() {
     event.preventDefault();
     var close = product;
@@ -149,13 +142,6 @@ $(document).on('click', '#table_nameplate', function() {
     document.getElementById('2').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
 });
-$(document).on('click', '#table_nameplate_image', function() {
-    var close = product;
-    product = document.getElementById('table_nameplate_company');
-    document.getElementById('3').scrollIntoView();
-    new bootstrap.Collapse($(product)).show();
-    new bootstrap.Collapse($(close)).hide();
-});
 $(document).on('submit', '#table_nameplate_company_form', function() {
     var close = product;
     product = document.getElementById('table_nameplate_name');
@@ -216,6 +202,7 @@ $('.back_necklace_text, .back_necklace_image').on('click', function() {
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
     necklace_engrave = null;
+    $('#necklace_image_file').val('');
 });
 $('.back_logo_seal_text').on('click', function() {
     var close = product;
@@ -249,8 +236,19 @@ $('.back_table_nameplate_position').on('click', function() {
     new bootstrap.Collapse($(close)).hide();
     position = null;
 });
+$(document).on('click', '#upload_design', function() {
+    product = document.getElementById('own_design');
+    category = 'own design';
+    document.getElementById('2').scrollIntoView();
+    new bootstrap.Collapse($(product)).show();
+});
 $('#reset').on('click', function() {
     window.location.href = 'customize.php'
+});
+$('.exit_customize').on('click', function() {
+    if (confirm("Are you sure you want to exit? You`ll lose your progress upon exiting and start all over again.") === true) {
+        history.back();
+    }
 });
 
 function ShowCanvas() {
@@ -482,18 +480,24 @@ function ShowCanvas() {
                     success: function (data) {
                         data = data.trim();
                         const baseUrl = window.location.origin;
-                        if (baseUrl === "http://localhost") {
-                            data = 'capstone/' + data;
-                        }
                         window.localStorage.setItem('images', data);
                     }
                 });
             };
-        reader.readAsDataURL(file);
+            reader.readAsDataURL(file);
+            var close = product;
+            product = document.getElementById('logo_seal_text');
+            document.getElementById('4').scrollIntoView();
+            new bootstrap.Collapse($(product)).show();
+            new bootstrap.Collapse($(close)).hide();
+            $("textarea[name='logo_seal_company']").val('- TYPE YOUR COMPANY NAME HERE -');
+            logo_seal_change_text();
+            $("textarea[name='logo_seal_company']").val('');
+            $('#logo_seal_image').val('');
+        } else {
+            alert('Uploading image is canceled.');
+            window.localStorage.removeItem('images');
         }
-        $("textarea[name='logo_seal_company']").val('- TYPE YOUR COMPANY NAME HERE -');
-        logo_seal_change_text();
-        $("textarea[name='logo_seal_company']").val('');
     });
 
     function logo_seal_change_text() {
@@ -788,14 +792,42 @@ function ShowCanvas() {
                     success: function (data) {
                         data = data.trim();
                         const baseUrl = window.location.origin;
-                        if (baseUrl === "http://localhost") {
-                            data = 'capstone/' + data;
-                        }
                         window.localStorage.setItem('images', data);
                     }
                 });
             };
-        reader.readAsDataURL(file);
+            reader.readAsDataURL(file);
+        } else {
+            alert('Uploading image is canceled.');
+            window.localStorage.removeItem('images');
+            canvas.clear();
+            canvas.setHeight(parseFloat($('.canvas-size').css('height')));
+            canvas.setWidth(parseFloat($('.canvas-size').css('width')));
+            canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
+            fabric.Image.fromURL('images/customize/necklace_' + material + '.png', function(img) {
+                img.set({
+                    left: canvas.width / 2,
+                    top: canvas.height / 2,
+                    originX: 'center',
+                    originY: 'center',
+                    scaleX: 0.5,
+                    scaleY: 0.5,
+                });
+                canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+            });
+            fabric.Image.fromURL('images/customize/necklace_' + material + '_' + shape + '.png', function(img) {
+                img.set({
+                    left: canvas.width / 2,
+                    top: canvas.height / 2 + 10,
+                    originX: 'center',
+                    originY: 'center',
+                    scaleX: 0.3,
+                    scaleY: 0.3,
+                    evented: false
+                });
+                canvas.add(img);
+            });
+            canvas.renderAll();
         }
     });
 
@@ -861,19 +893,19 @@ function ShowCanvas() {
     })
 
     $('#table_nameplate_image').on('change', function (e) {
-        const circle = new fabric.Circle({
-            left: ((canvas.width / 2) - 200) + (400 * 0.35),
-            top: (canvas.height / 2) - ((canvas.height / 2) * 0.015),
-            originX: 'center',
-            originY: 'center',
-            radius: 15,
-            fill: 'yellow',
-            selectable: false,
-            evented: false
-        });
-        canvas.add(circle);
         const file = e.target.files[0];
         if (file) {
+            const circle = new fabric.Circle({
+                left: ((canvas.width / 2) - 200) + (400 * 0.35),
+                top: (canvas.height / 2) - ((canvas.height / 2) * 0.015),
+                originX: 'center',
+                originY: 'center',
+                radius: 15,
+                fill: 'yellow',
+                selectable: false,
+                evented: false
+            });
+            canvas.add(circle);
             const reader = new FileReader();
             reader.onload = function (event) {
                 const imageUrl = event.target.result;
@@ -920,23 +952,29 @@ function ShowCanvas() {
                     success: function (data) {
                         data = data.trim();
                         const baseUrl = window.location.origin;
-                        if (baseUrl === "http://localhost") {
-                            data = 'capstone/' + data;
-                        }
                         window.localStorage.setItem('images', data);
                     }
                 });
             };
-        reader.readAsDataURL(file);
+            reader.readAsDataURL(file);
+            var close = product;
+            product = document.getElementById('table_nameplate_company');
+            document.getElementById('3').scrollIntoView();
+            new bootstrap.Collapse($(product)).show();
+            new bootstrap.Collapse($(close)).hide();
+            $("textarea[name='table_nameplate_company']").val('- TYPE YOUR COMPANY HERE -');
+            table_nameplate_change_company();
+            var zoomFactor = 7.5;
+            var newZoom = canvas.getZoom() * zoomFactor;
+            var zoomCenter = new fabric.Point(((canvas.width / 2) - 200) + (400 * 0.328), (canvas.height / 2));
+            canvas.zoomToPoint(zoomCenter, newZoom);
+            canvas.renderAll();
+            $("textarea[name='table_nameplate_company']").val('');
+            $('#table_nameplate_image').val('');
+        } else {
+            alert('Uploading image is canceled.');
+            window.localStorage.removeItem('images');
         }
-        $("textarea[name='table_nameplate_company']").val('- TYPE YOUR COMPANY HERE -');
-        table_nameplate_change_company();
-        var zoomFactor = 7.5;
-        var newZoom = canvas.getZoom() * zoomFactor;
-        var zoomCenter = new fabric.Point(((canvas.width / 2) - 200) + (400 * 0.328), (canvas.height / 2));
-        canvas.zoomToPoint(zoomCenter, newZoom);
-        canvas.renderAll();
-        $("textarea[name='table_nameplate_company']").val('');
     });
 
     var text_angle = 0;
@@ -1134,32 +1172,142 @@ function ShowCanvas() {
         canvas.zoomToPoint(zoomCenter, zoomFactor);
         canvas.renderAll();
         localStorage.setItem('Object', canvas.toDataURL({ format: 'png', quality: 1.0 }));
-        var popupWindow = window.open('try_me_ar.php', 'Popup', 'width=640, height=480, resizable=yes, scrollbars=yes');
+        var popupWindow = window.open('try_me_ar.php', 'Popup', 'width=400 ', 'height=400', 'resizable=yes, scrollbars=no');
         canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
     });
 
+    $('#final_reference').on('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const imageUrl = event.target.result;
+                const imageDataWithoutPrefix = imageUrl.split(',')[1];
+                $.ajax({
+                    url: "./php/upload_temp.php",
+                    method: "POST",
+                    data: {
+                        imageFile: imageDataWithoutPrefix
+                    },
+                    success: function (data) {
+                        data = data.trim();
+                        data = window.localStorage.getItem('images') + ', ' + data;
+                        window.localStorage.setItem('images', data);
+                    }
+                });
+            };
+            reader.readAsDataURL(file);
+        } else {
+            alert('Uploading reference image is canceled.');
+            let data = window.localStorage.getItem('images');
+            console.log(data.split(',')[0]);
+            window.localStorage.setItem('images', data.split(',')[0]);
+        }
+    });
+
+    $('.back_own_design').on('click', function() {
+        $('#own_design_image').val('');
+        document.getElementById('1').scrollIntoView();
+        new bootstrap.Collapse($(product)).hide();
+    })
+
+    $('#own_design_image').on('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const imageUrl = event.target.result;
+                fabric.Image.fromURL(imageUrl, function (img) {
+                    img.set({
+                        left: canvas.width / 2,
+                        top: canvas.height / 2,
+                        originX: 'center',
+                        originY: 'center',
+                        evented: false
+                    });
+
+                    var scaleX = canvas.width / img.width;
+                    var scaleY = canvas.height / img.height;
+
+                    var scaleToFit = Math.min(scaleX, scaleY);
+
+                    img.scaleX = scaleToFit;
+                    img.scaleY = scaleToFit;
+
+                    canvas.add(img);
+                    canvas.renderAll();
+                });
+                const imageDataWithoutPrefix = imageUrl.split(',')[1];
+                $.ajax({
+                    url: "./php/upload_temp.php",
+                    method: "POST",
+                    data: {
+                        imageFile: imageDataWithoutPrefix
+                    },
+                    success: function (data) {
+                        data = data.trim();
+                        const baseUrl = window.location.origin;
+                        window.localStorage.setItem('images', data);
+                    }
+                });
+            };
+            reader.readAsDataURL(file);
+        } else {
+            alert('Uploading image is canceled.');
+            window.localStorage.removeItem('images');
+        }
+    });
+
+    $('.next_own_design').on('click', function() {
+        if ($('#own_design_image').val()) {
+            var close = product;
+            product = document.getElementById('final');
+            document.getElementById('8').scrollIntoView();
+            new bootstrap.Collapse($(product)).show();
+            new bootstrap.Collapse($(close)).hide();
+        }
+    })
+
     $('#order').on('click', function() {
         $(".loader").fadeIn('slow');
+        let log;
         if (category === 'directory marker') {
-            const log = 'Product: ' + category + ', Material: ' + material + ', Company: ' + company;
-            window.localStorage.setItem('details', log);
+            log = 'Product: ' + category + ', Material: ' + material + ', Company: ' + company;
+            if ($('textarea[name="logo_seal_note"]').val()) {
+                log = log + ', Note: ' + $('textarea[name="logo_seal_note"]').val();
+            }
         } else if (category === 'necklace') {
             if (shape === 'text') {
-                const log = 'Product: ' + category + ', Material: ' + material + ', Shape: ' + shape + ', Text: ' + necklace_text;
-                window.localStorage.setItem('details', log);
+                log = 'Product: ' + category + ', Material: ' + material + ', Shape: ' + shape + ', Text: ' + necklace_text;
             } else {
-                let log = '';
                 if (necklace_engrave) {
                     log = 'Product: ' + category + ', Material: ' + material + ', Shape: ' + shape + ', Text: ' + necklace_engrave;
                 } else {
                     log = 'Product: ' + category + ', Material: ' + material + ', Shape: ' + shape;
+                    if ($('textarea[name="necklace_note"]').val()) {
+                        log = log + ', Note: ' + $('textarea[name="necklace_note"]').val();
+                    }
                 }
-                window.localStorage.setItem('details', log);  
             }
         } else if (category === 'table nameplate') {
-            const log = 'Product: ' + category + ', Material: ' + material + ', Company: ' + company + ', Name: ' + name + ', Position: ' + position;
-            window.localStorage.setItem('details', log);
+            log = 'Product: ' + category + ', Material: ' + material + ', Company: ' + company + ', Name: ' + name + ', Position: ' + position;
+            if ($('textarea[name="table_nameplate_note_uno"]').val()) {
+                log = log + ', Note: ' + $('textarea[name="table_nameplate_note_uno"]').val();
+            }
+            if ($('textarea[name="table_nameplate_note_dos"]').val()) {
+                log = log + ', Note: ' + $('textarea[name="table_nameplate_note_dos"]').val();
+            }
+            if ($('textarea[name="table_nameplate_note_tres"]').val()) {
+                log = log + ', Note: ' + $('textarea[name="table_nameplate_note_tres"]').val();
+            }
+        } else if (category === 'own design') {
+            log = 'Product: ' + category;
+            if ($('textarea[name="own_design_note"]').val()) {
+                log = log + ', Note: ' + $('textarea[name="own_design_note"]').val();
+            }
         }
+        log = log + ', Reference: ' + window.localStorage.getItem('images');
+        window.localStorage.setItem('details', log);
         canvas.setBackgroundColor(null, canvas.renderAll.bind(canvas));
         var zoomFactor = 1;
         var zoomCenter = new fabric.Point(canvas.width / 2, canvas.height / 2);
