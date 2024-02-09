@@ -78,7 +78,7 @@ function ShowOrders() {
         });
 
         $('#on-the-way_search').on('click', function() {
-            dataTable.search('On-The-Way');
+            dataTable.search('Processing');
         });
 
         $('#delivered_search').on('click', function() {
