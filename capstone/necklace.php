@@ -62,7 +62,7 @@ session_start();
 			<section class="container py-5">
 				<div class="row">
 					<div class="col-md-12 text-center">
-						<h1 class="mb-5">Necklace</h1>
+						<h2 class="mb-5">NECKLACE</h2>
 						<div class="d-flex justify-content-start align-items-center">
 							<div style="margin-right: 5px;">Filter:</div>
 							<select class="input" id="filter">
@@ -72,7 +72,7 @@ session_start();
 						</div>
 						<hr class="mt-2 mb-0">
 
-						<div class="container mt-2 px-5 border border-black" id="price" style="display: none; padding-block: 5px; background-color: rgba(0, 0, 0, 0.1);">
+						<div class="container mt-2 px-5 border border-black" id="price" style="display: none; padding-block: 5px;">
 							<p class="text-start m-0" id="min-text">Min price: PHP 0</p>
 							<input type="range" class="form-range" min="0" max="999" id="min-price" step="1" value="0">
 							<input type="range" class="form-range" min="1" max="1000" id="max-price" step="1" value="1000">
@@ -98,7 +98,7 @@ session_start();
 			<section class="container py-5">
 		    	<div class="row">
 		    		<div class="col-12">
-		    			<h1 class="m-0">YOU MAY LIKE</h1>
+		    			<h2 class="m-0"><small>YOU MAY LIKE</small></h2>
 		    			<hr class="mt-2 mb-0">
 		    			<div class="carousel slide p-0" data-ride="carousel" data-interval="0"> 
 		    				<div class="carousel-inner">

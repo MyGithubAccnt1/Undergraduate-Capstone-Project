@@ -12,72 +12,30 @@
 	  	<meta name="keywords" content="capstone, project, thesis">
 	  	<meta name="author" content="Mhel Voi A. Bernabe">
 	  	<?php include('include/style.php') ?>
+	  	<script defer src="include/face-api.min.js"></script>
+	  	<script defer src="js/try_me_ar.js"></script>
 	  	<style>
-  	        #video {
-  	            position: absolute;
-  	            top: 0;
-  	            left: 0;
-  	            width: 100%;
-  	            height: 100%;
-  	            object-fit: cover;
-  	            z-index: 1;
-  	        }
+	  		body {
+  		      	margin: 0;
+  		      	padding: 0;
+  		      	width: 100%;
+  		      	height: 100vh;
+  		      	display: flex;
+  		      	justify-content: center;
+  		      	align-items: center;
+  		    }
 
-  	        #canvas {
-  	            position: absolute;
-  	            top: 0;
-  	            left: 0;
-  	            width: 100%;
-  	            height: 100%;
-  	            z-index: 2;
-  	        }
+  		    video {
+  		    	object-fit: cover;
+  		    }
+
+  	        canvas {
+              	position: absolute;
+            }
   	    </style>
 	</head>
 	<body>
 		<section class="loader"></section>
-		<video id="video" width="100%" height="100%" autoplay></video>
-		<canvas id="canvas"></canvas>
-		<script type="text/javascript" src="include/fabric-5.4.2.min.js"></script>
-		<script type="text/javascript">
-			$(window).on('load', function() {
-			  	$(".loader").fadeOut('slow');
-			    const video = document.getElementById('video');
-			    navigator.mediaDevices.getUserMedia({ video: true })
-			        .then((stream) => {
-			            video.srcObject = stream;
-			            video.play();
-			        })
-			        .catch((error) => {
-			            alert('Error accessing camera. Please check your camera permissions and try again.');
-                        window.close();
-			        });
-			    ShowCanvas();
-			    $(window).on('resize', function() {
-		            ShowCanvas();
-		        });
-			});
-
-			function ShowCanvas() {
-			    const canvas = new fabric.Canvas('canvas', { isDrawingMode: false });
-			    canvas.setHeight(parseFloat($('#video').css('height')));
-			    canvas.setWidth(parseFloat($('#video').css('width')));
-
-			    var dataURL = localStorage.getItem('Object');
-
-			    if (dataURL) {
-			        fabric.Image.fromURL(dataURL, function (img) {
-			            img.set({
-			            	originX: 'center',
-			            	originY: 'center',
-			            	left: canvas.width / 2,
-			            	top: canvas.height / 2 + 50,
-			            	evented: false
-			            });
-			            canvas.add(img);
-			            canvas.renderAll();
-			        });
-			    }
-			}
-		</script>
+		<video id="video" width="100%" height="100%" autoplay muted></video>
 	</body>
 </html>

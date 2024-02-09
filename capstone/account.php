@@ -75,11 +75,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			?>
 			<img src="images/auto-complete.gif" id="guide" style="display: none; position: absolute;">
 			<section class="container py-5">
-				<h1 class="mb-5">My Profile</h1>
+				<h2 class="mb-5">My Profile</h2>
 				<hr>
 				<form id="personal">
 					<div class="row text-muted">
-						<h2 class="mb-4 mt-0">Personal details</h2>
+						<h2 class="mb-4 mt-0"><small>Personal details</small></h2>
 						<div class="col-md-6">
 						    <label class="form-label">First Name</label>
 						    <input type="text" class="form-control" value="<?php echo $_SESSION['fname']; ?>" name="fname" required>
@@ -112,7 +112,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
             <section class="container py-5">
 				<form action="" id="passwords">
                     <div class="row text-muted">
-                        <h2 class="mb-4 mt-0">Change Password</h2>
+                        <h2 class="mb-4 mt-0"><small>Change Password</small></h2>
                         <div class="col-md-6">
                             <label class="form-label">Old password</label>
                             <input type="password" class="form-control" id="old_password" required>

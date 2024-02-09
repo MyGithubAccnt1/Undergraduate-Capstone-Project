@@ -162,12 +162,12 @@ session_start();
 			<img src="" id="imagePreview" class="imagePreview" alt="Missing_Image">
 			<img src="images/order-guide.gif" id="guide" style="display: none; position: absolute;">
 			<section class="container py-5">
-				<h1 class="mb-5">
+				<h2 class="mb-5">
 					My Orders
 					<button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="order_guide">
 						<small>?</small>
 					</button>
-				</h1>
+				</h2>
 				<hr>
 				<div class="row">
 					<div class="container">

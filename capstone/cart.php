@@ -82,7 +82,7 @@ session_start();
 			<?php include('include/user_header.php') ?>
 			<img src="" id="imagePreview" class="imagePreview" alt="Missing_Image">
 			<section class="container py-5">
-				<h1 class="mb-5">Cart</h1>
+				<h2 class="mb-5">Cart</h2>
 				<hr>
 				<div class="row">
 					<div class="container">
