@@ -17,7 +17,7 @@ if (mysqli_num_rows($result) > 0) {
         if ($row['status'] === 'Pending') {
             echo '
                 <option value="Pending" selected>Pending</option>
-                <option value="On-The-Way">On-The-Way</option>
+                <option value="Processing">Processing</option>
             ';
             if ($row['total'] === 'Estimating...') {
                 
@@ -27,10 +27,10 @@ if (mysqli_num_rows($result) > 0) {
             echo '
                 <option value="Rejected">Rejected</option>
             ';
-        } else if ($row['status'] === 'On-The-Way') {
+        } else if ($row['status'] === 'Processing') {
             echo '
                 <option value="Pending">Pending</option>
-                <option value="On-The-Way" selected>On-The-Way</option>
+                <option value="Processing" selected>Processing</option>
             ';
             if ($row['total'] === 'Estimating...') {
                 
@@ -47,7 +47,7 @@ if (mysqli_num_rows($result) > 0) {
         } else if ($row['status'] === 'Rejected') {
             echo '
                 <option value="Pending">Pending</option>
-                <option value="On-The-Way">On-The-Way</option>
+                <option value="Processing">Processing</option>
             ';
             if ($row['total'] === 'Estimating...') {
                 
@@ -60,7 +60,7 @@ if (mysqli_num_rows($result) > 0) {
         } else if ($row['status'] === 'Canceled') {
             echo '
                 <option value="Pending">Pending</option>
-                <option value="On-The-Way">On-The-Way</option>
+                <option value="Processing">Processing</option>
             ';
             if ($row['total'] === 'Estimating...') {
                 

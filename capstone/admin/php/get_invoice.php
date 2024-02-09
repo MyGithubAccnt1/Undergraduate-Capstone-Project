@@ -17,7 +17,7 @@ if (mysqli_num_rows($result) > 0) {
     ';
     if ($row['alt_address']) {
         echo'
-            <p class="my-1"><small>Address: '. $row['alt_address'] .'</small></p>
+            <p class="my-1"><small>Alternative: '. $row['alt_address'] .'</small></p>
         ';
     }
     $email = $row['email'];
@@ -25,9 +25,11 @@ if (mysqli_num_rows($result) > 0) {
     $accountresult = mysqli_query($conn, $accountsql);
     if (mysqli_num_rows($accountresult) > 0) {
         $accountrow = mysqli_fetch_assoc($accountresult);
-        echo'
-            <p class="my-1"><small>Address: '. $accountrow['verified_location'] .'</small></p>
-        ';
+        if ($accountrow['verified_location']) {
+            echo'
+                <p class="my-1"><small>Verified Address: '. $accountrow['verified_location'] .'</small></p>
+            ';
+        }
     }
     $date = $row['deyt'];
     $newsql = "SELECT * FROM `order` WHERE email = '$email' and deyt = '$date'";
@@ -51,6 +53,7 @@ if (mysqli_num_rows($result) > 0) {
         $total = null;
         $image = null;
         $title = null;
+        $detailsArray = array();
         while ($row = mysqli_fetch_assoc($newresult)) {
             echo'
             <div class="row text-center border" style="border-style: none none solid none !important;">
@@ -88,6 +91,11 @@ if (mysqli_num_rows($result) > 0) {
             } else {
                 $total = 'Estimating...';
             }
+            if (!is_null($row['details'])) {
+                $detailsArray = explode(', ', $row['details']);
+            } else {
+                $detailsArray = array();
+            }
         }
         if (is_numeric($total) && $total > 0) {
             $total = number_format(floatval($total), 2, '.', ',');
@@ -114,17 +122,16 @@ if (mysqli_num_rows($result) > 0) {
             </div>
             ';
             if ($title === 'Customize Item') {
-                $image = ($image);
                 echo '
                     <div class="row bg-dark text-white">
                         <div class="col-12 text-center">
-                            <small><b>Preview</b></small>
+                            <small>Preview</small>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 text-center">
                             <div class="img-box">
-                                <img src="'. $image .'" class="img-responsive" width="75%" height="auto" alt="Missing Image" id="image" style="background-image: linear-gradient(90deg, rgb(33,33,33) 0%,transparent 59%),repeating-linear-gradient(45deg, rgba(168, 168, 168,0.1) 0px, rgba(168, 168, 168,0.1) 1px,transparent 1px, transparent 13px),repeating-linear-gradient(135deg, rgba(168, 168, 168,0.1) 0px, rgba(168, 168, 168,0.1) 1px,transparent 1px, transparent 13px),linear-gradient(90deg, rgb(33,33,33),rgb(33,33,33));">
+                                <img src="'. $image .'" class="img-responsive" width="75%" height="auto" alt="Missing Image" id="image">
                                 <input type="hidden" name="image" value="'. $image .'">
                             </div>
                         </div>
@@ -138,6 +145,56 @@ if (mysqli_num_rows($result) > 0) {
                     </div>
                 </div>
                 ';
+            }
+            if (!empty($detailsArray)) {
+                echo'
+                <div class="row bg-dark text-white">
+                    <div class="col-12 text-center">
+                        <small>Details</small>
+                    </div>
+                </div>
+                ';
+                foreach ($detailsArray as $value) {
+                    if (strpos($value, ':') !== false) {
+                        $details = explode(': ', $value);
+                        if ($details[0] === 'Reference') {
+                            $image = $details[1];
+                            echo '
+                                <div class="row">
+                                    <div class="col-6 text-end">
+                                        <p>'. $details[0] .' : </p>
+                                    </div>
+                                    <div class="col-6 text-start">
+                                        <img src="'. $image .'" class="img-fluid">
+                                    </div>
+                                </div>
+                            ';
+                        } else {
+                            echo '
+                                <div class="row">
+                                    <div class="col-6 text-end">
+                                        <p>'. $details[0] .' : </p>
+                                    </div>
+                                    <div class="col-6 text-start">
+                                        <p>'. $details[1] .'</p>
+                                    </div>
+                                </div>
+                            ';
+                        }
+                    } else {
+                        $image = $value;
+                        echo '
+                            <div class="row">
+                                <div class="col-6 text-end">
+                                    
+                                </div>
+                                <div class="col-6 text-start">
+                                    <img src="'. $image .'" class="img-fluid">
+                                </div>
+                            </div>
+                        ';
+                    }
+                }
             }
         echo '
         </div>
