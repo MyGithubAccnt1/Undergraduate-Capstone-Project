@@ -1355,22 +1355,31 @@ function guide(element) {
     var offset = element.offset();
     var leftPosition = offset.left + element.outerWidth();
     var topPosition = offset.top;
+    
     if (leftPosition + $('#guide').outerWidth() > $(window).width()) {
         leftPosition = offset.left - $('#guide').outerWidth();
     }
+
     if (topPosition + $('#guide').outerHeight() > $(window).height()) {
         topPosition = $(window).height() - $('#guide').outerHeight();
     }
+
+    var maxWidth = $(window).width() * 0.5;
+    var maxHeight = $(window).height() * 0.5;
+    
     $('#guide').css({
         top: topPosition + 'px',
-        left: leftPosition + 'px'
+        left: leftPosition + 'px',
+        maxWidth: maxWidth + 'px',
+        maxHeight: maxHeight + 'px'
     });
+
     $('#guide').stop(true, true).fadeIn('slow');
 }
 $(document).on({
     mouseover: function () {
         guide($(this));
-        $('#guide').attr('src', 'images/product-guide.gif');
+        $('#guide').attr('src', 'images/select_product.gif');
     },
     mouseout: function () {
         $('#guide').stop(true, true).delay(250).fadeOut('slow');
@@ -1379,7 +1388,7 @@ $(document).on({
 $(document).on({
     mouseover: function () {
         guide($(this));
-        $('#guide').attr('src', 'images/directorymarker_logo-guide.gif');
+        $('#guide').attr('src', 'images/directory_select_logo.gif');
     },
     mouseout: function () {
         $('#guide').stop(true, true).delay(250).fadeOut('slow');
@@ -1388,7 +1397,7 @@ $(document).on({
 $(document).on({
     mouseover: function () {
         guide($(this));
-        $('#guide').attr('src', 'images/directorymarker_company-guide.gif');
+        $('#guide').attr('src', 'images/directory_insert_company.gif');
     },
     mouseout: function () {
         $('#guide').stop(true, true).delay(250).fadeOut('slow');
@@ -1397,7 +1406,7 @@ $(document).on({
 $(document).on({
     mouseover: function () {
         guide($(this));
-        $('#guide').attr('src', 'images/necklace_engrave_text-guide.gif');
+        $('#guide').attr('src', 'images/necklace_engrave_text.gif');
     },
     mouseout: function () {
         $('#guide').stop(true, true).delay(250).fadeOut('slow');
@@ -1406,7 +1415,7 @@ $(document).on({
 $(document).on({
     mouseover: function () {
         guide($(this));
-        $('#guide').attr('src', 'images/necklace_engrave_image-guide.gif');
+        $('#guide').attr('src', 'images/necklace_engrave_image.gif');
     },
     mouseout: function () {
         $('#guide').stop(true, true).delay(250).fadeOut('slow');
@@ -1415,7 +1424,7 @@ $(document).on({
 $(document).on({
     mouseover: function () {
         guide($(this));
-        $('#guide').attr('src', 'images/tablenameplate_logo-guide.gif');
+        $('#guide').attr('src', 'images/table_select_logo.gif');
     },
     mouseout: function () {
         $('#guide').stop(true, true).delay(250).fadeOut('slow');
@@ -1424,7 +1433,7 @@ $(document).on({
 $(document).on({
     mouseover: function () {
         guide($(this));
-        $('#guide').attr('src', 'images/tablenameplate_company-guide.gif');
+        $('#guide').attr('src', 'images/table_insert_text.gif');
     },
     mouseout: function () {
         $('#guide').stop(true, true).delay(250).fadeOut('slow');
@@ -1433,7 +1442,7 @@ $(document).on({
 $(document).on({
     mouseover: function () {
         guide($(this));
-        $('#guide').attr('src', 'images/tablenameplate_text-guide.gif');
+        $('#guide').attr('src', 'images/table_insert_name.gif');
     },
     mouseout: function () {
         $('#guide').stop(true, true).delay(250).fadeOut('slow');
@@ -1442,7 +1451,16 @@ $(document).on({
 $(document).on({
     mouseover: function () {
         guide($(this));
-        $('#guide').attr('src', 'images/final-guide.gif');
+        $('#guide').attr('src', 'images/table_insert_position.gif');
+    },
+    mouseout: function () {
+        $('#guide').stop(true, true).delay(250).fadeOut('slow');
+    }
+}, '#tablenameplate_position-guide');
+$(document).on({
+    mouseover: function () {
+        guide($(this));
+        $('#guide').attr('src', 'images/final_design.gif');
     },
     mouseout: function () {
         $('#guide').stop(true, true).delay(250).fadeOut('slow');
@@ -1451,9 +1469,18 @@ $(document).on({
 $(document).on({
     mouseover: function () {
         guide($(this));
-        $('#guide').attr('src', 'images/necklace_text_body-guide.gif');
+        $('#guide').attr('src', 'images/necklace_text.gif');
     },
     mouseout: function () {
         $('#guide').stop(true, true).delay(250).fadeOut('slow');
     }
 }, '#necklace_text_body-guide');
+$(document).on({
+    mouseover: function () {
+        guide($(this));
+        $('#guide').attr('src', 'images/own_design.gif');
+    },
+    mouseout: function () {
+        $('#guide').stop(true, true).delay(250).fadeOut('slow');
+    }
+}, '#own_design-guide');
