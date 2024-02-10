@@ -194,6 +194,7 @@ $('.back_necklace_engrave').on('click', function() {
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
     necklace_text = null;
+    $('textarea[name="necklace_note"]').val('');
 });
 $('.back_necklace_text, .back_necklace_image').on('click', function() {
     var close = product;
@@ -211,6 +212,7 @@ $('.back_logo_seal_text').on('click', function() {
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
     company = null;
+    $('textarea[name="logo_seal_note"]').val('');
 });
 $('.back_table_nameplate_company').on('click', function() {
     var close = product;
@@ -219,6 +221,7 @@ $('.back_table_nameplate_company').on('click', function() {
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
     company = null;
+    $('textarea[name="table_nameplate_note_uno"]').val('');
 });
 $('.back_table_nameplate_name').on('click', function() {
     var close = product;
@@ -227,6 +230,7 @@ $('.back_table_nameplate_name').on('click', function() {
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
     name = null;
+    $('textarea[name="table_nameplate_note_dos"]').val('');
 });
 $('.back_table_nameplate_position').on('click', function() {
     var close = product;
@@ -235,6 +239,7 @@ $('.back_table_nameplate_position').on('click', function() {
     new bootstrap.Collapse($(product)).show();
     new bootstrap.Collapse($(close)).hide();
     position = null;
+    $('textarea[name="table_nameplate_note_tres"]').val('');
 });
 $(document).on('click', '#upload_design', function() {
     product = document.getElementById('own_design');
@@ -244,6 +249,9 @@ $(document).on('click', '#upload_design', function() {
 });
 $('#reset').on('click', function() {
     window.location.href = 'customize.php'
+    if ($('#final_reference').val()) {
+        $('#final_reference').val('');
+    }
 });
 $('.exit_customize').on('click', function() {
     if (confirm("Are you sure you want to exit? You`ll lose your progress upon exiting and start all over again.") === true) {
@@ -1209,6 +1217,7 @@ function ShowCanvas() {
         $('#own_design_image').val('');
         document.getElementById('1').scrollIntoView();
         new bootstrap.Collapse($(product)).hide();
+        $('textarea[name="own_design_note"]').val('');
     })
 
     $('#own_design_image').on('change', function (e) {
@@ -1275,6 +1284,7 @@ function ShowCanvas() {
             log = 'Product: ' + category + ', Material: ' + material + ', Company: ' + company;
             if ($('textarea[name="logo_seal_note"]').val()) {
                 log = log + ', Note: ' + $('textarea[name="logo_seal_note"]').val();
+                $('textarea[name="logo_seal_note"]').val('');
             }
         } else if (category === 'necklace') {
             if (shape === 'text') {
@@ -1286,6 +1296,7 @@ function ShowCanvas() {
                     log = 'Product: ' + category + ', Material: ' + material + ', Shape: ' + shape;
                     if ($('textarea[name="necklace_note"]').val()) {
                         log = log + ', Note: ' + $('textarea[name="necklace_note"]').val();
+                        $('textarea[name="necklace_note"]').val('');
                     }
                 }
             }
@@ -1293,17 +1304,21 @@ function ShowCanvas() {
             log = 'Product: ' + category + ', Material: ' + material + ', Company: ' + company + ', Name: ' + name + ', Position: ' + position;
             if ($('textarea[name="table_nameplate_note_uno"]').val()) {
                 log = log + ', Note: ' + $('textarea[name="table_nameplate_note_uno"]').val();
+                $('textarea[name="table_nameplate_note_uno"]').val('');
             }
             if ($('textarea[name="table_nameplate_note_dos"]').val()) {
                 log = log + ', Note: ' + $('textarea[name="table_nameplate_note_dos"]').val();
+                $('textarea[name="table_nameplate_note_dos"]').val('');
             }
             if ($('textarea[name="table_nameplate_note_tres"]').val()) {
                 log = log + ', Note: ' + $('textarea[name="table_nameplate_note_tres"]').val();
+                $('textarea[name="table_nameplate_note_tres"]').val('');
             }
         } else if (category === 'own design') {
             log = 'Product: ' + category;
             if ($('textarea[name="own_design_note"]').val()) {
                 log = log + ', Note: ' + $('textarea[name="own_design_note"]').val();
+                $('textarea[name="own_design_note"]').val('');
             }
         }
         log = log + ', Reference: ' + window.localStorage.getItem('images');
@@ -1326,6 +1341,7 @@ function ShowCanvas() {
                 canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
                 window.localStorage.setItem('preview', data);
                 window.location.href = 'checkout_customize_summary.php'
+                $('#final_reference').val('');
             }
         });
     });
