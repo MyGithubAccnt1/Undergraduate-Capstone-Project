@@ -48,6 +48,7 @@ $(document).on('click', '#logo_seal_bronze', function() {
     new bootstrap.Collapse($(close)).hide();
 });
 $(document).on('submit', '#logo_seal_company_form', function() {
+    $("textarea[name='logo_seal_company']").blur();
     event.preventDefault();
     var close = product;
     product = document.getElementById('final');
@@ -126,6 +127,7 @@ $(document).on('click', '#necklace_engrave_image', function() {
     new bootstrap.Collapse($(close)).hide();
 });
 $(document).on('submit', '#necklace_text_body_form', function() {
+    $('textarea[name="necklace_text_body"]').blur();
     event.preventDefault();
     var close = product;
     product = document.getElementById('final');
@@ -143,6 +145,7 @@ $(document).on('click', '#table_nameplate', function() {
     new bootstrap.Collapse($(product)).show();
 });
 $(document).on('submit', '#table_nameplate_company_form', function() {
+    $("textarea[name='table_nameplate_company']").blur();
     var close = product;
     product = document.getElementById('table_nameplate_name');
     document.getElementById('4').scrollIntoView();
@@ -151,6 +154,7 @@ $(document).on('submit', '#table_nameplate_company_form', function() {
     company = $('textarea[name="table_nameplate_company"]').val();
 });
 $(document).on('submit', '#table_nameplate_name_form', function() {
+    $('textarea[name="table_nameplate_name"]').blur();
     var close = product;
     product = document.getElementById('table_nameplate_position');
     document.getElementById('5').scrollIntoView();
@@ -159,6 +163,7 @@ $(document).on('submit', '#table_nameplate_name_form', function() {
     name = $('textarea[name="table_nameplate_name"]').val();
 });
 $(document).on('submit', '#table_nameplate_position_form', function() {
+    $('textarea[name="table_nameplate_position"]').blur();
     event.preventDefault();
     var close = product;
     product = document.getElementById('final');
@@ -876,7 +881,7 @@ function ShowCanvas() {
                 canvas.add(savedImage);
                 canvas.renderAll();
             });
-
+            $('textarea[name="necklace_text"]').blur();
             var close = product;
             product = document.getElementById('final');
             document.getElementById('8').scrollIntoView();
