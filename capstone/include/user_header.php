@@ -116,7 +116,7 @@ session_start();
 			</a>
 		</div>
 		<div class="dropdown d-none d-md-block">
-		  	<button type="button" class="btn-nav dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+		  	<button type="button" class="btn-nav dropdown-toggle directory-nav necklace-nav pins-nav table-nav" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 		    	PRODUCTS
 		  	</button>
 		  	<ul class="dropdown-menu">
@@ -180,7 +180,7 @@ session_start();
 			<div class="notif-header add-header" id="notif-header-container"></div>
 		</div>
 		<div class="dropdown d-none d-lg-block">
-		  	<button type="button" class="btn-nav dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+		  	<button type="button" class="btn-nav dropdown-toggle profile-nav orders-nav" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 		    	<i class="fas fa-user"></i>
 		  	</button>
 		  	<ul class="dropdown-menu">
