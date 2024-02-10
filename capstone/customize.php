@@ -316,7 +316,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		                                    	    </select>
 										        </div>
 										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
-										        	<span>Company:</span>
+										        	<span>Text:</span>
 										            <textarea class="form-control rounded-pill" rows="2" name="logo_seal_company" required></textarea>
 										        </div>
 										        <div class="w-75 mx-auto p-1">
@@ -516,7 +516,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							  		<div class="col-6 d-flex justify-content-start">
 					  		  			<button type="button" class="btn btn-outline-light rounded-0 w-50 exit_customize">Exit</button>
 					  		  		</div>
-									<h1 class="mb-3">Insert Position</h1>
+									<h1 class="mb-3">
+										Insert Position
+										<button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="tablenameplate_position-guide">
+											<small>?</small>
+										</button>
+									</h1>
 									<hr>
 									<div class="col-12">
 										<form id="table_nameplate_position_form">
