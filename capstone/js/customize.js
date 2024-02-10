@@ -1352,29 +1352,34 @@ function ShowCanvas() {
     });
 }
 function guide(element) {
+    var $guide = $('#guide');
     var offset = element.offset();
-    var leftPosition = offset.left + element.outerWidth();
-    var topPosition = offset.top;
-    
-    if (leftPosition + $('#guide').outerWidth() > $(window).width()) {
-        leftPosition = offset.left - $('#guide').outerWidth();
-    }
-
-    if (topPosition + $('#guide').outerHeight() > $(window).height()) {
-        topPosition = $(window).height() - $('#guide').outerHeight();
-    }
-
-    var maxWidth = $(window).width() * 0.5;
-    var maxHeight = $(window).height() * 0.5;
-    
-    $('#guide').css({
+    var rightPosition = offset.left + element.outerWidth();
+    var topPosition = offset.top + element.outerHeight();
+    $guide.css({
         top: topPosition + 'px',
-        left: leftPosition + 'px',
-        maxWidth: maxWidth + 'px',
-        maxHeight: maxHeight + 'px'
+        left: rightPosition + 'px'
     });
-
-    $('#guide').stop(true, true).fadeIn('slow');
+    $guide.stop(true, true).fadeIn('slow', function() {
+        if ((rightPosition + $guide.width()) > $(window).width()) {
+            $guide.css({
+                width: ($(window).width() * 0.75) + 'px',
+                height: 'auto',
+            });
+            if ((rightPosition + $guide.width()) > $(window).width()) {
+                $guide.css({
+                    width: ($(window).width() * 0.5) + 'px'
+                });
+            }
+            if ((rightPosition + $guide.width()) > $(window).width()) {
+                $guide.css({
+                    width: $(window).width() + 'px',
+                    top: topPosition + 'px',
+                    left: 0 + 'px'
+                });
+            }
+        }
+    });
 }
 $(document).on({
     mouseover: function () {

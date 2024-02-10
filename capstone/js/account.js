@@ -201,22 +201,35 @@ $("#support-form").submit(function (e) {
 });
 
 $(document).on('mouseover', '#caddress_guide', function() {
+    var $guide = $('#guide');
     var offset = $(this).offset();
-    var leftPosition = offset.left + $(this).outerWidth();
-    var topPosition = offset.top;
-    if (leftPosition + $('#guide').outerWidth() > $(window).width()) {
-        leftPosition = offset.left - $('#guide').outerWidth();
-    }
-    if (topPosition + $('#guide').outerHeight() > $(window).height()) {
-        topPosition = $(window).height() - $('#guide').outerHeight();
-    }
-    $('#guide').css({
+    var rightPosition = offset.left + $(this).outerWidth();
+    var topPosition = offset.top + $(this).outerHeight();
+    $guide.css({
         top: topPosition + 'px',
-        left: leftPosition + 'px'
+        left: rightPosition + 'px'
     });
-    $('#guide').stop(true, true).fadeIn('slow');
+    $guide.stop(true, true).fadeIn('slow', function() {
+        if ((rightPosition + $guide.width()) > $(window).width()) {
+            $guide.css({
+                width: ($(window).width() * 0.75) + 'px',
+                height: 'auto',
+            });
+            if ((rightPosition + $guide.width()) > $(window).width()) {
+                $guide.css({
+                    width: ($(window).width() * 0.5) + 'px'
+                });
+            }
+            if ((rightPosition + $guide.width()) > $(window).width()) {
+                $guide.css({
+                    width: $(window).width() + 'px',
+                    top: topPosition + 'px',
+                    left: 0 + 'px'
+                });
+            }
+        }
+    });
 });
-
 $(document).on('mouseout', '#caddress_guide', function() {
     $('#guide').stop(true, true).delay(250).fadeOut('slow');
 });
