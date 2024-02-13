@@ -303,7 +303,18 @@ function ShowCanvas() {
         });
     });
 
-    $('.back_necklace_engrave, .back_necklace_text').on('click', function() {
+    $('.back_necklace_engrave').on('click', function() {
+        var objects = canvas.getObjects();
+
+        if (objects.length > 0) {
+            var lastTwoObjects = objects.slice(-1);
+            lastTwoObjects.forEach(function (obj) {
+                canvas.remove(obj);
+            });
+        }
+    });
+
+    $('.back_necklace_text').on('click', function() {
         var objects = canvas.getObjects();
 
         if (objects.length > 1) {
