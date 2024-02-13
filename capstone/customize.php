@@ -229,7 +229,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							  		<div class="col-6 d-flex justify-content-start">
 					  		  			<button type="button" class="btn btn-outline-light rounded-0 w-50 exit_customize">Exit</button>
 					  		  		</div>
-									<h1 class="mb-3">Select Shape</h1>
+									<h1 class="mb-3">Select Style</h1>
 									<hr>
 									<div class="col-12">
 										<button type="button" id="necklace_shape_cross" class="btn btn-outline-light rounded-0 w-50">Cross</button>
@@ -263,7 +263,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 										    <div class="comment-area gy-3">
 										        <div class="w-100 p-1" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
 										        	<span>Text:</span>
-										            <textarea class="form-control rounded-pill" rows="2" name="table_nameplate_company" required></textarea>
+										            <textarea class="form-control rounded-pill" rows="2" name="table_nameplate_company"></textarea>
 										        </div>
 										        <div class="w-75 mx-auto p-1">
 										        	<button type="submit" class="btn btn-sm btn-primary py-1 w-100 rounded-pill">Next</button>
@@ -294,7 +294,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					  		  			<button type="button" class="btn btn-outline-light rounded-0 w-50 exit_customize">Exit</button>
 					  		  		</div>
 									<h1 class="mb-3">
-										Insert Company
+										Insert Text
 										<button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="directorymarker_company-guide">
 											<small>?</small>
 										</button>
@@ -558,9 +558,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							  		<div class="col-6 d-flex justify-content-start">
 					  		  			<button type="button" class="btn btn-outline-light rounded-0 w-50 exit_customize">Exit</button>
 					  		  		</div>
-							  		<div class="col-6 d-flex justify-content-end">
-							  			<button type="button" id="reset" class="btn btn-outline-light rounded-0 w-50">Reset</button>
-							  		</div>
 									<h1 class="mb-3">
 										Final Design
 										<button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="final-guide">
@@ -569,11 +566,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 									</h1>
 									<hr>
 									<div class="col-12">
-										<button type="button" id="try_me_ar" class="btn btn-outline-light rounded-0 w-50">AUGMENTED REALITY(Try Me)</button>
+										<button type="button" id="try_me_ar" class="btn btn-outline-light rounded-0 w-50">AUGMENTED REALITY</button>
 									</div>
 									<div class="col-12">
 										<button type="button" id="order" class="btn btn-outline-light rounded-0 w-50">ORDER NOW</button>
 									</div>
+							  		<div class="col-6 d-flex justify-content-start">
+							  			<button type="button" class="btn btn-outline-light rounded-0 w-50 back_final">Back</button>
+							  		</div>
 									<small class="text-danger">FEEL FREE TO UPLOAD A REFERENCE IMAGE OF YOUR DESIRED DESIGN</small>
 									<div class="col-12">
 										<input type="file" id="final_reference" accept="image/png">

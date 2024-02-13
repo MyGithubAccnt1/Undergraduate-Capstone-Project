@@ -11,31 +11,39 @@
 	  	<meta name="description" content="In partial fulfilment of the requirements for the degree of Bachelor of Science in Information Technology">
 	  	<meta name="keywords" content="capstone, project, thesis">
 	  	<meta name="author" content="Mhel Voi A. Bernabe">
-	  	<?php include('include/style.php') ?>
 	  	<script defer src="include/face-api.min.js"></script>
 	  	<script defer src="js/try_me_ar.js"></script>
 	  	<style>
+	  		* {
+	  		    margin: 0;
+	  		    padding: 0;
+	  		    box-sizing: border-box;
+	  		}   
 	  		body {
-  		      	margin: 0;
-  		      	padding: 0;
   		      	width: 100%;
   		      	height: 100vh;
-  		      	display: flex;
-  		      	justify-content: center;
-  		      	align-items: center;
   		    }
-
   		    video {
+  		    	position: absolute;
+  		    	z-index: 1;
   		    	object-fit: cover;
   		    }
-
-  	        canvas {
-              	position: absolute;
-            }
+  		    #product {
+  		    	position: absolute;
+  		    	z-index: 2;
+  		    }
+  		    #direction {
+  		    	position: absolute;
+  		    	z-index: 3;
+  		    }
   	    </style>
 	</head>
 	<body>
 		<section class="loader"></section>
 		<video id="video" width="100%" height="100%" autoplay muted></video>
+		<canvas id="direction"></canvas>
+		<canvas id="product"></canvas>
+		<script type="text/javascript" src="include/fabric-5.4.2.min.js"></script>
+		<script type="text/javascript" src="include/jquery-3.6.1.min.js"></script>
 	</body>
 </html>
