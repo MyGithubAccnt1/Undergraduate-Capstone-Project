@@ -164,7 +164,7 @@ session_start();
 			<section class="container py-5">
 				<h2 class="mb-5">
 					My Orders
-					<button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="order_guide">
+					<button type="button" class="btn btn-sm rounded-0 btn-danger ms-2" style="height: 30px; width: 30px;" id="order_guide">
 						<small>?</small>
 					</button>
 				</h2>
@@ -178,7 +178,7 @@ session_start();
 				</div>
 				<div class="row text-center p-3 gy-2">
 					<div class="col-sm-12 col-md-6">
-						<a href="index.php" class="btn btn-sm btn-outline-danger rounded-pill w-75">Back</a>
+						<a href="index.php" class="btn btn-sm btn-danger rounded-pill w-75">Back</a>
 					</div>
 				</div>
 			</section>

@@ -73,41 +73,56 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 			<?php
 			}
 			?>
-			<img src="images/auto-complete.gif" id="guide" style="display: none; position: absolute;">
+			<img src="images/auto-complete.gif" id="guide" style="display: none; position: absolute; z-index: 3;">
 			<section class="container py-5">
 				<h2 class="mb-5">My Profile</h2>
 				<hr>
-				<form id="personal">
-					<div class="row text-muted">
-						<h2 class="mb-4 mt-0"><small>Personal details</small></h2>
-						<div class="col-md-6">
-						    <label class="form-label">First Name</label>
-						    <input type="text" class="form-control" value="<?php echo $_SESSION['fname']; ?>" name="fname" required>
-						</div>
-                        <div class="col-md-6">
-                            <label class="form-label">Last Name</label>
-                            <input type="text" class="form-control" value="<?php echo $_SESSION['lname']; ?>" name="lname" required>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="form-label">Mobile Number</label>
-                            <input type="text" class="form-control" value="<?php echo $_SESSION['mnumber']; ?>" name="mnumber" required>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control" value="<?php echo $_SESSION['email']; ?>" disabled>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="form-label">Complete Address</label>
-                            <button type="button" class="btn btn-sm rounded-0 btn-outline-danger ms-2" style="height: 30px; width: 30px;" id="caddress_guide"><small>?</small></button>
-                            <input type="text" class="form-control" value="<?php echo (!empty($_SESSION['caddress']) ? $_SESSION['caddress'] : null); ?>" name="caddress" required>
-                        </div>
-                        <div class="col-sm-12 text-center">
-                        	<div class="row gy-3 p-3">
-                        		<button type="submit" class="btn btn-sm btn-outline-success py-1 mx-auto w-50 rounded-pill">Update Personal Details</button>
-                        	</div>
-                        </div>
+				<div class="row text-muted">
+					<h2 class="mb-4 mt-0"><small>Personal Details</small></h2>
+					<div class="row m-0 p-0" id="personal_details">
+	                    <!-- dynamic -->
 					</div>
-				</form>
+                    <div class="col-sm-12 text-center">
+                    	<div class="row gy-3 p-3">
+                    		<button type="button" class="btn btn-sm btn-success py-1 mx-auto w-50 rounded-pill" id="personal_button">Update Personal Details</button>
+                    	</div>
+                    </div>
+				</div>
+            </section>
+            <section id="personal_edit" class="p-3" style="position: absolute; top: 65px; left: 0; height: 100%; width: 100%; z-index: 2; display: none; overflow-y: auto;">
+            	<div class="p-3" style="background-color: rgba(255, 255, 255, 0.9);">
+                    <div class="container">
+                        <form id="personal_details_edit">
+                        	<div class="row text-muted py-3">
+	                            <div class="col-sm-12 col-md-6 col-lg-6">
+	                                <label class="form-label">First Name</label>
+	                                <input type="text" class="form-control" name="fname" required>
+	                            </div>
+	                            <div class="col-sm-12 col-md-6 col-lg-6">
+	                                <label class="form-label">Last Name</label>
+	                                <input type="text" class="form-control" name="lname" required>
+	                            </div>
+	                            <div class="col-12">
+	                                <label class="form-label">Mobile Number</label>
+	                                <input type="text" class="form-control" name="mnumber" oninput="validate(this)" required>
+	                            </div>
+	                            <div class="col-12">
+	                                <label class="form-label">Complete Address</label>
+                                    <button type="button" class="btn btn-sm rounded-0 btn-danger ms-2" style="height: 30px; width: 30px;" id="caddress_guide">
+        	                        	<small>?</small>
+        	                        </button>
+	                                <input type="text" class="form-control" name="caddress" required>
+	                            </div>
+	                            <div class="col-sm-12 col-md-6 col-lg-6 text-center mt-1 mb-1">
+	                            	<button type="button" class="btn btn-sm btn-danger py-1 mx-auto w-75 rounded-pill" id="personal_edit_close">Cancel</button>
+	                            </div>
+	                            <div class="col-sm-12 col-md-6 col-lg-6 text-center mt-1 mb-1">
+	                            	<button type="submit" class="btn btn-sm btn-success py-1 mx-auto w-75 rounded-pill">Save</button>
+	                            </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </section>
             <section class="container py-5">
 				<form action="" id="passwords">
@@ -126,7 +141,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                             <input type="password" class="form-control" id="confirm_password" required>
                         </div>
                         <div class="d-flex justify-content-center">
-                    	  	<button type="submit" class="btn btn-sm btn-outline-success py-1 w-50 rounded-pill">Update Password</button>
+                    	  	<button type="submit" class="btn btn-sm btn-success py-1 w-50 rounded-pill">Update Password</button>
                     	</div>
                     </div>
 				</form>

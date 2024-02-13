@@ -111,7 +111,7 @@ session_start();
 				<div class="row">
                     <div class="col-md-12">
                         <div class="stick-top bg-dark text-center text-white py-2">Comment Section</div>
-                        <div class="border border-black card-body" style="overflow-x:hidden; overflow-y:auto; height: 200px; transform: scaleY(-1);" id="comment-container">
+                        <div class="border border-black card-body bg-white" style="overflow-x:hidden; overflow-y:auto; height: 200px; transform: scaleY(-1);" id="comment-container">
 							<!-- dynamic -->
                         </div>
                         <div class="stick-bot">
@@ -136,7 +136,7 @@ session_start();
 			    <div class="row">
                     <div class="col-md-12">
                         <div class="stick-top bg-dark text-center text-white py-2">Comment Section</div>
-                        <div class="border border-black card-body" style="overflow-x: hidden; overflow-y: auto; height: 200px; transform: scaleY(-1);" id="comment-container">
+                        <div class="border border-black card-body bg-white" style="overflow-x: hidden; overflow-y: auto; height: 200px; transform: scaleY(-1);" id="comment-container">
 							<!-- dynamic -->
                         </div>
                         <div class="stick-bot">

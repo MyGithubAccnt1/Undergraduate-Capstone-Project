@@ -82,8 +82,8 @@ session_start();
 										<!-- dynamic -->
 									</div>
 									<div>
-										<button class="btn btn-sm btn-outline-dark rounded-0" id="prev">< Prev</button>
-										<button class="btn btn-sm btn-outline-dark rounded-0" id="next">Next ></button>
+										<button class="btn btn-sm btn-danger rounded-0" id="prev"><< Prev</button>
+										<button class="btn btn-sm btn-success rounded-0" id="next">Next >></button>
 									</div>
 								</div>
 							</div>

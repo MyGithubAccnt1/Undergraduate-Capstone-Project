@@ -93,10 +93,10 @@ session_start();
 				</div>
 				<div class="row text-center p-3 gy-2">
 					<div class="col-sm-12 col-md-6">
-						<a href="index.php" class="btn btn-sm btn-outline-danger rounded-pill w-75">Back</a>
+						<a href="index.php" class="btn btn-sm btn-danger rounded-pill w-75">Back</a>
 					</div>
 					<div class="col-sm-12 col-md-6">
-						<a href="checkout_order_summary.php" class="btn btn-sm btn-outline-success rounded-pill w-75">Checkout</a>
+						<a href="checkout_order_summary.php" class="btn btn-sm btn-success rounded-pill w-75">Checkout</a>
 					</div>
 				</div>
 			</section>
