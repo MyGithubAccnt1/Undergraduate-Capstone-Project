@@ -45,16 +45,16 @@ div > a{
     bottom: 0;
     right: 0;
     background-color: #fff;
-    background-image: url('../images/saint.png');
+    background-image: url('../images/chat_saint.png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 50px;
-    width: 50px;
+    height: 75px;
+    width: 75px;
     margin: 15px;
     border-radius: 90px;
     border: 3px solid #000;
     cursor: pointer;
-    transition: 1s linear;
+    transition: 1.5s linear;
     overflow: hidden;
 }
 
