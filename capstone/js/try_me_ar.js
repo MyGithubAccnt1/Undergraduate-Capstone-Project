@@ -11,43 +11,103 @@ $(window).on('load', function() {
       )
     }
     video.addEventListener('play', () => {
-        const canvas = faceapi.createCanvasFromMedia(video)
-        document.body.append(canvas)
-        const displaySize = { width: video.width, height: video.height }
-        faceapi.matchDimensions(canvas, displaySize)
         $(".loader").fadeOut('slow')
-        setInterval(async () => {
-            const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
-            const resizedDetections = faceapi.resizeResults(detections, displaySize)
-            canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-            faceapi.draw.drawDetections(canvas, resizedDetections)
-            console.log(detections)
-        }, 100)
+        ShowDirection();
+        var category = localStorage.getItem('category');
+        if (category === 'necklace') {
+            setInterval(async () => {
+                const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+                detections.forEach((detection, index) => {
+                    console.log(`Face ${index + 1} - Box: ${JSON.stringify(detection.box)}, Score: ${detection.score}`);
+                });
+                console.log(detections)
+            }, 100)
+        }
     })
-    // ShowCanvas();
-    // $(window).on('resize', function() {
-    //     ShowCanvas();
-    // });
+    $(window).on('resize', function() {
+        ShowProduct();
+        ShowDirection();
+    });
 });
-
-function ShowCanvas() {
-    const canvas = new fabric.Canvas('canvas', { isDrawingMode: false });
-    canvas.setHeight(parseFloat($('#video').css('height')));
-    canvas.setWidth(parseFloat($('#video').css('width')));
-
-    var dataURL = localStorage.getItem('Object');
-
-    if (dataURL) {
-        fabric.Image.fromURL(dataURL, function (img) {
+function ShowDirection() {
+    var category = localStorage.getItem('category');
+    if (category === 'necklace') {
+        const canvas = new fabric.Canvas('direction', { isDrawingMode: false });
+        canvas.setHeight(parseFloat($('#video').css('height')) * 0.5);
+        canvas.setWidth(parseFloat($('#video').css('width')));
+        fabric.Image.fromURL('images/customize/direction.png', function (img) {
             img.set({
                 originX: 'center',
                 originY: 'center',
                 left: canvas.width / 2,
-                top: canvas.height / 2 + 50,
+                top: canvas.height / 2,
                 evented: false
             });
-            canvas.add(img);
-            canvas.renderAll();
+            let scale = 1;
+            const scaleInterval = setInterval(function () {
+                scale += 0.1;
+                if ((img.height * img.scaleY) <= canvas.height) {
+                    img.scale(scale);
+                    canvas.add(img);
+                    canvas.renderAll();
+                } else {
+                    clearInterval(scaleInterval);
+                    ShowProduct();
+                }
+            }, 1000);
         });
+    } else {
+        ShowProduct();
+    }
+}
+function ShowProduct() {
+    var dataURL = localStorage.getItem('Object');
+    var category = localStorage.getItem('category');
+    var material = localStorage.getItem('material');
+    if (dataURL) {
+        if (category === 'necklace') {
+            const canvas = new fabric.Canvas('product', { isDrawingMode: false });
+            canvas.setHeight(parseFloat($('#video').css('height')) * 0.5);
+            canvas.setWidth(parseFloat($('#video').css('width')));
+            fabric.Image.fromURL('images/customize/necklace_' + material + '.png', function (chain) {
+                chain.set({
+                    originX: 'center',
+                    originY: 'top',
+                    left: canvas.width / 2,
+                    top: 0,
+                    scaleX: 0.65,
+                    scaleY: 0.5,
+                    evented: false
+                });
+                fabric.Image.fromURL(dataURL, function (product) {
+                    product.set({
+                        originX: 'center',
+                        originY: 'top',
+                        left: canvas.width / 2,
+                        top: 60,
+                        scaleX: 0.5,
+                        scaleY: 0.5,
+                        evented: false
+                    });
+                    canvas.add(chain, product);
+                    canvas.renderAll();
+                });
+            });
+        } else {
+            const canvas = new fabric.Canvas('product', { isDrawingMode: false });
+            canvas.setHeight(parseFloat($('#video').css('height')));
+            canvas.setWidth(parseFloat($('#video').css('width')));
+            fabric.Image.fromURL(dataURL, function (img) {
+                img.set({
+                    originX: 'center',
+                    originY: 'center',
+                    left: canvas.width / 2,
+                    top: canvas.height / 2,
+                    evented: false
+                });
+                canvas.add(img);
+                canvas.renderAll();
+            });
+        }
     }
 }

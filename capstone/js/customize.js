@@ -51,9 +51,8 @@ $(document).on('submit', '#logo_seal_company_form', function() {
     $("textarea[name='logo_seal_company']").blur();
     event.preventDefault();
     var close = product;
-    product = document.getElementById('final');
     document.getElementById('8').scrollIntoView();
-    new bootstrap.Collapse($(product)).show();
+    new bootstrap.Collapse($('#final')).show();
     new bootstrap.Collapse($(close)).hide();
     company = $('textarea[name="logo_seal_company"]').val();
 });
@@ -130,9 +129,8 @@ $(document).on('submit', '#necklace_text_body_form', function() {
     $('textarea[name="necklace_text_body"]').blur();
     event.preventDefault();
     var close = product;
-    product = document.getElementById('final');
     document.getElementById('8').scrollIntoView();
-    new bootstrap.Collapse($(product)).show();
+    new bootstrap.Collapse($('#final')).show();
     new bootstrap.Collapse($(close)).hide();
     necklace_text = $('textarea[name="necklace_text_body"]').val();
 });
@@ -166,9 +164,8 @@ $(document).on('submit', '#table_nameplate_position_form', function() {
     $('textarea[name="table_nameplate_position"]').blur();
     event.preventDefault();
     var close = product;
-    product = document.getElementById('final');
     document.getElementById('8').scrollIntoView();
-    new bootstrap.Collapse($(product)).show();
+    new bootstrap.Collapse($('#final')).show();
     new bootstrap.Collapse($(close)).hide();
     position = $('textarea[name="table_nameplate_position"]').val();
 });
@@ -252,12 +249,6 @@ $(document).on('click', '#upload_design', function() {
     document.getElementById('2').scrollIntoView();
     new bootstrap.Collapse($(product)).show();
 });
-$('#reset').on('click', function() {
-    window.location.href = 'customize.php'
-    if ($('#final_reference').val()) {
-        $('#final_reference').val('');
-    }
-});
 $('.exit_customize').on('click', function() {
     if (confirm("Are you sure you want to exit? You`ll lose your progress upon exiting and start all over again.") === true) {
         history.back();
@@ -315,7 +306,7 @@ function ShowCanvas() {
     $('.back_necklace_engrave, .back_necklace_text').on('click', function() {
         var objects = canvas.getObjects();
 
-        if (objects.length > 0) {
+        if (objects.length > 1) {
             var lastTwoObjects = objects.slice(-1);
             lastTwoObjects.forEach(function (obj) {
                 canvas.remove(obj);
@@ -430,6 +421,51 @@ function ShowCanvas() {
         $("textarea[name='table_nameplate_name']").focus();
     });
 
+    $('.back_final').on('click', function() {
+        if (product.id === 'table_nameplate_position' || product.id === 'necklace_image' || product.id === 'necklace_text') {
+            document.getElementById('5').scrollIntoView();
+            if (product.id !== 'table_nameplate_position') {
+                canvas.clear();
+                canvas.setHeight(parseFloat($('.canvas-size').css('height')));
+                canvas.setWidth(parseFloat($('.canvas-size').css('width')));
+                canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
+                fabric.Image.fromURL('images/customize/necklace_' + material + '.png', function(img) {
+                    img.set({
+                        left: canvas.width / 2,
+                        top: canvas.height / 2,
+                        originX: 'center',
+                        originY: 'center',
+                        scaleX: 0.5,
+                        scaleY: 0.5,
+                    });
+                    canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+                });
+                fabric.Image.fromURL('images/customize/necklace_' + material + '_' + shape + '.png', function(img) {
+                    img.set({
+                        left: canvas.width / 2,
+                        top: canvas.height / 2 + 10,
+                        originX: 'center',
+                        originY: 'center',
+                        scaleX: 0.3,
+                        scaleY: 0.3,
+                        evented: false
+                    });
+                    canvas.add(img);
+                });
+                canvas.renderAll();
+            }
+        } else if (product.id === 'necklace_text_body' || product.id === 'logo_seal_text') {
+            document.getElementById('4').scrollIntoView();
+        } else if (product.id === 'own_design') {
+            document.getElementById('2').scrollIntoView();
+        }
+        new bootstrap.Collapse($(product)).show();
+        new bootstrap.Collapse($('#final')).hide();
+        if ($('#final_reference').val()) {
+            $('#final_reference').val('');
+        }
+    });
+
     $(document).on('click', '#logo_seal_gold, #logo_seal_silver, #logo_seal_bronze', function() {
         fabric.Image.fromURL('images/customize/logo_seal_' + material + '_circle.png', function(img) {
             img.set({
@@ -503,7 +539,7 @@ function ShowCanvas() {
             document.getElementById('4').scrollIntoView();
             new bootstrap.Collapse($(product)).show();
             new bootstrap.Collapse($(close)).hide();
-            $("textarea[name='logo_seal_company']").val('- TYPE YOUR COMPANY NAME HERE -');
+            $("textarea[name='logo_seal_company']").val('>            YOUR TEXT WILL APPEAR HERE >');
             logo_seal_change_text();
             $("textarea[name='logo_seal_company']").val('');
             $('#logo_seal_image').val('');
@@ -883,10 +919,10 @@ function ShowCanvas() {
             });
             $('textarea[name="necklace_text"]').blur();
             var close = product;
-            product = document.getElementById('final');
             document.getElementById('8').scrollIntoView();
-            new bootstrap.Collapse($(product)).show();
+            new bootstrap.Collapse($('#final')).show();
             new bootstrap.Collapse($(close)).hide();
+            $('#necklace_image_file').val('');
         }
         necklace_engrave = $('textarea[name="necklace_text"]').val();
     });
@@ -913,7 +949,7 @@ function ShowCanvas() {
                 top: (canvas.height / 2) - ((canvas.height / 2) * 0.015),
                 originX: 'center',
                 originY: 'center',
-                radius: 15,
+                radius: 14,
                 fill: 'yellow',
                 selectable: false,
                 evented: false
@@ -975,7 +1011,7 @@ function ShowCanvas() {
             document.getElementById('3').scrollIntoView();
             new bootstrap.Collapse($(product)).show();
             new bootstrap.Collapse($(close)).hide();
-            $("textarea[name='table_nameplate_company']").val('- TYPE YOUR COMPANY HERE -');
+            $("textarea[name='table_nameplate_company']").val('>            YOUR TEXT WILL APPEAR HERE >');
             table_nameplate_change_company();
             var zoomFactor = 7.5;
             var newZoom = canvas.getZoom() * zoomFactor;
@@ -1010,7 +1046,7 @@ function ShowCanvas() {
             top: (canvas.height / 2) - ((canvas.height / 2) * 0.015),
             originX: 'center',
             originY: 'center',
-            radius: 12,
+            radius: 11,
             fill: 'transparent',
             stroke: 'white',
             strokeWidth: 1
@@ -1022,7 +1058,7 @@ function ShowCanvas() {
             fontSize: 3,
             fontFamily: 'Courier',
             fill: 'black',
-            path: new fabric.Path('M 0 -50 A 11.5 11.5 0 1 1 0.1 -50', {
+            path: new fabric.Path('M 0 -50 A 11 11 0 1 1 0.1 -50', {
                 fill: null,
                 stroke: null,
                 strokeWidth: 0
@@ -1180,13 +1216,31 @@ function ShowCanvas() {
 
     $('#try_me_ar').on('click', function() {
         canvas.setBackgroundColor(null, canvas.renderAll.bind(canvas));
+        if (category === 'necklace') {
+            canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
+        }
         var zoomFactor = 1;
         var zoomCenter = new fabric.Point(canvas.width / 2, canvas.height / 2);
         canvas.zoomToPoint(zoomCenter, zoomFactor);
         canvas.renderAll();
         localStorage.setItem('Object', canvas.toDataURL({ format: 'png', quality: 1.0 }));
+        localStorage.setItem('category', category);
+        localStorage.setItem('material', material);
         var popupWindow = window.open('try_me_ar.php', 'Popup', 'width=400 ', 'height=400', 'resizable=yes, scrollbars=no');
         canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
+        if (category === 'necklace') {
+            fabric.Image.fromURL('images/customize/necklace_' + material + '.png', function(img) {
+                img.set({
+                    left: canvas.width / 2,
+                    top: canvas.height / 2,
+                    originX: 'center',
+                    originY: 'center',
+                    scaleX: 0.5,
+                    scaleY: 0.5,
+                });
+                canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+            });
+        }
     });
 
     $('#final_reference').on('change', function (e) {
@@ -1223,6 +1277,12 @@ function ShowCanvas() {
         document.getElementById('1').scrollIntoView();
         new bootstrap.Collapse($(product)).hide();
         $('textarea[name="own_design_note"]').val('');
+        const textObjects = canvas.getObjects();
+        if (textObjects.length > 0) {
+            const lastIndex = textObjects.length - 1;
+            const lastTextObject = textObjects[lastIndex];
+            canvas.remove(lastTextObject);
+        }
     })
 
     $('#own_design_image').on('change', function (e) {
@@ -1275,9 +1335,8 @@ function ShowCanvas() {
     $('.next_own_design').on('click', function() {
         if ($('#own_design_image').val()) {
             var close = product;
-            product = document.getElementById('final');
             document.getElementById('8').scrollIntoView();
-            new bootstrap.Collapse($(product)).show();
+            new bootstrap.Collapse($('#final')).show();
             new bootstrap.Collapse($(close)).hide();
         }
     })
@@ -1293,12 +1352,12 @@ function ShowCanvas() {
             }
         } else if (category === 'necklace') {
             if (shape === 'text') {
-                log = 'Product: ' + category + ', Material: ' + material + ', Shape: ' + shape + ', Text: ' + necklace_text;
+                log = 'Product: ' + category + ', Material: ' + material + ', Style: ' + shape + ', Text: ' + necklace_text;
             } else {
                 if (necklace_engrave) {
-                    log = 'Product: ' + category + ', Material: ' + material + ', Shape: ' + shape + ', Text: ' + necklace_engrave;
+                    log = 'Product: ' + category + ', Material: ' + material + ', Style: ' + shape + ', Text: ' + necklace_engrave;
                 } else {
-                    log = 'Product: ' + category + ', Material: ' + material + ', Shape: ' + shape;
+                    log = 'Product: ' + category + ', Material: ' + material + ', Style: ' + shape;
                     if ($('textarea[name="necklace_note"]').val()) {
                         log = log + ', Note: ' + $('textarea[name="necklace_note"]').val();
                         $('textarea[name="necklace_note"]').val('');

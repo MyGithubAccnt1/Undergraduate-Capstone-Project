@@ -15,19 +15,15 @@ $('#remember-button').on('click', function () {
 });
 
 $('#accept-button').on('click', function () {
-    if ($("#accept-check").prop('checked')){
-        $("#accept-check").prop("checked", false);
-    } else {
-        $("#accept-check").prop("checked", true);
-        $('.termsNcondition').css('visibility', 'visible');
-        $('.hero').css('visibility', 'hidden');
-    }
+    $('.termsNcondition').css('visibility', 'visible');
+    $('.hero').css('visibility', 'hidden');
 });
 
-$('#accept-check').on('change', function () {
-    if ($("#accept-check").prop('checked')){
-        $('.termsNcondition').css('visibility', 'visible');
-        $('.hero').css('visibility', 'hidden');
+$('#pop-accept-button').on('click', function () {
+    if ($("#pop-accept-check").prop('checked')){
+        $("#pop-accept-check").prop("checked", false);
+    } else {
+        $("#pop-accept-check").prop("checked", true);
     }
 });
 
@@ -53,7 +49,7 @@ $(document).on("submit", "#register", function (event) {
     email = $(this).find("input[name='email']").val();
     password = $(this).find("input[name='password']").val();
     var repeat = $(this).find("input[name='repeat']").val();
-    var acceptTNC = document.getElementById('accept-check');
+    var acceptTNC = document.getElementById('pop-accept-check');
     if (acceptTNC.checked) {
 
         if (password.length < 8) {
@@ -112,6 +108,7 @@ $(document).on("submit", "#register", function (event) {
         }
     } else {
         alert('Please read and accept our Terms and Conditions.');
+        $('#accept-button').click();
     }
 });
 
