@@ -1,33 +1,36 @@
-$(document).on("submit", "#personal", function (event) {
+$(document).on("submit", "#personal_details_edit", function (event) {
     event.preventDefault();
+    if (confirm("Are you sure you want to change your personal details?") === true) {
+        var fname = $(this).find("input[name='fname']").val();
+        var lname = $(this).find("input[name='lname']").val();
+        var mnumber = $(this).find("input[name='mnumber']").val();
+        var caddress = $(this).find("input[name='caddress']").val();
 
-    var fname = $(this).find("input[name='fname']").val();
-    var lname = $(this).find("input[name='lname']").val();
-    var mnumber = $(this).find("input[name='mnumber']").val();
-    var caddress = $(this).find("input[name='caddress']").val();
-
-    $.ajax({
-        url: "./php/update_personal.php",
-        method: "POST",
-        data: {
-            fname: fname,
-            lname: lname,
-            mnumber: mnumber,
-            caddress: caddress
-        },
-        success: function (data) {
-            data = data.trim();
-            if (data === "1") {
-                alert('Personal details has been updated successfully.');
-                window.location.href = 'account.php';
-            } else {
-                alert('Unexpected Error: [' + data + ']');
+        $.ajax({
+            url: "./php/update_personal.php",
+            method: "POST",
+            data: {
+                fname: fname,
+                lname: lname,
+                mnumber: mnumber,
+                caddress: caddress
+            },
+            success: function (data) {
+                data = data.trim();
+                if (data === "1") {
+                    alert('Personal details has been updated successfully.');
+                    window.location.href = 'account.php';
+                } else {
+                    alert('Unexpected Error: [' + data + ']');
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("AJAX Request Error:", status, error);
             }
-        },
-        error: function (xhr, status, error) {
-            console.error("AJAX Request Error:", status, error);
-        }
-    });
+        });
+    } else {
+        $('#personal_edit_close').click();
+    }
 });
 
 function caddress() {
@@ -219,13 +222,13 @@ $(document).on('mouseover', '#caddress_guide', function() {
                 $guide.css({
                     width: ($(window).width() * 0.5) + 'px'
                 });
-            }
-            if ((rightPosition + $guide.width()) > $(window).width()) {
-                $guide.css({
-                    width: $(window).width() + 'px',
-                    top: topPosition + 'px',
-                    left: 0 + 'px'
-                });
+                if ((rightPosition + $guide.width()) > $(window).width()) {
+                    $guide.css({
+                        width: $(window).width() + 'px',
+                        top: topPosition + 'px',
+                        left: 0 + 'px'
+                    });
+                }
             }
         }
     });
@@ -233,3 +236,43 @@ $(document).on('mouseover', '#caddress_guide', function() {
 $(document).on('mouseout', '#caddress_guide', function() {
     $('#guide').stop(true, true).delay(250).fadeOut('slow');
 });
+
+function ShowDetails() {
+    $.ajax({
+        url: "./php/get_personal.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            $("#personal_details").html(data);
+        }
+    });
+}
+setInterval(ShowDetails, 1000);
+
+$('#personal_button').on('click', function() {
+    $('html, body').animate(
+        {
+            scrollTop: 0
+        },
+        500,
+        'linear'
+    );
+    $('#personal_edit').fadeIn('slow');
+})
+
+function validate(input) {
+    var value = input.value;
+    if (/^[+\d\s]*$/.test(value)) {
+
+    } else {
+        input.value = value.slice(0, -1);
+    }
+}
+
+$('#personal_edit_close').on('click', function() {
+    $('#personal_edit').fadeOut('slow');
+    $('#personal_details_edit').find("input[name='fname']").val('');
+    $('#personal_details_edit').find("input[name='lname']").val('');
+    $('#personal_details_edit').find("input[name='mnumber']").val('');
+    $('#personal_details_edit').find("input[name='caddress']").val('');
+})

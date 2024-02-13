@@ -68,10 +68,10 @@ function maximize_floating_chat() {
         });
         
         $('.floating_chat_head').css({
-            'background-image': 'url("./images/saint.png")',
+            'background-image': 'url("./images/chat_saint.png")',
             'border-radius': '90px',
-            'min-height': '50px',
-            'width': '50px'
+            'min-height': '75px',
+            'width': '75px'
         });
     }
     
@@ -95,8 +95,8 @@ setInterval(ShowSupportMessages, 1000);
 
 $("#support-form").submit(function (e) {
     e.preventDefault();
-
     var formData = $(this).serialize();
+    $(this).find('textarea[name="comment"]').val('');
 
     $.ajax({
         url: "./php/add_support.php",
@@ -106,6 +106,4 @@ $("#support-form").submit(function (e) {
             ShowSupportMessages();
         }
     });
-
-    $(this).find('textarea[name="comment"]').val('');
 });
