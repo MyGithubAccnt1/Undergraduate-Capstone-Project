@@ -19,7 +19,6 @@ $(document).on("submit", "#personal_details_edit", function (event) {
                 data = data.trim();
                 if (data === "1") {
                     $('#personal_edit_close').click();
-                    alert('Personal details has been updated successfully.');
                 } else {
                     alert('Unexpected Error: [' + data + ']');
                 }
