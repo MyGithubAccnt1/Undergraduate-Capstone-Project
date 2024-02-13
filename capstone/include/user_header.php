@@ -100,8 +100,9 @@ session_start();
 	<div class="navigation">
 		<div>
 			<a href="index.php">
-				<div class="m-0 p-0 btn-nav">
+				<div class="m-0 p-0 btn-nav" style="display: flex; align-items: end;">
 					<img src="images/saint.png" height="54px" alt="Missing_Image">
+					<small style="font-size: 1.25em;">SAINT BENEDICT MEDALLION</small>
 				</div>
 			</a>
 		</div>
