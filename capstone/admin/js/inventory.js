@@ -17,7 +17,7 @@ function ShowInventory() {
     if (datatablesSimple) {
         new simpleDatatables.DataTable(datatablesSimple);
 
-        const columnWidths = ['5%', '40%', '25%', '15%', '15%'];
+        const columnWidths = ['5%', '40%', '15%', '20%', '20%'];
         const headers = datatablesSimple.querySelectorAll('th');
 
         headers.forEach((header, index) => {
@@ -32,11 +32,9 @@ $('#material').on('input change', function() {
     }
 })
 $('#quantity').on('input change', function() {
-    if ($(this).val() < 1) {
-        $(this).val('0');
+    $('#erase_quantity').fadeIn('slow');
+    if (!$(this).val()) {
         $('#erase_quantity').fadeOut('slow');
-    } else {
-        $('#erase_quantity').fadeIn('slow');
     }
 })
 $('#category').on('input change', function() {
@@ -50,7 +48,7 @@ $('#erase_material').on('click', function() {
     $(this).fadeOut('slow');
 })
 $('#erase_quantity').on('click', function() {
-    $('#quantity').val('0');
+    $('#quantity').val('');
     $(this).fadeOut('slow');
 })
 $('#erase_category').on('click', function() {
@@ -75,19 +73,15 @@ function delete_button(data) {
 }
 function success_button(data) {
     $.ajax({
-        url: "./php/get_update_inventory.php",
-        method: "POST",
+        url: "./php/get_inventory_settings.php",
+        method: "GET",
         data: {
             id: data
         },
         success: function (data) {
             data = data.trim();
-            var data = data.split(',').map(function(item) {
-                return item.trim();
-            });
-            $('#material').val(data[0]);
-            $('#quantity').val(Number(data[1]));
-            $('#category').val(data[2]);
+            $("#inventory_settings").html(data);
+            $('#selected').fadeIn('slow');
         }
     });
 }
@@ -99,7 +93,7 @@ $(document).on("submit", "#inventory_add_update", function (event) {
     var category = $('#category').val();
     console.log(material, quantity, category);
     $.ajax({
-        url: "./php/update_inventory.php",
+        url: "./php/add_inventory.php",
         method: "POST",
         data: {
             material: material,
@@ -109,7 +103,7 @@ $(document).on("submit", "#inventory_add_update", function (event) {
         success: function (data) {
             data = data.trim();
             if (data === "1") {
-                alert('Inventory has been updated successfully.');
+                alert('A new material has added successfully.');
                 window.location.href = 'inventory.php';
             } else {
                 alert('Unexpected Error: [' + data + ']');
@@ -141,3 +135,37 @@ function generatePDFinventorytable() {
         },
     });
 }
+function validate(input) {
+    var value = input.value;
+    if (/^\d*\.?\d*$/.test(value)) {
+        
+    } else {
+        input.value = value.slice(0, -1);
+    }
+}
+$('#close_selected').on('click', function() {
+    window.location.href = 'inventory.php';
+})
+$(document).on("submit", "#change_material", function (event) {
+    event.preventDefault();
+    var id = $(this).find("input[name='id']").val();
+    $.ajax({
+        url: "./php/update_inventory.php",
+        method: "POST",
+        data: {
+            id: id,
+            material: $(this).find("input[name='material']").val(),
+            quantity: $(this).find("input[name='quantity']").val(),
+            category: $(this).find("input[name='category']").val()
+        },
+        success: function (data) {
+            data = data.trim();
+            if (data === "1") {
+                alert('Inventory has been updated successfully.');
+                window.location.href = 'inventory.php';
+            } else {
+                alert('Unexpected Error: [' + data + ']');
+            }
+        }
+    });
+});
