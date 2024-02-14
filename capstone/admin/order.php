@@ -164,18 +164,19 @@ if ($_SESSION['role'] === "Admin") {
                         </div>
                     </div>
 
-                    <div class="row mb-3">
-                        <div class="col-sm-12 col-md-6 col-lg-3">
-                            <button class="btn btn-outline-success rounded-0 ms-auto btn-sm" onclick="generatePDFordertable();">DOWNLOAD ORDER TABLE AS PDF</button>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3" id="print_order_table">
+                    <div class="row" id="print_order_table">
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <i class="fas fa-table me-1"></i>
-                                    Orders
+                                    <div class="row">
+                                        <div class="col-6 text-start">
+                                            <i class="fas fa-table me-1"></i>
+                                            Orders
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <i class="fas fa-download" type="button" onclick="generatePDFordertable();"></i>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-body overflow-x-auto">
                                     <table id="order_database">
