@@ -1129,7 +1129,7 @@ function ShowCanvas() {
             left: ((canvas.width / 2) - 200) + (400 * 0.565),
             top: (canvas.height / 2) - ((canvas.height / 2) * 0.035),
             fontSize: 9,
-            fontFamily: 'Courier',
+            fontFamily: 'Arial Black',
             fill: 'gold',
             originX: 'center',
             originY: 'center',
@@ -1159,7 +1159,7 @@ function ShowCanvas() {
                 left: ((canvas.width / 2) - 200) + (400 * 0.55),
                 top: (canvas.height / 2) - ((canvas.height / 2) * 0.035),
                 fontSize: 8,
-                fontFamily: 'Courier',
+                fontFamily: 'Arial Black',
                 fill: 'gold',
                 originX: 'center',
                 originY: 'center',
@@ -1199,7 +1199,7 @@ function ShowCanvas() {
             left: table_nameplate_text_left,
             top: (canvas.height / 2) - ((canvas.height / 2) * 0),
             fontSize: table_nameplate_text_size,
-            fontFamily: 'Courier',
+            fontFamily: 'Arial Black',
             fill: 'gold',
             originX: 'center',
             originY: 'center',
@@ -1440,13 +1440,13 @@ function guide(element) {
                 $guide.css({
                     width: ($(window).width() * 0.5) + 'px'
                 });
-            }
-            if ((rightPosition + $guide.width()) > $(window).width()) {
-                $guide.css({
-                    width: $(window).width() + 'px',
-                    top: topPosition + 'px',
-                    left: 0 + 'px'
-                });
+                if ((rightPosition + $guide.width()) > $(window).width()) {
+                    $guide.css({
+                        width: $(window).width() + 'px',
+                        top: topPosition + 'px',
+                        left: 0 + 'px'
+                    });
+                }
             }
         }
     });
