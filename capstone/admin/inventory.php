@@ -42,21 +42,21 @@ if ($_SESSION['role'] === "Admin") {
                                                 <small>Material:</small>
                                             </div>
                                             <div class="col-sm-12 col-md-8 text-md-start text-lg-start">
-                                                <input type="text" id="material">
+                                                <input type="text" id="material" required>
                                                 <button type="button" class="btn btn-sm btn-danger rounded-0" style="display: none;" id="erase_material">X</button>
                                             </div>
                                             <div class="col-sm-12 col-md-4 text-md-end text-lg-end">
                                                 <small>Quantity:</small>
                                             </div>
                                             <div class="col-sm-12 col-md-8 text-md-start text-lg-start">
-                                                <input type="text" id="quantity" oninput="validate(this)">
+                                                <input type="text" id="quantity" oninput="validate(this)" required>
                                                 <button type="button" class="btn btn-sm btn-danger rounded-0" style="display: none;" id="erase_quantity">X</button>
                                             </div>
                                             <div class="col-sm-12 col-md-4 text-md-end text-lg-end">
                                                 <small>Category:</small>
                                             </div>
                                             <div class="col-sm-12 col-md-8 text-md-start text-lg-start">
-                                                <input type="text" id="category">
+                                                <input type="text" id="category" required>
                                                 <button type="button" class="btn btn-sm btn-danger rounded-0" style="display: none;" id="erase_category">X</button>
                                             </div>
                                             <div class="col-12">
