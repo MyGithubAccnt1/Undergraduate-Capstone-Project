@@ -29,9 +29,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	            height: auto;
 	        }
 			.left {
-				height: 100vh;
+				margin-block: 10vh;
+				height: 80vh;
 				overflow: hidden;
-				padding-block: 10vh;
 			}
 			.left > div {
 				height: 80vh;
@@ -44,7 +44,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				overflow: hidden;
 			}
 			.right > div {
-				margin-block: 10vh;
+				margin-top: 10vh;
 				height: 80vh;
 				display: flex;
 				align-items: center;
@@ -300,6 +300,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 										</button>
 									</h1>
 									<hr>
+									<small class="text-danger">FEEL FREE TO TELL US YOUR DESIRED FONT STYLE IN THE NOTE</small>
 									<div class="col-12">
 										<form id="logo_seal_company_form">
 										    <div class="comment-area">
