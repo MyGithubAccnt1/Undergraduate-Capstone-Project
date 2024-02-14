@@ -27,7 +27,7 @@ if ($_SESSION['role'] === "Admin") {
             <?php include('include/admin_header.php') ?>
             <section class="container-fluid p-0" style="background-color: #EDEEF1;">
                 <?php include('include/admin_upper_header.php') ?>
-                <div class="container p-3">
+                <div class="container p-3" style="position: relative;">
 
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
@@ -49,7 +49,7 @@ if ($_SESSION['role'] === "Admin") {
                                                 <small>Quantity:</small>
                                             </div>
                                             <div class="col-sm-12 col-md-8 text-md-start text-lg-start">
-                                                <input type="number" value="0" id="quantity">
+                                                <input type="text" id="quantity" oninput="validate(this)">
                                                 <button type="button" class="btn btn-sm btn-danger rounded-0" style="display: none;" id="erase_quantity">X</button>
                                             </div>
                                             <div class="col-sm-12 col-md-4 text-md-end text-lg-end">
@@ -87,6 +87,26 @@ if ($_SESSION['role'] === "Admin") {
                                     <table id="materials_database">
                                         <!-- dynamic -->
                                     </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="selected" class="p-3" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2; display: none; overflow-y: auto;">
+                        <div class="bg-white p-3">
+                            <button class="btn btn-outline-danger rounded-0 mb-3" id="close_selected">X</button>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 col-lg-6 mx-auto">
+                                        <div class="container">
+                                            <div class="row border border-dark text-start" style="display: flex; flex-direction: column; height: 300px;">
+                                                <div class="bg-dark text-center text-white py-2">SETTINGS</div>
+                                                <div style="overflow-x:hidden; overflow-y:auto; flex: 1;" id="inventory_settings" class="p-3">
+                                                    <!-- dynamic -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
