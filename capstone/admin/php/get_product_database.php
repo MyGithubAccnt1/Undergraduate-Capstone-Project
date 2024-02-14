@@ -11,7 +11,7 @@ if (mysqli_num_rows($result) > 0) {
             <th>Price</th>
             <th>Category</th>
             <th>Popularity</th>
-            <th>Options</th>
+            <th>Details</th>
         </tr>
     </thead>
     <tbody>
@@ -24,7 +24,7 @@ if (mysqli_num_rows($result) > 0) {
             <th>'. $row['price'] .'</th>
             <th>'. $row['category'] .'</th>
             <th>'. $row['popularity'] .'</th>
-            <th><button onclick="delete_button('. $row['id'] .');" type="button" class="btn btn-sm btn-outline-danger rounded-0" style="margin: 5px 5px 0 0;">Delete</button><button type="button" class="btn btn-sm btn-outline-success rounded-0" onclick="select_button('. $row['id'] .');" style="margin: 5px 5px 0 0;">Select</button></th>
+            <th><button type="button" class="btn btn-sm btn-outline-success rounded-0" onclick="select_button('. $row['id'] .');" style="margin: 5px 5px 0 0;">View</button><button onclick="delete_button('. $row['id'] .');" type="button" class="btn btn-sm btn-outline-danger rounded-0" style="margin: 5px 5px 0 0;">Delete</button></th>
         </tr>
         ';
     }

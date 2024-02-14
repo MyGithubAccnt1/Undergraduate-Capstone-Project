@@ -11,7 +11,7 @@ if (mysqli_num_rows($result) > 0) {
             <th>Total</th>
             <th>Status</th>
             <th>Date</th>
-            <th>Options</th>
+            <th>Details</th>
         </tr>
     </thead>
     <tbody>
@@ -24,7 +24,7 @@ if (mysqli_num_rows($result) > 0) {
             <th>'. $row['total'] .'</th>
             <th>'. $row['status'] .'</th>
             <th>'. $row['deyt'] .'</th>
-            <th><button type="button" class="btn btn-sm btn-outline-success rounded-0" onclick="select_button('. $row['id'] .');">Select</button></th>
+            <th><button type="button" class="btn btn-sm btn-outline-success rounded-0" onclick="select_button('. $row['id'] .');">View</button></th>
         </tr>
         ';
     }
