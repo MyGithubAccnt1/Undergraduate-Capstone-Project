@@ -81,10 +81,6 @@ session_start();
 									<div class="row" id="product-container">
 										<!-- dynamic -->
 									</div>
-									<div>
-										<button class="btn btn-sm btn-danger rounded-0" id="prev"><< Prev</button>
-										<button class="btn btn-sm btn-success rounded-0" id="next">Next >></button>
-									</div>
 								</div>
 							</div>
 						</div>
