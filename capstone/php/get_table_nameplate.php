@@ -18,45 +18,14 @@ if ($checkresult->num_rows > 0) {
     }
 }
 
-if ($filter === "None") {
+$counter = 0;
 
-	$sql = "SELECT * FROM product WHERE category = 'Table' ORDER BY popularity DESC LIMIT 8 OFFSET $page";
-	$result = $conn->query($sql);
-	if ($result->num_rows > 0) {
-		while($row = $result->fetch_assoc()) {
-			echo '<div class="col-sm-12 col-md-4 col-lg-3 mb-3">';
-				echo '<div class="thumb-wrapper cool">';
-					echo '<div class="img-box">';
-						echo '<img src="'. $row['thumbnail'] .'" class="img-responsive" alt="Missing Image">';
-						echo '<input type="hidden" name="image" value="' . $row['thumbnail'] . '">';
-					echo '</div>';
-					echo '<div class="thumb-content">';
-						echo '<form action="" id="viewProduct">';
-							echo '<input type="hidden" name="title" value="'. $row['title'] .'">';
-							echo '<input type="hidden" name="thumbnail" value="' . $row['thumbnail'] . '">';
-							echo '<input type="hidden" name="price" value="'. $row['price'] .'">';
-							echo '<input type="hidden" name="description" value="'. $row['description']. '">';
-							echo '<input type="hidden" name="category" value="'. $row['category'] .'">';
-							echo '<h5> '. $row['title'] .'</h5>';
-							echo '<p>Views: '. $row['popularity'] .'</p>';
-							echo '<p class="item-price">Price: <b>PHP '. $row['price'] .'</b></p>';
-							echo '<button type="submit" class="btn">View</button>';
-							echo '<input type="hidden" name="page" value="'. $page .'">';
-						echo '</form>';
-					echo '</div>';
-				echo '</div>';
-			echo '</div>';
-		}
-	} else {
-		echo '<p class="w-100 text-center text-dark">[There is no available product at the moment]</p>';
-	}
-
-} elseif ($filter === "Price") {
-	
+if ($filter === "Price") {
 	$sql = "SELECT * FROM product WHERE category = 'Table' and price between '$min_price' and '$max_price' ORDER BY popularity DESC LIMIT 8 OFFSET $page";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
+			$counter = $counter + 1;
 			echo '<div class="col-sm-12 col-md-4 col-lg-3 mb-3">';
 				echo '<div class="thumb-wrapper">';
 					echo '<div class="img-box">';
@@ -79,6 +48,30 @@ if ($filter === "None") {
 					echo '</div>';
 				echo '</div>';
 			echo '</div>';
+		}
+		if ($counter >= 8) {
+			if ($page > 0) {
+				echo '
+					<div class="col-12">
+						<button class="btn btn-sm btn-danger rounded-0" id="prev"><< Prev</button>
+						<button class="btn btn-sm btn-success rounded-0" id="next">Next >></button>
+					</div>
+				';
+			} else {
+				echo '
+					<div class="col-12">
+						<button class="btn btn-sm btn-success rounded-0" id="next">Next >></button>
+					</div>
+				';
+			}
+		} else {
+			if ($page > 0) {
+				echo '
+					<div class="col-12">
+						<button class="btn btn-sm btn-danger rounded-0" id="prev"><< Prev</button>
+					</div>
+				';
+			}
 		}
 	} else {
 		echo '<p class="w-100 text-center text-dark">[There is no available product at range.]</p>';
@@ -90,8 +83,9 @@ if ($filter === "None") {
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
+			$counter = $counter + 1;
 			echo '<div class="col-sm-12 col-md-4 col-lg-3 mb-3">';
-				echo '<div class="thumb-wrapper">';
+				echo '<div class="thumb-wrapper cool">';
 					echo '<div class="img-box">';
 						echo '<img src="' . $row['thumbnail'] . '" class="img-responsive" alt="Missing Image">';
 						echo '<input type="hidden" name="image" value="' . $row['thumbnail'] . '">';
@@ -112,6 +106,30 @@ if ($filter === "None") {
 					echo '</div>';
 				echo '</div>';
 			echo '</div>';
+		}
+		if ($counter >= 8) {
+			if ($page > 0) {
+				echo '
+					<div class="col-12">
+						<button class="btn btn-sm btn-danger rounded-0" id="prev"><< Prev</button>
+						<button class="btn btn-sm btn-success rounded-0" id="next">Next >></button>
+					</div>
+				';
+			} else {
+				echo '
+					<div class="col-12">
+						<button class="btn btn-sm btn-success rounded-0" id="next">Next >></button>
+					</div>
+				';
+			}
+		} else {
+			if ($page > 0) {
+				echo '
+					<div class="col-12">
+						<button class="btn btn-sm btn-danger rounded-0" id="prev"><< Prev</button>
+					</div>
+				';
+			}
 		}
 	} else {
 		echo '<p class="w-100 text-center text-dark">[There is no available product at the moment]</p>';
