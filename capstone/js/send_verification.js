@@ -25,13 +25,13 @@ app.post('/send-otp', async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'mhelvoi.bernabe@cvsu.edu.ph',
-      pass: 'wxzh uqod vtuv qfwv',
+      user: 'saintbenedictmedallioncavite@gmail.com',
+      pass: 'pabo npjd xgtf xcww',
     },
   });
 
   const mailOptions = {
-    from: 'mhelvoi.bernabe@cvsu.edu.ph',
+    from: 'saintbenedictmedallioncavite@gmail.com',
     to: email,
     subject: 'SBM Account Verification',
     text: `Your Verification code is: ${otp}`,
