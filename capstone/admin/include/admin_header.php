@@ -17,27 +17,6 @@
     </div>
 
     <div class="mb-3">
-        <a href="inventory.php" class="inventory-nav">
-            <i class="fas fa-warehouse" style="height: 20px; width: 20px;"></i>
-            <small><b>Inventory</b></small>
-        </a>
-    </div>
-
-    <div class="mb-3">
-        <a href="log.php" class="log-nav">
-            <i class="fas fa-search" style="height: 20px; width: 20px;"></i>
-            <small><b>Logs</b></small>
-        </a>
-    </div>
-
-    <div class="mb-3">
-        <a href="message.php" class="message-nav">
-            <i class="fas fa-comment-dots" style="height: 20px; width: 20px;"></i>
-            <small><b>Message</b></small>
-        </a>
-    </div>
-
-    <div class="mb-3">
         <a href="order.php" class="order-nav">
             <i class="fas fa-clipboard-list" style="height: 20px; width: 20px;"></i>
             <small><b>Orders</b></small>
@@ -51,4 +30,24 @@
         </a>
     </div>
 
+    <div class="mb-3">
+        <a href="inventory.php" class="inventory-nav">
+            <i class="fas fa-warehouse" style="height: 20px; width: 20px;"></i>
+            <small><b>Stocks</b></small>
+        </a>
+    </div>
+
+    <div class="mb-3">
+        <a href="message.php" class="message-nav">
+            <i class="fas fa-comment-dots" style="height: 20px; width: 20px;"></i>
+            <small><b>Inbox</b></small>
+        </a>
+    </div>
+
+    <div class="mb-3">
+        <a href="log.php" class="log-nav">
+            <i class="fas fa-search" style="height: 20px; width: 20px;"></i>
+            <small><b>Logs</b></small>
+        </a>
+    </div>
 </header>
