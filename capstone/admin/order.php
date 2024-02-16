@@ -164,7 +164,7 @@ if ($_SESSION['role'] === "Admin") {
                         </div>
                     </div>
 
-                    <div class="row" id="print_order_table">
+                    <div class="row mb-3" id="print_order_table">
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header">
@@ -174,7 +174,7 @@ if ($_SESSION['role'] === "Admin") {
                                             Orders
                                         </div>
                                         <div class="col-6 text-end">
-                                            <i class="fas fa-download" type="button" onclick="generatePDFordertable();"></i>
+                                            <i class="fas fa-download" type="button" onclick="open_print('orderlist');" title="Print Preview"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -237,8 +237,36 @@ if ($_SESSION['role'] === "Admin") {
                         </div>
                     </div>
 
+                    <div id="print" class="p-3" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2; display: none; overflow-y: auto;">
+                        <div class="bg-white p-3">
+                            <div class="w-100 d-flex align-items-center justify-content-center">
+                                <button class="btn btn-outline-danger rounded-0 me-auto" id="close_print">X</button>
+                                <button class="btn btn-outline-success rounded-0 ms-auto" type="button" onclick="download_print();">
+                                    <small><b>Download</b></small>
+                                    <i class="fas fa-download" style="margin-left: 5px;"></i>
+                                </button>
+                            </div>
+                            <div class="container mt-3" id="printable_order">
+                                <div class="row border border-dark p-3 mx-1" id="printable" style="position: relative;">
+                                    <img src="../images/chat_saint.png" width="auto" style="position: absolute; top: 10px; left: 0; height: 75px; width: auto;">
+                                    <h6 class="p-0 m-0 text-end" style="position: absolute; top: 20px; right: 20px; margin-right: auto;"><small id="date"></small></h6>
+                                    <h3 class="p-0 m-0 text-center"><small>SAINT BENEDICT MEDALLION</small></h3>
+                                    <h6 class="p-0 m-0 text-center"><small>TRECE MARTIRES CITY</small></h6>
+                                    <div class="row mt-5 w-100" id="fill_print" style="overflow: auto;">
+                                        <!-- dynamic -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
+            <script type="text/javascript">
+                $(window).on('load', function() {
+                  $(".loader").fadeOut('slow');
+                });
+            </script>
             <script type="text/javascript" src="./js/order.js"></script>
             <script type="text/javascript" src="./js/image_hover.js"></script>
             <script type="text/javascript" src="./js/header.js"></script>

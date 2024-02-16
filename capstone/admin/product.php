@@ -151,8 +151,8 @@ if ($_SESSION['role'] === "Admin") {
                         </div>
                     </div>
 
-                    <div class="row mb-3">
-                        <div class="col-sm-12 col-md-6">
+                    <div class="row mb-3 gy-3">
+                        <div class="col-sm-12 col-md-12 col-lg-6">
                             <div class="card">
                                 <div class="card-header">
                                     Add Products
@@ -200,9 +200,26 @@ if ($_SESSION['role'] === "Admin") {
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-6 text-start">
+                                            <i class="fas fa-chart-pie me-1"></i>
+                                            Product Popularity
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <i class="fas fa-download" type="button" onclick="open_print('productpopularity');" title="Print Preview"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
+                                <!-- <div class="card-footer small text-muted">Updated just now</div> -->
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="row" id="print_product_table">
+                    <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
@@ -212,7 +229,7 @@ if ($_SESSION['role'] === "Admin") {
                                             Products
                                         </div>
                                         <div class="col-6 text-end">
-                                            <i class="fas fa-download" type="button" onclick="generatePDFproducttable();"></i>
+                                            <i class="fas fa-download" type="button" onclick="open_print('productlist');" title="Print Preview"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -249,8 +266,36 @@ if ($_SESSION['role'] === "Admin") {
                             </div>
                         </div>
                     </div>
+
+                    <div id="print" class="p-3" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2; display: none; overflow-y: auto;">
+                        <div class="bg-white p-3">
+                            <div class="w-100 d-flex align-items-center justify-content-center">
+                                <button class="btn btn-outline-danger rounded-0 me-auto" id="close_print">X</button>
+                                <button class="btn btn-outline-success rounded-0 ms-auto" type="button" onclick="download_print();">
+                                    <small><b>Download</b></small>
+                                    <i class="fas fa-download" style="margin-left: 5px;"></i>
+                                </button>
+                            </div>
+                            <div class="container mt-3" id="printable_order">
+                                <div class="row border border-dark p-3 mx-1" id="printable" style="position: relative;">
+                                    <img src="../images/chat_saint.png" width="auto" style="position: absolute; top: 10px; left: 0; height: 75px; width: auto;">
+                                    <h6 class="p-0 m-0 text-end" style="position: absolute; top: 20px; right: 20px; margin-right: auto;"><small id="date"></small></h6>
+                                    <h3 class="p-0 m-0 text-center"><small>SAINT BENEDICT MEDALLION</small></h3>
+                                    <h6 class="p-0 m-0 text-center"><small>TRECE MARTIRES CITY</small></h6>
+                                    <div class="row mt-5 w-100" id="fill_print" style="overflow: auto;">
+                                        <!-- dynamic -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
+            <script type="text/javascript">
+                $(window).on('load', function() {
+                  $(".loader").fadeOut('slow');
+                });
+            </script>
             <script type="text/javascript" src="./js/products.js"></script>
             <script type="text/javascript" src="./js/header.js"></script>
         </main>

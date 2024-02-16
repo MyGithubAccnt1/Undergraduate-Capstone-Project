@@ -83,6 +83,11 @@ if ($_SESSION['role'] === "Admin") {
 
                 </div>
             </section>
+            <script type="text/javascript">
+                $(window).on('load', function() {
+                  $(".loader").fadeOut('slow');
+                });
+            </script>
             <script type="text/javascript" src="./js/message.js"></script>
             <script type="text/javascript" src="./js/header.js"></script>
         </main>
