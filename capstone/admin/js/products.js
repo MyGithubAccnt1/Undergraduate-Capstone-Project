@@ -253,6 +253,13 @@ function open_print(data) {
             }
         });
     }
+    $('html, body').animate(
+        {
+            scrollTop: 0
+        },
+        500,
+        'linear'
+    );
     $('#print').fadeIn('slow');
 }
 $('#close_print').on('click', function() {

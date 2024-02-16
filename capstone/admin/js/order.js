@@ -6,6 +6,7 @@ $(document).ready(function() {
     ShowDelivered();
     ShowRejected();
     FillOrders();
+    FillSales()
 });
 function ShowPendings() {
     $.ajax({
@@ -201,7 +202,7 @@ function generatePDFsalesinvoice() {
     var date = document.getElementById('current-date').textContent || document.getElementById('current-date').innerText;
     html2pdf(element, {
         margin: 10,
-        filename: 'sales_invoice_' + date + '.pdf',
+        filename: 'SBM-Sales_Invoice_' + date + '.pdf',
         image: { type: 'png', quality: 1.0 },
         html2canvas: { scale: 1 },
         jsPDF: { 
@@ -235,7 +236,7 @@ function open_print(data) {
         });
     } else {
         $.ajax({
-            url: "./php/get_print_productpopularity.php",
+            url: "./php/get_print_salesreport.php",
             method: "GET",
             success: function (data) {
                 data = data.trim();
@@ -243,6 +244,13 @@ function open_print(data) {
             }
         });
     }
+    $('html, body').animate(
+        {
+            scrollTop: 0
+        },
+        500,
+        'linear'
+    );
     $('#print').fadeIn('slow');
 }
 $('#close_print').on('click', function() {
@@ -271,4 +279,29 @@ function download_print() {
             }
         },
     });
+}
+function FillSales() {
+    $.ajax({
+        url: "./php/get_sales.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            $("#sales_database").html(data);
+            ShowSales();
+        }
+    });
+}
+function ShowSales() {
+    const datatablesSimple = document.getElementById('sales_database');
+    
+    if (datatablesSimple) {
+        const dataTable = new simpleDatatables.DataTable(datatablesSimple);
+
+        const columnWidths = ['40%', '40%', '10%'];
+        const headers = datatablesSimple.querySelectorAll('th');
+
+        headers.forEach((header, index) => {
+            header.style.width = columnWidths[index];
+        });
+    }
 }
