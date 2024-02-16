@@ -6,8 +6,7 @@ if (mysqli_num_rows($result) > 0) {
     echo'
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
+            <th>Order ID</th>
             <th>Total</th>
             <th>Status</th>
             <th>Date</th>
@@ -19,7 +18,6 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         echo'
         <tr>
-            <th>'. $row['id'] .'</th>
             <th>'. $row['title'] .'</th>
             <th>'. $row['total'] .'</th>
             <th>'. $row['status'] .'</th>
