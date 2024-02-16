@@ -10,6 +10,7 @@ if (mysqli_num_rows($result) > 0) {
             <th>Material</th>
             <th>Quantity</th>
             <th>Category</th>
+            <th>Date</th>
             <th>Details</th>
         </tr>
     </thead>
@@ -22,6 +23,7 @@ if (mysqli_num_rows($result) > 0) {
             <th>'. $row['material'] .'</th>
             <th>'. $row['quantity'] .'</th>
             <th>'. $row['category'] .'</th>
+            <th>'. $row['deyt'] .'</th>
             <th><button onclick="success_button('. $row['id'] .');" type="button" class="btn btn-sm btn-outline-success rounded-0" style="margin: 5px 5px 0 0;">Update</button><button onclick="delete_button('. $row['id'] .');" type="button" class="btn btn-sm btn-outline-danger rounded-0" style="margin: 5px 5px 0 0;">Delete</button>
             </th>
         </tr>

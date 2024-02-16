@@ -3,19 +3,22 @@ include("connect.php");
 $directory = 0;
 $necklace = 0;
 $table = 0;
-$sql = "SELECT category, popularity FROM product";
+$other = 0;
+$sql = "SELECT category, quantity FROM inventory";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         if ($row['category'] === 'Directory') {
-            $directory += $row['popularity'];
+            $directory += $row['quantity'];
         } else if ($row['category'] === 'Necklace') {
-            $necklace += $row['popularity'];
+            $necklace += $row['quantity'];
         } else if ($row['category'] === 'Table') {
-            $table += $row['popularity'];
+            $table += $row['quantity'];
+        } else if ($row['category'] === 'Other') {
+            $other += $row['quantity'];
         }
     }
-    echo $directory . ', ' . $necklace . ', ' . $table;
+    echo $directory . ', ' . $necklace . ', ' . $table . ', ' . $other;
 }
 mysqli_close($conn);
 ?>

@@ -1,0 +1,165 @@
+<?php
+include("connect.php");
+$sql = "SELECT * FROM inventory";
+$result = mysqli_query($conn, $sql);
+$directory = 0;
+$necklace = 0;
+$other = 0;
+$table = 0;
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        if ($row['category'] === 'Directory') {
+            $directory += 1;
+        } else if ($row['category'] === 'Necklace') {
+            $necklace += 1;
+        } else if ($row['category'] === 'Other') {
+            $other += 1;
+        } else if ($row['category'] === 'Table') {
+            $table += 1;
+        }
+    }
+    echo '
+        <div class="col-12 mb-3">
+            <h6 class="p-0 m-0 text-start"><small><b>MATERIALS COUNT</b></small></h6>
+        </div>
+        <div class="col-3 text-center border" style="border-style: none none solid none !important;">
+            <small>Directory Marker: '. $directory .'</small>
+        </div>
+        <div class="col-3 text-center border" style="border-style: none none solid none !important;">
+            <small>Necklace: '. $necklace .'</small>
+        </div>
+        <div class="col-3 text-center border" style="border-style: none none solid none !important;">
+            <small>Table: '. $table .'</small>
+        </div>
+        <div class="col-3 text-center border" style="border-style: none none solid none !important;">
+            <small>Other: '. $other .'</small>
+        </div>
+    ';
+}
+echo '
+    <div class="col-12 my-3">
+        <h6 class="p-0 m-0 text-start"><small><b>CRITICAL COUNT MATERIALS</b></small></h6>
+    </div>
+    <div class="col-1 text-center">
+        <small>ID</small>
+    </div>
+    <div class="col-4 text-center">
+       <small>MATERIAL</small>
+    </div>
+    <div class="col-2 text-center">
+        <small>QUANTITY</small>
+    </div>
+    <div class="col-2 text-center">
+        <small>CATEGORY</small>
+    </div>
+    <div class="col-3 text-center">
+        <small>DATE</small>
+    </div>
+';
+$sql = "SELECT * FROM inventory WHERE category = 'Directory'";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        if ($row['quantity'] <= 10) {
+            echo '
+                <div class="col-1 text-start border" style="border-style: none none solid none !important;">
+                    <small>'. $row['id'] .'</small>
+                </div>
+                <div class="col-4 text-start border" style="border-style: none none solid none !important;">
+                   <small>'. $row['material'] .'</small>
+                </div>
+                <div class="col-2 text-end border" style="border-style: none none solid none !important;">
+                    <small>'. $row['quantity'] .'</small>
+                </div>
+                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+                    <small>'. $row['category'] .'</small>
+                </div>
+                <div class="col-3 text-end border" style="border-style: none none solid none !important;">
+                    <small>'. $row['deyt'] .'</small>
+                </div>
+            ';
+        }
+    }
+}
+$sql = "SELECT * FROM inventory WHERE category = 'Necklace'";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        if ($row['quantity'] <= 10) {
+            echo '
+                <div class="col-1 text-start border" style="border-style: none none solid none !important;">
+                    <small>'. $row['id'] .'</small>
+                </div>
+                <div class="col-4 text-start border" style="border-style: none none solid none !important;">
+                   <small>'. $row['material'] .'</small>
+                </div>
+                <div class="col-2 text-end border" style="border-style: none none solid none !important;">
+                    <small>'. $row['quantity'] .'</small>
+                </div>
+                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+                    <small>'. $row['category'] .'</small>
+                </div>
+                <div class="col-3 text-end border" style="border-style: none none solid none !important;">
+                    <small>'. $row['deyt'] .'</small>
+                </div>
+            ';
+        }
+    }
+}
+$sql = "SELECT * FROM inventory WHERE category = 'Table'";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        if ($row['quantity'] <= 10) {
+            echo '
+                <div class="col-1 text-start border" style="border-style: none none solid none !important;">
+                    <small>'. $row['id'] .'</small>
+                </div>
+                <div class="col-4 text-start border" style="border-style: none none solid none !important;">
+                   <small>'. $row['material'] .'</small>
+                </div>
+                <div class="col-2 text-end border" style="border-style: none none solid none !important;">
+                    <small>'. $row['quantity'] .'</small>
+                </div>
+                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+                    <small>'. $row['category'] .'</small>
+                </div>
+                <div class="col-3 text-end border" style="border-style: none none solid none !important;">
+                    <small>'. $row['deyt'] .'</small>
+                </div>
+            ';
+        }
+    }
+}
+$sql = "SELECT * FROM inventory WHERE category = 'Other'";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        if ($row['quantity'] <= 10) {
+            echo '
+                <div class="col-1 text-start border" style="border-style: none none solid none !important;">
+                    <small>'. $row['id'] .'</small>
+                </div>
+                <div class="col-4 text-start border" style="border-style: none none solid none !important;">
+                   <small>'. $row['material'] .'</small>
+                </div>
+                <div class="col-2 text-end border" style="border-style: none none solid none !important;">
+                    <small>'. $row['quantity'] .'</small>
+                </div>
+                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+                    <small>'. $row['category'] .'</small>
+                </div>
+                <div class="col-3 text-end border" style="border-style: none none solid none !important;">
+                    <small>'. $row['deyt'] .'</small>
+                </div>
+            ';
+        }
+    }
+}
+echo '
+    <div class="col-12 mt-3">
+        <h6 class="p-0 m-0 text-center"><small><b>END OF PAGE</b></small></h6>
+    </div>
+';
+mysqli_close($conn);
+?>

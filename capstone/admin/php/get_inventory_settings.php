@@ -15,9 +15,50 @@ if (mysqli_num_rows($result) > 0) {
         <p class="mb-2">
             <small>Quantity: <input type="text" name="quantity" value="'. $row['quantity'] .'" oninput="validate(this)" required></small>
         </p>
-        <p class="mb-2">
-            <small>Category: <input type="text" name="category" value="'. $row['category'] .'" required></small>
-        </p>
+        <div class="container mb-2">
+            <div class="row">
+                <div class="col-sm-12 col-md-4 text-md-end text-lg-end">
+                    <small>Category:</small>
+                </div>
+                <div class="col-sm-12 col-md-8 text-md-start text-lg-start">
+                    <small>
+                        <select name="category">
+    ';
+                    if ($row['category'] === 'Directory') {
+                        echo '
+                            <option value="Other">Other</option>
+                            <option value="Directory" selected>Directory Marker</option>
+                            <option value="Necklace">Necklace</option>
+                            <option value="Table">Table Nameplate</option>
+                        ';
+                    } else if ($row['category'] === 'Necklace') {
+                        echo '
+                            <option value="Other">Other</option>
+                            <option value="Directory">Directory Marker</option>
+                            <option value="Necklace" selected>Necklace</option>
+                            <option value="Table">Table Nameplate</option>
+                        ';
+                    } else if ($row['category'] === 'Table') {
+                        echo '
+                            <option value="Other">Other</option>
+                            <option value="Directory">Directory Marker</option>
+                            <option value="Necklace">Necklace</option>
+                            <option value="Table" selected>Table Nameplate</option>
+                        ';
+                    } else {
+                        echo '
+                            <option value="Other" selected>Other</option>
+                            <option value="Directory">Directory Marker</option>
+                            <option value="Necklace">Necklace</option>
+                            <option value="Table">Table Nameplate</option>
+                        ';
+                    }
+    echo '
+                        </select>
+                    </small>
+                </div>
+            </div>
+        </div>
         <button type="submit" class="btn btn-outline-success rounded-pill btn-sm w-50 mx-auto">Submit</button>
     </form>
     ';

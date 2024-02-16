@@ -30,7 +30,7 @@ echo '
         <h6 class="p-0 m-0 text-start"><small><b>SALES REPORT</b></small></h6>
     </div>
     <div class="col-4 text-center">
-        <small>DATE(MONTH - YEAR)</small>
+        <small>DATE</small>
     </div>
     <div class="col-4 text-center">
         <small>AMMOUNT</small>
@@ -53,5 +53,10 @@ foreach ($monthlySum as $month => $sum) {
         </div>
     ';
 }
+echo '
+    <div class="col-12 mt-3">
+        <h6 class="p-0 m-0 text-center"><small><b>END OF PAGE</b></small></h6>
+    </div>
+';
 mysqli_close($conn);
 ?>
