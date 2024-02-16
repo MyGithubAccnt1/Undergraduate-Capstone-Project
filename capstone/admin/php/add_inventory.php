@@ -15,7 +15,7 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     $sql = "INSERT INTO inventory (material, quantity, category, deyt) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $material, $quantity, $category, $date);
+    $stmt->bind_param("ssss", $material, $quantity, $category, $date);
     if ($stmt->execute()) {
         echo "1";
         $notifmessage = "An [Admin] has added [". $material ."] in inventory on [". $date ."].";
