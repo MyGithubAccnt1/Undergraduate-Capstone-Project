@@ -164,7 +164,7 @@ if ($_SESSION['role'] === "Admin") {
                         </div>
                     </div>
 
-                    <div class="row mb-3" id="print_order_table">
+                    <div class="row mb-3">
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header">
@@ -180,6 +180,29 @@ if ($_SESSION['role'] === "Admin") {
                                 </div>
                                 <div class="card-body overflow-x-auto">
                                     <table id="order_database">
+                                        <!-- dynamic -->
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-6 text-start">
+                                            <i class="fas fa-table me-1"></i>
+                                            Sales
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <i class="fas fa-download" type="button" onclick="open_print('salesreport');" title="Print Preview"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body overflow-x-auto">
+                                    <table id="sales_database">
                                         <!-- dynamic -->
                                     </table>
                                 </div>
