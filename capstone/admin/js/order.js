@@ -95,6 +95,13 @@ function ShowOrders() {
 }
 let intervalId;
 function select_button(data) {
+    $('html, body').animate(
+        {
+            scrollTop: 0
+        },
+        500,
+        'linear'
+    );
     $('#selected').fadeIn('slow');
     $.ajax({
         url: "./php/get_invoice.php",

@@ -2,6 +2,7 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 $(document).ready(function() {
     FillInventory();
+    ShowProducts()
 });
 function FillInventory() {
     $.ajax({
@@ -17,13 +18,33 @@ function FillInventory() {
 function ShowInventory() {
     const datatablesSimple = document.getElementById('materials_database');
     if (datatablesSimple) {
-        new simpleDatatables.DataTable(datatablesSimple);
+        const dataTable = new simpleDatatables.DataTable(datatablesSimple);
 
-        const columnWidths = ['5%', '40%', '15%', '20%', '20%'];
+        const columnWidths = ['5%', '30%', '15%', '15%', '15%', '20%'];
         const headers = datatablesSimple.querySelectorAll('th');
 
         headers.forEach((header, index) => {
             header.style.width = columnWidths[index];
+        });
+
+        $('#directory_search').on('click', function() {
+            dataTable.search('Directory');
+        });
+
+        $('#necklace_search').on('click', function() {
+            dataTable.search('Necklace');
+        });
+
+        $('#default_search').on('click', function() {
+            dataTable.search('');
+        });
+
+        $('#other_search').on('click', function() {
+            dataTable.search('Other');
+        });
+
+        $('#table_search').on('click', function() {
+            dataTable.search('Table');
         });
     }
 }
@@ -39,22 +60,12 @@ $('#quantity').on('input change', function() {
         $('#erase_quantity').fadeOut('slow');
     }
 })
-$('#category').on('input change', function() {
-    $('#erase_category').fadeIn('slow');
-    if (!$(this).val()) {
-        $('#erase_category').fadeOut('slow');
-    }
-})
 $('#erase_material').on('click', function() {
     $('#material').val('');
     $(this).fadeOut('slow');
 })
 $('#erase_quantity').on('click', function() {
     $('#quantity').val('');
-    $(this).fadeOut('slow');
-})
-$('#erase_category').on('click', function() {
-    $('#category').val('');
     $(this).fadeOut('slow');
 })
 
@@ -83,6 +94,13 @@ function success_button(data) {
         success: function (data) {
             data = data.trim();
             $("#inventory_settings").html(data);
+            $('html, body').animate(
+                {
+                    scrollTop: 0
+                },
+                500,
+                'linear'
+            );
             $('#selected').fadeIn('slow');
         }
     });
@@ -158,7 +176,7 @@ $(document).on("submit", "#change_material", function (event) {
             id: id,
             material: $(this).find("input[name='material']").val(),
             quantity: $(this).find("input[name='quantity']").val(),
-            category: $(this).find("input[name='category']").val()
+            category: $(this).find("select[name='category']").val()
         },
         success: function (data) {
             data = data.trim();
@@ -171,3 +189,163 @@ $(document).on("submit", "#change_material", function (event) {
         }
     });
 });
+function ShowProducts() {
+    $.ajax({
+        url: "./php/get_material.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            data = data.split(',').map(Number);
+            Product_Count(data);
+        }
+    });
+}
+function Product_Count(data) {
+    var max = Math.max.apply(null, data);
+    var ctx = document.getElementById("myBarChart");
+    var myLineChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+                labels: ["Directory Marker", "Necklace", "Table Nameplate", "Other"],
+                datasets: [{
+                    label: "Quantity",
+                    backgroundColor: "rgba(2,117,216,1)",
+                    borderColor: "rgba(2,117,216,1)",
+                data: data,
+                }],
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'month'
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 6
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: max,
+                        maxTicksLimit: 5
+                    },
+                    gridLines: {
+                        display: true
+                    }
+                }],
+            },
+            legend: {
+                display: false
+            }
+        }
+    });
+}
+
+function ShowNecklace() {
+    $.ajax({
+        url: "./php/get_necklace_materials.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            $("#necklace").html(data);
+        }
+    });
+}
+setInterval(ShowNecklace, 1000);
+function ShowDirectory() {
+    $.ajax({
+        url: "./php/get_directory_materials.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            $("#directory").html(data);
+        }
+    });
+}
+setInterval(ShowDirectory, 1000);
+function ShowTable() {
+    $.ajax({
+        url: "./php/get_table_materials.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            $("#table").html(data);
+        }
+    });
+}
+setInterval(ShowTable, 1000);
+function ShowOther() {
+    $.ajax({
+        url: "./php/get_other_materials.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            $("#other").html(data);
+        }
+    });
+}
+setInterval(ShowOther, 1000);
+
+function open_print(data) {
+    var currentDate = new Date();
+    var readyDate = currentDate.toISOString().slice(0,10);
+    $('#date').text('DATE: ' + readyDate);
+    if (data === 'stocklist') {
+        $.ajax({
+            url: "./php/get_print_stocklist.php",
+            method: "GET",
+            success: function (data) {
+                data = data.trim();
+                $("#fill_print").html(data);
+            }
+        });
+    } else {
+        $.ajax({
+            url: "./php/get_print_stockcount.php",
+            method: "GET",
+            success: function (data) {
+                data = data.trim();
+                $("#fill_print").html(data);
+            }
+        });
+    }
+    $('html, body').animate(
+        {
+            scrollTop: 0
+        },
+        500,
+        'linear'
+    );
+    $('#print').fadeIn('slow');
+}
+$('#close_print').on('click', function() {
+    $('#print').fadeOut('slow');
+})
+function download_print() {
+    var element = document.getElementById('printable');
+    var date = new Date();
+    html2pdf(element, {
+        margin: 10,
+        filename: 'SBM-Stock_Report.pdf',
+        image: { type: 'png', quality: 1.0 },
+        html2canvas: { scale: 1 },
+        jsPDF: { 
+            unit: 'mm', 
+            format: 'a3', 
+            orientation: 'portrait',
+        },
+        pagebreak: { mode: 'avoid-all' },
+        html2pdf: {
+            margin: 10,
+            jsPDF: { 
+                unit: 'mm', 
+                format: 'a3', 
+                orientation: 'portrait',
+            }
+        },
+    });
+}

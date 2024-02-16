@@ -172,7 +172,7 @@ function Product_Count(data) {
     var myLineChart = new Chart(ctx, {
         type: 'bar',
         data: {
-                labels: ["Directory Markers", "Necklaces", "Pins", "Table Nameplates"],
+                labels: ["Directory Marker", "Necklace", "Table Nameplate"],
                 datasets: [{
                     label: "Items",
                     backgroundColor: "rgba(2,117,216,1)",

@@ -84,7 +84,7 @@ function ShowInventory() {
         });
 
         $('#pin_search').on('click', function() {
-            dataTable.search('Pin');
+            dataTable.search('');
         });
 
         $('#table_search').on('click', function() {
@@ -108,6 +108,13 @@ function delete_button(data) {
     }
 }
 function select_button(data) {
+    $('html, body').animate(
+        {
+            scrollTop: 0
+        },
+        500,
+        'linear'
+    );
     $('#selected').fadeIn('slow');
     $.ajax({
         url: "./php/get_product_details.php",
@@ -222,10 +229,10 @@ function Product_Count(data) {
     var myPieChart = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ["Directory Markers", "Necklaces", "Pins", "Table Nameplates"],
+            labels: ["Directory Marker", "Necklace", "Table Nameplate"],
             datasets: [{
                 data: data,
-                backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+                backgroundColor: ['#4E73DF', '#1CC88A', '#36B9CC', '#F6C23E'], 
             }],
         },
     });
