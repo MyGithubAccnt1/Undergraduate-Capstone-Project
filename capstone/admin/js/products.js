@@ -1,9 +1,12 @@
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#292b2c';
 $(document).ready(function() {
     ShowNecklace();
     ShowDirectory();
     ShowPin();
     ShowTable();
     FillInventory();
+    ShowProducts()
 });
 function ShowNecklace() {
     $.ajax({
@@ -203,17 +206,69 @@ $(document).on("submit", "#product_add", function (event) {
 $('#close_selected').on('click', function() {
     window.location.href = 'product.php';
 })
-function generatePDFproducttable() {
-    var element = document.getElementById('print_product_table');
+function ShowProducts() {
+    $.ajax({
+        url: "./php/get_products_popularity.php",
+        method: "GET",
+        success: function (data) {
+            data = data.trim();
+            data = data.split(',').map(Number);
+            Product_Count(data);
+        }
+    });
+}
+function Product_Count(data) {
+    var ctx = document.getElementById("myPieChart");
+    var myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ["Directory Markers", "Necklaces", "Pins", "Table Nameplates"],
+            datasets: [{
+                data: data,
+                backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+            }],
+        },
+    });
+}
+function open_print(data) {
+    var currentDate = new Date();
+    var readyDate = currentDate.toISOString().slice(0,10);
+    $('#date').text('DATE: ' + readyDate);
+    if (data === 'productlist') {
+        $.ajax({
+            url: "./php/get_print_productlist.php",
+            method: "GET",
+            success: function (data) {
+                data = data.trim();
+                $("#fill_print").html(data);
+            }
+        });
+    } else {
+        $.ajax({
+            url: "./php/get_print_productpopularity.php",
+            method: "GET",
+            success: function (data) {
+                data = data.trim();
+                $("#fill_print").html(data);
+            }
+        });
+    }
+    $('#print').fadeIn('slow');
+}
+$('#close_print').on('click', function() {
+    $('#print').fadeOut('slow');
+})
+function download_print() {
+    var element = document.getElementById('printable');
     var date = new Date();
     html2pdf(element, {
         margin: 10,
-        filename: 'Product_Table' + date + '.pdf',
+        filename: 'SBM-Product_Report.pdf',
         image: { type: 'png', quality: 1.0 },
         html2canvas: { scale: 1 },
         jsPDF: { 
             unit: 'mm', 
-            format: 'a4', 
+            format: 'a3', 
             orientation: 'portrait',
         },
         pagebreak: { mode: 'avoid-all' },
@@ -221,7 +276,7 @@ function generatePDFproducttable() {
             margin: 10,
             jsPDF: { 
                 unit: 'mm', 
-                format: 'a4', 
+                format: 'a3', 
                 orientation: 'portrait',
             }
         },

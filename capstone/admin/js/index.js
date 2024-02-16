@@ -1,3 +1,5 @@
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#292b2c';
 $(document).ready(function() {
     ShowOnlines();
     ShowPendings();
@@ -93,8 +95,6 @@ function ShowAccounts() {
         });
     }
 }
-Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-Chart.defaults.global.defaultFontColor = '#292b2c';
 
 function getDaysInMonth(year, month) {
     return new Date(year, month + 1, 0).getDate();

@@ -1,3 +1,5 @@
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#292b2c';
 $(document).ready(function() {
     ShowPendings();
     ShowOTW();
@@ -66,7 +68,7 @@ function ShowOrders() {
     if (datatablesSimple) {
         const dataTable = new simpleDatatables.DataTable(datatablesSimple);
 
-        const columnWidths = ['5%', '25%', '20%', '20%', '20%', '10%'];
+        const columnWidths = ['25%', '20%', '20%', '25%', '10%'];
         const headers = datatablesSimple.querySelectorAll('th');
 
         headers.forEach((header, index) => {
@@ -218,17 +220,45 @@ function generatePDFsalesinvoice() {
         },
     });
 }
-function generatePDFordertable() {
-    var element = document.getElementById('print_order_table');
+function open_print(data) {
+    var currentDate = new Date();
+    var readyDate = currentDate.toISOString().slice(0,10);
+    $('#date').text('DATE: ' + readyDate);
+    if (data === 'orderlist') {
+        $.ajax({
+            url: "./php/get_print_orderlist.php",
+            method: "GET",
+            success: function (data) {
+                data = data.trim();
+                $("#fill_print").html(data);
+            }
+        });
+    } else {
+        $.ajax({
+            url: "./php/get_print_productpopularity.php",
+            method: "GET",
+            success: function (data) {
+                data = data.trim();
+                $("#fill_print").html(data);
+            }
+        });
+    }
+    $('#print').fadeIn('slow');
+}
+$('#close_print').on('click', function() {
+    $('#print').fadeOut('slow');
+})
+function download_print() {
+    var element = document.getElementById('printable');
     var date = new Date();
     html2pdf(element, {
         margin: 10,
-        filename: 'Order_Table' + date + '.pdf',
+        filename: 'SBM-Order_Report.pdf',
         image: { type: 'png', quality: 1.0 },
         html2canvas: { scale: 1 },
         jsPDF: { 
             unit: 'mm', 
-            format: 'a4', 
+            format: 'a3', 
             orientation: 'portrait',
         },
         pagebreak: { mode: 'avoid-all' },
@@ -236,7 +266,7 @@ function generatePDFordertable() {
             margin: 10,
             jsPDF: { 
                 unit: 'mm', 
-                format: 'a4', 
+                format: 'a3', 
                 orientation: 'portrait',
             }
         },
