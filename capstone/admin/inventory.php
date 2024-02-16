@@ -20,6 +20,124 @@ if ($_SESSION['role'] === "Admin") {
             .inventory-nav {
                 color: rgb(255, 255, 255, 1.0);
             }
+            .pending-button {
+                border: 5px solid #4E73DF;
+                color: #4E73DF;
+                border-style: none none none solid; 
+                border-radius: 6px; 
+                position: relative;
+            }
+            .pending-button::before {
+                content: attr(data-content);
+                position: absolute;
+                bottom: 0;
+                left: -5px;
+                width: 0;
+                height: 100%;
+                background-color: #4E73DF;
+                border-radius: 6px;
+                transition: width 0.4s linear;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                overflow: hidden;
+            }
+            .processing-button {
+                border: 5px solid #1CC88A;
+                color: #1CC88A;
+                border-style: none none none solid; 
+                border-radius: 6px; 
+                position: relative;
+            }
+            .processing-button::before {
+                content: attr(data-content);
+                position: absolute;
+                bottom: 0;
+                left: -5px;
+                width: 0;
+                height: 100%;
+                background-color: #1CC88A;
+                border-radius: 6px;
+                transition: width 0.4s linear;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                overflow: hidden;
+            }
+            .delivered-button {
+                border: 5px solid #36B9CC;
+                color: #36B9CC;
+                border-style: none none none solid; 
+                border-radius: 6px; 
+                position: relative;
+            }
+            .delivered-button::before {
+                content: attr(data-content);
+                position: absolute;
+                bottom: 0;
+                left: -5px;
+                width: 0;
+                height: 100%;
+                background-color: #36B9CC;
+                border-radius: 6px;
+                transition: width 0.4s linear;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                overflow: hidden;
+            }
+            .rejected-button {
+                border: 5px solid #F6C23E;
+                color: #F6C23E;
+                border-style: none none none solid; 
+                border-radius: 6px; 
+                position: relative;
+            }
+            .rejected-button::before {
+                content: attr(data-content);
+                position: absolute;
+                bottom: 0;
+                left: -5px;
+                width: 0;
+                height: 100%;
+                background-color: #F6C23E;
+                border-radius: 6px;
+                transition: width 0.4s linear;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                overflow: hidden;
+            }
+            .default-button {
+                border: 5px solid #212529;
+                color: #212529;
+                border-style: none none none solid; 
+                border-radius: 6px; 
+                position: relative;
+            }
+            .default-button::before {
+                content: attr(data-content);
+                position: absolute;
+                bottom: 0;
+                left: -5px;
+                width: 0;
+                height: 100%;
+                background-color: #212529;
+                border-radius: 6px;
+                transition: width 0.4s linear;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                overflow: hidden;
+            }
+            .pending-button:hover::before, .processing-button:hover::before, .delivered-button:hover::before, .rejected-button:hover::before, .default-button:hover::before {
+                width: calc(100% + 5px);
+            }
         </style>
     </head>
     <body>
@@ -30,8 +148,40 @@ if ($_SESSION['role'] === "Admin") {
                 <div class="container p-3" style="position: relative;">
 
                     <div class="row">
-                        <div class="col-sm-12 col-md-6">
-                            <div class="card mb-3">
+                        <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3" id="directory_search" style="cursor: pointer;">
+                            <div class="bg-white p-3 pending-button" data-content="DIRECTORY MARKERS">
+                                <small>DIRECTORY MARKERS</small>
+                                <h6><b id="directory">0</b></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3" id="necklace_search" style="cursor: pointer;">
+                            <div class="bg-white p-3 processing-button" data-content="NECKLACE">
+                                <small>NECKLACE</small>
+                                <h6><b id="necklace">0</b></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3" id="table_search" style="cursor: pointer;">
+                            <div class="bg-white p-3 delivered-button" data-content="TABLE NAMEPLATE">
+                                <small>TABLE NAMEPLATE</small>
+                                <h6><b id="table">0</b></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3" id="other_search" style="cursor: pointer;">
+                            <div class="bg-white p-3 rejected-button" data-content="OTHER">
+                                <small>OTHER</small>
+                                <h6><b id="other">0</b></h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 mb-3">
+                            <div class="card mb-1" id="default_search" style="cursor: pointer;">
+                                <div class="bg-white p-3 default-button" data-content="DEFAULT">
+                                    <small>DEFAULT</small>
+                                </div>
+                            </div>
+                            <div class="card">
                                 <div class="card-header">
                                     Add Materials
                                 </div>
@@ -56,8 +206,14 @@ if ($_SESSION['role'] === "Admin") {
                                                 <small>Category:</small>
                                             </div>
                                             <div class="col-sm-12 col-md-8 text-md-start text-lg-start">
-                                                <input type="text" id="category" required>
-                                                <button type="button" class="btn btn-sm btn-danger rounded-0" style="display: none;" id="erase_category">X</button>
+                                                <small>
+                                                    <select id="category">
+                                                        <option value="Other">Other</option>
+                                                        <option value="Directory">Directory Marker</option>
+                                                        <option value="Necklace">Necklace</option>
+                                                        <option value="Table">Table Nameplate</option>
+                                                    </select>
+                                                </small>
                                             </div>
                                             <div class="col-12">
                                                 <button type="submit" class="btn btn-sm btn-outline-success rounded-pill w-50">Add</button>
@@ -65,6 +221,22 @@ if ($_SESSION['role'] === "Admin") {
                                         </div>
                                     </form>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-6 text-start">
+                                            <i class="fas fa-chart-bar me-1"></i>
+                                            Materials Count
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <i class="fas fa-download" type="button" onclick="open_print('stockcount');" title="Print Preview"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
                             </div>
                         </div>
                     </div>
@@ -79,7 +251,7 @@ if ($_SESSION['role'] === "Admin") {
                                             Inventory
                                         </div>
                                         <div class="col-6 text-end">
-                                            <i class="fas fa-download" type="button" onclick="generatePDFinventorytable();"></i>
+                                            <i class="fas fa-download" type="button" onclick="open_print('stocklist');" title="Print Preview"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -94,7 +266,7 @@ if ($_SESSION['role'] === "Admin") {
 
                     <div id="selected" class="p-3" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2; display: none; overflow-y: auto;">
                         <div class="bg-white p-3">
-                            <button class="btn btn-outline-danger rounded-0 mb-3" id="close_selected">X</button>
+                            <button class="btn btn-outline-danger rounded-0 mb-3 btn-sm" id="close_selected">X</button>
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6 col-lg-6 mx-auto">
@@ -106,6 +278,29 @@ if ($_SESSION['role'] === "Admin") {
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="print" class="p-3" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2; display: none; overflow-y: auto;">
+                        <div class="bg-white p-3">
+                            <div class="w-100 d-flex align-items-center justify-content-center">
+                                <button class="btn btn-outline-danger rounded-0 me-auto btn-sm" id="close_print">X</button>
+                                <button class="btn btn-outline-success rounded-0 ms-auto btn-sm" type="button" onclick="download_print();">
+                                    <small><b>Download</b></small>
+                                    <i class="fas fa-download" style="margin-left: 5px;"></i>
+                                </button>
+                            </div>
+                            <div class="container mt-3" id="printable_order">
+                                <div class="row border border-dark p-3 mx-1" id="printable" style="position: relative;">
+                                    <img src="../images/chat_saint.png" width="auto" style="position: absolute; top: 10px; left: 0; height: 75px; width: auto;">
+                                    <h6 class="p-0 m-0 text-end" style="position: absolute; top: 20px; right: 20px; margin-right: auto;"><small id="date"></small></h6>
+                                    <h3 class="p-0 m-0 text-center"><small>SAINT BENEDICT MEDALLION</small></h3>
+                                    <h6 class="p-0 m-0 text-center"><small>TRECE MARTIRES CITY</small></h6>
+                                    <div class="row mt-5 w-100" id="fill_print" style="overflow: auto;">
+                                        <!-- dynamic -->
                                     </div>
                                 </div>
                             </div>

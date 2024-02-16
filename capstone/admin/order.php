@@ -214,7 +214,10 @@ if ($_SESSION['role'] === "Admin") {
                         <div class="bg-white p-3">
                             <div class="d-flex align-items-center mb-3">
                                 <button class="btn btn-outline-danger rounded-0 me-auto btn-sm" id="close_selected">X</button>
-                                <button class="btn btn-outline-success rounded-0 ms-auto btn-sm" onclick="generatePDFsalesinvoice();">DOWNLOAD SALES INVOICE AS PDF</button>
+                                <button class="btn btn-outline-success rounded-0 ms-auto btn-sm" type="button" onclick="generatePDFsalesinvoice();">
+                                    <small><b>Download Sales Invoice</b></small>
+                                    <i class="fas fa-download" style="margin-left: 5px;"></i>
+                                </button>
                             </div>
                             <div class="container">
                                 <div class="row">
@@ -263,8 +266,8 @@ if ($_SESSION['role'] === "Admin") {
                     <div id="print" class="p-3" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2; display: none; overflow-y: auto;">
                         <div class="bg-white p-3">
                             <div class="w-100 d-flex align-items-center justify-content-center">
-                                <button class="btn btn-outline-danger rounded-0 me-auto" id="close_print">X</button>
-                                <button class="btn btn-outline-success rounded-0 ms-auto" type="button" onclick="download_print();">
+                                <button class="btn btn-outline-danger rounded-0 me-auto btn-sm" id="close_print">X</button>
+                                <button class="btn btn-outline-success rounded-0 ms-auto btn-sm" type="button" onclick="download_print();">
                                     <small><b>Download</b></small>
                                     <i class="fas fa-download" style="margin-left: 5px;"></i>
                                 </button>

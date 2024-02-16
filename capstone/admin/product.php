@@ -137,16 +137,16 @@ if ($_SESSION['role'] === "Admin") {
                                 <h6><b id="necklace">0</b></h6>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3" id="pin_search" style="cursor: pointer;">
-                            <div class="bg-white p-3 delivered-button" data-content="PINS">
-                                <small>PINS</small>
-                                <h6><b id="pin">0</b></h6>
-                            </div>
-                        </div>
                         <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3" id="table_search" style="cursor: pointer;">
-                            <div class="bg-white p-3 rejected-button" data-content="TABLE NAMEPLATE">
+                            <div class="bg-white p-3 delivered-button" data-content="TABLE NAMEPLATE">
                                 <small>TABLE NAMEPLATE</small>
                                 <h6><b id="table">0</b></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3" id="pin_search" style="cursor: pointer;">
+                            <div class="bg-white p-3 rejected-button" data-content="DEFAULT">
+                                <small>DEFAULT</small>
+                                <h6><b id="pin">0</b></h6>
                             </div>
                         </div>
                     </div>
@@ -244,7 +244,7 @@ if ($_SESSION['role'] === "Admin") {
 
                     <div id="selected" class="p-3" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2; display: none; overflow-y: auto;">
                         <div class="bg-white p-3">
-                            <button class="btn btn-outline-danger rounded-0 mb-3" id="close_selected">X</button>
+                            <button class="btn btn-outline-danger rounded-0 mb-3 btn-sm" id="close_selected">X</button>
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
@@ -270,8 +270,8 @@ if ($_SESSION['role'] === "Admin") {
                     <div id="print" class="p-3" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 2; display: none; overflow-y: auto;">
                         <div class="bg-white p-3">
                             <div class="w-100 d-flex align-items-center justify-content-center">
-                                <button class="btn btn-outline-danger rounded-0 me-auto" id="close_print">X</button>
-                                <button class="btn btn-outline-success rounded-0 ms-auto" type="button" onclick="download_print();">
+                                <button class="btn btn-outline-danger rounded-0 me-auto btn-sm" id="close_print">X</button>
+                                <button class="btn btn-outline-success rounded-0 ms-auto btn-sm" type="button" onclick="download_print();">
                                     <small><b>Download</b></small>
                                     <i class="fas fa-download" style="margin-left: 5px;"></i>
                                 </button>
