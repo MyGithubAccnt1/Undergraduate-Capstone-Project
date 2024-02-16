@@ -1,3 +1,4 @@
+<section class="loader"></section>
 <header class="bg-dark text-light collapse show" id="collapseLayouts">
     <div>
         <a href="index.php">
