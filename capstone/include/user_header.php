@@ -37,13 +37,6 @@ session_start();
 		    	</a>
 		    </li>
 		    <li>
-		    	<a href="pins.php">
-		    		<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
-		    			<i class="fas fa-tag" style="margin: 0 20px 0 10px;"></i><small>Pins</small>
-		    		</button>
-		    	</a>
-		    </li>
-		    <li>
 		    	<a href="table_nameplate.php">
 		    		<button type="button" class="btn btn-dark w-100 rounded-0 text-start border border-white">
 		    			<i class="fas fa-ruler-combined" style="margin: 0 20px 0 10px;"></i><small>Table Nameplates</small>
@@ -132,13 +125,6 @@ session_start();
 		    		<a class="dropdown-item" href="necklace.php">
 		    			<button type="button" class="btn-nav rounded-0 btn-sm necklace-nav">
 		    				<small>NECKLACE</small>
-		    			</button>
-		    		</a>
-		    	</li>
-		    	<li>
-		    		<a class="dropdown-item" href="pins.php">
-		    			<button type="button" class="btn-nav rounded-0 btn-sm pins-nav">
-		    				<small>PINS</small>
 		    			</button>
 		    		</a>
 		    	</li>
