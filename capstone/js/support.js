@@ -4,65 +4,24 @@ function maximize_floating_chat() {
     
     if ($('.floating_chat_body').css('visibility') === 'hidden' && chat_condition === false) {
 
-        if (window.matchMedia('(max-width: 320px)').matches) {
-            $('.floating_chat_head').css({
-                'background-image': 'none',
-                'border-radius': '0',
-                'min-height': 'calc(100vh - 80px)',
-                'max-width': '300px',
-                'width': 'calc(100vw - 30px)'
-            });
+        $('.floating_chat_head').css({
+            'background-image': 'none',
+            'border-radius': '0',
+            'min-height': '70vh',
+            'max-width': '300px',
+            'width': 'calc(100vw - 30px)'
+        });
 
-            $('.floating_chat_body').css({
-                'visibility': 'visible'
-            });
+        $('.floating_chat_body').css({
+            'visibility': 'visible'
+        });
 
-            chat_condition = true;
-        } else if (window.matchMedia('(max-width: 768px)').matches) {
-            $('.floating_chat_head').css({
-                'background-image': 'none',
-                'border-radius': '0',
-                'min-height': 'calc(100vh - 80px)',
-                'max-width': '300px',
-                'width': 'calc(100vw - 30px)'
-            });
+        chat_condition = true;
 
-            $('.floating_chat_body').css({
-                'visibility': 'visible'
-            });
-
-            chat_condition = true;
-        } else if (window.matchMedia('(max-width: 1024px)').matches) {
-            $('.floating_chat_head').css({
-                'background-image': 'none',
-                'border-radius': '0',
-                'min-height': '70vh',
-                'max-width': '300px',
-                'width': 'calc(100vw - 30px)'
-            });
-
-            $('.floating_chat_body').css({
-                'visibility': 'visible'
-            });
-
-            chat_condition = true;
-        } else if (window.matchMedia('(max-width: 1440px)').matches) {
-            $('.floating_chat_head').css({
-                'background-image': 'none',
-                'border-radius': '0',
-                'min-height': '70vh',
-                'max-width': '300px',
-                'width': 'calc(100vw - 30px)'
-            });
-
-            $('.floating_chat_body').css({
-                'visibility': 'visible'
-            });
-
-            chat_condition = true;
-        }
+        var intervalId = setInterval(ShowSupportMessages, 1000);
 
     } else if ($('.floating_chat_body').css('visibility') === 'visible' && chat_condition === false) {
+        
         $('.floating_chat_body').css({
             'visibility': 'hidden'
         });
@@ -70,9 +29,12 @@ function maximize_floating_chat() {
         $('.floating_chat_head').css({
             'background-image': 'url("./images/chat_saint.png")',
             'border-radius': '90px',
-            'min-height': '75px',
-            'width': '75px'
+            'min-height': '50px',
+            'width': '50px'
         });
+
+        clearInterval(intervalId);
+
     }
     
 }
@@ -91,7 +53,6 @@ function ShowSupportMessages() {
         }
     });
 }
-setInterval(ShowSupportMessages, 1000);
 
 $("#support-form").submit(function (e) {
     e.preventDefault();

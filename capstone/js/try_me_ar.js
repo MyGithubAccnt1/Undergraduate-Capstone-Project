@@ -1,32 +1,24 @@
 $(window).on('load', function() {
-    const video = document.getElementById('video')
-    Promise.all([
-        faceapi.nets.tinyFaceDetector.loadFromUri('include/models')
-    ]).then(startVideo)
-    function startVideo() {
-      navigator.getUserMedia(
-        { video: {} },
-        stream => video.srcObject = stream,
-        err => console.error(err)
-      )
-    }
+    const video = document.getElementById('video');
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+        })
+        .catch(error => {
+            console.error('Error accessing camera:', error);
+        });
+
     video.addEventListener('play', () => {
         $(".loader").fadeOut('slow')
-        ShowDirection();
         var category = localStorage.getItem('category');
         if (category === 'necklace') {
-            setInterval(async () => {
-                const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
-                detections.forEach((detection, index) => {
-                    console.log(`Face ${index + 1} - Box: ${JSON.stringify(detection.box)}, Score: ${detection.score}`);
-                });
-                console.log(detections)
-            }, 100)
+            ShowDirection();
         }
     })
+    
     $(window).on('resize', function() {
-        ShowProduct();
-        ShowDirection();
+        window.location.href = 'try_me_ar.php';
     });
 });
 function ShowDirection() {
@@ -43,24 +35,26 @@ function ShowDirection() {
                 top: canvas.height / 2,
                 evented: false
             });
-            let scale = 1;
+            let scale = 0;
             const scaleInterval = setInterval(function () {
                 scale += 0.1;
+                img.scale(scale);
+                canvas.add(img);
+                canvas.renderAll();
                 if ((img.height * img.scaleY) <= canvas.height) {
-                    img.scale(scale);
-                    canvas.add(img);
-                    canvas.renderAll();
+                    
                 } else {
                     clearInterval(scaleInterval);
+                    canvas.clear();
                     ShowProduct();
                 }
-            }, 1000);
+            }, 500);
         });
     } else {
         ShowProduct();
     }
 }
-function ShowProduct() {
+function ShowProduct(options) {
     var dataURL = localStorage.getItem('Object');
     var category = localStorage.getItem('category');
     var material = localStorage.getItem('material');

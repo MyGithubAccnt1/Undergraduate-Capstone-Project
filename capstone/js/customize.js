@@ -1237,7 +1237,7 @@ function ShowCanvas() {
         localStorage.setItem('Object', canvas.toDataURL({ format: 'png', quality: 1.0 }));
         localStorage.setItem('category', category);
         localStorage.setItem('material', material);
-        var popupWindow = window.open('try_me_ar.php', 'Popup', 'width=400 ', 'height=400', 'resizable=yes, scrollbars=no');
+        var popupWindow = window.open('try_me_ar.php', 'Popup', 'width=' + window.screen.width + ', height=' + window.screen.height + ', resizable=yes, scrollbars=no');
         canvas.setBackgroundColor('white', canvas.renderAll.bind(canvas));
         if (category === 'necklace') {
             fabric.Image.fromURL('images/customize/necklace_' + material + '.png', function(img) {
