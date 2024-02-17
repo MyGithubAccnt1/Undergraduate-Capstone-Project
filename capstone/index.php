@@ -160,7 +160,6 @@ session_start();
                     	    <select class="input" id="category">
                     	    	<option value="Directory">Directory Marker</option>
                     	    	<option value="Necklace" selected>Necklace</option>
-                    	        <option value="Pin">Pins</option>
                     	        <option value="Table">Table Nameplates</option>
                     	    </select>
 						</div>
