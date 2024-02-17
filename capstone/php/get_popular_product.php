@@ -37,8 +37,6 @@ if ($result->num_rows > 0) {
 					echo '<a href="directory_marker.php" class="btn">View All</a>';
 				} else if ($category == "Table") {
 					echo '<a href="table_nameplate.php" class="btn">View All</a>';
-				} else {
-					echo '<a href="pins.php" class="btn">View All</a>';
 				}
 			echo '</div>';
 		echo '</div>';
