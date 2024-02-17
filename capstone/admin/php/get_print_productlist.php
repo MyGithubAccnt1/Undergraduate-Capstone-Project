@@ -66,29 +66,6 @@ if (mysqli_num_rows($result) > 0) {
         ';
     }
 }
-$sql = "SELECT * FROM product WHERE category = 'Pin' ORDER BY id ASC";
-$result = mysqli_query($conn, $sql);
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo '
-            <div class="col-1 text-start border" style="border-style: none none solid none !important;">
-                <small>'. $row['id'] .'</small>
-            </div>
-            <div class="col-5 text-start border" style="border-style: none none solid none !important;">
-               <small>'. $row['title'] .'</small>
-            </div>
-            <div class="col-2 text-end border" style="border-style: none none solid none !important;">
-                <small>'. $row['price'] .'</small>
-            </div>
-            <div class="col-3 text-start border" style="border-style: none none solid none !important;">
-                <small>'. $row['category'] .'</small>
-            </div>
-            <div class="col-1 text-end border" style="border-style: none none solid none !important;">
-                <small>'. $row['popularity'] .'</small>
-            </div>
-        ';
-    }
-}
 $sql = "SELECT * FROM product WHERE category = 'Table' ORDER BY id ASC";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
