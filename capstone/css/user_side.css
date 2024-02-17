@@ -48,13 +48,13 @@ div > a{
     background-image: url('../images/chat_saint.png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 75px;
-    width: 75px;
+    height: 50px;
+    width: 50px;
     margin: 15px;
     border-radius: 90px;
     border: 3px solid #000;
     cursor: pointer;
-    transition: 1.5s linear;
+    transition: 1.25s linear;
     overflow: hidden;
 }
 
