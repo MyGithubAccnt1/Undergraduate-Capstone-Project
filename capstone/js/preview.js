@@ -22,12 +22,12 @@
 $(document).on('change', '#quantity', function() {
     if ($(this).val() < 1) {
         $(this).val('1');
-        $('#price').text('PHP ' + window.localStorage.getItem('price'));
+        $('#price').text('₱' + window.localStorage.getItem('price'));
     } else {
         var price = window.localStorage.getItem('price');
         var quantity = $(this).val();
         var total = price * quantity;
-        $('#price').text('PHP ' + total.toFixed(2));
+        $('#price').text('₱' + total.toFixed(2));
     }
 });
 
@@ -235,7 +235,7 @@ $(window).on('load', function() {
             $("#options").html(data);
             $('#title').text(window.localStorage.getItem('title'));
             $('#featured').attr('src', window.localStorage.getItem('thumbnail'));
-            $('#price').text('PHP ' + window.localStorage.getItem('price'));
+            $('#price').text('₱' + window.localStorage.getItem('price'));
             $('#decription').text(window.localStorage.getItem('description'));
         }
     });
