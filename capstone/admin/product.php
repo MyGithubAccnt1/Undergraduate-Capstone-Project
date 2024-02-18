@@ -188,7 +188,6 @@ if ($_SESSION['role'] === "Admin") {
                                                 <small><select name="category">
                                                     <option value="Directory">Directory Marker</option>
                                                     <option value="Necklace" selected>Necklace</option>
-                                                    <option value="Pin">Pin</option>
                                                     <option value="Table">Table Nameplate</option>
                                                 </select></small>
                                             </div>
