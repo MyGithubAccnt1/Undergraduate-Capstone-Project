@@ -82,8 +82,50 @@ closeIconHeader.addEventListener('click', ()=> {
     navigationHeader.classList.remove('active-navigation');
 });
 
+function maximize_floating_chat() {
+    
+    if ($('.floating_chat_body').css('visibility') === 'hidden' && chat_condition === false) {
+
+        $('.floating_chat_head').css({
+            'background-image': 'none',
+            'border-radius': '0',
+            'min-height': '70vh',
+            'max-width': '300px',
+            'width': 'calc(100vw - 30px)'
+        });
+
+        $('.floating_chat_body').css({
+            'visibility': 'visible'
+        });
+
+        chat_condition = true;
+
+        var intervalId = setInterval(ShowSupportMessages, 1000);
+
+    } else if ($('.floating_chat_body').css('visibility') === 'visible' && chat_condition === false) {
+        
+        $('.floating_chat_body').css({
+            'visibility': 'hidden'
+        });
+        
+        $('.floating_chat_head').css({
+            'background-image': 'url("./images/chat_saint.png")',
+            'border-radius': '90px',
+            'min-height': '50px',
+            'width': '50px'
+        });
+
+        clearInterval(intervalId);
+
+    }
+    
+}
+
 function redirect(data) {
-    if (data) {
+    if (data === 'null') {
+        $('#notif-only').click();
+        maximize_floating_chat();
+    } else {
         window.location.href = "order.php?&notification=" + data;
     }
 }

@@ -48,7 +48,7 @@ function ShowDirection() {
                     canvas.clear();
                     ShowProduct();
                 }
-            }, 500);
+            }, 750);
         });
     } else {
         ShowProduct();
@@ -69,23 +69,37 @@ function ShowProduct(options) {
                     originY: 'top',
                     left: canvas.width / 2,
                     top: 0,
-                    scaleX: 0.65,
+                    scaleX: 0.6,
                     scaleY: 0.5,
                     evented: false
                 });
-                fabric.Image.fromURL(dataURL, function (product) {
-                    product.set({
-                        originX: 'center',
-                        originY: 'top',
-                        left: canvas.width / 2,
-                        top: 60,
-                        scaleX: 0.5,
-                        scaleY: 0.5,
-                        evented: false
-                    });
-                    canvas.add(chain, product);
-                    canvas.renderAll();
+                canvas.add(chain);
+                canvas.renderAll();
+            });
+            let top;
+            if (canvas.height === 329) {
+                top = 60;
+            } else if (canvas.height < 329) {
+                top = 33;
+            }
+            // height 329
+            // height 317.6365
+            // difference 11.3635
+            // top 60
+            // top 33
+            // difference 27
+            fabric.Image.fromURL(dataURL, function (product) {
+                product.set({
+                    originX: 'center',
+                    originY: 'top',
+                    left: canvas.width / 2,
+                    top: top,
+                    scaleX: 0.5,
+                    scaleY: 0.5,
+                    evented: false
                 });
+                canvas.add(product);
+                canvas.renderAll();
             });
         } else {
             const canvas = new fabric.Canvas('product', { isDrawingMode: false });
