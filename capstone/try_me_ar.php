@@ -11,7 +11,6 @@
 	  	<meta name="description" content="In partial fulfilment of the requirements for the degree of Bachelor of Science in Information Technology">
 	  	<meta name="keywords" content="capstone, project, thesis">
 	  	<meta name="author" content="Mhel Voi A. Bernabe">
-	  	<script defer src="include/face-api.min.js"></script>
 	  	<script defer src="js/try_me_ar.js"></script>
 	  	<style>
 	  		* {
@@ -28,12 +27,15 @@
   		    	position: absolute;
   		    	z-index: 1;
   		    	object-fit: cover;
+  		    	transform: scaleX(-1);
   		    }
-  		    #product {
+  		    .product {
+  		    	margin-top: 5vh;
   		    	position: absolute;
   		    	z-index: 2;
   		    }
-  		    #direction {
+  		    .direction {
+  		    	margin-top: 5vh;
   		    	position: absolute;
   		    	z-index: 3;
   		    }
@@ -42,8 +44,8 @@
 	<body>
 		<section class="loader"></section>
 		<video id="video" width="100%" height="100%" autoplay muted></video>
-		<canvas id="direction"></canvas>
-		<canvas id="product"></canvas>
+		<canvas id="direction" class="direction"></canvas>
+		<canvas id="product" class="product"></canvas>
 		<script type="text/javascript" src="include/fabric-5.4.2.min.js"></script>
 		<script type="text/javascript" src="include/jquery-3.6.1.min.js"></script>
 	</body>

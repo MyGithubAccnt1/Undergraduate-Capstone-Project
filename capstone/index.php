@@ -51,7 +51,7 @@ session_start();
 			?>
 			<section class="floating_chat_head" onclick="maximize_floating_chat();">
 				<section class="floating_chat_body">
-                    <button type="button" onclick="minimize_floating_chat();" class="bg-dark text-center text-white py-2 w-100 border-0">Chat with SBM</button>
+                    <button type="button" onclick="minimize_floating_chat();" class="bg-dark text-center text-white py-2 w-100 border-0">Customer Support</button>
                     <div id="support-container">
                     	<!-- dynamic -->
                     </div>
