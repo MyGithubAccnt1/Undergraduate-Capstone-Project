@@ -19,11 +19,27 @@ $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $title .= $row["title"] . ', ';
         $total = $total + floatval(str_replace([','], '', $row['total']));
     }
-    $title = rtrim($title, ', ');
     $formatted_total = number_format($total, 2);
+    $checksql = "SELECT * FROM history ORDER BY id DESC";
+    $checkstmt = $conn->prepare($checksql);
+    $checkstmt->execute();
+    $checkresult = $checkstmt->get_result();
+    if ($checkresult->num_rows > 0) {
+        $row = $checkresult->fetch_assoc();
+        $id = $row['id'] + 1;
+        if (strlen($id) < 6) {
+            $title = 'SBM' . str_repeat('0', 6 - strlen($id)) . $id;
+        } else {
+            $title = 'SBM' . $id;
+        }
+    } else {
+        $id = 1;
+        if (strlen($id) < 6) {
+            $title = 'SBM' . str_repeat('0', 6 - strlen($id)) . $id;
+        }
+    }
     date_default_timezone_set('Asia/Manila');
     $date = date('Y-m-d H:i');
     $status = "Pending";
