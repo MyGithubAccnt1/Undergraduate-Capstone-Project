@@ -202,7 +202,7 @@ session_start();
 										<div class="col-sm-12 col-md-4">
 											<div class="thumb-wrapper cool">
 												<div class="img-box">
-													<img src="images/delivery.jpg" class="img-responsive" alt="Missing Image">
+													<img src="images/delivery.png" class="img-responsive" alt="Missing Image">
 													<input type="hidden" name="image" value="images/delivery.jpg">
 												</div>
 												<div class="thumb-content">

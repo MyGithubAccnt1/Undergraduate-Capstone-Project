@@ -101,18 +101,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					<div class="col-sm-12 col-md-6 col-lg-6 mx-auto">
 						<div class="container border border-dark text-start p-3">
 							<h1 class="text-center bg-dark text-white">SALES INVOICE</h1>
-							<h6 class="text-center">
+							<h6 class="text-center"><small>
 								Saint Benedict Medallion
 								<br>
 								Trece Martires City, Cavite
 								<br>
-								<p id="date"></p>
+								<p id="date"></p></small>
 							</h6>
-							<h6 class="m-0">Buyer: <?php echo $_SESSION['fname']; ?> <?php echo $_SESSION['lname']; ?></h6>
-							<h6 class="m-0">Number: <?php echo $_SESSION['mnumber']; ?></h6>
-							<h6>Email: <?php echo $_SESSION['email']; ?></h6>
-							<h6>Address: <?php echo $_SESSION['caddress']; ?></h6>
-							<h6 id="alternative_address"></h6>
+							<h6 class="m-0"><small>Buyer: <?php echo $_SESSION['fname']; ?> <?php echo $_SESSION['lname']; ?></small></h6>
+							<h6 class="m-0"><small>Number: <?php echo $_SESSION['mnumber']; ?></small></h6>
+							<h6><small>Email: <?php echo $_SESSION['email']; ?></small></h6>
+							<h6><small>Address: <?php echo $_SESSION['caddress']; ?></small></h6>
+							<h6><small id="alternative_address"></small></h6>
 							<div class="container" id="cart-container">
 								<!-- dynamic -->
 							</div>
