@@ -11,8 +11,10 @@ $sql = "INSERT INTO product (title, description, price, category, thumbnail, pop
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssssss", $title, $description, $price, $category, $thumbnail, $popularity);
 if ($stmt->execute()) {
-
-
+    $notifmessage = "An [Admin] has added a new product with category [". $category ."].";
+    $notifcategory = "product";
+    $notifsql = "INSERT INTO notification (message, category) VALUES ('$notifmessage', '$notifcategory')";
+    $notifresult = mysqli_query($conn, $notifsql);
     $stmt->close();
 }
 mysqli_close($conn);
