@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
 						echo '<input type="hidden" name="category" value="' . $row['category'] . '">';
 						echo '<h5> ' . $row['title'] . '</h5>';
 						echo '<p>Views: ' . $row['popularity'] . '</p>';
-						echo '<p class="item-price">Price: <b>PHP ' . $row['price'] . '</b></p>';
+						echo '<p class="item-price">Price: ₱<b>' . $row['price'] . '</b></p>';
 						echo '<button type="submit" class="btn">View</button>';
 					echo '</form>';
 				echo '</div>';

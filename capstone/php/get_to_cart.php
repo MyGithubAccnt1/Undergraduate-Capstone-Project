@@ -40,13 +40,13 @@ if (mysqli_num_rows($result) > 0) {
                 <small>'. $row["title"] .'</small>
             </div>
             <div>
-                <small>PHP '. $row["price"] .'</small>
+                <small>₱'. $row["price"] .'</small>
             </div>
             <div>
                 <small>'. $row["qty"] .'</small>
             </div>
             <div>
-                <small>PHP '. $row["total"] .'</small>
+                <small>₱'. $row["total"] .'</small>
             </div>
             <div>
                 <form action="" id="delete">

@@ -22,7 +22,7 @@ if (isset($_SESSION['email'])){
                     <small>'. $row["title"] .'</small>
                 </div>
                 <div>
-                    <small>PHP '. $row["price"] .'</small>
+                    <small>₱'. $row["price"] .'</small>
                 </div>
             </div>
             ';

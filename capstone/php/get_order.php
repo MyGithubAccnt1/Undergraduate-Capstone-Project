@@ -42,16 +42,16 @@ if (mysqli_num_rows($result) > 0) {
         echo '
         <div class="row" data-bs-toggle="collapse" data-bs-target="#collapseExample'. $id .'" id="'. $row["deyt"] .'">
             <div>
-                <small>'. $row["title"] .'</small>
+                <small style="color: red;">'. $row["title"] .'</small>
             </div>
             <div>
-                <small style="color: red;">PHP '. $row["total"] .'</small>
+                <small style="color: red;">₱'. $row["total"] .'</small>
             </div>
             <div>
-                <small style="color: #f4c430;">'. $row["status"] .'</small>
+                <small style="color: red;">'. $row["status"] .'</small>
             </div>
             <div>
-                <small>'. $row["deyt"] .'</small>
+                <small style="color: red;">'. $row["deyt"] .'</small>
             </div>
             <input type="hidden" name="id" value="'. $id .'">
         </div>

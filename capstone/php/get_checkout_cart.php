@@ -14,13 +14,13 @@ if (mysqli_num_rows($result) > 0) {
     echo '
         <div class="row text-center text-white bg-dark">
             <div class="col-5">
-                Product Name
+                <small>Product Name</small>
             </div>
             <div class="col-2">
-                QTY
+                <small>QTY</small>
             </div>
             <div class="col-5">
-                Price
+                <small>Price</small>
             </div>
         </div>
     ';
@@ -29,13 +29,13 @@ if (mysqli_num_rows($result) > 0) {
         echo '
             <div class="row text-start border" style="border-style: none none solid none !important;">
                 <div class="col-5">
-                    '. $row['title'] .'
+                    <small>'. $row['title'] .'</small>
                 </div>
                 <div class="col-2 text-center">
-                    '. $row['qty'] .'
+                    <small>'. $row['qty'] .'</small>
                 </div>
                 <div class="col-5 text-end">
-                    PHP '. $row['price'] .'
+                    <small>₱'. $row['price'] .'</small>
                 </div>
             </div>
         ';
@@ -46,26 +46,26 @@ if (mysqli_num_rows($result) > 0) {
     echo '
         <div class="row text-center text-white bg-dark">
             <div class="col-6 text-start">
-                Items: '. $quantity .'
+                <small>Items: '. $quantity .'</small>
             </div>
             <div class="col-6 text-end">
-                Total: PHP '. $formatted_total .'
+                <small>Total: ₱'. $formatted_total .'</small>
             </div>
         </div>
         <div class="row text-start border" style="border-style: none none solid none !important;">
             <div class="col-5">
-                Shipping Fee
+                <small>Shipping Fee</small>
             </div>
             <div class="col-2 text-center">
                 
             </div>
             <div class="col-5 text-end">
-                PHP 0.00
+                <small>₱0.00</small>
             </div>
         </div>
         <div class="row text-center text-white bg-dark">
             <div class="col-12 text-end">
-                <b>Sub-Total: PHP '. $formatted_total .'</b>
+                <small>Sub-Total: ₱<b>'. $formatted_total .'</b></small>
             </div>
         </div>
     ';
