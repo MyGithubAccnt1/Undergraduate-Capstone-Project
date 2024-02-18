@@ -51,7 +51,7 @@ if ($_SESSION['role'] === "Admin") {
                         <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-3">
                             <div class="bg-white p-3" style="border: 5px solid #F6C23E; border-style: none none none solid; border-radius: 6px;">
                                 <small style="color: #F6C23E">TODAYS EARNING</small>
-                                <h6><b>PHP</b> <b id="earnings">0</b></h6>
+                                <h6>₱<b id="earnings">0</b></h6>
                             </div>
                         </div>
                     </div>
