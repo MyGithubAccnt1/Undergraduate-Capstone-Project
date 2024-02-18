@@ -8,13 +8,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 <html lang="en">
 	<head>
 	  	<meta charset="UTF-8">
-	  	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	  	<title>Saint Benedict Medallion</title>
-	  	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 		<link rel="icon" type="image/x-icon" href="images/favicon.ico">
-		<link rel="manifest" href="images/site.webmanifest">
 	  	<meta name="description" content="In partial fulfilment of the requirements for the degree of Bachelor of Science in Information Technology">
 	  	<meta name="keywords" content="capstone, project, thesis">
 	  	<meta name="author" content="Mhel Voi A. Bernabe">
@@ -29,12 +25,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	            height: auto;
 	        }
 			.left {
-				margin-block: 10vh;
-				height: 80vh;
+				height: 100vh;
 				overflow: hidden;
 			}
 			.left > div {
-				height: 80vh;
+				height: 100vh;
 				display: flex;
 				align-items: center;
 				justify-content: center;

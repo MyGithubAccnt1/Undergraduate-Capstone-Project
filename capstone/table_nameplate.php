@@ -7,7 +7,7 @@ session_start();
 	  	<meta charset="UTF-8">
 	  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	  	<title>Saint Benedict Medallion</title>
-	  	<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+		<link rel="icon" type="image/x-icon" href="images/favicon.ico">
 	  	<meta name="description" content="In partial fulfilment of the requirements for the degree of Bachelor of Science in Information Technology">
 	  	<meta name="keywords" content="capstone, project, thesis">
 	  	<meta name="author" content="Mhel Voi A. Bernabe">

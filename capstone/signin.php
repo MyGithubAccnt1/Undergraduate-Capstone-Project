@@ -11,11 +11,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 	  	<meta charset="UTF-8">
 	  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	  	<title>Saint Benedict Medallion</title>
-	  	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 		<link rel="icon" type="image/x-icon" href="images/favicon.ico">
-		<link rel="manifest" href="images/site.webmanifest">
 	  	<meta name="description" content="In partial fulfilment of the requirements for the degree of Bachelor of Science in Information Technology">
 	  	<meta name="keywords" content="capstone, project, thesis">
 	  	<meta name="author" content="Mhel Voi A. Bernabe">
@@ -122,7 +118,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 					    	  			</div>
 					    	  			<div class="form-outline mb-4">
 					    	  			    <input type="password" class="form-control rounded-0" placeholder="Enter Password" name="password" id="password" required>
-					    	  			    <i class="uil uil-eye-slash"></i>
 					    	  			</div>
 					    	  			<div class="row p-0 m-0">
 					    	  			    <div class="col-6 p-0 m-0 d-flex justify-content-start align-items-center">
@@ -145,11 +140,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 		    	  					    </div>
 		    	  					    <div class="form-outline mb-4">
 		    	  					    	<input type="password" class="form-control rounded-0" placeholder="8-16 Digit Password" name="password" required>
-		    	  					    	<i class="uil uil-eye-slash"></i>
 		    	  					    </div>
 		    	  					    <div class="form-outline mb-4">
 		    	  					        <input type="password" class="form-control rounded-0"placeholder="Repeat Password" name="repeat" required>
-		    	  					        <i class="uil uil-eye-slash"></i>
 		    	  					    </div>
 		    	  					    <div class="row m-0 p-0">
 					    	  			    <div class="col d-flex justify-content-center align-items-center">
