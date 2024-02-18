@@ -46,9 +46,9 @@ foreach ($monthlySum as $month => $sum) {
             <small>' . $monthYear . '</small>
         </div>
         <div class="col-4 text-start border" style="border-style: none none solid none !important;">
-            <small>' . number_format($sum['amount'], 2) . '</small>
+            <small>₱' . number_format($sum['amount'], 2) . '</small>
         </div>
-        <div class="col-4 text-center border" style="border-style: none none solid none !important;">
+        <div class="col-4 text-start border" style="border-style: none none solid none !important;">
             <small>' . $sum['order'] . '</small>
         </div>
     ';

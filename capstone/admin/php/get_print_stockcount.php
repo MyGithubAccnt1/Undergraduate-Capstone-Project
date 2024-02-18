@@ -68,13 +68,13 @@ if (mysqli_num_rows($result) > 0) {
                 <div class="col-4 text-start border" style="border-style: none none solid none !important;">
                    <small>'. $row['material'] .'</small>
                 </div>
-                <div class="col-2 text-end border" style="border-style: none none solid none !important;">
+                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
                     <small>'. $row['quantity'] .'</small>
                 </div>
                 <div class="col-2 text-start border" style="border-style: none none solid none !important;">
                     <small>'. $row['category'] .'</small>
                 </div>
-                <div class="col-3 text-end border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-start border" style="border-style: none none solid none !important;">
                     <small>'. $row['deyt'] .'</small>
                 </div>
             ';
@@ -93,13 +93,13 @@ if (mysqli_num_rows($result) > 0) {
                 <div class="col-4 text-start border" style="border-style: none none solid none !important;">
                    <small>'. $row['material'] .'</small>
                 </div>
-                <div class="col-2 text-end border" style="border-style: none none solid none !important;">
+                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
                     <small>'. $row['quantity'] .'</small>
                 </div>
                 <div class="col-2 text-start border" style="border-style: none none solid none !important;">
                     <small>'. $row['category'] .'</small>
                 </div>
-                <div class="col-3 text-end border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-start border" style="border-style: none none solid none !important;">
                     <small>'. $row['deyt'] .'</small>
                 </div>
             ';
@@ -118,13 +118,13 @@ if (mysqli_num_rows($result) > 0) {
                 <div class="col-4 text-start border" style="border-style: none none solid none !important;">
                    <small>'. $row['material'] .'</small>
                 </div>
-                <div class="col-2 text-end border" style="border-style: none none solid none !important;">
+                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
                     <small>'. $row['quantity'] .'</small>
                 </div>
                 <div class="col-2 text-start border" style="border-style: none none solid none !important;">
                     <small>'. $row['category'] .'</small>
                 </div>
-                <div class="col-3 text-end border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-start border" style="border-style: none none solid none !important;">
                     <small>'. $row['deyt'] .'</small>
                 </div>
             ';
@@ -143,13 +143,13 @@ if (mysqli_num_rows($result) > 0) {
                 <div class="col-4 text-start border" style="border-style: none none solid none !important;">
                    <small>'. $row['material'] .'</small>
                 </div>
-                <div class="col-2 text-end border" style="border-style: none none solid none !important;">
+                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
                     <small>'. $row['quantity'] .'</small>
                 </div>
                 <div class="col-2 text-start border" style="border-style: none none solid none !important;">
                     <small>'. $row['category'] .'</small>
                 </div>
-                <div class="col-3 text-end border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-start border" style="border-style: none none solid none !important;">
                     <small>'. $row['deyt'] .'</small>
                 </div>
             ';

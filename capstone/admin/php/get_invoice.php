@@ -74,7 +74,7 @@ if (mysqli_num_rows($result) > 0) {
                 <div class="col-4">
             ';
                 if ($row['price']) {
-                    echo '<small>'. $row['price'] .'</small>';
+                    echo '<small>₱'. $row['price'] .'</small>';
                 } else {
                     echo '<small>Estimating...</small>';
                 }
@@ -106,7 +106,7 @@ if (mysqli_num_rows($result) > 0) {
                     <small>Items: '. $qty .'</small>
                 </div>
                 <div class="col-6 text-end">
-                    <small>Total: PHP '. $total .'</small>
+                    <small>Total: ₱'. $total .'</small>
                 </div>
             </div>
             <div class="row text-center">
@@ -117,7 +117,7 @@ if (mysqli_num_rows($result) > 0) {
                     <small> - </small>
                 </div>
                 <div class="col-4">
-                    <small>PHP 0.00</small>
+                    <small>₱0.00</small>
                 </div>
             </div>
             ';
@@ -141,7 +141,7 @@ if (mysqli_num_rows($result) > 0) {
                 echo '
                 <div class="row bg-dark text-white">
                     <div class="col-12 text-end">
-                        <small><b>Total: PHP '. $total .'</b></small>
+                        <small>Total: ₱<b>'. $total .'</b></small>
                     </div>
                 </div>
                 ';

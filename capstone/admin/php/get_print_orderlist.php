@@ -25,8 +25,8 @@ if (mysqli_num_rows($result) > 0) {
             <div class="col-5 text-start border" style="border-style: none none solid none !important;">
                 <small>'. $row['title'] .'</small>
             </div>
-            <div class="col-3 text-end border" style="border-style: none none solid none !important;">
-               <small>'. $row['total'] .'</small>
+            <div class="col-3 text-start border" style="border-style: none none solid none !important;">
+               <small>₱'. $row['total'] .'</small>
             </div>
             <div class="col-2 text-start border" style="border-style: none none solid none !important;">
                 <small>'. $row['status'] .'</small>
@@ -45,7 +45,7 @@ if (mysqli_num_rows($result) > 0) {
             <div class="col-5 text-start border" style="border-style: none none solid none !important;">
                 <small>'. $row['title'] .'</small>
             </div>
-            <div class="col-3 text-end border" style="border-style: none none solid none !important;">
+            <div class="col-3 text-start border" style="border-style: none none solid none !important;">
                <small>'. $row['total'] .'</small>
             </div>
             <div class="col-2 text-start border" style="border-style: none none solid none !important;">
@@ -65,7 +65,7 @@ if (mysqli_num_rows($result) > 0) {
             <div class="col-5 text-start border" style="border-style: none none solid none !important;">
                 <small>'. $row['title'] .'</small>
             </div>
-            <div class="col-3 text-end border" style="border-style: none none solid none !important;">
+            <div class="col-3 text-start border" style="border-style: none none solid none !important;">
                <small>'. $row['total'] .'</small>
             </div>
             <div class="col-2 text-start border" style="border-style: none none solid none !important;">
@@ -85,7 +85,7 @@ if (mysqli_num_rows($result) > 0) {
             <div class="col-5 text-start border" style="border-style: none none solid none !important;">
                 <small>'. $row['title'] .'</small>
             </div>
-            <div class="col-3 text-end border" style="border-style: none none solid none !important;">
+            <div class="col-3 text-start border" style="border-style: none none solid none !important;">
                <small>'. $row['total'] .'</small>
             </div>
             <div class="col-2 text-start border" style="border-style: none none solid none !important;">

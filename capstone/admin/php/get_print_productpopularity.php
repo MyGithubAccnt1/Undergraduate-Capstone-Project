@@ -61,13 +61,13 @@ if (mysqli_num_rows($result) > 0) {
         <div class="col-5 text-start border" style="border-style: none none solid none !important;">
            <small>'. $row['title'] .'</small>
         </div>
-        <div class="col-2 text-end border" style="border-style: none none solid none !important;">
-            <small>'. $row['price'] .'</small>
+        <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+            <small>₱'. $row['price'] .'</small>
         </div>
         <div class="col-3 text-start border" style="border-style: none none solid none !important;">
             <small>'. $row['category'] .'</small>
         </div>
-        <div class="col-1 text-end border" style="border-style: none none solid none !important;">
+        <div class="col-1 text-start border" style="border-style: none none solid none !important;">
             <small>'. $row['popularity'] .'</small>
         </div>
     ';
@@ -83,13 +83,13 @@ if (mysqli_num_rows($result) > 0) {
         <div class="col-5 text-start border" style="border-style: none none solid none !important;">
            <small>'. $row['title'] .'</small>
         </div>
-        <div class="col-2 text-end border" style="border-style: none none solid none !important;">
-            <small>'. $row['price'] .'</small>
+        <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+            <small>₱'. $row['price'] .'</small>
         </div>
         <div class="col-3 text-start border" style="border-style: none none solid none !important;">
             <small>'. $row['category'] .'</small>
         </div>
-        <div class="col-1 text-end border" style="border-style: none none solid none !important;">
+        <div class="col-1 text-start border" style="border-style: none none solid none !important;">
             <small>'. $row['popularity'] .'</small>
         </div>
     ';
@@ -105,13 +105,13 @@ if (mysqli_num_rows($result) > 0) {
         <div class="col-5 text-start border" style="border-style: none none solid none !important;">
            <small>'. $row['title'] .'</small>
         </div>
-        <div class="col-2 text-end border" style="border-style: none none solid none !important;">
-            <small>'. $row['price'] .'</small>
+        <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+            <small>₱'. $row['price'] .'</small>
         </div>
         <div class="col-3 text-start border" style="border-style: none none solid none !important;">
             <small>'. $row['category'] .'</small>
         </div>
-        <div class="col-1 text-end border" style="border-style: none none solid none !important;">
+        <div class="col-1 text-start border" style="border-style: none none solid none !important;">
             <small>'. $row['popularity'] .'</small>
         </div>
     ';
@@ -147,13 +147,13 @@ if (mysqli_num_rows($result) > 0) {
             <div class="col-5 text-start border" style="border-style: none none solid none !important;">
                <small>'. $row['title'] .'</small>
             </div>
-            <div class="col-2 text-end border" style="border-style: none none solid none !important;">
-                <small>'. $row['price'] .'</small>
+            <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+                <small>₱'. $row['price'] .'</small>
             </div>
             <div class="col-3 text-start border" style="border-style: none none solid none !important;">
                 <small>'. $row['category'] .'</small>
             </div>
-            <div class="col-1 text-end border" style="border-style: none none solid none !important;">
+            <div class="col-1 text-start border" style="border-style: none none solid none !important;">
                 <small>'. $row['popularity'] .'</small>
             </div>
         ';

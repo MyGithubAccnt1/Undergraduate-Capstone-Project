@@ -9,7 +9,7 @@ if (mysqli_num_rows($result) > 0) {
     <h1 class="text-center bg-dark text-white">DETAILS</h1>
     <p class="mt-3 mb-1"><small>Product Name: ' . $row['title'] . '</small></p>
     <p class="mb-1"><small>Product Description: ' . $row['description'] . '</small></p>
-    <p class="mb-1"><small>Product Price: ' . $row['price'] . '</small></p>
+    <p class="mb-1"><small>Product Price: ₱' . $row['price'] . '</small></p>
     <p class="mb-1"><small>Product Thumbnail:</small></p>
     <div class="w-100">
         <img src="../' . $row['thumbnail'] . '" style="width: 50%; margin-inline: 25%;">
