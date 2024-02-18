@@ -1376,7 +1376,7 @@ function ShowCanvas() {
                 }
             }
         } else if (category === 'table nameplate') {
-            log = 'Product: ' + category + ', Material: ' + material + ', Company: ' + company + ', Name: ' + name + ', Position: ' + position;
+            log = 'Product: ' + category + ', Material: ' + material + ', Text: ' + company + ', Name: ' + name + ', Position: ' + position;
             if ($('textarea[name="table_nameplate_note_uno"]').val()) {
                 log = log + ', Note: ' + $('textarea[name="table_nameplate_note_uno"]').val();
                 $('textarea[name="table_nameplate_note_uno"]').val('');
