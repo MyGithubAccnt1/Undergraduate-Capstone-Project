@@ -7,7 +7,7 @@ if (mysqli_num_rows($result) > 0) {
     <thead>
         <tr>
             <th>Date</th>
-            <th>Ammount</th>
+            <th>Amount</th>
             <th>Orders</th>
         </tr>
     </thead>

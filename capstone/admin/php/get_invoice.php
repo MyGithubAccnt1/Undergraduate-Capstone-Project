@@ -99,16 +99,29 @@ if (mysqli_num_rows($result) > 0) {
         }
         if (is_numeric($total) && $total > 0) {
             $total = number_format(floatval($total), 2, '.', ',');
+            echo '
+                <div class="row bg-dark text-white">
+                    <div class="col-6 text-start">
+                        <small>Items: '. $qty .'</small>
+                    </div>
+                    <div class="col-6 text-end">
+                        <small>Total: ₱'. $total .'</small>
+                    </div>
+                </div>
+            ';
+        } else {
+            echo '
+                <div class="row bg-dark text-white">
+                    <div class="col-6 text-start">
+                        <small>Items: '. $qty .'</small>
+                    </div>
+                    <div class="col-6 text-end">
+                        <small>Total: '. $total .'</small>
+                    </div>
+                </div>
+            ';
         }
         echo'
-            <div class="row bg-dark text-white">
-                <div class="col-6 text-start">
-                    <small>Items: '. $qty .'</small>
-                </div>
-                <div class="col-6 text-end">
-                    <small>Total: ₱'. $total .'</small>
-                </div>
-            </div>
             <div class="row text-center">
                 <div class="col-4">
                     <small>Shipping Fee</small>

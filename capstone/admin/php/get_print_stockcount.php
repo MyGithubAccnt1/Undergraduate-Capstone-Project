@@ -19,16 +19,19 @@ if (mysqli_num_rows($result) > 0) {
         }
     }
     echo '
-        <div class="col-12 mb-3">
+        <div class="col-12">
+            <h4 class="p-0 m-0 text-center"><small><b>STOCK REPORT</b></small></h4>
+        </div>
+        <div class="col-12 my-3">
             <h6 class="p-0 m-0 text-start"><small><b>MATERIALS COUNT</b></small></h6>
         </div>
-        <div class="col-3 text-center border" style="border-style: none none solid none !important;">
+        <div class="col-3 text-center border" style="border-style: none solid solid none !important;">
             <small>Directory Marker: '. $directory .'</small>
         </div>
-        <div class="col-3 text-center border" style="border-style: none none solid none !important;">
+        <div class="col-3 text-center border" style="border-style: none solid solid none !important;">
             <small>Necklace: '. $necklace .'</small>
         </div>
-        <div class="col-3 text-center border" style="border-style: none none solid none !important;">
+        <div class="col-3 text-center border" style="border-style: none solid solid none !important;">
             <small>Table: '. $table .'</small>
         </div>
         <div class="col-3 text-center border" style="border-style: none none solid none !important;">
@@ -40,20 +43,20 @@ echo '
     <div class="col-12 my-3">
         <h6 class="p-0 m-0 text-start"><small><b>CRITICAL COUNT MATERIALS</b></small></h6>
     </div>
-    <div class="col-1 text-center">
-        <small>ID</small>
+    <div class="col-1 text-center border" style="border-style: none solid solid none !important;">
+        <small><b>ID</b></small>
     </div>
-    <div class="col-4 text-center">
-       <small>MATERIAL</small>
+    <div class="col-3 text-center border" style="border-style: none solid solid none !important;">
+       <small><b>MATERIAL</b></small>
     </div>
-    <div class="col-2 text-center">
-        <small>QUANTITY</small>
+    <div class="col-3 text-center border" style="border-style: none solid solid none !important;">
+        <small><b>QUANTITY</b></small>
     </div>
-    <div class="col-2 text-center">
-        <small>CATEGORY</small>
+    <div class="col-3 text-center border" style="border-style: none solid solid none !important;">
+        <small><b>CATEGORY</b></small>
     </div>
-    <div class="col-3 text-center">
-        <small>DATE</small>
+    <div class="col-2 text-center border" style="border-style: none none solid none !important;">
+        <small><b>DATE</b></small>
     </div>
 ';
 $sql = "SELECT * FROM inventory WHERE category = 'Directory'";
@@ -62,19 +65,19 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         if ($row['quantity'] <= 10) {
             echo '
-                <div class="col-1 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-1 text-center border" style="border-style: none solid solid none !important;">
                     <small>'. $row['id'] .'</small>
                 </div>
-                <div class="col-4 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-start border" style="border-style: none solid solid none !important;">
                    <small>'. $row['material'] .'</small>
                 </div>
-                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-end border" style="border-style: none solid solid none !important;">
                     <small>'. $row['quantity'] .'</small>
                 </div>
-                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-start border" style="border-style: none solid solid none !important;">
                     <small>'. $row['category'] .'</small>
                 </div>
-                <div class="col-3 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-2 text-center border" style="border-style: none none solid none !important;">
                     <small>'. $row['deyt'] .'</small>
                 </div>
             ';
@@ -87,19 +90,19 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         if ($row['quantity'] <= 10) {
             echo '
-                <div class="col-1 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-1 text-center border" style="border-style: none solid solid none !important;">
                     <small>'. $row['id'] .'</small>
                 </div>
-                <div class="col-4 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-start border" style="border-style: none solid solid none !important;">
                    <small>'. $row['material'] .'</small>
                 </div>
-                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-end border" style="border-style: none solid solid none !important;">
                     <small>'. $row['quantity'] .'</small>
                 </div>
-                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-start border" style="border-style: none solid solid none !important;">
                     <small>'. $row['category'] .'</small>
                 </div>
-                <div class="col-3 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-2 text-center border" style="border-style: none none solid none !important;">
                     <small>'. $row['deyt'] .'</small>
                 </div>
             ';
@@ -112,19 +115,19 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         if ($row['quantity'] <= 10) {
             echo '
-                <div class="col-1 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-1 text-center border" style="border-style: none solid solid none !important;">
                     <small>'. $row['id'] .'</small>
                 </div>
-                <div class="col-4 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-start border" style="border-style: none solid solid none !important;">
                    <small>'. $row['material'] .'</small>
                 </div>
-                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-end border" style="border-style: none solid solid none !important;">
                     <small>'. $row['quantity'] .'</small>
                 </div>
-                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-start border" style="border-style: none solid solid none !important;">
                     <small>'. $row['category'] .'</small>
                 </div>
-                <div class="col-3 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-2 text-center border" style="border-style: none none solid none !important;">
                     <small>'. $row['deyt'] .'</small>
                 </div>
             ';
@@ -137,19 +140,19 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         if ($row['quantity'] <= 10) {
             echo '
-                <div class="col-1 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-1 text-center border" style="border-style: none solid solid none !important;">
                     <small>'. $row['id'] .'</small>
                 </div>
-                <div class="col-4 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-start border" style="border-style: none solid solid none !important;">
                    <small>'. $row['material'] .'</small>
                 </div>
-                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-end border" style="border-style: none solid solid none !important;">
                     <small>'. $row['quantity'] .'</small>
                 </div>
-                <div class="col-2 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-3 text-start border" style="border-style: none solid solid none !important;">
                     <small>'. $row['category'] .'</small>
                 </div>
-                <div class="col-3 text-start border" style="border-style: none none solid none !important;">
+                <div class="col-2 text-center border" style="border-style: none none solid none !important;">
                     <small>'. $row['deyt'] .'</small>
                 </div>
             ';
