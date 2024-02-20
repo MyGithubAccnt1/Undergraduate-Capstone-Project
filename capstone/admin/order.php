@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['role'] === "Admin") {
+if (isset($_SESSION['role']) && $_SESSION['role'] === "Admin") {
 ?>
 <!doctype html>
 <html lang="en">
@@ -8,7 +8,7 @@ if ($_SESSION['role'] === "Admin") {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Saint Benedict Medallion</title>
-        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
         <meta name="description" content="In partial fulfilment of the requirements for the degree of Bachelor of Science in Information Technology">
         <meta name="keywords" content="capstone, project, thesis">
         <meta name="author" content="Mhel Voi A. Bernabe">
@@ -189,12 +189,60 @@ if ($_SESSION['role'] === "Admin") {
                             <div class="card">
                                 <div class="card-header">
                                     <div class="row">
-                                        <div class="col-6 text-start">
-                                            <i class="fas fa-table me-1"></i>
-                                            Sales
-                                        </div>
-                                        <div class="col-6 text-end">
-                                            <i class="fas fa-download" type="button" onclick="open_print('salesreport');" title="Print Preview"></i>
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-2 col-lg-2 text-start">
+                                                <i class="fas fa-table me-1"></i>
+                                                Sales
+                                            </div>
+                                            <div class="col-sm-12 col-md-8 col-lg-8 text-center">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-4 col-lg-4 d-flex flex-direction-row align-items-center justify-content-center">
+                                                        <small style="margin-right: 5px;">FROM </small>
+                                                        <small><select id="month-start">
+                                                            <option value="None">None</option>
+                                                            <option value="Jan">January</option>
+                                                            <option value="Feb">February</option>
+                                                            <option value="Mar">March</option>
+                                                            <option value="Apr">April</option>
+                                                            <option value="May">May</option>
+                                                            <option value="Jun">June</option>
+                                                            <option value="Jul">July</option>
+                                                            <option value="Aug">August</option>
+                                                            <option value="Nov">September</option>
+                                                            <option value="Oct">October</option>
+                                                            <option value="Nov">November</option>
+                                                            <option value="Dec">December</option>
+                                                        </select></small>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-4 col-lg-4 d-flex flex-direction-row align-items-center justify-content-center">
+                                                        <small style="margin-right: 5px;">TO</small>
+                                                        <small><select id="month-end">
+                                                            <option value="None">None</option>
+                                                            <option value="Jan">January</option>
+                                                            <option value="Feb">February</option>
+                                                            <option value="Mar">March</option>
+                                                            <option value="Apr">April</option>
+                                                            <option value="May">May</option>
+                                                            <option value="Jun">June</option>
+                                                            <option value="Jul">July</option>
+                                                            <option value="Aug">August</option>
+                                                            <option value="Nov">September</option>
+                                                            <option value="Oct">October</option>
+                                                            <option value="Nov">November</option>
+                                                            <option value="Dec">December</option>
+                                                        </select></small>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-4 col-lg-4 d-flex flex-direction-row align-items-center justify-content-center">
+                                                        <small style="margin-right: 5px;">YEAR</small>
+                                                        <small><select id="year">
+                                                            <!-- dynamic -->
+                                                        </select></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-2 col-lg-2 text-end">
+                                                <i class="fas fa-download" type="button" onclick="open_print('salesreport');" title="Print Preview"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -298,8 +346,14 @@ if ($_SESSION['role'] === "Admin") {
 </html>
 <?php 
 }else{
-    echo"<script>alert('Notice: Please login to an Administrator account.')</script>";
-    $script = "<script>window.location = '../php/logout.php';</script>";
-    echo $script;
+    if (isset($_SESSION['email'])) {
+        echo"<script>alert('Notice: Please login to an Administrator account.')</script>";
+        $script = "<script>window.location = '../php/logout.php';</script>";
+        echo $script;
+    } else {
+        echo"<script>alert('Notice: Please login to an Administrator account.')</script>";
+        $script = "<script>window.location = '../signin.php';</script>";
+        echo $script;
+    }
 }
 ?>

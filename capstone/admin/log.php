@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['role'] === "Admin") {
+if (isset($_SESSION['role']) && $_SESSION['role'] === "Admin") {
 ?>
 <!doctype html>
 <html lang="en">
@@ -8,7 +8,7 @@ if ($_SESSION['role'] === "Admin") {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Saint Benedict Medallion</title>
-        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
         <meta name="description" content="In partial fulfilment of the requirements for the degree of Bachelor of Science in Information Technology">
         <meta name="keywords" content="capstone, project, thesis">
         <meta name="author" content="Mhel Voi A. Bernabe">
@@ -56,8 +56,14 @@ if ($_SESSION['role'] === "Admin") {
 </html>
 <?php 
 }else{
-    echo"<script>alert('Notice: Please login to an Administrator account.')</script>";
-    $script = "<script>window.location = '../php/logout.php';</script>";
-    echo $script;
+    if (isset($_SESSION['email'])) {
+        echo"<script>alert('Notice: Please login to an Administrator account.')</script>";
+        $script = "<script>window.location = '../php/logout.php';</script>";
+        echo $script;
+    } else {
+        echo"<script>alert('Notice: Please login to an Administrator account.')</script>";
+        $script = "<script>window.location = '../signin.php';</script>";
+        echo $script;
+    }
 }
 ?>
