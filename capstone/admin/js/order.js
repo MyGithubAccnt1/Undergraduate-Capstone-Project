@@ -6,7 +6,9 @@ $(document).ready(function() {
     ShowDelivered();
     ShowRejected();
     FillOrders();
-    FillSales()
+    FillSales();
+    FillYear();
+    
 });
 function ShowPendings() {
     $.ajax({
@@ -173,6 +175,7 @@ $(document).on("submit", "#change_status", function (event) {
             status: $('#status').val()
         },
         success: function (data) {
+            alert('An order status has updated successfully.');
             select_button(id);
         }
     });
@@ -188,6 +191,7 @@ $(document).on("submit", "#change_total", function (event) {
             total: $(this).find("input[name='total']").val()
         },
         success: function (data) {
+            alert('An order total has updated successfully.');
             select_button(id);
         }
     });
@@ -245,6 +249,11 @@ function open_print(data) {
         $.ajax({
             url: "./php/get_print_salesreport.php",
             method: "GET",
+            data: {
+                from: $('#month-start').val(),
+                to: $('#month-end').val(),
+                year: $('#year').val()
+            },
             success: function (data) {
                 data = data.trim();
                 $("#fill_print").html(data);
@@ -310,5 +319,15 @@ function ShowSales() {
         headers.forEach((header, index) => {
             header.style.width = columnWidths[index];
         });
+    }
+}
+
+function FillYear() {
+    var currentYear = new Date().getFullYear();
+    for (var year = 2024; year <= currentYear; year++) {
+        var option = document.createElement("option");
+        option.value = year;
+        option.text = year;
+        document.getElementById("year").add(option);
     }
 }
