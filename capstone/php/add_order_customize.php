@@ -12,7 +12,7 @@ $quantity = $_POST['quantity'];
 date_default_timezone_set('Asia/Manila');
 $date = date('Y-m-d H:i');
 $status = "Pending";
-$title = 'Customize Item';
+$title = '';
 $total = 'Estimating...';
 
 $checksql = "SELECT * FROM history WHERE email = ? and deyt = ?";
@@ -29,7 +29,24 @@ if ($checkresult->num_rows > 0) {
     $newStmt->bind_param("sssss", $thumbnail, $quantity, $email, $date, $details);
     
     if ($newStmt->execute()) {
-
+        $checkedsql = "SELECT * FROM history ORDER BY id DESC";
+        $checkedstmt = $conn->prepare($checkedsql);
+        $checkedstmt->execute();
+        $checkedresult = $checkedstmt->get_result();
+        if ($checkedresult->num_rows > 0) {
+            $row = $checkedresult->fetch_assoc();
+            $id = $row['id'] + 1;
+            if (strlen($id) < 6) {
+                $title = 'SBM' . str_repeat('0', 6 - strlen($id)) . $id;
+            } else {
+                $title = 'SBM' . $id;
+            }
+        } else {
+            $id = 1;
+            if (strlen($id) < 6) {
+                $title = 'SBM' . str_repeat('0', 6 - strlen($id)) . $id;
+            }
+        }
         if ($alt_address === null) {
             $insertSql = "INSERT INTO history (email, title, total, deyt, status, buyer, mnumber, caddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             $insertStmt = $conn->prepare($insertSql);

@@ -40,7 +40,7 @@ if ($filter === "Price") {
 							echo '<input type="hidden" name="description" value="' . $row['description'] . '">';
 							echo '<input type="hidden" name="category" value="' . $row['category'] . '">';
 							echo '<h5> ' . $row['title'] . '</h5>';
-							echo '<p>Views: ' . $row['popularity'] . '</p>';
+							echo '<p>Popularity: ' . $row['popularity'] . '</p>';
 							echo '<p class="item-price">Price: ₱<b>' . $row['price'] . '</b></p>';
 							echo '<button type="submit" class="btn">View</button>';
 							echo '<input type="hidden" name="page" value="'. $page .'">';
@@ -100,7 +100,7 @@ if ($filter === "Price") {
 							echo '<input type="hidden" name="description" value="' . $row['description'] . '">';
 							echo '<input type="hidden" name="category" value="' . $row['category'] . '">';
 							echo '<h5> ' . $row['title'] . '</h5>';
-							echo '<p>Views: ' . $row['popularity'] . '</p>';
+							echo '<p>Popularity: ' . $row['popularity'] . '</p>';
 							echo '<p class="item-price">Price: ₱<b>' . $row['price'] . '</b></p>';
 							echo '<button type="submit" class="btn">View</button>';
 							echo '<input type="hidden" name="page" value="'. $page .'">';

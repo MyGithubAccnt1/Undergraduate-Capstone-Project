@@ -68,6 +68,7 @@ if (mysqli_num_rows($result) > 0) {
                 <small>Sub-Total: ₱<b>'. $formatted_total .'</b></small>
             </div>
         </div>
+        <input type="hidden" id="gcash-total" value="'. $formatted_total .'">
     ';
     mysqli_free_result($result);
 } else {

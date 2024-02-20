@@ -45,7 +45,17 @@ if (mysqli_num_rows($result) > 0) {
                 <small style="color: red;">'. $row["title"] .'</small>
             </div>
             <div>
+        ';
+        if ($row["total"] === 'Estimating...') {
+            echo '
+                <small style="color: red;">'. $row["total"] .'</small>
+            ';
+        } else {
+            echo '
                 <small style="color: red;">₱'. $row["total"] .'</small>
+            ';
+        }
+        echo '
             </div>
             <div>
                 <small style="color: red;">'. $row["status"] .'</small>
@@ -122,7 +132,7 @@ if (mysqli_num_rows($result) > 0) {
                                         ';
                                     } else {
                                         echo '
-                                        <small>PHP '. $newrow["price"] .'</small>
+                                        <small>₱'. $newrow["price"] .'</small>
                                         ';
                                     }
 
@@ -140,7 +150,7 @@ if (mysqli_num_rows($result) > 0) {
                                         ';
                                     } else {
                                         echo '
-                                        <small>PHP '. $newrow["total"] .'</small>
+                                        <small>₱'. $newrow["total"] .'</small>
                                         ';
                                     }
 

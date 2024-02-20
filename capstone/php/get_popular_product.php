@@ -20,7 +20,7 @@ if ($result->num_rows > 0) {
 						echo '<input type="hidden" name="description" value="' . $row['description'] . '">';
 						echo '<input type="hidden" name="category" value="' . $row['category'] . '">';
 						echo '<h5> ' . $row['title'] . '</h5>';
-						echo '<p>Views: ' . $row['popularity'] . '</p>';
+						echo '<p>Popularity: ' . $row['popularity'] . '</p>';
 						echo '<p class="item-price">Price: ₱<b>' . $row['price'] . '</b></p>';
 						echo '<button type="submit" class="btn">View</button>';
 					echo '</form>';
@@ -37,6 +37,8 @@ if ($result->num_rows > 0) {
 					echo '<a href="directory_marker.php" class="btn">View All</a>';
 				} else if ($category == "Table") {
 					echo '<a href="table_nameplate.php" class="btn">View All</a>';
+				} else if ($category == "Logo") {
+					echo '<a href="logo_seal.php" class="btn">View All</a>';
 				}
 			echo '</div>';
 		echo '</div>';
