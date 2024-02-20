@@ -54,11 +54,71 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 						<div class="container text-start p-3">
 							<div class="row">
 								<h5 class="text-center">PAYMENT METHOD</h5>
-								<div class="col-md-6">
-								    <input type="radio" id="cod" value="Cash On Delivery" checked>
-	                                <label for="cod">Cash On Delivery</label>
-                                </div>
-                                <div class="col-md-12">
+								<div class="col-12">
+									<div class="row">
+										<div class="col-12 text-start">
+											<input type="radio" checked>
+											<label><small><b>Gcash</b></small></label>
+										</div>
+										<div class="col-sm-12 col-md-6 col-lg-6 text-center p-1">
+											<div class="border border-dark p-4">
+												<input type="radio" id="full-payment" checked>
+												<label class="full-payment">
+													<button style="background-color: inherit; border: none;">
+														<small>
+															<b>Full Payment</b>
+														</small>
+													</button>
+												</label>
+												<p class="text-start">
+													<small>Amount: ₱<span id="full-amount"></span></small>
+												</p>
+												<p class="text-start"><small>Upload your Gcash proof of payment via:</small></p>
+												<p class="text-start"><small>IMAGE:</small></p>
+												<div class="row">
+													<div class="col-sm-12 col-md-6 col-lg-6">
+														<small><input type="file" id="gcashfp_image" accept="image/*"></small>
+													</div>
+													<div class="col-sm-12 col-md-6 col-lg-6">
+														<img src="" id="uploaded_gcashfp_image" class="img-fluid">
+													</div>
+												</div>
+												<p class="text-center"><small>OR</small></p>
+												<p class="text-start"><small>TEXT:</small></p>
+												<small><textarea class="w-50" type="text" rows="5" style="resize: none;" id="gcashfp_text"></textarea></small>
+											</div>
+										</div>
+										<div class="col-sm-12 col-md-6 col-lg-6 text-center p-1">
+											<div class="border border-dark p-4">
+												<input type="radio" id="down-payment">
+												<label class="down-payment">
+													<button style="background-color: inherit; border: none;">
+														<small>
+															<b>Down Payment 50%</b>
+														</small>
+													</button>
+												</label>
+												<p class="text-start">
+													<small>Amount: ₱<span id="down-amount"></span></small>
+												</p>
+												<p class="text-start"><small>Upload your Gcash proof of payment via:</small></p>
+												<p class="text-start"><small>IMAGE:</small></p>
+												<div class="row">
+													<div class="col-sm-12 col-md-6 col-lg-6">
+														<small><input type="file" id="gcashdp_image" accept="image/*"></small>
+													</div>
+													<div class="col-sm-12 col-md-6 col-lg-6">
+														<img src="" id="uploaded_gcashdp_image" class="img-fluid">
+													</div>
+												</div>
+												<p class="text-center"><small>OR</small></p>
+												<p class="text-start"><small>TEXT:</small></p>
+												<small><textarea class="w-50" type="text" rows="5" style="resize: none;" id="gcashdp_text"></textarea></small>
+											</div>
+										</div>
+									</div>
+								</div>
+                                <div class="col-12 px-5 mt-3">
                                 <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this <a href="https://www.freeprivacypolicy.com/live/e89caaee-d937-4d6e-bcde-c47ca892ee3b" target="_blank">Privacy Policy</a>.</p>
                                 </div>
 							</div>
@@ -81,7 +141,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 							<h6><small>Email: <?php echo $_SESSION['email']; ?></small></h6>
 							<h6><small>Address: <?php echo $_SESSION['caddress']; ?></small></h6>
 							<h6><small id="alternative_address"></small></h6>
-							<h6><small>Payment Method: COD</small></h6>
+							<h6><small>Payment Method: Gcash / <span id="method"></span></small></h6>
 							<div class="container" id="cart-container">
 								<!-- dynamic -->
 							</div>

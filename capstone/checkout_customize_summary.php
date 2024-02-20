@@ -118,7 +118,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 				</div>
 				<div class="row text-center p-3 gy-2">
 					<div class="col-sm-12 col-md-6">
-						<a href="cart.php" class="btn btn-sm btn-outline-danger rounded-pill w-75">Back</a>
+						<a href="customize.php" class="btn btn-sm btn-outline-danger rounded-pill w-75">Back</a>
 					</div>
 					<div class="col-sm-12 col-md-6">
 						<a class="btn btn-sm btn-outline-success rounded-pill w-75" id="proceed">Proceed</a>

@@ -155,6 +155,7 @@ session_start();
 							<div style="margin-right: 5px;">Category:</div>
                     	    <select class="input" id="category">
                     	    	<option value="Directory">Directory Marker</option>
+                    	    	<option value="Logo">Logo Seal</option>
                     	    	<option value="Necklace" selected>Necklace</option>
                     	        <option value="Table">Table Nameplates</option>
                     	    </select>
