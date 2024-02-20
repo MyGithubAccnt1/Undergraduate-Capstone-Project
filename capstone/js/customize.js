@@ -539,7 +539,6 @@ function ShowCanvas() {
                     },
                     success: function (data) {
                         data = data.trim();
-                        const baseUrl = window.location.origin;
                         window.localStorage.setItem('images', data);
                     }
                 });
@@ -1331,7 +1330,6 @@ function ShowCanvas() {
                     },
                     success: function (data) {
                         data = data.trim();
-                        const baseUrl = window.location.origin;
                         window.localStorage.setItem('images', data);
                     }
                 });
@@ -1396,8 +1394,12 @@ function ShowCanvas() {
                 $('textarea[name="own_design_note"]').val('');
             }
         }
-        log = log + ', Reference: ' + window.localStorage.getItem('images');
-        window.localStorage.setItem('details', log);
+        if (window.localStorage.getItem('images') !== null) {
+            log = log + ', Reference: ' + window.localStorage.getItem('images');
+            window.localStorage.setItem('details', log);
+        } else {
+            window.localStorage.setItem('details', log);
+        }
         canvas.setBackgroundColor(null, canvas.renderAll.bind(canvas));
         var zoomFactor = 1;
         var zoomCenter = new fabric.Point(canvas.width / 2, canvas.height / 2);

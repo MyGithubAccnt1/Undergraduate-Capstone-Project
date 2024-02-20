@@ -78,6 +78,7 @@ $(document).on('click', '#proceed', function() {
 function ShowCart() {
     const details = window.localStorage.getItem('details');
     let quantity = window.localStorage.getItem('quantity');
+    console.log(details);
     if (!quantity) {
         quantity = 1;
     }

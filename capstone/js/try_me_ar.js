@@ -14,6 +14,8 @@ $(window).on('load', function() {
         var category = localStorage.getItem('category');
         if (category === 'necklace') {
             ShowDirection();
+        } else {
+            ShowProduct();
         }
     })
     
@@ -77,17 +79,17 @@ function ShowProduct(options) {
                 canvas.renderAll();
             });
             let top;
-            if (canvas.height === 329) {
-                top = 60;
-            } else if (canvas.height < 329) {
+            if (canvas.height === 362.1335) {
                 top = 33;
+            } else if (canvas.height === 330) {
+                top = 61;
+            } else if (canvas.height === 329) {
+                top = 60;
+            } else if (canvas.height === 317.6365) {
+                top = 33;
+            } else {
+                window.location.href = 'send-this-number-to-me' + canvas.height;
             }
-            // height 329
-            // height 317.6365
-            // difference 11.3635
-            // top 60
-            // top 33
-            // difference 27
             fabric.Image.fromURL(dataURL, function (product) {
                 product.set({
                     originX: 'center',

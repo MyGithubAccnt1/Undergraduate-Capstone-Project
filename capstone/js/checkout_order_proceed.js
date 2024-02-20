@@ -44,7 +44,105 @@ function ShowCart() {
         success: function (data) {
             data = data.trim();
             $("#cart-container").html(data);
+            if ($('#gcash-total').val()) {
+                $('#full-amount').text($('#gcash-total').val());
+                $('#down-amount').text(((parseFloat($('#gcash-total').val().replace(/,/g, '')) / 2).toFixed(2)).toLocaleString());
+            } else {
+                $('#full-amount').text('0');
+                $('#down-amount').text('0');
+            }
+            if ($("#full-payment").prop('checked')) {
+                $('#method').text('Full-Payment');
+            } else {
+                $('#method').text('Down-Payment');
+            }
         }
     });
 }
 setInterval(ShowCart, 1000);
+
+$('.full-payment').on('click', function() {
+    if ($("#full-payment").prop('checked')){
+        $("#full-payment").prop("checked", false);
+        $("#down-payment").prop("checked", true);
+    } else {
+        $("#full-payment").prop("checked", true);
+        $("#down-payment").prop("checked", false);
+    }
+})
+
+$('#full-payment').on('click', function() {
+    $("#down-payment").prop("checked", false);
+})
+
+$('.down-payment').on('click', function() {
+    if ($("#down-payment").prop('checked')){
+        $("#down-payment").prop("checked", false);
+        $("#full-payment").prop("checked", true);
+    } else {
+        $("#down-payment").prop("checked", true);
+        $("#full-payment").prop("checked", false);
+    }
+})
+
+$('#down-payment').on('click', function() {
+    $("#full-payment").prop("checked", false);
+})
+
+$('#gcashfp_image').on('change', function (e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            const imageUrl = event.target.result;
+            const imageDataWithoutPrefix = imageUrl.split(',')[1];
+            $.ajax({
+                url: "./php/upload_temp.php",
+                method: "POST",
+                data: {
+                    imageFile: imageDataWithoutPrefix
+                },
+                success: function (data) {
+                    data = data.trim();
+                    window.localStorage.setItem('images', data);
+                    var data = data.replace(/\.\.\//g, '');
+                    $('#uploaded_gcashfp_image').attr('src', data);
+                }
+            });
+        };
+        reader.readAsDataURL(file);
+        $('#gcashfp_image').val('');
+    } else {
+        alert('Uploading image is canceled.');
+        window.localStorage.removeItem('images');
+    }
+});
+
+$('#gcashdp_image').on('change', function (e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            const imageUrl = event.target.result;
+            const imageDataWithoutPrefix = imageUrl.split(',')[1];
+            $.ajax({
+                url: "./php/upload_temp.php",
+                method: "POST",
+                data: {
+                    imageFile: imageDataWithoutPrefix
+                },
+                success: function (data) {
+                    data = data.trim();
+                    window.localStorage.setItem('images', data);
+                    var data = data.replace(/\.\.\//g, '');
+                    $('#uploaded_gcashdp_image').attr('src', data);
+                }
+            });
+        };
+        reader.readAsDataURL(file);
+        $('#gcashdp_image').val('');
+    } else {
+        alert('Uploading image is canceled.');
+        window.localStorage.removeItem('images');
+    }
+});
