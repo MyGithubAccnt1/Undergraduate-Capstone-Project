@@ -14,6 +14,6 @@ Steps on how to use:
 11. Open any browser and go to httplocalhostcapstone to view the files.
 12. Use any code editor (Visual Studio Code, Notepad++, Sublime) to edit the files.
 13. After editing any file, save it (ctrl+s) then refresh the tab httplocalhostcapstone in your browser to view changes.
-14. Website is now live at [] powered by InfinityFree.
+14. Website is now live at sbmedallion.infinityfreeapp.com powered by InfinityFree.
 
 status: DONE
