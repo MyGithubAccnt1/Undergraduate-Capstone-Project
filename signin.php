@@ -297,18 +297,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
                 $(".loader").fadeOut('slow');
                 $(".sticky-top").fadeIn('slow');
                 var currentURL = window.location.href;
-                if (currentURL !== "http://20.205.112.210/signin.php" || currentURL !== "http://localhost/capstone/signin.php") {
+                if (currentURL !== window.location.origin + "/signin.php" || currentURL !== window.location.origin + "/capstone/signin.php") {
                     var register = new URLSearchParams(currentURL).get('register');
                     if (register === "true") {
                         $('#register').click();
                     }
                 }
                 $('#get-email').find('input[name="email"]').focus()
-                var currentOrigin = window.location.protocol + '//' + window.location.host;
-                $('#current-origin').text(currentOrigin);
+                $('#current-origin').text(window.location.origin);
             })
         </script>
-        <script type="text/javascript" src="js/custom_user_header.js"></script>
         <script type="text/javascript" src="js/signin.js"></script>
     </body>
 </html>

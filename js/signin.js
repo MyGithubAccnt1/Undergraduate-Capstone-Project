@@ -121,24 +121,6 @@ $('#forgot-password').on('click', function () {
         alert('Please fill out the email field properly.');
         $('#get-account').find('input[name="email"]').focus();
     }
-    // node.js approach
-    // var currentOrigin = window.location.origin;
-    // var apiUrl = currentOrigin + ':3000/send-otp';
-    // $.ajax({
-    //     type: 'POST',
-    //     url: apiUrl,
-    //     contentType: 'application/json',
-    //     data: JSON.stringify({ email }),
-    //     success: function (response) {
-    //         otp = response.otp;
-    //         $('#signin-2').hide();
-    //         $('#verify-forgot-password').find('span[name="display-email"]').text($('#get-email').find('input[name="email"]').val());
-    //         $('#title').text('Account recovery');
-    //         $('#sub-title').text('To help keep your account safe, SBM wants to make sure it’s really you trying to sign in');
-    //         $('#signin-3').fadeIn('slow');
-    //         $('#verify-forgot-password').find('input[name="verification"]').focus();
-    //     }
-    // });
 })
 
 $('#back-2').on('click', function () {
@@ -299,23 +281,6 @@ $('#check-password').on('submit', function(event) {
     } else {
         $(".loader").fadeIn('slow');
         var email = $('#check-email').find('input[name="email"]').val();
-        // var currentOrigin = window.location.origin;
-        // var apiUrl = currentOrigin + ':3000/send-otp';
-        // $.ajax({
-        //     type: 'POST',
-        //     url: apiUrl,
-        //     contentType: 'application/json',
-        //     data: JSON.stringify({ email }),
-        //     success: function (response) {
-        //         otp = response.otp;
-        //         $('#register-2').hide();
-        //         $('#verify-email').find('span[name="display-email"]').text($('#check-email').find('input[name="email"]').val());
-        //         $('#title').text('Security check');
-        //         $('#sub-title').text('To help keep your account safe, SBM wants to make sure it’s really you trying to create an account');
-        //         $('#register-3').fadeIn('slow');
-        //         $('#verify-email').find('input[name="verification"]').focus()
-        //     }
-        // });
         $.ajax({
             url: './php/send_verification.php',
             type: 'POST',
@@ -383,3 +348,29 @@ $('#verify-email').on('submit', function(event) {
         $(this).find('input[name="verification"]').focus();
     }
 })
+
+$(document).ready(function() {
+    $(window).scroll(function () {
+        var scrollPos = $(window).scrollTop();
+        var threshold = 1;
+        if (scrollPos > threshold) {
+            $(".sticky-top").css("background-color", "rgba(0, 0, 0, 0.75)");
+            $(".dropdown-menu").css("background-color", "rgba(0, 0, 0, 0.75)");
+        } else {
+            $(".sticky-top").css("background-color", "transparent");
+            $(".dropdown-menu").css("background-color", "transparent");
+        }
+    });
+
+    const openIconHeader = document.querySelector('.button,.icon');
+    const navigationHeader = document.querySelector(".mobile-navigation");
+    const closeIconHeader = document.querySelector(".close");
+
+    openIconHeader.addEventListener('click', ()=> {
+        navigationHeader.classList.toggle('active-navigation');
+    });
+
+    closeIconHeader.addEventListener('click', ()=> {
+        navigationHeader.classList.remove('active-navigation');
+    });
+});
